@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MyCheckWalletUI
 
 class ViewController: UIViewController {
 
@@ -18,6 +19,18 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func managePaymentMethodsPressed(sender: AnyObject) {
+     let controller =  MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
+    self.presentViewController(controller, animated: true, completion: nil)
+    }
+}
+
+extension ViewController : MCPaymentMethodsViewControllerDelegate{
+    func userDismissed(  controller: MCPaymentMethodsViewControllerDelegate)
+    {
+    
     }
 
 }

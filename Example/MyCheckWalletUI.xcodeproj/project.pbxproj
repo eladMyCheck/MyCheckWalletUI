@@ -215,9 +215,13 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 2NY9PDA74K;
+						LastSwiftMigration = 0800;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 2NY9PDA74K;
+						LastSwiftMigration = 0800;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -489,11 +493,13 @@
 			baseConfigurationReference = 008C70A88B47AFF2E5F963C1 /* Pods-MyCheckWalletUI_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2NY9PDA74K;
 				INFOPLIST_FILE = MyCheckWalletUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -502,11 +508,13 @@
 			baseConfigurationReference = F173C1816C138039DA8A3A5B /* Pods-MyCheckWalletUI_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2NY9PDA74K;
 				INFOPLIST_FILE = MyCheckWalletUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -514,6 +522,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 816A39C179CD8F100C122930 /* Pods-MyCheckWalletUI_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 2NY9PDA74K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -526,6 +535,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -533,6 +543,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F2CF3667F99DF6BE84F62063 /* Pods-MyCheckWalletUI_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 2NY9PDA74K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -541,6 +552,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

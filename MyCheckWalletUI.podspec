@@ -32,11 +32,12 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'MyCheckWalletUI/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'MyCheckWalletUI' => ['MyCheckWalletUI/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'MyCheckWalletUI' => ['MyCheckWalletUI/Assets/*']
+   }
+s.requires_arc = 'true'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'Alamofire', '~> 3.4'
 end
