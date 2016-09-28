@@ -1,31 +1,3 @@
-# Acknowledgements
-This application makes use of the following third party libraries:
-
-## Alamofire
-
-Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-## MyCheckWallet
-
 MyCheck SDK License Agreement
 October 2015
 MyCheck Software Development Kit License Agreement
@@ -65,28 +37,3 @@ THE FOREGOING LIMITATIONS SHALL APPLY TO THE MAXIMUM EXTENT PERMITTED BY APPLICA
 As used in this Agreement, “Personally Identifiable Information” means information that can be used to distinguish or trace an individual's identity, such as their name, social security number, medical etc. alone, or when combined with other personal or identifying information that is linked or linkable to a specific individual, such as date and place of birth, parents’ names, or other information specific to such individual.
 1. Injunctive Relief. You acknowledge and agree that the copying, disclosure, or use of the Software or Confidential Information, or distribution of any Developer Software in a manner inconsistent with this Agreement, or breach of Section ‎14 may cause irreparable damage to MyCheck for which monetary damages will be an inadequate remedy. Accordingly, MyCheck will be entitled to seek and obtain injunctive and any other relief (legal or equitable), including, but not limited to, temporary restraining orders, preliminary injunctions, and permanent injunctions. The exercise of any right or remedy provided in this Agreement shall be without prejudice to the right to exercise any other right or remedies, relief, or damages provided by law or equity, except as expressly limited by this Agreement
 2. Miscellaneous. These terms are governed by the laws of the State of Israel without regard to conflict of laws principles. MyCheck and you agree to submit to the exclusive jurisdiction of the courts located in Tel Aviv, Israel and waive any jurisdictional, venue, or inconvenient forum objections to such courts. The United Nations Convention for the International Sale of Goods shall not apply. You may not assign this Agreement. Any attempted assignment by you shall be void. These terms constitute the entire agreement between you and MyCheck with respect to the Software and supersede all prior written or oral communications, understandings and agreements. Any waiver of these terms must be in writing and signed by the waiving party to be effective. If any provision of these terms is found to be invalid or unenforceable, the remaining terms will continue to be valid and enforceable to the fullest extent permitted by law. Nothing stated in this Agreement will be construed as creating the relationships of joint venturers, partners, employer and employee, franchisor and franchisee, master and servant, or principal and agent. You will be solely responsible for all costs, expenses, and losses associated with its use of the Software and development of any Developer Software.
-
-
-## MyCheckWalletUI
-
-Copyright (c) 2016 elad schiller <eladsc@mycheck.co.il>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-Generated by CocoaPods - https://cocoapods.org

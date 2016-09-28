@@ -1,7 +1,10 @@
 use_frameworks!
+source 'https://bitbucket.org/eladsc/pod-spec-repo.git'
+source 'https://github.com/CocoaPods/Specs.git'
 
 target 'MyCheckWalletUI_Example' do
   pod 'MyCheckWalletUI', :path => '../'
+  pod "MyCheckWallet"
 
   target 'MyCheckWalletUI_Tests' do
     inherit! :search_paths
