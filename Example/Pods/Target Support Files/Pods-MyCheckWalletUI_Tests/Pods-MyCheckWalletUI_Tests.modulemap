@@ -1,0 +1,6 @@
+framework module Pods_MyCheckWalletUI_Tests {
+  umbrella header "Pods-MyCheckWalletUI_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

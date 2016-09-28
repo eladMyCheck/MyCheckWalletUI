@@ -1,0 +1,33 @@
+{
+  "name": "MyCheckWalletUI",
+  "version": "0.1.0",
+  "summary": "A short description of MyCheckWalletUI.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/MyCheckWalletUI",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "elad schiller": "eladsc@mycheck.co.il"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/MyCheckWalletUI.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MyCheckWalletUI/Classes/**/*",
+  "resource_bundles": {
+    "MyCheckWalletUI": [
+      "MyCheckWalletUI/Assets/*"
+    ]
+  },
+  "requires_arc": "true",
+  "dependencies": {
+    "Alamofire": [
+      "~> 3.4"
+    ]
+  }
+}
