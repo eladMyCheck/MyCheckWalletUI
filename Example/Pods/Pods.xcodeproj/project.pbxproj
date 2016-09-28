@@ -7,197 +7,171 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01847AC6032C21AF84B643C1859F5BEC /* ProximaNovaSoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 35C4D8D554B59F313B57CE0293C6C3BD /* ProximaNovaSoftRegular.otf */; };
-		05AEDA857EEC6CBF54959A2A919EF79B /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D1621093054B40034E4BE224186605 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		095406039B4D371E48D08B38A2975AC8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3AD9F58BF1A0E8BDE5EA2667F61F21 /* Error.swift */; };
-		0E48E6073223C7B703543E9B3FCF2CCC /* Pods-MyCheckWalletUI_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6AED777BAE0B24BF2D5EE12B668554 /* Pods-MyCheckWalletUI_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		16102E4E35FAA0FC4161282FECE56469 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED14D72DB628ECAA3DB4DD63CA0EC8D /* Timeline.swift */; };
-		1B2362B3695AEC92599BA11CE6D4B501 /* MyCheckWallet-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E21E907F487BCD5B9C8D0929A11F4ED7 /* MyCheckWallet-dummy.m */; };
-		2D3405986FC586FA6C0A5E0B6BA7E64E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88DAA2CF4BAEA623596004D63774495 /* Validation.swift */; };
-		34CCDCA848A701466256BC2927DA8856 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA50A464E30206D6E39EF1E46C73FD7 /* NetworkReachabilityManager.swift */; };
-		36FA604614F9A0CB157925E52B4CAE98 /* ProximaNovaSoftBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EB871C74A1FED2CC2D2C2B4596AA989 /* ProximaNovaSoftBold.ttf */; };
-		3EA8F215C9C1432D74E5CCA4834AA8C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AFAFB6C771CCAC16A4C07EFC295319 /* ResponseSerialization.swift */; };
-		4081EA628AF0B73AC51FFB9D7AB3B89E /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8290133D7F5F888D174EACC3CB6493 /* Manager.swift */; };
-		481EE39E76BE581FC4ECDD432BCB361F /* Pods-MyCheckWalletUI_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EAF1C249718DE182D0B2A13DC2E53 /* Pods-MyCheckWalletUI_Example-dummy.m */; };
-		4DC55DAD80A6EAAC61FAF0E4F85B9F6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F053145ADC64FAD3E020FB53FF73FA2 /* Foundation.framework */; };
-		56D7DC9D8CBFC96BAD8A5AFE63593DB5 /* MyCheckWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A67550E8FA380082E14BE4FDA41A0FF /* MyCheckWallet.swift */; };
-		5A76112B2B62A68DEAC31A48D40D24AF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5819D04101159B7E0A9418BF323D035 /* UIKit.framework */; };
-		5BC19E6E0F199276003F0AF96838BCE5 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516E82C57578F94E44A758AC7E30A2E /* Upload.swift */; };
-		5CB05FBCB32D21E194B5ECF680CB6AE0 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A04804B015D4EA2819A7C080323B5 /* Download.swift */; };
-		61A272368B854761637AFC6181DF8867 /* MyCheckWalletUI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3F6D8C809BB57E937FAE485D5B847D /* MyCheckWalletUI-dummy.m */; };
-		62E8346F03C03E7F4D631361F325689E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E84E580E4A14155BA906640B6EDE2F /* Response.swift */; };
-		65A139504A41A4AD87DC80C5BA80C991 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C912EE95B92D6AC1FCCB64CCDA1A845B /* Media.xcassets */; };
-		6C0ED6F5297FF17326A2C2FCD94DEC75 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497FBF29F375A92C4B0B150D7B21196E /* CreditCardValidator.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		75264AF9B2CCD411BB207CED38C394BD /* MCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B91DCCF892002917F1F2E8E48458810 /* MCViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7A7FB8944CB623F8C5E327AD9BD1439A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F02A739100B7422F36AE23783BE8C24 /* Alamofire.framework */; };
-		7B48852C4D848FA2DA416A98F6425869 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3552BC5CB03F7CE5D85A22B2A11A92C /* ServerTrustPolicy.swift */; };
-		8188A43E68C63FEB85444B611FE29385 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F053145ADC64FAD3E020FB53FF73FA2 /* Foundation.framework */; };
-		8E6F07896392FAEDD0A3A186D39E228B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F053145ADC64FAD3E020FB53FF73FA2 /* Foundation.framework */; };
-		8EB11202167FCDDF1257AAAB1D1FB244 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5F694D391226E317E274CF5CA70627 /* Alamofire.swift */; };
-		91C09AC2A52ED69A27C8D923139A006F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F053145ADC64FAD3E020FB53FF73FA2 /* Foundation.framework */; };
-		9296BF9500F84C3A23938DBB0D3B9179 /* MyCheckWalletUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C6C235EF3B67F34D0681FCF4481EBD /* MyCheckWalletUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9469DF81ECB494E84675969B5E13374C /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9528F9DACFA9E158D3E2C8534B21AEE6 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97BCB77A03C6CBA8A6BD3BC494217349 /* MCAddCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C8174E8BDB54364B62971A5031868B /* MCAddCreditCardViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9937D173A7B7429B68E9B7A1B237C615 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CE39D360FC572E1CF45AA1F3A0C8C3 /* PaymentMethod.swift */; };
-		A656C98EB8A527D011951E109516B25E /* MyCheckWallet-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A96DF217C8398C9E68E562F6CFC0CAC /* MyCheckWallet-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0273E3004922AF9E50ED2CC8005FE96A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */; };
+		07970596F83BF4ECB4F4BE9B5D70DF6E /* MyCheckWalletUI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3F6D8C809BB57E937FAE485D5B847D /* MyCheckWalletUI-dummy.m */; };
+		095406039B4D371E48D08B38A2975AC8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1F9022AC9979CD59E8F83962DAF51D /* Error.swift */; };
+		0E33E357E68BBD72918E0CB985833A7E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 706C7AFFE37BA158C3553250F4B5FAED /* Alamofire.framework */; };
+		16102E4E35FAA0FC4161282FECE56469 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBA7F3642776C1964512C9A38829081 /* Timeline.swift */; };
+		1808E16D498B4FBA2E065E2ACD46D00D /* MyCheckWalletUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9018B75E495198FF5FEB91FAA028A7CA /* MyCheckWalletUI.bundle */; };
+		1A3E6A4FA3B72A7B83EEA10CCC19ECFA /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620EF7C248E405A8A45DCD6BB486A96C /* PaymentMethod.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		21D30014F9D3D9232E45FD64F83DE953 /* MCAddCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307C417C163F6C7DFDC7835F248CAA16 /* MCAddCreditCardViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2728B6946D1899C4C69E8DE96B86F228 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0760F46FDC5A895E80F583418499C8 /* Networking.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2756C0901245F0BAA1A7E26532233477 /* MCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC0E1207FD06D520F98680D73CB437 /* MCViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2A59C9042C061C161EFF4AD8BDF2535A /* Pods-MyCheckWalletUI_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EAF1C249718DE182D0B2A13DC2E53 /* Pods-MyCheckWalletUI_Example-dummy.m */; };
+		2D3405986FC586FA6C0A5E0B6BA7E64E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CBED44D4009D80F990A188D7A8B3F /* Validation.swift */; };
+		34CCDCA848A701466256BC2927DA8856 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9278DA00F41E390EE68B6F3C8161C54 /* NetworkReachabilityManager.swift */; };
+		3E4231FF965816F5267C272DA8EFC7F6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C912EE95B92D6AC1FCCB64CCDA1A845B /* Media.xcassets */; };
+		3EA8F215C9C1432D74E5CCA4834AA8C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2959D264574F227296E36F7CDF2E4F4F /* ResponseSerialization.swift */; };
+		4081EA628AF0B73AC51FFB9D7AB3B89E /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C763FD5409006D69EDB82815E4A61 /* Manager.swift */; };
+		47D7A6A817A0D80B4918FC2D863AD6BE /* ProximaNovaSoftBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EB871C74A1FED2CC2D2C2B4596AA989 /* ProximaNovaSoftBold.ttf */; };
+		49A0C5BAC95B39E1E8A092533DEB6948 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64993DE4CCD4379F8316B4944B3C96D /* CreditCardValidator.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		558E684E2C881CE785CA1FDDF298E05D /* MyCheckWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DECD428CBB76E13923A583D74B85684 /* MyCheckWallet.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5BC19E6E0F199276003F0AF96838BCE5 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC3EB7B14F56C5823591E484CC06DC /* Upload.swift */; };
+		5CB05FBCB32D21E194B5ECF680CB6AE0 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BCAC7849E43619A0E6BA6D3291D195 /* Download.swift */; };
+		62E8346F03C03E7F4D631361F325689E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2C7A48545D8C54D52554343225FB8 /* Response.swift */; };
+		67C36B426842C33770B3027B0A9771CC /* ProximaNovaSoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 35C4D8D554B59F313B57CE0293C6C3BD /* ProximaNovaSoftRegular.otf */; };
+		75BD848E9FED85E0B5F88EDC3D111EC3 /* MyCheckWalletUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C6C235EF3B67F34D0681FCF4481EBD /* MyCheckWalletUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B48852C4D848FA2DA416A98F6425869 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E07E98001DB6C163294A39CAB05963D /* ServerTrustPolicy.swift */; };
+		8B91385FF19DEE012E255B575B698F76 /* MyCheckWalletUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7551962DE491A7E506E6E4233C025F39 /* MyCheckWalletUI.storyboard */; };
+		8E6F07896392FAEDD0A3A186D39E228B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */; };
+		8EB11202167FCDDF1257AAAB1D1FB244 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED443D528393D61A04FBD88603DE5F3 /* Alamofire.swift */; };
+		903D9B409905E271D1198C082BC4CC21 /* Pods-MyCheckWalletUI_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6AED777BAE0B24BF2D5EE12B668554 /* Pods-MyCheckWalletUI_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91C09AC2A52ED69A27C8D923139A006F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */; };
+		9469DF81ECB494E84675969B5E13374C /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AE6827D6CBD3F8B59B79641ABF6ED159 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C821C7C55CF788215A335AC9B3282F /* Pods-MyCheckWalletUI_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6263697EB59BB353A1C00D5446EC4FA8 /* Pods-MyCheckWalletUI_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA314156AC500125F4078EE968DB14C6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CC9BE5727ED9C4159F5804BF59B9E /* Result.swift */; };
-		ADF19C953CE2A7D0B72EC93A81FCCC26 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 10ED0162CC4A5879A142C066E49DDC83 /* Alamofire-dummy.m */; };
-		AE36546AB46ADE8EA8C4F9032067EA08 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F053145ADC64FAD3E020FB53FF73FA2 /* Foundation.framework */; };
-		AE4CF87C02C042DF13ED5B21C4FDC1E0 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BB39E262ACA033CDAEC12EE7297B27 /* Stream.swift */; };
-		AEAC6D94F365983BECD14D03FD6DB51C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7309A402895FFA67EF6985A027EE7AD /* Networking.swift */; };
+		AA314156AC500125F4078EE968DB14C6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E393CF47FE31F265B29AA2D9B67C656 /* Result.swift */; };
+		ADF19C953CE2A7D0B72EC93A81FCCC26 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD74E0A1B7122513F9BCD2B66B65219 /* Alamofire-dummy.m */; };
+		AE4CF87C02C042DF13ED5B21C4FDC1E0 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9039D48B1E893EF8AD87645A4FF820F /* Stream.swift */; };
+		AFCEFD335231C69434A5AFA258FFBE88 /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C911E32AFCEC85D15498AE9B4C23A /* UIColor+CustomColors.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B4AAF087EEA80333FCE1E787CED0F414 /* Pods-MyCheckWalletUI_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B497100BFFE99F5828C23786479DFFCA /* Pods-MyCheckWalletUI_Tests-dummy.m */; };
-		BE41196F6A3903E59C3306FE3F8B43FE /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16FB533390E42BC90EB1FCBD2DA960F /* Notifications.swift */; };
-		C0DB70AB368765DC64BFB5FEA75E0696 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F03F23D7005BA54D7B08DF5B14B6F80 /* ParameterEncoding.swift */; };
-		C7B6DD7C0456C50289A2C381DFE9FA3F /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091A1B4C1FE80970BA059607FC880901 /* MultipartFormData.swift */; };
-		D8273019CD4886A542826EA8C4775E1B /* MyCheckWalletUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F95B6B0CB5E979B1F811C71ABD32EB24 /* MyCheckWalletUI.bundle */; };
-		D89472BB9E5228241C2E9C0CC4211DEB /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A36D17C5BB466C277CDE63BF81C7511 /* UIColor+CustomColors.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D90C4B465199ACEEBEB64D66F33AD50E /* MyCheckWalletUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7551962DE491A7E506E6E4233C025F39 /* MyCheckWalletUI.storyboard */; };
-		DBAF46920323A40B77887748F7ACCF59 /* MCPaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7FD0C7071ED7A127912F8269F0C2D7 /* MCPaymentMethodsViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		EFE92E8D3813DD26E78E93EEAF6D7E7E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90E641833532AF4BB1125A67F8E455E /* Request.swift */; };
-		F90F5D7DDF00E6DC7309A23BB075B1C6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F02A739100B7422F36AE23783BE8C24 /* Alamofire.framework */; };
+		BE41196F6A3903E59C3306FE3F8B43FE /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E32C97D15B18BFEB591B4A8B5C8477 /* Notifications.swift */; };
+		C0DB70AB368765DC64BFB5FEA75E0696 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB714D2EF499EE0EF3E1957151533A5D /* ParameterEncoding.swift */; };
+		C7B6DD7C0456C50289A2C381DFE9FA3F /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F376C277F027BDCD54137D76C547 /* MultipartFormData.swift */; };
+		CBB4F000C53A2D069644FFA2B9E0CC99 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */; };
+		EDBF22D7F3C34F72ED40DD94CCE2A1EE /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 69130E54E0220C00948A0FF82AC02954 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFE92E8D3813DD26E78E93EEAF6D7E7E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A29BA50E80B66E36C94B60FAD8863 /* Request.swift */; };
+		F37F5AF1D0EC445E7416A2DC45CF9665 /* MCPaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A97A33DFEA2D0F3BB21CEC8CD2C830 /* MCPaymentMethodsViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		17554E4D882C1E100E7B577022A32048 /* PBXContainerItemProxy */ = {
+		2F3E873F7DEF69703131F4511C86DADC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 79C040AFDDCE1BCBF6D8B5EB0B85887F;
 			remoteInfo = Alamofire;
 		};
-		4C20ED51F871337DC1C1DE8E12F5355A /* PBXContainerItemProxy */ = {
+		5FC5C09D4FFE226AE3C40336D7F30371 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0014B32731893D79A59E4C7BF06CF98D;
-			remoteInfo = MyCheckWallet;
+			remoteGlobalIDString = 840DBEE0FCAF8B33E94A5A32B8C0C632;
+			remoteInfo = MyCheckWalletUI;
 		};
-		5F5A15609C568ECF5432D179E072DC10 /* PBXContainerItemProxy */ = {
+		709B202B1C12670CE21B5817B6B332A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 79C040AFDDCE1BCBF6D8B5EB0B85887F;
-			remoteInfo = Alamofire;
-		};
-		8517C4EA90F8AF351DF6DE2084CDDD55 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 79C040AFDDCE1BCBF6D8B5EB0B85887F;
-			remoteInfo = Alamofire;
-		};
-		9D7CD2E52C730AD0EB71ECDD75A29DC5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF8D72C6031F1456F3CD96A13CB64D8B;
+			remoteGlobalIDString = C1F4CE0205ECBC93BC4669A9412DE206;
 			remoteInfo = "MyCheckWalletUI-MyCheckWalletUI";
 		};
-		F19BA1E78A4D31A31E30166F7490D60C /* PBXContainerItemProxy */ = {
+		7333D965E73982DBD7863BCB46E4C4B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 80428D64F452E8778D7FAD9EEB320950;
-			remoteInfo = MyCheckWalletUI;
+			remoteGlobalIDString = 79C040AFDDCE1BCBF6D8B5EB0B85887F;
+			remoteInfo = Alamofire;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02C8174E8BDB54364B62971A5031868B /* MCAddCreditCardViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCAddCreditCardViewController.swift; sourceTree = "<group>"; };
-		02CE632F4CD19D869B2231C14DA7B616 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08656D4CFE833BC083FBE8044C5907EA /* Pods-MyCheckWalletUI_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		091A1B4C1FE80970BA059607FC880901 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		09DC3EB7B14F56C5823591E484CC06DC /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
+		0B1C911E32AFCEC85D15498AE9B4C23A /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
 		0B6AED777BAE0B24BF2D5EE12B668554 /* Pods-MyCheckWalletUI_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MyCheckWalletUI_Example-umbrella.h"; sourceTree = "<group>"; };
+		0D0760F46FDC5A895E80F583418499C8 /* Networking.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		0DBA7F3642776C1964512C9A38829081 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
 		0F3F6D8C809BB57E937FAE485D5B847D /* MyCheckWalletUI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MyCheckWalletUI-dummy.m"; sourceTree = "<group>"; };
-		10ED0162CC4A5879A142C066E49DDC83 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		115CE72943714040B9E16D0CAE3CA7DD /* MyCheckWallet-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWallet-prefix.pch"; sourceTree = "<group>"; };
+		101C763FD5409006D69EDB82815E4A61 /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
 		13E68EEFCFAE1F8A9BD29489D9BD7969 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1840C4F637B50F8ED9B2E8827FB7F073 /* MyCheckWalletUI.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MyCheckWalletUI.xcconfig; sourceTree = "<group>"; };
 		1B15AA9D8EC580539639DF43FF84864E /* Pods-MyCheckWalletUI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		1C4D33B1FE3236F7D265B800510A31E8 /* Pods_MyCheckWalletUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCheckWalletUI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		222CC9BE5727ED9C4159F5804BF59B9E /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
-		236C0DB511422D45A002DCF96DBF6BC1 /* MyCheckWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyCheckWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		23AFAFB6C771CCAC16A4C07EFC295319 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		29D1621093054B40034E4BE224186605 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h"; sourceTree = "<group>"; };
-		2A36D17C5BB466C277CDE63BF81C7511 /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
-		2E8290133D7F5F888D174EACC3CB6493 /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
+		1E2A29BA50E80B66E36C94B60FAD8863 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		2959D264574F227296E36F7CDF2E4F4F /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		2AEC0E1207FD06D520F98680D73CB437 /* MCViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCViewController.swift; sourceTree = "<group>"; };
+		307C417C163F6C7DFDC7835F248CAA16 /* MCAddCreditCardViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCAddCreditCardViewController.swift; sourceTree = "<group>"; };
 		31AEC9758E4D90D6C6C9FBA6AC7F62AF /* Pods-MyCheckWalletUI_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Example-resources.sh"; sourceTree = "<group>"; };
-		33BB39E262ACA033CDAEC12EE7297B27 /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
 		35C4D8D554B59F313B57CE0293C6C3BD /* ProximaNovaSoftRegular.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = ProximaNovaSoftRegular.otf; sourceTree = "<group>"; };
 		36F9BD424106B42AC64697823E4913E4 /* MyCheckWalletUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MyCheckWalletUI.modulemap; sourceTree = "<group>"; };
-		37A317302E9033902246CD47D6578501 /* MyCheckWallet.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MyCheckWallet.modulemap; sourceTree = "<group>"; };
-		3A67550E8FA380082E14BE4FDA41A0FF /* MyCheckWallet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MyCheckWallet.swift; path = MyCheckWallet/Classes/MyCheckWallet.swift; sourceTree = "<group>"; };
-		3E38E4EF58CE3EE5022D01FCFF08A2ED /* MyCheckWallet.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MyCheckWallet.xcconfig; sourceTree = "<group>"; };
-		3FA50A464E30206D6E39EF1E46C73FD7 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
-		43CE39D360FC572E1CF45AA1F3A0C8C3 /* PaymentMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentMethod.swift; path = MyCheckWallet/Classes/PaymentMethod.swift; sourceTree = "<group>"; };
-		497A04804B015D4EA2819A7C080323B5 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
-		497FBF29F375A92C4B0B150D7B21196E /* CreditCardValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
+		41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		47A97A33DFEA2D0F3BB21CEC8CD2C830 /* MCPaymentMethodsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCPaymentMethodsViewController.swift; sourceTree = "<group>"; };
 		498EAF1C249718DE182D0B2A13DC2E53 /* Pods-MyCheckWalletUI_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MyCheckWalletUI_Example-dummy.m"; sourceTree = "<group>"; };
 		4A7F4FAEBAD47C2FFCA14E3D89C6044A /* Pods-MyCheckWalletUI_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MyCheckWalletUI_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		4B91DCCF892002917F1F2E8E48458810 /* MCViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCViewController.swift; sourceTree = "<group>"; };
+		4DECD428CBB76E13923A583D74B85684 /* MyCheckWallet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MyCheckWallet.swift; sourceTree = "<group>"; };
+		4E07E98001DB6C163294A39CAB05963D /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		4E393CF47FE31F265B29AA2D9B67C656 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		4EB871C74A1FED2CC2D2C2B4596AA989 /* ProximaNovaSoftBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = ProximaNovaSoftBold.ttf; sourceTree = "<group>"; };
-		4F053145ADC64FAD3E020FB53FF73FA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		50BCAC7849E43619A0E6BA6D3291D195 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
 		512AB9A7CB31F01B8F79B18E56B3FB44 /* Pods-MyCheckWalletUI_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyCheckWalletUI_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5175E677ADC3F810A4FB10B104C4332B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		567C02F41EF27731B03C42FAB766D278 /* ResourceBundle-MyCheckWalletUI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MyCheckWalletUI-Info.plist"; sourceTree = "<group>"; };
-		5A96DF217C8398C9E68E562F6CFC0CAC /* MyCheckWallet-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWallet-umbrella.h"; sourceTree = "<group>"; };
+		5B09F376C277F027BDCD54137D76C547 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		5C5763A83A1E028B6C4A073221CB764F /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		620EF7C248E405A8A45DCD6BB486A96C /* PaymentMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		6263697EB59BB353A1C00D5446EC4FA8 /* Pods-MyCheckWalletUI_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MyCheckWalletUI_Tests-umbrella.h"; sourceTree = "<group>"; };
-		69E84E580E4A14155BA906640B6EDE2F /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
+		628EF19217FFE41DCF65F815972BE4A7 /* Pods_MyCheckWalletUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCheckWalletUI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		658CBED44D4009D80F990A188D7A8B3F /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		69130E54E0220C00948A0FF82AC02954 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h"; sourceTree = "<group>"; };
+		6D1F9022AC9979CD59E8F83962DAF51D /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
+		6EED8F664361478966179EEC3FABA4F7 /* MyCheckWalletUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyCheckWalletUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		706C7AFFE37BA158C3553250F4B5FAED /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73680FF4931F4A524A30A840AF57A5A4 /* Pods-MyCheckWalletUI_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		7551962DE491A7E506E6E4233C025F39 /* MyCheckWalletUI.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = MyCheckWalletUI.storyboard; sourceTree = "<group>"; };
 		7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.release.xcconfig"; sourceTree = "<group>"; };
-		7F03F23D7005BA54D7B08DF5B14B6F80 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		79E32C97D15B18BFEB591B4A8B5C8477 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
+		7ED443D528393D61A04FBD88603DE5F3 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		8126E6956B30F7590A48800B24C4F076 /* Pods_MyCheckWalletUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCheckWalletUI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86AF92D5B8D47D3BE5AC2D3D9EC25C60 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D59C9B27A9798FF8FFA9A859EF6A936 /* Pods-MyCheckWalletUI_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyCheckWalletUI_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8F9AEE7513613C5C04384A3E64B5F734 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		8FFF564423DBE209836D47626963E9D4 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		9018B75E495198FF5FEB91FAA028A7CA /* MyCheckWalletUI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCheckWalletUI.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94C6C235EF3B67F34D0681FCF4481EBD /* MyCheckWalletUI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-umbrella.h"; sourceTree = "<group>"; };
-		9528F9DACFA9E158D3E2C8534B21AEE6 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
-		95CABE1ACEE331569A090B71A4C83A5D /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		9C0DD3DFA79C5650481A18E4E0DAB880 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9F02A739100B7422F36AE23783BE8C24 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0B1054304A01A8632ABD85F5F51804F /* MyCheckWalletUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyCheckWalletUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7003A7C1839766A50B8F6FB0E824824 /* Pods_MyCheckWalletUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCheckWalletUI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A90E641833532AF4BB1125A67F8E455E /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		9FD74E0A1B7122513F9BCD2B66B65219 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
+		A149BF2819128352A98494A4402603EE /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		A64993DE4CCD4379F8316B4944B3C96D /* CreditCardValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
+		AB714D2EF499EE0EF3E1957151533A5D /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		AC657C56FB10E2C6433D0AFE081866BE /* Pods-MyCheckWalletUI_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MyCheckWalletUI_Tests.modulemap"; sourceTree = "<group>"; };
-		AE3AD9F58BF1A0E8BDE5EA2667F61F21 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
-		AED14D72DB628ECAA3DB4DD63CA0EC8D /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
-		AF4AF75A990DD370F47BB49841FF4235 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE6827D6CBD3F8B59B79641ABF6ED159 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		B39F69777E6528EBF72A7F05D1425FFB /* Pods-MyCheckWalletUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B497100BFFE99F5828C23786479DFFCA /* Pods-MyCheckWalletUI_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MyCheckWalletUI_Tests-dummy.m"; sourceTree = "<group>"; };
-		C16FB533390E42BC90EB1FCBD2DA960F /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		C1C616FAB1CDC46C9E07DE707AA42869 /* Pods-MyCheckWalletUI_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MyCheckWalletUI_Example.modulemap"; sourceTree = "<group>"; };
 		C346BC6A1B1B3DCF3EFA0F912D805F82 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C7309A402895FFA67EF6985A027EE7AD /* Networking.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Networking.swift; path = MyCheckWallet/Classes/Networking.swift; sourceTree = "<group>"; };
-		C88DAA2CF4BAEA623596004D63774495 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		C912EE95B92D6AC1FCCB64CCDA1A845B /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		C924A04B2A960DE01968B2D2C063556E /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3552BC5CB03F7CE5D85A22B2A11A92C /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		D516E82C57578F94E44A758AC7E30A2E /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
-		DB7FD0C7071ED7A127912F8269F0C2D7 /* MCPaymentMethodsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCPaymentMethodsViewController.swift; sourceTree = "<group>"; };
-		E21E907F487BCD5B9C8D0929A11F4ED7 /* MyCheckWallet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MyCheckWallet-dummy.m"; sourceTree = "<group>"; };
-		E5819D04101159B7E0A9418BF323D035 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		DDC2C7A48545D8C54D52554343225FB8 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		EE2F2628F8FE1645FC45713A804BE665 /* Pods-MyCheckWalletUI_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MyCheckWalletUI_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		EF9B164ED26ED6B4216627D17E910484 /* Pods-MyCheckWalletUI_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Example-frameworks.sh"; sourceTree = "<group>"; };
-		F1C5E0E571D700A381A27679EABCCF63 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		F223BA07B61768D2F9E56713683F77EF /* MyCheckWalletUI-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-prefix.pch"; sourceTree = "<group>"; };
 		F4E5C98FB8C84A34AB7C1C3C9E10E771 /* Pods-MyCheckWalletUI_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Tests-resources.sh"; sourceTree = "<group>"; };
-		F95B6B0CB5E979B1F811C71ABD32EB24 /* MyCheckWalletUI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCheckWalletUI.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC5F694D391226E317E274CF5CA70627 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		F9039D48B1E893EF8AD87645A4FF820F /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
+		F9278DA00F41E390EE68B6F3C8161C54 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4B31FB436BBF87C45F6CD08BEA4CEF1F /* Frameworks */ = {
+		2D87248A65492F488B40D0AC28E80130 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		978E4EE70DEF0696101D1E80643C725D /* Frameworks */ = {
+		9D5554C14F39769892C40F311EDC9615 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE36546AB46ADE8EA8C4F9032067EA08 /* Foundation.framework in Frameworks */,
+				0E33E357E68BBD72918E0CB985833A7E /* Alamofire.framework in Frameworks */,
+				CBB4F000C53A2D069644FFA2B9E0CC99 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +183,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4ACE331585F2AEF85FAE941CD956223 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0273E3004922AF9E50ED2CC8005FE96A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D005B8BD24ED7D5F885EF247973B1462 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,42 +199,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F6DDE28D4BC8BACF2019F1B8DCCA2C30 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7A7FB8944CB623F8C5E327AD9BD1439A /* Alamofire.framework in Frameworks */,
-				8188A43E68C63FEB85444B611FE29385 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F7B186196733B8FACA57185F553F06F5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F90F5D7DDF00E6DC7309A23BB075B1C6 /* Alamofire.framework in Frameworks */,
-				4DC55DAD80A6EAAC61FAF0E4F85B9F6A /* Foundation.framework in Frameworks */,
-				5A76112B2B62A68DEAC31A48D40D24AF /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C283F9B831A4B1A24390662067A191D /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				AF4AF75A990DD370F47BB49841FF4235 /* Info.plist */,
-				37A317302E9033902246CD47D6578501 /* MyCheckWallet.modulemap */,
-				3E38E4EF58CE3EE5022D01FCFF08A2ED /* MyCheckWallet.xcconfig */,
-				E21E907F487BCD5B9C8D0929A11F4ED7 /* MyCheckWallet-dummy.m */,
-				115CE72943714040B9E16D0CAE3CA7DD /* MyCheckWallet-prefix.pch */,
-				5A96DF217C8398C9E68E562F6CFC0CAC /* MyCheckWallet-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/MyCheckWallet";
-			sourceTree = "<group>";
-		};
 		254E91AC1A0F075212B01DC01451902D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,7 +216,7 @@
 		26A914867A44211ECE9ECF823ECFE0F3 /* MyCheckWalletUI */ = {
 			isa = PBXGroup;
 			children = (
-				75EC0A27CFCAA6D79490706D09227AD7 /* MyCheckWalletUI */,
+				F27C5E418461DBA26F664852C0D025F2 /* MyCheckWalletUI */,
 				E085E8DEDFBE701B824F8B11A4022894 /* Resources */,
 				F55C732FECA1105E9B4358B2788229F9 /* Support Files */,
 			);
@@ -275,28 +224,20 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		3435E53B6983802ECE67D550751E5563 /* MyCheckWallet */ = {
+		3332D79FDC0D66D4DF418974F676C0C0 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				3A67550E8FA380082E14BE4FDA41A0FF /* MyCheckWallet.swift */,
-				C7309A402895FFA67EF6985A027EE7AD /* Networking.swift */,
-				43CE39D360FC572E1CF45AA1F3A0C8C3 /* PaymentMethod.swift */,
-				0C283F9B831A4B1A24390662067A191D /* Support Files */,
+				41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */,
 			);
-			path = MyCheckWallet;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		4AFED2A992D7E76DADAD2DB663748CC2 /* Products */ = {
+		35F128EB69B6F7FB7DA93BBF6C130FAE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C924A04B2A960DE01968B2D2C063556E /* Alamofire.framework */,
-				236C0DB511422D45A002DCF96DBF6BC1 /* MyCheckWallet.framework */,
-				F95B6B0CB5E979B1F811C71ABD32EB24 /* MyCheckWalletUI.bundle */,
-				A0B1054304A01A8632ABD85F5F51804F /* MyCheckWalletUI.framework */,
-				1C4D33B1FE3236F7D265B800510A31E8 /* Pods_MyCheckWalletUI_Example.framework */,
-				A7003A7C1839766A50B8F6FB0E824824 /* Pods_MyCheckWalletUI_Tests.framework */,
+				6E519FC8760483F5D136181B2EBCBDEB /* Alamofire */,
 			);
-			name = Products;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		5689091645B779F341D21413DE0AB80F /* Targets Support Files */ = {
@@ -308,18 +249,13 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		5E3C2C99F7B6ED3FFF33261A54A9F437 /* Support Files */ = {
+		59B91F212518421F271EBA85D5530651 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F1C5E0E571D700A381A27679EABCCF63 /* Alamofire.modulemap */,
-				8F9AEE7513613C5C04384A3E64B5F734 /* Alamofire.xcconfig */,
-				10ED0162CC4A5879A142C066E49DDC83 /* Alamofire-dummy.m */,
-				95CABE1ACEE331569A090B71A4C83A5D /* Alamofire-prefix.pch */,
-				9528F9DACFA9E158D3E2C8534B21AEE6 /* Alamofire-umbrella.h */,
-				02CE632F4CD19D869B2231C14DA7B616 /* Info.plist */,
+				706C7AFFE37BA158C3553250F4B5FAED /* Alamofire.framework */,
+				3332D79FDC0D66D4DF418974F676C0C0 /* iOS */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Alamofire";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		60D1754057B3ABE833D109CDCD75959D /* Pods-MyCheckWalletUI_Tests */ = {
@@ -340,21 +276,43 @@
 			path = "Target Support Files/Pods-MyCheckWalletUI_Tests";
 			sourceTree = "<group>";
 		};
-		75EC0A27CFCAA6D79490706D09227AD7 /* MyCheckWalletUI */ = {
+		68F6D4CBC8B6CDE1D634D9F379F37168 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F844567F69C280F88C4072D5886C719F /* Classes */,
+				5C5763A83A1E028B6C4A073221CB764F /* Alamofire.modulemap */,
+				A149BF2819128352A98494A4402603EE /* Alamofire.xcconfig */,
+				9FD74E0A1B7122513F9BCD2B66B65219 /* Alamofire-dummy.m */,
+				8FFF564423DBE209836D47626963E9D4 /* Alamofire-prefix.pch */,
+				AE6827D6CBD3F8B59B79641ABF6ED159 /* Alamofire-umbrella.h */,
+				5175E677ADC3F810A4FB10B104C4332B /* Info.plist */,
 			);
-			path = MyCheckWalletUI;
+			name = "Support Files";
+			path = "../Target Support Files/Alamofire";
 			sourceTree = "<group>";
 		};
-		7B05826141F5DEB7AF13094100054778 /* Frameworks */ = {
+		6E519FC8760483F5D136181B2EBCBDEB /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
-				9F02A739100B7422F36AE23783BE8C24 /* Alamofire.framework */,
-				AA72FE18809019F7884A8334D4C706E9 /* iOS */,
+				7ED443D528393D61A04FBD88603DE5F3 /* Alamofire.swift */,
+				50BCAC7849E43619A0E6BA6D3291D195 /* Download.swift */,
+				6D1F9022AC9979CD59E8F83962DAF51D /* Error.swift */,
+				101C763FD5409006D69EDB82815E4A61 /* Manager.swift */,
+				5B09F376C277F027BDCD54137D76C547 /* MultipartFormData.swift */,
+				F9278DA00F41E390EE68B6F3C8161C54 /* NetworkReachabilityManager.swift */,
+				79E32C97D15B18BFEB591B4A8B5C8477 /* Notifications.swift */,
+				AB714D2EF499EE0EF3E1957151533A5D /* ParameterEncoding.swift */,
+				1E2A29BA50E80B66E36C94B60FAD8863 /* Request.swift */,
+				DDC2C7A48545D8C54D52554343225FB8 /* Response.swift */,
+				2959D264574F227296E36F7CDF2E4F4F /* ResponseSerialization.swift */,
+				4E393CF47FE31F265B29AA2D9B67C656 /* Result.swift */,
+				4E07E98001DB6C163294A39CAB05963D /* ServerTrustPolicy.swift */,
+				F9039D48B1E893EF8AD87645A4FF820F /* Stream.swift */,
+				0DBA7F3642776C1964512C9A38829081 /* Timeline.swift */,
+				09DC3EB7B14F56C5823591E484CC06DC /* Upload.swift */,
+				658CBED44D4009D80F990A188D7A8B3F /* Validation.swift */,
+				68F6D4CBC8B6CDE1D634D9F379F37168 /* Support Files */,
 			);
-			name = Frameworks;
+			path = Alamofire;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -362,45 +320,39 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BBA6A7AE4D027B6DD6FF7FA60CEBE808 /* Development Pods */,
-				7B05826141F5DEB7AF13094100054778 /* Frameworks */,
-				B9E6F50B1D55984149521296590F8922 /* Pods */,
-				4AFED2A992D7E76DADAD2DB663748CC2 /* Products */,
+				59B91F212518421F271EBA85D5530651 /* Frameworks */,
+				35F128EB69B6F7FB7DA93BBF6C130FAE /* Pods */,
+				896151AF1C7593CBCDC2B730B1004BE8 /* Products */,
 				5689091645B779F341D21413DE0AB80F /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		89903E77289799DF8CD67BF8A766909A /* Alamofire */ = {
+		896151AF1C7593CBCDC2B730B1004BE8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC5F694D391226E317E274CF5CA70627 /* Alamofire.swift */,
-				497A04804B015D4EA2819A7C080323B5 /* Download.swift */,
-				AE3AD9F58BF1A0E8BDE5EA2667F61F21 /* Error.swift */,
-				2E8290133D7F5F888D174EACC3CB6493 /* Manager.swift */,
-				091A1B4C1FE80970BA059607FC880901 /* MultipartFormData.swift */,
-				3FA50A464E30206D6E39EF1E46C73FD7 /* NetworkReachabilityManager.swift */,
-				C16FB533390E42BC90EB1FCBD2DA960F /* Notifications.swift */,
-				7F03F23D7005BA54D7B08DF5B14B6F80 /* ParameterEncoding.swift */,
-				A90E641833532AF4BB1125A67F8E455E /* Request.swift */,
-				69E84E580E4A14155BA906640B6EDE2F /* Response.swift */,
-				23AFAFB6C771CCAC16A4C07EFC295319 /* ResponseSerialization.swift */,
-				222CC9BE5727ED9C4159F5804BF59B9E /* Result.swift */,
-				D3552BC5CB03F7CE5D85A22B2A11A92C /* ServerTrustPolicy.swift */,
-				33BB39E262ACA033CDAEC12EE7297B27 /* Stream.swift */,
-				AED14D72DB628ECAA3DB4DD63CA0EC8D /* Timeline.swift */,
-				D516E82C57578F94E44A758AC7E30A2E /* Upload.swift */,
-				C88DAA2CF4BAEA623596004D63774495 /* Validation.swift */,
-				5E3C2C99F7B6ED3FFF33261A54A9F437 /* Support Files */,
+				86AF92D5B8D47D3BE5AC2D3D9EC25C60 /* Alamofire.framework */,
+				9018B75E495198FF5FEB91FAA028A7CA /* MyCheckWalletUI.bundle */,
+				6EED8F664361478966179EEC3FABA4F7 /* MyCheckWalletUI.framework */,
+				8126E6956B30F7590A48800B24C4F076 /* Pods_MyCheckWalletUI_Example.framework */,
+				628EF19217FFE41DCF65F815972BE4A7 /* Pods_MyCheckWalletUI_Tests.framework */,
 			);
-			path = Alamofire;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		AA72FE18809019F7884A8334D4C706E9 /* iOS */ = {
+		8C3075355BCC7880C1D0424B9BB0DCC2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4F053145ADC64FAD3E020FB53FF73FA2 /* Foundation.framework */,
-				E5819D04101159B7E0A9418BF323D035 /* UIKit.framework */,
+				A64993DE4CCD4379F8316B4944B3C96D /* CreditCardValidator.swift */,
+				307C417C163F6C7DFDC7835F248CAA16 /* MCAddCreditCardViewController.swift */,
+				47A97A33DFEA2D0F3BB21CEC8CD2C830 /* MCPaymentMethodsViewController.swift */,
+				2AEC0E1207FD06D520F98680D73CB437 /* MCViewController.swift */,
+				4DECD428CBB76E13923A583D74B85684 /* MyCheckWallet.swift */,
+				69130E54E0220C00948A0FF82AC02954 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */,
+				0D0760F46FDC5A895E80F583418499C8 /* Networking.swift */,
+				620EF7C248E405A8A45DCD6BB486A96C /* PaymentMethod.swift */,
+				0B1C911E32AFCEC85D15498AE9B4C23A /* UIColor+CustomColors.swift */,
 			);
-			name = iOS;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		AEB305218D8B564A4DED7DEADF282A3D /* Pods-MyCheckWalletUI_Example */ = {
@@ -421,15 +373,6 @@
 			path = "Target Support Files/Pods-MyCheckWalletUI_Example";
 			sourceTree = "<group>";
 		};
-		B9E6F50B1D55984149521296590F8922 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				89903E77289799DF8CD67BF8A766909A /* Alamofire */,
-				3435E53B6983802ECE67D550751E5563 /* MyCheckWallet */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		BBA6A7AE4D027B6DD6FF7FA60CEBE808 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +387,14 @@
 				FD048D49FECFD93259D4ADCA9CB1DA97 /* MyCheckWalletUI */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		F27C5E418461DBA26F664852C0D025F2 /* MyCheckWalletUI */ = {
+			isa = PBXGroup;
+			children = (
+				8C3075355BCC7880C1D0424B9BB0DCC2 /* Classes */,
+			);
+			path = MyCheckWalletUI;
 			sourceTree = "<group>";
 		};
 		F55C732FECA1105E9B4358B2788229F9 /* Support Files */ = {
@@ -461,19 +412,6 @@
 			path = "Example/Pods/Target Support Files/MyCheckWalletUI";
 			sourceTree = "<group>";
 		};
-		F844567F69C280F88C4072D5886C719F /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				497FBF29F375A92C4B0B150D7B21196E /* CreditCardValidator.swift */,
-				02C8174E8BDB54364B62971A5031868B /* MCAddCreditCardViewController.swift */,
-				DB7FD0C7071ED7A127912F8269F0C2D7 /* MCPaymentMethodsViewController.swift */,
-				4B91DCCF892002917F1F2E8E48458810 /* MCViewController.swift */,
-				29D1621093054B40034E4BE224186605 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */,
-				2A36D17C5BB466C277CDE63BF81C7511 /* UIColor+CustomColors.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		FD048D49FECFD93259D4ADCA9CB1DA97 /* MyCheckWalletUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -485,23 +423,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		37421BAD1B3D8BE1A5572665B8AD5879 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				05AEDA857EEC6CBF54959A2A919EF79B /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h in Headers */,
-				9296BF9500F84C3A23938DBB0D3B9179 /* MyCheckWalletUI-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3C83354473E8443C28C9C62D7F1ABC6B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0E48E6073223C7B703543E9B3FCF2CCC /* Pods-MyCheckWalletUI_Example-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		96E1729E194FA040D81250CACDE9CABC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,11 +431,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA8018C94169F6FBDE61B700D186F51B /* Headers */ = {
+		B5245CA9018BDBDEBC171BDAC0DEAAE7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A656C98EB8A527D011951E109516B25E /* MyCheckWallet-umbrella.h in Headers */,
+				903D9B409905E271D1198C082BC4CC21 /* Pods-MyCheckWalletUI_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E64464B2FAFD2B1F15476D942E14A025 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDBF22D7F3C34F72ED40DD94CCE2A1EE /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h in Headers */,
+				75BD848E9FED85E0B5F88EDC3D111EC3 /* MyCheckWalletUI-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,24 +459,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0014B32731893D79A59E4C7BF06CF98D /* MyCheckWallet */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0A6B503E00342572B39AE4C1436B43D5 /* Build configuration list for PBXNativeTarget "MyCheckWallet" */;
-			buildPhases = (
-				089056F779E985207F2174461684BFD0 /* Sources */,
-				F7B186196733B8FACA57185F553F06F5 /* Frameworks */,
-				CA8018C94169F6FBDE61B700D186F51B /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B7494C39F6E82CC713E0D5E0CB878002 /* PBXTargetDependency */,
-			);
-			name = MyCheckWallet;
-			productName = MyCheckWallet;
-			productReference = 236C0DB511422D45A002DCF96DBF6BC1 /* MyCheckWallet.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CFB42910790CF0BDBCCEBAACD6B9367 /* Build configuration list for PBXNativeTarget "Alamofire" */;
@@ -561,27 +473,46 @@
 			);
 			name = Alamofire;
 			productName = Alamofire;
-			productReference = C924A04B2A960DE01968B2D2C063556E /* Alamofire.framework */;
+			productReference = 86AF92D5B8D47D3BE5AC2D3D9EC25C60 /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		80428D64F452E8778D7FAD9EEB320950 /* MyCheckWalletUI */ = {
+		840DBEE0FCAF8B33E94A5A32B8C0C632 /* MyCheckWalletUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9935ACF80F546FED68949DCB16DA3605 /* Build configuration list for PBXNativeTarget "MyCheckWalletUI" */;
+			buildConfigurationList = C2C1C04E45B88FC8F37626B6FBA3AAA4 /* Build configuration list for PBXNativeTarget "MyCheckWalletUI" */;
 			buildPhases = (
-				90CDDC7E05A92BF8E9B922C86BB33AB9 /* Sources */,
-				F6DDE28D4BC8BACF2019F1B8DCCA2C30 /* Frameworks */,
-				AA28B41572349ED048FAAA12F5B8A395 /* Resources */,
-				37421BAD1B3D8BE1A5572665B8AD5879 /* Headers */,
+				AE9BA30A742F3561CDE980823ADC88E5 /* Sources */,
+				9D5554C14F39769892C40F311EDC9615 /* Frameworks */,
+				9AB96FD2D5FFA9279A55CB7378884885 /* Resources */,
+				E64464B2FAFD2B1F15476D942E14A025 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8273E1C52F50C6C05ECA7318ABED9272 /* PBXTargetDependency */,
-				C31B361DC96C487E037582A9836FBF45 /* PBXTargetDependency */,
+				4FF189F226C3E714D7777C8F14AC5CD7 /* PBXTargetDependency */,
+				7875C164DB041706B144978F7566A51B /* PBXTargetDependency */,
 			);
 			name = MyCheckWalletUI;
 			productName = MyCheckWalletUI;
-			productReference = A0B1054304A01A8632ABD85F5F51804F /* MyCheckWalletUI.framework */;
+			productReference = 6EED8F664361478966179EEC3FABA4F7 /* MyCheckWalletUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8FF928B893200CDDA2AED021DB9D1D22 /* Pods-MyCheckWalletUI_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB4F73290EDF4418F22E0DE6D7EE6D56 /* Build configuration list for PBXNativeTarget "Pods-MyCheckWalletUI_Example" */;
+			buildPhases = (
+				F7F2E00D424942A5307464BA1E279912 /* Sources */,
+				B4ACE331585F2AEF85FAE941CD956223 /* Frameworks */,
+				B5245CA9018BDBDEBC171BDAC0DEAAE7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F919BA3E2F20A7986373EF444F9FF78 /* PBXTargetDependency */,
+				256A5275976860760FF48D4CC8E47F61 /* PBXTargetDependency */,
+			);
+			name = "Pods-MyCheckWalletUI_Example";
+			productName = "Pods-MyCheckWalletUI_Example";
+			productReference = 8126E6956B30F7590A48800B24C4F076 /* Pods_MyCheckWalletUI_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A677731182CDA269BCA8E24887019FC4 /* Pods-MyCheckWalletUI_Tests */ = {
@@ -598,16 +529,16 @@
 			);
 			name = "Pods-MyCheckWalletUI_Tests";
 			productName = "Pods-MyCheckWalletUI_Tests";
-			productReference = A7003A7C1839766A50B8F6FB0E824824 /* Pods_MyCheckWalletUI_Tests.framework */;
+			productReference = 628EF19217FFE41DCF65F815972BE4A7 /* Pods_MyCheckWalletUI_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		BF8D72C6031F1456F3CD96A13CB64D8B /* MyCheckWalletUI-MyCheckWalletUI */ = {
+		C1F4CE0205ECBC93BC4669A9412DE206 /* MyCheckWalletUI-MyCheckWalletUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A4F115FF5F8B99E9E8276855C6883A1B /* Build configuration list for PBXNativeTarget "MyCheckWalletUI-MyCheckWalletUI" */;
+			buildConfigurationList = 295E5ADDA3822B8F20B79757A9D7203E /* Build configuration list for PBXNativeTarget "MyCheckWalletUI-MyCheckWalletUI" */;
 			buildPhases = (
-				F6606413713D09437EB3CED987135679 /* Sources */,
-				4B31FB436BBF87C45F6CD08BEA4CEF1F /* Frameworks */,
-				A6C946A08AA8F9D3774BD621AE7EE9EC /* Resources */,
+				D076C3B21857C62E559257FDE3CD7AC9 /* Sources */,
+				2D87248A65492F488B40D0AC28E80130 /* Frameworks */,
+				080BC84F17F1D888FADA67D2CC6C95C0 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -615,28 +546,8 @@
 			);
 			name = "MyCheckWalletUI-MyCheckWalletUI";
 			productName = "MyCheckWalletUI-MyCheckWalletUI";
-			productReference = F95B6B0CB5E979B1F811C71ABD32EB24 /* MyCheckWalletUI.bundle */;
+			productReference = 9018B75E495198FF5FEB91FAA028A7CA /* MyCheckWalletUI.bundle */;
 			productType = "com.apple.product-type.bundle";
-		};
-		D5493C0261CC635065448D44EB19F222 /* Pods-MyCheckWalletUI_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0F8B1B93580959E9ECA924FF7D99A720 /* Build configuration list for PBXNativeTarget "Pods-MyCheckWalletUI_Example" */;
-			buildPhases = (
-				73797773AFDFC88E49BE66FF506DCFB7 /* Sources */,
-				978E4EE70DEF0696101D1E80643C725D /* Frameworks */,
-				3C83354473E8443C28C9C62D7F1ABC6B /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				526D751FAC988BADF31C2898FEC5F540 /* PBXTargetDependency */,
-				48B1AD905B4B36AEF2B6465BFE547A9C /* PBXTargetDependency */,
-				230B30B3A231665EFEFFD5E33695FE48 /* PBXTargetDependency */,
-			);
-			name = "Pods-MyCheckWalletUI_Example";
-			productName = "Pods-MyCheckWalletUI_Example";
-			productReference = 1C4D33B1FE3236F7D265B800510A31E8 /* Pods_MyCheckWalletUI_Example.framework */;
-			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -646,6 +557,17 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					79C040AFDDCE1BCBF6D8B5EB0B85887F = {
+						LastSwiftMigration = 0800;
+					};
+					840DBEE0FCAF8B33E94A5A32B8C0C632 = {
+						LastSwiftMigration = 0800;
+					};
+					8FF928B893200CDDA2AED021DB9D1D22 = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -655,80 +577,47 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 4AFED2A992D7E76DADAD2DB663748CC2 /* Products */;
+			productRefGroup = 896151AF1C7593CBCDC2B730B1004BE8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */,
-				0014B32731893D79A59E4C7BF06CF98D /* MyCheckWallet */,
-				80428D64F452E8778D7FAD9EEB320950 /* MyCheckWalletUI */,
-				BF8D72C6031F1456F3CD96A13CB64D8B /* MyCheckWalletUI-MyCheckWalletUI */,
-				D5493C0261CC635065448D44EB19F222 /* Pods-MyCheckWalletUI_Example */,
+				840DBEE0FCAF8B33E94A5A32B8C0C632 /* MyCheckWalletUI */,
+				C1F4CE0205ECBC93BC4669A9412DE206 /* MyCheckWalletUI-MyCheckWalletUI */,
+				8FF928B893200CDDA2AED021DB9D1D22 /* Pods-MyCheckWalletUI_Example */,
 				A677731182CDA269BCA8E24887019FC4 /* Pods-MyCheckWalletUI_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A6C946A08AA8F9D3774BD621AE7EE9EC /* Resources */ = {
+		080BC84F17F1D888FADA67D2CC6C95C0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65A139504A41A4AD87DC80C5BA80C991 /* Media.xcassets in Resources */,
-				D90C4B465199ACEEBEB64D66F33AD50E /* MyCheckWalletUI.storyboard in Resources */,
-				36FA604614F9A0CB157925E52B4CAE98 /* ProximaNovaSoftBold.ttf in Resources */,
-				01847AC6032C21AF84B643C1859F5BEC /* ProximaNovaSoftRegular.otf in Resources */,
+				3E4231FF965816F5267C272DA8EFC7F6 /* Media.xcassets in Resources */,
+				8B91385FF19DEE012E255B575B698F76 /* MyCheckWalletUI.storyboard in Resources */,
+				47D7A6A817A0D80B4918FC2D863AD6BE /* ProximaNovaSoftBold.ttf in Resources */,
+				67C36B426842C33770B3027B0A9771CC /* ProximaNovaSoftRegular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA28B41572349ED048FAAA12F5B8A395 /* Resources */ = {
+		9AB96FD2D5FFA9279A55CB7378884885 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8273019CD4886A542826EA8C4775E1B /* MyCheckWalletUI.bundle in Resources */,
+				1808E16D498B4FBA2E065E2ACD46D00D /* MyCheckWalletUI.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		089056F779E985207F2174461684BFD0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1B2362B3695AEC92599BA11CE6D4B501 /* MyCheckWallet-dummy.m in Sources */,
-				56D7DC9D8CBFC96BAD8A5AFE63593DB5 /* MyCheckWallet.swift in Sources */,
-				AEAC6D94F365983BECD14D03FD6DB51C /* Networking.swift in Sources */,
-				9937D173A7B7429B68E9B7A1B237C615 /* PaymentMethod.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		73797773AFDFC88E49BE66FF506DCFB7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				481EE39E76BE581FC4ECDD432BCB361F /* Pods-MyCheckWalletUI_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7E3399C985C31E5E14D06833FFB7BB9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B4AAF087EEA80333FCE1E787CED0F414 /* Pods-MyCheckWalletUI_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		90CDDC7E05A92BF8E9B922C86BB33AB9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6C0ED6F5297FF17326A2C2FCD94DEC75 /* CreditCardValidator.swift in Sources */,
-				97BCB77A03C6CBA8A6BD3BC494217349 /* MCAddCreditCardViewController.swift in Sources */,
-				DBAF46920323A40B77887748F7ACCF59 /* MCPaymentMethodsViewController.swift in Sources */,
-				75264AF9B2CCD411BB207CED38C394BD /* MCViewController.swift in Sources */,
-				61A272368B854761637AFC6181DF8867 /* MyCheckWalletUI-dummy.m in Sources */,
-				D89472BB9E5228241C2E9C0CC4211DEB /* UIColor+CustomColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,51 +646,63 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F6606413713D09437EB3CED987135679 /* Sources */ = {
+		AE9BA30A742F3561CDE980823ADC88E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49A0C5BAC95B39E1E8A092533DEB6948 /* CreditCardValidator.swift in Sources */,
+				21D30014F9D3D9232E45FD64F83DE953 /* MCAddCreditCardViewController.swift in Sources */,
+				F37F5AF1D0EC445E7416A2DC45CF9665 /* MCPaymentMethodsViewController.swift in Sources */,
+				2756C0901245F0BAA1A7E26532233477 /* MCViewController.swift in Sources */,
+				558E684E2C881CE785CA1FDDF298E05D /* MyCheckWallet.swift in Sources */,
+				07970596F83BF4ECB4F4BE9B5D70DF6E /* MyCheckWalletUI-dummy.m in Sources */,
+				2728B6946D1899C4C69E8DE96B86F228 /* Networking.swift in Sources */,
+				1A3E6A4FA3B72A7B83EEA10CCC19ECFA /* PaymentMethod.swift in Sources */,
+				AFCEFD335231C69434A5AFA258FFBE88 /* UIColor+CustomColors.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D076C3B21857C62E559257FDE3CD7AC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F7F2E00D424942A5307464BA1E279912 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A59C9042C061C161EFF4AD8BDF2535A /* Pods-MyCheckWalletUI_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		230B30B3A231665EFEFFD5E33695FE48 /* PBXTargetDependency */ = {
+		256A5275976860760FF48D4CC8E47F61 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MyCheckWalletUI;
-			target = 80428D64F452E8778D7FAD9EEB320950 /* MyCheckWalletUI */;
-			targetProxy = F19BA1E78A4D31A31E30166F7490D60C /* PBXContainerItemProxy */;
+			target = 840DBEE0FCAF8B33E94A5A32B8C0C632 /* MyCheckWalletUI */;
+			targetProxy = 5FC5C09D4FFE226AE3C40336D7F30371 /* PBXContainerItemProxy */;
 		};
-		48B1AD905B4B36AEF2B6465BFE547A9C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MyCheckWallet;
-			target = 0014B32731893D79A59E4C7BF06CF98D /* MyCheckWallet */;
-			targetProxy = 4C20ED51F871337DC1C1DE8E12F5355A /* PBXContainerItemProxy */;
-		};
-		526D751FAC988BADF31C2898FEC5F540 /* PBXTargetDependency */ = {
+		3F919BA3E2F20A7986373EF444F9FF78 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
 			target = 79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */;
-			targetProxy = 5F5A15609C568ECF5432D179E072DC10 /* PBXContainerItemProxy */;
+			targetProxy = 2F3E873F7DEF69703131F4511C86DADC /* PBXContainerItemProxy */;
 		};
-		8273E1C52F50C6C05ECA7318ABED9272 /* PBXTargetDependency */ = {
+		4FF189F226C3E714D7777C8F14AC5CD7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
 			target = 79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */;
-			targetProxy = 8517C4EA90F8AF351DF6DE2084CDDD55 /* PBXContainerItemProxy */;
+			targetProxy = 7333D965E73982DBD7863BCB46E4C4B0 /* PBXContainerItemProxy */;
 		};
-		B7494C39F6E82CC713E0D5E0CB878002 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = 79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */;
-			targetProxy = 17554E4D882C1E100E7B577022A32048 /* PBXContainerItemProxy */;
-		};
-		C31B361DC96C487E037582A9836FBF45 /* PBXTargetDependency */ = {
+		7875C164DB041706B144978F7566A51B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "MyCheckWalletUI-MyCheckWalletUI";
-			target = BF8D72C6031F1456F3CD96A13CB64D8B /* MyCheckWalletUI-MyCheckWalletUI */;
-			targetProxy = 9D7CD2E52C730AD0EB71ECDD75A29DC5 /* PBXContainerItemProxy */;
+			target = C1F4CE0205ECBC93BC4669A9412DE206 /* MyCheckWalletUI-MyCheckWalletUI */;
+			targetProxy = 709B202B1C12670CE21B5817B6B332A3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -844,38 +745,43 @@
 			};
 			name = Release;
 		};
-		290B90CD710B673B74D63AD8AF61FA7B /* Release */ = {
+		1A020255D76376A59106F079B672297A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E38E4EF58CE3EE5022D01FCFF08A2ED /* MyCheckWallet.xcconfig */;
+			baseConfigurationReference = 1840C4F637B50F8ED9B2E8827FB7F073 /* MyCheckWalletUI.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyCheckWalletUI";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MyCheckWallet/MyCheckWallet-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MyCheckWallet/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/ResourceBundle-MyCheckWalletUI-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MyCheckWallet/MyCheckWallet.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = MyCheckWallet;
+				PRODUCT_NAME = MyCheckWalletUI;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
+		1FB964AFD84119D6DA1CF0589A615F0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1840C4F637B50F8ED9B2E8827FB7F073 /* MyCheckWalletUI.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyCheckWalletUI";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/ResourceBundle-MyCheckWalletUI-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = MyCheckWalletUI;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		32AD5F8918CA8B349E4671410FA624C9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F9AEE7513613C5C04384A3E64B5F734 /* Alamofire.xcconfig */;
+			baseConfigurationReference = A149BF2819128352A98494A4402603EE /* Alamofire.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -896,41 +802,12 @@
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		51156EE8DD6202E92DC7699E6C0C48A6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E38E4EF58CE3EE5022D01FCFF08A2ED /* MyCheckWallet.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MyCheckWallet/MyCheckWallet-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MyCheckWallet/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MyCheckWallet/MyCheckWallet.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = MyCheckWallet;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		663B19E23BC75F325C84BA320AEDD659 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -965,9 +842,74 @@
 			};
 			name = Debug;
 		};
+		6B30FA3C07BA94F4373F90A6E35287A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B39F69777E6528EBF72A7F05D1425FFB /* Pods-MyCheckWalletUI_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-MyCheckWalletUI_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MyCheckWalletUI_Example/Pods-MyCheckWalletUI_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MyCheckWalletUI_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6C1DFE41EE329235B844AE04FD0125B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1840C4F637B50F8ED9B2E8827FB7F073 /* MyCheckWalletUI.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = MyCheckWalletUI;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		75218111E718FACE36F771E8ABECDB62 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F9AEE7513613C5C04384A3E64B5F734 /* Alamofire.xcconfig */;
+			baseConfigurationReference = A149BF2819128352A98494A4402603EE /* Alamofire.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -989,6 +931,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1028,7 +971,7 @@
 			};
 			name = Release;
 		};
-		A2D5A81164712DEB52B2093A25E2A3C3 /* Debug */ = {
+		AF98F1009EABE78D7B2B81CCD5941882 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1840C4F637B50F8ED9B2E8827FB7F073 /* MyCheckWalletUI.xcconfig */;
 			buildSettings = {
@@ -1052,55 +995,10 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C4F6675CDB0905C4410AF350E46B3ED9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1840C4F637B50F8ED9B2E8827FB7F073 /* MyCheckWalletUI.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = MyCheckWalletUI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D0C5CBC06C9CDAB21C17EE8DFD5F6E92 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1840C4F637B50F8ED9B2E8827FB7F073 /* MyCheckWalletUI.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyCheckWalletUI";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/ResourceBundle-MyCheckWalletUI-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = MyCheckWalletUI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -1146,7 +1044,7 @@
 			};
 			name = Debug;
 		};
-		D86CBC3AC8D2C0E1264EB788643AD3BD /* Release */ = {
+		DEAA1202111F92872699ADE20B98FC3E /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */;
 			buildSettings = {
@@ -1173,80 +1071,21 @@
 				PRODUCT_NAME = Pods_MyCheckWalletUI_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		DA505A948BA87E8625C03DCB0ED7FEE2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1840C4F637B50F8ED9B2E8827FB7F073 /* MyCheckWalletUI.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyCheckWalletUI";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/ResourceBundle-MyCheckWalletUI-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = MyCheckWalletUI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		E70AB47A558A904CBFA8CAB14360953C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B39F69777E6528EBF72A7F05D1425FFB /* Pods-MyCheckWalletUI_Example.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-MyCheckWalletUI_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MyCheckWalletUI_Example/Pods-MyCheckWalletUI_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_MyCheckWalletUI_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0A6B503E00342572B39AE4C1436B43D5 /* Build configuration list for PBXNativeTarget "MyCheckWallet" */ = {
+		295E5ADDA3822B8F20B79757A9D7203E /* Build configuration list for PBXNativeTarget "MyCheckWalletUI-MyCheckWalletUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				51156EE8DD6202E92DC7699E6C0C48A6 /* Debug */,
-				290B90CD710B673B74D63AD8AF61FA7B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0F8B1B93580959E9ECA924FF7D99A720 /* Build configuration list for PBXNativeTarget "Pods-MyCheckWalletUI_Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E70AB47A558A904CBFA8CAB14360953C /* Debug */,
-				D86CBC3AC8D2C0E1264EB788643AD3BD /* Release */,
+				1FB964AFD84119D6DA1CF0589A615F0E /* Debug */,
+				1A020255D76376A59106F079B672297A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1278,20 +1117,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9935ACF80F546FED68949DCB16DA3605 /* Build configuration list for PBXNativeTarget "MyCheckWalletUI" */ = {
+		AB4F73290EDF4418F22E0DE6D7EE6D56 /* Build configuration list for PBXNativeTarget "Pods-MyCheckWalletUI_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A2D5A81164712DEB52B2093A25E2A3C3 /* Debug */,
-				C4F6675CDB0905C4410AF350E46B3ED9 /* Release */,
+				6B30FA3C07BA94F4373F90A6E35287A1 /* Debug */,
+				DEAA1202111F92872699ADE20B98FC3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A4F115FF5F8B99E9E8276855C6883A1B /* Build configuration list for PBXNativeTarget "MyCheckWalletUI-MyCheckWalletUI" */ = {
+		C2C1C04E45B88FC8F37626B6FBA3AAA4 /* Build configuration list for PBXNativeTarget "MyCheckWalletUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D0C5CBC06C9CDAB21C17EE8DFD5F6E92 /* Debug */,
-				DA505A948BA87E8625C03DCB0ED7FEE2 /* Release */,
+				AF98F1009EABE78D7B2B81CCD5941882 /* Debug */,
+				6C1DFE41EE329235B844AE04FD0125B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

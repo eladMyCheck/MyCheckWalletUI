@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,20 +25,53 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSy-Lg-2gV">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="Kqn-VZ-lDn"/>
+                                    <constraint firstAttribute="height" constant="200" id="Kqn-VZ-lDn"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="Cvx-uJ-KCz" kind="embed" id="ZSE-Um-oiT"/>
+                                    <segue destination="Cvx-uJ-KCz" kind="embed" identifier="creditCardSubViewController" id="ZSE-Um-oiT"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pR-FF-l22">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="fa2-19-ZTQ"/>
+                                    <constraint firstAttribute="width" constant="1" id="oKo-96-YwO"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMg-sF-JOH">
+                                <state key="normal" title="Add Credit Card"/>
+                                <connections>
+                                    <action selector="addCreditCardPressed:" destination="Vdt-Jg-cJk" eventType="touchUpInside" id="L1w-xW-DBn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cya-ZT-oTQ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="4Ng-DP-hsV"/>
+                                    <constraint firstAttribute="width" constant="320" id="SQT-xq-0Ja"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JSy-Lg-2gV" firstAttribute="centerX" secondItem="dnR-C4-fck" secondAttribute="centerX" id="CyQ-xc-8mc"/>
+                            <constraint firstItem="zMg-sF-JOH" firstAttribute="centerX" secondItem="dnR-C4-fck" secondAttribute="centerX" id="8cK-JH-YKe"/>
+                            <constraint firstItem="JSy-Lg-2gV" firstAttribute="centerX" secondItem="dnR-C4-fck" secondAttribute="centerX" priority="950" id="CyQ-xc-8mc"/>
+                            <constraint firstItem="Cya-ZT-oTQ" firstAttribute="centerX" secondItem="dnR-C4-fck" secondAttribute="centerX" id="Dft-On-8G6"/>
+                            <constraint firstItem="zMg-sF-JOH" firstAttribute="centerY" secondItem="dnR-C4-fck" secondAttribute="centerY" id="LjG-uL-Hd4"/>
+                            <constraint firstItem="4pR-FF-l22" firstAttribute="leading" secondItem="dnR-C4-fck" secondAttribute="leading" id="VNK-FR-33U"/>
+                            <constraint firstItem="4pR-FF-l22" firstAttribute="leading" secondItem="JSy-Lg-2gV" secondAttribute="trailing" priority="900" id="hRZ-iJ-kWQ"/>
                             <constraint firstItem="JSy-Lg-2gV" firstAttribute="width" secondItem="dnR-C4-fck" secondAttribute="width" id="jxb-NV-BoY"/>
                             <constraint firstItem="JSy-Lg-2gV" firstAttribute="top" secondItem="dnR-C4-fck" secondAttribute="top" id="pYl-Fi-51a"/>
+                            <constraint firstItem="Cya-ZT-oTQ" firstAttribute="top" secondItem="zMg-sF-JOH" secondAttribute="bottom" constant="48" id="vR8-UY-lsC"/>
+                            <constraint firstItem="4pR-FF-l22" firstAttribute="top" secondItem="dnR-C4-fck" secondAttribute="top" id="yei-gm-g97"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="creditCardInCenterConstraint" destination="CyQ-xc-8mc" id="4p9-87-9EN"/>
+                        <outlet property="outputForTesting" destination="Cya-ZT-oTQ" id="HGy-nL-8xn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dze-Yw-Dmn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,16 +86,19 @@
                         <viewControllerLayoutGuide type="bottom" id="jpt-ip-7sN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AyY-II-kjf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_type_card" translatesAutoresizingMaskIntoConstraints="NO" id="A7V-OB-5BU">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="5xB-a6-WVQ"/>
-                                    <constraint firstAttribute="width" constant="22" id="opI-KH-Fet"/>
+                                    <constraint firstAttribute="height" constant="18" id="5xB-a6-WVQ"/>
+                                    <constraint firstAttribute="width" constant="25" id="opI-KH-Fet"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234 1234 1234 1234" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JuV-uX-eLO">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="x1y-EM-t8l"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
@@ -80,6 +115,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mm/yy" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HNb-VI-wZf">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="Y11-2G-VS7"/>
+                                    <constraint firstAttribute="height" constant="17" id="yxo-QV-O34"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
@@ -129,6 +165,9 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVn-G1-NBu">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="oPh-TN-oWK"/>
+                                </constraints>
                                 <state key="normal" title="Cancel" backgroundImage="cancel_btn">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -144,8 +183,12 @@
                                     <action selector="ApplyPressed:" destination="Cvx-uJ-KCz" eventType="touchUpInside" id="U8R-c9-74Y"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vj5-EE-P4N">
+                                <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
+                                <color key="textColor" red="0.79607843137254897" green="0.086274509803921567" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HNb-VI-wZf" firstAttribute="leading" secondItem="W6f-IO-CN5" secondAttribute="leading" id="0b7-4T-dd7"/>
                             <constraint firstItem="W6f-IO-CN5" firstAttribute="top" secondItem="JuV-uX-eLO" secondAttribute="bottom" constant="5" id="2Kj-w3-lK8"/>
@@ -160,22 +203,28 @@
                             <constraint firstItem="HNb-VI-wZf" firstAttribute="leading" secondItem="cTP-fh-zvs" secondAttribute="leading" id="M8n-T1-q7Z"/>
                             <constraint firstItem="pVn-G1-NBu" firstAttribute="top" secondItem="cTP-fh-zvs" secondAttribute="bottom" constant="29" id="MEc-v8-Z43"/>
                             <constraint firstItem="cTP-fh-zvs" firstAttribute="trailing" secondItem="HNb-VI-wZf" secondAttribute="trailing" id="O0M-cF-XbC"/>
+                            <constraint firstItem="pVn-G1-NBu" firstAttribute="height" secondItem="Xfi-ZR-1ZM" secondAttribute="height" id="Qfs-EV-r4r"/>
                             <constraint firstItem="A7V-OB-5BU" firstAttribute="leading" secondItem="AyY-II-kjf" secondAttribute="leading" constant="20" id="Uh8-ec-w1E"/>
                             <constraint firstItem="5UK-IR-MZx" firstAttribute="trailing" secondItem="PFL-fa-3RB" secondAttribute="trailing" id="WYE-0G-g0q"/>
+                            <constraint firstItem="vj5-EE-P4N" firstAttribute="leading" secondItem="AyY-II-kjf" secondAttribute="leading" constant="16" id="XE7-9p-vDa"/>
                             <constraint firstItem="pVn-G1-NBu" firstAttribute="leading" secondItem="AyY-II-kjf" secondAttribute="leading" constant="18" id="Xzb-G3-4c5"/>
                             <constraint firstItem="bol-cB-Pbe" firstAttribute="leading" secondItem="BeD-SX-Sgl" secondAttribute="leading" id="ajy-GK-xjr"/>
                             <constraint firstItem="BeD-SX-Sgl" firstAttribute="top" secondItem="bol-cB-Pbe" secondAttribute="bottom" constant="5" id="bW6-08-Vn2"/>
                             <constraint firstItem="cTP-fh-zvs" firstAttribute="top" secondItem="HNb-VI-wZf" secondAttribute="bottom" constant="5" id="gQC-tm-2lC"/>
                             <constraint firstItem="W6f-IO-CN5" firstAttribute="leading" secondItem="AyY-II-kjf" secondAttribute="leading" constant="18" id="ieT-U3-pKp"/>
+                            <constraint firstItem="jpt-ip-7sN" firstAttribute="top" secondItem="vj5-EE-P4N" secondAttribute="bottom" id="igw-dT-F75"/>
+                            <constraint firstItem="HNb-VI-wZf" firstAttribute="height" secondItem="PFL-fa-3RB" secondAttribute="height" id="jkq-bl-2aF"/>
                             <constraint firstItem="PFL-fa-3RB" firstAttribute="centerY" secondItem="bol-cB-Pbe" secondAttribute="centerY" id="jqN-Qg-lM1"/>
                             <constraint firstItem="W6f-IO-CN5" firstAttribute="trailing" secondItem="JuV-uX-eLO" secondAttribute="trailing" id="jsa-6J-m5M"/>
-                            <constraint firstItem="pVn-G1-NBu" firstAttribute="width" secondItem="Xfi-ZR-1ZM" secondAttribute="height" multiplier="85:32" id="jwf-uD-KXu"/>
+                            <constraint firstItem="vj5-EE-P4N" firstAttribute="top" secondItem="Xfi-ZR-1ZM" secondAttribute="bottom" id="koo-sF-P1k"/>
                             <constraint firstItem="PFL-fa-3RB" firstAttribute="trailing" secondItem="JuV-uX-eLO" secondAttribute="trailing" id="lem-Sh-0NK"/>
                             <constraint firstItem="Xfi-ZR-1ZM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pVn-G1-NBu" secondAttribute="trailing" constant="16" id="md4-UJ-Nh1"/>
+                            <constraint firstAttribute="trailing" secondItem="vj5-EE-P4N" secondAttribute="trailing" constant="16" id="o8Y-F9-3C9"/>
                             <constraint firstItem="5UK-IR-MZx" firstAttribute="top" secondItem="PFL-fa-3RB" secondAttribute="bottom" constant="5" id="pKo-Yn-MSo"/>
                             <constraint firstAttribute="trailing" secondItem="JuV-uX-eLO" secondAttribute="trailing" constant="18" id="qjN-ZD-hIM"/>
                             <constraint firstItem="bol-cB-Pbe" firstAttribute="centerY" secondItem="HNb-VI-wZf" secondAttribute="centerY" id="rXY-8A-kh7"/>
                             <constraint firstItem="BeD-SX-Sgl" firstAttribute="trailing" secondItem="bol-cB-Pbe" secondAttribute="trailing" id="yc2-Y7-sRU"/>
+                            <constraint firstItem="HNb-VI-wZf" firstAttribute="height" secondItem="bol-cB-Pbe" secondAttribute="height" id="zyR-Kb-juz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -185,6 +234,7 @@
                         <outlet property="cvvUnderline" destination="BeD-SX-Sgl" id="OCi-U0-OCz"/>
                         <outlet property="dateField" destination="HNb-VI-wZf" id="ccP-LB-Wl3"/>
                         <outlet property="dateUnderline" destination="cTP-fh-zvs" id="p3l-it-PUo"/>
+                        <outlet property="errorLabel" destination="vj5-EE-P4N" id="q9B-ky-DWe"/>
                         <outlet property="typeImage" destination="A7V-OB-5BU" id="pz0-Sp-fzm"/>
                         <outlet property="zipField" destination="PFL-fa-3RB" id="bbw-zX-PeP"/>
                         <outlet property="zipUnderline" destination="5UK-IR-MZx" id="fKe-Rx-hSA"/>

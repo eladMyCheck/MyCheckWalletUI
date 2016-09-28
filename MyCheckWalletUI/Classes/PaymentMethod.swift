@@ -17,21 +17,26 @@ public enum CreditCardType : String{
     case discover = "Discover"
     case JCB = "JCB"
     case diners = "Diners"
-    
+    case maestro = "Maestro"
+    case unknown = ""
 }
 ///Represents a payment method the user has.
 public class PaymentMethod{
+    
     /// The Id of the payment method.
-    let Id : String
+    public let Id : String
     /// The token that must be used in order to chard the payment method.
     let token : String
+    
     /// The month the 💳 expires
     let  expireMonth : Int
+    
     /// The year the 💳 expires
     let expireYear : Int
     
     /// The 💳 last 4 digits
     let lastFourDigits : String
+    
     /// True if the payment method is the default payment method
     let isDefault : Bool
     

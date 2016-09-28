@@ -31,6 +31,9 @@
                             <constraint firstItem="9OS-0Q-B5r" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="6pc-k3-Db8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="paymentMethodsBut" destination="9OS-0Q-B5r" id="oqV-8v-1z5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

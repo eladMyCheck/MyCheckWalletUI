@@ -4,7 +4,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'MyCheckWalletUI_Example' do
   pod 'MyCheckWalletUI', :path => '../'
-  pod "MyCheckWallet"
 
   target 'MyCheckWalletUI_Tests' do
     inherit! :search_paths

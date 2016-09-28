@@ -8,12 +8,18 @@
 
 import UIKit
 import MyCheckWalletUI
-
 class ViewController: UIViewController {
 
+    @IBOutlet weak var paymentMethodsBut: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        paymentMethodsBut.enabled = false
+        MyCheckWallet.manager.login("eyJpdiI6IjhJcFBCZzBJWFRCdjhJdXA1ck9yeHc9PSIsInZhbHVlIjoiSHc3Ym5KUlVMRitRREtIN1ZnYnplUT09IiwibWFjIjoiNzFkYzM0ZDg5Y2M2NTk0NTg1ZjRiNTUyNDhhYmY2MTM5MGNlMTFjMTVjYjRjMTU5YzMwYzNiN2YxYzEwNDdiNyJ9", publishableKey: "pk_abc318RxSM2eyGa1Kvzp9uabGEefg", success: {
+            self.paymentMethodsBut.enabled = true
+            } , fail: { error in
+        
+        })
     }
 
     override func didReceiveMemoryWarning() {

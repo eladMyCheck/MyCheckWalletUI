@@ -7,9 +7,9 @@
 
 import Foundation
 internal enum CardType: String {
-    case Unknown, Amex, Visa, MasterCard, Diners, Discover, JCB, Elo, Hipercard, UnionPay
+    case Unknown, Amex, Visa, MasterCard, Diners, Discover, JCB, Elo, Hipercard,Maestro, UnionPay
     
-    static let allCards = [Amex, Visa, MasterCard, Diners, Discover, JCB, Elo, Hipercard, UnionPay]
+    static let allCards = [Amex, Visa, MasterCard, Diners, Discover, JCB, Elo, Hipercard,Maestro, UnionPay]
     
     var regex : String {
         switch self {
@@ -27,10 +27,13 @@ internal enum CardType: String {
             return "^(?:2131|1800|35[0-9]{3})[0-9]{3,}$"
         case .UnionPay:
             return "^(62|88)[0-9]{5,}$"
+        case .Maestro:
+            return "^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390)\\d+$"
         case .Hipercard:
             return "^(606282|3841)[0-9]{5,}$"
         case .Elo:
             return "^((((636368)|(438935)|(504175)|(451416)|(636297))[0-9]{0,10})|((5067)|(4576)|(4011))[0-9]{0,12})$"
+        
         default:
             return ""
         }
@@ -97,7 +100,7 @@ internal class CreditCardValidator {
         let inputYear = Int(split[1])
         let inputmonth = Int(split[0])
 
-        if inputYear > year && inputYear < 2000{//if 2 digits where entered
+        if inputYear > year && inputYear < 100{//if 2 digits where entered
             return true
         }
         if inputYear > year + 2000{//if 4 digits where entered

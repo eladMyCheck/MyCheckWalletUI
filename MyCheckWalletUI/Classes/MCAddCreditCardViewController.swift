@@ -7,11 +7,11 @@
 //
 
 import UIKit
-
 ///A protocol that will allow the owner to dismiss the ViewController
 internal protocol MCAddCreditCardViewControllerDelegate {
     func recivedError(controller: MCAddCreditCardViewController , error:NSError)
     func addedNewPaymentMethod(controller: MCAddCreditCardViewController ,token:String)
+    func canceled()
 }
 
 internal class MCAddCreditCardViewController: MCViewController {
@@ -26,7 +26,10 @@ internal class MCAddCreditCardViewController: MCViewController {
     @IBOutlet var dateUnderline: UIView!
     @IBOutlet var cvvUnderline: UIView!
     @IBOutlet var zipUnderline: UIView!
+    @IBOutlet weak var errorLabel: UILabel!
     var underlineForField : [UITextField : UIView]?
+    
+    var delegate : MCAddCreditCardViewControllerDelegate?
     //MARK: - life cycle functions
     
     override func viewDidLoad() {
@@ -56,10 +59,27 @@ internal class MCAddCreditCardViewController: MCViewController {
     @IBAction func ApplyPressed(sender: AnyObject) {
         
         if updateAndCheckValid(){
+            let type = getType()
+            let dateStr = formatedString(dateField)
+            let split = dateStr.characters.split("/").map(String.init)
             
+            MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: false, success: {  token in
+                if let delegate = self.delegate{
+                    
+                    delegate.addedNewPaymentMethod(self, token:token)
+                }
+                }, fail: { error in
+                    if let delegate = self.delegate{
+                        self.errorLabel.text = error.localizedDescription
+                        delegate.recivedError(self, error:error)
+                    }
+            })
         }
     }
     @IBAction func cancelPressed(sender: AnyObject) {
+        if let delegate = self.delegate{
+            delegate.canceled()
+        }
     }
     func nextPressed(sender: UIBarButtonItem){
         if creditCardNumberField.isFirstResponder(){
@@ -70,9 +90,43 @@ internal class MCAddCreditCardViewController: MCViewController {
             zipField.becomeFirstResponder()
         }
     }
-    //MARK: - private functions
+    internal func resetView(){
+        creditCardNumberField.text = ""
+        dateField.text = ""
+        cvvField.text = ""
+        zipField.text = ""
+        
+        setFieldInvalid(creditCardNumberField , invalid: false)
+        setFieldInvalid(dateField , invalid: false)
+        setFieldInvalid(cvvField , invalid: false)
+        setFieldInvalid(zipField , invalid: false)
+        errorLabel.text = ""
+        setImageForType(.Unknown)
+        self.resignFirstResponder()
+    }
+    //MARK: - overides
+    override func resignFirstResponder() -> Bool {
+        super.resignFirstResponder()
+        creditCardNumberField.resignFirstResponder()
+        dateField.resignFirstResponder()
+        cvvField.resignFirstResponder()
+        zipField.resignFirstResponder()
+        return true
+    }
+    override func becomeFirstResponder() -> Bool {
+        if creditCardNumberField.isFirstResponder() ||
+            dateField.isFirstResponder() ||
+            cvvField.isFirstResponder() ||
+            zipField.isFirstResponder() {
+            return true
+        }
+        creditCardNumberField.becomeFirstResponder()
+        return true
+    }
     
-    func setImageForType( type: CardType){
+    //MARK: - private functions
+
+    private func setImageForType( type: CardType){
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
         switch type {
         case .MasterCard:
@@ -84,6 +138,14 @@ internal class MCAddCreditCardViewController: MCViewController {
             typeImage.image = UIImage(named: "diners_small", inBundle: bundle, compatibleWithTraitCollection: nil)
         case .Discover:
             typeImage.image = UIImage(named: "discover_small", inBundle: bundle, compatibleWithTraitCollection: nil)
+        case .Amex:
+            typeImage.image = UIImage(named: "amex_small", inBundle: bundle, compatibleWithTraitCollection: nil)
+        case .Diners:
+            typeImage.image = UIImage(named: "diners_small", inBundle: bundle, compatibleWithTraitCollection: nil)
+        case .JCB:
+            typeImage.image = UIImage(named: "jcb_small", inBundle: bundle, compatibleWithTraitCollection: nil)
+        case .Maestro:
+            typeImage.image = UIImage(named: "maestro_small", inBundle: bundle, compatibleWithTraitCollection: nil)
             
             
         default:
@@ -101,7 +163,7 @@ internal class MCAddCreditCardViewController: MCViewController {
     func updateAndCheckValid() -> Bool{
         let ( type , formated , ccValid , validLength) = CreditCardValidator.checkCardNumber(creditCardNumberField.text!)
         
-        var valid = ccValid && validLength
+        let valid = ccValid && validLength
         setFieldInvalid(creditCardNumberField , invalid: !valid)
         let dateValid = CreditCardValidator.isValidDate(dateField.text!)
         setFieldInvalid(dateField , invalid: !dateValid)
@@ -232,13 +294,13 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
     
     private func addNextButtonOnKeyboard(field: UITextField , action: Selector)
     {
-        var doneToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
         doneToolbar.barStyle = UIBarStyle.BlackTranslucent
         
-        var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        var done: UIBarButtonItem = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Done, target: self, action: action)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Done, target: self, action: action)
         
-        var items = [flexSpace , done]
+        let items = [flexSpace , done]
         
         
         doneToolbar.items = items
@@ -247,4 +309,52 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         field.inputAccessoryView = doneToolbar
         
     }
+    
+    //this asumes the field passed validation
+    private func formatedString(field: UITextField) -> String{
+        switch field {
+        case creditCardNumberField:
+            return (creditCardNumberField.text?.stringByReplacingOccurrencesOfString(" ", withString: ""))!
+        case dateField:
+            if dateField.text?.characters.count == 5 {
+                let split = dateField.text?.characters.split("/").map(String.init)
+                let year = "20" + split![1]
+                return split![0] + "/" + year
+            }
+            return dateField.text!
+        case cvvField:
+            return cvvField.text!
+        case zipField:
+            return (zipField.text?.stringByReplacingOccurrencesOfString(" ", withString: ""))!
+        default:
+            return ""
+        }
+    }
+    
+    //this asumes the field passed validation
+    private func getType() -> CreditCardType {
+        let ( type ,_ ,_,_) = CreditCardValidator.checkCardNumber(creditCardNumberField.text!)
+        switch type {
+        case .Visa:
+            return CreditCardType.visa
+        case .MasterCard:
+            return CreditCardType.masterCard
+        case .Discover:
+            return CreditCardType.discover
+        case .Amex:
+            return CreditCardType.amex
+        case .JCB:
+            return CreditCardType.JCB
+        case .Diners:
+            return CreditCardType.diners
+        case .Maestro:
+            return CreditCardType.maestro
+
+        default:
+            return CreditCardType.unknown
+        }
+    }
+   
+    
+    
 }

@@ -1,6 +1,0 @@
-framework module MyCheckWallet {
-  umbrella header "MyCheckWallet-umbrella.h"
-
-  export *
-  module * { export * }
-}

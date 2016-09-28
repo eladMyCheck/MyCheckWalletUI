@@ -79,9 +79,10 @@ public class MyCheckWallet{
   }
   
     /// Adds a new credit card to the MyCheck Wallet
-    ///   - parameter method: The method of payment that should become the default payment method
-    ///   - parameter success: A block that is called if the user is logged in succesfully
-    ///   - parameter fail: Called when the function fails for any reason
+    ///
+    ///    - parameter method: The method of payment that should become the default payment method
+    ///    - parameter success: A block that is called if the user is logged in succesfully
+    ///    - parameter fail: Called when the function fails for any reason
 
  public func setPaymentMethodAsDefault( method: PaymentMethod,  success: (() -> Void) , fail: ((NSError) -> Void)? ){
     if let token = token{
