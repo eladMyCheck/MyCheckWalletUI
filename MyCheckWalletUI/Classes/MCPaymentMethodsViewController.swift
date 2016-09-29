@@ -14,22 +14,27 @@ public protocol MCPaymentMethodsViewControllerDelegate {
 }
 public class MCPaymentMethodsViewController: MCViewController {
     var creditCardVC: MCAddCreditCardViewController?
+    var creditCardListVC: MCCreditCardsViewController?
     var delegate: MCPaymentMethodsViewControllerDelegate?
+    public var paymentMethods: Array<PaymentMethod>!
     
+    @IBOutlet weak var addCreditCardContainer: UIView!
     @IBOutlet weak var outputForTesting: UILabel!
     @IBAction func addCreditCardPressed(sender: AnyObject) {
         showEnterCreditCard(true , animated: true)
     }
     @IBOutlet weak var creditCardInCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var creditCardsVCCenterXConstraint: NSLayoutConstraint!
     
-   public static func createPaymentMethodsViewController(delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController
+    public static func createPaymentMethodsViewController(delegate: MCPaymentMethodsViewControllerDelegate?, withPaymentMethods : Array<PaymentMethod>!) -> MCPaymentMethodsViewController
     {
         
         let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
         let controller = storyboard.instantiateViewControllerWithIdentifier("MCPaymentMethodsViewController") as! MCPaymentMethodsViewController
             
         controller.delegate = delegate
-       
+        controller.paymentMethods = withPaymentMethods
+        
         return controller
     }
     
@@ -47,6 +52,9 @@ public class MCPaymentMethodsViewController: MCViewController {
     override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "creditCardSubViewController" {
             creditCardVC = segue.destinationViewController as? MCAddCreditCardViewController
+        }else if segue.identifier == "creditCardsViewController"{
+            creditCardListVC = segue.destinationViewController as? MCCreditCardsViewController
+            creditCardListVC!.paymentMethods = self.paymentMethods
         }
     }
 
@@ -61,6 +69,7 @@ public class MCPaymentMethodsViewController: MCViewController {
 
         }
         creditCardInCenterConstraint.priority = show ? 999 : 1
+        creditCardsVCCenterXConstraint.priority = show ? 1 : 999
         UIView.animateWithDuration(animated ? 0.4 : 0.0, animations: {
         self.view.layoutIfNeeded()
         })

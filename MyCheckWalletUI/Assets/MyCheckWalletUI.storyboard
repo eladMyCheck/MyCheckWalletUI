@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,12 +24,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSy-Lg-2gV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMA-mR-UrJ">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Kqn-VZ-lDn"/>
+                                    <constraint firstAttribute="height" constant="1" id="Dyd-bQ-ajd"/>
+                                    <constraint firstAttribute="width" constant="1" id="PFR-f7-1tr"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zub-1K-MGT">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Un2-VD-ria"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="Cvx-uJ-KCz" kind="embed" identifier="creditCardSubViewController" id="ZSE-Um-oiT"/>
+                                    <segue destination="0Nh-Xv-Su3" kind="embed" identifier="creditCardsViewController" id="Q6B-f0-CmK"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pR-FF-l22">
@@ -53,6 +61,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSy-Lg-2gV">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Kqn-VZ-lDn"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Cvx-uJ-KCz" kind="embed" identifier="creditCardSubViewController" id="ZSE-Um-oiT"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -60,16 +76,24 @@
                             <constraint firstItem="JSy-Lg-2gV" firstAttribute="centerX" secondItem="dnR-C4-fck" secondAttribute="centerX" priority="950" id="CyQ-xc-8mc"/>
                             <constraint firstItem="Cya-ZT-oTQ" firstAttribute="centerX" secondItem="dnR-C4-fck" secondAttribute="centerX" id="Dft-On-8G6"/>
                             <constraint firstItem="zMg-sF-JOH" firstAttribute="centerY" secondItem="dnR-C4-fck" secondAttribute="centerY" id="LjG-uL-Hd4"/>
+                            <constraint firstItem="Zub-1K-MGT" firstAttribute="leading" secondItem="lMA-mR-UrJ" secondAttribute="trailing" priority="900" id="Qps-vc-GRV"/>
                             <constraint firstItem="4pR-FF-l22" firstAttribute="leading" secondItem="dnR-C4-fck" secondAttribute="leading" id="VNK-FR-33U"/>
+                            <constraint firstItem="Zub-1K-MGT" firstAttribute="centerX" secondItem="dnR-C4-fck" secondAttribute="centerX" id="b3K-Xd-AKb"/>
+                            <constraint firstItem="Zub-1K-MGT" firstAttribute="width" secondItem="dnR-C4-fck" secondAttribute="width" id="dFS-iH-yGi"/>
                             <constraint firstItem="4pR-FF-l22" firstAttribute="leading" secondItem="JSy-Lg-2gV" secondAttribute="trailing" priority="900" id="hRZ-iJ-kWQ"/>
                             <constraint firstItem="JSy-Lg-2gV" firstAttribute="width" secondItem="dnR-C4-fck" secondAttribute="width" id="jxb-NV-BoY"/>
                             <constraint firstItem="JSy-Lg-2gV" firstAttribute="top" secondItem="dnR-C4-fck" secondAttribute="top" id="pYl-Fi-51a"/>
+                            <constraint firstItem="Zub-1K-MGT" firstAttribute="top" secondItem="9Zl-ze-T4d" secondAttribute="bottom" constant="-16" id="rUL-F8-q1a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lMA-mR-UrJ" secondAttribute="trailing" constant="-16" id="tZi-90-IOZ"/>
                             <constraint firstItem="Cya-ZT-oTQ" firstAttribute="top" secondItem="zMg-sF-JOH" secondAttribute="bottom" constant="48" id="vR8-UY-lsC"/>
+                            <constraint firstItem="lMA-mR-UrJ" firstAttribute="top" secondItem="9Zl-ze-T4d" secondAttribute="bottom" id="yKX-tI-sV5"/>
                             <constraint firstItem="4pR-FF-l22" firstAttribute="top" secondItem="dnR-C4-fck" secondAttribute="top" id="yei-gm-g97"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addCreditCardContainer" destination="JSy-Lg-2gV" id="Ytd-8y-z9O"/>
                         <outlet property="creditCardInCenterConstraint" destination="CyQ-xc-8mc" id="4p9-87-9EN"/>
+                        <outlet property="creditCardsVCCenterXConstraint" destination="b3K-Xd-AKb" id="i2m-O5-swc"/>
                         <outlet property="outputForTesting" destination="Cya-ZT-oTQ" id="HGy-nL-8xn"/>
                     </connections>
                 </viewController>
@@ -242,7 +266,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XV-ac-uSO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800.79999999999995" y="-39.580209895052477"/>
+            <point key="canvasLocation" x="798" y="-39"/>
+        </scene>
+        <!--Credit Cards View Controller-->
+        <scene sceneID="t0H-UE-LGG">
+            <objects>
+                <viewController id="0Nh-Xv-Su3" customClass="MCCreditCardsViewController" customModule="MyCheckWalletUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bcq-uP-rwx"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Nw-oo-Apv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DGl-IC-0Ml">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xm8-2R-Aaq" customClass="MCScrollView" customModule="MyCheckWalletUI" customModuleProvider="target"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xm8-2R-Aaq" firstAttribute="top" secondItem="DGl-IC-0Ml" secondAttribute="topMargin" id="2LA-a3-gI1"/>
+                            <constraint firstItem="xm8-2R-Aaq" firstAttribute="leading" secondItem="DGl-IC-0Ml" secondAttribute="leadingMargin" constant="90" id="lnt-vX-fYW"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="xm8-2R-Aaq" secondAttribute="bottom" id="uvp-Qd-NHH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xm8-2R-Aaq" secondAttribute="trailing" constant="60" id="vYh-ji-gmh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="xm8-2R-Aaq" id="B9Q-5H-gz6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VXR-Mz-m4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="798" y="346"/>
         </scene>
     </scenes>
     <resources>

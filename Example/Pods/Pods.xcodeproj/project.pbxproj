@@ -32,6 +32,10 @@
 		67C36B426842C33770B3027B0A9771CC /* ProximaNovaSoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 35C4D8D554B59F313B57CE0293C6C3BD /* ProximaNovaSoftRegular.otf */; };
 		75BD848E9FED85E0B5F88EDC3D111EC3 /* MyCheckWalletUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C6C235EF3B67F34D0681FCF4481EBD /* MyCheckWalletUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B48852C4D848FA2DA416A98F6425869 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E07E98001DB6C163294A39CAB05963D /* ServerTrustPolicy.swift */; };
+		7D2FB0B81D9D5D66001CB82D /* CreditCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D2FB0B71D9D5D66001CB82D /* CreditCardView.xib */; };
+		7D2FB0BA1D9D5D7B001CB82D /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2FB0B91D9D5D7B001CB82D /* CreditCardView.swift */; };
+		7D507FB81D9D38200082C839 /* MCScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D77E03C1D9D30A20001FFB8 /* MCScrollView.swift */; };
+		7D77E0431D9D31D80001FFB8 /* MCCreditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D77E0411D9D31D80001FFB8 /* MCCreditCardsViewController.swift */; };
 		8B91385FF19DEE012E255B575B698F76 /* MyCheckWalletUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7551962DE491A7E506E6E4233C025F39 /* MyCheckWalletUI.storyboard */; };
 		8E6F07896392FAEDD0A3A186D39E228B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */; };
 		8EB11202167FCDDF1257AAAB1D1FB244 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED443D528393D61A04FBD88603DE5F3 /* Alamofire.swift */; };
@@ -129,6 +133,10 @@
 		7551962DE491A7E506E6E4233C025F39 /* MyCheckWalletUI.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = MyCheckWalletUI.storyboard; sourceTree = "<group>"; };
 		7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.release.xcconfig"; sourceTree = "<group>"; };
 		79E32C97D15B18BFEB591B4A8B5C8477 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
+		7D2FB0B71D9D5D66001CB82D /* CreditCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreditCardView.xib; sourceTree = "<group>"; };
+		7D2FB0B91D9D5D7B001CB82D /* CreditCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
+		7D77E03C1D9D30A20001FFB8 /* MCScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCScrollView.swift; sourceTree = "<group>"; };
+		7D77E0411D9D31D80001FFB8 /* MCCreditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCCreditCardsViewController.swift; sourceTree = "<group>"; };
 		7ED443D528393D61A04FBD88603DE5F3 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		8126E6956B30F7590A48800B24C4F076 /* Pods_MyCheckWalletUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCheckWalletUI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86AF92D5B8D47D3BE5AC2D3D9EC25C60 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -345,6 +353,10 @@
 				A64993DE4CCD4379F8316B4944B3C96D /* CreditCardValidator.swift */,
 				307C417C163F6C7DFDC7835F248CAA16 /* MCAddCreditCardViewController.swift */,
 				47A97A33DFEA2D0F3BB21CEC8CD2C830 /* MCPaymentMethodsViewController.swift */,
+				7D77E0411D9D31D80001FFB8 /* MCCreditCardsViewController.swift */,
+				7D2FB0B71D9D5D66001CB82D /* CreditCardView.xib */,
+				7D2FB0B91D9D5D7B001CB82D /* CreditCardView.swift */,
+				7D77E03C1D9D30A20001FFB8 /* MCScrollView.swift */,
 				2AEC0E1207FD06D520F98680D73CB437 /* MCViewController.swift */,
 				4DECD428CBB76E13923A583D74B85684 /* MyCheckWallet.swift */,
 				69130E54E0220C00948A0FF82AC02954 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */,
@@ -567,6 +579,9 @@
 					8FF928B893200CDDA2AED021DB9D1D22 = {
 						LastSwiftMigration = 0800;
 					};
+					A677731182CDA269BCA8E24887019FC4 = {
+						LastSwiftMigration = 0800;
+					};
 				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
@@ -607,6 +622,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1808E16D498B4FBA2E065E2ACD46D00D /* MyCheckWalletUI.bundle in Resources */,
+				7D2FB0B81D9D5D66001CB82D /* CreditCardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,14 +667,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				49A0C5BAC95B39E1E8A092533DEB6948 /* CreditCardValidator.swift in Sources */,
+				7D77E0431D9D31D80001FFB8 /* MCCreditCardsViewController.swift in Sources */,
 				21D30014F9D3D9232E45FD64F83DE953 /* MCAddCreditCardViewController.swift in Sources */,
 				F37F5AF1D0EC445E7416A2DC45CF9665 /* MCPaymentMethodsViewController.swift in Sources */,
 				2756C0901245F0BAA1A7E26532233477 /* MCViewController.swift in Sources */,
 				558E684E2C881CE785CA1FDDF298E05D /* MyCheckWallet.swift in Sources */,
 				07970596F83BF4ECB4F4BE9B5D70DF6E /* MyCheckWalletUI-dummy.m in Sources */,
 				2728B6946D1899C4C69E8DE96B86F228 /* Networking.swift in Sources */,
+				7D507FB81D9D38200082C839 /* MCScrollView.swift in Sources */,
 				1A3E6A4FA3B72A7B83EEA10CCC19ECFA /* PaymentMethod.swift in Sources */,
 				AFCEFD335231C69434A5AFA258FFBE88 /* UIColor+CustomColors.swift in Sources */,
+				7D2FB0BA1D9D5D7B001CB82D /* CreditCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +832,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B15AA9D8EC580539639DF43FF84864E /* Pods-MyCheckWalletUI_Tests.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -836,6 +856,8 @@
 				PRODUCT_NAME = Pods_MyCheckWalletUI_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -846,6 +868,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B39F69777E6528EBF72A7F05D1425FFB /* Pods-MyCheckWalletUI_Example.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -942,6 +965,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 08656D4CFE833BC083FBE8044C5907EA /* Pods-MyCheckWalletUI_Tests.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -965,6 +989,7 @@
 				PRODUCT_NAME = Pods_MyCheckWalletUI_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1048,6 +1073,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
