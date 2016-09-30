@@ -10,12 +10,21 @@ import UIKit
 
 class MCScrollView: UIScrollView {
     
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        if self.bounds.insetBy(dx: -100, dy: -100).contains(point){
-            return self
-        }
-        return nil
-
-    }
+//    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+//        if #available(iOS 9.0, *) {
+//            if event!.type == .Motion {
+//                return self
+//            }else if event!.type == .Presses{
+//                return self
+//            }
+//        } else {
+//            // Fallback on earlier versions
+//        }
+//        if self.bounds.insetBy(dx: -100, dy: -100).contains(point){
+//            return self
+//        }
+//        return nil
+//
+//    }
 
 }

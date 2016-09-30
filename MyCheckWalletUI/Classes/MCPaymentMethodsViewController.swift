@@ -18,6 +18,7 @@ public class MCPaymentMethodsViewController: MCViewController {
     var delegate: MCPaymentMethodsViewControllerDelegate?
     public var paymentMethods: Array<PaymentMethod>!
     
+    @IBOutlet weak var creditCardListContainer: UIView!
     @IBOutlet weak var addCreditCardContainer: UIView!
     @IBOutlet weak var outputForTesting: UILabel!
     @IBAction func addCreditCardPressed(sender: AnyObject) {
@@ -47,6 +48,8 @@ public class MCPaymentMethodsViewController: MCViewController {
         if let creditCardVC = creditCardVC{
             creditCardVC.delegate = self
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MCPaymentMethodsViewController.addCreditCardPressedNotificationReceived(_:)), name:"AddCreditCardPressed", object: nil)
     }
     
     override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -74,7 +77,12 @@ public class MCPaymentMethodsViewController: MCViewController {
         self.view.layoutIfNeeded()
         })
     }
+    
+     func addCreditCardPressedNotificationReceived(notification: NSNotification){
+        self.showEnterCreditCard(true, animated: true)
+    }
 }
+
 
 extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate{
     

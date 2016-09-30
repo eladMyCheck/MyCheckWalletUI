@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal class MCCreditCardsViewController: MCViewController , UIScrollViewDelegate{
+internal class MCCreditCardsViewController: MCViewController , UIScrollViewDelegate, UIGestureRecognizerDelegate{
 
     @IBOutlet weak var scrollView: MCScrollView!
     var paymentMethods: Array<PaymentMethod>!
@@ -16,16 +16,21 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         self.scrollView.frame = CGRect(x:0, y:0, width:self.scrollView.frame.width, height:100)
-        let scrollViewWidth:CGFloat = self.scrollView.frame.width
+        //let scrollViewWidth:CGFloat = self.scrollView.frame.width
         
-        let viewcount = self.paymentMethods.count
-        for i in (0..<viewcount) {
-            let viewnew = UIView(frame: CGRectMake(193*CGFloat(i), 20, 160,102))
-            viewnew.backgroundColor = UIColor.orangeColor()
-            self.scrollView.addSubview(viewnew)
+        let creditCardCount = self.paymentMethods.count
+        
+        let addCreditCardView = AddCreditCardView(frame: CGRectMake(0, 20, 160, 102) )
+        self.scrollView.addSubview(addCreditCardView)
+        
+        for i in (0..<creditCardCount) {
+            let method = self.paymentMethods[i]
+            let cc = CreditCardView(frame: CGRectMake(193*CGFloat(i+1), 20, 160, 102), method: method)
+            
+            self.scrollView.addSubview(cc)
         }
         
-         self.scrollView.contentSize = CGSize(width:CGFloat(viewcount)*193, height:self.scrollView.frame.height)
+         self.scrollView.contentSize = CGSize(width:CGFloat(creditCardCount+1)*193, height:self.scrollView.frame.height)
         self.scrollView.delegate = self;
     }
 }
