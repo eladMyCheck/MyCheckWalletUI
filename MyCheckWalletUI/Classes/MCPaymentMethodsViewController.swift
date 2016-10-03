@@ -49,6 +49,10 @@ public class MCPaymentMethodsViewController: MCViewController {
             creditCardVC.delegate = self
         }
         
+        if let creditCardListVC = creditCardListVC {
+            creditCardListVC.delegate = self
+        }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MCPaymentMethodsViewController.addCreditCardPressedNotificationReceived(_:)), name:"AddCreditCardPressed", object: nil)
     }
     
@@ -84,7 +88,7 @@ public class MCPaymentMethodsViewController: MCViewController {
 }
 
 
-extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate{
+extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate, MCCreditCardsViewControllerrDelegate{
     
     func recivedError(controller: MCAddCreditCardViewController , error:NSError){
     outputForTesting.text = error.localizedDescription
@@ -96,5 +100,11 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
     func canceled(){
         showEnterCreditCard(false , animated: true)
 
+    }
+    
+    func backPressed() {
+        self.dismissViewControllerAnimated(true) { 
+            print("payment methods vc dissmissed")
+        }
     }
 }

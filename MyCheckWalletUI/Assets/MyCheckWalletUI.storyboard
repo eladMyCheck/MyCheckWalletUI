@@ -281,17 +281,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tEo-uF-FUO">
+                                <color key="backgroundColor" red="0.23137254901960785" green="0.20784313725490194" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="UaH-xb-MpR"/>
+                                </constraints>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Payment Methods" id="OPM-fO-leE">
+                                        <barButtonItem key="leftBarButtonItem" image="back" id="czh-Kf-p50">
+                                            <connections>
+                                                <action selector="backPressed:" destination="0Nh-Xv-Su3" id="4Kc-3t-3UK"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="oSH-lT-NCP">
+                                            <color key="tintColor" red="0.49411764705882355" green="0.65098039215686276" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="editPressed:" destination="0Nh-Xv-Su3" id="A3a-bX-DFC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xm8-2R-Aaq" customClass="MCScrollView" customModule="MyCheckWalletUI" customModuleProvider="target"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xm8-2R-Aaq" firstAttribute="top" secondItem="DGl-IC-0Ml" secondAttribute="topMargin" id="2LA-a3-gI1"/>
+                            <constraint firstItem="xm8-2R-Aaq" firstAttribute="top" secondItem="tEo-uF-FUO" secondAttribute="bottom" id="9Ti-FK-s9i"/>
+                            <constraint firstItem="tEo-uF-FUO" firstAttribute="leading" secondItem="DGl-IC-0Ml" secondAttribute="leadingMargin" constant="-16" id="fDg-ia-zcx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tEo-uF-FUO" secondAttribute="trailing" constant="-16" id="feo-By-Y17"/>
                             <constraint firstItem="xm8-2R-Aaq" firstAttribute="leading" secondItem="DGl-IC-0Ml" secondAttribute="leadingMargin" constant="90" id="lnt-vX-fYW"/>
+                            <constraint firstItem="tEo-uF-FUO" firstAttribute="top" secondItem="Bcq-uP-rwx" secondAttribute="bottom" id="s2p-P9-2j1"/>
                             <constraint firstAttribute="bottomMargin" secondItem="xm8-2R-Aaq" secondAttribute="bottom" id="uvp-Qd-NHH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xm8-2R-Aaq" secondAttribute="trailing" constant="60" id="vYh-ji-gmh"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="editButton" destination="oSH-lT-NCP" id="y2G-3D-8nv"/>
                         <outlet property="scrollView" destination="xm8-2R-Aaq" id="B9Q-5H-gz6"/>
                     </connections>
                 </viewController>
@@ -302,6 +332,7 @@
     </scenes>
     <resources>
         <image name="apply_btn" width="183" height="32"/>
+        <image name="back" width="7" height="12"/>
         <image name="cancel_btn" width="85" height="32"/>
         <image name="no_type_card" width="21" height="15"/>
     </resources>
