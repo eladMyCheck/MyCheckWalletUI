@@ -242,7 +242,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 textField.text = txtAfterUpdate as String
                 return false
             }
-            if txtAfterUpdate.length >= 7 { // and its not valid...
+            if txtAfterUpdate.length >= 8 { // and its not valid...
                 //                setFieldInvalid(textField, invalid: true)
                 return false
             }
