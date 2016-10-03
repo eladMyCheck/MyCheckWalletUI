@@ -211,7 +211,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             let ( _ , _ , wasValid , wasValidLength) =  CreditCardValidator.checkCardNumber(  textField.text!)
             
             if wasValidLength && wasValid && string != ""{
-                
+                setFieldInvalid(textField, invalid: true)
                 return false
             }
             if string == ""  && txtAfterUpdate.hasSuffix(" "){// if backspace and white spaces is last remove it
