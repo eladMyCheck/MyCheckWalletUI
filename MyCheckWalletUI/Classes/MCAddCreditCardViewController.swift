@@ -14,7 +14,7 @@ internal protocol MCAddCreditCardViewControllerDelegate {
     func canceled()
 }
 
-internal class MCAddCreditCardViewController: MCViewController {
+public class MCAddCreditCardViewController: MCViewController {
     
     @IBOutlet var typeImage: UIImageView!
     @IBOutlet var creditCardNumberField: UITextField!
@@ -32,7 +32,7 @@ internal class MCAddCreditCardViewController: MCViewController {
     var delegate : MCAddCreditCardViewControllerDelegate?
     //MARK: - life cycle functions
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         underlineForField = [creditCardNumberField : creditCardUnderline , dateField : dateUnderline , cvvField : cvvUnderline , zipField : zipUnderline]
         
@@ -105,7 +105,7 @@ internal class MCAddCreditCardViewController: MCViewController {
         self.resignFirstResponder()
     }
     //MARK: - overides
-    override func resignFirstResponder() -> Bool {
+    override public func resignFirstResponder() -> Bool {
         super.resignFirstResponder()
         creditCardNumberField.resignFirstResponder()
         dateField.resignFirstResponder()
@@ -113,7 +113,7 @@ internal class MCAddCreditCardViewController: MCViewController {
         zipField.resignFirstResponder()
         return true
     }
-    override func becomeFirstResponder() -> Bool {
+    override public func becomeFirstResponder() -> Bool {
         if creditCardNumberField.isFirstResponder() ||
             dateField.isFirstResponder() ||
             cvvField.isFirstResponder() ||
@@ -183,7 +183,7 @@ internal class MCAddCreditCardViewController: MCViewController {
 
 extension MCAddCreditCardViewController : UITextFieldDelegate{
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(textField: UITextField) -> Bool {
         switch textField {
         case creditCardNumberField:
             dateField.becomeFirstResponder()
@@ -198,7 +198,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         return true;
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         var txtAfterUpdate: NSString = textField.text! as NSString
         txtAfterUpdate = txtAfterUpdate.stringByReplacingCharactersInRange(range, withString: string)

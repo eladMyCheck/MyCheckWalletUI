@@ -18,10 +18,35 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         paymentMethodsBut.enabled = false
         MyCheckWallet.manager.login("eyJpdiI6IjhJcFBCZzBJWFRCdjhJdXA1ck9yeHc9PSIsInZhbHVlIjoiSHc3Ym5KUlVMRitRREtIN1ZnYnplUT09IiwibWFjIjoiNzFkYzM0ZDg5Y2M2NTk0NTg1ZjRiNTUyNDhhYmY2MTM5MGNlMTFjMTVjYjRjMTU5YzMwYzNiN2YxYzEwNDdiNyJ9", publishableKey: "pk_abc318RxSM2eyGa1Kvzp9uabGEefg", success: {
-            self.paymentMethodsBut.enabled = true
             
             MyCheckWallet.manager.getPaymentMethods({ (array) in
+                self.paymentMethodsBut.enabled = true
                 self.paymentMethods = array
+                let containerView = UIView()
+                containerView.translatesAutoresizingMaskIntoConstraints = false
+                self.view.addSubview(containerView)
+                NSLayoutConstraint(item: containerView, attribute: .Leading, relatedBy: .Equal, toItem: self.view, attribute: .LeadingMargin, multiplier: 1.0, constant: 0).active = true
+                NSLayoutConstraint(item: containerView, attribute: .Trailing, relatedBy: .Equal, toItem: self.view, attribute: .TrailingMargin, multiplier: 1.0, constant: 0).active = true
+                //NSLayoutConstraint(item: containerView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .TopMargin, multiplier: 1.0, constant: 0).active = true
+                NSLayoutConstraint(item: containerView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .BottomMargin, multiplier: 1.0, constant: 0).active = true
+                NSLayoutConstraint(item: containerView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 200).active = true
+                
+                //containerView.backgroundColor = UIColor.redColor()
+                // add child view controller view to container
+                
+                let controller = AddAndSelectCreditCardViewController.createAddAndSelectCreditCardViewController(self.paymentMethods)
+                self.addChildViewController(controller)
+                controller.view.translatesAutoresizingMaskIntoConstraints = false
+                containerView.addSubview(controller.view)
+                
+                
+                
+                NSLayoutConstraint(item: controller.view, attribute: .Leading, relatedBy: .Equal, toItem: containerView, attribute: .LeadingMargin, multiplier: 1.0, constant: 0).active = true
+                NSLayoutConstraint(item: controller.view, attribute: .Trailing, relatedBy: .Equal, toItem: containerView, attribute: .TrailingMargin, multiplier: 1.0, constant: 0).active = true
+                NSLayoutConstraint(item: controller.view, attribute: .Top, relatedBy: .Equal, toItem: containerView, attribute: .TopMargin, multiplier: 1.0, constant: 0).active = true
+                NSLayoutConstraint(item: controller.view, attribute: .Bottom, relatedBy: .Equal, toItem: containerView, attribute: .BottomMargin, multiplier: 1.0, constant: 0).active = true
+                
+                controller.didMoveToParentViewController(self)
                 }, fail: { error in
 
             })
