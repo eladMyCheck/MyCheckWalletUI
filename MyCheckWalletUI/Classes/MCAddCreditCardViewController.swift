@@ -249,6 +249,10 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             if txtAfterUpdate.length == 1 && string != "" && (txtAfterUpdate != "0" && txtAfterUpdate != "1"){// adding 0 to month if its not 1 or 2
                 txtAfterUpdate = "0" + (txtAfterUpdate as String)
             }
+            
+            if txtAfterUpdate.length == 2 && !(string == "0" || string == "1" || string == "2"){
+                return false
+            }
             if string == ""  && textField.text!.hasSuffix("/"){
                 
                 textField.text = txtAfterUpdate.substringToIndex(1)
