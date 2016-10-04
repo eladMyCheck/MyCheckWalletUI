@@ -33,8 +33,11 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         UIView.animateWithDuration(0.4, animations: {
             self.scrollView.contentOffset = CGPointZero
         })
+        var creditCardCount = 0
+        if  self.paymentMethods != nil{
+            creditCardCount = self.paymentMethods.count
+        }
         
-        let creditCardCount = self.paymentMethods.count
         
         let addCreditCardView = AddCreditCardView(frame: CGRectMake(0, 20, 168, 104) )
         self.scrollView.addSubview(addCreditCardView)
@@ -72,5 +75,15 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
             }, fail: { error in
                 
         })
+    }
+    
+    func setPaymentAsDefault(){
+        MyCheckWallet.manager.getPaymentMethods({ (array) in
+            self.paymentMethods = array
+            self.setCrediCards()
+            }, fail: { error in
+                
+        })
+
     }
 }

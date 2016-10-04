@@ -35,7 +35,7 @@ public class MCAddCreditCardViewController: MCViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         underlineForField = [creditCardNumberField : creditCardUnderline , dateField : dateUnderline , cvvField : cvvUnderline , zipField : zipUnderline]
-        
+
         addNextButtonOnKeyboard(creditCardNumberField, action: #selector(nextPressed(_: )))
         addNextButtonOnKeyboard(dateField, action: #selector(nextPressed(_: )))
         addNextButtonOnKeyboard(cvvField, action: #selector(nextPressed(_: )))
@@ -126,7 +126,7 @@ public class MCAddCreditCardViewController: MCViewController {
     
     //MARK: - private functions
 
-    private func setImageForType( type: CardType){
+    internal func setImageForType( type: CardType){
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
         switch type {
         case .MasterCard:
@@ -154,7 +154,7 @@ public class MCAddCreditCardViewController: MCViewController {
     }
     
     //sets the UI to show the field has an invalid value or not
-    private func setFieldInvalid(field: UITextField , invalid: Bool){
+    public func setFieldInvalid(field: UITextField , invalid: Bool){
         let underline = underlineForField![field]
         underline?.backgroundColor = invalid ? UIColor.fieldUnderlineInvalid() : UIColor.fieldUnderline()
         field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor.fieldTextValid()
@@ -315,7 +315,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
     }
     
     //this asumes the field passed validation
-    private func formatedString(field: UITextField) -> String{
+    internal func formatedString(field: UITextField) -> String{
         switch field {
         case creditCardNumberField:
             return (creditCardNumberField.text?.stringByReplacingOccurrencesOfString(" ", withString: ""))!

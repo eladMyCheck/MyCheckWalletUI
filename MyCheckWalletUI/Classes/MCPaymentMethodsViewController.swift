@@ -69,7 +69,7 @@ public class MCPaymentMethodsViewController: MCViewController {
     
     func showEnterCreditCard(show: Bool , animated: Bool){
         creditCardVC!.resetView()
-        if animated{
+        if show{
         creditCardVC!.becomeFirstResponder()
         }else{
             creditCardVC!.resignFirstResponder()

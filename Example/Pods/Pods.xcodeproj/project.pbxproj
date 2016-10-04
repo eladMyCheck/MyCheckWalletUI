@@ -32,6 +32,7 @@
 		67C36B426842C33770B3027B0A9771CC /* ProximaNovaSoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 35C4D8D554B59F313B57CE0293C6C3BD /* ProximaNovaSoftRegular.otf */; };
 		75BD848E9FED85E0B5F88EDC3D111EC3 /* MyCheckWalletUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C6C235EF3B67F34D0681FCF4481EBD /* MyCheckWalletUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B48852C4D848FA2DA416A98F6425869 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E07E98001DB6C163294A39CAB05963D /* ServerTrustPolicy.swift */; };
+		7D0805651DA3731A0008C3F7 /* MCContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0805641DA3731A0008C3F7 /* MCContainerView.swift */; };
 		7D0EF4D31DA28CD900D06AF8 /* AddAndSelectCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0EF4D21DA28CD900D06AF8 /* AddAndSelectCreditCardViewController.swift */; };
 		7D26964D1D9E84F0009673A7 /* AddCreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D26964C1D9E84F0009673A7 /* AddCreditCardView.swift */; };
 		7D2FB0BA1D9D5D7B001CB82D /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2FB0B91D9D5D7B001CB82D /* CreditCardView.swift */; };
@@ -134,6 +135,7 @@
 		7551962DE491A7E506E6E4233C025F39 /* MyCheckWalletUI.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = MyCheckWalletUI.storyboard; sourceTree = "<group>"; };
 		7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.release.xcconfig"; sourceTree = "<group>"; };
 		79E32C97D15B18BFEB591B4A8B5C8477 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
+		7D0805641DA3731A0008C3F7 /* MCContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCContainerView.swift; sourceTree = "<group>"; };
 		7D0EF4D21DA28CD900D06AF8 /* AddAndSelectCreditCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAndSelectCreditCardViewController.swift; sourceTree = "<group>"; };
 		7D26964C1D9E84F0009673A7 /* AddCreditCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardView.swift; sourceTree = "<group>"; };
 		7D2FB0B91D9D5D7B001CB82D /* CreditCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				A64993DE4CCD4379F8316B4944B3C96D /* CreditCardValidator.swift */,
+				7D0805641DA3731A0008C3F7 /* MCContainerView.swift */,
 				307C417C163F6C7DFDC7835F248CAA16 /* MCAddCreditCardViewController.swift */,
 				47A97A33DFEA2D0F3BB21CEC8CD2C830 /* MCPaymentMethodsViewController.swift */,
 				7D77E0411D9D31D80001FFB8 /* MCCreditCardsViewController.swift */,
@@ -682,6 +685,7 @@
 				1A3E6A4FA3B72A7B83EEA10CCC19ECFA /* PaymentMethod.swift in Sources */,
 				AFCEFD335231C69434A5AFA258FFBE88 /* UIColor+CustomColors.swift in Sources */,
 				7D2FB0BA1D9D5D7B001CB82D /* CreditCardView.swift in Sources */,
+				7D0805651DA3731A0008C3F7 /* MCContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

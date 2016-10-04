@@ -10,9 +10,10 @@ import UIKit
 
 internal protocol CreditCardViewDelegate {
     func deletedPaymentMethod()
+    func setPaymentAsDefault()
 }
 
-class CreditCardView: UIView, UIGestureRecognizerDelegate {
+internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
 
     var paymentMethod : PaymentMethod?
     var checkbox : UIImageView?
@@ -64,7 +65,7 @@ class CreditCardView: UIView, UIGestureRecognizerDelegate {
         self.paymentMethod = nil
     }
     
-    private func getType(type : String) -> CreditCardType {
+    internal func getType(type : String) -> CreditCardType {
         switch type {
         case "Visa":
             return CreditCardType.visa
@@ -86,7 +87,7 @@ class CreditCardView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    private func setImageForType( type: CreditCardType) -> UIImage{
+    internal func setImageForType( type: CreditCardType) -> UIImage{
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
         switch type {
         case .masterCard:
@@ -116,6 +117,7 @@ class CreditCardView: UIView, UIGestureRecognizerDelegate {
             if self.paymentMethod?.isDefault == false {
                 MyCheckWallet.manager.setPaymentMethodAsDefault(self.paymentMethod!, success: {
                     print("payment set as default")
+                    self.delegate?.setPaymentAsDefault()
                     }, fail: { (error) in
                         print("did not set payment as default")
                 })
