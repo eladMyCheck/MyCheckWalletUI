@@ -245,6 +245,16 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             
             
             let valid = CreditCardValidator.isValidDate(txtAfterUpdate as String)
+            let month = txtAfterUpdate.componentsSeparatedByString("/")[0] as String
+            if month.characters.count > 2 {
+                return false
+            }
+            
+            let firstChar = month[month.startIndex]
+            
+            if firstChar != "1" && firstChar != "0"{
+                return false
+            }
             if valid {
                 textField.text = txtAfterUpdate as String
                 return false
@@ -257,7 +267,8 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 txtAfterUpdate = "0" + (txtAfterUpdate as String)
             }
             
-            if txtAfterUpdate.length == 2 && !(string == "0" || string == "1" || string == "2"){
+            if txtAfterUpdate.length == 2 && !(string == "0" || string == "1" || string == "2" || string == ""){
+                setFieldInvalid(textField, invalid: true)
                 return false
             }
             if string == ""  && textField.text!.hasSuffix("/"){
