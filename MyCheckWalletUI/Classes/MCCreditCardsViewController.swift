@@ -16,6 +16,7 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
 
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var scrollView: MCScrollView!
+    var activityView : UIActivityIndicatorView!
     var paymentMethods: Array<PaymentMethod>!
     var delegate : MCCreditCardsViewControllerrDelegate?
     var creditCards : NSMutableArray = []
@@ -79,11 +80,20 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
     
     func setPaymentAsDefault(){
         MyCheckWallet.manager.getPaymentMethods({ (array) in
+            self.activityView.stopAnimating()
             self.paymentMethods = array
             self.setCrediCards()
             }, fail: { error in
                 
         })
 
+    }
+    
+    func startActivityIndicator() {
+            activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)//[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+            
+            activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 30)//self.view.center
+            activityView.startAnimating()
+            self.view.addSubview(activityView)
     }
 }

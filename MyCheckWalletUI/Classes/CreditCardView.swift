@@ -11,6 +11,7 @@ import UIKit
 internal protocol CreditCardViewDelegate {
     func deletedPaymentMethod()
     func setPaymentAsDefault()
+    func startActivityIndicator()
 }
 
 internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
@@ -115,6 +116,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     func buttonPressed(recognizer : UITapGestureRecognizer) {
         if editMode == false {
             if self.paymentMethod?.isDefault == false {
+                self.delegate?.startActivityIndicator()
                 MyCheckWallet.manager.setPaymentMethodAsDefault(self.paymentMethod!, success: {
                     print("payment set as default")
                     self.delegate?.setPaymentAsDefault()
