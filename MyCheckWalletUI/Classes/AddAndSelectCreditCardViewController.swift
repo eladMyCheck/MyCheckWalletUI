@@ -188,7 +188,7 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
             return UIImage(named: "maestro_small", inBundle: bundle, compatibleWithTraitCollection: nil)!
             
         default:
-            return UIImage(named: "no_type_card" , inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)!
         }
     }
     

@@ -152,7 +152,11 @@ internal class MCAddCreditCardViewController: MCViewController {
             
             
         default:
-            typeImage.image = UIImage(named: "no_type_card" , inBundle: bundle, compatibleWithTraitCollection: nil)
+            if self.isMemberOfClass(AddAndSelectCreditCardViewController) {
+                typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)
+            }else{
+                typeImage.image = UIImage(named: "no_type_card" , inBundle: bundle, compatibleWithTraitCollection: nil)
+            }
         }
     }
     
