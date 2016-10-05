@@ -10,6 +10,7 @@ import UIKit
 
 internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    @IBOutlet weak var paymentSelectorView: UIView!
     @IBOutlet weak var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
     @IBOutlet weak var acceptedCreditCardsViewTopToCollapsableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var checkbox: UIButton!
@@ -102,7 +103,8 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
             //self.moveAcceptedCreditCardsViewToCreditCardField(false)
         }else{
             creditCardNumberField.hidden = false
-            self.paymentMethodSelectorTextField.hidden = true
+            //self.paymentMethodSelectorTextField.hidden = true
+            self.paymentSelectorView.hidden = true
             //self.moveAcceptedCreditCardsViewToCreditCardField(true)
         }
         self.moveAcceptedCreditCardsViewToCreditCardField(true)
