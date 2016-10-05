@@ -24,8 +24,6 @@ class ViewController: UIViewController {
             } , fail: { error in
         
         })
-        
-
     }
 }
 
