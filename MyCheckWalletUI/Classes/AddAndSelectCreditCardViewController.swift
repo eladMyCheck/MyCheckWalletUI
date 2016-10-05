@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
     @IBOutlet weak var acceptedCreditCardsViewTopToCollapsableViewConstraint: NSLayoutConstraint!
@@ -19,9 +19,9 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
     @IBOutlet var textFieldsBorderViews: [UIView]!
     @IBOutlet weak var managePaymentMethodsButton: UIButton!
     var paymentMethodSelector : UIPickerView = UIPickerView()
-    public var paymentMethods: Array<PaymentMethod>!
+    internal var paymentMethods: Array<PaymentMethod>!
     
-    public static func createAddAndSelectCreditCardViewController(withPaymentMethods : Array<PaymentMethod>!) -> AddAndSelectCreditCardViewController{
+    internal static func createAddAndSelectCreditCardViewController(withPaymentMethods : Array<PaymentMethod>!) -> AddAndSelectCreditCardViewController{
         let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
         let controller = storyboard.instantiateViewControllerWithIdentifier("AddAndSelectCreditCardViewController") as! AddAndSelectCreditCardViewController
         controller.paymentMethods = withPaymentMethods
@@ -30,12 +30,12 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
         return controller
     }
     
-    override public func viewDidLoad() {
+    override internal func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
     }
     
-    public override func viewWillAppear(animated: Bool) {
+    internal override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
     
@@ -66,11 +66,11 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
     }
 
     
-    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    internal func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    internal func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if self.paymentMethods != nil {
             return self.paymentMethods.count
         }else{
@@ -78,7 +78,7 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
         }
     }
     
-    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    internal func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.paymentMethods[row].lastFourDigits
     }
     
@@ -166,13 +166,13 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
-    override public func setFieldInvalid(field: UITextField , invalid: Bool){
+    override internal func setFieldInvalid(field: UITextField , invalid: Bool){
         let underline = underlineForField![field]
         underline?.backgroundColor = invalid ? UIColor.fieldUnderlineInvalid() : UIColor(r: 124, g: 114, b: 112, a: 1)
         field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor(r: 124, g: 114, b: 112, a: 1)
     }
 
-    public func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    internal func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         switch textField {
         case creditCardNumberField:
             UIView.animateWithDuration(0.4, animations: {
@@ -235,7 +235,7 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
 }
 
 extension AddAndSelectCreditCardViewController : MCPaymentMethodsViewControllerDelegate{
-    public func userDismissed(  controller: MCPaymentMethodsViewControllerDelegate)
+    internal func userDismissed(  controller: MCPaymentMethodsViewControllerDelegate)
     {
     }
 }

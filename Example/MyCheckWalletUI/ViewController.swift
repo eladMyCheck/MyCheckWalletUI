@@ -29,11 +29,11 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController : MCPaymentMethodsViewControllerDelegate{
-    func userDismissed(  controller: MCPaymentMethodsViewControllerDelegate)
-    {
-    
-    }
-
-}
+//extension ViewController : MCPaymentMethodsViewControllerDelegate{
+//    func userDismissed(  controller: MCPaymentMethodsViewControllerDelegate)
+//    {
+//    
+//    }
+//
+//}
 

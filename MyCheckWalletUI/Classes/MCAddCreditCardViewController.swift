@@ -14,7 +14,7 @@ internal protocol MCAddCreditCardViewControllerDelegate {
     func canceled()
 }
 
-public class MCAddCreditCardViewController: MCViewController {
+internal class MCAddCreditCardViewController: MCViewController {
     
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet var typeImage: UIImageView!
@@ -33,7 +33,7 @@ public class MCAddCreditCardViewController: MCViewController {
     var delegate : MCAddCreditCardViewControllerDelegate?
     //MARK: - life cycle functions
     
-    override public func viewDidLoad() {
+    override internal func viewDidLoad() {
         super.viewDidLoad()
         underlineForField = [creditCardNumberField : creditCardUnderline , dateField : dateUnderline , cvvField : cvvUnderline , zipField : zipUnderline]
 
@@ -108,7 +108,7 @@ public class MCAddCreditCardViewController: MCViewController {
         self.resignFirstResponder()
     }
     //MARK: - overides
-    override public func resignFirstResponder() -> Bool {
+    override internal func resignFirstResponder() -> Bool {
         super.resignFirstResponder()
         creditCardNumberField.resignFirstResponder()
         dateField.resignFirstResponder()
@@ -116,7 +116,7 @@ public class MCAddCreditCardViewController: MCViewController {
         zipField.resignFirstResponder()
         return true
     }
-    override public func becomeFirstResponder() -> Bool {
+    override internal func becomeFirstResponder() -> Bool {
         if creditCardNumberField.isFirstResponder() ||
             dateField.isFirstResponder() ||
             cvvField.isFirstResponder() ||
@@ -157,7 +157,7 @@ public class MCAddCreditCardViewController: MCViewController {
     }
     
     //sets the UI to show the field has an invalid value or not
-    public func setFieldInvalid(field: UITextField , invalid: Bool){
+    internal func setFieldInvalid(field: UITextField , invalid: Bool){
         let underline = underlineForField![field]
         underline?.backgroundColor = invalid ? UIColor.fieldUnderlineInvalid() : UIColor.fieldUnderline()
         field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor.fieldTextValid()
@@ -186,7 +186,7 @@ public class MCAddCreditCardViewController: MCViewController {
 
 extension MCAddCreditCardViewController : UITextFieldDelegate{
     
-    public func textFieldShouldReturn(textField: UITextField) -> Bool {
+    internal func textFieldShouldReturn(textField: UITextField) -> Bool {
         switch textField {
         case creditCardNumberField:
             dateField.becomeFirstResponder()
@@ -201,7 +201,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         return true;
     }
     
-    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    internal func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         var txtAfterUpdate: NSString = textField.text! as NSString
         txtAfterUpdate = txtAfterUpdate.stringByReplacingCharactersInRange(range, withString: string)

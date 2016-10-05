@@ -7,16 +7,16 @@
 //
 
 import UIKit
-public protocol MCPaymentMethodsViewControllerDelegate {
+internal protocol MCPaymentMethodsViewControllerDelegate {
     func userDismissed( controller: MCPaymentMethodsViewControllerDelegate)
 
     
 }
-public class MCPaymentMethodsViewController: MCViewController {
+internal class MCPaymentMethodsViewController: MCViewController {
     var creditCardVC: MCAddCreditCardViewController?
     var creditCardListVC: MCCreditCardsViewController?
     var delegate: MCPaymentMethodsViewControllerDelegate?
-    public var paymentMethods: Array<PaymentMethod>!
+    internal var paymentMethods: Array<PaymentMethod>!
     
     @IBOutlet weak var creditCardListContainer: UIView!
     @IBOutlet weak var addCreditCardContainer: UIView!
@@ -27,7 +27,7 @@ public class MCPaymentMethodsViewController: MCViewController {
     @IBOutlet weak var creditCardInCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var creditCardsVCCenterXConstraint: NSLayoutConstraint!
     
-    public static func createPaymentMethodsViewController(delegate: MCPaymentMethodsViewControllerDelegate?, withPaymentMethods : Array<PaymentMethod>!) -> MCPaymentMethodsViewController
+    internal static func createPaymentMethodsViewController(delegate: MCPaymentMethodsViewControllerDelegate?, withPaymentMethods : Array<PaymentMethod>!) -> MCPaymentMethodsViewController
     {
         
         let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
@@ -41,7 +41,7 @@ public class MCPaymentMethodsViewController: MCViewController {
     
     //MARK: - lifeCycle
     
-    public override func viewDidLoad(){
+    internal override func viewDidLoad(){
     super.viewDidLoad()
         showEnterCreditCard(false , animated: false)
 
@@ -56,7 +56,7 @@ public class MCPaymentMethodsViewController: MCViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MCPaymentMethodsViewController.addCreditCardPressedNotificationReceived(_:)), name:"AddCreditCardPressed", object: nil)
     }
     
-    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override internal func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "creditCardSubViewController" {
             creditCardVC = segue.destinationViewController as? MCAddCreditCardViewController
         }else if segue.identifier == "creditCardsViewController"{
