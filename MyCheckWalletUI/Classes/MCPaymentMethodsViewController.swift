@@ -94,8 +94,16 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
     outputForTesting.text = error.localizedDescription
     }
     func addedNewPaymentMethod(controller: MCAddCreditCardViewController ,token:String){
-    showEnterCreditCard(false , animated: true)
-        outputForTesting.text = "credit card added"
+        MyCheckWallet.manager.getPaymentMethods({ (methods) in
+            self.paymentMethods = methods
+            self.creditCardListVC!.paymentMethods = methods
+            self.creditCardListVC!.setCrediCards()
+            self.showEnterCreditCard(false , animated: true)
+            self.outputForTesting.text = "credit card added"
+            }) { (error) in
+                
+        }
+    
     }
     func canceled(){
         showEnterCreditCard(false , animated: true)

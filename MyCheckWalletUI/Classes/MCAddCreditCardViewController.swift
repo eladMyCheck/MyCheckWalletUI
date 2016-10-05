@@ -16,6 +16,7 @@ internal protocol MCAddCreditCardViewControllerDelegate {
 
 public class MCAddCreditCardViewController: MCViewController {
     
+    @IBOutlet weak var applyButton: UIButton!
     @IBOutlet var typeImage: UIImageView!
     @IBOutlet var creditCardNumberField: UITextField!
     @IBOutlet var dateField: UITextField!
@@ -62,16 +63,18 @@ public class MCAddCreditCardViewController: MCViewController {
             let type = getType()
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split("/").map(String.init)
-            
+            applyButton.enabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: false, success: {  token in
                 if let delegate = self.delegate{
                     
                     delegate.addedNewPaymentMethod(self, token:token)
+                    self.applyButton.enabled = true
                 }
                 }, fail: { error in
                     if let delegate = self.delegate{
                         self.errorLabel.text = error.localizedDescription
                         delegate.recivedError(self, error:error)
+                        self.applyButton.enabled = true
                     }
             })
         }
