@@ -10,6 +10,8 @@ import UIKit
 
 public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    @IBOutlet weak var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
+    @IBOutlet weak var acceptedCreditCardsViewTopToCollapsableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var checkbox: UIButton!
     @IBOutlet weak var paymentMethodSelectorTextField: UITextField!
     @IBOutlet weak var colapsableContainer: UIView!
@@ -19,15 +21,18 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
     var paymentMethodSelector : UIPickerView = UIPickerView()
     public var paymentMethods: Array<PaymentMethod>!
     
+    public static func createAddAndSelectCreditCardViewController(withPaymentMethods : Array<PaymentMethod>!) -> AddAndSelectCreditCardViewController{
+        let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
+        let controller = storyboard.instantiateViewControllerWithIdentifier("AddAndSelectCreditCardViewController") as! AddAndSelectCreditCardViewController
+        controller.paymentMethods = withPaymentMethods
+        //controller.delegate = delegate
+        
+        return controller
+    }
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
-        paymentMethodSelector = UIPickerView()
-        paymentMethodSelector.delegate = self
-        paymentMethodSelector.dataSource = self
-        paymentMethodSelector.backgroundColor = UIColor.whiteColor()
-        paymentMethodSelectorTextField.inputView = paymentMethodSelector
-        addDoneButtonOnPicker(paymentMethodSelectorTextField, action: #selector(donePressed(_: )))
     }
     
     public override func viewWillAppear(animated: Bool) {
@@ -94,10 +99,19 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
             self.paymentMethodSelectorTextField.hidden = false
             creditCardNumberField.hidden = true
             typeImage.image = self.setImageForType(self.getType((self.paymentMethods.first?.issuer)!))
+            //self.moveAcceptedCreditCardsViewToCreditCardField(false)
         }else{
             creditCardNumberField.hidden = false
             self.paymentMethodSelectorTextField.hidden = true
+            //self.moveAcceptedCreditCardsViewToCreditCardField(true)
         }
+        self.moveAcceptedCreditCardsViewToCreditCardField(true)
+        paymentMethodSelector = UIPickerView()
+        paymentMethodSelector.delegate = self
+        paymentMethodSelector.dataSource = self
+        paymentMethodSelector.backgroundColor = UIColor.whiteColor()
+        paymentMethodSelectorTextField.inputView = paymentMethodSelector
+        addDoneButtonOnPicker(paymentMethodSelectorTextField, action: #selector(donePressed(_: )))
     }
     
     internal func setImageForType( type: CreditCardType) -> UIImage{
@@ -151,15 +165,6 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
         let controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: self.paymentMethods)
         self.presentViewController(controller, animated: true, completion: nil)
     }
-
-    public static func createAddAndSelectCreditCardViewController(withPaymentMethods : Array<PaymentMethod>!) -> AddAndSelectCreditCardViewController{
-        let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
-        let controller = storyboard.instantiateViewControllerWithIdentifier("AddAndSelectCreditCardViewController") as! AddAndSelectCreditCardViewController
-        controller.paymentMethods = withPaymentMethods
-        //controller.delegate = delegate
-        
-        return controller
-    }
     
     override public func setFieldInvalid(field: UITextField , invalid: Bool){
         let underline = underlineForField![field]
@@ -172,10 +177,10 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
         case creditCardNumberField:
             UIView.animateWithDuration(0.4, animations: {
                 self.colapsableContainer.hidden = false
+                self.moveAcceptedCreditCardsViewToCreditCardField(false)
             })
             break
         case paymentMethodSelectorTextField:
-            
             break
         default:
             return true
@@ -191,6 +196,7 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
         self.view.endEditing(true)
         UIView.animateWithDuration(0.4, animations: {
             self.colapsableContainer.hidden = true
+            self.moveAcceptedCreditCardsViewToCreditCardField(true)
         })
     }
     
@@ -202,8 +208,7 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
             
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  token in
                 if let delegate = self.delegate{
-                    
-                    delegate.addedNewPaymentMethod(self, token:token)
+                    self.newPaymenteMethodAdded()
                 }
                 }, fail: { error in
                     if let delegate = self.delegate{
@@ -212,6 +217,20 @@ public class AddAndSelectCreditCardViewController: MCAddCreditCardViewController
                     }
             })
         }
+    }
+    
+    func newPaymenteMethodAdded(){
+        MyCheckWallet.manager.getPaymentMethods({ (methods) in
+            self.paymentMethods = methods
+            self.configureUI()
+            }) { (error) in
+                
+        }
+    }
+    
+    func moveAcceptedCreditCardsViewToCreditCardField(move : Bool){
+        self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
+        self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
     }
 }
 
