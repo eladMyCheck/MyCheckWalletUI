@@ -88,9 +88,12 @@ internal class Networking {
                 if let methodJSON = methodJSON{
                 success((methodJSON["token"] as? String)!)
                 }else{
-                if let fail = fail{
-                    fail(badJSONError())
-                }
+                    if let fail = fail{
+                        if let errormessage = JSON["message"] as? String{
+                            let errorWithMessage = NSError(domain: "error", code: 3 , userInfo: [NSLocalizedDescriptionKey : errormessage])
+                            fail(errorWithMessage)
+                        }
+                    }
             }
                 
             
