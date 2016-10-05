@@ -26,6 +26,11 @@ internal class MCPaymentMethodsViewController: MCViewController {
     }
     @IBOutlet weak var creditCardInCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var creditCardsVCCenterXConstraint: NSLayoutConstraint!
+    @IBOutlet weak var visaImageView: UIImageView!
+    @IBOutlet weak var mastercardImageView: UIImageView!
+    @IBOutlet weak var dinersImageView: UIImageView!
+    @IBOutlet weak var amexImageView: UIImageView!
+    @IBOutlet weak var discoverImageView: UIImageView!
     
     internal static func createPaymentMethodsViewController(delegate: MCPaymentMethodsViewControllerDelegate?, withPaymentMethods : Array<PaymentMethod>!) -> MCPaymentMethodsViewController
     {
@@ -54,6 +59,50 @@ internal class MCPaymentMethodsViewController: MCViewController {
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MCPaymentMethodsViewController.addCreditCardPressedNotificationReceived(_:)), name:"AddCreditCardPressed", object: nil)
+        self.assignImages()
+    }
+    
+    func assignImages(){
+        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"){
+            if let data = NSData(contentsOfURL: url){
+                if let image = UIImage(data: data){
+                    visaImageView.image = image
+                }
+            }
+        }
+        
+        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"){
+            if let data = NSData(contentsOfURL: url){
+                if let image = UIImage(data: data){
+                    mastercardImageView.image = image
+                }
+            }
+        }
+        
+        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"){
+            if let data = NSData(contentsOfURL: url){
+                if let image = UIImage(data: data){
+                    dinersImageView.image = image
+                }
+            }
+        }
+        
+        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"){
+            if let data = NSData(contentsOfURL: url){
+                if let image = UIImage(data: data){
+                    discoverImageView.image = image
+                }
+            }
+        }
+        
+        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"){
+            if let data = NSData(contentsOfURL: url){
+                if let image = UIImage(data: data){
+                    amexImageView.image = image
+                }
+            }
+        }
+
     }
     
     override internal func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
