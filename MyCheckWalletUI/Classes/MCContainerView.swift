@@ -15,8 +15,8 @@ public class MCContainerView: UIView {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         controller.view.addSubview(self)
-        NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: controller.view, attribute: .LeadingMargin, multiplier: 1.0, constant: -20).active = true
-        NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: controller.view, attribute: .TrailingMargin, multiplier: 1.0, constant: 20).active = true
+        NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: controller.view, attribute: .LeadingMargin, multiplier: 1.0, constant: -24).active = true
+        NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: controller.view, attribute: .TrailingMargin, multiplier: 1.0, constant: 24).active = true
         NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: controller.view, attribute: .BottomMargin, multiplier: 1.0, constant: 0).active = true
         NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 400).active = true
         

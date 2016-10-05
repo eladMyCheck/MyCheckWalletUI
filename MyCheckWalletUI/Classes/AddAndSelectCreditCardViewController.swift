@@ -22,6 +22,13 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
     var paymentMethodSelector : UIPickerView = UIPickerView()
     internal var paymentMethods: Array<PaymentMethod>!
     
+    @IBOutlet weak var visaImageView: UIImageView!
+    @IBOutlet weak var mastercardImageView: UIImageView!
+    @IBOutlet weak var dinersImageView: UIImageView!
+    @IBOutlet weak var amexImageView: UIImageView!
+    @IBOutlet weak var discoverImageView: UIImageView!
+    
+    
     internal static func createAddAndSelectCreditCardViewController(withPaymentMethods : Array<PaymentMethod>!) -> AddAndSelectCreditCardViewController{
         let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
         let controller = storyboard.instantiateViewControllerWithIdentifier("AddAndSelectCreditCardViewController") as! AddAndSelectCreditCardViewController
@@ -34,10 +41,54 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
     override internal func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
+        self.assignImages()
     }
     
     internal override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func assignImages(){
+        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"){
+            if let data = NSData(contentsOfURL: url){
+                if let image = UIImage(data: data){
+                    visaImageView.image = image
+                }
+            }
+        }
+        
+        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"){
+            if let data = NSData(contentsOfURL: url){
+                if let image = UIImage(data: data){
+                    mastercardImageView.image = image
+                }
+            }
+        }
+        
+        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"){
+            if let data = NSData(contentsOfURL: url){
+                if let image = UIImage(data: data){
+                    dinersImageView.image = image
+                }
+            }
+        }
+        
+        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"){
+            if let data = NSData(contentsOfURL: url){
+                if let image = UIImage(data: data){
+                    discoverImageView.image = image
+                }
+            }
+        }
+        
+        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"){
+            if let data = NSData(contentsOfURL: url){
+                if let image = UIImage(data: data){
+                    amexImageView.image = image
+                }
+            }
+        }
+        
     }
     
     private func addDoneButtonOnPicker(field: UITextField , action: Selector){
