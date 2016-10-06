@@ -396,7 +396,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xm8-2R-Aaq" customClass="MCScrollView" customModule="MyCheckWalletUI" customModuleProvider="target"/>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xm8-2R-Aaq" customClass="MCScrollView" customModule="MyCheckWalletUI" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="193" id="f5d-oZ-7gK"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -406,7 +410,6 @@
                             <constraint firstItem="xm8-2R-Aaq" firstAttribute="leading" secondItem="DGl-IC-0Ml" secondAttribute="leadingMargin" constant="90" id="lnt-vX-fYW"/>
                             <constraint firstItem="tEo-uF-FUO" firstAttribute="top" secondItem="Bcq-uP-rwx" secondAttribute="bottom" id="s2p-P9-2j1"/>
                             <constraint firstAttribute="bottomMargin" secondItem="xm8-2R-Aaq" secondAttribute="bottom" id="uvp-Qd-NHH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xm8-2R-Aaq" secondAttribute="trailing" constant="60" id="vYh-ji-gmh"/>
                         </constraints>
                     </view>
                     <connections>
