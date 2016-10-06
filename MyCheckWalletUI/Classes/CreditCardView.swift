@@ -92,7 +92,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
         switch type {
         case .masterCard:
-            return UIImage(named: "master_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "master_card_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
         case .visa:
             return UIImage(named: "visa_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
         case .diners:
