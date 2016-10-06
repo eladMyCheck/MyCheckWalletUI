@@ -132,6 +132,9 @@ internal class MCPaymentMethodsViewController: MCViewController {
     }
     
      func addCreditCardPressedNotificationReceived(notification: NSNotification){
+        if creditCardListVC?.editMode == true {
+            creditCardListVC?.editPressed(nil)
+        }
         self.showEnterCreditCard(true, animated: true)
     }
 }
