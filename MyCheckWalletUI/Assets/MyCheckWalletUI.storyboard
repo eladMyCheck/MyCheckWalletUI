@@ -382,6 +382,7 @@
                                 <items>
                                     <navigationItem title="Payment Methods" id="OPM-fO-leE">
                                         <barButtonItem key="leftBarButtonItem" image="back" id="czh-Kf-p50">
+                                            <color key="tintColor" red="0.4941176471" green="0.65098039220000004" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="backPressed:" destination="0Nh-Xv-Su3" id="4Kc-3t-3UK"/>
                                             </connections>
