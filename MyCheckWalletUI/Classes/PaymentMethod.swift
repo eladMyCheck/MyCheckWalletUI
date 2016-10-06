@@ -11,13 +11,13 @@ import Foundation
 
 ///A Credit Card issuer type.
 public enum CreditCardType : String{
-    case visa = "Visa"
-    case masterCard = "Master Card"
-    case amex = "American Express"
-    case discover = "Discover"
-    case JCB = "JCB"
-    case diners = "Diners"
-    case maestro = "Maestro"
+    case visa = "visa"
+    case masterCard = "mastercard"
+    case amex = "amex"
+    case discover = "discover"
+    case JCB = "jcb"
+    case diners = "dinersclub"
+    case maestro = "maestro"
     case unknown = ""
 }
 ///Represents a payment method the user has.

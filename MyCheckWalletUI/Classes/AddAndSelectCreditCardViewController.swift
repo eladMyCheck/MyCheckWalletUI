@@ -194,19 +194,19 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
     
     internal func getType(type : String) -> CreditCardType {
         switch type {
-        case "Visa":
+        case "visa":
             return CreditCardType.visa
-        case "MasterCard":
+        case "mastercard":
             return CreditCardType.masterCard
-        case "Discover":
+        case "discover":
             return CreditCardType.discover
-        case "Amex":
+        case "amex":
             return CreditCardType.amex
-        case "JCB":
+        case "jcb":
             return CreditCardType.JCB
-        case "Diners":
+        case "dinersclub":
             return CreditCardType.diners
-        case "Maestro":
+        case "maestro":
             return CreditCardType.maestro
             
         default:

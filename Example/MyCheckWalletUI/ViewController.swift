@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //paymentMethodsBut.enabled = false
-        MyCheckWallet.manager.login("eyJpdiI6IjhJcFBCZzBJWFRCdjhJdXA1ck9yeHc9PSIsInZhbHVlIjoiSHc3Ym5KUlVMRitRREtIN1ZnYnplUT09IiwibWFjIjoiNzFkYzM0ZDg5Y2M2NTk0NTg1ZjRiNTUyNDhhYmY2MTM5MGNlMTFjMTVjYjRjMTU5YzMwYzNiN2YxYzEwNDdiNyJ9", publishableKey: "pk_abc318RxSM2eyGa1Kvzp9uabGEefg", success: {
+        MyCheckWallet.manager.login("eyJpdiI6InBCOEJwTEZEUExwRkROcW9LMm42Rmc9PSIsInZhbHVlIjoidmQ4enRsTmZQTFVMRFp6Q2ljcHFqZz09IiwibWFjIjoiNDU4YzA0ZGI5YTQ4MmYwNmJhN2UxMmNhMjFjYWU2YjM2MDQxMTlkZDFjZDkzYzI1M2YwZjE3N2E4MTUwNTg0OCJ9", publishableKey: "pk_MRWdeNtVaPHA273ijAjSjz2vF7Wyc", success: {
             
             MyCheckWallet.manager.getPaymentMethods({ (array) in
                 _ = MCContainerView(controller: self, withPaymentMethods: array)
