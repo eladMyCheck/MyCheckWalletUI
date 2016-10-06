@@ -246,6 +246,7 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
         self.checkbox.selected = !self.checkbox.selected
     }
     override func cancelPressed(sender: AnyObject) {
+        super.cancelPressed(sender)
         self.view.endEditing(true)
         UIView.animateWithDuration(0.4, animations: {
             self.colapsableContainer.hidden = true
