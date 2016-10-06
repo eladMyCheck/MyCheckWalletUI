@@ -441,7 +441,7 @@
                         <viewControllerLayoutGuide type="bottom" id="vex-EI-zj3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TGy-4G-ZWf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="415"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_type_card_1" translatesAutoresizingMaskIntoConstraints="NO" id="qsX-OT-Pl2">
@@ -581,18 +581,6 @@
                                             <action selector="ApplyPressed:" destination="R7U-WD-aT5" eventType="touchUpInside" id="F8V-a7-QOR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZn-2s-q5N">
-                                        <state key="normal" image="checkbox"/>
-                                        <state key="selected" image="checkbox_v"/>
-                                        <connections>
-                                            <action selector="checkboxPressed:" destination="R7U-WD-aT5" eventType="touchUpInside" id="5Im-BU-gWi"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do not store this card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpd-Ci-5vl">
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9I-WE-Eh3">
                                         <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
                                         <color key="textColor" red="0.79607843140000001" green="0.086274509799999996" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -608,21 +596,17 @@
                                     <constraint firstItem="l9g-2e-U3A" firstAttribute="top" secondItem="RCV-xK-dyX" secondAttribute="bottom" constant="5" id="BN2-SI-bhw"/>
                                     <constraint firstItem="QHU-II-Ebf" firstAttribute="width" secondItem="ltV-QJ-iH5" secondAttribute="width" id="Bmn-8M-4hl"/>
                                     <constraint firstItem="QHU-II-Ebf" firstAttribute="height" secondItem="ltV-QJ-iH5" secondAttribute="height" id="C33-Mq-SJA"/>
-                                    <constraint firstItem="VZn-2s-q5N" firstAttribute="top" secondItem="QHU-II-Ebf" secondAttribute="bottom" constant="15" id="Dti-RY-YRO"/>
                                     <constraint firstItem="alw-jN-nd8" firstAttribute="top" secondItem="Cmk-2t-iKE" secondAttribute="top" constant="-5" id="EBV-p9-qgk"/>
-                                    <constraint firstItem="gpd-Ci-5vl" firstAttribute="centerY" secondItem="VZn-2s-q5N" secondAttribute="centerY" id="HSV-nd-29q"/>
                                     <constraint firstItem="alw-jN-nd8" firstAttribute="trailing" secondItem="Cmk-2t-iKE" secondAttribute="trailing" id="IDx-XQ-Xfg"/>
                                     <constraint firstItem="Cmk-2t-iKE" firstAttribute="centerY" secondItem="w8U-uT-8s8" secondAttribute="centerY" id="JlK-zA-5LL"/>
-                                    <constraint firstItem="gpd-Ci-5vl" firstAttribute="leading" secondItem="VZn-2s-q5N" secondAttribute="trailing" constant="12" id="NGN-59-qED"/>
                                     <constraint firstItem="Ji5-9w-viI" firstAttribute="trailing" secondItem="w8U-uT-8s8" secondAttribute="trailing" id="NPg-DK-86y"/>
                                     <constraint firstItem="QKZ-5w-gKX" firstAttribute="trailing" secondItem="RCV-xK-dyX" secondAttribute="trailing" id="O6T-oU-TpQ"/>
                                     <constraint firstItem="Cmk-2t-iKE" firstAttribute="centerX" secondItem="Wjs-e2-7FL" secondAttribute="centerX" constant="2" id="Odg-w5-LIN"/>
-                                    <constraint firstAttribute="height" constant="170" id="Ok7-15-W1p"/>
+                                    <constraint firstAttribute="height" constant="140" id="Ok7-15-W1p"/>
                                     <constraint firstItem="w8U-uT-8s8" firstAttribute="top" secondItem="Wjs-e2-7FL" secondAttribute="top" constant="25" id="PwV-0q-Pog"/>
                                     <constraint firstItem="V9I-WE-Eh3" firstAttribute="top" secondItem="ltV-QJ-iH5" secondAttribute="bottom" id="Qx8-zx-sYh"/>
                                     <constraint firstItem="QKZ-5w-gKX" firstAttribute="leading" secondItem="RCV-xK-dyX" secondAttribute="leading" id="XM9-wN-zIl"/>
                                     <constraint firstItem="Ji5-9w-viI" firstAttribute="bottom" secondItem="w8U-uT-8s8" secondAttribute="bottom" constant="5" id="Z1F-QW-xek"/>
-                                    <constraint firstItem="VZn-2s-q5N" firstAttribute="leading" secondItem="QHU-II-Ebf" secondAttribute="leading" id="ZPW-M7-3Kq"/>
                                     <constraint firstItem="kf7-Ck-JSg" firstAttribute="trailing" secondItem="Cmk-2t-iKE" secondAttribute="trailing" id="bHG-WW-Txr"/>
                                     <constraint firstAttribute="trailing" secondItem="RCV-xK-dyX" secondAttribute="trailing" constant="26" id="bcu-Rv-k1a"/>
                                     <constraint firstItem="ltV-QJ-iH5" firstAttribute="leading" secondItem="QHU-II-Ebf" secondAttribute="trailing" constant="16" id="d32-cP-zDR"/>
@@ -648,7 +632,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzw-Bd-kJR">
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
                                 <state key="normal" title="Manage Payment Methods">
                                     <color key="titleColor" red="0.4941176471" green="0.65098039220000004" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -656,6 +640,18 @@
                                     <action selector="managePaymentMethodsButtonPressed:" destination="R7U-WD-aT5" eventType="touchUpInside" id="yem-my-iA9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZn-2s-q5N">
+                                <state key="normal" image="checkbox"/>
+                                <state key="selected" image="checkbox_v"/>
+                                <connections>
+                                    <action selector="checkboxPressed:" destination="R7U-WD-aT5" eventType="touchUpInside" id="5Im-BU-gWi"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do not store this card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpd-Ci-5vl">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFF-8l-7zv">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cards Accepted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUU-cj-j5m">
@@ -719,17 +715,22 @@
                                     <constraint firstAttribute="trailing" secondItem="Wxb-LJ-yiV" secondAttribute="trailing" constant="20" id="8P9-rc-tuz"/>
                                     <constraint firstItem="fUU-cj-j5m" firstAttribute="centerX" secondItem="lFF-8l-7zv" secondAttribute="centerX" id="B7k-mq-TUh"/>
                                     <constraint firstItem="hCE-dM-vzu" firstAttribute="centerY" secondItem="fUU-cj-j5m" secondAttribute="centerY" id="D1O-Qy-uA0"/>
-                                    <constraint firstAttribute="height" constant="94" id="Ew1-B3-p3W"/>
+                                    <constraint firstAttribute="height" constant="110" id="Ew1-B3-p3W"/>
                                     <constraint firstItem="hCE-dM-vzu" firstAttribute="leading" secondItem="lFF-8l-7zv" secondAttribute="leading" constant="20" id="K5e-JL-YEe"/>
-                                    <constraint firstItem="fUU-cj-j5m" firstAttribute="top" secondItem="lFF-8l-7zv" secondAttribute="top" constant="20" id="Tpe-ah-mrn"/>
+                                    <constraint firstItem="fUU-cj-j5m" firstAttribute="top" secondItem="lFF-8l-7zv" secondAttribute="top" id="Tpe-ah-mrn"/>
                                     <constraint firstItem="Wxb-LJ-yiV" firstAttribute="leading" secondItem="fUU-cj-j5m" secondAttribute="trailing" constant="8" id="bgb-cC-EYB"/>
                                     <constraint firstItem="bWT-AL-k9z" firstAttribute="centerX" secondItem="lFF-8l-7zv" secondAttribute="centerX" id="d9g-67-5Hv"/>
                                     <constraint firstItem="fUU-cj-j5m" firstAttribute="leading" secondItem="hCE-dM-vzu" secondAttribute="trailing" constant="8" id="xff-xo-k2F"/>
                                     <constraint firstItem="bWT-AL-k9z" firstAttribute="top" secondItem="fUU-cj-j5m" secondAttribute="bottom" id="zp3-bS-ZgF"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JT-3h-XOr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JT-3h-XOr">
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are secure with PCI-DSS level 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYe-kL-dWK">
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -755,23 +756,28 @@
                             <constraint firstItem="qsX-OT-Pl2" firstAttribute="leading" secondItem="TGy-4G-ZWf" secondAttribute="leading" constant="20" id="1kM-Sc-ifQ"/>
                             <constraint firstItem="2cp-ik-DoS" firstAttribute="top" secondItem="qqF-os-BUe" secondAttribute="bottom" constant="5" id="2dp-rk-RnW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fzw-Bd-kJR" secondAttribute="trailing" constant="4" id="2kE-ow-iB3"/>
+                            <constraint firstItem="VZn-2s-q5N" firstAttribute="leading" secondItem="TGy-4G-ZWf" secondAttribute="leadingMargin" id="65J-lQ-gJF"/>
                             <constraint firstItem="oM0-cE-Y9A" firstAttribute="trailing" secondItem="qqF-os-BUe" secondAttribute="trailing" id="6AS-is-efj"/>
                             <constraint firstItem="R3V-TC-BT6" firstAttribute="leading" secondItem="qsX-OT-Pl2" secondAttribute="leading" constant="-9" id="6IZ-0I-byX"/>
+                            <constraint firstItem="gpd-Ci-5vl" firstAttribute="leading" secondItem="VZn-2s-q5N" secondAttribute="trailing" constant="8" id="6Vt-mZ-vXq"/>
                             <constraint firstItem="fzw-Bd-kJR" firstAttribute="top" secondItem="tmV-8O-A5s" secondAttribute="bottom" constant="35" id="8Uo-Cg-d85"/>
                             <constraint firstItem="9JT-3h-XOr" firstAttribute="leading" secondItem="TGy-4G-ZWf" secondAttribute="leadingMargin" constant="4" id="AJC-mn-aPg"/>
                             <constraint firstItem="2cp-ik-DoS" firstAttribute="trailing" secondItem="qqF-os-BUe" secondAttribute="trailing" id="C8k-i7-6Rx"/>
                             <constraint firstItem="lFF-8l-7zv" firstAttribute="leading" secondItem="TGy-4G-ZWf" secondAttribute="leadingMargin" constant="-18" id="ExU-Le-cHx"/>
+                            <constraint firstItem="ZYe-kL-dWK" firstAttribute="centerX" secondItem="TGy-4G-ZWf" secondAttribute="centerX" id="Fsu-rV-p7H"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wjs-e2-7FL" secondAttribute="trailing" constant="-20" id="ICW-wd-JIB"/>
                             <constraint firstItem="9JT-3h-XOr" firstAttribute="top" secondItem="M1g-bt-xrH" secondAttribute="bottom" constant="12" id="IM6-4v-lTc"/>
-                            <constraint firstItem="lFF-8l-7zv" firstAttribute="top" secondItem="qqF-os-BUe" secondAttribute="bottom" priority="500" constant="20" id="JLQ-4I-Yxb"/>
+                            <constraint firstItem="lFF-8l-7zv" firstAttribute="top" secondItem="qqF-os-BUe" secondAttribute="bottom" priority="500" constant="70" id="JLQ-4I-Yxb"/>
                             <constraint firstItem="R3V-TC-BT6" firstAttribute="top" secondItem="qqF-os-BUe" secondAttribute="top" constant="-5" id="PWa-bW-qa4"/>
                             <constraint firstItem="qsX-OT-Pl2" firstAttribute="top" secondItem="tmV-8O-A5s" secondAttribute="bottom" constant="80" id="RH4-OZ-zVQ"/>
-                            <constraint firstItem="lFF-8l-7zv" firstAttribute="top" secondItem="Wjs-e2-7FL" secondAttribute="bottom" id="T6a-di-6nG"/>
+                            <constraint firstItem="lFF-8l-7zv" firstAttribute="top" secondItem="Wjs-e2-7FL" secondAttribute="bottom" constant="70" id="T6a-di-6nG"/>
+                            <constraint firstItem="vex-EI-zj3" firstAttribute="top" secondItem="ZYe-kL-dWK" secondAttribute="bottom" constant="8" id="V2V-mG-EXa"/>
                             <constraint firstAttribute="trailing" secondItem="qqF-os-BUe" secondAttribute="trailing" constant="18" id="XMl-3r-3kg"/>
                             <constraint firstItem="qqF-os-BUe" firstAttribute="centerY" secondItem="qsX-OT-Pl2" secondAttribute="centerY" id="Xy8-jl-o0w"/>
                             <constraint firstItem="oM0-cE-Y9A" firstAttribute="bottom" secondItem="qqF-os-BUe" secondAttribute="bottom" id="Z5S-be-Pud"/>
                             <constraint firstItem="oM0-cE-Y9A" firstAttribute="leading" secondItem="qqF-os-BUe" secondAttribute="leading" id="Zo3-Vw-Asp"/>
                             <constraint firstItem="R3V-TC-BT6" firstAttribute="trailing" secondItem="qqF-os-BUe" secondAttribute="trailing" id="bkn-oQ-brR"/>
+                            <constraint firstItem="gpd-Ci-5vl" firstAttribute="centerY" secondItem="VZn-2s-q5N" secondAttribute="centerY" id="fN3-NT-gl9"/>
                             <constraint firstItem="Wjs-e2-7FL" firstAttribute="top" secondItem="2cp-ik-DoS" secondAttribute="bottom" constant="-6" id="iOR-Bz-93I"/>
                             <constraint firstItem="R3V-TC-BT6" firstAttribute="bottom" secondItem="qqF-os-BUe" secondAttribute="bottom" constant="5" id="izy-hW-jGP"/>
                             <constraint firstItem="M1g-bt-xrH" firstAttribute="top" secondItem="tmV-8O-A5s" secondAttribute="bottom" id="mPR-Xm-dgX"/>
@@ -781,11 +787,12 @@
                             <constraint firstItem="oM0-cE-Y9A" firstAttribute="top" secondItem="qqF-os-BUe" secondAttribute="top" id="uvs-Bb-nin"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lFF-8l-7zv" secondAttribute="trailing" constant="-14" id="wCL-5z-lpT"/>
                             <constraint firstItem="9JT-3h-XOr" firstAttribute="centerY" secondItem="fzw-Bd-kJR" secondAttribute="centerY" id="wNZ-kH-fzD"/>
+                            <constraint firstItem="lFF-8l-7zv" firstAttribute="top" secondItem="VZn-2s-q5N" secondAttribute="bottom" constant="20" id="wYU-xI-Waq"/>
                             <constraint firstItem="qqF-os-BUe" firstAttribute="leading" secondItem="qsX-OT-Pl2" secondAttribute="trailing" constant="14" id="x80-mg-ciK"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="400"/>
+                    <size key="freeformSize" width="375" height="415"/>
                     <connections>
                         <outlet property="acceptedCreditCardsViewTopToCollapsableViewConstraint" destination="T6a-di-6nG" id="qLQ-4s-xSb"/>
                         <outlet property="acceptedCreditCardsViewTopToCreditCardFieldConstraint" destination="JLQ-4I-Yxb" id="5qr-RR-KB8"/>
