@@ -7,7 +7,7 @@ import CoreData
 
 internal class Networking {
     private enum Const {
-        static let URLPrefix = "https://the.mycheckapp.com/"
+        static let URLPrefix = "https://the-sandbox.mycheckapp.com/"
         static let localErrorDomain = "MyCheck SDK error domain"
         static let serverErrorDomain = "MyCheck server error domain"
         
@@ -78,7 +78,7 @@ internal class Networking {
                               accessToken: String ,
                               success: (( String ) -> Void) ,
                               fail: ((NSError) -> Void)? ) -> Alamofire.Request{
-        let params = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "type" : type.rawValue , "is_single_use" : NSNumber(bool: isSingleUse)]
+        let params = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "type" : type.rawValue , "is_single_use" : NSNumber(bool: isSingleUse), "env" : "sandbox"]
         
         
         
