@@ -27,7 +27,7 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
     @IBOutlet weak var dinersImageView: UIImageView!
     @IBOutlet weak var amexImageView: UIImageView!
     @IBOutlet weak var discoverImageView: UIImageView!
-    
+    @IBOutlet weak var checkBoxLabel: UILabel!
     
     internal static func createAddAndSelectCreditCardViewController(withPaymentMethods : Array<PaymentMethod>!) -> AddAndSelectCreditCardViewController{
         let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
@@ -150,9 +150,13 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
             self.paymentSelectorView.hidden = false
             self.paymentMethodSelectorTextField.text = self.paymentMethods.first?.lastFourDigits
             typeImage.image = self.setImageForType(self.getType((self.paymentMethods.first?.issuer)!))
+            self.checkbox.hidden = true
+            self.checkBoxLabel.hidden = true
         }else{
             creditCardNumberField.hidden = false
             self.paymentSelectorView.hidden = true
+            self.checkbox.hidden = false
+            self.checkBoxLabel.hidden = false
         }
         self.moveAcceptedCreditCardsViewToCreditCardField(true)
         paymentMethodSelector = UIPickerView()

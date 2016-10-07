@@ -798,6 +798,7 @@
                         <outlet property="acceptedCreditCardsViewTopToCreditCardFieldConstraint" destination="JLQ-4I-Yxb" id="5qr-RR-KB8"/>
                         <outlet property="amexImageView" destination="o7e-Mg-Qls" id="ou9-Wa-swB"/>
                         <outlet property="cancelButton" destination="QHU-II-Ebf" id="GN5-oR-6yc"/>
+                        <outlet property="checkBoxLabel" destination="gpd-Ci-5vl" id="4yW-lw-Sam"/>
                         <outlet property="checkbox" destination="VZn-2s-q5N" id="7XP-57-ExG"/>
                         <outlet property="colapsableContainer" destination="Wjs-e2-7FL" id="Jpi-hg-WtT"/>
                         <outlet property="creditCardNumberField" destination="qqF-os-BUe" id="pyu-f7-EVI"/>
