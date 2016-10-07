@@ -29,6 +29,10 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
     }
     
     internal func setCrediCards(){
+        let subviews = self.scrollView.subviews
+        for subview in subviews{
+            subview.removeFromSuperview()
+        }
         self.scrollView.frame = CGRect(x:self.scrollView.frame.origin.x, y:self.scrollView.frame.origin.y, width:self.scrollView.frame.width, height:100)
         
         UIView.animateWithDuration(0.4, animations: {
