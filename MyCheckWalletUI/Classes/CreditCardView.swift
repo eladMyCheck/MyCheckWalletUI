@@ -17,7 +17,7 @@ internal protocol CreditCardViewDelegate {
 internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
 
     var paymentMethod : PaymentMethod?
-    var checkbox : UIImageView?
+    var checboxButton : UIButton?
     var editMode = false
     var delegate : CreditCardViewDelegate?
     
@@ -26,7 +26,11 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         self.userInteractionEnabled = true
         self.paymentMethod = method
         
-        backgroundColor = UIColor.init(patternImage: self.setImageForType(self.getType(method.issuer)))
+        let setCardAsDefaultButton = UIButton(frame: CGRectMake(0, 0, 163, 102))
+        setCardAsDefaultButton.addTarget(self, action: #selector(creditCardPressed(_:)), forControlEvents: .TouchUpInside)
+        setCardAsDefaultButton.setImage(self.setImageForType(self.getType(method.issuer)), forState: .Normal)
+        setCardAsDefaultButton.adjustsImageWhenHighlighted = false
+        addSubview(setCardAsDefaultButton)
         
         //credit card number label
         var creditCardNumberlabel = UILabel(frame: CGRectMake(10, 70, 80, 18))
@@ -47,18 +51,43 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         
         //default card checkbox
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-        self.checkbox = UIImageView(frame: CGRectMake(165, 0, 20, 20))
-        addSubview(self.checkbox!)
+        
+        self.checboxButton = UIButton(frame: CGRectMake(165, 0, 20, 20))
+        self.checboxButton?.addTarget(self, action: #selector(checkboxPressed(_:)), forControlEvents: .TouchUpInside)
+        self.checboxButton?.adjustsImageWhenHighlighted = false
+        addSubview(self.checboxButton!)
+        
         if ((self.paymentMethod!.isDefault) == true) {
-            self.checkbox!.image = UIImage(named: "v", inBundle: bundle, compatibleWithTraitCollection: nil)!
-            self.checkbox?.hidden = false
+            self.checboxButton?.setImage(UIImage(named: "v", inBundle: bundle, compatibleWithTraitCollection: nil)!, forState: .Normal)
+            self.checboxButton?.hidden = false
         }else{
-            self.checkbox?.hidden = true
+            self.checboxButton?.hidden = true
         }
-
-        var recognizer = UITapGestureRecognizer(target: self, action: "buttonPressed:")
-        recognizer.delegate = self;
-        self.addGestureRecognizer(recognizer)
+    }
+    
+    func checkboxPressed(sender: UIButton!) {
+        if editMode == true {
+            MyCheckWallet.manager.deletePaymentMethod(self.paymentMethod!, success: {
+                print("payment method deleted")
+                self.delegate?.deletedPaymentMethod()
+                }, fail: { (error) in
+                    print("did not delete payment")
+            })
+        }
+    }
+    
+    func creditCardPressed(sender: UIButton!){
+        if editMode == false {
+            if self.paymentMethod?.isDefault == false {
+                self.delegate?.startActivityIndicator()
+                MyCheckWallet.manager.setPaymentMethodAsDefault(self.paymentMethod!, success: {
+                    print("payment set as default")
+                    self.delegate?.setPaymentAsDefault()
+                    }, fail: { (error) in
+                        print("did not set payment as default")
+                })
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -113,40 +142,19 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    func buttonPressed(recognizer : UITapGestureRecognizer) {
-        if editMode == false {
-            if self.paymentMethod?.isDefault == false {
-                self.delegate?.startActivityIndicator()
-                MyCheckWallet.manager.setPaymentMethodAsDefault(self.paymentMethod!, success: {
-                    print("payment set as default")
-                    self.delegate?.setPaymentAsDefault()
-                    }, fail: { (error) in
-                        print("did not set payment as default")
-                })
-            }
-        }else{
-            MyCheckWallet.manager.deletePaymentMethod(self.paymentMethod!, success: {
-                print("payment method deleted")
-                self.delegate?.deletedPaymentMethod()
-                }, fail: { (error) in
-                    print("did not delete payment")
-            })
-        }
-    }
-    
     func toggleEditMode(){
         self.editMode = !self.editMode
         if self.editMode == true {
             let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-            self.checkbox!.image = UIImage(named: "delete", inBundle: bundle, compatibleWithTraitCollection: nil)!
-            self.checkbox?.hidden = false
+            self.checboxButton?.setImage(UIImage(named: "delete", inBundle: bundle, compatibleWithTraitCollection: nil)!, forState: .Normal)
+            self.checboxButton?.hidden = false
         }else{
             if ((self.paymentMethod!.isDefault) == true) {
                 let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-                self.checkbox!.image = UIImage(named: "v", inBundle: bundle, compatibleWithTraitCollection: nil)!
-                self.checkbox?.hidden = false
+                self.checboxButton?.setImage(UIImage(named: "v", inBundle: bundle, compatibleWithTraitCollection: nil)!, forState: .Normal)
+                self.checboxButton?.hidden = false
             }else{
-                self.checkbox?.hidden = true
+                self.checboxButton?.hidden = true
             }
         }
     }

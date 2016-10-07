@@ -26,5 +26,17 @@ class MCScrollView: UIScrollView {
 //        return nil
 //
 //    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.canCancelContentTouches = true
+    }
+    
+    override func touchesShouldCancelInContentView(view: UIView) -> Bool {
+        if view is UIButton {
+            return true
+        }
+        return super.touchesShouldCancelInContentView(view)
+    }
 
 }

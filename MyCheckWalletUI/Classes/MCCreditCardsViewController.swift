@@ -45,7 +45,7 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         
         for i in (0..<creditCardCount) {
             let method = self.paymentMethods[i]
-            let cc = CreditCardView(frame: CGRectMake(193*CGFloat(i+1), 20, 164, 102), method: method)
+            let cc = CreditCardView(frame: CGRectMake(193*CGFloat(i+1), 20, 193, 102), method: method)
             creditCards.addObject(cc)
             cc.delegate = self
             self.scrollView.addSubview(cc)
