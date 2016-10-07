@@ -150,7 +150,6 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
             self.paymentSelectorView.hidden = false
             self.paymentMethodSelectorTextField.text = self.paymentMethods.first?.lastFourDigits
             typeImage.image = self.setImageForType(self.getType((self.paymentMethods.first?.issuer)!))
-            //self.moveAcceptedCreditCardsViewToCreditCardField(false)
         }else{
             creditCardNumberField.hidden = false
             self.paymentSelectorView.hidden = true
@@ -259,9 +258,7 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
             let split = dateStr.characters.split("/").map(String.init)
             
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  token in
-                //if let delegate = self.delegate{
                     self.newPaymenteMethodAdded()
-                //}
                 }, fail: { error in
                     if let delegate = self.delegate{
                         self.errorLabel.text = error.localizedDescription

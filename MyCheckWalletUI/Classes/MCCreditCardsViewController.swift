@@ -57,11 +57,12 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         
         self.scrollView.contentSize = CGSize(width:CGFloat(creditCardCount+1)*193, height:self.scrollView.frame.height)
     }
+    
     @IBAction func backPressed(_ sender: UIBarButtonItem) {
         self.delegate?.backPressed()
     }
+    
     @IBAction func editPressed(_ sender: UIBarButtonItem?) {
-        //self.editMode ? self.editButton.title("Done", forState: .Normal) : self.editButton.setTitleTextAttributes("Edit", forState: .Normal)
         self.editMode = !self.editMode
         self.editButton.title = self.editMode ? "Done" : "Edit"
         
@@ -94,7 +95,7 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
     }
     
     func startActivityIndicator() {
-            activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)//[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+            activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)
             
             activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 30)//self.view.center
             activityView.startAnimating()

@@ -42,8 +42,7 @@ internal class MCAddCreditCardViewController: MCViewController {
         addNextButtonOnKeyboard(cvvField, action: #selector(nextPressed(_: )))
         
     }
-    internal static func instantiate(delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController
-    {
+    internal static func instantiate(delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController{
         
         let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
         let controller = storyboard.instantiateViewControllerWithIdentifier("MCAddCreditCardViewController") as! MCPaymentMethodsViewController
@@ -256,11 +255,14 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 return false
             }
             
-            let firstChar = month[month.startIndex]
-            
-            if firstChar != "1" && firstChar != "0"{
-                return false
+            if month.characters.count > 0 {
+                let firstChar = month[month.startIndex]
+                
+                if firstChar != "1" && firstChar != "0"{
+                    return false
+                }
             }
+            
             if valid {
                 textField.text = txtAfterUpdate as String
                 return false
