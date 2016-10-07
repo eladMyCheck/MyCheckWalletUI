@@ -264,14 +264,20 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split("/").map(String.init)
             self.startActivityIndicator()
+            self.applyButton.enabled = false
+            self.cancelButton.enabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  token in
                     self.newPaymenteMethodAdded()
+                self.applyButton.enabled = true
+                self.cancelButton.enabled = true
                 self.creditCardNumberField.text = ""
                 self.dateField.text = ""
                 self.cvvField.text = ""
                 self.zipField.text = ""
                 self.activityView.stopAnimating()
                 }, fail: { error in
+                    self.applyButton.enabled = true
+                    self.cancelButton.enabled = true
                     self.activityView.stopAnimating()
                     if let delegate = self.delegate{
                         self.errorLabel.text = error.localizedDescription

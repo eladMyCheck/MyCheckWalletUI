@@ -820,6 +820,7 @@
                         <outlet property="acceptedCreditCardsViewTopToCollapsableViewConstraint" destination="T6a-di-6nG" id="qLQ-4s-xSb"/>
                         <outlet property="acceptedCreditCardsViewTopToCreditCardFieldConstraint" destination="JLQ-4I-Yxb" id="5qr-RR-KB8"/>
                         <outlet property="amexImageView" destination="o7e-Mg-Qls" id="ou9-Wa-swB"/>
+                        <outlet property="applyButton" destination="ltV-QJ-iH5" id="fgs-2c-Yqi"/>
                         <outlet property="cancelButton" destination="QHU-II-Ebf" id="GN5-oR-6yc"/>
                         <outlet property="checkBoxLabel" destination="gpd-Ci-5vl" id="4yW-lw-Sam"/>
                         <outlet property="checkbox" destination="VZn-2s-q5N" id="7XP-57-ExG"/>
