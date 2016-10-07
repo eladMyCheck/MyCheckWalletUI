@@ -26,6 +26,7 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         super.viewDidLoad()
         self.setCrediCards()
         self.scrollView.delegate = self;
+        self.editButton.setTitleTextAttributes([NSFontAttributeName : UIFont.systemFontOfSize(13)], forState: .Normal)
     }
     
     internal func setCrediCards(){
