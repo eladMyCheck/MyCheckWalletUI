@@ -153,6 +153,8 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
             self.checkbox.hidden = true
             self.checkBoxLabel.hidden = true
         }else{
+            let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+            typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)!
             creditCardNumberField.hidden = false
             self.paymentSelectorView.hidden = true
             self.checkbox.hidden = false
