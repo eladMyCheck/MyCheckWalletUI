@@ -265,6 +265,10 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
             
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  token in
                     self.newPaymenteMethodAdded()
+                self.creditCardNumberField.text = ""
+                self.dateField.text = ""
+                self.cvvField.text = ""
+                self.zipField.text = ""
                 }, fail: { error in
                     if let delegate = self.delegate{
                         self.errorLabel.text = error.localizedDescription
