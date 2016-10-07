@@ -29,6 +29,7 @@ internal class MCAddCreditCardViewController: MCViewController {
     @IBOutlet var zipUnderline: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     var underlineForField : [UITextField : UIView]?
+    var activityView : UIActivityIndicatorView!
     
     var delegate : MCAddCreditCardViewControllerDelegate?
     //MARK: - life cycle functions
@@ -59,17 +60,20 @@ internal class MCAddCreditCardViewController: MCViewController {
     @IBAction func ApplyPressed(sender: AnyObject) {
         
         if updateAndCheckValid(){
+            self.startActivityIndicator()
             let type = getType()
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split("/").map(String.init)
             applyButton.enabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: false, success: {  token in
+                self.activityView.stopAnimating()
                 if let delegate = self.delegate{
                     
                     delegate.addedNewPaymentMethod(self, token:token)
                     self.applyButton.enabled = true
                 }
                 }, fail: { error in
+                    self.activityView.stopAnimating()
                     if let delegate = self.delegate{
                         self.errorLabel.text = error.localizedDescription
                         delegate.recivedError(self, error:error)
@@ -385,6 +389,12 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         }
     }
    
-    
+    func startActivityIndicator() {
+        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .Gray)
+        
+        activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 40)
+        activityView.startAnimating()
+        self.view.addSubview(activityView)
+    }
     
 }

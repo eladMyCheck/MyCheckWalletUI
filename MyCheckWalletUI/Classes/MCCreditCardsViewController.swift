@@ -97,7 +97,7 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
     func startActivityIndicator() {
             activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)
             
-            activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 30)//self.view.center
+            activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 30)
             activityView.startAnimating()
             self.view.addSubview(activityView)
     }
