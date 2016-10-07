@@ -33,7 +33,6 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
         let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
         let controller = storyboard.instantiateViewControllerWithIdentifier("AddAndSelectCreditCardViewController") as! AddAndSelectCreditCardViewController
         controller.paymentMethods = withPaymentMethods
-        //controller.delegate = delegate
         
         return controller
     }
@@ -147,16 +146,14 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
         cancelButton.layer.borderWidth = 1.0
         colapsableContainer.hidden = true
         if (self.paymentMethods != nil) {
-            self.paymentMethodSelectorTextField.text = self.paymentMethods.first?.lastFourDigits
-            self.paymentMethodSelectorTextField.hidden = false
             creditCardNumberField.hidden = true
+            self.paymentSelectorView.hidden = false
+            self.paymentMethodSelectorTextField.text = self.paymentMethods.first?.lastFourDigits
             typeImage.image = self.setImageForType(self.getType((self.paymentMethods.first?.issuer)!))
             //self.moveAcceptedCreditCardsViewToCreditCardField(false)
         }else{
             creditCardNumberField.hidden = false
-            //self.paymentMethodSelectorTextField.hidden = true
             self.paymentSelectorView.hidden = true
-            //self.moveAcceptedCreditCardsViewToCreditCardField(true)
         }
         self.moveAcceptedCreditCardsViewToCreditCardField(true)
         paymentMethodSelector = UIPickerView()
@@ -217,6 +214,7 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
     @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
         let controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: self.paymentMethods)
         self.presentViewController(controller, animated: true, completion: nil)
+        controller.delegate = self
     }
     
     override internal func setFieldInvalid(field: UITextField , invalid: Bool){
@@ -256,14 +254,14 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
     
     override func ApplyPressed(sender: AnyObject) {
         if updateAndCheckValid(){
-            let type = getType(creditCardNumberField.text!)
+            let type = super.getType()//super.getType(creditCardNumberField.text!)
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split("/").map(String.init)
             
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  token in
-                if let delegate = self.delegate{
+                //if let delegate = self.delegate{
                     self.newPaymenteMethodAdded()
-                }
+                //}
                 }, fail: { error in
                     if let delegate = self.delegate{
                         self.errorLabel.text = error.localizedDescription
@@ -291,5 +289,20 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
 extension AddAndSelectCreditCardViewController : MCPaymentMethodsViewControllerDelegate{
     internal func userDismissed(  controller: MCPaymentMethodsViewControllerDelegate)
     {
+    }
+    
+    func dissmissedVC(){
+        MyCheckWallet.manager.getPaymentMethods({ (array) in
+            if array.count > 0{
+               self.paymentMethods = array
+            }else{
+                self.paymentMethods = nil
+
+            }
+            self.configureUI()
+            }, fail: { error in
+                
+        })
+
     }
 }

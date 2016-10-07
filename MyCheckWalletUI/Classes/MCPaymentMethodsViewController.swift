@@ -9,7 +9,7 @@
 import UIKit
 internal protocol MCPaymentMethodsViewControllerDelegate {
     func userDismissed( controller: MCPaymentMethodsViewControllerDelegate)
-
+    func dissmissedVC()
     
 }
 internal class MCPaymentMethodsViewController: MCViewController {
@@ -165,6 +165,7 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
     func backPressed() {
         self.dismissViewControllerAnimated(true) { 
             print("payment methods vc dissmissed")
+            self.delegate?.dissmissedVC()
         }
     }
 }

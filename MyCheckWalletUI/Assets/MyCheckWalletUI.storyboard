@@ -416,9 +416,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xm8-2R-Aaq" firstAttribute="top" secondItem="tEo-uF-FUO" secondAttribute="bottom" id="9Ti-FK-s9i"/>
+                            <constraint firstItem="xm8-2R-Aaq" firstAttribute="centerX" secondItem="DGl-IC-0Ml" secondAttribute="centerX" constant="15" id="WCm-A8-w3V"/>
                             <constraint firstItem="tEo-uF-FUO" firstAttribute="leading" secondItem="DGl-IC-0Ml" secondAttribute="leadingMargin" constant="-16" id="fDg-ia-zcx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tEo-uF-FUO" secondAttribute="trailing" constant="-16" id="feo-By-Y17"/>
-                            <constraint firstItem="xm8-2R-Aaq" firstAttribute="leading" secondItem="DGl-IC-0Ml" secondAttribute="leadingMargin" constant="90" id="lnt-vX-fYW"/>
                             <constraint firstItem="tEo-uF-FUO" firstAttribute="top" secondItem="Bcq-uP-rwx" secondAttribute="bottom" id="s2p-P9-2j1"/>
                             <constraint firstAttribute="bottomMargin" secondItem="xm8-2R-Aaq" secondAttribute="bottom" id="uvp-Qd-NHH"/>
                         </constraints>

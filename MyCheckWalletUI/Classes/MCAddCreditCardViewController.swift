@@ -360,7 +360,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
     }
     
     //this asumes the field passed validation
-    private func getType() -> CreditCardType {
+    internal func getType() -> CreditCardType {
         let ( type ,_ ,_,_) = CreditCardValidator.checkCardNumber(creditCardNumberField.text!)
         switch type {
         case .Visa:
