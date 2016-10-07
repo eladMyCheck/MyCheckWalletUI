@@ -225,7 +225,7 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
     override internal func setFieldInvalid(field: UITextField , invalid: Bool){
         let underline = underlineForField![field]
         underline?.backgroundColor = invalid ? UIColor.fieldUnderlineInvalid() : UIColor(r: 124, g: 114, b: 112, a: 1)
-        field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor(r: 124, g: 114, b: 112, a: 1)
+        field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor(r: 255, g: 255, b: 255, a: 0.33)
     }
 
     internal func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
