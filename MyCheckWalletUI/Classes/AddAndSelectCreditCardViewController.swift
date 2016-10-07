@@ -259,7 +259,8 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
     
     override func ApplyPressed(sender: AnyObject) {
         if updateAndCheckValid(){
-            let type = super.getType()//super.getType(creditCardNumberField.text!)
+            self.view.endEditing(true)
+            let type = super.getType()
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split("/").map(String.init)
             self.startActivityIndicator()
