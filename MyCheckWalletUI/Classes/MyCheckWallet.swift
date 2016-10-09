@@ -10,7 +10,7 @@ import Foundation
 ///MyCheckWallet is a singlton that will give you access to all of the MyCheck functionality. It has all the calls needed to manage a users payment methods.
 public class MyCheckWallet{
   private var token: String?
-  
+    internal var methods:  [PaymentMethod] = []
     ///This property points to the singlton object. It should be used for calling all the functions in the class.
   public static let manager = MyCheckWallet()
   
@@ -24,7 +24,12 @@ public class MyCheckWallet{
   public func login( refreshToken: String , publishableKey: String , success: (() -> Void) , fail: ((NSError) -> Void)? ) {
     let request = Networking.login(refreshToken, publishableKey: publishableKey, success: {token in
       self.token = token
-      success()
+        self.getPaymentMethods({paymentMethods in
+            self.methods = paymentMethods
+            success()
+
+            }, fail: fail)
+        
       }, fail: fail)
   }
   /// Check if a user is logged in or not
@@ -40,7 +45,11 @@ public class MyCheckWallet{
     ///   - parameter fail: Called when the function fails for any reason
  public func getPaymentMethods( success: (( [PaymentMethod] ) -> Void) , fail: ((NSError) -> Void)? ) {
     if let token = token{
-      let request = Networking.getPaymentMethods(token, success: success, fail: fail)
+        let request = Networking.getPaymentMethods(token, success: {
+            methods in
+            self.methods = methods
+            success(methods)
+            }, fail: fail)
     }else{
       if let fail = fail{
         fail(MyCheckWallet.notLoggedInError())
