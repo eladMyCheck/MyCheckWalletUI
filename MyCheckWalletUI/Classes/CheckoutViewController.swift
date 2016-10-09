@@ -7,8 +7,19 @@
 //
 
 import UIKit
+
+///The delegate of a CheckoutView or CheckoutTableViewCell object must adopt this protocol and implement at least some of its methods in order to be able to resize the view when needed. The View will not automaticly resize since it might be used in a few diffrant ways (e.g contraints might be broken)
 @objc public protocol CheckoutDelegate{
-    optional func checkoutViewResized(newHight : Float)
+    ///Called by the CheckoutView/CheckoutTableViewCell when the height is changed
+    ///   - parameter newHight: The new height of the CheckoutView/CheckoutTableViewCell
+    ///   - parameter animationDuration: The duration the animation will take. The animation will start directly after this call is pressed. You should resize the view imidiatly and use the same animation duration in order for the animation to look good
+    
+    optional func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: Float)
+    ///Called by the CheckoutView/CheckoutTableViewCell when the height is changed.
+    ///   - parameter newFrame: The new frame of the CheckoutView should use.
+    ///   - parameter animationDuration: The duration the animation will take. The animation will start directly after this call is pressed. You should resize the view imidiatly and use the same animation duration in order for the animation to look good
+    optional func checkoutViewShouldResizeFrame(newFrame : CGRect , animationDuration: Float)
+    
 }
 internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //variables
@@ -25,7 +36,7 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     @IBOutlet var textFieldsBorderViews: [UIView]!
     @IBOutlet weak var managePaymentMethodsButton: UIButton!
     var paymentMethodSelector : UIPickerView = UIPickerView()
-    internal var paymentMethods: Array<PaymentMethod>!
+    internal var paymentMethods: Array<PaymentMethod>! = []
     
     @IBOutlet weak var visaImageView: UIImageView!
     @IBOutlet weak var mastercardImageView: UIImageView!
@@ -48,7 +59,7 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         self.assignImages()
         
         if paymentMethods.count > 0 {
-        selectedMethod = paymentMethods[0]
+            selectedMethod = paymentMethods[0]
         }
     }
     
@@ -114,23 +125,20 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     }
     
     func donePressed(sender: UIBarButtonItem){
-         selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRowInComponent(0)]
+        selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRowInComponent(0)]
         self.paymentMethodSelectorTextField.text = selectedMethod!.lastFourDigits
         typeImage.image = self.setImageForType(self.getType((selectedMethod!.issuer)))
-                self.view.endEditing(true)
+        self.view.endEditing(true)
     }
-
+    
     
     internal func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     
     internal func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if self.paymentMethods != nil {
             return self.paymentMethods.count
-        }else{
-            return 0
-        }
+     
     }
     
     internal func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -148,8 +156,8 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         }
         cancelButton.layer.borderColor = UIColor(r: 126, g: 166, b: 171, a: 1).CGColor
         cancelButton.layer.borderWidth = 1.0
-        colapsableContainer.hidden = true
-        if (self.paymentMethods != nil) {
+        colapsableContainer.alpha = 0
+        if paymentMethods.count > 0 {
             creditCardNumberField.hidden = true
             self.paymentSelectorView.hidden = false
             self.paymentMethodSelectorTextField.text = self.paymentMethods.first?.lastFourDigits
@@ -219,7 +227,7 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
             return CreditCardType.unknown
         }
     }
-
+    
     @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
         let controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: self.paymentMethods)
         self.presentViewController(controller, animated: true, completion: nil)
@@ -231,12 +239,11 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         underline?.backgroundColor = invalid ? UIColor.fieldUnderlineInvalid() : UIColor(r: 124, g: 114, b: 112, a: 1)
         field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor(r: 255, g: 255, b: 255, a: 0.33)
     }
-
+    
     internal func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         switch textField {
         case creditCardNumberField:
             UIView.animateWithDuration(0.4, animations: {
-                self.colapsableContainer.hidden = false
                 self.moveAcceptedCreditCardsViewToCreditCardField(false)
             })
             break
@@ -256,7 +263,6 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         super.cancelPressed(sender)
         self.view.endEditing(true)
         UIView.animateWithDuration(0.4, animations: {
-            self.colapsableContainer.hidden = true
             self.moveAcceptedCreditCardsViewToCreditCardField(true)
         })
     }
@@ -271,7 +277,7 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
             self.applyButton.enabled = false
             self.cancelButton.enabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  token in
-                    self.newPaymenteMethodAdded()
+                self.newPaymenteMethodAdded()
                 self.applyButton.enabled = true
                 self.cancelButton.enabled = true
                 self.creditCardNumberField.text = ""
@@ -295,14 +301,21 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         MyCheckWallet.manager.getPaymentMethods({ (methods) in
             self.paymentMethods = methods
             self.configureUI()
-            }) { (error) in
-                
+        }) { (error) in
+            
         }
     }
     
     func moveAcceptedCreditCardsViewToCreditCardField(move : Bool){
+        
         self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
         self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
+        let delta = self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.constant -  self.acceptedCreditCardsViewTopToCollapsableViewConstraint.constant
+        self.colapsableContainer.alpha = move ? 1 : 0
+        UIView.animateWithDuration(0.2, animations: {
+            self.view.layoutIfNeeded()
+            self.colapsableContainer.alpha = ( self.colapsableContainer.alpha + 1 ) % 2 // if it was 1 then 0 and vise versa
+        })
     }
 }
 
@@ -314,15 +327,15 @@ extension CheckoutViewController : MCPaymentMethodsViewControllerDelegate{
     func dissmissedVC(){
         MyCheckWallet.manager.getPaymentMethods({ (array) in
             if array.count > 0{
-               self.paymentMethods = array
+                self.paymentMethods = array
             }else{
                 self.paymentMethods = nil
-
+                
             }
             self.configureUI()
             }, fail: { error in
                 
         })
-
+        
     }
 }
