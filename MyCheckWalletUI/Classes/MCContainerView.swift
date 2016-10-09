@@ -22,16 +22,8 @@ public class MCContainerView: UIView {
         //NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: controller.view, attribute: .BottomMargin, multiplier: 1.0, constant: -40).active = true
         NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 415).active = true
         
-        let creditCardController : AddAndSelectCreditCardViewController
-        if withPaymentMethods != nil{
-            if withPaymentMethods.count > 0 {
-                creditCardController = AddAndSelectCreditCardViewController.createAddAndSelectCreditCardViewController(withPaymentMethods)
-            }else{
-                creditCardController = AddAndSelectCreditCardViewController.createAddAndSelectCreditCardViewController(nil)
-            }
-        }else{
-            creditCardController = AddAndSelectCreditCardViewController.createAddAndSelectCreditCardViewController(nil)
-        }
+        let creditCardController = CheckoutViewController.createCheckoutViewController()
+       
         
         controller.addChildViewController(creditCardController)
         creditCardController.view.translatesAutoresizingMaskIntoConstraints = false
