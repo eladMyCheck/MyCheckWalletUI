@@ -33,7 +33,7 @@
 		75BD848E9FED85E0B5F88EDC3D111EC3 /* MyCheckWalletUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C6C235EF3B67F34D0681FCF4481EBD /* MyCheckWalletUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B48852C4D848FA2DA416A98F6425869 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E07E98001DB6C163294A39CAB05963D /* ServerTrustPolicy.swift */; };
 		7D0805651DA3731A0008C3F7 /* MCContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0805641DA3731A0008C3F7 /* MCContainerView.swift */; };
-		7D0EF4D31DA28CD900D06AF8 /* AddAndSelectCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0EF4D21DA28CD900D06AF8 /* AddAndSelectCreditCardViewController.swift */; };
+		7D0EF4D31DA28CD900D06AF8 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0EF4D21DA28CD900D06AF8 /* CheckoutViewController.swift */; };
 		7D26964D1D9E84F0009673A7 /* AddCreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D26964C1D9E84F0009673A7 /* AddCreditCardView.swift */; };
 		7D2FB0BA1D9D5D7B001CB82D /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2FB0B91D9D5D7B001CB82D /* CreditCardView.swift */; };
 		7D507FB81D9D38200082C839 /* MCScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D77E03C1D9D30A20001FFB8 /* MCScrollView.swift */; };
@@ -136,7 +136,7 @@
 		7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.release.xcconfig"; sourceTree = "<group>"; };
 		79E32C97D15B18BFEB591B4A8B5C8477 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		7D0805641DA3731A0008C3F7 /* MCContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MCContainerView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		7D0EF4D21DA28CD900D06AF8 /* AddAndSelectCreditCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AddAndSelectCreditCardViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		7D0EF4D21DA28CD900D06AF8 /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CheckoutViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7D26964C1D9E84F0009673A7 /* AddCreditCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardView.swift; sourceTree = "<group>"; };
 		7D2FB0B91D9D5D7B001CB82D /* CreditCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		7D77E03C1D9D30A20001FFB8 /* MCScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCScrollView.swift; sourceTree = "<group>"; };
@@ -360,7 +360,7 @@
 				47A97A33DFEA2D0F3BB21CEC8CD2C830 /* MCPaymentMethodsViewController.swift */,
 				7D77E0411D9D31D80001FFB8 /* MCCreditCardsViewController.swift */,
 				7D26964C1D9E84F0009673A7 /* AddCreditCardView.swift */,
-				7D0EF4D21DA28CD900D06AF8 /* AddAndSelectCreditCardViewController.swift */,
+				7D0EF4D21DA28CD900D06AF8 /* CheckoutViewController.swift */,
 				7D2FB0B91D9D5D7B001CB82D /* CreditCardView.swift */,
 				7D77E03C1D9D30A20001FFB8 /* MCScrollView.swift */,
 				2AEC0E1207FD06D520F98680D73CB437 /* MCViewController.swift */,
@@ -674,7 +674,7 @@
 				49A0C5BAC95B39E1E8A092533DEB6948 /* CreditCardValidator.swift in Sources */,
 				7D77E0431D9D31D80001FFB8 /* MCCreditCardsViewController.swift in Sources */,
 				21D30014F9D3D9232E45FD64F83DE953 /* MCAddCreditCardViewController.swift in Sources */,
-				7D0EF4D31DA28CD900D06AF8 /* AddAndSelectCreditCardViewController.swift in Sources */,
+				7D0EF4D31DA28CD900D06AF8 /* CheckoutViewController.swift in Sources */,
 				F37F5AF1D0EC445E7416A2DC45CF9665 /* MCPaymentMethodsViewController.swift in Sources */,
 				2756C0901245F0BAA1A7E26532233477 /* MCViewController.swift in Sources */,
 				7D26964D1D9E84F0009673A7 /* AddCreditCardView.swift in Sources */,

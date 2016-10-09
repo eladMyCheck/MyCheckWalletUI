@@ -7,9 +7,14 @@
 //
 
 import UIKit
-
+@objc public protocol CheckoutDelegate{
+    optional func checkoutViewResized(newHight : Float)
+}
 internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    //variables
+    var selectedMethod : PaymentMethod?
+    
+    //Outlets
     @IBOutlet weak var paymentSelectorView: UIView!
     @IBOutlet weak var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
     @IBOutlet weak var acceptedCreditCardsViewTopToCollapsableViewConstraint: NSLayoutConstraint!
@@ -41,6 +46,10 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         super.viewDidLoad()
         self.configureUI()
         self.assignImages()
+        
+        if paymentMethods.count > 0 {
+        selectedMethod = paymentMethods[0]
+        }
     }
     
     internal override func viewWillAppear(animated: Bool) {
@@ -105,15 +114,10 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     }
     
     func donePressed(sender: UIBarButtonItem){
-        let selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRowInComponent(0)]
-        self.paymentMethodSelectorTextField.text = selectedMethod.lastFourDigits
-        typeImage.image = self.setImageForType(self.getType((selectedMethod.issuer)))
-        MyCheckWallet.manager.setPaymentMethodAsDefault(selectedMethod, success: {
-            print("payment set as default")
-            }) { (error) in
-                print("did not set payment as default")
-        }
-        self.view.endEditing(true)
+         selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRowInComponent(0)]
+        self.paymentMethodSelectorTextField.text = selectedMethod!.lastFourDigits
+        typeImage.image = self.setImageForType(self.getType((selectedMethod!.issuer)))
+                self.view.endEditing(true)
     }
 
     
