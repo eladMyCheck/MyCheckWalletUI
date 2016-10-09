@@ -84,7 +84,7 @@ internal class MCAddCreditCardViewController: MCViewController {
     }
     @IBAction func cancelPressed(sender: AnyObject) {
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-        if self.isMemberOfClass(AddAndSelectCreditCardViewController) {
+        if self.isMemberOfClass(CheckoutViewController) {
             typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)
         }else{
             typeImage.image = UIImage(named: "no_type_card" , inBundle: bundle, compatibleWithTraitCollection: nil)
@@ -161,7 +161,7 @@ internal class MCAddCreditCardViewController: MCViewController {
             
             
         default:
-            if self.isMemberOfClass(AddAndSelectCreditCardViewController) {
+            if self.isMemberOfClass(CheckoutViewController) {
                 typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)
             }else{
                 typeImage.image = UIImage(named: "no_type_card" , inBundle: bundle, compatibleWithTraitCollection: nil)

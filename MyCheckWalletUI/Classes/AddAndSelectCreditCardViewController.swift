@@ -1,5 +1,5 @@
 //
-//  AddAndSelectCreditCardViewController.swift
+//  CheckoutViewController.swift
 //  Pods
 //
 //  Created by Mihail Kalichkov on 10/3/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var paymentSelectorView: UIView!
     @IBOutlet weak var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
@@ -29,10 +29,10 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
     @IBOutlet weak var discoverImageView: UIImageView!
     @IBOutlet weak var checkBoxLabel: UILabel!
     
-    internal static func createAddAndSelectCreditCardViewController(withPaymentMethods : Array<PaymentMethod>!) -> AddAndSelectCreditCardViewController{
+    internal static func createCheckoutViewController() -> CheckoutViewController{
         let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
-        let controller = storyboard.instantiateViewControllerWithIdentifier("AddAndSelectCreditCardViewController") as! AddAndSelectCreditCardViewController
-        controller.paymentMethods = withPaymentMethods
+        let controller = storyboard.instantiateViewControllerWithIdentifier("CheckoutViewController") as! CheckoutViewController
+        controller.paymentMethods = MyCheckWallet.manager.methods
         
         return controller
     }
@@ -302,7 +302,7 @@ internal class AddAndSelectCreditCardViewController: MCAddCreditCardViewControll
     }
 }
 
-extension AddAndSelectCreditCardViewController : MCPaymentMethodsViewControllerDelegate{
+extension CheckoutViewController : MCPaymentMethodsViewControllerDelegate{
     internal func userDismissed(  controller: MCPaymentMethodsViewControllerDelegate)
     {
     }
