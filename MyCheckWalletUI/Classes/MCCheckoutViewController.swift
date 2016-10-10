@@ -315,6 +315,13 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
 
     }
     
+    override func startActivityIndicator() {
+        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)
+        
+        activityView.center=CGPointMake(self.view.center.x, self.view.center.y)
+        activityView.startAnimating()
+        self.view.addSubview(activityView)
+    }
     
     func newPaymenteMethodAdded(){
         MyCheckWallet.manager.getPaymentMethods({ (methods) in
