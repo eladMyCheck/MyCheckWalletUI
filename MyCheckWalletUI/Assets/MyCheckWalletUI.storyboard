@@ -374,6 +374,7 @@
                     </view>
                     <connections>
                         <outlet property="applyButton" destination="Xfi-ZR-1ZM" id="TkQ-XM-MYy"/>
+                        <outlet property="cancelBut" destination="pVn-G1-NBu" id="HOL-bG-soc"/>
                         <outlet property="creditCardNumberField" destination="JuV-uX-eLO" id="4qm-BX-LyG"/>
                         <outlet property="creditCardUnderline" destination="W6f-IO-CN5" id="06z-Us-u1k"/>
                         <outlet property="cvvField" destination="bol-cB-Pbe" id="amS-CN-7uF"/>

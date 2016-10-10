@@ -22,6 +22,7 @@ public class MCAddCreditCardViewController: MCViewController {
     @IBOutlet internal var dateField: UITextField!
     @IBOutlet internal var cvvField: UITextField!
     @IBOutlet internal var zipField: UITextField!
+    @IBOutlet weak var cancelBut: UIButton!
     
     @IBOutlet internal var creditCardUnderline: UIView!
     @IBOutlet internal var dateUnderline: UIView!
@@ -65,12 +66,14 @@ public class MCAddCreditCardViewController: MCViewController {
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split("/").map(String.init)
             applyButton.enabled = false
+            cancelBut.enabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: false, success: {  token in
                 self.activityView.stopAnimating()
                 if let delegate = self.delegate{
                     
                     delegate.addedNewPaymentMethod(self, token:token)
                     self.applyButton.enabled = true
+                    self.cancelBut.enabled = true
                 }
                 }, fail: { error in
                     self.activityView.stopAnimating()
@@ -78,6 +81,7 @@ public class MCAddCreditCardViewController: MCViewController {
                         self.errorLabel.text = error.localizedDescription
                         delegate.recivedError(self, error:error)
                         self.applyButton.enabled = true
+                        self.cancelBut.enabled = true
                     }
             })
         }
