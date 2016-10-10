@@ -236,7 +236,12 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
         }
     }
    @objc private func refreshPaymentMethods(){
-    
+    MyCheckWallet.manager.getPaymentMethods({ (methods) in
+        self.paymentMethods = methods
+        self.configureUI()
+    }) { (error) in
+        
+    }
     }
     @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
         let controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: self.paymentMethods)
