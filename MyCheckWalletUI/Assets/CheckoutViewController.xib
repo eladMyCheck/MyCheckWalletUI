@@ -91,6 +91,9 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="nMZ-Lu-PAh"/>
+                    </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e97-nh-J5G">
                     <color key="backgroundColor" red="0.48627450979999998" green="0.44705882349999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
