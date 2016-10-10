@@ -53,7 +53,7 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_type_card_1" translatesAutoresizingMaskIntoConstraints="NO" id="bEb-a8-zXO">
                     <constraints>
-                        <constraint firstAttribute="width" constant="25" id="AS6-bb-eZl"/>
+                        <constraint firstAttribute="width" constant="29" id="AS6-bb-eZl"/>
                         <constraint firstAttribute="height" constant="18" id="fB0-Ed-rGt"/>
                     </constraints>
                 </imageView>
