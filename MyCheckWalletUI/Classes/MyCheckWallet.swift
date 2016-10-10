@@ -9,6 +9,8 @@
 import Foundation
 ///MyCheckWallet is a singlton that will give you access to all of the MyCheck functionality. It has all the calls needed to manage a users payment methods.
 public class MyCheckWallet{
+    internal static let refreshPaymentMethodsNotification = "com.mycheck.refreshPaymentMethodsNotification"
+
   private var token: String?
     internal var methods:  [PaymentMethod] = []
     ///This property points to the singlton object. It should be used for calling all the functions in the class.
@@ -25,7 +27,9 @@ public class MyCheckWallet{
     let request = Networking.login(refreshToken, publishableKey: publishableKey, success: {token in
       self.token = token
         self.getPaymentMethods({paymentMethods in
-            self.methods = paymentMethods
+            let nc = NSNotificationCenter.defaultCenter()
+            nc.postNotificationName(MyCheckWallet.refreshPaymentMethodsNotification,object: nil)
+            
             success()
 
             }, fail: fail)
@@ -77,7 +81,11 @@ public class MyCheckWallet{
                      success: (( String ) -> Void) ,
                      fail: ((NSError) -> Void)? ){
     if let token = token{
-      let request = Networking.addCreditCard(rawNumber, expireMonth: expireMonth, expireYear: expireYear, postalCode: postalCode, cvc: cvc, type: type, isSingleUse: isSingleUse,accessToken: token, success: success, fail: fail)
+        let request = Networking.addCreditCard(rawNumber, expireMonth: expireMonth, expireYear: expireYear, postalCode: postalCode, cvc: cvc, type: type, isSingleUse: isSingleUse,accessToken: token, success: { token in
+            self.refreshPaymentMethodsAndPostNotification()
+
+            success(token)
+            }, fail: fail)
     }else{
       
       if let fail = fail{
@@ -96,7 +104,11 @@ public class MyCheckWallet{
  public func setPaymentMethodAsDefault( method: PaymentMethod,  success: (() -> Void) , fail: ((NSError) -> Void)? ){
     if let token = token{
       
-      let request = Networking.setPaymentMethodAsDefault(token, methodId: method.Id, success: success, fail: fail)
+        let request = Networking.setPaymentMethodAsDefault(token, methodId: method.Id, success: {
+            self.refreshPaymentMethodsAndPostNotification()
+
+            success()
+            }, fail: fail)
     }else{
       
       if let fail = fail{
@@ -114,7 +126,10 @@ public class MyCheckWallet{
  public func deletePaymentMethod( method: PaymentMethod , success: (() -> Void) , fail: ((NSError) -> Void)? ) {
     if let token = token{
       
-      let request = Networking.deletePaymentMethod(token, methodId: method.Id, success: success, fail: fail)
+        let request = Networking.deletePaymentMethod(token, methodId: method.Id, success: {
+            success()
+            self.refreshPaymentMethodsAndPostNotification()
+            }, fail: fail)
     }else{
       
       if let fail = fail{
@@ -131,4 +146,15 @@ public class MyCheckWallet{
     let error = NSError(domain: "MyCheck SDK error domain", code: Networking.ErrorCodes.notLoggedIn, userInfo: [NSLocalizedDescriptionKey : locMsg])
     return error
   }
+    
+    private func refreshPaymentMethodsAndPostNotification(){
+        MyCheckWallet.manager.getPaymentMethods({ (array) in
+            let nc = NSNotificationCenter.defaultCenter()
+            nc.postNotificationName(MyCheckWallet.refreshPaymentMethodsNotification,object: nil)
+            
+
+            }, fail: { error in
+                
+        })
+          }
 }

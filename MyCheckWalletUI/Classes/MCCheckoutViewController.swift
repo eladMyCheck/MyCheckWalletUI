@@ -66,6 +66,9 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
         if paymentMethods.count > 0 {
             selectedMethod = paymentMethods[0]
         }
+        
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: #selector(MCCheckoutViewController.refreshPaymentMethods), name: MyCheckWallet.refreshPaymentMethodsNotification, object: nil)
     }
     
     internal override func viewWillAppear(animated: Bool) {
@@ -232,7 +235,9 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
             return CreditCardType.unknown
         }
     }
+   @objc private func refreshPaymentMethods(){
     
+    }
     @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
         let controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: self.paymentMethods)
         self.presentViewController(controller, animated: true, completion: nil)
