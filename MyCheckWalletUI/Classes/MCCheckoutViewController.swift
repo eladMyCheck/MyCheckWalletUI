@@ -269,15 +269,15 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
     @IBAction func checkboxPressed(_ sender: UIButton) {
         self.checkbox.selected = !self.checkbox.selected
     }
-    override func cancelPressed(sender: AnyObject) {
+  
+    @IBAction func cancelButPressed(_ sender: AnyObject) {
         super.cancelPressed(sender)
         self.view.endEditing(true)
         UIView.animateWithDuration(0.4, animations: {
             self.moveAcceptedCreditCardsViewToCreditCardField(true)
         })
     }
-    
-    override func ApplyPressed(sender: AnyObject) {
+    @IBAction func applyButPressed(_ sender: AnyObject) {
         if updateAndCheckValid(){
             self.view.endEditing(true)
             let type = super.getType()
@@ -305,7 +305,9 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
                     }
             })
         }
+
     }
+    
     
     func newPaymenteMethodAdded(){
         MyCheckWallet.manager.getPaymentMethods({ (methods) in
