@@ -56,6 +56,12 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
             self.scrollView.addSubview(cc)
         }
         
+        if creditCardCount == 0 {
+            self.editButton.title = ""
+        }else{
+            self.editButton.title = self.editMode ? "Done" : "Edit"
+        }
+        
         self.scrollView.contentSize = CGSize(width:CGFloat(creditCardCount+1)*193, height:self.scrollView.frame.height)
     }
     

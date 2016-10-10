@@ -165,13 +165,15 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
         cancelButton.layer.borderColor = UIColor(r: 126, g: 166, b: 171, a: 1).CGColor
         cancelButton.layer.borderWidth = 1.0
         colapsableContainer.alpha = 0
-        if paymentMethods.count > 0 {
-            creditCardNumberField.hidden = true
-            self.paymentSelectorView.hidden = false
-            self.paymentMethodSelectorTextField.text = self.paymentMethods.first?.lastFourDigits
-            typeImage.image = self.setImageForType(self.getType((self.paymentMethods.first?.issuer)!))
-            self.checkbox.hidden = true
-            self.checkBoxLabel.hidden = true
+        if paymentMethods != nil {
+            if paymentMethods.count > 0 {
+                creditCardNumberField.hidden = true
+                self.paymentSelectorView.hidden = false
+                self.paymentMethodSelectorTextField.text = self.paymentMethods.first?.lastFourDigits
+                typeImage.image = self.setImageForType(self.getType((self.paymentMethods.first?.issuer)!))
+                self.checkbox.hidden = true
+                self.checkBoxLabel.hidden = true
+            }
         }else{
             let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
             typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)!
