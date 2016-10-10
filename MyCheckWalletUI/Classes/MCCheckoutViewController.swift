@@ -15,11 +15,7 @@ import UIKit
     ///   - parameter animationDuration: The duration the animation will take. The animation will start directly after this call is pressed. You should resize the view imidiatly and use the same animation duration in order for the animation to look good
     
    func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: NSTimeInterval) -> Void
-    ///Called by the CheckoutView/CheckoutTableViewCell when the height is changed.
-    ///   - parameter newFrame: The new frame of the CheckoutView should use.
-    ///   - parameter animationDuration: The duration the animation will take. The animation will start directly after this call is pressed. You should resize the view imidiatly and use the same animation duration in order for the animation to look good
-    // optional func checkoutViewShouldResizeFrame(newFrame : CGRect , animationDuration: NSTimeInterval)
-    
+       
 }
 public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //variables
