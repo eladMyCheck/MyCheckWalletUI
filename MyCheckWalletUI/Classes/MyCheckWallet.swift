@@ -78,11 +78,13 @@ public class MyCheckWallet{
                      cvc: String ,
                      type: CreditCardType ,
                      isSingleUse: Bool ,
-                     success: (( String ) -> Void) ,
+                     success: (( PaymentMethod ) -> Void) ,
                      fail: ((NSError) -> Void)? ){
     if let token = token{
         let request = Networking.addCreditCard(rawNumber, expireMonth: expireMonth, expireYear: expireYear, postalCode: postalCode, cvc: cvc, type: type, isSingleUse: isSingleUse,accessToken: token, success: { token in
-            self.refreshPaymentMethodsAndPostNotification()
+            if token.isSingleUse == false{
+                self.refreshPaymentMethodsAndPostNotification()
+            }
 
             success(token)
             }, fail: fail)

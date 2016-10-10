@@ -76,9 +76,9 @@ internal class Networking {
                               type: CreditCardType ,
                               isSingleUse: Bool ,
                               accessToken: String ,
-                              success: (( String ) -> Void) ,
+                              success: (( PaymentMethod ) -> Void) ,
                               fail: ((NSError) -> Void)? ) -> Alamofire.Request{
-        let params = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "type" : type.rawValue , "is_single_use" : NSNumber(bool: isSingleUse), "env" : "sandbox"]
+        let params = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "type" : type.rawValue , "is_single_use" : String(NSNumber(bool: isSingleUse)), "env" : "sandbox"]
         
         
         
@@ -86,7 +86,11 @@ internal class Networking {
             
                 let methodJSON = JSON["pm"]
                 if let methodJSON = methodJSON{
-                success((methodJSON["token"] as? String)!)
+                    
+                    if methodJSON.isKindOfClass(NSDictionary) == true{
+                        success(PaymentMethod(JSON: methodJSON as! NSDictionary)!)
+                    }
+                //success((methodJSON["token"] as? String)!)
                 }else{
                     if let fail = fail{
                         if let errormessage = JSON["message"] as? String{

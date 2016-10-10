@@ -253,7 +253,13 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     }
     }
     @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
-        let controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: self.paymentMethods)
+        let controller : MCPaymentMethodsViewController
+        if self.paymentMethods.first?.isSingleUse == true {
+            controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: nil)
+        }else{
+            controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: self.paymentMethods)
+        }
+        
         self.presentViewController(controller, animated: true, completion: nil)
         controller.delegate = self
     }
@@ -301,13 +307,26 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
             self.applyButton.enabled = false
             self.cancelButton.enabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  token in
-                self.newPaymenteMethodAdded()
-                self.applyButton.enabled = true
-                self.cancelButton.enabled = true
                 self.creditCardNumberField.text = ""
                 self.dateField.text = ""
                 self.cvvField.text = ""
                 self.zipField.text = ""
+                if token.isSingleUse == true{
+                    self.selectedMethod = token
+                    self.paymentMethods = [token]
+                    self.paymentMethodSelector.reloadAllComponents()
+                    self.paymentMethodSelectorTextField.text = self.selectedMethod!.lastFourDigits
+                    self.typeImage.image = self.setImageForType(self.getType((self.selectedMethod!.issuer)))
+                    self.creditCardNumberField.hidden = true
+                    self.paymentSelectorView.hidden = false
+                    self.checkbox.hidden = true
+                    self.checkBoxLabel.hidden = true
+                    self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
+                }else{
+                    self.newPaymenteMethodAdded()
+                }
+                self.applyButton.enabled = true
+                self.cancelButton.enabled = true
                 self.activityView.stopAnimating()
                 }, fail: { error in
                     self.applyButton.enabled = true
