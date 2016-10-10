@@ -261,7 +261,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     override internal func setFieldInvalid(field: UITextField , invalid: Bool){
         let border = borderForField![field]
         border?.layer.borderColor = invalid ? UIColor.redColor().CGColor : UIColor(r: 124, g: 114, b: 112, a: 1).CGColor
-        field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor(r: 255, g: 255, b: 255, a: 0.33)
+        field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor(r: 255, g: 255, b: 255, a: 1)
     }
     
     internal func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
