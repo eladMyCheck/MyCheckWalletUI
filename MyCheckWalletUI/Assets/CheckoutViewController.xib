@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -52,7 +52,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="hcW-t3-chb">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="415"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="391"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_type_card_1" translatesAutoresizingMaskIntoConstraints="NO" id="bEb-a8-zXO">
@@ -106,8 +106,7 @@
                         <constraint firstAttribute="height" constant="1" id="Ig4-yf-tFf"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-gf-87l">
-                    <frame key="frameInset" minX="-8" minY="138" width="387" height="110"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-gf-87l">
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLK-VW-lfS">
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -131,12 +130,10 @@
                                 <constraint firstAttribute="height" constant="1" id="3oU-x9-vp8"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-Sf-TUO">
-                            <frame key="frameInset" minX="140" minY="6" width="107" height="45"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-Sf-TUO">
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqs-Pv-v4G">
-                            <frame key="frameInset" minX="153" minY="20" width="81" height="17"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqs-Pv-v4G">
                             <constraints>
                                 <constraint firstAttribute="width" constant="81" id="ZKh-WS-qvD"/>
                             </constraints>
@@ -147,19 +144,16 @@
                                 <outlet property="delegate" destination="-1" id="Zvi-U7-7T4"/>
                             </connections>
                         </textField>
-                        <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hJ-Y4-PDh">
-                            <frame key="frameInset" minX="140" minY="50" width="107" height="1"/>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hJ-Y4-PDh">
                             <color key="backgroundColor" red="0.48627450979999998" green="0.44705882349999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="17B-Pb-r7E"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ixc-Dk-xlz">
-                            <frame key="frameInset" minX="258" minY="6" width="107" height="45"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixc-Dk-xlz">
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ZIP/Postal" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkn-fX-QTt">
-                            <frame key="frameInset" minX="271" minY="20" width="81" height="17"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ZIP/Postal" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkn-fX-QTt">
                             <constraints>
                                 <constraint firstAttribute="width" constant="81" id="v1j-bi-OPS"/>
                             </constraints>
@@ -170,15 +164,13 @@
                                 <outlet property="delegate" destination="-1" id="Mfc-fw-5SS"/>
                             </connections>
                         </textField>
-                        <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-CU-fHu">
-                            <frame key="frameInset" minX="258" minY="50" width="107" height="1"/>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-CU-fHu">
                             <color key="backgroundColor" red="0.48627450979999998" green="0.44705882349999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="NPa-08-Ulq"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LU0-WJ-369">
-                            <frame key="frameInset" minX="26" minY="67" width="161.5" height="38"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LU0-WJ-369">
                             <constraints>
                                 <constraint firstAttribute="height" constant="38" id="Ion-3g-jqj"/>
                             </constraints>
@@ -189,8 +181,7 @@
                                 <action selector="cancelButPressed:" destination="-1" eventType="touchUpInside" id="DnF-sv-wh4"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcD-LR-2wa">
-                            <frame key="frameInset" minX="203.5" minY="67" width="161.5" height="38"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcD-LR-2wa">
                             <color key="backgroundColor" red="0.4941176471" green="0.65098039220000004" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="38" id="uuC-Xs-xjw"/>
@@ -202,8 +193,7 @@
                                 <action selector="applyButPressed:" destination="-1" eventType="touchUpInside" id="GLa-Gk-7CS"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJg-Ps-OdY">
-                            <frame key="frameInset" minX="24" minY="105" width="343"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJg-Ps-OdY">
                             <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
                             <color key="textColor" red="0.79607843140000001" green="0.086274509799999996" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -253,8 +243,7 @@
                         <constraint firstItem="LU0-WJ-369" firstAttribute="leading" secondItem="fwe-gf-87l" secondAttribute="leading" constant="26" id="zVe-iG-fRk"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0u-Ng-8ai">
-                    <frame key="frameInset" minX="216" minY="55" width="139" height="46"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0u-Ng-8ai">
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
                     <state key="normal" title="Manage Payment Methods">
                         <color key="titleColor" red="0.4941176471" green="0.65098039220000004" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
@@ -263,38 +252,32 @@
                         <action selector="managePaymentMethodsButtonPressed:" destination="-1" eventType="touchUpInside" id="mz6-VD-Nja"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmp-yh-hou">
-                    <frame key="frameInset" minX="16" minY="276" width="17" height="22"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmp-yh-hou">
                     <state key="normal" image="checkbox"/>
                     <state key="selected" image="checkbox_v"/>
                     <connections>
                         <action selector="checkboxPressed:" destination="-1" eventType="touchUpInside" id="jqz-q1-H0n"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Do not store this card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nO-VR-1bh">
-                    <frame key="frameInset" minX="41" minY="278" width="140" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do not store this card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nO-VR-1bh">
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BNs-hB-C9a">
-                    <frame key="frameInset" minX="-2" minY="318" width="375" height="110"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNs-hB-C9a">
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cards Accepted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPT-U7-LZa">
-                            <frame key="frameInset" minX="136" width="104" height="16"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cards Accepted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPT-U7-LZa">
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                             <color key="textColor" red="0.4941176471" green="0.65098039220000004" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Jf-K2-Ty6">
-                            <frame key="frameInset" minX="20" minY="7" width="108" height="1"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Jf-K2-Ty6">
                             <color key="backgroundColor" red="0.48627450979999998" green="0.44705882349999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="dua-v2-0Sv"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2vc-Ee-PGl">
-                            <frame key="frameInset" minX="248" minY="7" width="107" height="1"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2vc-Ee-PGl">
                             <color key="backgroundColor" red="0.48627450979999998" green="0.44705882349999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="QPJ-Ib-4vx"/>
@@ -353,8 +336,7 @@
                         <constraint firstItem="EPT-U7-LZa" firstAttribute="leading" secondItem="0Jf-K2-Ty6" secondAttribute="trailing" constant="8" id="wIf-pG-fAe"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Credit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb4-tj-hY9">
-                    <frame key="frameInset" minX="20" minY="70" width="70" height="16"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb4-tj-hY9">
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -364,8 +346,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxp-yO-zIk">
-                    <frame key="frameInset" minY="20" width="375" height="38"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxp-yO-zIk">
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAYMENT METHODS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZg-Fe-gBI">
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -383,9 +364,8 @@
             </subviews>
             <color key="backgroundColor" red="0.28235294119999998" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="4Cy-p3-4hS" secondAttribute="bottom" constant="8" id="0WD-Bi-gAg"/>
                 <constraint firstItem="xmp-yh-hou" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leadingMargin" id="1x9-bc-2sW"/>
-                <constraint firstItem="bEb-a8-zXO" firstAttribute="top" secondItem="hcW-t3-chb" secondAttribute="top" constant="104" id="23L-G7-zd4"/>
+                <constraint firstItem="bEb-a8-zXO" firstAttribute="top" secondItem="hcW-t3-chb" secondAttribute="top" constant="84" id="23L-G7-zd4"/>
                 <constraint firstItem="pTi-ub-50G" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="top" id="2dD-KD-BVM"/>
                 <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="xmp-yh-hou" secondAttribute="bottom" constant="20" id="3UW-fK-ueB"/>
                 <constraint firstItem="bEb-a8-zXO" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" constant="26" id="4da-Mz-CyE"/>
@@ -404,9 +384,10 @@
                 <constraint firstAttribute="trailingMargin" secondItem="fwe-gf-87l" secondAttribute="trailing" constant="-20" id="Rdc-1C-xxq"/>
                 <constraint firstItem="pTi-ub-50G" firstAttribute="leading" secondItem="YDa-E9-pMW" secondAttribute="leading" id="TQP-3K-e8b"/>
                 <constraint firstAttribute="trailing" secondItem="YDa-E9-pMW" secondAttribute="trailing" constant="18" id="V9u-vE-PhJ"/>
-                <constraint firstItem="yxp-yO-zIk" firstAttribute="top" secondItem="hcW-t3-chb" secondAttribute="top" constant="20" id="Vo6-8r-DRb"/>
+                <constraint firstItem="yxp-yO-zIk" firstAttribute="top" secondItem="hcW-t3-chb" secondAttribute="top" id="Vo6-8r-DRb"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="top" constant="-11" id="W6v-Sm-QyO"/>
                 <constraint firstItem="fwe-gf-87l" firstAttribute="top" secondItem="e97-nh-J5G" secondAttribute="bottom" id="W8Y-oh-h6N"/>
+                <constraint firstItem="4Cy-p3-4hS" firstAttribute="top" secondItem="5nO-VR-1bh" secondAttribute="bottom" constant="94" id="WHB-Ml-wra"/>
                 <constraint firstItem="BNs-hB-C9a" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leadingMargin" constant="-18" id="dT8-OB-myU"/>
                 <constraint firstItem="kb4-tj-hY9" firstAttribute="centerY" secondItem="N0u-Ng-8ai" secondAttribute="centerY" id="fZV-o9-b91"/>
                 <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="fwe-gf-87l" secondAttribute="bottom" constant="70" id="g22-4c-w4J"/>
@@ -421,6 +402,7 @@
                 <constraint firstItem="kb4-tj-hY9" firstAttribute="top" secondItem="yxp-yO-zIk" secondAttribute="bottom" constant="12" id="zqD-4l-SMf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-63.5" y="100.5"/>
         </view>
     </objects>
     <resources>

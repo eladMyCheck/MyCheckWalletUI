@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="height" constant="415" id="K6y-6X-Bcs"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="srK-7d-9vb" kind="embed" id="402-1D-zbe"/>
+                                    <segue destination="srK-7d-9vb" kind="embed" identifier="checkout" id="402-1D-zbe"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -34,6 +34,10 @@
                             <constraint firstItem="EdA-yy-FDE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zAe-gp-UhI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="EdA-yy-FDE" id="xuN-9I-SYe"/>
+                        <outlet property="heightConstraint" destination="K6y-6X-Bcs" id="YWo-Gy-XAJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,6 +47,10 @@
         <scene sceneID="ogr-y0-tNX">
             <objects>
                 <viewController storyboardIdentifier="MCCheckoutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="srK-7d-9vb" customClass="MCCheckoutViewController" customModule="MyCheckWalletUI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Tb-I2-vd5"/>
+                        <viewControllerLayoutGuide type="bottom" id="4j1-IJ-CmS"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KeI-1o-mJH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="415"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,6 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mW8-8z-gVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="79" y="749"/>
         </scene>
     </scenes>
 </document>

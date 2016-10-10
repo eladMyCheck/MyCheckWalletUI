@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -788,12 +788,12 @@
                             <constraint firstItem="2cp-ik-DoS" firstAttribute="trailing" secondItem="qqF-os-BUe" secondAttribute="trailing" id="C8k-i7-6Rx"/>
                             <constraint firstItem="lFF-8l-7zv" firstAttribute="leading" secondItem="TGy-4G-ZWf" secondAttribute="leadingMargin" constant="-18" id="ExU-Le-cHx"/>
                             <constraint firstItem="ZYe-kL-dWK" firstAttribute="centerX" secondItem="TGy-4G-ZWf" secondAttribute="centerX" id="Fsu-rV-p7H"/>
+                            <constraint firstItem="ZYe-kL-dWK" firstAttribute="top" secondItem="gpd-Ci-5vl" secondAttribute="bottom" constant="100" id="GJ5-fD-NQS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wjs-e2-7FL" secondAttribute="trailing" constant="-20" id="ICW-wd-JIB"/>
                             <constraint firstItem="9JT-3h-XOr" firstAttribute="top" secondItem="M1g-bt-xrH" secondAttribute="bottom" constant="12" id="IM6-4v-lTc"/>
                             <constraint firstItem="lFF-8l-7zv" firstAttribute="top" secondItem="qqF-os-BUe" secondAttribute="bottom" priority="500" constant="70" id="JLQ-4I-Yxb"/>
                             <constraint firstItem="R3V-TC-BT6" firstAttribute="top" secondItem="qqF-os-BUe" secondAttribute="top" constant="-11" id="PWa-bW-qa4"/>
                             <constraint firstItem="lFF-8l-7zv" firstAttribute="top" secondItem="Wjs-e2-7FL" secondAttribute="bottom" constant="70" id="T6a-di-6nG"/>
-                            <constraint firstItem="vex-EI-zj3" firstAttribute="top" secondItem="ZYe-kL-dWK" secondAttribute="bottom" constant="8" id="UBs-qu-cy6"/>
                             <constraint firstItem="qsX-OT-Pl2" firstAttribute="top" secondItem="tmV-8O-A5s" secondAttribute="bottom" constant="84" id="WXv-Tu-SP5"/>
                             <constraint firstAttribute="trailing" secondItem="qqF-os-BUe" secondAttribute="trailing" constant="18" id="XMl-3r-3kg"/>
                             <constraint firstItem="qqF-os-BUe" firstAttribute="centerY" secondItem="qsX-OT-Pl2" secondAttribute="centerY" id="Xy8-jl-o0w"/>
