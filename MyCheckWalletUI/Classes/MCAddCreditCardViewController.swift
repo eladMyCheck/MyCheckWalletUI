@@ -71,7 +71,7 @@ public class MCAddCreditCardViewController: MCViewController {
                 self.activityView.stopAnimating()
                 if let delegate = self.delegate{
                     
-                    delegate.addedNewPaymentMethod(self, token:token)
+                    delegate.addedNewPaymentMethod(self, token:"")
                     self.applyButton.enabled = true
                     self.cancelBut.enabled = true
                 }
