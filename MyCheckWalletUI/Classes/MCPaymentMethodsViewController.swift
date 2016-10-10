@@ -62,7 +62,40 @@ internal class MCPaymentMethodsViewController: MCViewController {
         self.assignImages()
     }
     
-    func assignImages(){
+    override internal func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "creditCardSubViewController" {
+            creditCardVC = segue.destinationViewController as? MCAddCreditCardViewController
+        }else if segue.identifier == "creditCardsViewController"{
+            creditCardListVC = segue.destinationViewController as? MCCreditCardsViewController
+            creditCardListVC!.paymentMethods = self.paymentMethods
+        }
+    }
+
+    //MARK: - private functions
+    
+    func showEnterCreditCard(show: Bool , animated: Bool){
+        creditCardVC!.resetView()
+        if show{
+        creditCardVC!.becomeFirstResponder()
+        }else{
+            creditCardVC!.resignFirstResponder()
+
+        }
+        creditCardInCenterConstraint.priority = show ? 999 : 1
+        creditCardsVCCenterXConstraint.priority = show ? 1 : 999
+        UIView.animateWithDuration(animated ? 0.4 : 0.0, animations: {
+        self.view.layoutIfNeeded()
+        })
+    }
+    
+     func addCreditCardPressedNotificationReceived(notification: NSNotification){
+        if creditCardListVC?.editMode == true {
+            creditCardListVC?.editPressed(nil)
+        }
+        self.showEnterCreditCard(true, animated: true)
+    }
+    
+   private func assignImages(){
         if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"){
             if let data = NSData(contentsOfURL: url){
                 if let image = UIImage(data: data){
@@ -102,40 +135,7 @@ internal class MCPaymentMethodsViewController: MCViewController {
                 }
             }
         }
-
-    }
-    
-    override internal func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "creditCardSubViewController" {
-            creditCardVC = segue.destinationViewController as? MCAddCreditCardViewController
-        }else if segue.identifier == "creditCardsViewController"{
-            creditCardListVC = segue.destinationViewController as? MCCreditCardsViewController
-            creditCardListVC!.paymentMethods = self.paymentMethods
-        }
-    }
-
-    //MARK: - private functions
-    
-    func showEnterCreditCard(show: Bool , animated: Bool){
-        creditCardVC!.resetView()
-        if show{
-        creditCardVC!.becomeFirstResponder()
-        }else{
-            creditCardVC!.resignFirstResponder()
-
-        }
-        creditCardInCenterConstraint.priority = show ? 999 : 1
-        creditCardsVCCenterXConstraint.priority = show ? 1 : 999
-        UIView.animateWithDuration(animated ? 0.4 : 0.0, animations: {
-        self.view.layoutIfNeeded()
-        })
-    }
-    
-     func addCreditCardPressedNotificationReceived(notification: NSNotification){
-        if creditCardListVC?.editMode == true {
-            creditCardListVC?.editPressed(nil)
-        }
-        self.showEnterCreditCard(true, animated: true)
+        
     }
 }
 

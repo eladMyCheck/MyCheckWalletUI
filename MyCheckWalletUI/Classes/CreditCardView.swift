@@ -69,7 +69,9 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         if editMode == true {
             MyCheckWallet.manager.deletePaymentMethod(self.paymentMethod!, success: {
                 print("payment method deleted")
-                self.delegate?.deletedPaymentMethod()
+                if let del = self.delegate{
+                    del.deletedPaymentMethod()
+                }
                 }, fail: { (error) in
                     print("did not delete payment")
             })
@@ -82,7 +84,9 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
                 self.delegate?.startActivityIndicator()
                 MyCheckWallet.manager.setPaymentMethodAsDefault(self.paymentMethod!, success: {
                     print("payment set as default")
-                    self.delegate?.setPaymentAsDefault()
+                    if let del = self.delegate{
+                        del.setPaymentAsDefault()
+                    }
                     }, fail: { (error) in
                         print("did not set payment as default")
                 })
@@ -149,7 +153,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             self.checboxButton?.setImage(UIImage(named: "delete", inBundle: bundle, compatibleWithTraitCollection: nil)!, forState: .Normal)
             self.checboxButton?.hidden = false
         }else{
-            if ((self.paymentMethod!.isDefault) == true) {
+            if self.paymentMethod!.isDefault == true {
                 let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
                 self.checboxButton?.setImage(UIImage(named: "v", inBundle: bundle, compatibleWithTraitCollection: nil)!, forState: .Normal)
                 self.checboxButton?.hidden = false
