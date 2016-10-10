@@ -44,6 +44,11 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
     @IBOutlet weak var amexImageView: UIImageView!
     @IBOutlet weak var discoverImageView: UIImageView!
     @IBOutlet weak var checkBoxLabel: UILabel!
+    @IBOutlet weak var creditCardBorderView: UIView!
+    @IBOutlet weak var dateFieldBorderView: UIView!
+    @IBOutlet weak var cvvBorderView: UIView!
+    @IBOutlet weak var zipFieldBorderView: UIView!
+    internal var borderForField : [UITextField : UIView]?
     
     internal static func createMCCheckoutViewController() -> MCCheckoutViewController{
        return MCCheckoutViewController.init()
@@ -66,7 +71,7 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
         if paymentMethods.count > 0 {
             selectedMethod = paymentMethods[0]
         }
-        
+        borderForField = [creditCardNumberField : creditCardBorderView, dateField : dateFieldBorderView, cvvField : cvvBorderView, zipField : zipFieldBorderView]
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(MCCheckoutViewController.refreshPaymentMethods), name: MyCheckWallet.refreshPaymentMethodsNotification, object: nil)
     }
@@ -252,8 +257,8 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
     }
     
     override internal func setFieldInvalid(field: UITextField , invalid: Bool){
-        let underline = underlineForField![field]
-        underline?.backgroundColor = invalid ? UIColor.fieldUnderlineInvalid() : UIColor(r: 124, g: 114, b: 112, a: 1)
+        let border = borderForField![field]
+        border?.layer.borderColor = invalid ? UIColor.redColor().CGColor : UIColor(r: 124, g: 114, b: 112, a: 1).CGColor
         field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor(r: 255, g: 255, b: 255, a: 0.33)
     }
     

@@ -22,11 +22,14 @@
                 <outlet property="checkBoxLabel" destination="5nO-VR-1bh" id="gTt-qH-13W"/>
                 <outlet property="checkbox" destination="xmp-yh-hou" id="grY-ID-LMs"/>
                 <outlet property="colapsableContainer" destination="fwe-gf-87l" id="2ts-30-LxB"/>
+                <outlet property="creditCardBorderView" destination="cVa-fN-iC0" id="Z4u-ij-UbT"/>
                 <outlet property="creditCardNumberField" destination="YDa-E9-pMW" id="1xF-7x-A3e"/>
                 <outlet property="creditCardUnderline" destination="e97-nh-J5G" id="t7m-YH-IFa"/>
+                <outlet property="cvvBorderView" destination="fEU-Sf-TUO" id="NuQ-Ju-8Fl"/>
                 <outlet property="cvvField" destination="Wqs-Pv-v4G" id="ejr-sS-TVY"/>
                 <outlet property="cvvUnderline" destination="8hJ-Y4-PDh" id="dfz-zq-Osd"/>
                 <outlet property="dateField" destination="OMD-Q3-h8X" id="OP6-fk-k7i"/>
+                <outlet property="dateFieldBorderView" destination="kLK-VW-lfS" id="fbb-GT-29k"/>
                 <outlet property="dateUnderline" destination="tJI-vV-AMV" id="9dk-Li-X9B"/>
                 <outlet property="dinersImageView" destination="LH5-tm-JJy" id="t8u-mU-JLc"/>
                 <outlet property="discoverImageView" destination="q5u-Za-bHo" id="mnS-ZB-qVR"/>
@@ -39,6 +42,7 @@
                 <outlet property="view" destination="hcW-t3-chb" id="EzT-ff-jko"/>
                 <outlet property="visaImageView" destination="4kQ-e1-MIM" id="gHC-dU-3TR"/>
                 <outlet property="zipField" destination="Wkn-fX-QTt" id="YWC-hf-Lo0"/>
+                <outlet property="zipFieldBorderView" destination="Ixc-Dk-xlz" id="t5X-Qq-kGf"/>
                 <outlet property="zipUnderline" destination="dxO-CU-fHu" id="OgB-Vw-vGI"/>
                 <outletCollection property="textFieldsBorderViews" destination="kLK-VW-lfS" collectionClass="NSMutableArray" id="Sy2-7R-sRt"/>
                 <outletCollection property="textFieldsBorderViews" destination="fEU-Sf-TUO" collectionClass="NSMutableArray" id="7sq-rA-PxU"/>
@@ -96,7 +100,7 @@
                         <outlet property="delegate" destination="-1" id="nMZ-Lu-PAh"/>
                     </connections>
                 </textField>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e97-nh-J5G">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e97-nh-J5G">
                     <color key="backgroundColor" red="0.48627450979999998" green="0.44705882349999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="Ig4-yf-tFf"/>
@@ -121,7 +125,7 @@
                                 <outlet property="delegate" destination="-1" id="0Ih-hX-DRo"/>
                             </connections>
                         </textField>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJI-vV-AMV">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJI-vV-AMV">
                             <color key="backgroundColor" red="0.48627450979999998" green="0.44705882349999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="3oU-x9-vp8"/>
@@ -143,7 +147,7 @@
                                 <outlet property="delegate" destination="-1" id="Zvi-U7-7T4"/>
                             </connections>
                         </textField>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hJ-Y4-PDh">
+                        <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hJ-Y4-PDh">
                             <frame key="frameInset" minX="140" minY="50" width="107" height="1"/>
                             <color key="backgroundColor" red="0.48627450979999998" green="0.44705882349999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -166,7 +170,7 @@
                                 <outlet property="delegate" destination="-1" id="Mfc-fw-5SS"/>
                             </connections>
                         </textField>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-CU-fHu">
+                        <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-CU-fHu">
                             <frame key="frameInset" minX="258" minY="50" width="107" height="1"/>
                             <color key="backgroundColor" red="0.48627450979999998" green="0.44705882349999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
