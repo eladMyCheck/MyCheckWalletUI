@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -212,7 +212,7 @@
                         <constraint firstItem="kLK-VW-lfS" firstAttribute="trailing" secondItem="OMD-Q3-h8X" secondAttribute="trailing" constant="13" id="9le-9b-ZbK"/>
                         <constraint firstItem="OMD-Q3-h8X" firstAttribute="height" secondItem="Wkn-fX-QTt" secondAttribute="height" id="COt-Y6-yeG"/>
                         <constraint firstItem="kLK-VW-lfS" firstAttribute="bottom" secondItem="OMD-Q3-h8X" secondAttribute="bottom" constant="14" id="DXJ-zD-BRJ"/>
-                        <constraint firstItem="gcD-LR-2wa" firstAttribute="leading" secondItem="LU0-WJ-369" secondAttribute="trailing" constant="16" id="Gm9-cx-DeN"/>
+                        <constraint firstItem="gcD-LR-2wa" firstAttribute="leading" secondItem="LU0-WJ-369" secondAttribute="trailing" constant="8" id="Gm9-cx-DeN"/>
                         <constraint firstItem="Wkn-fX-QTt" firstAttribute="leading" secondItem="dxO-CU-fHu" secondAttribute="leading" constant="13" id="H3g-Wk-2ii"/>
                         <constraint firstItem="OMD-Q3-h8X" firstAttribute="height" secondItem="Wqs-Pv-v4G" secondAttribute="height" id="HbC-mq-lme"/>
                         <constraint firstItem="Wqs-Pv-v4G" firstAttribute="centerX" secondItem="fwe-gf-87l" secondAttribute="centerX" id="ITg-5x-h2z"/>
