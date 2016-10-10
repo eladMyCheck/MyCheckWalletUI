@@ -254,8 +254,13 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             return false
             
         case dateField:
-            
-            
+            if txtAfterUpdate.length == 1 && string != "" && (txtAfterUpdate != "0" && txtAfterUpdate != "1"){// adding 0 to month if its not 1 or 2
+                txtAfterUpdate = "0" + (txtAfterUpdate as String)
+            }
+            if txtAfterUpdate.length == 2 && string != "" && (txtAfterUpdate.intValue > 12 ){// adding 0 to month if its not > 12
+                txtAfterUpdate = "0" + (txtAfterUpdate.substringToIndex(1) as String) + "/" + (txtAfterUpdate.substringFromIndex(1) as String)
+            }
+
             let valid = CreditCardValidator.isValidDate(txtAfterUpdate as String)
             let month = txtAfterUpdate.componentsSeparatedByString("/")[0] as String
             if month.characters.count > 2 {
@@ -278,14 +283,12 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 //                setFieldInvalid(textField, invalid: true)
                 return false
             }
-            if txtAfterUpdate.length == 1 && string != "" && (txtAfterUpdate != "0" && txtAfterUpdate != "1"){// adding 0 to month if its not 1 or 2
-                txtAfterUpdate = "0" + (txtAfterUpdate as String)
-            }
+         
             
-            if txtAfterUpdate.length == 2 && !(string == "0" || string == "1" || string == "2" || string == ""){
-                setFieldInvalid(textField, invalid: true)
-                return false
-            }
+//            if txtAfterUpdate.length == 2 && !(string == "0" || string == "1" || string == "2" || string == ""){
+//                setFieldInvalid(textField, invalid: true)
+//                return false
+//            }
             if string == ""  && textField.text!.hasSuffix("/"){
                 
                 textField.text = txtAfterUpdate.substringToIndex(1)

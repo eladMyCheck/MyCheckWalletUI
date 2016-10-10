@@ -21,29 +21,29 @@ import UIKit
     // optional func checkoutViewShouldResizeFrame(newFrame : CGRect , animationDuration: NSTimeInterval)
     
 }
-internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //variables
     var selectedMethod : PaymentMethod?
     weak var checkoutDelegate : CheckoutDelegate?
     //Outlets
-    @IBOutlet weak var paymentSelectorView: UIView!
-    @IBOutlet weak var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
+    @IBOutlet weak private  var paymentSelectorView: UIView!
+    @IBOutlet weak  private  var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
     @IBOutlet weak var acceptedCreditCardsViewTopToCollapsableViewConstraint: NSLayoutConstraint!
-    @IBOutlet weak var checkbox: UIButton!
-    @IBOutlet weak var paymentMethodSelectorTextField: UITextField!
-    @IBOutlet weak var colapsableContainer: UIView!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet var textFieldsBorderViews: [UIView]!
-    @IBOutlet weak var managePaymentMethodsButton: UIButton!
+    @IBOutlet weak private var checkbox: UIButton!
+    @IBOutlet weak private var paymentMethodSelectorTextField: UITextField!
+    @IBOutlet weak private var colapsableContainer: UIView!
+    @IBOutlet weak private var cancelButton: UIButton!
+    @IBOutlet private var textFieldsBorderViews: [UIView]!
+    @IBOutlet weak private var managePaymentMethodsButton: UIButton!
     var paymentMethodSelector : UIPickerView = UIPickerView()
-    internal var paymentMethods: Array<PaymentMethod>! = []
+     private var paymentMethods: Array<PaymentMethod>! = []
     
-    @IBOutlet weak var visaImageView: UIImageView!
-    @IBOutlet weak var mastercardImageView: UIImageView!
-    @IBOutlet weak var dinersImageView: UIImageView!
-    @IBOutlet weak var amexImageView: UIImageView!
-    @IBOutlet weak var discoverImageView: UIImageView!
-    @IBOutlet weak var checkBoxLabel: UILabel!
+    @IBOutlet weak private var visaImageView: UIImageView!
+    @IBOutlet weak private var mastercardImageView: UIImageView!
+    @IBOutlet weak private var dinersImageView: UIImageView!
+    @IBOutlet weak private var amexImageView: UIImageView!
+    @IBOutlet weak private var discoverImageView: UIImageView!
+    @IBOutlet weak private var checkBoxLabel: UILabel!
     
     internal static func createMCCheckoutViewController() -> MCCheckoutViewController{
        return MCCheckoutViewController.init()
@@ -51,14 +51,16 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: "CheckoutViewController", bundle: MCViewController.getBundle(NSBundle(forClass: MCCheckoutViewController.self)))
     }
+    
+    ///The prefred costructor to use in ordder to create the View Controller
     init(){
         super.init(nibName: "CheckoutViewController", bundle: MCViewController.getBundle(NSBundle(forClass: MCCheckoutViewController.self)))
 
     }
-    required convenience init?(coder aDecoder: NSCoder) {
+    required convenience public init?(coder aDecoder: NSCoder) {
         self.init()
     }
-    override internal func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
         self.assignImages()
@@ -71,11 +73,11 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
         nc.addObserver(self, selector: #selector(MCCheckoutViewController.refreshPaymentMethods), name: MyCheckWallet.refreshPaymentMethodsNotification, object: nil)
     }
     
-    internal override func viewWillAppear(animated: Bool) {
+    public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    func assignImages(){
+   private func assignImages(){
         if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"){
             if let data = NSData(contentsOfURL: url){
                 if let image = UIImage(data: data){
@@ -140,16 +142,16 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
     }
     
     
-    internal func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    internal func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.paymentMethods.count
         
     }
     
-    internal func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.paymentMethods[row].lastFourDigits
     }
     
@@ -182,7 +184,7 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
             self.checkbox.hidden = false
             self.checkBoxLabel.hidden = false
         }
-        self.moveAcceptedCreditCardsViewToCreditCardField(true)
+        self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
         paymentMethodSelector = UIPickerView()
         paymentMethodSelector.delegate = self
         paymentMethodSelector.dataSource = self
@@ -261,7 +263,7 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
         switch textField {
         case creditCardNumberField:
             UIView.animateWithDuration(0.4, animations: {
-                self.moveAcceptedCreditCardsViewToCreditCardField(false)
+                self.moveAcceptedCreditCardsViewToCreditCardField(false, animated: true)
             })
             break
         case paymentMethodSelectorTextField:
@@ -281,7 +283,7 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
         super.cancelPressed(sender)
         self.view.endEditing(true)
         UIView.animateWithDuration(0.4, animations: {
-            self.moveAcceptedCreditCardsViewToCreditCardField(true)
+            self.moveAcceptedCreditCardsViewToCreditCardField(true , animated: true)
         })
     }
     @IBAction func applyButPressed(_ sender: AnyObject) {
@@ -332,8 +334,8 @@ internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPicker
         }
     }
     
-    func moveAcceptedCreditCardsViewToCreditCardField(move : Bool){
-        let animationLength = 0.2
+    func moveAcceptedCreditCardsViewToCreditCardField(move : Bool , animated: Bool){
+        let animationLength = animated ? 0.2 : 0
         let baseHeight = 445.0 as Float
         self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
         self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
