@@ -180,14 +180,14 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
                 typeImage.image = self.setImageForType(self.getType((self.paymentMethods.first?.issuer)!))
                 self.checkbox.hidden = true
                 self.checkBoxLabel.hidden = true
+            }else{
+                let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+                typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)!
+                creditCardNumberField.hidden = false
+                self.paymentSelectorView.hidden = true
+                self.checkbox.hidden = false
+                self.checkBoxLabel.hidden = false
             }
-        }else{
-            let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-            typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)!
-            creditCardNumberField.hidden = false
-            self.paymentSelectorView.hidden = true
-            self.checkbox.hidden = false
-            self.checkBoxLabel.hidden = false
         }
         self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
         paymentMethodSelector = UIPickerView()
@@ -346,22 +346,10 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
         
         let delta = move ? baseHeight : baseHeight + Float(acceptedCreditCardsViewTopToCreditCardFieldConstraint.constant)
-        self.colapsableContainer.alpha = move ? 1 : 0
+        self.colapsableContainer.alpha = move ? 0 : 1
         if let del = checkoutDelegate{
-            
-            //            let frame : CGRect = {
-            //                var frame = self.view.frame
-            //                frame.size.height = CGFloat(baseHeight + delta)
-            //                return frame
-            //            }()
-            //del.checkoutViewShouldResizeFrame?(frame, animationDuration: animationLength)
-            
             del.checkoutViewShouldResizeHeight(baseHeight, animationDuration: animationLength)
         }
-        UIView.animateWithDuration(animationLength, animations: {
-            self.view.layoutIfNeeded()
-            self.colapsableContainer.alpha = ( self.colapsableContainer.alpha + 1 ) % 2 // if it was 1 then 0 and vise versa
-        })
     }
 }
 
