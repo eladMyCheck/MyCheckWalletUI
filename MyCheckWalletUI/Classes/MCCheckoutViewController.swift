@@ -38,12 +38,17 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     var paymentMethodSelector : UIPickerView = UIPickerView()
      private var paymentMethods: Array<PaymentMethod>! = []
     
-    @IBOutlet weak private var visaImageView: UIImageView!
-    @IBOutlet weak private var mastercardImageView: UIImageView!
-    @IBOutlet weak private var dinersImageView: UIImageView!
-    @IBOutlet weak private var amexImageView: UIImageView!
-    @IBOutlet weak private var discoverImageView: UIImageView!
-    @IBOutlet weak private var checkBoxLabel: UILabel!
+    @IBOutlet weak var visaImageView: UIImageView!
+    @IBOutlet weak var mastercardImageView: UIImageView!
+    @IBOutlet weak var dinersImageView: UIImageView!
+    @IBOutlet weak var amexImageView: UIImageView!
+    @IBOutlet weak var discoverImageView: UIImageView!
+    @IBOutlet weak var checkBoxLabel: UILabel!
+    @IBOutlet weak var creditCardBorderView: UIView!
+    @IBOutlet weak var dateFieldBorderView: UIView!
+    @IBOutlet weak var cvvBorderView: UIView!
+    @IBOutlet weak var zipFieldBorderView: UIView!
+    internal var borderForField : [UITextField : UIView]?
     
     internal static func createMCCheckoutViewController() -> MCCheckoutViewController{
        return MCCheckoutViewController.init()
@@ -68,7 +73,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         if paymentMethods.count > 0 {
             selectedMethod = paymentMethods[0]
         }
-        
+        borderForField = [creditCardNumberField : creditCardBorderView, dateField : dateFieldBorderView, cvvField : cvvBorderView, zipField : zipFieldBorderView]
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(MCCheckoutViewController.refreshPaymentMethods), name: MyCheckWallet.refreshPaymentMethodsNotification, object: nil)
     }
@@ -175,14 +180,14 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
                 typeImage.image = self.setImageForType(self.getType((self.paymentMethods.first?.issuer)!))
                 self.checkbox.hidden = true
                 self.checkBoxLabel.hidden = true
+            }else{
+                let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+                typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)!
+                creditCardNumberField.hidden = false
+                self.paymentSelectorView.hidden = true
+                self.checkbox.hidden = false
+                self.checkBoxLabel.hidden = false
             }
-        }else{
-            let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-            typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)!
-            creditCardNumberField.hidden = false
-            self.paymentSelectorView.hidden = true
-            self.checkbox.hidden = false
-            self.checkBoxLabel.hidden = false
         }
         self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
         paymentMethodSelector = UIPickerView()
@@ -254,9 +259,9 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     }
     
     override internal func setFieldInvalid(field: UITextField , invalid: Bool){
-        let underline = underlineForField![field]
-        underline?.backgroundColor = invalid ? UIColor.fieldUnderlineInvalid() : UIColor(r: 124, g: 114, b: 112, a: 1)
-        field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor(r: 255, g: 255, b: 255, a: 0.33)
+        let border = borderForField![field]
+        border?.layer.borderColor = invalid ? UIColor.redColor().CGColor : UIColor(r: 124, g: 114, b: 112, a: 1).CGColor
+        field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor(r: 255, g: 255, b: 255, a: 1)
     }
     
     internal func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -341,22 +346,10 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
         
         let delta = move ? baseHeight : baseHeight + Float(acceptedCreditCardsViewTopToCreditCardFieldConstraint.constant)
-        self.colapsableContainer.alpha = move ? 1 : 0
+        self.colapsableContainer.alpha = move ? 0 : 1
         if let del = checkoutDelegate{
-            
-            //            let frame : CGRect = {
-            //                var frame = self.view.frame
-            //                frame.size.height = CGFloat(baseHeight + delta)
-            //                return frame
-            //            }()
-            //del.checkoutViewShouldResizeFrame?(frame, animationDuration: animationLength)
-            
             del.checkoutViewShouldResizeHeight(baseHeight, animationDuration: animationLength)
         }
-        UIView.animateWithDuration(animationLength, animations: {
-            self.view.layoutIfNeeded()
-            self.colapsableContainer.alpha = ( self.colapsableContainer.alpha + 1 ) % 2 // if it was 1 then 0 and vise versa
-        })
     }
 }
 

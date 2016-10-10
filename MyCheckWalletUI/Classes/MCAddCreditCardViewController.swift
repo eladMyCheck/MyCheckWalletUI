@@ -230,9 +230,9 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             //if the string is valid and we just want to go to next field then dont add new char and go to date
             let ( _ , _ , wasValid , wasValidLength) =  CreditCardValidator.checkCardNumber(  textField.text!)
             
-            if wasValidLength && wasValid && string != ""{
-                return false
-            }
+//            if wasValidLength && wasValid && string != ""{
+//                return false
+//            }
             if string == ""  && txtAfterUpdate.hasSuffix(" "){// if backspace and white spaces is last remove it
                 textField.text = txtAfterUpdate.substringToIndex(txtAfterUpdate.length-1)
                 return false
