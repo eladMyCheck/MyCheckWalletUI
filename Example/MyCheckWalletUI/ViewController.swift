@@ -40,6 +40,10 @@ extension ViewController : CheckoutDelegate {
     
     func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: NSTimeInterval)  -> Void {
         self.heightConstraint.constant = CGFloat(newHeight);
+        UIView.animateWithDuration(animationDuration, animations: {
+            self.view.layoutIfNeeded()//resizing the container 
+
+        })
     }
 
 }

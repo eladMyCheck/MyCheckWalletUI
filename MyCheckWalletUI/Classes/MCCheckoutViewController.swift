@@ -23,6 +23,7 @@ import UIKit
 }
 public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //variables
+    /// This variable will always have the currant payment method selected by the user. In the case where the user doesn't have a payment method the variable will be nil.
      var selectedMethod : PaymentMethod?
     weak public var checkoutDelegate : CheckoutDelegate?
     //Outlets
@@ -341,14 +342,14 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     
     func moveAcceptedCreditCardsViewToCreditCardField(move : Bool , animated: Bool){
         let animationLength = animated ? 0.2 : 0
-        let baseHeight = 445.0 as Float
+        let baseHeight = 270.0 as Float
         self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
         self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
         
-        let delta = move ? baseHeight : baseHeight + Float(acceptedCreditCardsViewTopToCreditCardFieldConstraint.constant)
+        let delta = move ? baseHeight : baseHeight + 118.0
         self.colapsableContainer.alpha = move ? 0 : 1
         if let del = checkoutDelegate{
-            del.checkoutViewShouldResizeHeight(baseHeight, animationDuration: animationLength)
+            del.checkoutViewShouldResizeHeight(delta, animationDuration: animationLength)
         }
     }
 }
