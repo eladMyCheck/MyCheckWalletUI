@@ -36,14 +36,11 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         }
         self.scrollView.frame = CGRect(x:self.scrollView.frame.origin.x, y:self.scrollView.frame.origin.y, width:self.scrollView.frame.width, height:100)
         
-        UIView.animateWithDuration(0.4, animations: {
-            self.scrollView.contentOffset = CGPointZero
-        })
         var creditCardCount = 0
         if  self.paymentMethods != nil{
             creditCardCount = self.paymentMethods.count
         }
-        
+
         
         let addCreditCardView = AddCreditCardView(frame: CGRectMake(0, 20, 168, 104) )
         self.scrollView.addSubview(addCreditCardView)
@@ -63,6 +60,14 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         }
         
         self.scrollView.contentSize = CGSize(width:CGFloat(creditCardCount+1)*193, height:self.scrollView.frame.height)
+        
+        UIView.animateWithDuration(0.4, animations: {
+            if creditCardCount > 0{
+                self.scrollView.contentOffset = CGPointMake(193, 0)
+            }else{
+                self.scrollView.contentOffset = CGPointZero
+            }
+        })
     }
     
     @IBAction func backPressed(_ sender: UIBarButtonItem) {
