@@ -1,5 +1,5 @@
 //
-//  CheckoutViewController.swift
+//  MCCheckoutViewController.swift
 //  Pods
 //
 //  Created by Mihail Kalichkov on 10/3/16.
@@ -14,17 +14,17 @@ import UIKit
     ///   - parameter newHight: The new height of the CheckoutView/CheckoutTableViewCell
     ///   - parameter animationDuration: The duration the animation will take. The animation will start directly after this call is pressed. You should resize the view imidiatly and use the same animation duration in order for the animation to look good
     
-    optional func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: Float)
+    func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: NSTimeInterval)
     ///Called by the CheckoutView/CheckoutTableViewCell when the height is changed.
     ///   - parameter newFrame: The new frame of the CheckoutView should use.
     ///   - parameter animationDuration: The duration the animation will take. The animation will start directly after this call is pressed. You should resize the view imidiatly and use the same animation duration in order for the animation to look good
-    optional func checkoutViewShouldResizeFrame(newFrame : CGRect , animationDuration: Float)
+    // optional func checkoutViewShouldResizeFrame(newFrame : CGRect , animationDuration: NSTimeInterval)
     
 }
-internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+internal class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //variables
     var selectedMethod : PaymentMethod?
-    
+    weak var checkoutDelegate : CheckoutDelegate?
     //Outlets
     @IBOutlet weak var paymentSelectorView: UIView!
     @IBOutlet weak var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
@@ -45,14 +45,19 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     @IBOutlet weak var discoverImageView: UIImageView!
     @IBOutlet weak var checkBoxLabel: UILabel!
     
-    internal static func createCheckoutViewController() -> CheckoutViewController{
-        let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
-        let controller = storyboard.instantiateViewControllerWithIdentifier("CheckoutViewController") as! CheckoutViewController
-        controller.paymentMethods = MyCheckWallet.manager.methods
-        
-        return controller
+    internal static func createMCCheckoutViewController() -> MCCheckoutViewController{
+       return MCCheckoutViewController.init()
     }
-    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: "CheckoutViewController", bundle: MCViewController.getBundle(NSBundle(forClass: MCCheckoutViewController.self)))
+    }
+    init(){
+        super.init(nibName: "CheckoutViewController", bundle: MCViewController.getBundle(NSBundle(forClass: MCCheckoutViewController.self)))
+
+    }
+    required convenience init?(coder aDecoder: NSCoder) {
+        self.init()
+    }
     override internal func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
@@ -137,8 +142,8 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     }
     
     internal func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return self.paymentMethods.count
-     
+        return self.paymentMethods.count
+        
     }
     
     internal func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -307,19 +312,32 @@ internal class CheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     }
     
     func moveAcceptedCreditCardsViewToCreditCardField(move : Bool){
-        
+        let animationLength = 0.2
+        let baseHeight = 445.0 as Float
         self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
         self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
-        let delta = self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.constant -  self.acceptedCreditCardsViewTopToCollapsableViewConstraint.constant
+        
+        let delta = move ? baseHeight : baseHeight + Float(acceptedCreditCardsViewTopToCreditCardFieldConstraint.constant)
         self.colapsableContainer.alpha = move ? 1 : 0
-        UIView.animateWithDuration(0.2, animations: {
+        if let del = checkoutDelegate{
+            
+            //            let frame : CGRect = {
+            //                var frame = self.view.frame
+            //                frame.size.height = CGFloat(baseHeight + delta)
+            //                return frame
+            //            }()
+            //del.checkoutViewShouldResizeFrame?(frame, animationDuration: animationLength)
+            
+            del.checkoutViewShouldResizeHeight(baseHeight, animationDuration: animationLength)
+        }
+        UIView.animateWithDuration(animationLength, animations: {
             self.view.layoutIfNeeded()
             self.colapsableContainer.alpha = ( self.colapsableContainer.alpha + 1 ) % 2 // if it was 1 then 0 and vise versa
         })
     }
 }
 
-extension CheckoutViewController : MCPaymentMethodsViewControllerDelegate{
+extension MCCheckoutViewController : MCPaymentMethodsViewControllerDelegate{
     internal func userDismissed(  controller: MCPaymentMethodsViewControllerDelegate)
     {
     }

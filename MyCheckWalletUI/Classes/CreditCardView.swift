@@ -33,7 +33,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         addSubview(setCardAsDefaultButton)
         
         //credit card number label
-        var creditCardNumberlabel = UILabel(frame: CGRectMake(10, 70, 80, 18))
+        let creditCardNumberlabel = UILabel(frame: CGRectMake(10, 70, 80, 18))
         creditCardNumberlabel.textAlignment = NSTextAlignment.Center
         creditCardNumberlabel.textColor = UIColor.whiteColor()
         creditCardNumberlabel.font =  UIFont(name: creditCardNumberlabel.font.fontName, size: 9)
@@ -41,7 +41,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         addSubview(creditCardNumberlabel)
         
         //expiration date label
-        var expirationDateLabel = UILabel(frame: CGRectMake(112, 70, 30, 18))
+        let expirationDateLabel = UILabel(frame: CGRectMake(112, 70, 30, 18))
         expirationDateLabel.textAlignment = NSTextAlignment.Center
         expirationDateLabel.textColor = UIColor.whiteColor()
         expirationDateLabel.font =  UIFont(name: expirationDateLabel.font.fontName, size: 9)

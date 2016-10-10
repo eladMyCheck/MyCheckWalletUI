@@ -14,27 +14,27 @@ internal protocol MCAddCreditCardViewControllerDelegate {
     func canceled()
 }
 
-internal class MCAddCreditCardViewController: MCViewController {
+public class MCAddCreditCardViewController: MCViewController {
     
-    @IBOutlet weak var applyButton: UIButton!
-    @IBOutlet var typeImage: UIImageView!
-    @IBOutlet var creditCardNumberField: UITextField!
-    @IBOutlet var dateField: UITextField!
-    @IBOutlet var cvvField: UITextField!
-    @IBOutlet var zipField: UITextField!
+    @IBOutlet internal weak var applyButton: UIButton!
+    @IBOutlet internal var typeImage: UIImageView!
+    @IBOutlet internal var creditCardNumberField: UITextField!
+    @IBOutlet internal var dateField: UITextField!
+    @IBOutlet internal var cvvField: UITextField!
+    @IBOutlet internal var zipField: UITextField!
     
-    @IBOutlet var creditCardUnderline: UIView!
-    @IBOutlet var dateUnderline: UIView!
-    @IBOutlet var cvvUnderline: UIView!
-    @IBOutlet var zipUnderline: UIView!
-    @IBOutlet weak var errorLabel: UILabel!
-    var underlineForField : [UITextField : UIView]?
-    var activityView : UIActivityIndicatorView!
+    @IBOutlet internal var creditCardUnderline: UIView!
+    @IBOutlet internal var dateUnderline: UIView!
+    @IBOutlet internal var cvvUnderline: UIView!
+    @IBOutlet internal var zipUnderline: UIView!
+    @IBOutlet internal weak var errorLabel: UILabel!
+   internal var underlineForField : [UITextField : UIView]?
+   internal var activityView : UIActivityIndicatorView!
     
     var delegate : MCAddCreditCardViewControllerDelegate?
     //MARK: - life cycle functions
     
-    override internal func viewDidLoad() {
+    override  public func viewDidLoad() {
         super.viewDidLoad()
         underlineForField = [creditCardNumberField : creditCardUnderline , dateField : dateUnderline , cvvField : cvvUnderline , zipField : zipUnderline]
 
@@ -84,7 +84,7 @@ internal class MCAddCreditCardViewController: MCViewController {
     }
     @IBAction func cancelPressed(sender: AnyObject) {
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-        if self.isMemberOfClass(CheckoutViewController) {
+        if self.isMemberOfClass(MCCheckoutViewController) {
             typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)
         }else{
             typeImage.image = UIImage(named: "no_type_card" , inBundle: bundle, compatibleWithTraitCollection: nil)
@@ -117,7 +117,7 @@ internal class MCAddCreditCardViewController: MCViewController {
         self.resignFirstResponder()
     }
     //MARK: - overides
-    override internal func resignFirstResponder() -> Bool {
+    override public func resignFirstResponder() -> Bool {
         super.resignFirstResponder()
         creditCardNumberField.resignFirstResponder()
         dateField.resignFirstResponder()
@@ -125,7 +125,7 @@ internal class MCAddCreditCardViewController: MCViewController {
         zipField.resignFirstResponder()
         return true
     }
-    override internal func becomeFirstResponder() -> Bool {
+    override public func becomeFirstResponder() -> Bool {
         if creditCardNumberField.isFirstResponder() ||
             dateField.isFirstResponder() ||
             cvvField.isFirstResponder() ||
@@ -161,7 +161,7 @@ internal class MCAddCreditCardViewController: MCViewController {
             
             
         default:
-            if self.isMemberOfClass(CheckoutViewController) {
+            if self.isMemberOfClass(MCCheckoutViewController) {
                 typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)
             }else{
                 typeImage.image = UIImage(named: "no_type_card" , inBundle: bundle, compatibleWithTraitCollection: nil)
@@ -199,7 +199,7 @@ internal class MCAddCreditCardViewController: MCViewController {
 
 extension MCAddCreditCardViewController : UITextFieldDelegate{
     
-    internal func textFieldShouldReturn(textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(textField: UITextField) -> Bool {
         switch textField {
         case creditCardNumberField:
             dateField.becomeFirstResponder()
@@ -214,7 +214,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         return true;
     }
     
-    internal func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         var txtAfterUpdate: NSString = textField.text! as NSString
         txtAfterUpdate = txtAfterUpdate.stringByReplacingCharactersInRange(range, withString: string)

@@ -15,12 +15,41 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdA-yy-FDE">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="415" id="K6y-6X-Bcs"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="srK-7d-9vb" kind="embed" id="402-1D-zbe"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="EdA-yy-FDE" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="KfD-ih-1e3"/>
+                            <constraint firstAttribute="trailing" secondItem="EdA-yy-FDE" secondAttribute="trailing" id="XYK-XK-StE"/>
+                            <constraint firstItem="EdA-yy-FDE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zAe-gp-UhI"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.875" y="97.183098591549296"/>
+        </scene>
+        <!--Checkout View Controller-->
+        <scene sceneID="ogr-y0-tNX">
+            <objects>
+                <viewController storyboardIdentifier="MCCheckoutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="srK-7d-9vb" customClass="MCCheckoutViewController" customModule="MyCheckWalletUI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KeI-1o-mJH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="415"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mW8-8z-gVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
