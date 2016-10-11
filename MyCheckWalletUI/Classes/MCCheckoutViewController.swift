@@ -77,6 +77,10 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.creditCardNumberField.text = ""
+        self.dateField.text = ""
+        self.cvvField.text = ""
+        self.zipField.text = ""
     }
     
    private func assignImages(){
@@ -295,6 +299,10 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
   
     @IBAction func cancelButPressed(_ sender: AnyObject) {
         super.cancelPressed(sender)
+        self.creditCardNumberField.text = ""
+        self.dateField.text = ""
+        self.cvvField.text = ""
+        self.zipField.text = ""
         self.view.endEditing(true)
         UIView.animateWithDuration(0.4, animations: {
             self.moveAcceptedCreditCardsViewToCreditCardField(true , animated: true)
