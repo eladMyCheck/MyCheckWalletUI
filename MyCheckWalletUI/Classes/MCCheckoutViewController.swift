@@ -351,7 +351,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     }
     
     override func startActivityIndicator() {
-        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)
+        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .White)
         
         activityView.center=CGPointMake(self.view.center.x, self.view.center.y)
         activityView.startAnimating()
