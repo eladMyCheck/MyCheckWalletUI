@@ -21,6 +21,7 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
     var delegate : MCCreditCardsViewControllerrDelegate?
     var creditCards : NSMutableArray = []
     var editMode : Bool = false
+    var indexToScrollTo : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,6 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
             creditCardCount = self.paymentMethods.count
         }
 
-        
         let addCreditCardView = AddCreditCardView(frame: CGRectMake(0, 20, 168, 104) )
         self.scrollView.addSubview(addCreditCardView)
         
@@ -65,7 +65,8 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         
         UIView.animateWithDuration(0.4, animations: {
             if creditCardCount > 0{
-                self.scrollView.contentOffset = CGPointMake(193, 0)
+                self.scrollView.contentOffset = CGPointMake(CGFloat(self.indexToScrollTo)*193, 0)
+                self.indexToScrollTo = 0
             }else{
                 self.scrollView.contentOffset = CGPointZero
             }
@@ -74,6 +75,7 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
     
     @IBAction func backPressed(_ sender: UIBarButtonItem) {
         self.delegate?.backPressed()
+        
     }
     
     @IBAction func editPressed(_ sender: UIBarButtonItem?) {
@@ -85,7 +87,16 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         }
     }
     
-    func deletedPaymentMethod(){
+    func deletedPaymentMethod(method: PaymentMethod) {
+        for i in (0..<self.paymentMethods.count) {
+            if method.Id == self.paymentMethods[i].Id {
+                if i > 0 {
+                    self.indexToScrollTo = i
+                }else{
+                    self.indexToScrollTo = 0
+                }
+            }
+        }
         MyCheckWallet.manager.getPaymentMethods({ (array) in
             self.paymentMethods = array
             for cc in self.creditCards as! [CreditCardView]{
@@ -95,7 +106,6 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
             self.editButton.title = "Edit"
             self.setCrediCards()
             }, fail: { error in
-                
         })
     }
     

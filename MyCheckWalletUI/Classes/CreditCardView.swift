@@ -9,7 +9,7 @@
 import UIKit
 
 internal protocol CreditCardViewDelegate {
-    func deletedPaymentMethod()
+    func deletedPaymentMethod(method : PaymentMethod)
     func setPaymentAsDefault()
     func startActivityIndicator()
 }
@@ -74,7 +74,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             MyCheckWallet.manager.deletePaymentMethod(self.paymentMethod!, success: {
                 print("payment method deleted")
                 if let del = self.delegate{
-                    del.deletedPaymentMethod()
+                    del.deletedPaymentMethod(self.paymentMethod!)
                 }
                 }, fail: { (error) in
                     print("did not delete payment")
