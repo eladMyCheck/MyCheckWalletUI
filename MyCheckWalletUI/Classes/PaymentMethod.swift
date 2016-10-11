@@ -58,9 +58,15 @@ public class PaymentMethod{
             Id = number.stringValue
             
             token = JSON["token"] as! String
-          
-            expireMonth = JSON["exp_month"] as! String
-           
+            
+            if let str = JSON["exp_month"] as? String{
+                expireMonth = str as! String
+            }else if let str =  JSON["exp_month"] as? NSNumber{
+                expireMonth = String(str)
+            }else{
+                expireMonth = ""
+            }
+            
             number = JSON["exp_year4"] as! NSNumber
             let yearInt = Int(number)
             expireYear = String(yearInt)

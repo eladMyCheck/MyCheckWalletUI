@@ -84,13 +84,9 @@ internal class Networking {
         
         return  request("https://devpm.mycheckapp.com:8443/PaymentManager/api/v1/paymentMethods/addCreditcard", method: .POST, parameters: params , success: { JSON in
             
-                let methodJSON = JSON["pm"]
-                if let methodJSON = methodJSON{
-                    
+                let methodJSON = JSON["pm"] as! NSDictionary
                     if methodJSON.isKindOfClass(NSDictionary) == true{
                         success(PaymentMethod(JSON: methodJSON as! NSDictionary)!)
-                    }
-                //success((methodJSON["token"] as? String)!)
                 }else{
                     if let fail = fail{
                         if let errormessage = JSON["message"] as? String{
