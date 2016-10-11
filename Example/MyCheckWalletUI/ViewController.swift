@@ -9,6 +9,8 @@
 import UIKit
 import MyCheckWalletUI
 class ViewController: UIViewController {
+  
+  var checkoutViewController : MCCheckoutViewController? = nil
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var containerView: UIView!
@@ -29,7 +31,7 @@ class ViewController: UIViewController {
 
 internal override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "checkout" {
-           let    checkoutViewController = segue.destinationViewController as? MCCheckoutViewController
+               checkoutViewController = segue.destinationViewController as? MCCheckoutViewController
           checkoutViewController?.checkoutDelegate = self
     }
 }
@@ -37,6 +39,22 @@ internal override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObje
   @IBAction func paymentMethodsPressed(sender: AnyObject) {
     let controller = MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
     self.presentViewController(controller, animated: true, completion: nil)
+  }
+  @IBAction func payPressed(sender: AnyObject) {
+    var message = "No payment method available"
+    if let method = checkoutViewController!.selectedMethod {
+    message = method.issuer + " " + method.lastFourDigits + " token: " + method.token
+    }
+    
+    
+    let alert = UIAlertController(title: "paying with:", message: message, preferredStyle: .Alert);
+    let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "alert ok but"), style: .Default, handler:
+      {(alert: UIAlertAction!) in
+        
+        
+    })
+    alert.addAction(defaultAction)
+   self.presentViewController(alert, animated: true, completion: nil)
   }
 }
 

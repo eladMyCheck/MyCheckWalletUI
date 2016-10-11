@@ -32,10 +32,18 @@
                                     <action selector="paymentMethodsPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pbb-QM-Bod"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSF-x4-3PH">
+                                <state key="normal" title="Pay"/>
+                                <connections>
+                                    <action selector="payPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="k8U-jn-USK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="rSF-x4-3PH" firstAttribute="top" secondItem="0I0-dR-Ktk" secondAttribute="bottom" constant="8" id="2OG-R6-AoG"/>
                             <constraint firstItem="0I0-dR-Ktk" firstAttribute="top" secondItem="EdA-yy-FDE" secondAttribute="bottom" constant="8" id="OaG-mp-lLo"/>
+                            <constraint firstItem="rSF-x4-3PH" firstAttribute="centerX" secondItem="0I0-dR-Ktk" secondAttribute="centerX" id="RP4-Jt-56K"/>
                             <constraint firstItem="EdA-yy-FDE" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="T7l-df-Zil"/>
                             <constraint firstAttribute="trailing" secondItem="EdA-yy-FDE" secondAttribute="trailing" id="XYK-XK-StE"/>
                             <constraint firstItem="0I0-dR-Ktk" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="tBk-8u-xO9"/>

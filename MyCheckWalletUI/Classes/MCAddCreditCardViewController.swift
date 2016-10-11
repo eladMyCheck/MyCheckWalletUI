@@ -266,6 +266,9 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             return false
             
         case dateField:
+          if txtAfterUpdate == "00" {
+          return false
+          }
             if txtAfterUpdate.length == 1 && string != "" && (txtAfterUpdate != "0" && txtAfterUpdate != "1"){// adding 0 to month if its not 1 or 2
                 txtAfterUpdate = "0" + (txtAfterUpdate as String)
             }
