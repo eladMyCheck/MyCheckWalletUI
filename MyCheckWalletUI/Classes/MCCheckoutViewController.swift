@@ -407,7 +407,7 @@ extension MCCheckoutViewController : MCPaymentMethodsViewControllerDelegate{
             if array.count > 0{
                 self.paymentMethods = array
             }else{
-                self.paymentMethods = nil
+                self.paymentMethods = []
                 
             }
             self.configureUI()
