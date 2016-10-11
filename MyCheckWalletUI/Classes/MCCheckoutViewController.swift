@@ -77,10 +77,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.creditCardNumberField.text = ""
-        self.dateField.text = ""
-        self.cvvField.text = ""
-        self.zipField.text = ""
+        self.resetFields()
     }
     
    private func assignImages(){
@@ -299,10 +296,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
   
     @IBAction func cancelButPressed(_ sender: AnyObject) {
         super.cancelPressed(sender)
-        self.creditCardNumberField.text = ""
-        self.dateField.text = ""
-        self.cvvField.text = ""
-        self.zipField.text = ""
+        self.resetFields()
         self.view.endEditing(true)
         UIView.animateWithDuration(0.4, animations: {
             self.moveAcceptedCreditCardsViewToCreditCardField(true , animated: true)
@@ -323,10 +317,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
             self.cvvField.userInteractionEnabled = false
             self.zipField.userInteractionEnabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  method in
-                self.creditCardNumberField.text = ""
-                self.dateField.text = ""
-                self.cvvField.text = ""
-                self.zipField.text = ""
+                self.resetFields()
               self.selectedMethod = method
 
                 if method.isSingleUse == true{
@@ -394,6 +385,17 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         if let del = checkoutDelegate{
             del.checkoutViewShouldResizeHeight(delta, animationDuration: animationLength)
         }
+    }
+    
+    private func resetFields(){
+        self.creditCardNumberField.text = ""
+        self.dateField.text = ""
+        self.cvvField.text = ""
+        self.zipField.text = ""
+        self.setFieldInvalid(self.creditCardNumberField, invalid: false)
+        self.setFieldInvalid(self.dateField, invalid: false)
+        self.setFieldInvalid(self.cvvField, invalid: false)
+        self.setFieldInvalid(self.zipField, invalid: false)
     }
 }
 
