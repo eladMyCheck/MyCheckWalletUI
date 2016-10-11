@@ -211,7 +211,7 @@
                         <constraint firstItem="LU0-WJ-369" firstAttribute="width" secondItem="gcD-LR-2wa" secondAttribute="width" id="NSc-ey-Oeq"/>
                         <constraint firstAttribute="trailing" secondItem="gcD-LR-2wa" secondAttribute="trailing" constant="22" id="Nrp-Y2-vhO"/>
                         <constraint firstItem="Ixc-Dk-xlz" firstAttribute="bottom" secondItem="Wkn-fX-QTt" secondAttribute="bottom" constant="14" id="RZU-fD-T9p"/>
-                        <constraint firstItem="Wkn-fX-QTt" firstAttribute="leading" secondItem="Wqs-Pv-v4G" secondAttribute="trailing" constant="45" id="TX6-ud-3Sq"/>
+                        <constraint firstItem="Wkn-fX-QTt" firstAttribute="leading" secondItem="Wqs-Pv-v4G" secondAttribute="trailing" constant="35" id="TX6-ud-3Sq"/>
                         <constraint firstItem="OMD-Q3-h8X" firstAttribute="width" secondItem="Wqs-Pv-v4G" secondAttribute="width" id="VYR-4c-u1c"/>
                         <constraint firstItem="LU0-WJ-369" firstAttribute="height" secondItem="gcD-LR-2wa" secondAttribute="height" id="VfH-wh-eeb"/>
                         <constraint firstItem="kLK-VW-lfS" firstAttribute="top" secondItem="OMD-Q3-h8X" secondAttribute="top" constant="-14" id="XoI-7S-aR0"/>
@@ -221,7 +221,7 @@
                         <constraint firstItem="dxO-CU-fHu" firstAttribute="trailing" secondItem="Wkn-fX-QTt" secondAttribute="trailing" constant="13" id="dNK-0V-3ZZ"/>
                         <constraint firstItem="fEU-Sf-TUO" firstAttribute="leading" secondItem="Wqs-Pv-v4G" secondAttribute="leading" constant="-14" id="did-93-cpC"/>
                         <constraint firstItem="tJI-vV-AMV" firstAttribute="top" secondItem="OMD-Q3-h8X" secondAttribute="bottom" constant="13" id="eAk-hs-E28"/>
-                        <constraint firstItem="Wqs-Pv-v4G" firstAttribute="leading" secondItem="OMD-Q3-h8X" secondAttribute="trailing" constant="42" id="fBZ-Db-KmL"/>
+                        <constraint firstItem="Wqs-Pv-v4G" firstAttribute="leading" secondItem="OMD-Q3-h8X" secondAttribute="trailing" constant="32" id="fBZ-Db-KmL"/>
                         <constraint firstAttribute="height" constant="110" id="fI3-ha-YSd"/>
                         <constraint firstItem="Ixc-Dk-xlz" firstAttribute="trailing" secondItem="Wkn-fX-QTt" secondAttribute="trailing" constant="13" id="g4q-S7-cWI"/>
                         <constraint firstItem="oJg-Ps-OdY" firstAttribute="top" secondItem="gcD-LR-2wa" secondAttribute="bottom" id="gz6-sV-Mbe"/>
