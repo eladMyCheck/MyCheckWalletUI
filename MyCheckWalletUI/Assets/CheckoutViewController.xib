@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -115,7 +115,6 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="0hi-DO-t13"/>
-                                <constraint firstAttribute="width" constant="81" id="npf-Pz-fY1"/>
                             </constraints>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
@@ -134,9 +133,6 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqs-Pv-v4G">
-                            <constraints>
-                                <constraint firstAttribute="width" constant="81" id="ZKh-WS-qvD"/>
-                            </constraints>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -154,9 +150,6 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ZIP/Postal" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkn-fX-QTt">
-                            <constraints>
-                                <constraint firstAttribute="width" constant="81" id="v1j-bi-OPS"/>
-                            </constraints>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -201,6 +194,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="Wqs-Pv-v4G" firstAttribute="width" secondItem="Wkn-fX-QTt" secondAttribute="width" id="2Ad-nB-K9d"/>
                         <constraint firstItem="8hJ-Y4-PDh" firstAttribute="trailing" secondItem="Wqs-Pv-v4G" secondAttribute="trailing" constant="13" id="7df-cU-zOZ"/>
                         <constraint firstItem="oJg-Ps-OdY" firstAttribute="leading" secondItem="fwe-gf-87l" secondAttribute="leading" constant="24" id="7f8-oW-9Ug"/>
                         <constraint firstItem="Wqs-Pv-v4G" firstAttribute="leading" secondItem="8hJ-Y4-PDh" secondAttribute="leading" constant="13" id="8tI-EH-5Lm"/>
@@ -217,6 +211,8 @@
                         <constraint firstItem="LU0-WJ-369" firstAttribute="width" secondItem="gcD-LR-2wa" secondAttribute="width" id="NSc-ey-Oeq"/>
                         <constraint firstAttribute="trailing" secondItem="gcD-LR-2wa" secondAttribute="trailing" constant="22" id="Nrp-Y2-vhO"/>
                         <constraint firstItem="Ixc-Dk-xlz" firstAttribute="bottom" secondItem="Wkn-fX-QTt" secondAttribute="bottom" constant="14" id="RZU-fD-T9p"/>
+                        <constraint firstItem="Wkn-fX-QTt" firstAttribute="leading" secondItem="Wqs-Pv-v4G" secondAttribute="trailing" constant="45" id="TX6-ud-3Sq"/>
+                        <constraint firstItem="OMD-Q3-h8X" firstAttribute="width" secondItem="Wqs-Pv-v4G" secondAttribute="width" id="VYR-4c-u1c"/>
                         <constraint firstItem="LU0-WJ-369" firstAttribute="height" secondItem="gcD-LR-2wa" secondAttribute="height" id="VfH-wh-eeb"/>
                         <constraint firstItem="kLK-VW-lfS" firstAttribute="top" secondItem="OMD-Q3-h8X" secondAttribute="top" constant="-14" id="XoI-7S-aR0"/>
                         <constraint firstItem="Ixc-Dk-xlz" firstAttribute="top" secondItem="Wkn-fX-QTt" secondAttribute="top" constant="-14" id="b4c-Sk-Lqf"/>
@@ -225,6 +221,7 @@
                         <constraint firstItem="dxO-CU-fHu" firstAttribute="trailing" secondItem="Wkn-fX-QTt" secondAttribute="trailing" constant="13" id="dNK-0V-3ZZ"/>
                         <constraint firstItem="fEU-Sf-TUO" firstAttribute="leading" secondItem="Wqs-Pv-v4G" secondAttribute="leading" constant="-14" id="did-93-cpC"/>
                         <constraint firstItem="tJI-vV-AMV" firstAttribute="top" secondItem="OMD-Q3-h8X" secondAttribute="bottom" constant="13" id="eAk-hs-E28"/>
+                        <constraint firstItem="Wqs-Pv-v4G" firstAttribute="leading" secondItem="OMD-Q3-h8X" secondAttribute="trailing" constant="42" id="fBZ-Db-KmL"/>
                         <constraint firstAttribute="height" constant="110" id="fI3-ha-YSd"/>
                         <constraint firstItem="Ixc-Dk-xlz" firstAttribute="trailing" secondItem="Wkn-fX-QTt" secondAttribute="trailing" constant="13" id="g4q-S7-cWI"/>
                         <constraint firstItem="oJg-Ps-OdY" firstAttribute="top" secondItem="gcD-LR-2wa" secondAttribute="bottom" id="gz6-sV-Mbe"/>
