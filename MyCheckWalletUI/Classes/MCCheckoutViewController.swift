@@ -20,7 +20,7 @@ import UIKit
 public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //variables
     /// This variable will always have the currant payment method selected by the user. In the case where the user doesn't have a payment method the variable will be nil.
-     var selectedMethod : PaymentMethod?
+     public var selectedMethod : PaymentMethod?
     weak public var checkoutDelegate : CheckoutDelegate?
     //Outlets
     @IBOutlet weak private  var paymentSelectorView: UIView!
@@ -244,6 +244,12 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
    @objc private func refreshPaymentMethods(){
     MyCheckWallet.manager.getPaymentMethods({ (methods) in
         self.paymentMethods = methods
+      if methods.count == 0 {
+      self.selectedMethod = nil
+      }else{
+        self.selectedMethod = methods.first
+
+      }
         self.configureUI()
     }) { (error) in
         
@@ -303,14 +309,15 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
             self.startActivityIndicator()
             self.applyButton.enabled = false
             self.cancelButton.enabled = false
-            MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  token in
+            MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  method in
                 self.creditCardNumberField.text = ""
                 self.dateField.text = ""
                 self.cvvField.text = ""
                 self.zipField.text = ""
-                if token.isSingleUse == true{
-                    self.selectedMethod = token
-                    self.paymentMethods = [token]
+              self.selectedMethod = method
+
+                if method.isSingleUse == true{
+                    self.paymentMethods = [method]
                     self.paymentMethodSelector.reloadAllComponents()
                     self.paymentMethodSelectorTextField.text = self.selectedMethod!.lastFourDigits
                     self.typeImage.image = self.setImageForType(self.getType((self.selectedMethod!.issuer)))

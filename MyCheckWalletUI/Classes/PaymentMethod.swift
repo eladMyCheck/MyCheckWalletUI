@@ -26,28 +26,28 @@ public class PaymentMethod{
     /// The Id of the payment method.
     public let Id : String
     /// The token that must be used in order to chard the payment method.
-    let token : String
+   public let token : String
     
     /// The month the 💳 expires
-    let  expireMonth : String
+  public  let  expireMonth : String
     
     /// The year the 💳 expires
-    let expireYear : String
+   public let expireYear : String
     
     /// The 💳 last 4 digits
-    let lastFourDigits : String
+   public let lastFourDigits : String
     
     /// True if the payment method is the default payment method
-    let isDefault : Bool
+   public let isDefault : Bool
     
     /// True if the payment method will be valid for a single use only
-    let isSingleUse: Bool
+   public let isSingleUse: Bool
     
     ///A short form string of the issuer name
-    let issuerShort: String
+   public let issuerShort: String
 
     ///The issuer name
-    let issuer: String
+   public let issuer: String
     ///Init function
     ///
     ///    - JSON: A JSON that comes from the wallet endpoint
