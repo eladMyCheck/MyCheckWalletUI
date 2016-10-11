@@ -90,6 +90,7 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
             self.paymentMethods = array
             for cc in self.creditCards as! [CreditCardView]{
                 cc.toggleEditMode()
+                self.editMode = !self.editMode
                 self.editButton.title = "Edit"
             }
             self.setCrediCards()
