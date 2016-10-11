@@ -65,6 +65,9 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         
         UIView.animateWithDuration(0.4, animations: {
             if creditCardCount > 0{
+                if self.indexToScrollTo == 0{
+                    self.indexToScrollTo = self.indexToScrollTo + 1
+                }
                 self.scrollView.contentOffset = CGPointMake(CGFloat(self.indexToScrollTo)*193, 0)
                 self.indexToScrollTo = 0
             }else{
