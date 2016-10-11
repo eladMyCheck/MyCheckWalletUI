@@ -52,6 +52,7 @@ This view controller is meant to be embedded inside your view controller. It all
   1. Add a credit card
   2. Select a credit card
 The view controller should be added into a container view. It can be done in two ways.
+
   1. Interface builder: change the view controller that the container is connect to (by segue) to `MCCheckoutViewController`. 
   2. In code: call MCCheckoutViewController.init() in order to create the instance.
 
@@ -60,6 +61,7 @@ When you want to use a payment method use the view controller variable `selected
 
 ###MCPaymentMethodsViewController
 This class is a full screen view controller that allows the user to fully manage his payment methods:
+
   1. Display all his payment methods.
   2. Choose a default payment method.
   3. Delete payment methods.
