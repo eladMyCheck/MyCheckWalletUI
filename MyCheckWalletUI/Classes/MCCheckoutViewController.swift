@@ -309,6 +309,11 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
             self.startActivityIndicator()
             self.applyButton.enabled = false
             self.cancelButton.enabled = false
+
+            self.creditCardNumberField.userInteractionEnabled = false
+            self.dateField.userInteractionEnabled = false
+            self.cvvField.userInteractionEnabled = false
+            self.zipField.userInteractionEnabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  method in
                 self.creditCardNumberField.text = ""
                 self.dateField.text = ""
@@ -329,12 +334,20 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
                 }else{
                     self.newPaymenteMethodAdded()
                 }
+                self.creditCardNumberField.userInteractionEnabled = true
+                self.dateField.userInteractionEnabled = true
+                self.cvvField.userInteractionEnabled = true
+                self.zipField.userInteractionEnabled = true
                 self.applyButton.enabled = true
                 self.cancelButton.enabled = true
                 self.activityView.stopAnimating()
                 }, fail: { error in
                     self.applyButton.enabled = true
                     self.cancelButton.enabled = true
+                    self.creditCardNumberField.userInteractionEnabled = true
+                    self.dateField.userInteractionEnabled = true
+                    self.cvvField.userInteractionEnabled = true
+                    self.zipField.userInteractionEnabled = true
                     self.activityView.stopAnimating()
                     if let delegate = self.delegate{
                         self.errorLabel.text = error.localizedDescription
@@ -346,7 +359,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     }
     
     override func startActivityIndicator() {
-        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)
+        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .White)
         
         activityView.center=CGPointMake(self.view.center.x, self.view.center.y)
         activityView.startAnimating()
