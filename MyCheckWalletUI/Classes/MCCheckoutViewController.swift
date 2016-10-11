@@ -370,11 +370,11 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
 }
 
 extension MCCheckoutViewController : MCPaymentMethodsViewControllerDelegate{
-    internal func userDismissed(  controller: MCPaymentMethodsViewControllerDelegate)
-    {
-    }
     
-    func dissmissedVC(){
+    
+    public func dismissedMCPaymentMethodsViewController(controller: MCPaymentMethodsViewController){
+      controller.dismissViewControllerAnimated(true, completion: nil)
+
         MyCheckWallet.manager.getPaymentMethods({ (array) in
             if array.count > 0{
                 self.paymentMethods = array

@@ -33,7 +33,11 @@ internal override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObje
           checkoutViewController?.checkoutDelegate = self
     }
 }
-
+//MARK: - actions
+  @IBAction func paymentMethodsPressed(sender: AnyObject) {
+    let controller = MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
+    self.presentViewController(controller, animated: true, completion: nil)
+  }
 }
 
 extension ViewController : CheckoutDelegate {
@@ -46,4 +50,12 @@ extension ViewController : CheckoutDelegate {
         })
     }
 
+}
+
+extension ViewController : MCPaymentMethodsViewControllerDelegate{
+  
+  
+ func dismissedMCPaymentMethodsViewController(controller: MCPaymentMethodsViewController){
+    controller.dismissViewControllerAnimated(true, completion: nil)
+  }
 }
