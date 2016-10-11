@@ -57,7 +57,7 @@ The view controller should be added into a container view. It can be done in two
   2. In code: call MCCheckoutViewController.init() in order to create the instance.
 
 once an instance is created you should set `checkoutDelegate` and implement `checkoutViewShouldResizeHeight` in order to respond to height changes. You should resize the container view to have the height returned by the delegate method.
-When you want to use a payment method use the view controller variable `selectedMethod` in order to get the method the user selected (or nil if non exist) 
+When you want to use a payment method use the view controllers variable `selectedMethod` in order to get the method the user selected (or nil if non exist) 
 
 ###MCPaymentMethodsViewController
 This class is a full screen view controller that allows the user to fully manage his payment methods:
