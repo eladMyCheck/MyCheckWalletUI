@@ -29,10 +29,10 @@ public class PaymentMethod{
     let token : String
     
     /// The month the 💳 expires
-    let  expireMonth : Int
+    let  expireMonth : String
     
     /// The year the 💳 expires
-    let expireYear : Int
+    let expireYear : String
     
     /// The 💳 last 4 digits
     let lastFourDigits : String
@@ -59,12 +59,12 @@ public class PaymentMethod{
             
             token = JSON["token"] as! String
           
-             number = JSON["exp_month"] as! NSNumber
-            expireMonth = Int(number)
+            expireMonth = JSON["exp_month"] as! String
            
             number = JSON["exp_year4"] as! NSNumber
-            expireYear = Int(number)
-            
+            let yearInt = Int(number)
+            expireYear = String(yearInt)
+          
             lastFourDigits =  JSON["last_4_digits"] as! String
             number  = JSON["is_default"] as! NSNumber
             isDefault = number.boolValue

@@ -251,7 +251,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     }
     @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
         let controller : MCPaymentMethodsViewController
-        if self.paymentMethods.first?.isSingleUse == true {
+        if self.paymentMethods.count > 0 && self.paymentMethods.first?.isSingleUse == true {
             controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: nil)
         }else{
             controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: self.paymentMethods)

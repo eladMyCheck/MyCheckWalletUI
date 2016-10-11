@@ -45,7 +45,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         expirationDateLabel.textAlignment = NSTextAlignment.Center
         expirationDateLabel.textColor = UIColor.whiteColor()
         expirationDateLabel.font =  UIFont(name: expirationDateLabel.font.fontName, size: 9)
-        expirationDateLabel.text = String(format: "%d/%d", method.expireMonth, method.expireYear%100)
+        expirationDateLabel.text = String(format: "%@/%@", method.expireMonth, method.expireYear)
         addSubview(expirationDateLabel)
         
         
