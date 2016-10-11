@@ -67,6 +67,10 @@ public class MCAddCreditCardViewController: MCViewController {
             let split = dateStr.characters.split("/").map(String.init)
             applyButton.enabled = false
             cancelBut.enabled = false
+            self.creditCardNumberField.userInteractionEnabled = false
+            self.dateField.userInteractionEnabled = false
+            self.cvvField.userInteractionEnabled = false
+            self.zipField.userInteractionEnabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: false, success: {  token in
                 self.activityView.stopAnimating()
                 if let delegate = self.delegate{
@@ -74,6 +78,10 @@ public class MCAddCreditCardViewController: MCViewController {
                     delegate.addedNewPaymentMethod(self, token:"")
                     self.applyButton.enabled = true
                     self.cancelBut.enabled = true
+                    self.creditCardNumberField.userInteractionEnabled = true
+                    self.dateField.userInteractionEnabled = true
+                    self.cvvField.userInteractionEnabled = true
+                    self.zipField.userInteractionEnabled = true
                 }
                 }, fail: { error in
                     self.activityView.stopAnimating()
@@ -82,6 +90,10 @@ public class MCAddCreditCardViewController: MCViewController {
                         delegate.recivedError(self, error:error)
                         self.applyButton.enabled = true
                         self.cancelBut.enabled = true
+                        self.creditCardNumberField.userInteractionEnabled = true
+                        self.dateField.userInteractionEnabled = true
+                        self.cvvField.userInteractionEnabled = true
+                        self.zipField.userInteractionEnabled = true
                     }
             })
         }
