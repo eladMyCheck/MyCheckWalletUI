@@ -12,7 +12,7 @@ public class MyCheckWallet{
     internal static let refreshPaymentMethodsNotification = "com.mycheck.refreshPaymentMethodsNotification"
 
   private var token: String?
-    internal var methods:  [PaymentMethod] = []
+    public var methods:  [PaymentMethod] = []
     ///This property points to the singlton object. It should be used for calling all the functions in the class.
   public static let manager = MyCheckWallet()
   

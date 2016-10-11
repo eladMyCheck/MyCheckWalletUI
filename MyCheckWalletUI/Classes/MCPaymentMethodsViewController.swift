@@ -44,6 +44,16 @@ internal class MCPaymentMethodsViewController: MCViewController {
         return controller
     }
     
+    internal static func createPaymentMethodsViewController(delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController{
+        let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
+        let controller = storyboard.instantiateViewControllerWithIdentifier("MCPaymentMethodsViewController") as! MCPaymentMethodsViewController
+        
+        controller.delegate = delegate
+        controller.paymentMethods = MyCheckWallet.manager.methods
+        
+        return controller
+    }
+    
     //MARK: - lifeCycle
     
     internal override func viewDidLoad(){
