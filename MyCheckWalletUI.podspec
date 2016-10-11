@@ -114,11 +114,11 @@ Please read the LICENSE file available in the project
 
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/MyCheckWalletUI'
+  s.homepage         = 'https://mycheckapp.com'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'elad schiller' => 'eladsc@mycheck.co.il' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/MyCheckWalletUI.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://bitbucket.org/erez_spatz/mycheckwalletui-ios.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
