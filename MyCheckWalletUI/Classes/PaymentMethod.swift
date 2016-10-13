@@ -68,7 +68,7 @@ public class PaymentMethod{
             token = JSON["token"] as! String
             
             if let str = JSON["exp_month"] as? String{
-                expireMonth = str as! String
+                expireMonth = str 
             }else if let str =  JSON["exp_month"] as? NSNumber{
                 expireMonth = String(str)
             }else{
