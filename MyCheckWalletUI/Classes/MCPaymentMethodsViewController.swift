@@ -157,7 +157,7 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
     }
 }
 
-extension UIImageView {
+internal extension UIImageView {
     public func imageFromUrl(urlString: String) {
         if let url = NSURL(string: urlString) {
             let request = NSURLRequest(URL: url)

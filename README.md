@@ -1,3 +1,5 @@
+# MyCheckWalletUI
+An SDK that supplies UI for payment method managment.
 
 
 ## Example
