@@ -118,48 +118,13 @@ public class MCPaymentMethodsViewController: MCViewController {
         self.showEnterCreditCard(true, animated: true)
     }
     
-    private func assignImages(){
-        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"){
-            if let data = NSData(contentsOfURL: url){
-                if let image = UIImage(data: data){
-                    visaImageView.image = image
-                }
-            }
-        }
-        
-        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"){
-            if let data = NSData(contentsOfURL: url){
-                if let image = UIImage(data: data){
-                    mastercardImageView.image = image
-                }
-            }
-        }
-        
-        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"){
-            if let data = NSData(contentsOfURL: url){
-                if let image = UIImage(data: data){
-                    dinersImageView.image = image
-                }
-            }
-        }
-        
-        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"){
-            if let data = NSData(contentsOfURL: url){
-                if let image = UIImage(data: data){
-                    discoverImageView.image = image
-                }
-            }
-        }
-        
-        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"){
-            if let data = NSData(contentsOfURL: url){
-                if let image = UIImage(data: data){
-                    amexImageView.image = image
-                }
-            }
-        }
-        
-    }
+  private func assignImages(){
+    visaImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png")
+    mastercardImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png")
+    dinersImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png")
+    discoverImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png")
+    amexImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png")
+  }
 }
 
 
@@ -189,5 +154,19 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
         print("payment methods vc dissmissed")
         self.delegate?.dismissedMCPaymentMethodsViewController(self)
         
+    }
+}
+
+extension UIImageView {
+    public func imageFromUrl(urlString: String) {
+        if let url = NSURL(string: urlString) {
+            let request = NSURLRequest(URL: url)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
+                (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
+                if let imageData = data as NSData? {
+                    self.image = UIImage(data: imageData)
+                }
+            }
+        }
     }
 }
