@@ -11,13 +11,21 @@ import Foundation
 
 ///A Credit Card issuer type.
 public enum CreditCardType : String{
+    ///Visa
     case visa = "visa"
+    ///Master Card
     case masterCard = "mastercard"
+    ///American express
     case amex = "amex"
+    ///Discover
     case discover = "discover"
+    ///JBC
     case JCB = "jcb"
+    ///Diners Club
     case diners = "dinersclub"
+    ///Maestro
     case maestro = "maestro"
+    ///Invalid type or simply unrecognised by any of our regular expressions
     case unknown = ""
 }
 ///Represents a payment method the user has.
@@ -28,13 +36,13 @@ public class PaymentMethod{
     /// The token that must be used in order to chard the payment method.
    public let token : String
     
-    /// The month the 💳 expires
+    /// The month the credit card expires
   public  let  expireMonth : String
     
-    /// The year the 💳 expires
+    /// The year the credit card expires
    public let expireYear : String
     
-    /// The 💳 last 4 digits
+    /// The credit card's  last 4 digits
    public let lastFourDigits : String
     
     /// True if the payment method is the default payment method

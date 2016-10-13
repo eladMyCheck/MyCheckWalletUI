@@ -42,7 +42,6 @@
 		8F3BFE8B09013BD1B5E50F4A948CB1D2 /* ProximaNovaSoftBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 160DD443E07A2BCD5548848A7D4C6102 /* ProximaNovaSoftBold.ttf */; };
 		903D9B409905E271D1198C082BC4CC21 /* Pods-MyCheckWalletUI_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6AED777BAE0B24BF2D5EE12B668554 /* Pods-MyCheckWalletUI_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		91C09AC2A52ED69A27C8D923139A006F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */; };
-		928D15A91441ED15880A68DE7725DA83 /* MCContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1B512C421BE218ABCC95455DE36BFE /* MCContainerView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9469DF81ECB494E84675969B5E13374C /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AE6827D6CBD3F8B59B79641ABF6ED159 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A252FFF4E82645287E6490BB591604DA /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D6BB3DF56682BA1F03BF65E9BDA2D1 /* CreditCardValidator.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A7C821C7C55CF788215A335AC9B3282F /* Pods-MyCheckWalletUI_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6263697EB59BB353A1C00D5446EC4FA8 /* Pods-MyCheckWalletUI_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -164,7 +163,6 @@
 		C5A4230229739A18F96935B4AFF17247 /* AddCreditCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddCreditCardView.swift; sourceTree = "<group>"; };
 		D705F06FDEB4509AFF47A5D0A36943C2 /* MCCreditCardsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCCreditCardsViewController.swift; sourceTree = "<group>"; };
 		DDC2C7A48545D8C54D52554343225FB8 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
-		DF1B512C421BE218ABCC95455DE36BFE /* MCContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCContainerView.swift; sourceTree = "<group>"; };
 		EE2F2628F8FE1645FC45713A804BE665 /* Pods-MyCheckWalletUI_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MyCheckWalletUI_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		EF9B164ED26ED6B4216627D17E910484 /* Pods-MyCheckWalletUI_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Example-frameworks.sh"; sourceTree = "<group>"; };
 		F223BA07B61768D2F9E56713683F77EF /* MyCheckWalletUI-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-prefix.pch"; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 				A560FD1C8F78DDEE24BE76ED9144629A /* CreditCardView.swift */,
 				BA5F031F2C84F805154FF006E3132CD3 /* MCAddCreditCardViewController.swift */,
 				817E9F2E40E980DE93EC1CC0A46A900D /* MCCheckoutViewController.swift */,
-				DF1B512C421BE218ABCC95455DE36BFE /* MCContainerView.swift */,
 				D705F06FDEB4509AFF47A5D0A36943C2 /* MCCreditCardsViewController.swift */,
 				4870FF3FF573B63D140126C2D1023A67 /* MCPaymentMethodsViewController.swift */,
 				FF3A12E55ECE3708BDA67EC4139CC0CA /* MCScrollView.swift */,
@@ -647,7 +644,6 @@
 				CAF08BDA14F238AE0E5A8D6C4261F4E6 /* CreditCardView.swift in Sources */,
 				2E17D7A1B3B8369A373E614D189C2146 /* MCAddCreditCardViewController.swift in Sources */,
 				85690B6C9AA5982A3C4B73C32F754809 /* MCCheckoutViewController.swift in Sources */,
-				928D15A91441ED15880A68DE7725DA83 /* MCContainerView.swift in Sources */,
 				2DAA63839F1953180D9A6A4A52C9319E /* MCCreditCardsViewController.swift in Sources */,
 				0606E5A6301D766B2F438B906B3871B4 /* MCPaymentMethodsViewController.swift in Sources */,
 				F2128368BABBE7FD82DB8ED64B2654C6 /* MCScrollView.swift in Sources */,
