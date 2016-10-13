@@ -342,7 +342,7 @@
                             <constraint firstItem="JuV-uX-eLO" firstAttribute="centerY" secondItem="A7V-OB-5BU" secondAttribute="centerY" id="ALj-fC-x0m"/>
                             <constraint firstItem="JuV-uX-eLO" firstAttribute="leading" secondItem="A7V-OB-5BU" secondAttribute="trailing" constant="14" id="DJ1-sL-oAa"/>
                             <constraint firstItem="bol-cB-Pbe" firstAttribute="centerX" secondItem="AyY-II-kjf" secondAttribute="centerX" id="EJI-Za-67Q"/>
-                            <constraint firstItem="A7V-OB-5BU" firstAttribute="top" secondItem="e82-31-pJG" secondAttribute="bottom" constant="65" id="FX4-Yo-zXw"/>
+                            <constraint firstItem="A7V-OB-5BU" firstAttribute="top" secondItem="e82-31-pJG" secondAttribute="bottom" constant="75" id="FX4-Yo-zXw"/>
                             <constraint firstItem="HNb-VI-wZf" firstAttribute="top" secondItem="W6f-IO-CN5" secondAttribute="bottom" constant="19" id="IEZ-LA-OFo"/>
                             <constraint firstItem="HNb-VI-wZf" firstAttribute="leading" secondItem="cTP-fh-zvs" secondAttribute="leading" id="M8n-T1-q7Z"/>
                             <constraint firstItem="pVn-G1-NBu" firstAttribute="top" secondItem="cTP-fh-zvs" secondAttribute="bottom" constant="29" id="MEc-v8-Z43"/>
@@ -354,7 +354,7 @@
                             <constraint firstItem="5UK-IR-MZx" firstAttribute="trailing" secondItem="PFL-fa-3RB" secondAttribute="trailing" id="WYE-0G-g0q"/>
                             <constraint firstItem="vj5-EE-P4N" firstAttribute="leading" secondItem="AyY-II-kjf" secondAttribute="leading" constant="16" id="XE7-9p-vDa"/>
                             <constraint firstItem="pVn-G1-NBu" firstAttribute="leading" secondItem="AyY-II-kjf" secondAttribute="leading" constant="18" id="Xzb-G3-4c5"/>
-                            <constraint firstItem="bol-cB-Pbe" firstAttribute="leading" secondItem="BeD-SX-Sgl" secondAttribute="leading" id="ajy-GK-xjr"/>
+                            <constraint firstItem="bol-cB-Pbe" firstAttribute="leading" secondItem="BeD-SX-Sgl" secondAttribute="leading" constant="15" id="ajy-GK-xjr"/>
                             <constraint firstItem="BeD-SX-Sgl" firstAttribute="top" secondItem="bol-cB-Pbe" secondAttribute="bottom" constant="5" id="bW6-08-Vn2"/>
                             <constraint firstItem="AFw-93-ga5" firstAttribute="leading" secondItem="AyY-II-kjf" secondAttribute="leadingMargin" constant="-16" id="g8B-Tr-dQP"/>
                             <constraint firstItem="cTP-fh-zvs" firstAttribute="top" secondItem="HNb-VI-wZf" secondAttribute="bottom" constant="5" id="gQC-tm-2lC"/>
@@ -370,7 +370,7 @@
                             <constraint firstItem="5UK-IR-MZx" firstAttribute="top" secondItem="PFL-fa-3RB" secondAttribute="bottom" constant="5" id="pKo-Yn-MSo"/>
                             <constraint firstAttribute="trailing" secondItem="JuV-uX-eLO" secondAttribute="trailing" constant="18" id="qjN-ZD-hIM"/>
                             <constraint firstItem="bol-cB-Pbe" firstAttribute="centerY" secondItem="HNb-VI-wZf" secondAttribute="centerY" id="rXY-8A-kh7"/>
-                            <constraint firstItem="BeD-SX-Sgl" firstAttribute="trailing" secondItem="bol-cB-Pbe" secondAttribute="trailing" id="yc2-Y7-sRU"/>
+                            <constraint firstItem="BeD-SX-Sgl" firstAttribute="trailing" secondItem="bol-cB-Pbe" secondAttribute="trailing" constant="15" id="yc2-Y7-sRU"/>
                             <constraint firstItem="HNb-VI-wZf" firstAttribute="height" secondItem="bol-cB-Pbe" secondAttribute="height" id="zyR-Kb-juz"/>
                         </constraints>
                     </view>
