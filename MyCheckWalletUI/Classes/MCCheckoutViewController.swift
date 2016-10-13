@@ -80,46 +80,12 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         self.resetFields()
     }
     
-   private func assignImages(){
-        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"){
-            if let data = NSData(contentsOfURL: url){
-                if let image = UIImage(data: data){
-                    visaImageView.image = image
-                }
-            }
-        }
-        
-        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"){
-            if let data = NSData(contentsOfURL: url){
-                if let image = UIImage(data: data){
-                    mastercardImageView.image = image
-                }
-            }
-        }
-        
-        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"){
-            if let data = NSData(contentsOfURL: url){
-                if let image = UIImage(data: data){
-                    dinersImageView.image = image
-                }
-            }
-        }
-        
-        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"){
-            if let data = NSData(contentsOfURL: url){
-                if let image = UIImage(data: data){
-                    discoverImageView.image = image
-                }
-            }
-        }
-        
-        if let url = NSURL(string: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"){
-            if let data = NSData(contentsOfURL: url){
-                if let image = UIImage(data: data){
-                    amexImageView.image = image
-                }
-            }
-        }
+   private func assignImages(){    
+    visaImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png")
+    mastercardImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png")
+    dinersImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png")
+    discoverImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png")
+    amexImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png")
         
     }
     
