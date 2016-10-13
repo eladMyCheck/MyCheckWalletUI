@@ -14,7 +14,8 @@ internal protocol MCCreditCardsViewControllerrDelegate {
 
 internal class MCCreditCardsViewController: MCViewController , UIScrollViewDelegate, UIGestureRecognizerDelegate, CreditCardViewDelegate{
 
-    @IBOutlet weak var editButton: UIBarButtonItem!
+    
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var scrollView: MCScrollView!
     var activityView : UIActivityIndicatorView!
     var paymentMethods: Array<PaymentMethod>!
@@ -27,7 +28,7 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         super.viewDidLoad()
         self.setCrediCards()
         self.scrollView.delegate = self;
-        self.editButton.setTitleTextAttributes([NSFontAttributeName : UIFont.systemFontOfSize(13)], forState: .Normal)
+        //self.editButton.setTitleTextAttributes([NSFontAttributeName : UIFont.systemFontOfSize(13)], forState: .Normal)
     }
     
     internal func setCrediCards(){
@@ -54,10 +55,12 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         }
         
         if creditCardCount == 0 {
-            self.editButton.title = ""
+            //self.editButton.title = ""
+            self.editButton.setTitle("", forState: .Normal)
             self.editButton.enabled = false
         }else{
-            self.editButton.title = self.editMode ? "Done" : "Edit"
+            //self.editButton.title = self.editMode ? "Done" : "Edit"
+            self.editMode ? self.editButton.setTitle("Done", forState: .Normal) : self.editButton.setTitle("Edit", forState: .Normal)
             self.editButton.enabled = true
         }
         
@@ -81,13 +84,15 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         
     }
     
-    @IBAction func editPressed(_ sender: UIBarButtonItem?) {
+    @IBAction func editPressed(_ sender: UIButton) {
         self.editMode = !self.editMode
-        self.editButton.title = self.editMode ? "Done" : "Edit"
+        //self.editButton.title = self.editMode ? "Done" : "Edit"
+        self.editMode ? self.editButton.setTitle("Done", forState: .Normal) : self.editButton.setTitle("Edit", forState: .Normal)
         
         for cc in creditCards as! [CreditCardView]{
             cc.toggleEditMode()
         }
+
     }
     
     func deletedPaymentMethod(method: PaymentMethod) {
@@ -106,7 +111,8 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
                 cc.toggleEditMode()
             }
             self.editMode = !self.editMode
-            self.editButton.title = "Edit"
+            //self.editButton.title = "Edit"
+            self.editButton.setTitle("Edit", forState: .Normal)
             self.setCrediCards()
             }, fail: { error in
         })
