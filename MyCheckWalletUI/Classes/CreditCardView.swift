@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal protocol CreditCardViewDelegate {
+internal protocol CreditCardViewDelegate : class{
     func deletedPaymentMethod(method : PaymentMethod)
     func setPaymentAsDefault()
     func startActivityIndicator()

@@ -2,7 +2,7 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first. The Example has no app, but it does have a unit test that calls all the functions and demonstrates the use.
+To run the example project, clone the repo, and run `pod install` from the Example directory first. The example demostraits displaying a Checkout view controller , displaying a payment manager view controller and getting the token when ready to pay.
 
 ## Requirements
 iOS 8 or above.
@@ -68,6 +68,7 @@ This class is a full screen view controller that allows the user to fully manage
   4. Add payment methods.
 
 In order to create a MCPaymentMethodsViewController instance call the constuctor and present it like so:
+
 ```
 let controller = MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
 self.presentViewController(controller, animated: true, completion: nil)
@@ -76,7 +77,9 @@ self.presentViewController(controller, animated: true, completion: nil)
 
 You must also implemnt the MCPaymentMethodsViewControllerDelegate and dismiss the view controller when it is done 
 example
+
 ```
+
 func dismissedMCPaymentMethodsViewController(controller: MCPaymentMethodsViewController){
 controller.dismissViewControllerAnimated(true, completion: nil)
 }

@@ -8,20 +8,25 @@
 
 import UIKit
 
-///The delegate of a CheckoutView or CheckoutTableViewCell object must adopt this protocol and implement at least some of its methods in order to be able to resize the view when needed. The View will not automaticly resize since it might be used in a few diffrant ways (e.g contraints might be broken)
-@objc public protocol CheckoutDelegate{
-    ///Called by the CheckoutView/CheckoutTableViewCell when the height is changed
+///The parent of the MCCheckoutViewController must adopt this protocol and implement its methods in order to be able to resize the view when needed. The View will not automaticly resize since it might be used in a few diffrant ways (e.g contraints might be broken) , so it is your responsibility to respond to the delegate and resize the view appropriately.
+public protocol CheckoutDelegate : class{
+   
+    ///Called when the height is changed
     ///   - parameter newHight: The new height of the CheckoutView/CheckoutTableViewCell
     ///   - parameter animationDuration: The duration the animation will take. The animation will start directly after this call is pressed. You should resize the view imidiatly and use the same animation duration in order for the animation to look good
-    
    func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: NSTimeInterval) -> Void
        
 }
-public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+///A view controller that provides the ability to add a credit card and or select a payment method. the view controller is meant to be used as part of a parent view controller using a container view.
+public class MCCheckoutViewController: MCAddCreditCardViewController {
     //variables
+    
     /// This variable will always have the currant payment method selected by the user. In the case where the user doesn't have a payment method the variable will be nil.
      public var selectedMethod : PaymentMethod?
+    
+    ///The delegate that will be updated with MCCheckoutViewController height changes
     weak public var checkoutDelegate : CheckoutDelegate?
+    
     //Outlets
     @IBOutlet weak private  var paymentSelectorView: UIView!
     @IBOutlet weak  private  var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
@@ -54,7 +59,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
         super.init(nibName: "CheckoutViewController", bundle: MCViewController.getBundle(NSBundle(forClass: MCCheckoutViewController.self)))
     }
     
-    ///The prefred costructor to use in ordder to create the View Controller
+    ///The preferred costructor to be used in order to create the View Controller
     init(){
         super.init(nibName: "CheckoutViewController", bundle: MCViewController.getBundle(NSBundle(forClass: MCCheckoutViewController.self)))
 
@@ -145,18 +150,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController, UIPickerVi
     }
     
     
-    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.paymentMethods.count
-        
-    }
-    
-    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.paymentMethods[row].lastFourDigits
-    }
+   
     
     func configureUI(){
         creditCardNumberField.attributedPlaceholder = NSAttributedString(string:"1234 1234 1234 1234", attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
@@ -417,5 +411,20 @@ extension MCCheckoutViewController : MCPaymentMethodsViewControllerDelegate{
                 
         })
         
+    }
+}
+
+extension MCCheckoutViewController : UIPickerViewDelegate , UIPickerViewDataSource {
+    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.paymentMethods.count
+        
+    }
+    
+    public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.paymentMethods[row].lastFourDigits
     }
 }

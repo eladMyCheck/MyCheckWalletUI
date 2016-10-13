@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MyCheckWalletUI  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="MyCheckWalletUI  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">MyCheckWalletUI Docs</a> (72% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">MyCheckWalletUI Reference</a>
+        <img id="carat" src="img/carat.png" />
+        MyCheckWalletUI  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/MCCheckoutViewController.html">MCCheckoutViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MCPaymentMethodsViewController.html">MCPaymentMethodsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MyCheckWallet.html">MyCheckWallet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PaymentMethod.html">PaymentMethod</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/CreditCardType.html">CreditCardType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/CheckoutDelegate.html">CheckoutDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MCPaymentMethodsViewControllerDelegate.html">MCPaymentMethodsViewControllerDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#example' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example'>Example</h2>
+
+<p>To run the example project, clone the repo, and run <code>pod install</code> from the Example directory first. The example demostraits displaying a Checkout view controller , displaying a payment manager view controller and getting the token when ready to pay.</p>
+<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+
+<p>iOS 8 or above.</p>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+
+<p>MyCheckWallet is available through <a href="http://cocoapods.org">CocoaPods</a>. You will first need to ask a MyCheck team member to give you read privileges to the MyCheck Repository. Once you have gotten the privileges, install
+it by simply adding the following lines to the top of your Podfile:</p>
+<pre class="highlight plaintext"><code>source 'https://bitbucket.org/erez_spatz/pod-spec-repo.git'
+source 'https://github.com/CocoaPods/Specs.git'
+</code></pre>
+
+<p>This will set both the public CocoaPods Repo and the MyCheck private repo as targets for CocoaPods to search for frameworks from.</p>
+
+<p>You can add YOUR_USER_NAME@ before the &lsquo;bitbucket.org&rsquo; so the pod tool won&rsquo;t need to ask you for it every time you update or install.</p>
+
+<p>inside the target add:</p>
+<pre class="highlight plaintext"><code>pod "MyCheckWalletUI"
+</code></pre>
+
+<p>Now you can run &#39;pod install&rsquo;</p>
+<a href='#use' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='use'>Use</h2>
+
+<p>Start by adding
+<code>
+import MyCheckWalletUI
+</code></p>
+
+<p>to the top of the class where you want to use MyCHeckWallet.</p>
+
+<p>Before displaying any UI you will have to login. Login by using the MyCheckWallet singelton.</p>
+<pre class="highlight plaintext"><code>MyCheckWallet.manager.login(YOUR_REFRESH_TOKEN, publishableKey: YOUR_PUBLISHABLE_KEY, success: {
+    //handle success
+} , fail: { error in
+    //handle failure
+})
+</code></pre>
+
+<p>Once you are logged in you can display the MyCheck UI. We have two UI elements</p>
+<a href='#mccheckoutviewcontroller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='mccheckoutviewcontroller'>MCCheckoutViewController</h3>
+
+<p>This view controller is meant to be embedded inside your view controller. It allows the user the basic functions needed from a wallet:
+  1. Add a credit card
+  2. Select a credit card
+The view controller should be added into a container view. It can be done in two ways.</p>
+
+<ol>
+<li>Interface builder: change the view controller that the container is connect to (by segue) to <code>MCCheckoutViewController</code>.</li>
+<li>In code: call MCCheckoutViewController.init() in order to create the instance.</li>
+</ol>
+
+<p>once an instance is created you should set <code>checkoutDelegate</code> and implement <code>checkoutViewShouldResizeHeight</code> in order to respond to height changes. You should resize the container view to have the height returned by the delegate method.
+When you want to use a payment method use the view controllers variable <code>selectedMethod</code> in order to get the method the user selected (or nil if non exist) </p>
+<a href='#mcpaymentmethodsviewcontroller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='mcpaymentmethodsviewcontroller'>MCPaymentMethodsViewController</h3>
+
+<p>This class is a full screen view controller that allows the user to fully manage his payment methods:</p>
+
+<ol>
+<li>Display all his payment methods.</li>
+<li>Choose a default payment method.</li>
+<li>Delete payment methods.</li>
+<li>Add payment methods.</li>
+</ol>
+
+<p>In order to create a MCPaymentMethodsViewController instance call the constuctor and present it like so:</p>
+<pre class="highlight plaintext"><code>let controller = MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
+self.presentViewController(controller, animated: true, completion: nil)
+
+</code></pre>
+
+<p>You must also implemnt the MCPaymentMethodsViewControllerDelegate and dismiss the view controller when it is done 
+example</p>
+<pre class="highlight plaintext"><code>
+func dismissedMCPaymentMethodsViewController(controller: MCPaymentMethodsViewController){
+controller.dismissViewControllerAnimated(true, completion: nil)
+}
+
+</code></pre>
+<a href='#authors' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='authors'>Authors</h2>
+
+<p>Elad Schiller, <a href="mailto:eladsc@mycheckapp.com">eladsc@mycheckapp.com</a>
+Mihail Kalichkov, <a href="mailto:mihailk@mycheckapp.com">mihailk@mycheckapp.com</a> </p>
+<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+
+<p>Please read the LICENSE file available in the project</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://mycheckapp.com" target="_blank" rel="external">elad schiller</a>. All rights reserved. (Last updated: 2016-10-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

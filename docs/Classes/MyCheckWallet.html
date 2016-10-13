@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MyCheckWallet Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/MyCheckWallet" class="dashAnchor"></a>
+    <a title="MyCheckWallet Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">MyCheckWalletUI Docs</a> (72% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">MyCheckWalletUI Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MyCheckWallet Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/MCCheckoutViewController.html">MCCheckoutViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MCPaymentMethodsViewController.html">MCPaymentMethodsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MyCheckWallet.html">MyCheckWallet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PaymentMethod.html">PaymentMethod</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CreditCardType.html">CreditCardType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CheckoutDelegate.html">CheckoutDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MCPaymentMethodsViewControllerDelegate.html">MCPaymentMethodsViewControllerDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MyCheckWallet</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MyCheckWallet</span></code></pre>
+
+                </div>
+              </div>
+            <p>MyCheckWallet is a singlton that will give you access to all of the MyCheck functionality. It has all the calls needed to manage a users payment methods.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC15MyCheckWalletUI13MyCheckWallet7managerS0_"></a>
+                    <a name="//apple_ref/swift/Variable/manager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC15MyCheckWalletUI13MyCheckWallet7managerS0_">manager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This property points to the singlton object. It should be used for calling all the functions in the class.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">manager</span> <span class="o">=</span> <span class="kt">MyCheckWallet</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC15MyCheckWalletUI13MyCheckWallet5loginFTSS14publishableKeySS7successFT_T_4failGSqFCSo7NSErrorT___T_"></a>
+                    <a name="//apple_ref/swift/Method/login(_:publishableKey:success:fail:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC15MyCheckWalletUI13MyCheckWallet5loginFTSS14publishableKeySS7successFT_T_4failGSqFCSo7NSErrorT___T_">login(_:publishableKey:success:fail:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Login a user and get an access_token that can be used for getting and setting data on the user.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">login</span><span class="p">(</span> <span class="nv">refreshToken</span><span class="p">:</span> <span class="kt">String</span> <span class="p">,</span> <span class="nv">publishableKey</span><span class="p">:</span> <span class="kt">String</span> <span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="p">,</span> <span class="nv">fail</span><span class="p">:</span> <span class="p">((</span><span class="kt">NSError</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>refreshToken</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The refresh token acquired from your server (that intern calls the MyCheck server that generates it)</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>publishableKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The publishable key used for the refresh token</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A block that is called if the user is logged in succesfully</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fail</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Called when the function fails for any reason</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC15MyCheckWalletUI13MyCheckWallet10isLoggedInFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/isLoggedIn()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC15MyCheckWalletUI13MyCheckWallet10isLoggedInFT_Sb">isLoggedIn()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if a user is logged in or not</p>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    True if the user is logged in and false otherwise.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isLoggedIn</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the user is logged in and false otherwise.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://mycheckapp.com" target="_blank" rel="external">elad schiller</a>. All rights reserved. (Last updated: 2016-10-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

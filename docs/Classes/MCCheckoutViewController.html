@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MCCheckoutViewController Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/MCCheckoutViewController" class="dashAnchor"></a>
+    <a title="MCCheckoutViewController Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">MyCheckWalletUI Docs</a> (72% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">MyCheckWalletUI Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MCCheckoutViewController Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/MCCheckoutViewController.html">MCCheckoutViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MCPaymentMethodsViewController.html">MCPaymentMethodsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MyCheckWallet.html">MyCheckWallet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PaymentMethod.html">PaymentMethod</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CreditCardType.html">CreditCardType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CheckoutDelegate.html">CheckoutDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MCPaymentMethodsViewControllerDelegate.html">MCPaymentMethodsViewControllerDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MCCheckoutViewController</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MCCheckoutViewController</span><span class="p">:</span> <span class="kt">MCAddCreditCardViewController</span></code></pre>
+
+                </div>
+              </div>
+            <p>A view controller that provides the ability to add a credit card and or select a payment method. the view controller is meant to be used as part of a parent view controller using a container view.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC15MyCheckWalletUI24MCCheckoutViewController14selectedMethodGSqCS_13PaymentMethod_"></a>
+                    <a name="//apple_ref/swift/Property/selectedMethod" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC15MyCheckWalletUI24MCCheckoutViewController14selectedMethodGSqCS_13PaymentMethod_">selectedMethod</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This variable will always have the currant payment method selected by the user. In the case where the user doesn&rsquo;t have a payment method the variable will be nil.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">selectedMethod</span> <span class="p">:</span> <span class="kt"><a href="../Classes/PaymentMethod.html">PaymentMethod</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC15MyCheckWalletUI24MCCheckoutViewController16checkoutDelegateXwGSqPS_16CheckoutDelegate__"></a>
+                    <a name="//apple_ref/swift/Property/checkoutDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC15MyCheckWalletUI24MCCheckoutViewController16checkoutDelegateXwGSqPS_16CheckoutDelegate__">checkoutDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delegate that will be updated with MCCheckoutViewController height changes</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">weak</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">checkoutDelegate</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/CheckoutDelegate.html">CheckoutDelegate</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://mycheckapp.com" target="_blank" rel="external">elad schiller</a>. All rights reserved. (Last updated: 2016-10-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

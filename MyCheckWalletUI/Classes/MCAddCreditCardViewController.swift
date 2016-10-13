@@ -8,7 +8,7 @@
 
 import UIKit
 ///A protocol that will allow the owner to dismiss the ViewController
-internal protocol MCAddCreditCardViewControllerDelegate {
+internal protocol MCAddCreditCardViewControllerDelegate : class{
     func recivedError(controller: MCAddCreditCardViewController , error:NSError)
     func addedNewPaymentMethod(controller: MCAddCreditCardViewController ,token:String)
     func canceled()
@@ -32,7 +32,7 @@ public class MCAddCreditCardViewController: MCViewController {
    internal var underlineForField : [UITextField : UIView]?
    internal var activityView : UIActivityIndicatorView!
     
-    var delegate : MCAddCreditCardViewControllerDelegate?
+  weak  var delegate : MCAddCreditCardViewControllerDelegate?
     //MARK: - life cycle functions
     
     override  public func viewDidLoad() {
