@@ -18,12 +18,14 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
+
 # MyCheckWalletUI
 An SDK that supplies UI for payment method managment.
 
+
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first. The example demostraits displaying a Checkout view controller , displaying a payment manager view controller and getting the token when ready to pay.
+To run the example project, clone the repo, and run `pod install` from the Example directory first. The example demonstrates displaying a Checkout view controller , displaying a payment manager view controller and getting the token when ready to pay.
 
 ## Requirements
 iOS 8 or above.
@@ -54,7 +56,7 @@ Start by adding
 import MyCheckWalletUI
 ```
 
-to the top of the class where you want to use MyCHeckWallet.
+to the top of the class where you want to use MyCheckWallet.
 
 Before displaying any UI you will have to login. Login by using the MyCheckWallet singelton.
 
@@ -77,18 +79,18 @@ The view controller should be added into a container view. It can be done in two
 1. Interface builder: change the view controller that the container is connect to (by segue) to `MCCheckoutViewController`.
 2. In code: call MCCheckoutViewController.init() in order to create the instance.
 
-once an instance is created you should set `checkoutDelegate` and implement `checkoutViewShouldResizeHeight` in order to respond to height changes. You should resize the container view to have the height returned by the delegate method.
-When you want to use a payment method use the view controllers variable `selectedMethod` in order to get the method the user selected (or nil if non exist)
+Once an instance is created you should set `checkoutDelegate` and implement  `checkoutViewShouldResizeHeight` in order to respond to height changes. You should resize the container view to have the height returned by the delegate method.
+When you want to use a payment method use the view controllers variable `selectedMethod` in order to get the method the user selected (or nil if nonexistent)
 
 ###MCPaymentMethodsViewController
-This class is a full screen view controller that allows the user to fully manage his payment methods:
+This class is a full screen view controller that allows the user to fully manage his/her payment methods:
 
-1. Display all his payment methods.
+1. Display all his/her payment methods.
 2. Choose a default payment method.
 3. Delete payment methods.
 4. Add payment methods.
 
-In order to create a MCPaymentMethodsViewController instance call the constuctor and present it like so:
+In order to create a MCPaymentMethodsViewController instance call the constructor and present it like so:
 
 ```
 let controller = MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
@@ -96,7 +98,7 @@ self.presentViewController(controller, animated: true, completion: nil)
 
 ```
 
-You must also implemnt the MCPaymentMethodsViewControllerDelegate and dismiss the view controller when it is done
+You must also implement the MCPaymentMethodsViewControllerDelegate and dismiss the view controller when it is done
 example
 
 ```
@@ -114,6 +116,10 @@ Mihail Kalichkov, mihailk@mycheckapp.com
 ## License
 
 Please read the LICENSE file available in the project
+
+
+
+
 
                        DESC
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-///The parent of the MCCheckoutViewController must adopt this protocol and implement its methods in order to be able to resize the view when needed. The View will not automaticly resize since it might be used in a few diffrant ways (e.g contraints might be broken) , so it is your responsibility to respond to the delegate and resize the view appropriately.
+///The parent of the MCCheckoutViewController must adopt this protocol and implement its methods in order to be able to resize the view when needed. The View will not automatically resize since it might be used in a few different ways (e.g constraints might be broken), so it is your responsibility to respond to the delegate and resize the view appropriately.
 public protocol CheckoutDelegate : class{
    
     ///Called when the height is changed
@@ -17,7 +17,7 @@ public protocol CheckoutDelegate : class{
    func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: NSTimeInterval) -> Void
        
 }
-///A view controller that provides the ability to add a credit card and or select a payment method. the view controller is meant to be used as part of a parent view controller using a container view.
+///A view controller that provides the ability to add a credit card and or select a payment method. The view controller is meant to be used as part of a parent view controller using a container view.
 public class MCCheckoutViewController: MCAddCreditCardViewController {
     //variables
     

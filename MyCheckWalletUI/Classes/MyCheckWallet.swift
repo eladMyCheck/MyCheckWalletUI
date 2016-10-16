@@ -7,7 +7,7 @@
 //
 
 import Foundation
-///MyCheckWallet is a singlton that will give you access to all of the MyCheck functionality. It has all the calls needed to manage a users payment methods.
+///MyCheckWallet is a singleton that will give you access to all of the MyCheck functionality. It has all the calls needed to manage a user's payment methods.
 public class MyCheckWallet{
     internal static let refreshPaymentMethodsNotification = "com.mycheck.refreshPaymentMethodsNotification"
     

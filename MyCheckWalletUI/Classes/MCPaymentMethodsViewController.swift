@@ -16,7 +16,7 @@ public protocol MCPaymentMethodsViewControllerDelegate : class{
     
 }
 
-///A view controller that provides the user with the ability to add a payment method , set a default payment method and delete payment methods. the view controller is meant to be displaid modely.
+///A view controller that provides the user with the ability to add a payment method, set a default payment method and delete payment methods. The view controller is meant to be displayed modely.
 public class MCPaymentMethodsViewController: MCViewController {
     private var creditCardVC: MCAddCreditCardViewController?
     private var creditCardListVC: MCCreditCardsViewController?
@@ -137,7 +137,7 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
         MyCheckWallet.manager.getPaymentMethods({ (methods) in
             self.paymentMethods = methods
             self.creditCardListVC!.paymentMethods = methods
-            self.creditCardListVC!.setCrediCards()
+            self.creditCardListVC!.setCreditCards()
             self.showEnterCreditCard(false , animated: true)
             self.outputForTesting.text = "credit card added"
         }) { (error) in

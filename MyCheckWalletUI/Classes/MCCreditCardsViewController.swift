@@ -26,12 +26,12 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setCrediCards()
+        self.setCreditCards()
         self.scrollView.delegate = self;
         //self.editButton.setTitleTextAttributes([NSFontAttributeName : UIFont.systemFontOfSize(13)], forState: .Normal)
     }
     
-    internal func setCrediCards(){
+    internal func setCreditCards(){
         let subviews = self.scrollView.subviews
         for subview in subviews{
             subview.removeFromSuperview()
@@ -113,7 +113,7 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
             self.editMode = !self.editMode
             //self.editButton.title = "Edit"
             self.editButton.setTitle("Edit", forState: .Normal)
-            self.setCrediCards()
+            self.setCreditCards()
             }, fail: { error in
         })
     }
@@ -122,7 +122,7 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
         MyCheckWallet.manager.getPaymentMethods({ (array) in
             self.activityView.stopAnimating()
             self.paymentMethods = array
-            self.setCrediCards()
+            self.setCreditCards()
             }, fail: { error in
                 
         })
