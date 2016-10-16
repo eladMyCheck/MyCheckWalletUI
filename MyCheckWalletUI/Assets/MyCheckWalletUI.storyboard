@@ -428,11 +428,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xm8-2R-Aaq" customClass="MCScrollView" customModule="MyCheckWalletUI" customModuleProvider="target">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="193" id="f5d-oZ-7gK"/>
-                                </constraints>
-                            </scrollView>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xm8-2R-Aaq" customClass="MCScrollView" customModule="MyCheckWalletUI" customModuleProvider="target"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adZ-Ua-82o">
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Edit">
@@ -445,9 +441,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="xm8-2R-Aaq" firstAttribute="leading" secondItem="DGl-IC-0Ml" secondAttribute="leading" id="3na-Qh-e6L"/>
                             <constraint firstAttribute="trailingMargin" secondItem="adZ-Ua-82o" secondAttribute="trailing" id="8sL-BE-ztA"/>
                             <constraint firstItem="xm8-2R-Aaq" firstAttribute="top" secondItem="tEo-uF-FUO" secondAttribute="bottom" constant="30" id="9Ti-FK-s9i"/>
-                            <constraint firstItem="xm8-2R-Aaq" firstAttribute="centerX" secondItem="DGl-IC-0Ml" secondAttribute="centerX" constant="15" id="WCm-A8-w3V"/>
+                            <constraint firstAttribute="trailing" secondItem="xm8-2R-Aaq" secondAttribute="trailing" id="Ysl-bQ-lfi"/>
                             <constraint firstItem="tEo-uF-FUO" firstAttribute="leading" secondItem="DGl-IC-0Ml" secondAttribute="leadingMargin" constant="-16" id="fDg-ia-zcx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tEo-uF-FUO" secondAttribute="trailing" constant="-16" id="feo-By-Y17"/>
                             <constraint firstItem="adZ-Ua-82o" firstAttribute="top" secondItem="Bcq-uP-rwx" secondAttribute="bottom" constant="8" id="hZC-pe-AuT"/>
@@ -462,7 +459,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXR-Mz-m4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="798" y="346"/>
+            <point key="canvasLocation" x="797.60000000000002" y="345.42728635682164"/>
         </scene>
         <!--Checkout View Controller-->
         <scene sceneID="97U-S4-qPA">

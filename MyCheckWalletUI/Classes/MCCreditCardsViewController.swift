@@ -12,9 +12,10 @@ internal protocol MCCreditCardsViewControllerrDelegate {
     func backPressed()
 }
 
-internal class MCCreditCardsViewController: MCViewController , UIScrollViewDelegate, UIGestureRecognizerDelegate, CreditCardViewDelegate{
+internal class MCCreditCardsViewController: MCViewController , UIGestureRecognizerDelegate, CreditCardViewDelegate{
+  let cardViewWidth = 193.0 as CGFloat
+  var startMargin = 106 as CGFloat
 
-    
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var scrollView: MCScrollView!
     var activityView : UIActivityIndicatorView!
@@ -23,15 +24,19 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
     var creditCards : NSMutableArray = []
     var editMode : Bool = false
     var indexToScrollTo : Int = 0
-    
+  var currantIndex : Int = 0
+    //MARK: - lifecycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
+      startMargin = (UIScreen.mainScreen().bounds.width - cardViewWidth) / 2.0 + 15.0 as CGFloat
+      
         self.setCreditCards()
         self.scrollView.delegate = self;
         //self.editButton.setTitleTextAttributes([NSFontAttributeName : UIFont.systemFontOfSize(13)], forState: .Normal)
     }
     
     internal func setCreditCards(){
+   
         let subviews = self.scrollView.subviews
         for subview in subviews{
             subview.removeFromSuperview()
@@ -43,12 +48,12 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
             creditCardCount = self.paymentMethods.count
         }
 
-        let addCreditCardView = AddCreditCardView(frame: CGRectMake(0, 20, 168, 104) )
+        let addCreditCardView = AddCreditCardView(frame: CGRectMake(startMargin, 20, 168, 104) )
         self.scrollView.addSubview(addCreditCardView)
         
         for i in (0..<creditCardCount) {
             let method = self.paymentMethods[i]
-            let cc = CreditCardView(frame: CGRectMake(193*CGFloat(i+1), 20, 193, 102), method: method)
+            let cc = CreditCardView(frame: CGRectMake(cardViewWidth*CGFloat(i+1)+startMargin, 20, cardViewWidth, 102), method: method)
             creditCards.addObject(cc)
             cc.delegate = self
             self.scrollView.addSubview(cc)
@@ -64,26 +69,29 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
             self.editButton.enabled = true
         }
         
-        self.scrollView.contentSize = CGSize(width:CGFloat(creditCardCount+1)*193, height:self.scrollView.frame.height)
+        self.scrollView.contentSize = CGSize(width:CGFloat(creditCardCount+1)*cardViewWidth + startMargin * 2 , height:self.scrollView.frame.height)
         
         UIView.animateWithDuration(0.4, animations: {
             if creditCardCount > 0{
                 if self.indexToScrollTo == 0{
-                    self.indexToScrollTo = self.indexToScrollTo + 1
+                    self.indexToScrollTo =  1
                 }
-                self.scrollView.contentOffset = CGPointMake(CGFloat(self.indexToScrollTo)*193, 0)
+                self.scrollView.contentOffset = CGPointMake(CGFloat(self.indexToScrollTo)*self.cardViewWidth , 0)
+              self.currantIndex = self.indexToScrollTo
                 self.indexToScrollTo = 0
             }else{
                 self.scrollView.contentOffset = CGPointZero
+              self.currantIndex = 0
             }
         })
     }
-    
+   //MARK: - actions
     @IBAction func backPressed(_ sender: UIBarButtonItem) {
         self.delegate?.backPressed()
         
     }
     
+ 
     @IBAction func editPressed(_ sender: UIButton) {
         self.editMode = !self.editMode
         //self.editButton.title = self.editMode ? "Done" : "Edit"
@@ -136,4 +144,43 @@ internal class MCCreditCardsViewController: MCViewController , UIScrollViewDeleg
             activityView.startAnimating()
             self.view.addSubview(activityView)
     }
+}
+
+extension MCCreditCardsViewController : UIScrollViewDelegate {
+  
+  
+  func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                   withVelocity velocity: CGPoint,
+                                                targetContentOffset: UnsafeMutablePointer<CGPoint>){
+    let kMaxIndex = 20000 as CGFloat
+    let targetX = scrollView.contentOffset.x + velocity.x * 20.0 as CGFloat
+    var targetIndex = round(targetX / (cardViewWidth + 0)) as CGFloat
+   
+//     currantIndex = round( scrollView.contentOffset.x / (cardViewWidth + 0)) as CGFloat
+print("currantIndex: \(currantIndex) TargetIndex: \(targetIndex)")
+    //taking care of scrollview jumping to its initial position when making very small swipes
+    if (velocity.x > 0) {
+      targetIndex = ceil(targetX / (self.cardViewWidth + 0.0))
+    } else {
+      targetIndex = floor(targetX / (self.cardViewWidth + 0.0));
+    }
+    
+    let currantIndexFloat =  CGFloat( currantIndex)
+  
+    if targetIndex < currantIndexFloat {
+    targetIndex =  currantIndexFloat - 1
+    }
+    if targetIndex > currantIndexFloat {
+      targetIndex =  currantIndexFloat + 1
+    }
+    
+    if targetIndex < 0 {
+      targetIndex = 0
+    }
+    if targetIndex > kMaxIndex{
+      targetIndex = kMaxIndex
+    }
+    targetContentOffset.memory.x = targetIndex * (cardViewWidth + 0);
+    currantIndex = Int( targetIndex)
+  }
 }

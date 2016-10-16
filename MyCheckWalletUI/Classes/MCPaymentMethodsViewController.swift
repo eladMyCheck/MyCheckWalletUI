@@ -108,6 +108,8 @@ public class MCPaymentMethodsViewController: MCViewController {
         creditCardsVCCenterXConstraint.priority = show ? 1 : 999
         UIView.animateWithDuration(animated ? 0.4 : 0.0, animations: {
             self.view.layoutIfNeeded()
+          self.creditCardListVC!.scrollView.alpha = show ? 0 : 1
+
         })
     }
     
