@@ -32,7 +32,11 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
       
         self.setCreditCards()
         self.scrollView.delegate = self;
-        //self.editButton.setTitleTextAttributes([NSFontAttributeName : UIFont.systemFontOfSize(13)], forState: .Normal)
+        
+        //setting up UI and updating it if the user logges in... just incase
+        setupUI()
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: #selector(MCCreditCardsViewController.setupUI), name: MyCheckWallet.loggedInNotification, object: nil)
     }
     
     internal func setCreditCards(){
@@ -60,12 +64,11 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         }
         
         if creditCardCount == 0 {
-            //self.editButton.title = ""
             self.editButton.setTitle("", forState: .Normal)
             self.editButton.enabled = false
         }else{
-            //self.editButton.title = self.editMode ? "Done" : "Edit"
-            self.editMode ? self.editButton.setTitle("Done", forState: .Normal) : self.editButton.setTitle("Edit", forState: .Normal)
+
+            updateButtonTxt()
             self.editButton.enabled = true
         }
         
@@ -86,16 +89,15 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         })
     }
    //MARK: - actions
-    @IBAction func backPressed(_ sender: UIBarButtonItem) {
+    @IBAction internal func backPressed(_ sender: UIBarButtonItem) {
         self.delegate?.backPressed()
         
     }
     
  
-    @IBAction func editPressed(_ sender: UIButton) {
+    @IBAction internal func editPressed(_ sender: UIButton) {
         self.editMode = !self.editMode
-        //self.editButton.title = self.editMode ? "Done" : "Edit"
-        self.editMode ? self.editButton.setTitle("Done", forState: .Normal) : self.editButton.setTitle("Edit", forState: .Normal)
+        updateButtonTxt()
         
         for cc in creditCards as! [CreditCardView]{
             cc.toggleEditMode()
@@ -103,7 +105,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
 
     }
     
-    func deletedPaymentMethod(method: PaymentMethod) {
+  internal  func deletedPaymentMethod(method: PaymentMethod) {
         for i in (0..<self.paymentMethods.count) {
             if method.Id == self.paymentMethods[i].Id {
                 if i > 0 {
@@ -119,14 +121,13 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
                 cc.toggleEditMode()
             }
             self.editMode = !self.editMode
-            //self.editButton.title = "Edit"
-            self.editButton.setTitle("Edit", forState: .Normal)
+            self.updateButtonTxt()
             self.setCreditCards()
             }, fail: { error in
         })
     }
     
-    func setPaymentAsDefault(){
+   internal func setPaymentAsDefault(){
         MyCheckWallet.manager.getPaymentMethods({ (array) in
             self.activityView.stopAnimating()
             self.paymentMethods = array
@@ -137,12 +138,20 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
 
     }
     
-    func startActivityIndicator() {
+   internal func startActivityIndicator() {
             activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)
             
             activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 30)
             activityView.startAnimating()
             self.view.addSubview(activityView)
+    }
+    
+    @objc private func setupUI(){
+            
+
+    }
+    private func updateButtonTxt(){
+    self.editMode ? self.editButton.setTitle(StringData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit"), forState: .Normal) : self.editButton.setTitle(StringData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done"), forState: .Normal)
     }
 }
 

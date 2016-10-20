@@ -1,5 +1,5 @@
 use_frameworks!
-source 'https://bitbucket.org/eladsc/pod-spec-repo.git'
+source 'https://bitbucket.org/erez_spatz/pod-spec-repo.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'MyCheckWalletUI_Example' do

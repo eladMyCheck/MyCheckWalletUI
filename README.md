@@ -37,11 +37,18 @@ import MyCheckWalletUI
 
 to the top of the class where you want to use MyCheckWallet.
 
-Before displaying any UI you will have to login. Login by using the MyCheckWallet singelton.
+In your app delegat's `application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)` function call the configure function of the MyCheckWallet singlton:
+
+```
+MyCheckWallet.manager.configureWallet(YOUR_PUBLISHABLE_KEY, environment: Environment.sandbox)
+```
+This will setup the SDK to work with the desired environment.
+
+Before displaying any UI you will have to login:
 
 
 ```
-MyCheckWallet.manager.login(YOUR_REFRESH_TOKEN, publishableKey: YOUR_PUBLISHABLE_KEY, success: {
+MyCheckWallet.manager.login(YOUR_REFRESH_TOKEN, success: {
     //handle success
 } , fail: { error in
     //handle failure

@@ -49,6 +49,17 @@
               <li class="nav-group-task">
                 <a href="Enums/CreditCardType.html">CreditCardType</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Enums/Environment.html">Environment</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions.html#/c:objc(cs)UIView">UIImageView</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -68,9 +79,12 @@
         <section>
           <section class="section">
             
-            <a href='#example' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example'>Example</h2>
+            <a href='#mycheckwalletui' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='mycheckwalletui'>MyCheckWalletUI</h1>
 
-<p>To run the example project, clone the repo, and run <code>pod install</code> from the Example directory first. The example demostraits displaying a Checkout view controller , displaying a payment manager view controller and getting the token when ready to pay.</p>
+<p>An SDK that supplies UI for payment method managment.</p>
+<a href='#example' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example'>Example</h2>
+
+<p>To run the example project, clone the repo, and run <code>pod install</code> from the Example directory first. The example demonstrates displaying a Checkout view controller , displaying a payment manager view controller and getting the token when ready to pay.</p>
 <a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
 
 <p>iOS 8 or above.</p>
@@ -98,10 +112,16 @@ source 'https://github.com/CocoaPods/Specs.git'
 import MyCheckWalletUI
 </code></p>
 
-<p>to the top of the class where you want to use MyCHeckWallet.</p>
+<p>to the top of the class where you want to use MyCheckWallet.</p>
 
-<p>Before displaying any UI you will have to login. Login by using the MyCheckWallet singelton.</p>
-<pre class="highlight plaintext"><code>MyCheckWallet.manager.login(YOUR_REFRESH_TOKEN, publishableKey: YOUR_PUBLISHABLE_KEY, success: {
+<p>In your app delegats <code>application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)</code> function call the configure function of the MyCheckWallet singlton:</p>
+<pre class="highlight plaintext"><code>MyCheckWallet.manager.configureWallet(YOUR_PUBLISHABLE_KEY, environment: Environment.sandbox)
+</code></pre>
+
+<p>This will setup the SDK to work with the desired environment.</p>
+
+<p>Before displaying any UI you will have to login:</p>
+<pre class="highlight plaintext"><code>MyCheckWallet.manager.login(YOUR_REFRESH_TOKEN, success: {
     //handle success
 } , fail: { error in
     //handle failure
@@ -121,26 +141,26 @@ The view controller should be added into a container view. It can be done in two
 <li>In code: call MCCheckoutViewController.init() in order to create the instance.</li>
 </ol>
 
-<p>once an instance is created you should set <code>checkoutDelegate</code> and implement <code>checkoutViewShouldResizeHeight</code> in order to respond to height changes. You should resize the container view to have the height returned by the delegate method.
-When you want to use a payment method use the view controllers variable <code>selectedMethod</code> in order to get the method the user selected (or nil if non exist) </p>
+<p>Once an instance is created you should set <code>checkoutDelegate</code> and implement  <code>checkoutViewShouldResizeHeight</code> in order to respond to height changes. You should resize the container view to have the height returned by the delegate method.
+When you want to use a payment method use the view controllers variable <code>selectedMethod</code> in order to get the method the user selected (or nil if nonexistent) </p>
 <a href='#mcpaymentmethodsviewcontroller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='mcpaymentmethodsviewcontroller'>MCPaymentMethodsViewController</h3>
 
-<p>This class is a full screen view controller that allows the user to fully manage his payment methods:</p>
+<p>This class is a full screen view controller that allows the user to fully manage his/her payment methods:</p>
 
 <ol>
-<li>Display all his payment methods.</li>
+<li>Display all his/her payment methods.</li>
 <li>Choose a default payment method.</li>
 <li>Delete payment methods.</li>
 <li>Add payment methods.</li>
 </ol>
 
-<p>In order to create a MCPaymentMethodsViewController instance call the constuctor and present it like so:</p>
+<p>In order to create a MCPaymentMethodsViewController instance call the constructor and present it like so:</p>
 <pre class="highlight plaintext"><code>let controller = MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
 self.presentViewController(controller, animated: true, completion: nil)
 
 </code></pre>
 
-<p>You must also implemnt the MCPaymentMethodsViewControllerDelegate and dismiss the view controller when it is done 
+<p>You must also implement the MCPaymentMethodsViewControllerDelegate and dismiss the view controller when it is done 
 example</p>
 <pre class="highlight plaintext"><code>
 func dismissedMCPaymentMethodsViewController(controller: MCPaymentMethodsViewController){
@@ -159,7 +179,7 @@ Mihail Kalichkov, <a href="mailto:mihailk@mycheckapp.com">mihailk@mycheckapp.com
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://mycheckapp.com" target="_blank" rel="external">elad schiller</a>. All rights reserved. (Last updated: 2016-10-13)</p>
+          <p>&copy; 2016 <a class="link" href="https://mycheckapp.com" target="_blank" rel="external">elad schiller</a>. All rights reserved. (Last updated: 2016-10-20)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

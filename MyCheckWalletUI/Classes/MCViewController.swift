@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 public class MCViewController: UIViewController {
 
     

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MCPaymentMethodsViewControllerDelegate Protocol Reference</title>
+    <title>Environment Enum Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/MCPaymentMethodsViewControllerDelegate" class="dashAnchor"></a>
-    <a title="MCPaymentMethodsViewControllerDelegate Protocol Reference"></a>
+    <a name="//apple_ref/swift/Enum/Environment" class="dashAnchor"></a>
+    <a title="Environment Enum Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">MyCheckWalletUI Docs</a> (72% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">MyCheckWalletUI Reference</a>
         <img id="carat" src="../img/carat.png" />
-        MCPaymentMethodsViewControllerDelegate Protocol Reference
+        Environment Enum Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -79,14 +79,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>MCPaymentMethodsViewControllerDelegate</h1>
+            <h1>Environment</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MCPaymentMethodsViewControllerDelegate</span> <span class="p">:</span> <span class="kd">class</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Environment</span></code></pre>
 
                 </div>
               </div>
-            <p>The protocol updates on important changes in MCPaymentMethodsViewController</p>
+            <p>The diffrant enviormants you can work with. Used when configuring the SDK and determined the server to query.</p>
 
           </section>
           <section class="section task-group-section">
@@ -95,9 +95,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP15MyCheckWalletUI38MCPaymentMethodsViewControllerDelegate39dismissedMCPaymentMethodsViewControllerFCS_30MCPaymentMethodsViewControllerT_"></a>
-                    <a name="//apple_ref/swift/Method/dismissedMCPaymentMethodsViewController(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP15MyCheckWalletUI38MCPaymentMethodsViewControllerDelegate39dismissedMCPaymentMethodsViewControllerFCS_30MCPaymentMethodsViewControllerT_">dismissedMCPaymentMethodsViewController(_:)</a>
+                    <a name="/s:FO15MyCheckWalletUI11Environment10productionFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/production" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO15MyCheckWalletUI11Environment10productionFMS0_S0_">production</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -105,15 +105,76 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Will be called whenever the view controller shoud be dismissed
-    - parameter controller: The controller calling for dismissal.</p>
+                        <p>Production enviormant.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">dismissedMCPaymentMethodsViewController</span><span class="p">(</span><span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Classes/MCPaymentMethodsViewController.html">MCPaymentMethodsViewController</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">production</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO15MyCheckWalletUI11Environment7sandboxFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/sandbox" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO15MyCheckWalletUI11Environment7sandboxFMS0_S0_">sandbox</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sandbox environment. mimics the behaviour of the production environment but allows the use of test payment methods and user accounts.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">sandbox</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO15MyCheckWalletUI11Environment4testFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/test" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO15MyCheckWalletUI11Environment4testFMS0_S0_">test</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The latest version of the Server code. The code will work with sandbox and test payment methods like the sandbox environment. It might have new untested and unstable code. Should not be used without consulting with a member of the MyCheck team first!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">test</span></code></pre>
 
                         </div>
                       </div>

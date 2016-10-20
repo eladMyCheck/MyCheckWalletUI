@@ -3,14 +3,14 @@
 //  MyCheckWalletUI
 //
 //  Created by elad schiller on 09/25/2016.
-//  Copyright (c) 2016 elad schiller. All rights reserved.
+//  Copyright (c) 2016 QuickCheck LTD. All rights reserved.
 //
 
 import UIKit
 import MyCheckWalletUI
 class ViewController: UIViewController {
   
-  var checkoutViewController : MCCheckoutViewController? = nil
+     var checkoutViewController : MCCheckoutViewController?
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var containerView: UIView!
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
        containerView.hidden = true
-        MyCheckWallet.manager.login("eyJpdiI6InBCOEJwTEZEUExwRkROcW9LMm42Rmc9PSIsInZhbHVlIjoidmQ4enRsTmZQTFVMRFp6Q2ljcHFqZz09IiwibWFjIjoiNDU4YzA0ZGI5YTQ4MmYwNmJhN2UxMmNhMjFjYWU2YjM2MDQxMTlkZDFjZDkzYzI1M2YwZjE3N2E4MTUwNTg0OCJ9", publishableKey: "pk_MRWdeNtVaPHA273ijAjSjz2vF7Wyc", success: {
+        MyCheckWallet.manager.login("eyJpdiI6InBCOEJwTEZEUExwRkROcW9LMm42Rmc9PSIsInZhbHVlIjoidmQ4enRsTmZQTFVMRFp6Q2ljcHFqZz09IiwibWFjIjoiNDU4YzA0ZGI5YTQ4MmYwNmJhN2UxMmNhMjFjYWU2YjM2MDQxMTlkZDFjZDkzYzI1M2YwZjE3N2E4MTUwNTg0OCJ9", success: {
             //The view should only be displaid after a user is logged in
             self.containerView.hidden = false
         
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 
 internal override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "checkout" {
-               checkoutViewController = segue.destinationViewController as? MCCheckoutViewController
+             let  checkoutViewController = segue.destinationViewController as? MCCheckoutViewController
           checkoutViewController?.checkoutDelegate = self
     }
 }
@@ -40,8 +40,12 @@ internal override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObje
     let controller = MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
     self.presentViewController(controller, animated: true, completion: nil)
   }
+    
+    
   @IBAction func payPressed(sender: AnyObject) {
     var message = "No payment method available"
+    
+    //when a payment method is available you can get the method from the checkoutViewController using the selectedMethod variable. If it's nil non exist
     if let method = checkoutViewController!.selectedMethod {
     message = method.issuer + " " + method.lastFourDigits + " token: " + method.token
     }
@@ -56,6 +60,7 @@ internal override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObje
     alert.addAction(defaultAction)
    self.presentViewController(alert, animated: true, completion: nil)
   }
+    
 }
 
 extension ViewController : CheckoutDelegate {
@@ -74,6 +79,6 @@ extension ViewController : MCPaymentMethodsViewControllerDelegate{
   
   
  func dismissedMCPaymentMethodsViewController(controller: MCPaymentMethodsViewController){
-    controller.dismissViewControllerAnimated(true, completion: nil)
+     controller.dismissViewControllerAnimated(true, completion: nil)
   }
 }

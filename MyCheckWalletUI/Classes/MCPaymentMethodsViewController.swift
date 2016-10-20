@@ -38,6 +38,8 @@ public class MCPaymentMethodsViewController: MCViewController {
     @IBOutlet private weak var amexImageView: UIImageView!
     @IBOutlet private weak var discoverImageView: UIImageView!
     
+    @IBOutlet weak internal var titleLabel: UILabel!
+    @IBOutlet weak internal var footerLabel: UILabel!
     @IBAction func addCreditCardPressed(sender: AnyObject) {
         showEnterCreditCard(true , animated: true)
     }
@@ -71,6 +73,13 @@ public class MCPaymentMethodsViewController: MCViewController {
     
     public override func viewDidLoad(){
         super.viewDidLoad()
+        
+        //setting up UI and updating it if the user logges in... just incase
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: MyCheckWallet.loggedInNotification, object: nil)
+        setupUI()
+        
+        
         showEnterCreditCard(false , animated: false)
         
         if let creditCardVC = creditCardVC{
@@ -121,12 +130,17 @@ public class MCPaymentMethodsViewController: MCViewController {
     }
     
   private func assignImages(){
-    visaImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png")
-    mastercardImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png")
-    dinersImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png")
-    discoverImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png")
-    amexImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png")
+    visaImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
+    mastercardImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsmastercard" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"))))
+    dinersImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsdinersclub" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"))))
+    discoverImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsdiscover" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"))))
+    amexImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsAMEX" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"))))
   }
+    
+    internal func setupUI(){
+        titleLabel.text = StringData.manager.getString("managePaymentMethodsheader" , fallback: titleLabel.text)
+        self.footerLabel.text = StringData.manager.getString("managePaymentMethodscardAcceptedWallet" , fallback: self.footerLabel.text)
+    }
 }
 
 
@@ -159,16 +173,4 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
     }
 }
 
-internal extension UIImageView {
-    public func imageFromUrl(urlString: String) {
-        if let url = NSURL(string: urlString) {
-            let request = NSURLRequest(URL: url)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
-                (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
-                if let imageData = data as NSData? {
-                    self.image = UIImage(data: imageData)
-                }
-            }
-        }
-    }
-}
+

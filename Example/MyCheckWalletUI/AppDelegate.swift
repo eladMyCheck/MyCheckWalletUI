@@ -7,16 +7,18 @@
 //
 
 import UIKit
-
+import MyCheckWalletUI
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
 
-     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
+        
+    MyCheckWallet.manager.configureWallet("pk_MRWdeNtVaPHA273ijAjSjz2vF7Wyc", environment: Environment.sandbox)
+                return true
     }
 
     func applicationWillResignActive(application: UIApplication) {

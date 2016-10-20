@@ -16,64 +16,71 @@
     },
     {
       "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 67,
+      "line": 74,
       "symbol": "MCCheckoutViewController.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 70,
+      "line": 77,
       "symbol": "MCCheckoutViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 83,
+      "line": 95,
       "symbol": "MCCheckoutViewController.viewWillAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 399,
+      "line": 389,
       "symbol": "MCCheckoutViewController.dismissedMCPaymentMethodsViewController(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 418,
+      "line": 408,
       "symbol": "MCCheckoutViewController.numberOfComponentsInPickerView(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 422,
+      "line": 412,
       "symbol": "MCCheckoutViewController.pickerView(_:numberOfRowsInComponent:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 427,
+      "line": 417,
       "symbol": "MCCheckoutViewController.pickerView(_:titleForRow:forComponent:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCPaymentMethodsViewController.swift",
-      "line": 72,
+      "line": 74,
       "symbol": "MCPaymentMethodsViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCPaymentMethodsViewController.swift",
-      "line": 88,
+      "line": 97,
       "symbol": "MCPaymentMethodsViewController.prepareForSegue(_:sender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCPaymentMethodsViewController.swift",
+      "line": 177,
+      "symbol": "UIImageView.imageFromUrl(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -86,9 +93,16 @@
     },
     {
       "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MyCheckWallet.swift",
-      "line": 15,
+      "line": 36,
       "symbol": "MyCheckWallet.methods",
       "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/Networking.swift",
+      "line": 6,
+      "symbol": "ErrorCodes",
+      "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     }
   ],

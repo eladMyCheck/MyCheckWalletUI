@@ -9,12 +9,12 @@
 import UIKit
 
 ///The parent of the MCCheckoutViewController must adopt this protocol and implement its methods in order to be able to resize the view when needed. The View will not automatically resize since it might be used in a few different ways (e.g constraints might be broken), so it is your responsibility to respond to the delegate and resize the view appropriately.
-public protocol CheckoutDelegate : class{
+public protocol CheckoutDelegate{
    
     ///Called when the height is changed
     ///   - parameter newHight: The new height of the CheckoutView/CheckoutTableViewCell
     ///   - parameter animationDuration: The duration the animation will take. The animation will start directly after this call is pressed. You should resize the view imidiatly and use the same animation duration in order for the animation to look good
-   func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: NSTimeInterval) -> Void
+   func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: Double)
        
 }
 ///A view controller that provides the ability to add a credit card and or select a payment method. The view controller is meant to be used as part of a parent view controller using a container view.
@@ -25,7 +25,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
      public var selectedMethod : PaymentMethod?
     
     ///The delegate that will be updated with MCCheckoutViewController height changes
-    weak public var checkoutDelegate : CheckoutDelegate?
+     public var checkoutDelegate : CheckoutDelegate?
     
     //Outlets
     @IBOutlet weak private  var paymentSelectorView: UIView!
@@ -40,16 +40,23 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     var paymentMethodSelector : UIPickerView = UIPickerView()
      private var paymentMethods: Array<PaymentMethod>! = []
     
-    @IBOutlet weak var visaImageView: UIImageView!
-    @IBOutlet weak var mastercardImageView: UIImageView!
-    @IBOutlet weak var dinersImageView: UIImageView!
-    @IBOutlet weak var amexImageView: UIImageView!
-    @IBOutlet weak var discoverImageView: UIImageView!
-    @IBOutlet weak var checkBoxLabel: UILabel!
-    @IBOutlet weak var creditCardBorderView: UIView!
-    @IBOutlet weak var dateFieldBorderView: UIView!
-    @IBOutlet weak var cvvBorderView: UIView!
-    @IBOutlet weak var zipFieldBorderView: UIView!
+    @IBOutlet weak private var visaImageView: UIImageView!
+    @IBOutlet weak private var mastercardImageView: UIImageView!
+    @IBOutlet weak private var dinersImageView: UIImageView!
+    @IBOutlet weak private var amexImageView: UIImageView!
+    @IBOutlet weak private var discoverImageView: UIImageView!
+    @IBOutlet weak private var checkBoxLabel: UILabel!
+    @IBOutlet weak private var creditCardBorderView: UIView!
+    @IBOutlet weak private var dateFieldBorderView: UIView!
+    @IBOutlet weak private var cvvBorderView: UIView!
+    @IBOutlet weak private var zipFieldBorderView: UIView!
+    
+    @IBOutlet weak private var header: UILabel!
+    @IBOutlet weak private var dropdownHeader: UILabel!
+    @IBOutlet weak private var footerLabel: UILabel!
+    
+    @IBOutlet weak private var pciLabel: UILabel!
+    
     internal var borderForField : [UITextField : UIView]?
     
     internal static func createMCCheckoutViewController() -> MCCheckoutViewController{
@@ -71,13 +78,18 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
         super.viewDidLoad()
         self.configureUI()
         self.assignImages()
-        
         if paymentMethods.count > 0 {
             selectedMethod = paymentMethods[0]
         }
         borderForField = [creditCardNumberField : creditCardBorderView, dateField : dateFieldBorderView, cvvField : cvvBorderView, zipField : zipFieldBorderView]
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(MCCheckoutViewController.refreshPaymentMethods), name: MyCheckWallet.refreshPaymentMethodsNotification, object: nil)
+      
+        //setting up UI and updating it if the user logges in... just incase
+        setupUI()
+        nc.addObserver(self, selector: #selector(MCCheckoutViewController.setupUI), name: MyCheckWallet.loggedInNotification, object: nil)
+        
+
     }
     
     public override func viewWillAppear(animated: Bool) {
@@ -86,12 +98,12 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     }
     
    private func assignImages(){    
-    visaImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png")
-    mastercardImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png")
-    dinersImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png")
-    discoverImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png")
-    amexImageView.imageFromUrl("https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png")
-        
+    visaImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
+    mastercardImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsmastercard" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"))))
+    dinersImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsdinersclub" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"))))
+    discoverImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsdiscover" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"))))
+    amexImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsAMEX" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"))))
+    
     }
     
     private func addDoneButtonOnPicker(field: UITextField , action: Selector){
@@ -111,7 +123,8 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     func donePressed(sender: UIBarButtonItem){
         selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRowInComponent(0)]
         self.paymentMethodSelectorTextField.text = selectedMethod!.lastFourDigits
-        typeImage.image = self.setImageForType(self.getType((selectedMethod!.issuer)))
+        self.typeImage.kf_setImageWithURL(self.imageURL(self.getType(selectedMethod!.issuer)))
+
         self.view.endEditing(true)
     }
     
@@ -135,7 +148,9 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
                 creditCardNumberField.hidden = true
                 self.paymentSelectorView.hidden = false
                 self.paymentMethodSelectorTextField.text = self.paymentMethods.first?.lastFourDigits
-                typeImage.image = self.setImageForType(self.getType((self.paymentMethods.first?.issuer)!))
+                
+                self.typeImage.kf_setImageWithURL(self.imageURL(self.getType((self.paymentMethods.first?.issuer)!)))
+
                 self.checkbox.hidden = true
                 self.checkBoxLabel.hidden = true
             }else{
@@ -156,28 +171,27 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
         addDoneButtonOnPicker(paymentMethodSelectorTextField, action: #selector(donePressed(_: )))
     }
     
-    internal func setImageForType( type: CreditCardType) -> UIImage{
+
+    internal func imageURL( type: CreditCardType) -> NSURL?{
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
         switch type {
         case .masterCard:
-            return UIImage(named: "master_small", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return NSURL(string:  StringData.manager.getString("addCreditImagesmastercard"))!
         case .visa:
-            return UIImage(named: "visa_small", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return NSURL(string:  StringData.manager.getString("addCreditImagesvisa"))!
         case .diners:
-            return UIImage(named: "diners_small", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return NSURL(string:  StringData.manager.getString("addCreditImagesdinersclub"))!
         case .discover:
-            return UIImage(named: "discover_small", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return NSURL(string:  StringData.manager.getString("addCreditImagesdiscover"))!
         case .amex:
-            return UIImage(named: "amex_small", inBundle: bundle, compatibleWithTraitCollection: nil)!
-        case .diners:
-            return UIImage(named: "diners_small", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return NSURL(string:  StringData.manager.getString("addCreditImagesamex"))!
         case .JCB:
-            return UIImage(named: "jcb_small", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return NSURL(string:  StringData.manager.getString("addCreditImagesJCB"))!
         case .maestro:
-            return UIImage(named: "maestro_small", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return NSURL(string:  StringData.manager.getString("addCreditImagesmaestro"))!
             
         default:
-            return UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return NSURL(string:  StringData.manager.getString("addCreditImagesvisa"))!
         }
     }
     
@@ -284,7 +298,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
                     self.paymentMethods = [method]
                     self.paymentMethodSelector.reloadAllComponents()
                     self.paymentMethodSelectorTextField.text = self.selectedMethod!.lastFourDigits
-                    self.typeImage.image = self.setImageForType(self.getType((self.selectedMethod!.issuer)))
+                    self.typeImage.kf_setImageWithURL(self.imageURL(self.getType((self.selectedMethod!.issuer))))
                     self.creditCardNumberField.hidden = true
                     self.paymentSelectorView.hidden = false
                     self.checkbox.hidden = true
@@ -356,6 +370,18 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
         self.setFieldInvalid(self.dateField, invalid: false)
         self.setFieldInvalid(self.cvvField, invalid: false)
         self.setFieldInvalid(self.zipField, invalid: false)
+    }
+    
+    @objc internal override func setupUI(){
+    header.text = StringData.manager.getString("checkoutPagecheckoutSubHeader" , fallback: header.text)
+        dropdownHeader.text = StringData.manager.getString("checkoutPagecardDropDownHeader" , fallback:dropdownHeader.text)
+        managePaymentMethodsButton.setTitle( StringData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.titleForState(.Normal)) , forState: .Normal)
+        managePaymentMethodsButton.setTitle( StringData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.titleForState(.Normal)) , forState: .Highlighted)
+
+        checkBoxLabel.text = StringData.manager.getString("checkoutPagenotStoreCard" , fallback:checkBoxLabel.text)
+        footerLabel.text = StringData.manager.getString("checkoutPagecardAccepted" , fallback:footerLabel.text)
+        pciLabel.text = StringData.manager.getString("checkoutPagepciNotice1" , fallback:pciLabel.text)
+
     }
 }
 

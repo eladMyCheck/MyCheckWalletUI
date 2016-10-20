@@ -33,11 +33,15 @@
                 <outlet property="dateUnderline" destination="tJI-vV-AMV" id="9dk-Li-X9B"/>
                 <outlet property="dinersImageView" destination="LH5-tm-JJy" id="t8u-mU-JLc"/>
                 <outlet property="discoverImageView" destination="q5u-Za-bHo" id="mnS-ZB-qVR"/>
+                <outlet property="dropdownHeader" destination="kb4-tj-hY9" id="8xL-91-UgF"/>
                 <outlet property="errorLabel" destination="oJg-Ps-OdY" id="T83-e8-xSq"/>
+                <outlet property="footerLabel" destination="EPT-U7-LZa" id="vIf-N7-71F"/>
+                <outlet property="header" destination="zZg-Fe-gBI" id="Khi-PH-iU6"/>
                 <outlet property="managePaymentMethodsButton" destination="N0u-Ng-8ai" id="aSk-8L-Ohx"/>
                 <outlet property="mastercardImageView" destination="mnK-Aa-QrU" id="yls-9g-xaT"/>
                 <outlet property="paymentMethodSelectorTextField" destination="0oB-XW-gXs" id="VNa-uS-phn"/>
                 <outlet property="paymentSelectorView" destination="pTi-ub-50G" id="Trh-iV-gnM"/>
+                <outlet property="pciLabel" destination="4Cy-p3-4hS" id="14P-R8-B2p"/>
                 <outlet property="typeImage" destination="bEb-a8-zXO" id="TlB-lv-NLk"/>
                 <outlet property="view" destination="hcW-t3-chb" id="EzT-ff-jko"/>
                 <outlet property="visaImageView" destination="4kQ-e1-MIM" id="gHC-dU-3TR"/>
@@ -117,11 +121,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-gf-87l">
                     <rect key="frame" x="-16" y="118" width="403" height="110"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLK-VW-lfS">
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kLK-VW-lfS">
                             <rect key="frame" x="25" y="6" width="108" height="45"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                         </view>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mm/yy" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OMD-Q3-h8X">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mm/yy" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OMD-Q3-h8X">
                             <rect key="frame" x="38" y="20" width="81" height="17"/>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -134,18 +138,18 @@
                                 <outlet property="delegate" destination="-1" id="0Ih-hX-DRo"/>
                             </connections>
                         </textField>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJI-vV-AMV">
+                        <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tJI-vV-AMV">
                             <rect key="frame" x="25" y="50" width="107" height="1"/>
                             <color key="backgroundColor" red="0.56024283170700073" green="0.52232778072357178" blue="0.51410335302352905" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="3oU-x9-vp8"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-Sf-TUO">
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-Sf-TUO">
                             <rect key="frame" x="147" y="6" width="110" height="45"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                         </view>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqs-Pv-v4G">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqs-Pv-v4G">
                             <rect key="frame" x="161" y="20" width="81" height="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
@@ -154,18 +158,18 @@
                                 <outlet property="delegate" destination="-1" id="Zvi-U7-7T4"/>
                             </connections>
                         </textField>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hJ-Y4-PDh">
+                        <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hJ-Y4-PDh">
                             <rect key="frame" x="148" y="50" width="107" height="1"/>
                             <color key="backgroundColor" red="0.56024283170700073" green="0.52232778072357178" blue="0.51410335302352905" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="17B-Pb-r7E"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixc-Dk-xlz">
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ixc-Dk-xlz">
                             <rect key="frame" x="272" y="6" width="109" height="45"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                         </view>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ZIP/Postal" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkn-fX-QTt">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ZIP/Postal" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkn-fX-QTt">
                             <rect key="frame" x="287" y="20" width="81" height="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
@@ -174,7 +178,7 @@
                                 <outlet property="delegate" destination="-1" id="Mfc-fw-5SS"/>
                             </connections>
                         </textField>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-CU-fHu">
+                        <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-CU-fHu">
                             <rect key="frame" x="274" y="50" width="107" height="1"/>
                             <color key="backgroundColor" red="0.56024283170700073" green="0.52232778072357178" blue="0.51410335302352905" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -182,7 +186,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LU0-WJ-369">
-                            <rect key="frame" x="26" y="67" width="173.5" height="38"/>
+                            <rect key="frame" x="26" y="67" width="174" height="38"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="38" id="Ion-3g-jqj"/>
                             </constraints>
@@ -194,7 +198,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcD-LR-2wa">
-                            <rect key="frame" x="207.5" y="67" width="173.5" height="38"/>
+                            <rect key="frame" x="208" y="67" width="173" height="38"/>
                             <color key="backgroundColor" red="0.56256645917892456" green="0.7077515721321106" blue="0.7270699143409729" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="38" id="uuC-Xs-xjw"/>

@@ -42,6 +42,11 @@ public class MCAddCreditCardViewController: MCViewController {
         addNextButtonOnKeyboard(creditCardNumberField, action: #selector(nextPressed(_: )))
         addNextButtonOnKeyboard(dateField, action: #selector(nextPressed(_: )))
         addNextButtonOnKeyboard(cvvField, action: #selector(nextPressed(_: )))
+      
+        //setting up UI and updating it if the user logges in... just incase
+        setupUI()
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: MyCheckWallet.loggedInNotification, object: nil)
         
     }
     internal static func instantiate(delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController{
@@ -153,37 +158,55 @@ public class MCAddCreditCardViewController: MCViewController {
     }
     
     //MARK: - private functions
+    internal func setupUI(){
+    self.creditCardNumberField.placeholder = StringData.manager.getString("addCreditcardNumPlaceHoldar")
+        self.cvvField.placeholder = StringData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)
+        self.dateField.placeholder = StringData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)
+            self.zipField.placeholder = StringData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder)
+        applyButton.setTitle( StringData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.titleForState(.Normal)) , forState: .Normal)
+        applyButton.setTitle( StringData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.titleForState(.Normal)) , forState: .Highlighted)
 
+        cancelBut.setTitle( StringData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.titleForState(.Normal)) , forState: .Normal)
+        cancelBut.setTitle( StringData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.titleForState(.Normal)) , forState: .Highlighted)
+
+    }
     internal func setImageForType( type: CardType){
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-        switch type {
-        case .MasterCard:
-            typeImage.image = UIImage(named: "master_small", inBundle: bundle, compatibleWithTraitCollection: nil)
-            
-        case .Visa:
-            typeImage.image = UIImage(named: "visa_small", inBundle: bundle, compatibleWithTraitCollection: nil)
-        case .Diners:
-            typeImage.image = UIImage(named: "diners_small", inBundle: bundle, compatibleWithTraitCollection: nil)
-        case .Discover:
-            typeImage.image = UIImage(named: "discover_small", inBundle: bundle, compatibleWithTraitCollection: nil)
-        case .Amex:
-            typeImage.image = UIImage(named: "amex_small", inBundle: bundle, compatibleWithTraitCollection: nil)
-        case .Diners:
-            typeImage.image = UIImage(named: "diners_small", inBundle: bundle, compatibleWithTraitCollection: nil)
-        case .JCB:
-            typeImage.image = UIImage(named: "jcb_small", inBundle: bundle, compatibleWithTraitCollection: nil)
-        case .Maestro:
-            typeImage.image = UIImage(named: "maestro_small", inBundle: bundle, compatibleWithTraitCollection: nil)
-            
-            
-        default:
+
+        if type == .Unknown {
             if self.isMemberOfClass(MCCheckoutViewController) {
                 typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)
             }else{
                 typeImage.image = UIImage(named: "no_type_card" , inBundle: bundle, compatibleWithTraitCollection: nil)
             }
+        }else{
+        
+        typeImage.kf_setImageWithURL(imageURL(type))}
+    }
+  
+    internal func imageURL( type: CardType) -> NSURL?{
+        let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+        switch type {
+        case .MasterCard:
+            return NSURL(string:  StringData.manager.getString("addCreditImagesmastercard"))!
+        case .Visa:
+            return NSURL(string:  StringData.manager.getString("addCreditImagesvisa"))!
+        case .Diners:
+            return NSURL(string:  StringData.manager.getString("addCreditImagesdinersclub"))!
+        case .Discover:
+            return NSURL(string:  StringData.manager.getString("addCreditImagesdiscover"))!
+        case .Amex:
+            return NSURL(string:  StringData.manager.getString("addCreditImagesamex"))!
+        case .JCB:
+            return NSURL(string:  StringData.manager.getString("addCreditImagesJCB"))!
+        case .Maestro:
+            return NSURL(string:  StringData.manager.getString("addCreditImagesmaestro"))!
+            
+        default:
+            return NSURL(string:  StringData.manager.getString("addCreditImagesvisa"))!
         }
     }
+    
     
     //sets the UI to show the field has an invalid value or not
     internal func setFieldInvalid(field: UITextField , invalid: Bool){
