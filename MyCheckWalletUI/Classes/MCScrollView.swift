@@ -27,6 +27,8 @@ class MCScrollView: UIScrollView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.canCancelContentTouches = true
+        super.translatesAutoresizingMaskIntoConstraints = false;
+
     }
     
     override func touchesShouldCancelInContentView(view: UIView) -> Bool {

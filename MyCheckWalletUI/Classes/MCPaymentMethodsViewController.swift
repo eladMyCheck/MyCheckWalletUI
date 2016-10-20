@@ -153,7 +153,7 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
         MyCheckWallet.manager.getPaymentMethods({ (methods) in
             self.paymentMethods = methods
             self.creditCardListVC!.paymentMethods = methods
-            self.creditCardListVC!.setCreditCards()
+            self.creditCardListVC!.setCreditCardsUI(true)
             self.showEnterCreditCard(false , animated: true)
             self.outputForTesting.text = "credit card added"
         }) { (error) in

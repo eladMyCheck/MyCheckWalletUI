@@ -28,24 +28,30 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     //MARK: - lifecycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
       startMargin = (UIScreen.mainScreen().bounds.width - cardViewWidth) / 2.0 + 15.0 as CGFloat
       
-        self.setCreditCards()
         self.scrollView.delegate = self;
-        
+        delay(0.2){
+        self.setCreditCardsUI(false)
+        }
         //setting up UI and updating it if the user logges in... just incase
         setupUI()
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(MCCreditCardsViewController.setupUI), name: MyCheckWallet.loggedInNotification, object: nil)
     }
     
-    internal func setCreditCards(){
+    override func viewWillAppear(animated: Bool) {
+       super.viewWillAppear(animated)
+
+    }
+    internal func setCreditCardsUI(animated: Bool){
    
         let subviews = self.scrollView.subviews
         for subview in subviews{
             subview.removeFromSuperview()
         }
-        self.scrollView.frame = CGRect(x:self.scrollView.frame.origin.x, y:self.scrollView.frame.origin.y, width:self.scrollView.frame.width, height:100)
+        //  self.view.frame = CGRect(x:self.scrollView.frame.origin.x, y:self.scrollView.frame.origin.y, width:self.scrollView.frame.width, height:100)
         
         var creditCardCount = 0
         if  self.paymentMethods != nil{
@@ -72,9 +78,9 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             self.editButton.enabled = true
         }
         
-        self.scrollView.contentSize = CGSize(width:CGFloat(creditCardCount+1)*cardViewWidth + startMargin * 2 , height:self.scrollView.frame.height)
+        self.scrollView.contentSize = CGSize(width:CGFloat(creditCardCount+1)*cardViewWidth + startMargin * 2 - 15.0 , height:0.0)
         
-        UIView.animateWithDuration(0.4, animations: {
+        UIView.animateWithDuration(animated ? 0.3 : 0.0, animations: {
             if creditCardCount > 0{
                 if self.indexToScrollTo == 0{
                     self.indexToScrollTo =  1
@@ -122,7 +128,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             }
             self.editMode = !self.editMode
             self.updateButtonTxt()
-            self.setCreditCards()
+            self.setCreditCardsUI(true)
             }, fail: { error in
         })
     }
@@ -131,7 +137,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         MyCheckWallet.manager.getPaymentMethods({ (array) in
             self.activityView.stopAnimating()
             self.paymentMethods = array
-            self.setCreditCards()
+            self.setCreditCardsUI(true)
             }, fail: { error in
                 
         })
@@ -151,7 +157,8 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
 
     }
     private func updateButtonTxt(){
-    self.editMode ? self.editButton.setTitle(StringData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit"), forState: .Normal) : self.editButton.setTitle(StringData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done"), forState: .Normal)
+        print("edit mode \(editMode)")
+        self.editMode ? self.editButton.setTitle(StringData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done"), forState: .Normal) : self.editButton.setTitle(StringData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit"), forState: .Normal)
     }
 }
 
