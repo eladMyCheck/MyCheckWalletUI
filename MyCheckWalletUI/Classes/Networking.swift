@@ -225,9 +225,11 @@ internal class Networking {
                             
                             if let JSON = jsonDic {
                                 
-                                let msg =  JSON["message"] as? String
+                                let msgKey =  JSON["message"] as? String
                                 let code = JSON["code"] as? Int
-                                if let code = code , let msg = msg {
+                                if let code = code , let msgKey = msgKey {
+                                  let msg = StringData.manager.getString("errors" + msgKey)
+
                                     let errorWithMessage = NSError(domain: error.domain, code: code , userInfo: [NSLocalizedDescriptionKey : msg])
                                     
                                     fail(errorWithMessage)
