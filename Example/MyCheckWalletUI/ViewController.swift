@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 
 internal override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "checkout" {
-             let  checkoutViewController = segue.destinationViewController as? MCCheckoutViewController
+               checkoutViewController = segue.destinationViewController as? MCCheckoutViewController
           checkoutViewController?.checkoutDelegate = self
     }
 }
