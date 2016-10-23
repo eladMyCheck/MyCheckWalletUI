@@ -34,6 +34,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>Alamofire</string>
 			<key>Type</key>
@@ -64,6 +66,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>Kingfisher</string>
 			<key>Type</key>
@@ -111,6 +115,8 @@ As used in this Agreement, &#8220;Personally Identifiable Information&#8221; mea
 1. Injunctive Relief. You acknowledge and agree that the copying, disclosure, or use of the Software or Confidential Information, or distribution of any Developer Software in a manner inconsistent with this Agreement, or breach of Section &#8206;14 may cause irreparable damage to MyCheck for which monetary damages will be an inadequate remedy. Accordingly, MyCheck will be entitled to seek and obtain injunctive and any other relief (legal or equitable), including, but not limited to, temporary restraining orders, preliminary injunctions, and permanent injunctions. The exercise of any right or remedy provided in this Agreement shall be without prejudice to the right to exercise any other right or remedies, relief, or damages provided by law or equity, except as expressly limited by this Agreement
 2. Miscellaneous. These terms are governed by the laws of the State of Israel without regard to conflict of laws principles. MyCheck and you agree to submit to the exclusive jurisdiction of the courts located in Tel Aviv, Israel and waive any jurisdictional, venue, or inconvenient forum objections to such courts. The United Nations Convention for the International Sale of Goods shall not apply. You may not assign this Agreement. Any attempted assignment by you shall be void. These terms constitute the entire agreement between you and MyCheck with respect to the Software and supersede all prior written or oral communications, understandings and agreements. Any waiver of these terms must be in writing and signed by the waiving party to be effective. If any provision of these terms is found to be invalid or unenforceable, the remaining terms will continue to be valid and enforceable to the fullest extent permitted by law. Nothing stated in this Agreement will be construed as creating the relationships of joint venturers, partners, employer and employee, franchisor and franchisee, master and servant, or principal and agent. You will be solely responsible for all costs, expenses, and losses associated with its use of the Software and development of any Developer Software.
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>MyCheckWalletUI</string>
 			<key>Type</key>
