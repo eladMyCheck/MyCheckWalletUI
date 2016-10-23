@@ -28,7 +28,7 @@ internal enum CardType: String {
         case .UnionPay:
             return "^(62|88)[0-9]{5,}$"
         case .Maestro:
-            return "^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390)\\d+$"
+            return "^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390|6799)\\d+$"
         case .Hipercard:
             return "^(606282|3841)[0-9]{5,}$"
         case .Elo:
