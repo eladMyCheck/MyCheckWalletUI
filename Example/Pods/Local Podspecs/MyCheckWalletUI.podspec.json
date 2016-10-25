@@ -27,7 +27,7 @@
   "requires_arc": "true",
   "dependencies": {
     "Alamofire": [
-      "~> 3.4"
+      "~> 3.5"
     ],
     "Kingfisher": [
       "~> 2.4"

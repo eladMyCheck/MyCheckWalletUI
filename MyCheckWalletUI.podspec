@@ -147,7 +147,7 @@ s.requires_arc = 'true'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'Alamofire', '~> 3.4'
+  s.dependency 'Alamofire', '~> 3.5'
   s.dependency 'Kingfisher', '~> 2.4'
 
 end

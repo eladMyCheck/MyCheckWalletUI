@@ -350,11 +350,11 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     
     func moveAcceptedCreditCardsViewToCreditCardField(move : Bool , animated: Bool){
         let animationLength = animated ? 0.2 : 0
-        let baseHeight = 270.0 as Float
+        let baseHeight = 264.0 as Float
         self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
         self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
         
-        let delta = move ? baseHeight : baseHeight + 118.0
+        let delta = move ? baseHeight : baseHeight + 111.0
         self.colapsableContainer.alpha = move ? 0 : 1
         if let del = checkoutDelegate{
             del.checkoutViewShouldResizeHeight(delta, animationDuration: animationLength)
@@ -391,17 +391,17 @@ extension MCCheckoutViewController : MCPaymentMethodsViewControllerDelegate{
     public func dismissedMCPaymentMethodsViewController(controller: MCPaymentMethodsViewController){
       controller.dismissViewControllerAnimated(true, completion: nil)
 
-        MyCheckWallet.manager.getPaymentMethods({ (array) in
-            if array.count > 0{
-                self.paymentMethods = array
-            }else{
-                self.paymentMethods = []
-                
-            }
-            self.configureUI()
-            }, fail: { error in
-                
-        })
+//        MyCheckWallet.manager.getPaymentMethods({ (array) in
+//            if array.count > 0{
+//                self.paymentMethods = array
+//            }else{
+//                self.paymentMethods = []
+//                
+//            }
+//            self.configureUI()
+//            }, fail: { error in
+//                
+//        })
         
     }
 }

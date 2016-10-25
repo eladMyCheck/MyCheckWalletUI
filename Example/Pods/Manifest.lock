@@ -2,7 +2,7 @@ PODS:
   - Alamofire (3.5.1)
   - Kingfisher (2.6.1)
   - MyCheckWalletUI (0.0.7):
-    - Alamofire (~> 3.4)
+    - Alamofire (~> 3.5)
     - Kingfisher (~> 2.4)
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
   Kingfisher: 7e5515bf6c4f2acad91f6400955d2257549cab7b
-  MyCheckWalletUI: 5f315057c6bb12338cb73664d10f72b1d64c0a11
+  MyCheckWalletUI: f1694c74f56e8662ef2146df6d61e65f8dc0c6a6
 
 PODFILE CHECKSUM: 1afc1ca1e4b1eb7050f0177ed889419f7efb6bf6
 
