@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         
     MyCheckWallet.manager.configureWallet("pk_MRWdeNtVaPHA273ijAjSjz2vF7Wyc", environment: Environment.sandbox)
-      
+      MyCheckWallet.logDebugData = true
                 return true
     }
 

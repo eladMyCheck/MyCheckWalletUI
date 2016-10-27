@@ -22,11 +22,18 @@ internal enum Const {
     static let serverErrorDomain = "MyCheck server error domain"
     
 }
+
+
 ///MyCheckWallet is a singleton that will give you access to all of the MyCheck functionality. It has all the calls needed to manage a user's payment methods.
 public class MyCheckWallet{
     internal static let refreshPaymentMethodsNotification = "com.mycheck.refreshPaymentMethodsNotification"
     internal static let loggedInNotification = "com.mycheck.loggedInNotification"
 
+    
+    ///If set to true the SDK will print to the log otherwise it will not
+    public static var logDebugData = false
+
+    
     //the publishable key that reprisents the app using the SDK
     private var publishableKey: String?
     
@@ -231,5 +238,15 @@ public class MyCheckWallet{
             }, fail: { error in
                 
         })
+    }
+}
+
+
+
+//MARK: - general scope functions
+
+internal func printIfDebug(items: Any...){
+    if MyCheckWallet.logDebugData {
+    print (items )
     }
 }

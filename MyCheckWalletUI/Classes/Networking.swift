@@ -184,7 +184,8 @@ internal class Networking {
             .validate(statusCode: 200..<201)
             .validate(contentType: ["application/json"])
             .responseString{ response in
-                print(response)
+                printIfDebug(response)
+                
             }.responseJSON { response in
                 
                 switch response.result {
@@ -265,7 +266,7 @@ internal class Networking {
         do {
             return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
         } catch let error as NSError {
-            print(error)
+            printIfDebug(error)
         }
         
         return nil

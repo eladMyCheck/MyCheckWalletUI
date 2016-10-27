@@ -167,7 +167,7 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
     }
     
     func backPressed() {
-        print("payment methods vc dissmissed")
+        printIfDebug("payment methods vc dissmissed")
         self.delegate?.dismissedMCPaymentMethodsViewController(self)
         
     }

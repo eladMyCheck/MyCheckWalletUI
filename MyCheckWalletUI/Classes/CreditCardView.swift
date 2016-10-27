@@ -72,12 +72,12 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     func checkboxPressed(sender: UIButton!) {
         if editMode == true {
             MyCheckWallet.manager.deletePaymentMethod(self.paymentMethod!, success: {
-                print("payment method deleted")
+                printIfDebug("payment method deleted")
                 if let del = self.delegate{
                     del.deletedPaymentMethod(self.paymentMethod!)
                 }
                 }, fail: { (error) in
-                    print("did not delete payment")
+                    printIfDebug("did not delete payment")
             })
         }
     }
@@ -87,12 +87,12 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             if self.paymentMethod?.isDefault == false {
                 self.delegate?.startActivityIndicator()
                 MyCheckWallet.manager.setPaymentMethodAsDefault(self.paymentMethod!, success: {
-                    print("payment set as default")
+                    printIfDebug("payment set as default")
                     if let del = self.delegate{
                         del.setPaymentAsDefault()
                     }
                     }, fail: { (error) in
-                        print("did not set payment as default")
+                        printIfDebug("did not set payment as default")
                 })
             }
         }

@@ -157,7 +157,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
 
     }
     private func updateButtonTxt(){
-        print("edit mode \(editMode)")
+        printIfDebug("edit mode \(editMode)")
         self.editMode ? self.editButton.setTitle(StringData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done"), forState: .Normal) : self.editButton.setTitle(StringData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit"), forState: .Normal)
     }
 }
@@ -173,7 +173,7 @@ extension MCCreditCardsViewController : UIScrollViewDelegate {
     var targetIndex = round(targetX / (cardViewWidth + 0)) as CGFloat
    
 //     currantIndex = round( scrollView.contentOffset.x / (cardViewWidth + 0)) as CGFloat
-print("currantIndex: \(currantIndex) TargetIndex: \(targetIndex)")
+printIfDebug("currantIndex: \(currantIndex) TargetIndex: \(targetIndex)")
     //taking care of scrollview jumping to its initial position when making very small swipes
     if (velocity.x > 0) {
       targetIndex = ceil(targetX / (self.cardViewWidth + 0.0))
