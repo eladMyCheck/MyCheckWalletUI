@@ -1,5 +1,5 @@
 //
-//  StringData.swift
+//  LocalData.swift
 //  Pods
 //
 //  Created by elad schiller on 10/18/16.
@@ -9,11 +9,14 @@
 import Foundation
 
 
-internal class StringData{
+internal class LocalData{
 
-    static let manager = StringData()
+    static let manager = LocalData()
     
-    var strings : [String : String ] = [:]
+   lazy var strings : [String : String ] = {
+    return [:] as! [String : String ]
+        }()
+    
     
     
     //adds all the strings to strings parameter where the key is the same key with a prefix of all its parent's keys
@@ -37,5 +40,15 @@ internal class StringData{
         return fallback
         }
         return ""
+    }
+    
+    func getColor(key: String , fallback: UIColor) -> UIColor{
+   let hex = getString(key)
+        if hex.characters.count > 2 {
+    let color = UIColor.hex(hex)
+            return color
+        }
+        return fallback
+   
     }
 }

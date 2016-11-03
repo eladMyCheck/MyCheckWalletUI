@@ -158,7 +158,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     }
     private func updateButtonTxt(){
         printIfDebug("edit mode \(editMode)")
-        self.editMode ? self.editButton.setTitle(StringData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done"), forState: .Normal) : self.editButton.setTitle(StringData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit"), forState: .Normal)
+        self.editMode ? self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done"), forState: .Normal) : self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit"), forState: .Normal)
     }
 }
 

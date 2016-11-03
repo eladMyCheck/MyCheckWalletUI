@@ -56,6 +56,8 @@
 		ADF19C953CE2A7D0B72EC93A81FCCC26 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84916257AD04C1E9A6A89FC91DF6DF95 /* Alamofire-dummy.m */; };
 		AE2674E64E54FD35A081EE4C6179869D /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939E68B332053617464B7265D6AE74BB /* Box.swift */; };
 		AE4CF87C02C042DF13ED5B21C4FDC1E0 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67B80351BC1E901C0CDE8C44C05ACE /* Stream.swift */; };
+		B2629BCC1DCA2DBA003515A8 /* UITextField+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2629BCB1DCA2DBA003515A8 /* UITextField+Placeholder.swift */; };
+		B26C5F301DC8D6C000AA172B /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26C5F2F1DC8D6C000AA172B /* UIColor+Hex.swift */; };
 		B4AAF087EEA80333FCE1E787CED0F414 /* Pods-MyCheckWalletUI_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B497100BFFE99F5828C23786479DFFCA /* Pods-MyCheckWalletUI_Tests-dummy.m */; };
 		BC69B90DFAF7BB3A68B00A30CEE5179A /* StringData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8469910CFD9F0187C839243F5F11629F /* StringData.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BDD42F6AF6507CD7FFE8AB1E59601147 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9532E82345D2EEAAFC6A2FC1FB8000B8 /* Kingfisher.framework */; };
@@ -198,6 +200,8 @@
 		AC657C56FB10E2C6433D0AFE081866BE /* Pods-MyCheckWalletUI_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MyCheckWalletUI_Tests.modulemap"; sourceTree = "<group>"; };
 		AC9E4AC3475AB15AA8BF43242777038B /* MCCheckoutViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCCheckoutViewController.swift; sourceTree = "<group>"; };
 		AF68427C3BBF14CB2323BC430A9204A2 /* MCCreditCardsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCCreditCardsViewController.swift; sourceTree = "<group>"; };
+		B2629BCB1DCA2DBA003515A8 /* UITextField+Placeholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Placeholder.swift"; sourceTree = "<group>"; };
+		B26C5F2F1DC8D6C000AA172B /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		B2ABA5BD9D317C4F0BA2E3B3646E088B /* ImagePrefetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImagePrefetcher.swift; path = Sources/ImagePrefetcher.swift; sourceTree = "<group>"; };
 		B39F69777E6528EBF72A7F05D1425FFB /* Pods-MyCheckWalletUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B4678B5B0D7E6FE0B8D14165E8DFF1AE /* ImageCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = Sources/ImageCache.swift; sourceTree = "<group>"; };
@@ -315,6 +319,8 @@
 				745A4574975A817400B43B7DD10FF43A /* PaymentMethod.swift */,
 				8469910CFD9F0187C839243F5F11629F /* StringData.swift */,
 				EE98319E84A17119A183D0528FB9953C /* UIColor+CustomColors.swift */,
+				B26C5F2F1DC8D6C000AA172B /* UIColor+Hex.swift */,
+				B2629BCB1DCA2DBA003515A8 /* UITextField+Placeholder.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -806,10 +812,12 @@
 				2AAD985A177716D65EA4D0FB2B4D5621 /* CreditCardValidator.swift in Sources */,
 				106A318EAFF9444664507056F397D733 /* CreditCardView.swift in Sources */,
 				AD2E1330622B3CDA4AEE93952C21B1DE /* MCAddCreditCardViewController.swift in Sources */,
+				B26C5F301DC8D6C000AA172B /* UIColor+Hex.swift in Sources */,
 				C26D9C742301B6D7F257EB946597C995 /* MCCheckoutViewController.swift in Sources */,
 				C22F81A0B1522A7AD2590D87348C8AB5 /* MCCreditCardsViewController.swift in Sources */,
 				FA990965A316CD68C60AE5DD8A80C72D /* MCPaymentMethodsViewController.swift in Sources */,
 				A2423ED99415D3E92467BCF9DE811F5F /* MCScrollView.swift in Sources */,
+				B2629BCC1DCA2DBA003515A8 /* UITextField+Placeholder.swift in Sources */,
 				7F93B15B06A1314327253B84CF66D52A /* MCTextField.swift in Sources */,
 				C6253303E19B234C15585570ECFCBF45 /* MCViewController.swift in Sources */,
 				4D7D555B7545F2D8FC4E9ACB5E80F5F6 /* MyCheckWallet.swift in Sources */,

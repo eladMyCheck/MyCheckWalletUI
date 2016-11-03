@@ -98,11 +98,11 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     }
     
    private func assignImages(){    
-    visaImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
-    mastercardImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsmastercard" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"))))
-    dinersImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsdinersclub" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"))))
-    discoverImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsdiscover" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"))))
-    amexImageView.kf_setImageWithURL(NSURL(string: (StringData.manager.getString("acceptedCardsAMEX" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"))))
+    visaImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
+    mastercardImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsmastercard" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"))))
+    dinersImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsdinersclub" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"))))
+    discoverImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsdiscover" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"))))
+    amexImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsAMEX" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"))))
     
     }
     
@@ -176,22 +176,22 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
         switch type {
         case .masterCard:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesmastercard"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesmastercard"))!
         case .visa:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesvisa"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
         case .diners:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesdinersclub"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesdinersclub"))!
         case .discover:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesdiscover"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesdiscover"))!
         case .amex:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesamex"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesamex"))!
         case .JCB:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesJCB"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesJCB"))!
         case .maestro:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesmaestro"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesmaestro"))!
             
         default:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesvisa"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
         }
     }
     
@@ -373,14 +373,14 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     }
     
     @objc internal override func setupUI(){
-    header.text = StringData.manager.getString("checkoutPagecheckoutSubHeader" , fallback: header.text)
-        dropdownHeader.text = StringData.manager.getString("checkoutPagecardDropDownHeader" , fallback:dropdownHeader.text)
-        managePaymentMethodsButton.setTitle( StringData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.titleForState(.Normal)) , forState: .Normal)
-        managePaymentMethodsButton.setTitle( StringData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.titleForState(.Normal)) , forState: .Highlighted)
+    header.text = LocalData.manager.getString("checkoutPagecheckoutSubHeader" , fallback: header.text)
+        dropdownHeader.text = LocalData.manager.getString("checkoutPagecardDropDownHeader" , fallback:dropdownHeader.text)
+        managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.titleForState(.Normal)) , forState: .Normal)
+        managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.titleForState(.Normal)) , forState: .Highlighted)
 
-        checkBoxLabel.text = StringData.manager.getString("checkoutPagenotStoreCard" , fallback:checkBoxLabel.text)
-        footerLabel.text = StringData.manager.getString("checkoutPagecardAccepted" , fallback:footerLabel.text)
-        pciLabel.text = StringData.manager.getString("checkoutPagepciNotice1" , fallback:pciLabel.text)
+        checkBoxLabel.text = LocalData.manager.getString("checkoutPagenotStoreCard" , fallback:checkBoxLabel.text)
+        footerLabel.text = LocalData.manager.getString("checkoutPagecardAccepted" , fallback:footerLabel.text)
+        pciLabel.text = LocalData.manager.getString("checkoutPagepciNotice1" , fallback:pciLabel.text)
 
     }
 }

@@ -56,8 +56,8 @@ public class MyCheckWallet{
     private func configureWallet(publishableKey: String , environment: Environment , success: (() -> Void)? , fail:((error: NSError) -> Void)?){
         Networking.manager.configureWallet(environment, success: { domain , pci , JSON , stringsJSON in
             
-            StringData.manager.addStrings(nil, dictionary: JSON)
-            StringData.manager.addStrings(nil , dictionary: stringsJSON)
+            LocalData.manager.addStrings(nil, dictionary: JSON)
+            LocalData.manager.addStrings(nil , dictionary: stringsJSON)
             if let success = success{
             success()
             }

@@ -159,16 +159,27 @@ public class MCAddCreditCardViewController: MCViewController {
     
     //MARK: - private functions
     internal func setupUI(){
-    self.creditCardNumberField.placeholder = StringData.manager.getString("addCreditcardNumPlaceHoldar")
-        self.cvvField.placeholder = StringData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)
-        self.dateField.placeholder = StringData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)
-            self.zipField.placeholder = StringData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder)
-        applyButton.setTitle( StringData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.titleForState(.Normal)) , forState: .Normal)
-        applyButton.setTitle( StringData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.titleForState(.Normal)) , forState: .Highlighted)
+    self.creditCardNumberField.placeholder = LocalData.manager.getString("addCreditcardNumPlaceHoldar")
+        self.cvvField.placeholder = LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)
+        self.dateField.placeholder = LocalData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)
+            self.zipField.placeholder = LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder)
+        applyButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.titleForState(.Normal)) , forState: .Normal)
+        applyButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.titleForState(.Normal)) , forState: .Highlighted)
 
-        cancelBut.setTitle( StringData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.titleForState(.Normal)) , forState: .Normal)
-        cancelBut.setTitle( StringData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.titleForState(.Normal)) , forState: .Highlighted)
-
+        cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.titleForState(.Normal)) , forState: .Normal)
+        cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.titleForState(.Normal)) , forState: .Highlighted)
+        
+        //setting colors
+        creditCardNumberField.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: creditCardNumberField.textColor!)
+                dateField.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: dateField.textColor!)
+                cvvField.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: cvvField.textColor!)
+                zipField.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: zipField.textColor!)
+        errorLabel.textColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
+      
+        
+        for (key , value) in underlineForField!{
+        value.backgroundColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
+        }
     }
     internal func setImageForType( type: CardType){
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
@@ -188,22 +199,22 @@ public class MCAddCreditCardViewController: MCViewController {
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
         switch type {
         case .MasterCard:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesmastercard"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesmastercard"))!
         case .Visa:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesvisa"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
         case .Diners:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesdinersclub"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesdinersclub"))!
         case .Discover:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesdiscover"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesdiscover"))!
         case .Amex:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesamex"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesamex"))!
         case .JCB:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesJCB"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesJCB"))!
         case .Maestro:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesmaestro"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesmaestro"))!
             
         default:
-            return NSURL(string:  StringData.manager.getString("addCreditImagesvisa"))!
+            return NSURL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
         }
     }
     

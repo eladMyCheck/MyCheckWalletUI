@@ -229,7 +229,7 @@ internal class Networking {
                                 let msgKey =  JSON["message"] as? String
                                 let code = JSON["code"] as? Int
                                 if let code = code , let msgKey = msgKey {
-                                  let msg = StringData.manager.getString("errors" + msgKey)
+                                  let msg = LocalData.manager.getString("errors" + msgKey)
 
                                     let errorWithMessage = NSError(domain: error.domain, code: code , userInfo: [NSLocalizedDescriptionKey : msg])
                                     
