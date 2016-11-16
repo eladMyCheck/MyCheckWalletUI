@@ -149,5 +149,6 @@ s.requires_arc = 'true'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'Alamofire', '~> 3.5'
   s.dependency 'Kingfisher', '~> 2.4'
-
+  s.dependency 'Braintree/PayPal'
+  s.dependency 'Braintree/DataCollector'
 end

@@ -15,42 +15,56 @@ internal protocol CreditCardViewDelegate : class{
 }
 
 internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
-
+    
     var paymentMethod : PaymentMethod?
     var checboxButton : UIButton?
     var editMode = false
     var delegate : CreditCardViewDelegate?
     
+    
+    var creditCardNumberlabel: UILabel?
+    var expirationDateLabel: UILabel?
+    var backgroundButton: UIButton?
     init(frame: CGRect, method: PaymentMethod){
         super.init(frame: frame)
         self.userInteractionEnabled = true
         self.paymentMethod = method
         
-        let setCardAsDefaultButton = UIButton(frame: CGRectMake(0, 0, 163, 102))
-        setCardAsDefaultButton.addTarget(self, action: #selector(creditCardPressed(_:)), forControlEvents: .TouchUpInside)
-        setCardAsDefaultButton.setImage(self.setImageForType(self.getType(method.issuer)), forState: .Normal)
-        setCardAsDefaultButton.adjustsImageWhenHighlighted = false
-        addSubview(setCardAsDefaultButton)
-        
+         backgroundButton = UIButton(frame: CGRectMake(0, 0, 163, 102))
+        if  let backgroundButton = backgroundButton{
+        backgroundButton.addTarget(self, action: #selector(creditCardPressed(_:)), forControlEvents: .TouchUpInside)
+        backgroundButton.setImage(self.setImageForType(self.getType(method.issuer)), forState: .Normal)
+        backgroundButton.adjustsImageWhenHighlighted = false
+        addSubview(backgroundButton)
+        }
         //credit card number label
-        let creditCardNumberlabel = UILabel(frame: CGRectMake(10, 70, 80, 18))
+        creditCardNumberlabel  = UILabel(frame: CGRectMake(10, 70, 80, 18))
+        if let creditCardNumberlabel = creditCardNumberlabel {
         creditCardNumberlabel.textAlignment = NSTextAlignment.Center
         creditCardNumberlabel.textColor = UIColor.whiteColor()
         creditCardNumberlabel.font =  UIFont(name: creditCardNumberlabel.font.fontName, size: 9)
-        creditCardNumberlabel.text = String(format: "XXXX-%@", method.lastFourDigits)
+        if let lastFourDigits = method.lastFourDigits{
+            creditCardNumberlabel.text = String(format: "XXXX-%@", lastFourDigits)
+        }
         addSubview(creditCardNumberlabel)
-        
+            }
         //expiration date label
-        let expirationDateLabel = UILabel(frame: CGRectMake(112, 70, 30, 18))
+       expirationDateLabel = UILabel(frame: CGRectMake(112, 70, 30, 18))
+
+        if let expirationDateLabel = expirationDateLabel{
         expirationDateLabel.textAlignment = NSTextAlignment.Center
         expirationDateLabel.textColor = UIColor.whiteColor()
         expirationDateLabel.font =  UIFont(name: expirationDateLabel.font.fontName, size: 9)
-      var year = method.expireYear
-      if year.characters.count > 2 {
-      year = year.substringFromIndex(year.startIndex.advancedBy(2))
-      }
-        expirationDateLabel.text = String(format: "%@/%@", method.expireMonth, year)
-        addSubview(expirationDateLabel)
+        if var year = method.expireYear, month = method.expireMonth{
+            if year.characters.count > 2 {
+                year = year.substringFromIndex(year.startIndex.advancedBy(2))
+                
+                expirationDateLabel.text = String(format: "%@/%@", month, year)
+                addSubview(expirationDateLabel)
+            }
+            }
+        }
+        
         
         
         //default card checkbox

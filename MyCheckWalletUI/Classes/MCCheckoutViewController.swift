@@ -381,7 +381,9 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
         checkBoxLabel.text = LocalData.manager.getString("checkoutPagenotStoreCard" , fallback:checkBoxLabel.text)
         footerLabel.text = LocalData.manager.getString("checkoutPagecardAccepted" , fallback:footerLabel.text)
         pciLabel.text = LocalData.manager.getString("checkoutPagepciNotice1" , fallback:pciLabel.text)
-
+        //setting up colors
+        
+        
     }
 }
 

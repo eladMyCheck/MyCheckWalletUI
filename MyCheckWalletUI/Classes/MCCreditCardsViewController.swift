@@ -16,6 +16,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
   let cardViewWidth = 193.0 as CGFloat
   var startMargin = 106 as CGFloat
 
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var scrollView: MCScrollView!
     var activityView : UIActivityIndicatorView!
@@ -63,10 +64,24 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         
         for i in (0..<creditCardCount) {
             let method = self.paymentMethods[i]
-            let cc = CreditCardView(frame: CGRectMake(cardViewWidth*CGFloat(i+1)+startMargin, 20, cardViewWidth, 102), method: method)
+            let frame = CGRectMake(cardViewWidth*CGFloat(i+1)+startMargin, 20, cardViewWidth, 102)
+            
+            if method.type == .CreditCard {
+            let cc = CreditCardView(frame: frame, method: method)
             creditCards.addObject(cc)
             cc.delegate = self
             self.scrollView.addSubview(cc)
+
+            } else{//3rd party payment method
+                if let factory = MyCheckWallet.manager.getFactory(method.type){
+                    guard let cc = factory.getCreditCardView(frame, method: method) else{
+                    continue
+                    }
+                    creditCards.addObject(cc)
+                    cc.delegate = self
+                    self.scrollView.addSubview(cc)
+                }
+            }
         }
         
         if creditCardCount == 0 {
@@ -134,6 +149,11 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     }
     
    internal func setPaymentAsDefault(){
+       reloadMethods()
+
+    }
+    internal func reloadMethods(){
+        startActivityIndicator()
         MyCheckWallet.manager.getPaymentMethods({ (array) in
             self.activityView.stopAnimating()
             self.paymentMethods = array
@@ -141,9 +161,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             }, fail: { error in
                 
         })
-
     }
-    
    internal func startActivityIndicator() {
             activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)
             

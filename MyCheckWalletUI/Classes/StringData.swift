@@ -14,7 +14,7 @@ internal class LocalData{
     static let manager = LocalData()
     
    lazy var strings : [String : String ] = {
-    return [:] as! [String : String ]
+    return [:] 
         }()
     
     

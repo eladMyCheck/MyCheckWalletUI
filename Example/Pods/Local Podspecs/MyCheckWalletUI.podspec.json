@@ -1,6 +1,6 @@
 {
   "name": "MyCheckWalletUI",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "summary": "An SDK that supplies UI for payment method managment.",
   "description": "# MyCheckWalletUI\nAn SDK that supplies UI for payment method managment.\n\n\n## Example\n\nTo run the example project, clone the repo, and run `pod install` from the Example directory first. The example demonstrates displaying a Checkout view controller , displaying a payment manager view controller and getting the token when ready to pay.\n\n## Requirements\niOS 8 or above.\n\n## Installation\n\nMyCheckWallet is available through [CocoaPods](http://cocoapods.org). You will first need to ask a MyCheck team member to give you read privileges to the MyCheck Repository. Once you have gotten the privileges, install\nit by simply adding the following lines to the top of your Podfile:\n\n```\nsource 'https://bitbucket.org/erez_spatz/pod-spec-repo.git'\nsource 'https://github.com/CocoaPods/Specs.git'\n```\nThis will set both the public CocoaPods Repo and the MyCheck private repo as targets for CocoaPods to search for frameworks from.\n\nYou can add YOUR_USER_NAME@ before the 'bitbucket.org' so the pod tool won't need to ask you for it every time you update or install.\n\ninside the target add:\n\n```\npod \"MyCheckWalletUI\"\n```\nNow you can run 'pod install'\n\n## Use\nStart by adding\n```\nimport MyCheckWalletUI\n```\n\nto the top of the class where you want to use MyCheckWallet.\n\nIn your app delegat's `application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)` function call the configure function of the MyCheckWallet singlton:\n\n```\nMyCheckWallet.manager.configureWallet(YOUR_PUBLISHABLE_KEY, environment: Environment.sandbox)\n```\nThis will setup the SDK to work with the desired environment.\n\nBefore displaying any UI you will have to login:\n\n\n```\nMyCheckWallet.manager.login(YOUR_REFRESH_TOKEN, success: {\n//handle success\n} , fail: { error in\n//handle failure\n})\n```\nOnce you are logged in you can display the MyCheck UI. We have two UI elements\n\n###MCCheckoutViewController\nThis view controller is meant to be embedded inside your view controller. It allows the user the basic functions needed from a wallet:\n1. Add a credit card\n2. Select a credit card\nThe view controller should be added into a container view. It can be done in two ways.\n\n1. Interface builder: change the view controller that the container is connect to (by segue) to `MCCheckoutViewController`.\n2. In code: call MCCheckoutViewController.init() in order to create the instance.\n\nOnce an instance is created you should set `checkoutDelegate` and implement  `checkoutViewShouldResizeHeight` in order to respond to height changes. You should resize the container view to have the height returned by the delegate method.\nWhen you want to use a payment method use the view controllers variable `selectedMethod` in order to get the method the user selected (or nil if nonexistent)\n\n###MCPaymentMethodsViewController\nThis class is a full screen view controller that allows the user to fully manage his/her payment methods:\n\n1. Display all his/her payment methods.\n2. Choose a default payment method.\n3. Delete payment methods.\n4. Add payment methods.\n\nIn order to create a MCPaymentMethodsViewController instance call the constructor and present it like so:\n\n```\nlet controller = MCPaymentMethodsViewController.createPaymentMethodsViewController(self)\nself.presentViewController(controller, animated: true, completion: nil)\n\n```\n\nYou must also implement the MCPaymentMethodsViewControllerDelegate and dismiss the view controller when it is done\nexample\n\n```\n\nfunc dismissedMCPaymentMethodsViewController(controller: MCPaymentMethodsViewController){\ncontroller.dismissViewControllerAnimated(true, completion: nil)\n}\n\n```\n\n## Authors\n\nElad Schiller, eladsc@mycheckapp.com\nMihail Kalichkov, mihailk@mycheckapp.com\n## License\n\nPlease read the LICENSE file available in the project",
   "homepage": "https://mycheckapp.com",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://bitbucket.org/erez_spatz/mycheckwalletui-ios.git",
-    "tag": "0.0.7"
+    "tag": "0.0.8"
   },
   "platforms": {
     "ios": "8.0"
@@ -31,6 +31,12 @@
     ],
     "Kingfisher": [
       "~> 2.4"
+    ],
+    "Braintree/PayPal": [
+
+    ],
+    "Braintree/DataCollector": [
+
     ]
   }
 }

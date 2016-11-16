@@ -47,7 +47,7 @@ internal override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObje
     
     //when a payment method is available you can get the method from the checkoutViewController using the selectedMethod variable. If it's nil non exist
     if let method = checkoutViewController!.selectedMethod {
-    message = method.issuer + " " + method.lastFourDigits + " token: " + method.token
+    message = method.issuer + " " + " token: " + method.token
     }
     
     

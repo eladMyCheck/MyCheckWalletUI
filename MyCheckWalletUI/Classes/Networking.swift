@@ -1,8 +1,9 @@
 
 import Foundation
 import UIKit
-import Alamofire
 import CoreData
+import Alamofire
+
 public enum ErrorCodes {
     static let badJSON = 971
     static let notLoggedIn = 972
@@ -23,18 +24,17 @@ internal class Networking {
     //This property points to the singlton object. It should be used for calling all the functions in the class.
     internal static let manager = Networking()
     
-    
+
     var domain : String?
     var PCIDomain: String?
-    var environment = Environment.sandbox
-    
+    var environment = Environment.Sandbox
     func configureWallet(environment: Environment , success: (domain: String , pci: String ,JSON: NSDictionary, strings: NSDictionary) -> Void ,  fail: ((NSError) -> Void)? ) -> Alamofire.Request {
         var urlStr = CDNAddresses.prod
-        
+        self.environment = environment
         switch(environment){
-        case .test:
+        case .Test:
             urlStr = CDNAddresses.test
-        case .sandbox:
+        case .Sandbox:
             urlStr = CDNAddresses.sandbox
         default:
             urlStr = CDNAddresses.prod
@@ -78,12 +78,13 @@ internal class Networking {
             return  request(urlStr, method: .GET, parameters: params , success: { JSON in
                 if let token = JSON["accessToken"] as? String{
                     success(token)
+                 
                 }else{
                     if let fail = fail{
                         fail(self.badJSONError())
                     }
                 }
-                
+               
                 }, fail: fail)
         }else{
             if let fail = fail{
@@ -93,7 +94,7 @@ internal class Networking {
         return nil
     }
     
-    
+   
     func getPaymentMethods( accessToken: String , success: (( [PaymentMethod] ) -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request{
         let params = [ "accessToken": accessToken]
         
@@ -106,6 +107,7 @@ internal class Networking {
                 
                 for dic in methodsJSON as! [NSDictionary]{
                     if let method = PaymentMethod(JSON: dic){
+                        
                         returnArray.append(method)
                     }
                 }
@@ -139,7 +141,7 @@ internal class Networking {
             
             let methodJSON = JSON["pm"] as! NSDictionary
             if methodJSON.isKindOfClass(NSDictionary) == true{
-                success(PaymentMethod(JSON: methodJSON as! NSDictionary)!)
+                success(PaymentMethod(JSON: methodJSON )!)
             }else{
                 if let fail = fail{
                     if let errormessage = JSON["message"] as? String{
@@ -176,7 +178,7 @@ internal class Networking {
     }
     
     //MARK: - private functions
-    private  func request(url: String , method: Alamofire.Method , parameters: [String: AnyObject]? = nil , success: (( object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? , encoding: ParameterEncoding = .URL) -> Alamofire.Request {
+    internal  func request(url: String , method: Alamofire.Method , parameters: [String: AnyObject]? = nil , success: (( object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? , encoding: ParameterEncoding = .URL) -> Alamofire.Request {
         
         
         

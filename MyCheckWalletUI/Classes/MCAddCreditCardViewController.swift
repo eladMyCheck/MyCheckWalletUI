@@ -170,14 +170,21 @@ public class MCAddCreditCardViewController: MCViewController {
         cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.titleForState(.Normal)) , forState: .Highlighted)
         
         //setting colors
-        creditCardNumberField.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: creditCardNumberField.textColor!)
-                dateField.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: dateField.textColor!)
-                cvvField.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: cvvField.textColor!)
-                zipField.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: zipField.textColor!)
+        
         errorLabel.textColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
-      
+        errorLabel.textColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
+        applyButton.backgroundColor = LocalData.manager.getColor("addCreditColorsapplyBackgroundColor", fallback: errorLabel.textColor!)
+        applyButton.layer.cornerRadius = 8
+        applyButton.setTitleColor(LocalData.manager.getColor("addCreditColorsapplyButtonText", fallback: errorLabel.textColor!), forState: .Normal)
+        cancelBut.layer.cornerRadius = 8
+
+        cancelBut.backgroundColor = LocalData.manager.getColor("addCreditColorscancelColor", fallback: errorLabel.textColor!)
+            cancelBut.setTitleColor(LocalData.manager.getColor("addCreditColorscancelButtonText", fallback: errorLabel.textColor!), forState: .Normal)
+
         
         for (key , value) in underlineForField!{
+            key.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: key.textColor!)
+            key.placeholderColor(LocalData.manager.getColor("addCreditColorshintTextColor" , fallback: UIColor.lightGrayColor()))
         value.backgroundColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
         }
     }
