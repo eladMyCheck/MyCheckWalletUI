@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        BTAppSwitch.setReturnURLScheme("org.cocoapods.demo.MyCheckWalletUI-Example.payments")
+        //BTAppSwitch.setReturnURLScheme("org.cocoapods.demo.MyCheckWalletUI-Example.payments")
 
     MyCheckWallet.manager.configureWallet("pk_MRWdeNtVaPHA273ijAjSjz2vF7Wyc", environment: .Test)
       MyCheckWallet.logDebugData = true

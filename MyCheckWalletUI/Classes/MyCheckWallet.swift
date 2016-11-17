@@ -175,7 +175,19 @@ public class MyCheckWallet{
     public func isLoggedIn() -> Bool {
         return token != nil
     }
-    
+  
+  
+  public  func handleOpenURL(url: NSURL, sourceApplication: String?) -> Bool{
+    var handle = false
+    for factory in factories{
+    handle = factory.handleOpenURL(url, sourceApplication:sourceApplication)
+      if handle{
+      break
+      }
+    }
+    return handle
+  }
+
     /// Gets a list of all the payment methods the user has saved in the MyCheck server
     ///
     ///   - parameter success: A block that is called if the user is logged in succesfully

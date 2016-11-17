@@ -44,8 +44,8 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         creditCardNumberlabel.textColor = UIColor.whiteColor()
         creditCardNumberlabel.font =  UIFont(name: creditCardNumberlabel.font.fontName, size: 9)
         if let lastFourDigits = method.lastFourDigits{
-            creditCardNumberlabel.text = String(format: "XXXX-%@", lastFourDigits)
-        }
+            creditCardNumberlabel.text = method.name
+          }
         addSubview(creditCardNumberlabel)
             }
         //expiration date label

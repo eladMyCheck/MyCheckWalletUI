@@ -49,7 +49,10 @@ public class PaymentMethod{
     public let Id : String
     /// The token that must be used in order to chard the payment method.
    public let token : String
-    
+  
+  // A string with a user readable description of the payment method, e.g. XXXX-1234
+  internal  var  name : String? = nil
+  
     /// The month the credit card expires
   public  var  expireMonth : String? = nil
     
@@ -108,6 +111,7 @@ public class PaymentMethod{
             
             issuerShort = JSON["issuer_short"] as! String
             issuer = JSON["issuer_full"] as! String
+          name = JSON["name"] as? String
 
             switch (source){
             case "paypal":

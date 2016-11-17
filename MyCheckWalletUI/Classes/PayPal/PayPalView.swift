@@ -33,7 +33,6 @@ class PayPalView: CreditCardView {
         frame.origin.y = 68
         creditCardNumberlabel.frame = frame
 
-        creditCardNumberlabel.text = "elad@mycheckapp.com"
     }
     }
     required init?(coder aDecoder: NSCoder) {

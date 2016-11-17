@@ -44,6 +44,10 @@ public class PaymentMethodFactory: NSObject {
     func getCreditCardView(frame: CGRect, method: PaymentMethod) -> CreditCardView?{
         return PayPalView(frame: frame, method: method)
     }
+  //for returning urls in the app delegate
+  public  func handleOpenURL(url: NSURL, sourceApplication: String?) -> Bool{
+  return false
+  }
 }
 
 

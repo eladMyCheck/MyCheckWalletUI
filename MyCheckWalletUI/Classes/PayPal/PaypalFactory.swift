@@ -93,6 +93,11 @@ public class PaypalFactory : PaymentMethodFactory{
     @objc private func addMethodButPressed(sender: UIButton){
     getAddMethodViewControllere()
     }
+  
+  //for returning urls in the app delegate
+  public  override func handleOpenURL(url: NSURL, sourceApplication: String?) -> Bool{
+    return   BTAppSwitch.handleOpenURL(url, sourceApplication:sourceApplication)
+  }
 }
 extension PaypalFactory : BTViewControllerPresentingDelegate{
     @objc public func paymentDriver(driver: AnyObject, requestsDismissalOfViewController viewController: UIViewController) {

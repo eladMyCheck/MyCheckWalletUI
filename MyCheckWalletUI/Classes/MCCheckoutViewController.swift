@@ -232,11 +232,11 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     }
     @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
         let controller : MCPaymentMethodsViewController
-        if self.paymentMethods.count > 0 && self.paymentMethods.first?.isSingleUse == true {
-            controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: nil)
-        }else{
-            controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self, withPaymentMethods: self.paymentMethods)
-        }
+//        if self.paymentMethods.count > 0 && self.paymentMethods.first?.isSingleUse == true {
+//            controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
+//        }else{
+            controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
+      //  }
         
         self.presentViewController(controller, animated: true, completion: nil)
         controller.delegate = self
