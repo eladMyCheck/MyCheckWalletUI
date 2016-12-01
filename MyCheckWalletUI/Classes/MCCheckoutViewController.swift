@@ -10,22 +10,22 @@ import UIKit
 
 ///The parent of the MCCheckoutViewController must adopt this protocol and implement its methods in order to be able to resize the view when needed. The View will not automatically resize since it might be used in a few different ways (e.g constraints might be broken), so it is your responsibility to respond to the delegate and resize the view appropriately.
 public protocol CheckoutDelegate{
-   
+    
     ///Called when the height is changed
     ///   - parameter newHight: The new height of the CheckoutView/CheckoutTableViewCell
     ///   - parameter animationDuration: The duration the animation will take. The animation will start directly after this call is pressed. You should resize the view imidiatly and use the same animation duration in order for the animation to look good
-   func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: Double)
-       
+    func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: Double)
+    
 }
 ///A view controller that provides the ability to add a credit card and or select a payment method. The view controller is meant to be used as part of a parent view controller using a container view.
 public class MCCheckoutViewController: MCAddCreditCardViewController {
     //variables
     
     /// This variable will always have the currant payment method selected by the user. In the case where the user doesn't have a payment method the variable will be nil.
-     public var selectedMethod : PaymentMethod?
+    public var selectedMethod : PaymentMethod?
     
     ///The delegate that will be updated with MCCheckoutViewController height changes
-     public var checkoutDelegate : CheckoutDelegate?
+    public var checkoutDelegate : CheckoutDelegate?
     
     //Outlets
     @IBOutlet weak private  var paymentSelectorView: UIView!
@@ -38,7 +38,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBOutlet private var textFieldsBorderViews: [UIView]!
     @IBOutlet weak private var managePaymentMethodsButton: UIButton!
     var paymentMethodSelector : UIPickerView = UIPickerView()
-     private var paymentMethods: Array<PaymentMethod>! = []
+    private var paymentMethods: Array<PaymentMethod>! = []
     
     @IBOutlet weak private var visaImageView: UIImageView!
     @IBOutlet weak private var mastercardImageView: UIImageView!
@@ -55,12 +55,19 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBOutlet weak private var dropdownHeader: UILabel!
     @IBOutlet weak private var footerLabel: UILabel!
     
+    //34d party wallet payment methods UI elements
+    @IBOutlet weak var walletsSuperview: UIView!
+    @IBOutlet weak var walletsHeight: NSLayoutConstraint!
+    @IBOutlet weak var walletButsContainer: UIView!
+    
+    
     @IBOutlet weak private var pciLabel: UILabel!
     
+    private var walletButtons : [PaymentMethodButton] = []
     internal var borderForField : [UITextField : UIView]?
     
     internal static func createMCCheckoutViewController() -> MCCheckoutViewController{
-       return MCCheckoutViewController.init()
+        return MCCheckoutViewController.init()
     }
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: "CheckoutViewController", bundle: MCViewController.getBundle(NSBundle(forClass: MCCheckoutViewController.self)))
@@ -69,7 +76,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     ///The preferred costructor to be used in order to create the View Controller
     init(){
         super.init(nibName: "CheckoutViewController", bundle: MCViewController.getBundle(NSBundle(forClass: MCCheckoutViewController.self)))
-
+        
     }
     required convenience public init?(coder aDecoder: NSCoder) {
         self.init()
@@ -84,26 +91,34 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
         borderForField = [creditCardNumberField : creditCardBorderView, dateField : dateFieldBorderView, cvvField : cvvBorderView, zipField : zipFieldBorderView]
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(MCCheckoutViewController.refreshPaymentMethods), name: MyCheckWallet.refreshPaymentMethodsNotification, object: nil)
-      
+        
         //setting up UI and updating it if the user logges in... just incase
         setupUI()
         nc.addObserver(self, selector: #selector(MCCheckoutViewController.setupUI), name: MyCheckWallet.loggedInNotification, object: nil)
         
-
+        
     }
     
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.resetFields()
+        MyCheckWallet.manager.factoryDelegate = self
+        
     }
     
-   private func assignImages(){    
-    visaImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
-    mastercardImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsmastercard" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"))))
-    dinersImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsdinersclub" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"))))
-    discoverImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsdiscover" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"))))
-    amexImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsAMEX" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"))))
+    public override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
     
+    
+    private func assignImages(){
+        visaImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
+        mastercardImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsmastercard" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"))))
+        dinersImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsdinersclub" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"))))
+        discoverImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsdiscover" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"))))
+        amexImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsAMEX" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"))))
+        
     }
     
     private func addDoneButtonOnPicker(field: UITextField , action: Selector){
@@ -122,14 +137,14 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     
     func donePressed(sender: UIBarButtonItem){
         selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRowInComponent(0)]
-        self.paymentMethodSelectorTextField.text = selectedMethod!.lastFourDigits
+        self.paymentMethodSelectorTextField.text = self.selectedMethod!.name
         self.typeImage.kf_setImageWithURL(self.imageURL(self.getType(selectedMethod!.issuer)))
-
+        
         self.view.endEditing(true)
     }
     
     
-   
+    
     
     func configureUI(){
         creditCardNumberField.attributedPlaceholder = NSAttributedString(string:"1234 1234 1234 1234", attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
@@ -147,10 +162,10 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
             if paymentMethods.count > 0 {
                 creditCardNumberField.hidden = true
                 self.paymentSelectorView.hidden = false
-                self.paymentMethodSelectorTextField.text = self.paymentMethods.first?.lastFourDigits
+                self.paymentMethodSelectorTextField.text = self.selectedMethod!.name
                 
                 self.typeImage.kf_setImageWithURL(self.imageURL(self.getType((self.paymentMethods.first?.issuer)!)))
-
+                
                 self.checkbox.hidden = true
                 self.checkBoxLabel.hidden = true
             }else{
@@ -171,7 +186,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
         addDoneButtonOnPicker(paymentMethodSelectorTextField, action: #selector(donePressed(_: )))
     }
     
-
+    
     internal func imageURL( type: CreditCardType) -> NSURL?{
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
         switch type {
@@ -216,27 +231,27 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
             return CreditCardType.unknown
         }
     }
-   @objc private func refreshPaymentMethods(){
-    MyCheckWallet.manager.getPaymentMethods({ (methods) in
-        self.paymentMethods = methods
-      if methods.count == 0 {
-      self.selectedMethod = nil
-      }else{
-        self.selectedMethod = methods.first
-
-      }
-        self.configureUI()
-    }) { (error) in
-        
-    }
+    @objc private func refreshPaymentMethods(){
+        MyCheckWallet.manager.getPaymentMethods({ (methods) in
+            self.paymentMethods = methods
+            if methods.count == 0 {
+                self.selectedMethod = nil
+            }else{
+                self.selectedMethod = methods.first
+                
+            }
+            self.configureUI()
+        }) { (error) in
+            
+        }
     }
     @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
         let controller : MCPaymentMethodsViewController
-//        if self.paymentMethods.count > 0 && self.paymentMethods.first?.isSingleUse == true {
-//            controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
-//        }else{
-            controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
-      //  }
+        //        if self.paymentMethods.count > 0 && self.paymentMethods.first?.isSingleUse == true {
+        //            controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
+        //        }else{
+        controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
+        //  }
         
         self.presentViewController(controller, animated: true, completion: nil)
         controller.delegate = self
@@ -267,7 +282,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBAction func checkboxPressed(_ sender: UIButton) {
         self.checkbox.selected = !self.checkbox.selected
     }
-  
+    
     @IBAction func cancelButPressed(_ sender: AnyObject) {
         super.cancelPressed(sender)
         self.resetFields()
@@ -285,19 +300,19 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
             self.startActivityIndicator()
             self.applyButton.enabled = false
             self.cancelButton.enabled = false
-
+            
             self.creditCardNumberField.userInteractionEnabled = false
             self.dateField.userInteractionEnabled = false
             self.cvvField.userInteractionEnabled = false
             self.zipField.userInteractionEnabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  method in
                 self.resetFields()
-              self.selectedMethod = method
-
+                self.selectedMethod = method
+                
                 if method.isSingleUse == true{
                     self.paymentMethods = [method]
                     self.paymentMethodSelector.reloadAllComponents()
-                    self.paymentMethodSelectorTextField.text = self.selectedMethod!.lastFourDigits
+                    self.paymentMethodSelectorTextField.text = self.selectedMethod!.name
                     self.typeImage.kf_setImageWithURL(self.imageURL(self.getType((self.selectedMethod!.issuer))))
                     self.creditCardNumberField.hidden = true
                     self.paymentSelectorView.hidden = false
@@ -328,7 +343,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
                     }
             })
         }
-
+        
     }
     
     override func startActivityIndicator() {
@@ -350,11 +365,14 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     
     func moveAcceptedCreditCardsViewToCreditCardField(move : Bool , animated: Bool){
         let animationLength = animated ? 0.2 : 0
-        let baseHeight = 264.0 as Float
+        let baseHeight = 272.0 as Float
         self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
         self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
         
-        let delta = move ? baseHeight : baseHeight + 111.0
+        var delta = move ? baseHeight : baseHeight + 111.0
+        if MyCheckWallet.manager.factories.count > 0 { // if we have factories we need to allow more room for the wallet buttons
+            delta += 110
+        }
         self.colapsableContainer.alpha = move ? 0 : 1
         if let del = checkoutDelegate{
             del.checkoutViewShouldResizeHeight(delta, animationDuration: animationLength)
@@ -373,16 +391,44 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     }
     
     @objc internal override func setupUI(){
-    header.text = LocalData.manager.getString("checkoutPagecheckoutSubHeader" , fallback: header.text)
+        header.text = LocalData.manager.getString("checkoutPagecheckoutSubHeader" , fallback: header.text)
         dropdownHeader.text = LocalData.manager.getString("checkoutPagecardDropDownHeader" , fallback:dropdownHeader.text)
         managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.titleForState(.Normal)) , forState: .Normal)
         managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.titleForState(.Normal)) , forState: .Highlighted)
-
+        
         checkBoxLabel.text = LocalData.manager.getString("checkoutPagenotStoreCard" , fallback:checkBoxLabel.text)
         footerLabel.text = LocalData.manager.getString("checkoutPagecardAccepted" , fallback:footerLabel.text)
         pciLabel.text = LocalData.manager.getString("checkoutPagepciNotice1" , fallback:pciLabel.text)
         //setting up colors
         
+        
+        if (walletButtons.count == 0 && MyCheckWallet.manager.isLoggedIn()) {
+            switch MyCheckWallet.manager.factories.count {
+            case 0:
+                walletsHeight.constant = 0
+                walletsSuperview.hidden = true
+            case 1:
+                //adding button to center of container
+                let factory = MyCheckWallet.manager.factories[0]
+                let but = factory.getSmallAddMethodButton()
+                self.walletButsContainer.addSubview(but)
+                but.translatesAutoresizingMaskIntoConstraints = false
+                
+                let horizontalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: walletButsContainer, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+                walletsSuperview.addConstraint(horizontalConstraint)
+                
+                let verticalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: walletButsContainer, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+                walletButsContainer.addConstraint(verticalConstraint)
+                walletButtons.append(but)
+                but.enabled = true
+                but.userInteractionEnabled = true
+                print( but.bounds , "    " , but.frame)
+            default:// multiple wallets
+                for factory in MyCheckWallet.manager.factories{
+                    //TO-DO implement adding multiple wallets
+                }
+            }
+        }
         
     }
 }
@@ -391,19 +437,8 @@ extension MCCheckoutViewController : MCPaymentMethodsViewControllerDelegate{
     
     
     public func dismissedMCPaymentMethodsViewController(controller: MCPaymentMethodsViewController){
-      controller.dismissViewControllerAnimated(true, completion: nil)
-
-//        MyCheckWallet.manager.getPaymentMethods({ (array) in
-//            if array.count > 0{
-//                self.paymentMethods = array
-//            }else{
-//                self.paymentMethods = []
-//                
-//            }
-//            self.configureUI()
-//            }, fail: { error in
-//                
-//        })
+        controller.dismissViewControllerAnimated(true, completion: nil)
+        refreshPaymentMethods()
         
     }
 }
@@ -419,6 +454,34 @@ extension MCCheckoutViewController : UIPickerViewDelegate , UIPickerViewDataSour
     }
     
     public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.paymentMethods[row].lastFourDigits
+        return self.paymentMethods[row].name
     }
+}
+
+
+extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
+    func error(controller: PaymentMethodFactory , error:NSError){
+        printIfDebug( error.localizedDescription )
+        
+        let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .Alert);
+        let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "alert ok but"), style: .Default, handler:
+            {(alert: UIAlertAction!) in
+                
+                
+        })
+        alert.addAction(defaultAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func addedPaymentMethod(controller: PaymentMethodFactory ,token:String){
+        refreshPaymentMethods()
+    }
+    func displayViewController(controller: UIViewController ){
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    func dismissViewController(controller: UIViewController ){
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }

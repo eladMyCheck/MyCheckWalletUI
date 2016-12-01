@@ -131,16 +131,19 @@ internal class Networking {
                        type: CreditCardType ,
                        isSingleUse: Bool ,
                        accessToken: String ,
+                       environment: Environment ,
                        success: (( PaymentMethod ) -> Void) ,
                        fail: ((NSError) -> Void)? ) -> Alamofire.Request{
-        let params = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "type" : type.rawValue , "is_single_use" : String(NSNumber(bool: isSingleUse)), "env" : "sandbox"]
-        
-        
+        var params = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "cardType" : type.rawValue , "is_single_use" : String(NSNumber(bool: isSingleUse))]
+       
+        if environment != .Production{
+        params["env"] = "test"
+        }
         
         return  request(PCIDomain! + "/PaymentManager/api/v1/paymentMethods/addCreditcard", method: .POST, parameters: params , success: { JSON in
             
-            let methodJSON = JSON["pm"] as! NSDictionary
-            if methodJSON.isKindOfClass(NSDictionary) == true{
+            let methodJSON = JSON["pm"] as? NSDictionary
+            if let methodJSON = methodJSON where methodJSON.isKindOfClass(NSDictionary) == true{
                 success(PaymentMethod(JSON: methodJSON )!)
             }else{
                 if let fail = fail{

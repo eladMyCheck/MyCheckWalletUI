@@ -17,11 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        //BTAppSwitch.setReturnURLScheme("org.cocoapods.demo.MyCheckWalletUI-Example.payments")
 
-    MyCheckWallet.manager.configureWallet("pk_MRWdeNtVaPHA273ijAjSjz2vF7Wyc", environment: .Test)
+    MyCheckWallet.manager.configureWallet("pk_94v318RxSM2eyGa1Kvzp9uabGErti", environment: .Test)
       MyCheckWallet.logDebugData = true
-        PaypalFactory.initiate()
+        PaypalFactory.initiate("org.cocoapods.demo.MyCheckWalletUI-Example.payments")
                 return true
     }
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {

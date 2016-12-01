@@ -97,7 +97,7 @@ public class PaymentMethod{
                 expireMonth = String(str)
             }
             
-            if number == JSON["exp_year4"] as? NSNumber{
+            if let number = JSON["exp_year4"] as? NSNumber{
             let yearInt = Int(number)
                  expireYear = String(yearInt)
             }

@@ -104,6 +104,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
                     printIfDebug("payment set as default")
                     if let del = self.delegate{
                         del.setPaymentAsDefault()
+                        
                     }
                     }, fail: { (error) in
                         printIfDebug("did not set payment as default")
@@ -160,7 +161,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             return UIImage(named: "maestro_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
             
         default:
-            return UIImage(named: "no_type_card" , inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "notype_background" , inBundle: bundle, compatibleWithTraitCollection: nil)!
         }
     }
     

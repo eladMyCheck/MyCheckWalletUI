@@ -452,10 +452,12 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
     }
    
     func startActivityIndicator() {
+        if activityView == nil {
         activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .Gray)
         
-        activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 130)
+        activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 104)
         activityView.startAnimating()
+        }
         self.view.addSubview(activityView)
     }
     

@@ -77,9 +77,13 @@ public class MyCheckWallet{
     //remembers the braintree token
     var braintreeToken : String? = nil
     
+    //the enviorment configured
+    internal var environment : Environment?
     
     internal var token: String?
     public var methods:  [PaymentMethod] = []
+    
+    
     ///This property points to the singlton object. It should be used for calling all the functions in the class.
     public static let manager = MyCheckWallet()
     
@@ -91,6 +95,7 @@ public class MyCheckWallet{
         
         self.publishableKey = publishableKey
         self.configureWallet(publishableKey, environment: environment, success: nil, fail: nil)
+        self.environment = environment
     }
     
     private func configureWallet(publishableKey: String , environment: Environment , success: (() -> Void)? , fail:((error: NSError) -> Void)?){
@@ -231,8 +236,8 @@ public class MyCheckWallet{
                                 isSingleUse: Bool ,
                                 success: (( PaymentMethod ) -> Void) ,
                                 fail: ((NSError) -> Void)? ){
-        if let token = token{
-            let request = Networking.manager.addCreditCard(rawNumber, expireMonth: expireMonth, expireYear: expireYear, postalCode: postalCode, cvc: cvc, type: type, isSingleUse: isSingleUse,accessToken: token, success: { token in
+        if let token = token , environment = environment{
+            let request = Networking.manager.addCreditCard(rawNumber, expireMonth: expireMonth, expireYear: expireYear, postalCode: postalCode, cvc: cvc, type: type, isSingleUse: isSingleUse,accessToken: token, environment: environment , success: { token in
                 if token.isSingleUse == false{
                     self.refreshPaymentMethodsAndPostNotification()
                 }
@@ -310,8 +315,16 @@ public class MyCheckWallet{
                 
         })
     }
-    
-    
+    //returns true if and only if the latest list of methods received from the server contains a payment method of the 'type'
+    internal func hasPaymentMethodOfType(type: PaymentMethodType) -> Bool{
+        for method in methods {
+            if method.type == type{
+             return true
+            }
+            
+        }
+        return false
+    }
 }
 
 

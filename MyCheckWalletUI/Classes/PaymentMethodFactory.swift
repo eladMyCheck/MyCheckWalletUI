@@ -37,6 +37,33 @@ public class PaymentMethodFactory: NSObject {
         return but
     }
     
+    //this button is meant for use in the checkout view controller
+    func getSmallAddMethodButton() -> PaymentMethodButton{
+        let but = PaymentMethodButton()
+        let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+
+        let image = UIImage(named: "checkout_wallet_but_bg" , inBundle: bundle, compatibleWithTraitCollection: nil)
+        but.frame = CGRect(x: 0, y: 0, width: 133.0, height: 41.0)
+        but.setBackgroundImage(image, forState: .Normal)
+        but.addConstraint(NSLayoutConstraint(
+            item: but,
+            attribute: .Width,
+            relatedBy: .Equal,
+            toItem: nil,
+            attribute: .NotAnAttribute,
+            multiplier: 1.0,
+            constant: 133))
+        but.addConstraint(NSLayoutConstraint(
+            item: but,
+            attribute: .Height,
+            relatedBy: .Equal,
+            toItem: nil,
+            attribute: .NotAnAttribute,
+            multiplier: 1.0,
+            constant: 41))
+        return but
+    }
+    
     //this is called by the mycheck wallet singlton after the user has logged in
      func configureAfterLogin(){
     

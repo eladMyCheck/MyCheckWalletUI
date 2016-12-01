@@ -85,7 +85,6 @@ public class MCPaymentMethodsViewController: MCViewController {
         setupUI()
         
         //recieving events from all intergrated sdks
-        MyCheckWallet.manager.factoryDelegate = self
         showEnterCreditCard(false , animated: false)
         
         if let creditCardVC = creditCardVC{
@@ -103,6 +102,15 @@ public class MCPaymentMethodsViewController: MCViewController {
         
     }
     
+    public override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        MyCheckWallet.manager.factoryDelegate = self
+
+    }
+    public override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
+    }
     override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "creditCardSubViewController" {
             creditCardVC = segue.destinationViewController as? MCAddCreditCardViewController
@@ -246,9 +254,18 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
 }
 extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
     func error(controller: PaymentMethodFactory , error:NSError){
-        outputForTesting.text = error.localizedDescription
-
+        printIfDebug( error.localizedDescription )
+        
+        let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .Alert);
+        let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "alert ok but"), style: .Default, handler:
+            {(alert: UIAlertAction!) in
+                
+                
+        })
+        alert.addAction(defaultAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
+    
     func addedPaymentMethod(controller: PaymentMethodFactory ,token:String){
         if let creditCardListVC = creditCardListVC{
             creditCardListVC.reloadMethods()
