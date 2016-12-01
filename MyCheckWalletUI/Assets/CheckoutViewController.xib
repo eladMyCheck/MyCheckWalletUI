@@ -40,11 +40,13 @@
                 <outlet property="errorLabel" destination="oJg-Ps-OdY" id="T83-e8-xSq"/>
                 <outlet property="footerLabel" destination="wA0-gS-QqR" id="tiH-uC-mzc"/>
                 <outlet property="header" destination="zZg-Fe-gBI" id="Khi-PH-iU6"/>
+                <outlet property="headerLineBG" destination="yxp-yO-zIk" id="A50-Tj-CSf"/>
                 <outlet property="managePaymentMethodsButton" destination="N0u-Ng-8ai" id="aSk-8L-Ohx"/>
                 <outlet property="mastercardImageView" destination="MnS-WV-a6q" id="llW-MM-ODq"/>
                 <outlet property="paymentMethodSelectorTextField" destination="0oB-XW-gXs" id="VNa-uS-phn"/>
                 <outlet property="paymentSelectorView" destination="pTi-ub-50G" id="Trh-iV-gnM"/>
                 <outlet property="pciLabel" destination="4Cy-p3-4hS" id="14P-R8-B2p"/>
+                <outlet property="pickerDownArrow" destination="RH6-Eu-QMK" id="Ydj-9G-57M"/>
                 <outlet property="typeImage" destination="bEb-a8-zXO" id="TlB-lv-NLk"/>
                 <outlet property="view" destination="hcW-t3-chb" id="EzT-ff-jko"/>
                 <outlet property="visaImageView" destination="FaP-qS-TYJ" id="WVD-e7-i4R"/>

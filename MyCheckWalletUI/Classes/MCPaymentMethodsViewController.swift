@@ -28,6 +28,7 @@ public class MCPaymentMethodsViewController: MCViewController {
     
     internal var paymentMethods: Array<PaymentMethod>!
     
+    @IBOutlet weak var walletHeaderLabel: UILabel!
     @IBOutlet weak var pciLabel: UILabel!
     @IBOutlet var seporators: [UIView]!
     @IBOutlet private weak var creditCardListContainer: UIView!
@@ -121,44 +122,7 @@ public class MCPaymentMethodsViewController: MCViewController {
     }
     //MARK: - actions
     
-    @IBAction func paypalPressed( sender: AnyObject) {
-        
-        
-        //        MyCheckWallet.manager.getBraintreeToken({token in
-        //
-        //
-        //            //collecting device data
-        //            if let brainClient  = BTAPIClient(authorization: token){
-        //                let dataCollector = BTDataCollector(APIClient: brainClient)
-        //                dataCollector.collectFraudData({data in
-        //                    printIfDebug(data);
-        //                })
-        //            }
-        //
-        //
-        //
-        //
-        //            if let braintreeClient = BTAPIClient(authorization: token){
-        //
-        //            let request = BTPayPalRequest()
-        //            let driver = BTPayPalDriver(APIClient: braintreeClient)
-        //            driver.viewControllerPresentingDelegate = self
-        //                driver.requestBillingAgreement(request, completion: {nonce , error in
-        //                    if let nonce = nonce{
-        //                printIfDebug("nonce: " + nonce.nonce)
-        //                    if let metadataId = nonce.clientMetadataId{
-        //                    printIfDebug("metadataid: " + metadataId)
-        //                    }
-        //                    if let email = nonce.email{
-        //                    printIfDebug("email: " + email)
-        //                    }
-        //                    }
-        //                })
-        //            }
-        //            }, fail: nil)
-        
-        
-    }
+   
     //MARK: - private functions
     
     func showEnterCreditCard(show: Bool , animated: Bool){
@@ -198,7 +162,14 @@ public class MCPaymentMethodsViewController: MCViewController {
         self.footerLabel.text = LocalData.manager.getString("managePaymentMethodscardAcceptedWallet" , fallback: self.footerLabel.text)
         
         //setting up colors
-        //        self.view.backgroundColor =
+        view.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsbackground", fallback: UIColor.whiteColor())
+        for seporator in seporators{
+            seporator.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsseporator", fallback: seporator.backgroundColor!)
+        }
+        footerLabel.textColor = LocalData.manager.getColor("managePaymentMethodsColorsseporatorText" , fallback: footerLabel.textColor)
+        walletHeaderLabel.textColor = LocalData.manager.getColor("managePaymentMethodsColorsseporatorText" , fallback: walletHeaderLabel.textColor)
+        pciLabel.textColor = LocalData.manager.getColor("managePaymentMethodsColorspciNotice" , fallback: pciLabel.textColor)
+
     }
     
     

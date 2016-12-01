@@ -29,6 +29,8 @@ public class MCAddCreditCardViewController: MCViewController {
     @IBOutlet internal var cvvUnderline: UIView!
     @IBOutlet internal var zipUnderline: UIView!
     @IBOutlet internal weak var errorLabel: UILabel!
+    @IBOutlet weak var navBar: UINavigationBar!
+    
    internal var underlineForField : [UITextField : UIView]?
    internal var activityView : UIActivityIndicatorView!
     
@@ -170,6 +172,7 @@ public class MCAddCreditCardViewController: MCViewController {
         cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.titleForState(.Normal)) , forState: .Highlighted)
         
         //setting colors
+        navBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsheaderBackground", fallback: navBar.backgroundColor!)
         
         errorLabel.textColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
         errorLabel.textColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)

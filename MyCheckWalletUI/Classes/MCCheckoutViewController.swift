@@ -55,7 +55,10 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBOutlet weak private var dropdownHeader: UILabel!
     @IBOutlet weak private var footerLabel: UILabel!
     
-    //34d party wallet payment methods UI elements
+    @IBOutlet weak var headerLineBG: UIView!
+    @IBOutlet weak var pickerDownArrow: UIImageView!
+    
+    //3rd party wallet payment methods UI elements
     @IBOutlet weak var walletsSuperview: UIView!
     @IBOutlet weak var walletsHeight: NSLayoutConstraint!
     @IBOutlet weak var walletButsContainer: UIView!
@@ -64,7 +67,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBOutlet weak private var pciLabel: UILabel!
     
     private var walletButtons : [PaymentMethodButton] = []
-    internal var borderForField : [UITextField : UIView]?
+    internal var borderForField : [UITextField : UIView] = [:]
     
     internal static func createMCCheckoutViewController() -> MCCheckoutViewController{
         return MCCheckoutViewController.init()
@@ -258,9 +261,12 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     }
     
     override internal func setFieldInvalid(field: UITextField , invalid: Bool){
-        let border = borderForField![field]
-        border?.layer.borderColor = invalid ? UIColor.redColor().CGColor : UIColor(r: 124, g: 114, b: 112, a: 1).CGColor
-        field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor(r: 255, g: 255, b: 255, a: 1)
+        let badColor = LocalData.manager.getColor("checkoutPageColorserrorInput", fallback: UIColor.redColor())
+        let goodColor = LocalData.manager.getColor("checkoutPageColorsfieldBorder", fallback: creditCardNumberField.textColor!)
+
+        let border = borderForField[field]
+        border?.layer.borderColor = invalid ? badColor.CGColor :goodColor.CGColor
+        field.textColor = invalid ? badColor : UIColor(r: 255, g: 255, b: 255, a: 1)
     }
     
     internal func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -392,16 +398,50 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     
     @objc internal override func setupUI(){
         header.text = LocalData.manager.getString("checkoutPagecheckoutSubHeader" , fallback: header.text)
-        dropdownHeader.text = LocalData.manager.getString("checkoutPagecardDropDownHeader" , fallback:dropdownHeader.text)
+                dropdownHeader.text = LocalData.manager.getString("checkoutPagecardDropDownHeader" , fallback:dropdownHeader.text)
         managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.titleForState(.Normal)) , forState: .Normal)
         managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.titleForState(.Normal)) , forState: .Highlighted)
         
         checkBoxLabel.text = LocalData.manager.getString("checkoutPagenotStoreCard" , fallback:checkBoxLabel.text)
         footerLabel.text = LocalData.manager.getString("checkoutPagecardAccepted" , fallback:footerLabel.text)
         pciLabel.text = LocalData.manager.getString("checkoutPagepciNotice1" , fallback:pciLabel.text)
+        
         //setting up colors
+        header.textColor = LocalData.manager.getColor("checkoutPageColorsheaderTextColor", fallback: header.textColor!)
+        headerLineBG.backgroundColor = LocalData.manager.getColor("checkoutPageColorsheaderBackground", fallback: headerLineBG.backgroundColor!)
         
+        applyButton.setTitleColor(LocalData.manager.getColor("checkoutPageColorsapplyButtonText", fallback: applyButton.titleColorForState(.Normal)!), forState: .Normal)
+        applyButton.setTitleColor(LocalData.manager.getColor("checkoutPageColorsapplyButtonText", fallback: applyButton.titleColorForState(.Normal)!), forState: .Highlighted)
+        applyButton.backgroundColor = LocalData.manager.getColor("checkoutPageColorsapplyBut", fallback: applyButton.backgroundColor!)
+        applyButton.layer.borderWidth = 1
+        applyButton.layer.borderColor = LocalData.manager.getColor("checkoutPageColorsapplyButBorder", fallback:  UIColor.clearColor()).CGColor
+        cancelButton.setTitleColor(LocalData.manager.getColor("checkoutPageColorscancelButtonText", fallback: cancelButton.titleColorForState(.Normal)!), forState: .Normal)
+        cancelButton.setTitleColor(LocalData.manager.getColor("checkoutPageColorscancelButtonText", fallback: cancelButton.titleColorForState(.Normal)!), forState: .Highlighted)
+        cancelButton.backgroundColor = LocalData.manager.getColor("checkoutPageColorscancelBut", fallback: UIColor.clearColor())
+        cancelButton.layer.borderWidth = 1
+        cancelButton.layer.borderColor = LocalData.manager.getColor("checkoutPageColorsapplyButBorder", fallback:  UIColor.clearColor()).CGColor
+        pciLabel.textColor = LocalData.manager.getColor("checkoutPageColorspciNotice", fallback: header.textColor!)
         
+        pickerDownArrow.image = pickerDownArrow.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        pickerDownArrow.tintColor = LocalData.manager.getColor("checkoutPageColorspickerArrowColor", fallback: UIColor.clearColor())
+        footerLabel.textColor = LocalData.manager.getColor("checkoutPageColorscardAccepted", fallback: footerLabel.textColor!)
+        view.backgroundColor = LocalData.manager.getColor("checkoutPageColorsbackground", fallback: UIColor.clearColor())
+        for (key , view) in borderForField {
+        view.layer.borderColor = LocalData.manager.getColor("checkoutPageColorsfieldBorder", fallback: view.backgroundColor!).CGColor
+        view.layer.borderWidth = 1
+        }
+        checkBoxLabel.textColor = LocalData.manager.getColor("checkoutPageColorsnotStoreCard", fallback: checkBoxLabel.textColor!)
+        managePaymentMethodsButton.setTitleColor( LocalData.manager.getColor("checkoutPageColorsmanagePMButton", fallback: managePaymentMethodsButton.titleColorForState(.Normal)!), forState: .Normal)
+       managePaymentMethodsButton.setTitleColor( LocalData.manager.getColor("checkoutPageColorsmanagePMButton", fallback: managePaymentMethodsButton.titleColorForState(.Highlighted)!), forState: .Highlighted)
+        dropdownHeader.textColor =  LocalData.manager.getColor("checkoutPageColorscardDropDownHeader", fallback: dropdownHeader.textColor!)
+        let fieldColor = LocalData.manager.getColor("checkoutPageColorstextField", fallback: creditCardNumberField.textColor!)
+        creditCardNumberField.textColor = fieldColor
+        dateField.textColor = fieldColor
+        cvvField.textColor = fieldColor
+        zipField.textColor = fieldColor
+        errorLabel.textColor = LocalData.manager.getColor("checkoutPageColorserrorInput", fallback: creditCardNumberField.textColor!)
+
+        //setting up wallets UI
         if (walletButtons.count == 0 && MyCheckWallet.manager.isLoggedIn()) {
             switch MyCheckWallet.manager.factories.count {
             case 0:
