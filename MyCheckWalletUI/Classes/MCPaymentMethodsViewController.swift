@@ -240,6 +240,8 @@ extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
     func addedPaymentMethod(controller: PaymentMethodFactory ,token:String){
         if let creditCardListVC = creditCardListVC{
             creditCardListVC.reloadMethods()
+            self.showEnterCreditCard(false , animated: true)
+
         }
     }
     func displayViewController(controller: UIViewController ){

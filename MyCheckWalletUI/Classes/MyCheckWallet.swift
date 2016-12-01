@@ -238,9 +238,7 @@ public class MyCheckWallet{
                                 fail: ((NSError) -> Void)? ){
         if let token = token , environment = environment{
             let request = Networking.manager.addCreditCard(rawNumber, expireMonth: expireMonth, expireYear: expireYear, postalCode: postalCode, cvc: cvc, type: type, isSingleUse: isSingleUse,accessToken: token, environment: environment , success: { token in
-                if token.isSingleUse == false{
-                    self.refreshPaymentMethodsAndPostNotification()
-                }
+                
                 
                 success(token)
                 }, fail: fail)

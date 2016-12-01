@@ -33,7 +33,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
          backgroundButton = UIButton(frame: CGRectMake(0, 0, 163, 102))
         if  let backgroundButton = backgroundButton{
         backgroundButton.addTarget(self, action: #selector(creditCardPressed(_:)), forControlEvents: .TouchUpInside)
-        backgroundButton.setImage(self.setImageForType(self.getType(method.issuer)), forState: .Normal)
+        backgroundButton.setImage(self.setImageForType(method.issuer), forState: .Normal)
         backgroundButton.adjustsImageWhenHighlighted = false
         addSubview(backgroundButton)
         }
@@ -121,43 +121,43 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     internal func getType(type : String) -> CreditCardType {
         switch type {
         case "visa":
-            return CreditCardType.visa
+            return CreditCardType.Visa
         case "mastercard":
-            return CreditCardType.masterCard
+            return CreditCardType.MasterCard
         case "discover":
-            return CreditCardType.discover
+            return CreditCardType.Discover
         case "amex":
-            return CreditCardType.amex
+            return CreditCardType.Amex
         case "jcb":
             return CreditCardType.JCB
         case "dinersclub":
-            return CreditCardType.diners
+            return CreditCardType.Diners
         case "maestro":
-            return CreditCardType.maestro
+            return CreditCardType.Maestro
             
         default:
-            return CreditCardType.unknown
+            return CreditCardType.Unknown
         }
     }
     
     internal func setImageForType( type: CreditCardType) -> UIImage{
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
         switch type {
-        case .masterCard:
+        case .MasterCard:
             return UIImage(named: "master_card_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
-        case .visa:
+        case .Visa:
             return UIImage(named: "visa_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
-        case .diners:
+        case .Diners:
             return UIImage(named: "diners_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
-        case .discover:
+        case .Discover:
             return UIImage(named: "discover_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
-        case .amex:
+        case .Amex:
             return UIImage(named: "amex_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
-        case .diners:
+        case .Diners:
             return UIImage(named: "diners_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
         case .JCB:
             return UIImage(named: "jcb_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
-        case .maestro:
+        case .Maestro:
             return UIImage(named: "maestro_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
             
         default:

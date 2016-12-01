@@ -69,7 +69,7 @@ public class MCAddCreditCardViewController: MCViewController {
         
         if updateAndCheckValid(){
             self.startActivityIndicator()
-            let type = getType()
+            let (type ,_,_,_) = CreditCardValidator.checkCardNumber(creditCardNumberField.text!)
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split("/").map(String.init)
             applyButton.enabled = false
@@ -191,7 +191,7 @@ public class MCAddCreditCardViewController: MCViewController {
         value.backgroundColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
         }
     }
-    internal func setImageForType( type: CardType){
+    internal func setImageForType( type: CreditCardType){
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
 
         if type == .Unknown {
@@ -205,7 +205,7 @@ public class MCAddCreditCardViewController: MCViewController {
         typeImage.kf_setImageWithURL(imageURL(type))}
     }
   
-    internal func imageURL( type: CardType) -> NSURL?{
+    internal func imageURL( type: CreditCardType) -> NSURL?{
         let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
         switch type {
         case .MasterCard:
@@ -430,29 +430,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         }
     }
     
-    //this asumes the field passed validation
-    internal func getType() -> CreditCardType {
-        let ( type ,_ ,_,_) = CreditCardValidator.checkCardNumber(creditCardNumberField.text!)
-        switch type {
-        case .Visa:
-            return CreditCardType.visa
-        case .MasterCard:
-            return CreditCardType.masterCard
-        case .Discover:
-            return CreditCardType.discover
-        case .Amex:
-            return CreditCardType.amex
-        case .JCB:
-            return CreditCardType.JCB
-        case .Diners:
-            return CreditCardType.diners
-        case .Maestro:
-            return CreditCardType.maestro
-
-        default:
-            return CreditCardType.unknown
-        }
-    }
+   
    
     func startActivityIndicator() {
         if activityView == nil {

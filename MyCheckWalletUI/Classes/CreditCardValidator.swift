@@ -33,17 +33,19 @@ internal enum CardType: String {
             return "^(606282|3841)[0-9]{5,}$"
         case .Elo:
             return "^((((636368)|(438935)|(504175)|(451416)|(636297))[0-9]{0,10})|((5067)|(4576)|(4011))[0-9]{0,12})$"
-        
+            
         default:
             return ""
         }
     }
+    
 }
 
 internal class CreditCardValidator {
     
     
-    internal static func checkCardNumber(input: String) -> (type: CardType, formatted: String, valid: Bool, complete: Bool) {
+    
+    internal static func checkCardNumber(input: String) -> (type: CreditCardType, formatted: String, valid: Bool, complete: Bool) {
         // Get only numbers from the input string
         let numberOnly = input.stringByReplacingOccurrencesOfString("[^0-9]", withString: "", options: .RegularExpressionSearch) as String
         
@@ -75,18 +77,18 @@ internal class CreditCardValidator {
         formatted += formatted4 // the rest
         
         // return the tuple
-        return (type, formatted, valid , validLegnth  )
+        return (convertCardType(type), formatted, valid , validLegnth  )
     }
     
     //The asumption is that input has only 1-9 and / in it
     internal static func isValidDate(inputDate: String) -> Bool {
         if inputDate.characters.count != 5 && inputDate.characters.count != 7{
-        return false
+            return false
         }
         let split = inputDate.characters.split("/").map(String.init)
         
         if split.count < 2{
-        return false
+            return false
         }
         
         let date = NSDate()
@@ -99,7 +101,7 @@ internal class CreditCardValidator {
         
         let inputYear = Int(split[1])
         let inputmonth = Int(split[0])
-
+        
         if inputYear > year && inputYear < 100{//if 2 digits where entered
             return true
         }
@@ -107,7 +109,7 @@ internal class CreditCardValidator {
             return true
         }
         if (inputYear == year || inputYear == year + 2000) && inputmonth >= month{
-        return true
+            return true
         }
         return false
         
@@ -121,13 +123,13 @@ internal class CreditCardValidator {
         case .Visa:
             return 16 == length || 13 == length
         case .JCB , .Discover , .MasterCard:
-                return 16 == length
+            return 16 == length
         default:
-           return length >= 13
+            return length >= 13
         }
     }
     
-    internal static func maxLengthForType(type: CardType) -> Int{
+    internal static func maxLengthForType(type: CreditCardType) -> Int{
         switch type {
         case .Amex:
             return 15
@@ -171,6 +173,26 @@ internal class CreditCardValidator {
         
         return sum % 10 == 0
     }
-    
+    private static func convertCardType(type : CardType) -> CreditCardType{
+        switch type {
+        case .Amex:
+            return .Amex
+        case .Diners:
+            return .Diners
+        case .Discover:
+            return .Discover
+        case .JCB:
+            return .JCB
+        case .Maestro:
+            return .Maestro
+        case .MasterCard:
+            return .MasterCard
+        case .Visa:
+            return .Visa
+
+        default:
+            return .Unknown
+        }
+    }
     
 }

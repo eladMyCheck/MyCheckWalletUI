@@ -37,7 +37,7 @@
                 <outlet property="dinersImageView" destination="Lj6-Qe-D0a" id="V34-bh-BIe"/>
                 <outlet property="discoverImageView" destination="eQ6-mT-kHy" id="Iu4-bj-BO7"/>
                 <outlet property="dropdownHeader" destination="kb4-tj-hY9" id="8xL-91-UgF"/>
-                <outlet property="errorLabel" destination="oJg-Ps-OdY" id="T83-e8-xSq"/>
+                <outlet property="errorLabel" destination="xeh-NB-TXJ" id="Lao-X5-Z2m"/>
                 <outlet property="footerLabel" destination="wA0-gS-QqR" id="tiH-uC-mzc"/>
                 <outlet property="header" destination="zZg-Fe-gBI" id="Khi-PH-iU6"/>
                 <outlet property="headerLineBG" destination="yxp-yO-zIk" id="A50-Tj-CSf"/>
@@ -470,6 +470,16 @@
                         <constraint firstItem="4Cy-p3-4hS" firstAttribute="centerX" secondItem="E0F-KO-oYg" secondAttribute="centerX" id="rG7-Nc-A2b"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeh-NB-TXJ">
+                    <rect key="frame" x="16" y="210" width="343" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="343" id="RGD-j9-1ax"/>
+                        <constraint firstAttribute="height" constant="48" id="io2-BK-07I"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
+                    <color key="textColor" red="0.17120682570000001" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.3544546365737915" green="0.31953409314155579" blue="0.31019940972328186" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -488,6 +498,7 @@
                 <constraint firstItem="5nO-VR-1bh" firstAttribute="centerY" secondItem="xmp-yh-hou" secondAttribute="centerY" id="E0k-Fx-cWt"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="bottom" secondItem="YDa-E9-pMW" secondAttribute="bottom" constant="11" id="FTB-vX-XSv"/>
                 <constraint firstAttribute="trailingMargin" secondItem="BNs-hB-C9a" secondAttribute="trailing" constant="-14" id="HOH-2U-89Y"/>
+                <constraint firstItem="xeh-NB-TXJ" firstAttribute="centerX" secondItem="hcW-t3-chb" secondAttribute="centerX" id="JqE-it-raM"/>
                 <constraint firstItem="e97-nh-J5G" firstAttribute="trailing" secondItem="YDa-E9-pMW" secondAttribute="trailing" id="Mdu-75-SuS"/>
                 <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="bottom" priority="500" constant="67" id="P3y-NT-FNU"/>
                 <constraint firstItem="E0F-KO-oYg" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" id="Pr7-YP-Nq5"/>
@@ -498,6 +509,7 @@
                 <constraint firstItem="yxp-yO-zIk" firstAttribute="top" secondItem="hcW-t3-chb" secondAttribute="top" id="Vo6-8r-DRb"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="top" constant="-11" id="W6v-Sm-QyO"/>
                 <constraint firstItem="fwe-gf-87l" firstAttribute="top" secondItem="e97-nh-J5G" secondAttribute="bottom" id="W8Y-oh-h6N"/>
+                <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="xeh-NB-TXJ" secondAttribute="bottom" constant="19.5" id="WsA-jk-oOG"/>
                 <constraint firstItem="BNs-hB-C9a" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leadingMargin" constant="-18" id="dT8-OB-myU"/>
                 <constraint firstItem="kb4-tj-hY9" firstAttribute="centerY" secondItem="N0u-Ng-8ai" secondAttribute="centerY" id="fZV-o9-b91"/>
                 <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="fwe-gf-87l" secondAttribute="bottom" priority="999" constant="50" id="g22-4c-w4J"/>

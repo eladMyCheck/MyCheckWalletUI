@@ -24,21 +24,21 @@ public enum PaymentMethodType {
 ///A Credit Card issuer type.
 public enum CreditCardType : String{
     ///Visa
-    case visa = "visa"
+    case Visa = "visa"
     ///Master Card
-    case masterCard = "mastercard"
+    case MasterCard = "mastercard"
     ///American express
-    case amex = "amex"
+    case Amex = "amex"
     ///Discover
-    case discover = "discover"
+    case Discover = "discover"
     ///JBC
     case JCB = "jcb"
     ///Diners Club
-    case diners = "dinersclub"
+    case Diners = "dinersclub"
     ///Maestro
-    case maestro = "maestro"
+    case Maestro = "maestro"
     ///Invalid type or simply unrecognised by any of our regular expressions
-    case unknown = ""
+    case Unknown = ""
 }
 
 
@@ -52,7 +52,14 @@ public class PaymentMethod{
   
   // A string with a user readable description of the payment method, e.g. XXXX-1234
   internal  var  name : String? = nil
-  
+    internal var longName : String? { get{
+        if let strName = name where isSingleUse  {
+           return strName + "  (Temporary Card)"
+        }
+        return name
+        }
+    
+    }
     /// The month the credit card expires
   public  var  expireMonth : String? = nil
     
@@ -72,7 +79,7 @@ public class PaymentMethod{
    public let issuerShort: String
 
     ///The issuer name
-   public let issuer: String
+   public let issuer: CreditCardType
     
     ///The issuer name
      public let type: PaymentMethodType
@@ -110,9 +117,15 @@ public class PaymentMethod{
             isSingleUse = number.boolValue
             
             issuerShort = JSON["issuer_short"] as! String
-            issuer = JSON["issuer_full"] as! String
+           let  issuerStr = JSON["issuer_full"] as! String
+            let tmpType = CreditCardType(rawValue: issuerStr)
+            if let tmpType = tmpType{
+            issuer = tmpType
+            }else{
+            issuer = .Unknown
+            }
           name = JSON["name"] as? String
-
+           
             switch (source){
             case "paypal":
                 type = .PayPal
@@ -126,6 +139,5 @@ public class PaymentMethod{
         }
         
     }
-    
     
 }

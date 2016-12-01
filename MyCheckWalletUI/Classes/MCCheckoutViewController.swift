@@ -140,9 +140,10 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     
     func donePressed(sender: UIBarButtonItem){
         selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRowInComponent(0)]
-        self.paymentMethodSelectorTextField.text = self.selectedMethod!.name
-        self.typeImage.kf_setImageWithURL(self.imageURL(self.getType(selectedMethod!.issuer)))
-        
+        self.paymentMethodSelectorTextField.text = self.selectedMethod!.longName
+        if let selectedMethod = selectedMethod {
+            self.typeImage.kf_setImageWithURL(self.imageURL(selectedMethod))
+        }
         self.view.endEditing(true)
     }
     
@@ -165,9 +166,9 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
             if paymentMethods.count > 0 {
                 creditCardNumberField.hidden = true
                 self.paymentSelectorView.hidden = false
-                self.paymentMethodSelectorTextField.text = self.selectedMethod!.name
+                self.paymentMethodSelectorTextField.text = self.selectedMethod!.longName
                 
-                self.typeImage.kf_setImageWithURL(self.imageURL(self.getType((self.paymentMethods.first?.issuer)!)))
+                self.typeImage.kf_setImageWithURL(self.imageURL(self.paymentMethods.first!))
                 
                 self.checkbox.hidden = true
                 self.checkBoxLabel.hidden = true
@@ -188,50 +189,61 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
         paymentMethodSelectorTextField.inputView = paymentMethodSelector
         addDoneButtonOnPicker(paymentMethodSelectorTextField, action: #selector(donePressed(_: )))
     }
-    
-    
-    internal func imageURL( type: CreditCardType) -> NSURL?{
-        let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+    internal override func imageURL( type: CreditCardType) -> NSURL?{
         switch type {
-        case .masterCard:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesmastercard"))!
-        case .visa:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
-        case .diners:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesdinersclub"))!
-        case .discover:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesdiscover"))!
-        case .amex:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesamex"))!
+        case .MasterCard:
+            return NSURL(string:  LocalData.manager.getString("cardsDropDownmastercard"))!
+        case .Visa:
+            return NSURL(string:  LocalData.manager.getString("cardsDropDownvisa"))!
+        case .Diners:
+            return NSURL(string:  LocalData.manager.getString("cardsDropDowndinersclub"))!
+        case .Discover:
+            return NSURL(string:  LocalData.manager.getString("cardsDropDowndiscover"))!
+        case .Amex:
+            return NSURL(string:  LocalData.manager.getString("cardsDropDownamex"))!
         case .JCB:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesJCB"))!
-        case .maestro:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesmaestro"))!
+            return NSURL(string:  LocalData.manager.getString("cardsDropDownJCB"))!
+        case .Maestro:
+            return NSURL(string:  LocalData.manager.getString("cardsDropDownmaestro"))!
             
         default:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
+            return nil
         }
+
+    }
+    
+    internal func imageURL( method: PaymentMethod) -> NSURL?{
+        let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+        let type = method.type
+        if type == .CreditCard {
+        return imageURL(method.issuer)
+        }
+        if method.type == .PayPal{
+            return NSURL(string:  LocalData.manager.getString("cardsDropDownpaypal"))!
+
+        }
+    return nil
     }
     
     internal func getType(type : String) -> CreditCardType {
         switch type {
         case "visa":
-            return CreditCardType.visa
+            return CreditCardType.Visa
         case "mastercard":
-            return CreditCardType.masterCard
+            return CreditCardType.MasterCard
         case "discover":
-            return CreditCardType.discover
+            return CreditCardType.Discover
         case "amex":
-            return CreditCardType.amex
+            return CreditCardType.Amex
         case "jcb":
             return CreditCardType.JCB
         case "dinersclub":
-            return CreditCardType.diners
+            return CreditCardType.Diners
         case "maestro":
-            return CreditCardType.maestro
+            return CreditCardType.Maestro
             
         default:
-            return CreditCardType.unknown
+            return CreditCardType.Unknown
         }
     }
     @objc private func refreshPaymentMethods(){
@@ -300,7 +312,11 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBAction func applyButPressed(_ sender: AnyObject) {
         if updateAndCheckValid(){
             self.view.endEditing(true)
-            let type = super.getType()
+            
+            //getting type
+            let (type ,_,_,_) = CreditCardValidator.checkCardNumber(creditCardNumberField.text!)
+            
+            
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split("/").map(String.init)
             self.startActivityIndicator()
@@ -313,21 +329,18 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
             self.zipField.userInteractionEnabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.selected, success: {  method in
                 self.resetFields()
-                self.selectedMethod = method
+                // self.selectedMethod = method
                 
                 if method.isSingleUse == true{
-                    self.paymentMethods = [method]
-                    self.paymentMethodSelector.reloadAllComponents()
-                    self.paymentMethodSelectorTextField.text = self.selectedMethod!.name
-                    self.typeImage.kf_setImageWithURL(self.imageURL(self.getType((self.selectedMethod!.issuer))))
-                    self.creditCardNumberField.hidden = true
-                    self.paymentSelectorView.hidden = false
+                    
+                  
                     self.checkbox.hidden = true
                     self.checkBoxLabel.hidden = true
                     self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
-                }else{
-                    self.newPaymenteMethodAdded()
+                    
                 }
+                    self.newPaymenteMethodAdded()
+                
                 self.creditCardNumberField.userInteractionEnabled = true
                 self.dateField.userInteractionEnabled = true
                 self.cvvField.userInteractionEnabled = true
@@ -343,6 +356,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
                     self.cvvField.userInteractionEnabled = true
                     self.zipField.userInteractionEnabled = true
                     self.activityView.stopAnimating()
+                    self.errorLabel.text = error.localizedDescription
                     if let delegate = self.delegate{
                         self.errorLabel.text = error.localizedDescription
                         delegate.recivedError(self, error:error)
@@ -363,6 +377,9 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
     func newPaymenteMethodAdded(){
         MyCheckWallet.manager.getPaymentMethods({ (methods) in
             self.paymentMethods = methods
+            if methods.count > 0 {
+            self.selectedMethod = methods[0]
+            }
             self.configureUI()
         }) { (error) in
             
@@ -494,7 +511,7 @@ extension MCCheckoutViewController : UIPickerViewDelegate , UIPickerViewDataSour
     }
     
     public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.paymentMethods[row].name
+        return self.paymentMethods[row].longName
     }
 }
 
