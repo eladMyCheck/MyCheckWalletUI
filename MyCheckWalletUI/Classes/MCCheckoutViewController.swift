@@ -319,7 +319,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
             
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split("/").map(String.init)
-            self.startActivityIndicator()
+            self.showActivityIndicator( true)
             self.applyButton.enabled = false
             self.cancelButton.enabled = false
             
@@ -347,7 +347,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
                 self.zipField.userInteractionEnabled = true
                 self.applyButton.enabled = true
                 self.cancelButton.enabled = true
-                self.activityView.stopAnimating()
+                self.showActivityIndicator(false)
                 }, fail: { error in
                     self.applyButton.enabled = true
                     self.cancelButton.enabled = true
@@ -355,7 +355,7 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
                     self.dateField.userInteractionEnabled = true
                     self.cvvField.userInteractionEnabled = true
                     self.zipField.userInteractionEnabled = true
-                    self.activityView.stopAnimating()
+                    self.showActivityIndicator(false)
                     self.errorLabel.text = error.localizedDescription
                     if let delegate = self.delegate{
                         self.errorLabel.text = error.localizedDescription
@@ -366,12 +366,16 @@ public class MCCheckoutViewController: MCAddCreditCardViewController {
         
     }
     
-    override func startActivityIndicator() {
-        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .White)
+  override func showActivityIndicator(show: Bool) {
+      if activityView == nil{
+        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)
         
         activityView.center=CGPointMake(self.view.center.x, self.view.center.y)
         activityView.startAnimating()
+      activityView.hidesWhenStopped = true
         self.view.addSubview(activityView)
+      }
+    show ? activityView.startAnimating() : activityView.stopAnimating()
     }
     
     func newPaymenteMethodAdded(){
@@ -540,5 +544,8 @@ extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
     func dismissViewController(controller: UIViewController ){
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+  func showLoadingIndicator(controller: PaymentMethodFactory, show: Bool) {
+    self.showActivityIndicator( show)
+
+  }
 }

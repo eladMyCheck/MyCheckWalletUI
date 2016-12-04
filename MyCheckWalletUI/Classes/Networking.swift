@@ -107,7 +107,9 @@ internal class Networking {
                 
                 for dic in methodsJSON as! [NSDictionary]{
                     if let method = PaymentMethod(JSON: dic){
-                        
+                      if let factory = MyCheckWallet.manager.getFactory(method.type){
+                      
+                      }
                         returnArray.append(method)
                     }
                 }

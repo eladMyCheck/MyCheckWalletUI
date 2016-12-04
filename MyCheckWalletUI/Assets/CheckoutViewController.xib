@@ -82,7 +82,7 @@
                     <rect key="frame" x="69" y="79.5" width="288" height="27"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0oB-XW-gXs" customClass="MCTextField" customModule="MyCheckWalletUI" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="288" height="27"/>
+                            <rect key="frame" x="0.0" y="0.0" width="271" height="27"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -98,7 +98,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="0oB-XW-gXs" secondAttribute="trailing" id="0oD-gs-CSi"/>
+                        <constraint firstAttribute="trailing" secondItem="0oB-XW-gXs" secondAttribute="trailing" constant="17" id="0oD-gs-CSi"/>
                         <constraint firstItem="0oB-XW-gXs" firstAttribute="leading" secondItem="pTi-ub-50G" secondAttribute="leading" id="CVe-Wq-cCz"/>
                         <constraint firstItem="0oB-XW-gXs" firstAttribute="top" secondItem="pTi-ub-50G" secondAttribute="top" id="H7O-oc-jHc"/>
                         <constraint firstItem="RH6-Eu-QMK" firstAttribute="centerY" secondItem="pTi-ub-50G" secondAttribute="centerY" id="Rsc-SM-l7L"/>

@@ -19,6 +19,7 @@ public protocol MCPaymentMethodsViewControllerDelegate : class{
 
 ///A view controller that provides the user with the ability to add a payment method, set a default payment method and delete payment methods. The view controller is meant to be displayed modely.
 public class MCPaymentMethodsViewController: MCViewController {
+  @IBOutlet weak var activityInidicator: UIActivityIndicatorView!
     private var creditCardVC: MCAddCreditCardViewController?
     private var creditCardListVC: MCCreditCardsViewController?
     
@@ -79,8 +80,8 @@ public class MCPaymentMethodsViewController: MCViewController {
     
     public override func viewDidLoad(){
         super.viewDidLoad()
-        
-        //setting up UI and updating it if the user logges in... just incase
+      activityInidicator.stopAnimating();
+      //setting up UI and updating it if the user logges in... just incase
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: MyCheckWallet.loggedInNotification, object: nil)
         setupUI()
@@ -251,6 +252,10 @@ extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
     func dismissViewController(controller: UIViewController ){
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
+  func showLoadingIndicator(controller: PaymentMethodFactory, show: Bool) {
+    show ? activityInidicator.startAnimating() : activityInidicator.stopAnimating()
+  
+  }
     
 }
 //extension MCPaymentMethodsViewController : BTViewControllerPresentingDelegate{

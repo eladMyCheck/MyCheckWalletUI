@@ -205,7 +205,12 @@ public class MyCheckWallet{
                 for (i,method) in mutableMethods.enumerate().reverse() {
                     if !self.hasFactory(method.type){
                         mutableMethods.removeAtIndex(i)
-                    }
+                    }else{
+                      //if it is of the factorys type replace it with the subclass otherwise do nothing
+                      if let newMethod = self.createPaymentMethodSubclass(method) {
+                      mutableMethods[i] = newMethod
+                  }
+                  }
                 }
                 self.methods = mutableMethods
                 success(mutableMethods)
@@ -323,6 +328,13 @@ public class MyCheckWallet{
         }
         return false
     }
+  internal func createPaymentMethodSubclass(method: PaymentMethod) -> PaymentMethod?{
+      if let factory = MyCheckWallet.manager.getFactory(method.type){
+       return factory.getPaymentMethod(method)
+      }
+      return method
+  }
+  
 }
 
 

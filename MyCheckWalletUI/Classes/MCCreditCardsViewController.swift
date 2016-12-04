@@ -155,26 +155,28 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         
     }
     internal func reloadMethods(){
-        startActivityIndicator()
+        showActivityIndicator(true)
         MyCheckWallet.manager.getPaymentMethods({ (array) in
-            self.activityView.stopAnimating()
+          self.showActivityIndicator(false)
             self.paymentMethods = array
             self.setCreditCardsUI(true)
             
             }, fail: { error in
-                
+              self.showActivityIndicator(false)
+
         })
     }
-    internal func startActivityIndicator() {
+  internal func showActivityIndicator(show: Bool) {
         if activityView == nil{
             activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)
             
             activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 30)
             self.view.addSubview(activityView)
-            
+          self.view.bringSubviewToFront(activityView)
+          activityView.startAnimating()
+
         }
-        self.view.bringSubviewToFront(activityView)
-        activityView.startAnimating()
+    activityView.hidden = !show
     }
     
     @objc private func setupUI(){

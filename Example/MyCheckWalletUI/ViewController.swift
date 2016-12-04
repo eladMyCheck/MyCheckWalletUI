@@ -48,8 +48,10 @@ internal override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObje
     //when a payment method is available you can get the method from the checkoutViewController using the selectedMethod variable. If it's nil non exist
     if let method = checkoutViewController!.selectedMethod {
     message =  " " + " token: " + method.token
+      UIPasteboard.generalPasteboard().string = method.token
+
     }
-    
+
     
     let alert = UIAlertController(title: "paying with:", message: message, preferredStyle: .Alert);
     let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "alert ok but"), style: .Default, handler:

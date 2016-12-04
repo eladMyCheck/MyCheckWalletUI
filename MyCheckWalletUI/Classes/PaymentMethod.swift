@@ -48,7 +48,7 @@ public class PaymentMethod{
     /// The Id of the payment method.
     public let Id : String
     /// The token that must be used in order to chard the payment method.
-   public let token : String
+   public var token : String 
   
   // A string with a user readable description of the payment method, e.g. XXXX-1234
   internal  var  name : String? = nil
@@ -83,6 +83,9 @@ public class PaymentMethod{
     
     ///The issuer name
      public let type: PaymentMethodType
+  
+  //the JSON represintation of the object
+  internal let JSON : NSDictionary
     ///Init function
     ///
     ///    - JSON: A JSON that comes from the wallet endpoint
@@ -92,7 +95,7 @@ public class PaymentMethod{
             guard let source = JSON["source"] as? String else{
                 return nil
             }
-            
+            self.JSON = JSON
             var number = JSON["id"] as! NSNumber
             Id = number.stringValue
             
@@ -115,7 +118,6 @@ public class PaymentMethod{
             isDefault = number.boolValue
             number  = JSON["is_single_use"] as! NSNumber
             isSingleUse = number.boolValue
-            
             issuerShort = JSON["issuer_short"] as! String
            let  issuerStr = JSON["issuer_full"] as! String
             let tmpType = CreditCardType(rawValue: issuerStr)
@@ -139,5 +141,9 @@ public class PaymentMethod{
         }
         
     }
+  
+  internal convenience init?(other:PaymentMethod){
+      self.init(JSON: other.JSON)
+      }
     
 }

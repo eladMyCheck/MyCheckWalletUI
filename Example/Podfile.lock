@@ -1,19 +1,19 @@
 PODS:
   - Alamofire (3.5.1)
-  - Braintree/Core (4.7.1)
-  - Braintree/DataCollector (4.7.1):
+  - Braintree/Core (4.7.3)
+  - Braintree/DataCollector (4.7.3):
     - Braintree/Core
-  - Braintree/PayPal (4.7.1):
+  - Braintree/PayPal (4.7.3):
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPalDataCollector (4.7.1):
+  - Braintree/PayPalDataCollector (4.7.3):
     - Braintree/Core
     - Braintree/PayPalUtils
-  - Braintree/PayPalOneTouch (4.7.1):
+  - Braintree/PayPalOneTouch (4.7.3):
     - Braintree/Core
     - Braintree/PayPalDataCollector
     - Braintree/PayPalUtils
-  - Braintree/PayPalUtils (4.7.1)
+  - Braintree/PayPalUtils (4.7.3)
   - Kingfisher (2.6.1)
   - MyCheckWalletUI (0.0.8):
     - Alamofire (~> 3.5)
@@ -30,7 +30,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
-  Braintree: c57bcb7983412530ea6d71cee4b99a4ba316c4ef
+  Braintree: 3eee856da5d30357a55439283b4bb3dbaddcaa7c
   Kingfisher: 7e5515bf6c4f2acad91f6400955d2257549cab7b
   MyCheckWalletUI: ee05c65390314d67cf37e0880fc3973b0b53009c
 

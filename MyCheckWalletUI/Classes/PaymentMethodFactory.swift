@@ -13,7 +13,7 @@ internal protocol PaymentMethodFactoryDelegate{
     func displayViewController(controller: UIViewController )
 
     func dismissViewController(controller: UIViewController )
-
+  func showLoadingIndicator(controller: PaymentMethodFactory ,show: Bool)
 }
 
 public class PaymentMethodFactory: NSObject {
@@ -71,9 +71,16 @@ public class PaymentMethodFactory: NSObject {
     func getCreditCardView(frame: CGRect, method: PaymentMethod) -> CreditCardView?{
         return PayPalView(frame: frame, method: method)
     }
+  
+  
   //for returning urls in the app delegate
   public  func handleOpenURL(url: NSURL, sourceApplication: String?) -> Bool{
   return false
+  }
+  //creats a new copy of the payment method but as the desired subclass
+  internal func getPaymentMethod(other: PaymentMethod) -> PaymentMethod?{
+   
+    return PaymentMethod(other: other)!
   }
 }
 

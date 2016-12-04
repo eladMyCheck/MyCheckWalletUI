@@ -68,7 +68,7 @@ public class MCAddCreditCardViewController: MCViewController {
     @IBAction func ApplyPressed(sender: AnyObject) {
         
         if updateAndCheckValid(){
-            self.startActivityIndicator()
+            self.showActivityIndicator(true)
             let (type ,_,_,_) = CreditCardValidator.checkCardNumber(creditCardNumberField.text!)
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split("/").map(String.init)
@@ -79,8 +79,8 @@ public class MCAddCreditCardViewController: MCViewController {
             self.cvvField.userInteractionEnabled = false
             self.zipField.userInteractionEnabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: false, success: {  token in
-                self.activityView.stopAnimating()
-                if let delegate = self.delegate{
+              self.showActivityIndicator(false)
+              if let delegate = self.delegate{
                     
                     delegate.addedNewPaymentMethod(self, token:"")
                     self.applyButton.enabled = true
@@ -91,7 +91,7 @@ public class MCAddCreditCardViewController: MCViewController {
                     self.zipField.userInteractionEnabled = true
                 }
                 }, fail: { error in
-                    self.activityView.stopAnimating()
+                    self.showActivityIndicator(false)
                     if let delegate = self.delegate{
                         self.errorLabel.text = error.localizedDescription
                         delegate.recivedError(self, error:error)
@@ -432,14 +432,16 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
     
    
    
-    func startActivityIndicator() {
+   func showActivityIndicator(show: Bool) {
         if activityView == nil {
         activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .Gray)
         
         activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 104)
         activityView.startAnimating()
+          self.view.addSubview(activityView)
+
         }
-        self.view.addSubview(activityView)
+    activityView.hidden = !show
     }
     
 }

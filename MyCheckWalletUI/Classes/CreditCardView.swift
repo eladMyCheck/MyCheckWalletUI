@@ -11,7 +11,7 @@ import UIKit
 internal protocol CreditCardViewDelegate : class{
     func deletedPaymentMethod(method : PaymentMethod)
     func setPaymentAsDefault()
-    func startActivityIndicator()
+  func showActivityIndicator(show: Bool)
 }
 
 internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
@@ -27,6 +27,9 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     var backgroundButton: UIButton?
     init(frame: CGRect, method: PaymentMethod){
         super.init(frame: frame)
+      
+      let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+
         self.userInteractionEnabled = true
         self.paymentMethod = method
         
@@ -37,6 +40,13 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         backgroundButton.adjustsImageWhenHighlighted = false
         addSubview(backgroundButton)
         }
+      
+      if method.isSingleUse {
+      let singleUseImg = UIImageView(image:UIImage(named: "singleUseBanner", inBundle: bundle, compatibleWithTraitCollection: nil) )
+        singleUseImg.contentMode = .TopRight
+        singleUseImg.frame = (backgroundButton?.frame)!
+        addSubview(singleUseImg)
+      }
         //credit card number label
         creditCardNumberlabel  = UILabel(frame: CGRectMake(10, 70, 80, 18))
         if let creditCardNumberlabel = creditCardNumberlabel {
@@ -68,8 +78,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         
         
         //default card checkbox
-        let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-        
+      
         self.checboxButton = UIButton(frame: CGRectMake(165, 0, 20, 20))
         self.checboxButton?.addTarget(self, action: #selector(checkboxPressed(_:)), forControlEvents: .TouchUpInside)
         self.checboxButton?.adjustsImageWhenHighlighted = false
@@ -99,14 +108,18 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     func creditCardPressed(sender: UIButton!){
         if editMode == false {
             if self.paymentMethod?.isDefault == false {
-                self.delegate?.startActivityIndicator()
+                self.delegate?.showActivityIndicator(true)
                 MyCheckWallet.manager.setPaymentMethodAsDefault(self.paymentMethod!, success: {
+                  self.delegate?.showActivityIndicator(false)
+
                     printIfDebug("payment set as default")
                     if let del = self.delegate{
                         del.setPaymentAsDefault()
                         
                     }
                     }, fail: { (error) in
+                      self.delegate?.showActivityIndicator(false)
+
                         printIfDebug("did not set payment as default")
                 })
             }
