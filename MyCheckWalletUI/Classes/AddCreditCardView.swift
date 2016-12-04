@@ -15,8 +15,8 @@ class AddCreditCardView: UIView , UIGestureRecognizerDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-        backgroundColor = UIColor.init(patternImage: UIImage(named: "addcreditcardbackground", inBundle: bundle, compatibleWithTraitCollection: nil)!)//UIColor.blueColor()
+        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+        backgroundColor = UIColor.init(patternImage: UIImage(named: "addcreditcardbackground", in: bundle, compatibleWith: nil)!)//UIColor.blueColor()
     
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(AddCreditCardView.buttonPressed(_:)))
         recognizer.delegate = self;
@@ -27,8 +27,8 @@ class AddCreditCardView: UIView , UIGestureRecognizerDelegate{
         super.init(coder: aDecoder)
     }
     
-    func buttonPressed(recognizer : UITapGestureRecognizer) {
-        NSNotificationCenter.defaultCenter().postNotificationName("AddCreditCardPressed", object: nil)
+    func buttonPressed(_ recognizer : UITapGestureRecognizer) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "AddCreditCardPressed"), object: nil)
 
     }
 }

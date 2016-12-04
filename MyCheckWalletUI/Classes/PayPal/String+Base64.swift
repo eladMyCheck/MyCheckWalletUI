@@ -10,18 +10,18 @@ import UIKit
 extension String {
   
   func fromBase64() -> String? {
-    guard let data = NSData(base64EncodedString: self, options: NSDataBase64DecodingOptions(rawValue: 0)) else {
+    guard let data = Data(base64Encoded: self, options: NSData.Base64DecodingOptions(rawValue: 0)) else {
       return nil
     }
     
-    return String(data: data, encoding: NSUTF8StringEncoding)!
+    return String(data: data, encoding: String.Encoding.utf8)!
   }
   
   func toBase64() -> String? {
-    guard let data = self.dataUsingEncoding(NSUTF8StringEncoding) else {
+    guard let data = self.data(using: String.Encoding.utf8) else {
       return nil
     }
     
-    return data.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+    return data.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
   }
 }

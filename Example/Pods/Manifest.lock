@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.5.1)
+  - Alamofire (4.2.0)
   - Braintree/Core (4.7.3)
   - Braintree/DataCollector (4.7.3):
     - Braintree/Core
@@ -14,12 +14,12 @@ PODS:
     - Braintree/PayPalDataCollector
     - Braintree/PayPalUtils
   - Braintree/PayPalUtils (4.7.3)
-  - Kingfisher (2.6.1)
+  - Kingfisher (3.2.2)
   - MyCheckWalletUI (0.0.8):
-    - Alamofire (~> 3.5)
+    - Alamofire (~> 4.0)
     - Braintree/DataCollector
     - Braintree/PayPal
-    - Kingfisher (~> 2.4)
+    - Kingfisher (~> 3.0)
 
 DEPENDENCIES:
   - MyCheckWalletUI (from `../`)
@@ -29,10 +29,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   Braintree: 3eee856da5d30357a55439283b4bb3dbaddcaa7c
-  Kingfisher: 7e5515bf6c4f2acad91f6400955d2257549cab7b
-  MyCheckWalletUI: ee05c65390314d67cf37e0880fc3973b0b53009c
+  Kingfisher: 821466474ad7ffc375a4aecadfa05068cfed67b3
+  MyCheckWalletUI: ec69cc3665beda94ef2ac186c99b4193fa1d8951
 
 PODFILE CHECKSUM: 1afc1ca1e4b1eb7050f0177ed889419f7efb6bf6
 

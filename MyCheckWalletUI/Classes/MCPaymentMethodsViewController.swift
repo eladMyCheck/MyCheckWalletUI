@@ -13,15 +13,15 @@ public protocol MCPaymentMethodsViewControllerDelegate : class{
     
     ///Will be called whenever the view controller shoud be dismissed
     ///    - parameter controller: The controller calling for dismissal.
-    func dismissedMCPaymentMethodsViewController(controller: MCPaymentMethodsViewController)
+    func dismissedMCPaymentMethodsViewController(_ controller: MCPaymentMethodsViewController)
     
 }
 
 ///A view controller that provides the user with the ability to add a payment method, set a default payment method and delete payment methods. The view controller is meant to be displayed modely.
-public class MCPaymentMethodsViewController: MCViewController {
+open class MCPaymentMethodsViewController: MCViewController {
   @IBOutlet weak var activityInidicator: UIActivityIndicatorView!
-    private var creditCardVC: MCAddCreditCardViewController?
-    private var creditCardListVC: MCCreditCardsViewController?
+    fileprivate var creditCardVC: MCAddCreditCardViewController?
+    fileprivate var creditCardListVC: MCCreditCardsViewController?
     
     @IBOutlet weak var walletsSuperview: UIView!
     ///The delegate method that will be called when the View Controller is ready to be dismissed.
@@ -32,29 +32,29 @@ public class MCPaymentMethodsViewController: MCViewController {
     @IBOutlet weak var walletHeaderLabel: UILabel!
     @IBOutlet weak var pciLabel: UILabel!
     @IBOutlet var seporators: [UIView]!
-    @IBOutlet private weak var creditCardListContainer: UIView!
-    @IBOutlet private weak var addCreditCardContainer: UIView!
-    @IBOutlet private weak var outputForTesting: UILabel!
+    @IBOutlet fileprivate weak var creditCardListContainer: UIView!
+    @IBOutlet fileprivate weak var addCreditCardContainer: UIView!
+    @IBOutlet fileprivate weak var outputForTesting: UILabel!
     
-    @IBOutlet private weak var creditCardInCenterConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var creditCardsVCCenterXConstraint: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var creditCardInCenterConstraint: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var creditCardsVCCenterXConstraint: NSLayoutConstraint!
     @IBOutlet weak var walletsSeporator: UIView!
-    @IBOutlet private weak var visaImageView: UIImageView!
-    @IBOutlet private weak var mastercardImageView: UIImageView!
-    @IBOutlet private weak var dinersImageView: UIImageView!
-    @IBOutlet private weak var amexImageView: UIImageView!
-    @IBOutlet private weak var discoverImageView: UIImageView!
+    @IBOutlet fileprivate weak var visaImageView: UIImageView!
+    @IBOutlet fileprivate weak var mastercardImageView: UIImageView!
+    @IBOutlet fileprivate weak var dinersImageView: UIImageView!
+    @IBOutlet fileprivate weak var amexImageView: UIImageView!
+    @IBOutlet fileprivate weak var discoverImageView: UIImageView!
     
     @IBOutlet weak internal var titleLabel: UILabel!
     @IBOutlet weak internal var footerLabel: UILabel!
-    @IBAction func addCreditCardPressed(sender: AnyObject) {
+    @IBAction func addCreditCardPressed(_ sender: AnyObject) {
         showEnterCreditCard(true , animated: true)
     }
-    internal static func createPaymentMethodsView (delegate: MCPaymentMethodsViewControllerDelegate?, withPaymentMethods : Array<PaymentMethod>!) -> MCPaymentMethodsViewController
+    internal static func createPaymentMethodsView (_ delegate: MCPaymentMethodsViewControllerDelegate?, withPaymentMethods : Array<PaymentMethod>!) -> MCPaymentMethodsViewController
     {
         
-        let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
-        let controller = storyboard.instantiateViewControllerWithIdentifier("MCPaymentMethodsViewController") as! MCPaymentMethodsViewController
+        let storyboard = MCViewController.getStoryboard(  Bundle(for: self.classForCoder()))
+        let controller = storyboard.instantiateViewController(withIdentifier: "MCPaymentMethodsViewController") as! MCPaymentMethodsViewController
         
         controller.delegate = delegate
         controller.paymentMethods = withPaymentMethods
@@ -66,9 +66,9 @@ public class MCPaymentMethodsViewController: MCViewController {
     ///   - parameter delegate: The delegate will be called when the View controller should be dismissed.
     ///    - returns: An instance of MCPaymentMethodsViewController that is ready for display.
     
-    public static func createPaymentMethodsViewController(delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController{
-        let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
-        let controller = storyboard.instantiateViewControllerWithIdentifier("MCPaymentMethodsViewController") as! MCPaymentMethodsViewController
+    open static func createPaymentMethodsViewController(_ delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController{
+        let storyboard = MCViewController.getStoryboard(  Bundle(for: self.classForCoder()))
+        let controller = storyboard.instantiateViewController(withIdentifier: "MCPaymentMethodsViewController") as! MCPaymentMethodsViewController
         
         controller.delegate = delegate
         controller.paymentMethods = MyCheckWallet.manager.methods
@@ -78,12 +78,12 @@ public class MCPaymentMethodsViewController: MCViewController {
     
     //MARK: - lifeCycle
     
-    public override func viewDidLoad(){
+    open override func viewDidLoad(){
         super.viewDidLoad()
       activityInidicator.stopAnimating();
       //setting up UI and updating it if the user logges in... just incase
-        let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: MyCheckWallet.loggedInNotification, object: nil)
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: MyCheckWallet.loggedInNotification), object: nil)
         setupUI()
         
         //recieving events from all intergrated sdks
@@ -97,27 +97,27 @@ public class MCPaymentMethodsViewController: MCViewController {
             creditCardListVC.delegate = self
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MCPaymentMethodsViewController.addCreditCardPressedNotificationReceived(_:)), name:"AddCreditCardPressed", object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(MCPaymentMethodsViewController.addCreditCardPressedNotificationReceived(_:)), name:NSNotification.Name(rawValue: "AddCreditCardPressed"), object: nil)
         self.assignImages()
         
         setWalletButtons()
         
     }
     
-    public override func viewDidAppear(animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         MyCheckWallet.manager.factoryDelegate = self
 
     }
-    public override func viewWillDisappear(animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
     }
-    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "creditCardSubViewController" {
-            creditCardVC = segue.destinationViewController as? MCAddCreditCardViewController
+            creditCardVC = segue.destination as? MCAddCreditCardViewController
         }else if segue.identifier == "creditCardsViewController"{
-            creditCardListVC = segue.destinationViewController as? MCCreditCardsViewController
+            creditCardListVC = segue.destination as? MCCreditCardsViewController
             creditCardListVC!.paymentMethods = self.paymentMethods
         }
     }
@@ -126,7 +126,7 @@ public class MCPaymentMethodsViewController: MCViewController {
    
     //MARK: - private functions
     
-    func showEnterCreditCard(show: Bool , animated: Bool){
+    func showEnterCreditCard(_ show: Bool , animated: Bool){
         creditCardVC!.resetView()
         if show{
             creditCardVC!.becomeFirstResponder()
@@ -136,26 +136,26 @@ public class MCPaymentMethodsViewController: MCViewController {
         }
         creditCardInCenterConstraint.priority = show ? 999 : 1
         creditCardsVCCenterXConstraint.priority = show ? 1 : 999
-        UIView.animateWithDuration(animated ? 0.4 : 0.0, animations: {
+        UIView.animate(withDuration: animated ? 0.4 : 0.0, animations: {
             self.view.layoutIfNeeded()
             self.creditCardListVC!.scrollView.alpha = show ? 0 : 1
             
         })
     }
     
-    func addCreditCardPressedNotificationReceived(notification: NSNotification){
+    func addCreditCardPressedNotificationReceived(_ notification: Notification){
         if creditCardListVC?.editMode == true {
             creditCardListVC?.editPressed((creditCardListVC?.editButton)!)
         }
         self.showEnterCreditCard(true, animated: true)
     }
     
-    private func assignImages(){
-        visaImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
-        mastercardImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsmastercard" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"))))
-        dinersImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsdinersclub" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"))))
-        discoverImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsdiscover" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"))))
-        amexImageView.kf_setImageWithURL(NSURL(string: (LocalData.manager.getString("acceptedCardsAMEX" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"))))
+    fileprivate func assignImages(){
+        visaImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
+        mastercardImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsmastercard" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"))))
+        dinersImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsdinersclub" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"))))
+        discoverImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsdiscover" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"))))
+        amexImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsAMEX" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"))))
     }
     
     internal func setupUI(){
@@ -163,7 +163,7 @@ public class MCPaymentMethodsViewController: MCViewController {
         self.footerLabel.text = LocalData.manager.getString("managePaymentMethodscardAcceptedWallet" , fallback: self.footerLabel.text)
         
         //setting up colors
-        view.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsbackground", fallback: UIColor.whiteColor())
+        view.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsbackground", fallback: UIColor.white)
         for seporator in seporators{
             seporator.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsseporator", fallback: seporator.backgroundColor!)
         }
@@ -174,19 +174,19 @@ public class MCPaymentMethodsViewController: MCViewController {
     }
     
     
-    private func setWalletButtons(){
+    fileprivate func setWalletButtons(){
         
-        walletsSeporator.hidden = MyCheckWallet.manager.factories.count == 0
+        walletsSeporator.isHidden = MyCheckWallet.manager.factories.count == 0
         for factory in MyCheckWallet.manager.factories{
             
             let  but = factory.getAddMethodButton()
             self.walletsSuperview.addSubview(but)
             but.translatesAutoresizingMaskIntoConstraints = false
             
-            let horizontalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+            let horizontalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
             walletsSuperview.addConstraint(horizontalConstraint)
             
-            let verticalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+            let verticalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
             walletsSuperview.addConstraint(verticalConstraint)
             
         }
@@ -197,10 +197,10 @@ public class MCPaymentMethodsViewController: MCViewController {
 
 extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate, MCCreditCardsViewControllerrDelegate{
     
-    func recivedError(controller: MCAddCreditCardViewController , error:NSError){
+    func recivedError(_ controller: MCAddCreditCardViewController , error:NSError){
         outputForTesting.text = error.localizedDescription
     }
-    func addedNewPaymentMethod(controller: MCAddCreditCardViewController ,token:String){
+    func addedNewPaymentMethod(_ controller: MCAddCreditCardViewController ,token:String){
         MyCheckWallet.manager.getPaymentMethods({ (methods) in
             self.paymentMethods = methods
             self.creditCardListVC!.paymentMethods = methods
@@ -225,34 +225,34 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
     
 }
 extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
-    func error(controller: PaymentMethodFactory , error:NSError){
+    func error(_ controller: PaymentMethodFactory , error:NSError){
         printIfDebug( error.localizedDescription )
         
-        let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .Alert);
-        let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "alert ok but"), style: .Default, handler:
+        let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert);
+        let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "alert ok but"), style: .default, handler:
             {(alert: UIAlertAction!) in
                 
                 
         })
         alert.addAction(defaultAction)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func addedPaymentMethod(controller: PaymentMethodFactory ,token:String){
+    func addedPaymentMethod(_ controller: PaymentMethodFactory ,token:String){
         if let creditCardListVC = creditCardListVC{
             creditCardListVC.reloadMethods()
             self.showEnterCreditCard(false , animated: true)
 
         }
     }
-    func displayViewController(controller: UIViewController ){
-        self.presentViewController(controller, animated: true, completion: nil)
+    func displayViewController(_ controller: UIViewController ){
+        self.present(controller, animated: true, completion: nil)
     }
     
-    func dismissViewController(controller: UIViewController ){
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func dismissViewController(_ controller: UIViewController ){
+        controller.dismiss(animated: true, completion: nil)
     }
-  func showLoadingIndicator(controller: PaymentMethodFactory, show: Bool) {
+  func showLoadingIndicator(_ controller: PaymentMethodFactory, show: Bool) {
     show ? activityInidicator.startAnimating() : activityInidicator.stopAnimating()
   
   }

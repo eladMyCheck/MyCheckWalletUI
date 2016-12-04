@@ -10,7 +10,7 @@ import UIKit
 
 extension MyCheckWallet {
 
-    func getBraintreeToken(success: ((String) -> Void) , fail: ((NSError) -> Void)? ){
+    func getBraintreeToken(_ success: @escaping ((String) -> Void) , fail: ((NSError) -> Void)? ){
         if let token = braintreeToken {
             success(token)
             return
@@ -29,7 +29,7 @@ extension MyCheckWallet {
             }
         }
     }
-    func addPayPal(nonce: String, success: ((PaymentMethod?) -> Void) , fail: ((NSError) -> Void)? ){
+    func addPayPal(_ nonce: String, success: ((PaymentMethod?) -> Void) , fail: ((NSError) -> Void)? ){
         
         if let token = token{
             Networking.manager.addPayPal(token, nonce: nonce, success: success, fail: fail)

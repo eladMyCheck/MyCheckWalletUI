@@ -9,12 +9,12 @@
 import UIKit
 ///A protocol that will allow the owner to dismiss the ViewController
 internal protocol MCAddCreditCardViewControllerDelegate : class{
-    func recivedError(controller: MCAddCreditCardViewController , error:NSError)
-    func addedNewPaymentMethod(controller: MCAddCreditCardViewController ,token:String)
+    func recivedError(_ controller: MCAddCreditCardViewController , error:NSError)
+    func addedNewPaymentMethod(_ controller: MCAddCreditCardViewController ,token:String)
     func canceled()
 }
 
-public class MCAddCreditCardViewController: MCViewController {
+open class MCAddCreditCardViewController: MCViewController {
     
     @IBOutlet internal weak var applyButton: UIButton!
     @IBOutlet internal var typeImage: UIImageView!
@@ -37,7 +37,7 @@ public class MCAddCreditCardViewController: MCViewController {
   weak  var delegate : MCAddCreditCardViewControllerDelegate?
     //MARK: - life cycle functions
     
-    override  public func viewDidLoad() {
+    override  open func viewDidLoad() {
         super.viewDidLoad()
         underlineForField = [creditCardNumberField : creditCardUnderline , dateField : dateUnderline , cvvField : cvvUnderline , zipField : zipUnderline]
 
@@ -47,14 +47,14 @@ public class MCAddCreditCardViewController: MCViewController {
       
         //setting up UI and updating it if the user logges in... just incase
         setupUI()
-        let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: MyCheckWallet.loggedInNotification, object: nil)
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: MyCheckWallet.loggedInNotification), object: nil)
         
     }
-    internal static func instantiate(delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController{
+    internal static func instantiate(_ delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController{
         
-        let storyboard = MCViewController.getStoryboard(  NSBundle(forClass: self.classForCoder()))
-        let controller = storyboard.instantiateViewControllerWithIdentifier("MCAddCreditCardViewController") as! MCPaymentMethodsViewController
+        let storyboard = MCViewController.getStoryboard(  Bundle(for: self.classForCoder()))
+        let controller = storyboard.instantiateViewController(withIdentifier: "MCAddCreditCardViewController") as! MCPaymentMethodsViewController
         
         controller.delegate = delegate
         
@@ -65,63 +65,63 @@ public class MCAddCreditCardViewController: MCViewController {
     
     
     //MARK: - actions
-    @IBAction func ApplyPressed(sender: AnyObject) {
+    @IBAction func ApplyPressed(_ sender: AnyObject) {
         
         if updateAndCheckValid(){
             self.showActivityIndicator(true)
             let (type ,_,_,_) = CreditCardValidator.checkCardNumber(creditCardNumberField.text!)
             let dateStr = formatedString(dateField)
-            let split = dateStr.characters.split("/").map(String.init)
-            applyButton.enabled = false
-            cancelBut.enabled = false
-            self.creditCardNumberField.userInteractionEnabled = false
-            self.dateField.userInteractionEnabled = false
-            self.cvvField.userInteractionEnabled = false
-            self.zipField.userInteractionEnabled = false
+            let split = dateStr.characters.split(separator: "/").map(String.init)
+            applyButton.isEnabled = false
+            cancelBut.isEnabled = false
+            self.creditCardNumberField.isUserInteractionEnabled = false
+            self.dateField.isUserInteractionEnabled = false
+            self.cvvField.isUserInteractionEnabled = false
+            self.zipField.isUserInteractionEnabled = false
             MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: false, success: {  token in
               self.showActivityIndicator(false)
               if let delegate = self.delegate{
                     
                     delegate.addedNewPaymentMethod(self, token:"")
-                    self.applyButton.enabled = true
-                    self.cancelBut.enabled = true
-                    self.creditCardNumberField.userInteractionEnabled = true
-                    self.dateField.userInteractionEnabled = true
-                    self.cvvField.userInteractionEnabled = true
-                    self.zipField.userInteractionEnabled = true
+                    self.applyButton.isEnabled = true
+                    self.cancelBut.isEnabled = true
+                    self.creditCardNumberField.isUserInteractionEnabled = true
+                    self.dateField.isUserInteractionEnabled = true
+                    self.cvvField.isUserInteractionEnabled = true
+                    self.zipField.isUserInteractionEnabled = true
                 }
                 }, fail: { error in
                     self.showActivityIndicator(false)
                     if let delegate = self.delegate{
                         self.errorLabel.text = error.localizedDescription
                         delegate.recivedError(self, error:error)
-                        self.applyButton.enabled = true
-                        self.cancelBut.enabled = true
-                        self.creditCardNumberField.userInteractionEnabled = true
-                        self.dateField.userInteractionEnabled = true
-                        self.cvvField.userInteractionEnabled = true
-                        self.zipField.userInteractionEnabled = true
+                        self.applyButton.isEnabled = true
+                        self.cancelBut.isEnabled = true
+                        self.creditCardNumberField.isUserInteractionEnabled = true
+                        self.dateField.isUserInteractionEnabled = true
+                        self.cvvField.isUserInteractionEnabled = true
+                        self.zipField.isUserInteractionEnabled = true
                     }
             })
         }
     }
-    @IBAction func cancelPressed(sender: AnyObject) {
-        let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-        if self.isMemberOfClass(MCCheckoutViewController) {
-            typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)
+    @IBAction func cancelPressed(_ sender: AnyObject) {
+        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+        if self.isMember(of: MCCheckoutViewController) {
+            typeImage.image = UIImage(named: "no_type_card_1" , in: bundle, compatibleWith: nil)
         }else{
-            typeImage.image = UIImage(named: "no_type_card" , inBundle: bundle, compatibleWithTraitCollection: nil)
+            typeImage.image = UIImage(named: "no_type_card" , in: bundle, compatibleWith: nil)
         }
         if let delegate = self.delegate{
             delegate.canceled()
         }
     }
-    func nextPressed(sender: UIBarButtonItem){
-        if creditCardNumberField.isFirstResponder(){
+    func nextPressed(_ sender: UIBarButtonItem){
+        if creditCardNumberField.isFirstResponder{
             dateField.becomeFirstResponder()
-        } else if dateField.isFirstResponder(){
+        } else if dateField.isFirstResponder{
             cvvField.becomeFirstResponder()
-        } else if cvvField.isFirstResponder(){
+        } else if cvvField.isFirstResponder{
             zipField.becomeFirstResponder()
         }
     }
@@ -140,7 +140,7 @@ public class MCAddCreditCardViewController: MCViewController {
         self.resignFirstResponder()
     }
     //MARK: - overides
-    override public func resignFirstResponder() -> Bool {
+    override open func resignFirstResponder() -> Bool {
         super.resignFirstResponder()
         creditCardNumberField.resignFirstResponder()
         dateField.resignFirstResponder()
@@ -148,11 +148,11 @@ public class MCAddCreditCardViewController: MCViewController {
         zipField.resignFirstResponder()
         return true
     }
-    override public func becomeFirstResponder() -> Bool {
-        if creditCardNumberField.isFirstResponder() ||
-            dateField.isFirstResponder() ||
-            cvvField.isFirstResponder() ||
-            zipField.isFirstResponder() {
+    override open func becomeFirstResponder() -> Bool {
+        if creditCardNumberField.isFirstResponder ||
+            dateField.isFirstResponder ||
+            cvvField.isFirstResponder ||
+            zipField.isFirstResponder {
             return true
         }
         creditCardNumberField.becomeFirstResponder()
@@ -165,11 +165,11 @@ public class MCAddCreditCardViewController: MCViewController {
         self.cvvField.placeholder = LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)
         self.dateField.placeholder = LocalData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)
             self.zipField.placeholder = LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder)
-        applyButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.titleForState(.Normal)) , forState: .Normal)
-        applyButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.titleForState(.Normal)) , forState: .Highlighted)
+        applyButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.title(for: UIControlState())) , for: UIControlState())
+        applyButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.title(for: UIControlState())) , for: .highlighted)
 
-        cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.titleForState(.Normal)) , forState: .Normal)
-        cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.titleForState(.Normal)) , forState: .Highlighted)
+        cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.title(for: UIControlState())) , for: UIControlState())
+        cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.title(for: UIControlState())) , for: .highlighted)
         
         //setting colors
         navBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsheaderBackground", fallback: navBar.backgroundColor!)
@@ -178,59 +178,59 @@ public class MCAddCreditCardViewController: MCViewController {
         errorLabel.textColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
         applyButton.backgroundColor = LocalData.manager.getColor("addCreditColorsapplyBackgroundColor", fallback: errorLabel.textColor!)
         applyButton.layer.cornerRadius = 8
-        applyButton.setTitleColor(LocalData.manager.getColor("addCreditColorsapplyButtonText", fallback: errorLabel.textColor!), forState: .Normal)
+        applyButton.setTitleColor(LocalData.manager.getColor("addCreditColorsapplyButtonText", fallback: errorLabel.textColor!), for: UIControlState())
         cancelBut.layer.cornerRadius = 8
 
         cancelBut.backgroundColor = LocalData.manager.getColor("addCreditColorscancelColor", fallback: errorLabel.textColor!)
-            cancelBut.setTitleColor(LocalData.manager.getColor("addCreditColorscancelButtonText", fallback: errorLabel.textColor!), forState: .Normal)
+            cancelBut.setTitleColor(LocalData.manager.getColor("addCreditColorscancelButtonText", fallback: errorLabel.textColor!), for: UIControlState())
 
         
         for (key , value) in underlineForField!{
             key.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: key.textColor!)
-            key.placeholderColor(LocalData.manager.getColor("addCreditColorshintTextColor" , fallback: UIColor.lightGrayColor()))
+            key.placeholderColor(LocalData.manager.getColor("addCreditColorshintTextColor" , fallback: UIColor.lightGray))
         value.backgroundColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
         }
     }
-    internal func setImageForType( type: CreditCardType){
-        let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+    internal func setImageForType( _ type: CreditCardType){
+        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
 
         if type == .Unknown {
-            if self.isMemberOfClass(MCCheckoutViewController) {
-                typeImage.image = UIImage(named: "no_type_card_1" , inBundle: bundle, compatibleWithTraitCollection: nil)
+            if self.isMember(of: MCCheckoutViewController) {
+                typeImage.image = UIImage(named: "no_type_card_1" , in: bundle, compatibleWith: nil)
             }else{
-                typeImage.image = UIImage(named: "no_type_card" , inBundle: bundle, compatibleWithTraitCollection: nil)
+                typeImage.image = UIImage(named: "no_type_card" , in: bundle, compatibleWith: nil)
             }
         }else{
         
         typeImage.kf_setImageWithURL(imageURL(type))}
     }
   
-    internal func imageURL( type: CreditCardType) -> NSURL?{
-        let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+    internal func imageURL( _ type: CreditCardType) -> URL?{
+        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
         switch type {
         case .MasterCard:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesmastercard"))!
+            return URL(string:  LocalData.manager.getString("addCreditImagesmastercard"))!
         case .Visa:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
+            return URL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
         case .Diners:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesdinersclub"))!
+            return URL(string:  LocalData.manager.getString("addCreditImagesdinersclub"))!
         case .Discover:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesdiscover"))!
+            return URL(string:  LocalData.manager.getString("addCreditImagesdiscover"))!
         case .Amex:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesamex"))!
+            return URL(string:  LocalData.manager.getString("addCreditImagesamex"))!
         case .JCB:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesJCB"))!
+            return URL(string:  LocalData.manager.getString("addCreditImagesJCB"))!
         case .Maestro:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesmaestro"))!
+            return URL(string:  LocalData.manager.getString("addCreditImagesmaestro"))!
             
         default:
-            return NSURL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
+            return URL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
         }
     }
     
     
     //sets the UI to show the field has an invalid value or not
-    internal func setFieldInvalid(field: UITextField , invalid: Bool){
+    internal func setFieldInvalid(_ field: UITextField , invalid: Bool){
         let underline = underlineForField![field]
         underline?.backgroundColor = invalid ? UIColor.fieldUnderlineInvalid() : UIColor.fieldUnderline()
         field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor.fieldTextValid()
@@ -247,8 +247,8 @@ public class MCAddCreditCardViewController: MCViewController {
         setFieldInvalid(cvvField , invalid: !cvvValid)
         
         
-        let  txtToCheck = (zipField.text?.stringByReplacingOccurrencesOfString(" ", withString: ""))! // check without space
-        let alphaNumeric = txtToCheck.rangeOfString("^[a-zA-Z0-9]+$", options: .RegularExpressionSearch) != nil
+        let  txtToCheck = (zipField.text?.replacingOccurrences(of: " ", with: ""))! // check without space
+        let alphaNumeric = txtToCheck.range(of: "^[a-zA-Z0-9]+$", options: .regularExpression) != nil
         let zipValid = txtToCheck.characters.count >= 3 && txtToCheck.characters.count <= 8 && alphaNumeric
         setFieldInvalid(zipField , invalid: !zipValid)
         
@@ -259,7 +259,7 @@ public class MCAddCreditCardViewController: MCViewController {
 
 extension MCAddCreditCardViewController : UITextFieldDelegate{
     
-    public func textFieldShouldReturn(textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case creditCardNumberField:
             dateField.becomeFirstResponder()
@@ -274,10 +274,10 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         return true;
     }
     
-    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         var txtAfterUpdate: NSString = textField.text! as NSString
-        txtAfterUpdate = txtAfterUpdate.stringByReplacingCharactersInRange(range, withString: string)
+        txtAfterUpdate = txtAfterUpdate.replacingCharacters(in: range, with: string) as NSString
         setFieldInvalid(textField,invalid: false)
         
         switch textField {
@@ -290,7 +290,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
 //                return false
 //            }
             if string == ""  && txtAfterUpdate.hasSuffix(" "){// if backspace and white spaces is last remove it
-                textField.text = txtAfterUpdate.substringToIndex(txtAfterUpdate.length-1)
+                textField.text = txtAfterUpdate.substring(to: txtAfterUpdate.length-1)
                 return false
             }
             
@@ -298,7 +298,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             let ( type , formated , valid , validLength) =  CreditCardValidator.checkCardNumber(txtAfterUpdate as String)
             let maxLength = CreditCardValidator.maxLengthForType(type)
             setImageForType(type) // setting correct icon image
-            if !valid && txtAfterUpdate.stringByReplacingOccurrencesOfString(" ", withString: "").characters.count >= maxLength{//dont allow typing more if invalid
+            if !valid && txtAfterUpdate.replacingOccurrences(of: " ", with: "").characters.count >= maxLength{//dont allow typing more if invalid
                 return false
             }
             
@@ -317,11 +317,11 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 txtAfterUpdate = "0" + (txtAfterUpdate as String)
             }
             if txtAfterUpdate.length == 2 && string != "" && (txtAfterUpdate.intValue > 12 ){// adding 0 to month if its not > 12
-                txtAfterUpdate = "0" + (txtAfterUpdate.substringToIndex(1) as String) + "/" + (txtAfterUpdate.substringFromIndex(1) as String)
+                txtAfterUpdate = "0" + (txtAfterUpdate.substring(to: 1) as String) + "/" + (txtAfterUpdate.substring(from: 1) as String) as NSString
             }
 
             let valid = CreditCardValidator.isValidDate(txtAfterUpdate as String)
-            let month = txtAfterUpdate.componentsSeparatedByString("/")[0] as String
+            let month = txtAfterUpdate.components(separatedBy: "/")[0] as String
             if month.characters.count > 2 {
                 return false
             }
@@ -350,7 +350,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
 //            }
             if string == ""  && textField.text!.hasSuffix("/"){
                 
-                textField.text = txtAfterUpdate.substringToIndex(1)
+                textField.text = txtAfterUpdate.substring(to: 1)
                 
                 return false
             }else if txtAfterUpdate.length == 2 && string != ""{  // adding the slash
@@ -391,13 +391,13 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         }
     }
     
-    private func addNextButtonOnKeyboard(field: UITextField , action: Selector)
+    fileprivate func addNextButtonOnKeyboard(_ field: UITextField , action: Selector)
     {
-        let doneToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
-        doneToolbar.barStyle = UIBarStyle.BlackTranslucent
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = UIBarStyle.blackTranslucent
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Done, target: self, action: action)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.done, target: self, action: action)
         
         let items = [flexSpace , done]
         
@@ -410,13 +410,13 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
     }
     
     //this asumes the field passed validation
-    internal func formatedString(field: UITextField) -> String{
+    internal func formatedString(_ field: UITextField) -> String{
         switch field {
         case creditCardNumberField:
-            return (creditCardNumberField.text?.stringByReplacingOccurrencesOfString(" ", withString: ""))!
+            return (creditCardNumberField.text?.replacingOccurrences(of: " ", with: ""))!
         case dateField:
             if dateField.text?.characters.count == 5 {
-                let split = dateField.text?.characters.split("/").map(String.init)
+                let split = dateField.text?.characters.split(separator: "/").map(String.init)
                 let year = "20" + split![1]
                 return split![0] + "/" + year
             }
@@ -424,7 +424,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         case cvvField:
             return cvvField.text!
         case zipField:
-            return (zipField.text?.stringByReplacingOccurrencesOfString(" ", withString: ""))!
+            return (zipField.text?.replacingOccurrences(of: " ", with: ""))!
         default:
             return ""
         }
@@ -432,16 +432,16 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
     
    
    
-   func showActivityIndicator(show: Bool) {
+   func showActivityIndicator(_ show: Bool) {
         if activityView == nil {
-        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .Gray)
+        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
         
-        activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 104)
+        activityView.center=CGPoint(x: self.view.center.x, y: self.view.center.y + 104)
         activityView.startAnimating()
           self.view.addSubview(activityView)
 
         }
-    activityView.hidden = !show
+    activityView.isHidden = !show
     }
     
 }

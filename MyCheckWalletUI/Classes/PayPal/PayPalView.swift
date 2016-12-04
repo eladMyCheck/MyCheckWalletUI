@@ -21,11 +21,11 @@ class PayPalView: CreditCardView {
    super.init(frame: frame, method: method)
     self.expirationDateLabel?.removeFromSuperview()
 //    self.creditCardNumberlabel?.removeFromSuperview()
-    let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-    let image = UIImage(named: "paypal_background" , inBundle: bundle, compatibleWithTraitCollection: nil)
-    backgroundButton!.setImage(image, forState: .Normal)
+    let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+    let image = UIImage(named: "paypal_background" , in: bundle, compatibleWith: nil)
+    backgroundButton!.setImage(image, for: UIControlState())
     if let creditCardNumberlabel = self.creditCardNumberlabel{
-        creditCardNumberlabel.textAlignment = NSTextAlignment.Center;
+        creditCardNumberlabel.textAlignment = NSTextAlignment.center;
        
         //moving the label into position
         var frame = creditCardNumberlabel.frame

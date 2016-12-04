@@ -29,17 +29,17 @@ internal enum Const {
 
 
 ///MyCheckWallet is a singleton that will give you access to all of the MyCheck functionality. It has all the calls needed to manage a user's payment methods.
-public class MyCheckWallet{
+open class MyCheckWallet{
     internal static let refreshPaymentMethodsNotification = "com.mycheck.refreshPaymentMethodsNotification"
     internal static let loggedInNotification = "com.mycheck.loggedInNotification"
     
     
     ///If set to true the SDK will print to the log otherwise it will not
-    public static var logDebugData = false
+    open static var logDebugData = false
     
     
     //the publishable key that reprisents the app using the SDK
-    private var publishableKey: String?
+    fileprivate var publishableKey: String?
     
     //the delegate that should be updated with sub wallet changes
     internal var factoryDelegate: PaymentMethodFactoryDelegate? {
@@ -57,7 +57,7 @@ public class MyCheckWallet{
             
         }
     }
-    func getFactory(type: PaymentMethodType) -> PaymentMethodFactory?{
+    func getFactory(_ type: PaymentMethodType) -> PaymentMethodFactory?{
         for factory in factories{
             if factory.type == type {
                 return factory
@@ -65,8 +65,8 @@ public class MyCheckWallet{
         }
         return nil
     }
-    func hasFactory(type: PaymentMethodType) -> Bool{
-        if type == .CreditCard{
+    func hasFactory(_ type: PaymentMethodType) -> Bool{
+        if type == .creditCard{
         return true
         }
         return getFactory(type) != nil
@@ -81,24 +81,24 @@ public class MyCheckWallet{
     internal var environment : Environment?
     
     internal var token: String?
-    public var methods:  [PaymentMethod] = []
+    open var methods:  [PaymentMethod] = []
     
     
     ///This property points to the singlton object. It should be used for calling all the functions in the class.
-    public static let manager = MyCheckWallet()
+    open static let manager = MyCheckWallet()
     
     ///Sets up the SDK to work on the desired environment with the prefrences specified for the publishable key passed.
     ///
     ///   - parameter publishableKey: The publishable key created for your app.
     ///   - parameter environment: The environment you want to work with (production , sandbox or test).
-    public func configureWallet(publishableKey: String , environment: Environment ){
+    open func configureWallet(_ publishableKey: String , environment: Environment ){
         
         self.publishableKey = publishableKey
         self.configureWallet(publishableKey, environment: environment, success: nil, fail: nil)
         self.environment = environment
     }
     
-    private func configureWallet(publishableKey: String , environment: Environment , success: (() -> Void)? , fail:((error: NSError) -> Void)?){
+    fileprivate func configureWallet(_ publishableKey: String , environment: Environment , success: (() -> Void)? , fail:((_ error: NSError) -> Void)?){
         Networking.manager.configureWallet(environment, success: { domain , pci , JSON , stringsJSON in
             
             //the 3rd party we are supporting.
@@ -112,7 +112,7 @@ public class MyCheckWallet{
             }
             }, fail: {error in
                 if let fail = fail {
-                    fail(error: error)
+                    fail(error)
                 }
         })
         
@@ -125,16 +125,16 @@ public class MyCheckWallet{
     ///   - parameter publishableKey: The publishable key used for the refresh token
     ///   - parameter success: A block that is called if the user is logged in succesfully
     ///   - parameter fail: Called when the function fails for any reason
-    public func login( refreshToken: String  , success: (() -> Void) , fail: ((NSError) -> Void)? ) {
+    open func login( _ refreshToken: String  , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) {
         
         if let key = publishableKey {
             let loginFunc = {
                 let request = Networking.manager.login( refreshToken, publishableKey: key , success: {token in
                     self.token = token
                     self.getPaymentMethods({paymentMethods in
-                        let nc = NSNotificationCenter.defaultCenter()
-                        nc.postNotificationName(MyCheckWallet.refreshPaymentMethodsNotification,object: nil)
-                        nc.postNotificationName(MyCheckWallet.loggedInNotification, object: nil)
+                        let nc = NotificationCenter.default
+                        nc.post(name: NSNotification.Name(rawValue: MyCheckWallet.refreshPaymentMethodsNotification),object: nil)
+                        nc.post(name: NSNotification.Name(rawValue: MyCheckWallet.loggedInNotification), object: nil)
                         success()
                         
                         //configuring sub wallets
@@ -177,12 +177,12 @@ public class MyCheckWallet{
     ///
     ///    - Returns: True if the user is logged in and false otherwise.
     
-    public func isLoggedIn() -> Bool {
+    open func isLoggedIn() -> Bool {
         return token != nil
     }
   
   
-  public  func handleOpenURL(url: NSURL, sourceApplication: String?) -> Bool{
+  open  func handleOpenURL(_ url: URL, sourceApplication: String?) -> Bool{
     var handle = false
     for factory in factories{
     handle = factory.handleOpenURL(url, sourceApplication:sourceApplication)
@@ -197,14 +197,14 @@ public class MyCheckWallet{
     ///
     ///   - parameter success: A block that is called if the user is logged in succesfully
     ///   - parameter fail: Called when the function fails for any reason
-    internal func getPaymentMethods( success: (( [PaymentMethod] ) -> Void) , fail: ((NSError) -> Void)? ) {
+    internal func getPaymentMethods( _ success: @escaping (( [PaymentMethod] ) -> Void) , fail: ((NSError) -> Void)? ) {
         if let token = token{
             let request = Networking.manager.getPaymentMethods(token, success: {
                 methods in
                 var mutableMethods = methods
-                for (i,method) in mutableMethods.enumerate().reverse() {
+                for (i,method) in mutableMethods.enumerated().reversed() {
                     if !self.hasFactory(method.type){
-                        mutableMethods.removeAtIndex(i)
+                        mutableMethods.remove(at: i)
                     }else{
                       //if it is of the factorys type replace it with the subclass otherwise do nothing
                       if let newMethod = self.createPaymentMethodSubclass(method) {
@@ -232,16 +232,16 @@ public class MyCheckWallet{
     ///    - parameter isSingleUse: True if the payment method should be used only once. It will be erased from the database after the first use.
     ///    - parameter success: A block that is called if the user is logged in succesfully
     ///    - parameter fail: Called when the function fails for any reason
-    internal func addCreditCard(rawNumber: String ,
+    internal func addCreditCard(_ rawNumber: String ,
                                 expireMonth: String ,
                                 expireYear: String ,
                                 postalCode: String ,
                                 cvc: String ,
                                 type: CreditCardType ,
                                 isSingleUse: Bool ,
-                                success: (( PaymentMethod ) -> Void) ,
+                                success: @escaping (( PaymentMethod ) -> Void) ,
                                 fail: ((NSError) -> Void)? ){
-        if let token = token , environment = environment{
+        if let token = token , let environment = environment{
             let request = Networking.manager.addCreditCard(rawNumber, expireMonth: expireMonth, expireYear: expireYear, postalCode: postalCode, cvc: cvc, type: type, isSingleUse: isSingleUse,accessToken: token, environment: environment , success: { token in
                 
                 
@@ -262,7 +262,7 @@ public class MyCheckWallet{
     ///    - parameter success: A block that is called if the user is logged in succesfully
     ///    - parameter fail: Called when the function fails for any reason
     
-    internal func setPaymentMethodAsDefault( method: PaymentMethod,  success: (() -> Void) , fail: ((NSError) -> Void)? ){
+    internal func setPaymentMethodAsDefault( _ method: PaymentMethod,  success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ){
         if let token = token{
             
             let request = Networking.manager.setPaymentMethodAsDefault(token, methodId: method.Id, success: {
@@ -284,7 +284,7 @@ public class MyCheckWallet{
     ///   - parameter fail: Called when the function fails for any reason
     
     
-    internal func deletePaymentMethod( method: PaymentMethod , success: (() -> Void) , fail: ((NSError) -> Void)? ) {
+    internal func deletePaymentMethod( _ method: PaymentMethod , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) {
         if let token = token{
             
             let request = Networking.manager.deletePaymentMethod(token, methodId: method.Id, success: {
@@ -308,10 +308,10 @@ public class MyCheckWallet{
         return error
     }
     
-    private func refreshPaymentMethodsAndPostNotification(){
+    fileprivate func refreshPaymentMethodsAndPostNotification(){
         MyCheckWallet.manager.getPaymentMethods({ (array) in
-            let nc = NSNotificationCenter.defaultCenter()
-            nc.postNotificationName(MyCheckWallet.refreshPaymentMethodsNotification,object: nil)
+            let nc = NotificationCenter.default
+            nc.post(name: Notification.Name(rawValue: MyCheckWallet.refreshPaymentMethodsNotification),object: nil)
             
             
             }, fail: { error in
@@ -319,7 +319,7 @@ public class MyCheckWallet{
         })
     }
     //returns true if and only if the latest list of methods received from the server contains a payment method of the 'type'
-    internal func hasPaymentMethodOfType(type: PaymentMethodType) -> Bool{
+    internal func hasPaymentMethodOfType(_ type: PaymentMethodType) -> Bool{
         for method in methods {
             if method.type == type{
              return true
@@ -328,7 +328,7 @@ public class MyCheckWallet{
         }
         return false
     }
-  internal func createPaymentMethodSubclass(method: PaymentMethod) -> PaymentMethod?{
+  internal func createPaymentMethodSubclass(_ method: PaymentMethod) -> PaymentMethod?{
       if let factory = MyCheckWallet.manager.getFactory(method.type){
        return factory.getPaymentMethod(method)
       }
@@ -341,7 +341,7 @@ public class MyCheckWallet{
 
 //MARK: - general scope functions
 
-internal func printIfDebug(items: Any...){
+internal func printIfDebug(_ items: Any...){
     if MyCheckWallet.logDebugData {
         print (items )
     }

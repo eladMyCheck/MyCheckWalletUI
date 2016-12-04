@@ -6,6 +6,41 @@
 //
 
 import Foundation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 internal enum CardType: String {
     case Unknown, Amex, Visa, MasterCard, Diners, Discover, JCB, Elo, Hipercard,Maestro, UnionPay
     
@@ -45,9 +80,9 @@ internal class CreditCardValidator {
     
     
     
-    internal static func checkCardNumber(input: String) -> (type: CreditCardType, formatted: String, valid: Bool, complete: Bool) {
+    internal static func checkCardNumber(_ input: String) -> (type: CreditCardType, formatted: String, valid: Bool, complete: Bool) {
         // Get only numbers from the input string
-        let numberOnly = input.stringByReplacingOccurrencesOfString("[^0-9]", withString: "", options: .RegularExpressionSearch) as String
+        let numberOnly = input.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression) as String
         
         var type: CardType = .Unknown
         var formatted = ""
@@ -81,21 +116,21 @@ internal class CreditCardValidator {
     }
     
     //The asumption is that input has only 1-9 and / in it
-    internal static func isValidDate(inputDate: String) -> Bool {
+    internal static func isValidDate(_ inputDate: String) -> Bool {
         if inputDate.characters.count != 5 && inputDate.characters.count != 7{
             return false
         }
-        let split = inputDate.characters.split("/").map(String.init)
+        let split = inputDate.characters.split(separator: "/").map(String.init)
         
         if split.count < 2{
             return false
         }
         
-        let date = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+        let date = Date()
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components([.day , .month , .year], from: date)
         
-        let year =  components.year - 2000 // last 2 digits of date
+        let year =  components.year! - 2000 // last 2 digits of date
         let month = components.month
         let day = components.day
         
@@ -114,7 +149,7 @@ internal class CreditCardValidator {
         return false
         
     }
-    internal static func cardLengthValid(type: CardType , length: Int) -> Bool{
+    internal static func cardLengthValid(_ type: CardType , length: Int) -> Bool{
         switch type {
         case .Amex:
             return 15 == length
@@ -129,7 +164,7 @@ internal class CreditCardValidator {
         }
     }
     
-    internal static func maxLengthForType(type: CreditCardType) -> Int{
+    internal static func maxLengthForType(_ type: CreditCardType) -> Int{
         switch type {
         case .Amex:
             return 15
@@ -143,21 +178,21 @@ internal class CreditCardValidator {
             return 19
         }
     }
-    private static func matchesRegex(regex: String!, text: String!) -> Bool {
+    fileprivate static func matchesRegex(_ regex: String!, text: String!) -> Bool {
         do {
-            let regex = try NSRegularExpression(pattern: regex, options: [.CaseInsensitive])
+            let regex = try NSRegularExpression(pattern: regex, options: [.caseInsensitive])
             let nsString = text as NSString
-            let match = regex.firstMatchInString(text, options: [], range: NSMakeRange(0, nsString.length))
+            let match = regex.firstMatch(in: text, options: [], range: NSMakeRange(0, nsString.length))
             return (match != nil)
         } catch {
             return false
         }
     }
-    private static func luhnCheck(number: String) -> Bool {
+    fileprivate static func luhnCheck(_ number: String) -> Bool {
         var sum = 0
-        let digitStrings = number.characters.reverse().map { String($0) }
+        let digitStrings = number.characters.reversed().map { String($0) }
         
-        for tuple in digitStrings.enumerate() {
+        for tuple in digitStrings.enumerated() {
             guard let digit = Int(tuple.element) else { return false }
             let odd = tuple.index % 2 == 1
             
@@ -173,7 +208,7 @@ internal class CreditCardValidator {
         
         return sum % 10 == 0
     }
-    private static func convertCardType(type : CardType) -> CreditCardType{
+    fileprivate static func convertCardType(_ type : CardType) -> CreditCardType{
         switch type {
         case .Amex:
             return .Amex

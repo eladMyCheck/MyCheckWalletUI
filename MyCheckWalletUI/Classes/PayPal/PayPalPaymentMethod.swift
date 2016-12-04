@@ -9,7 +9,7 @@
 import UIKit
 import Braintree
 class PayPalPaymentMethod: PaymentMethod {
-  public override var token : String{
+  open override var token : String{
     get{
     return createFinalToken()
     }
@@ -18,8 +18,8 @@ class PayPalPaymentMethod: PaymentMethod {
     }
   }
   
-  private static  let REFRESH_DEVICE_DATA_INTERVAL : NSTimeInterval = 13 * 60 // 12 minutes
-  private var deviceData : String?
+  fileprivate static  let REFRESH_DEVICE_DATA_INTERVAL : TimeInterval = 13 * 60 // 12 minutes
+  fileprivate var deviceData : String?
 
   internal convenience init?(other:PaymentMethod){
       self.init(JSON: other.JSON)
@@ -36,7 +36,7 @@ class PayPalPaymentMethod: PaymentMethod {
     MyCheckWallet.manager.getBraintreeToken({token in
       
       if let btApiClient = BTAPIClient(authorization: token){
-        var dataCollector = BTDataCollector(APIClient: btApiClient)
+        let dataCollector = BTDataCollector(apiClient: btApiClient)
         dataCollector.collectFraudData({data in
           self.deviceData = data
         })
@@ -44,7 +44,7 @@ class PayPalPaymentMethod: PaymentMethod {
       }, fail: nil)
   }
   
-  private func createFinalToken() -> String{
+  fileprivate func createFinalToken() -> String{
     if let deviceData = deviceData{
     let tokenContent =  "token=\(super.token)&device-data=\(deviceData)"
       if let encoded = tokenContent.toBase64(){

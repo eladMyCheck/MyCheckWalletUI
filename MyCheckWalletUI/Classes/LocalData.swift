@@ -32,7 +32,7 @@ internal class LocalData{
         }
     
     }
-    func getString(key: String , fallback: String? = nil) -> String{
+    func getString(_ key: String , fallback: String? = nil) -> String{
         if let string = strings[key]  {
         return string
         }
@@ -42,7 +42,7 @@ internal class LocalData{
         return ""
     }
     
-    func getColor(key: String , fallback: UIColor) -> UIColor{
+    func getColor(_ key: String , fallback: UIColor) -> UIColor{
    let hex = getString(key)
         if hex.characters.count > 2 {
     let color = UIColor.hex(hex)

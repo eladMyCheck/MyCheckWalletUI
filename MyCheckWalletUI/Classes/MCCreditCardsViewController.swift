@@ -31,7 +31,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startMargin = (UIScreen.mainScreen().bounds.width - cardViewWidth) / 2.0 + 15.0 as CGFloat
+        startMargin = (UIScreen.main.bounds.width - cardViewWidth) / 2.0 + 15.0 as CGFloat
         
         self.scrollView.delegate = self;
         delay(0.2){
@@ -39,15 +39,15 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         }
         //setting up UI and updating it if the user logges in... just incase
         setupUI()
-        let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: #selector(MCCreditCardsViewController.setupUI), name: MyCheckWallet.loggedInNotification, object: nil)
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(MCCreditCardsViewController.setupUI), name: NSNotification.Name(rawValue: MyCheckWallet.loggedInNotification), object: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
     }
-    internal func setCreditCardsUI(animated: Bool){
+    internal func setCreditCardsUI(_ animated: Bool){
         
         let subviews = self.scrollView.subviews
         for subview in subviews{
@@ -60,16 +60,16 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             creditCardCount = self.paymentMethods.count
         }
         
-        let addCreditCardView = AddCreditCardView(frame: CGRectMake(startMargin, 20, 168, 104) )
+        let addCreditCardView = AddCreditCardView(frame: CGRect(x: startMargin, y: 20, width: 168, height: 104) )
         self.scrollView.addSubview(addCreditCardView)
         
         for i in (0..<creditCardCount) {
             let method = self.paymentMethods[i]
-            let frame = CGRectMake(cardViewWidth*CGFloat(i+1)+startMargin, 20, cardViewWidth, 102)
+            let frame = CGRect(x: cardViewWidth*CGFloat(i+1)+startMargin, y: 20, width: cardViewWidth, height: 102)
             
-            if method.type == .CreditCard {
+            if method.type == .creditCard {
                 let cc = CreditCardView(frame: frame, method: method)
-                creditCards.addObject(cc)
+                creditCards.add(cc)
                 cc.delegate = self
                 self.scrollView.addSubview(cc)
                 
@@ -78,7 +78,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
                     guard let cc = factory.getCreditCardView(frame, method: method) else{
                         continue
                     }
-                    creditCards.addObject(cc)
+                    creditCards.add(cc)
                     cc.delegate = self
                     self.scrollView.addSubview(cc)
                 }
@@ -86,26 +86,26 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         }
         
         if creditCardCount == 0 {
-            self.editButton.setTitle("", forState: .Normal)
-            self.editButton.enabled = false
+            self.editButton.setTitle("", for: UIControlState())
+            self.editButton.isEnabled = false
         }else{
             
             updateButtonTxt()
-            self.editButton.enabled = true
+            self.editButton.isEnabled = true
         }
         
         self.scrollView.contentSize = CGSize(width:CGFloat(creditCardCount+1)*cardViewWidth + startMargin * 2 - 15.0 , height:0.0)
         
-        UIView.animateWithDuration(animated ? 0.3 : 0.0, animations: {
+        UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
             if creditCardCount > 0{
                 if self.indexToScrollTo == 0{
                     self.indexToScrollTo =  1
                 }
-                self.scrollView.contentOffset = CGPointMake(CGFloat(self.indexToScrollTo)*self.cardViewWidth , 0)
+                self.scrollView.contentOffset = CGPoint(x: CGFloat(self.indexToScrollTo)*self.cardViewWidth , y: 0)
                 self.currantIndex = self.indexToScrollTo
                 self.indexToScrollTo = 0
             }else{
-                self.scrollView.contentOffset = CGPointZero
+                self.scrollView.contentOffset = CGPoint.zero
                 self.currantIndex = 0
             }
         })
@@ -127,7 +127,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         
     }
     
-    internal  func deletedPaymentMethod(method: PaymentMethod) {
+    internal  func deletedPaymentMethod(_ method: PaymentMethod) {
         for i in (0..<self.paymentMethods.count) {
             if method.Id == self.paymentMethods[i].Id {
                 if i > 0 {
@@ -166,29 +166,29 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
 
         })
     }
-  internal func showActivityIndicator(show: Bool) {
+  internal func showActivityIndicator(_ show: Bool) {
         if activityView == nil{
-            activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .WhiteLarge)
+            activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
             
-            activityView.center=CGPointMake(self.view.center.x, self.view.center.y + 30)
+            activityView.center=CGPoint(x: self.view.center.x, y: self.view.center.y + 30)
             self.view.addSubview(activityView)
-          self.view.bringSubviewToFront(activityView)
+          self.view.bringSubview(toFront: activityView)
           activityView.startAnimating()
 
         }
-    activityView.hidden = !show
+    activityView.isHidden = !show
     }
     
-    @objc private func setupUI(){
+    @objc fileprivate func setupUI(){
         
         navBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsheaderBackground", fallback: navBar.backgroundColor!)
-        editButton.setTitleColor( LocalData.manager.getColor("managePaymentMethodsColorseditButtonText", fallback: editButton.titleColorForState(.Normal)!)
-, forState: .Normal)
+        editButton.setTitleColor( LocalData.manager.getColor("managePaymentMethodsColorseditButtonText", fallback: editButton.titleColor(for: UIControlState())!)
+, for: UIControlState())
         backBut.tintColor = LocalData.manager.getColor("managePaymentMethodsColorsbackButton", fallback: navBar.backgroundColor!)
     }
-    private func updateButtonTxt(){
+    fileprivate func updateButtonTxt(){
         printIfDebug("edit mode \(editMode)")
-        self.editMode ? self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done"), forState: .Normal) : self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit"), forState: .Normal)
+        self.editMode ? self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done"), for: UIControlState()) : self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit"), for: UIControlState())
     }
 }
 
@@ -226,7 +226,7 @@ extension MCCreditCardsViewController : UIScrollViewDelegate {
         if targetIndex > kMaxIndex{
             targetIndex = kMaxIndex
         }
-        targetContentOffset.memory.x = targetIndex * (cardViewWidth + 0);
+        targetContentOffset.pointee.x = targetIndex * (cardViewWidth + 0);
         currantIndex = Int( targetIndex)
     }
 }

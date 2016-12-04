@@ -27,10 +27,10 @@
   "requires_arc": "true",
   "dependencies": {
     "Alamofire": [
-      "~> 3.5"
+      "~> 4.0"
     ],
     "Kingfisher": [
-      "~> 2.4"
+      "~> 3.0"
     ],
     "Braintree/PayPal": [
 

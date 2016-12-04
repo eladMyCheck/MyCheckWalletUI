@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       containerView.hidden = true
+       containerView.isHidden = true
         MyCheckWallet.manager.login("eyJpdiI6IkZ4N3hGMHU5UG42ZzMrOHlFcTFnRGc9PSIsInZhbHVlIjoibmJQR3VkVU9oN2NxbnB1T3BYV1NSM3FEbVNjQU52blB0Y2VnOEZycVZXZz0iLCJtYWMiOiJjYWI2NWY5Mzg5YTRmYmM5OWZjNWYyYjVjNTg0N2VkYWE3OWUzMGJlZWQwYWQ0MjNkNjMzYTRkMzNhMmVjNzNjIn0", success: {
             //The view should only be displaid after a user is logged in
             self.containerView.hidden = false
@@ -29,20 +29,20 @@ class ViewController: UIViewController {
     }
 
 
-internal override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+internal override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "checkout" {
                checkoutViewController = segue.destinationViewController as? MCCheckoutViewController
           checkoutViewController?.checkoutDelegate = self
     }
 }
 //MARK: - actions
-  @IBAction func paymentMethodsPressed(sender: AnyObject) {
+  @IBAction func paymentMethodsPressed(_ sender: AnyObject) {
     let controller = MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
     self.presentViewController(controller, animated: true, completion: nil)
   }
     
     
-  @IBAction func payPressed(sender: AnyObject) {
+  @IBAction func payPressed(_ sender: AnyObject) {
     var message = "No payment method available"
     
     //when a payment method is available you can get the method from the checkoutViewController using the selectedMethod variable. If it's nil non exist
@@ -53,23 +53,23 @@ internal override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObje
     }
 
     
-    let alert = UIAlertController(title: "paying with:", message: message, preferredStyle: .Alert);
-    let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "alert ok but"), style: .Default, handler:
+    let alert = UIAlertController(title: "paying with:", message: message, preferredStyle: .alert);
+    let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "alert ok but"), style: .default, handler:
       {(alert: UIAlertAction!) in
         
         
     })
     alert.addAction(defaultAction)
-   self.presentViewController(alert, animated: true, completion: nil)
+   self.present(alert, animated: true, completion: nil)
   }
     
 }
 
 extension ViewController : CheckoutDelegate {
     
-    func checkoutViewShouldResizeHeight(newHeight : Float , animationDuration: NSTimeInterval)  -> Void {
+    func checkoutViewShouldResizeHeight(_ newHeight : Float , animationDuration: TimeInterval)  -> Void {
         self.heightConstraint.constant = CGFloat(newHeight);
-        UIView.animateWithDuration(animationDuration, animations: {
+        UIView.animate(withDuration: animationDuration, animations: {
             self.view.layoutIfNeeded()//resizing the container 
 
         })
@@ -80,7 +80,7 @@ extension ViewController : CheckoutDelegate {
 extension ViewController : MCPaymentMethodsViewControllerDelegate{
   
   
- func dismissedMCPaymentMethodsViewController(controller: MCPaymentMethodsViewController){
+ func dismissedMCPaymentMethodsViewController(_ controller: MCPaymentMethodsViewController){
      controller.dismissViewControllerAnimated(true, completion: nil)
   }
 }

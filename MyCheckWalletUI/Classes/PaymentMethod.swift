@@ -12,13 +12,13 @@ import Foundation
 ///The diffrant 3rd party wallets that can be supported by MyCheck Wallet.
 public enum PaymentMethodType {
     /// Visa Checkout.
-    case VisaCheckout
+    case visaCheckout
     /// Support PayPal using the Brain Tree SDK.
-    case PayPal
+    case payPal
     /// Master Pass.
-    case MasterPass
-    case CreditCard
-    case Non
+    case masterPass
+    case creditCard
+    case non
 }
 
 ///A Credit Card issuer type.
@@ -43,17 +43,17 @@ public enum CreditCardType : String{
 
 
 ///Represents a payment method the user has.
-public class PaymentMethod{
+open class PaymentMethod{
     
     /// The Id of the payment method.
-    public let Id : String
+    open let Id : String
     /// The token that must be used in order to chard the payment method.
-   public var token : String 
+   open var token : String 
   
   // A string with a user readable description of the payment method, e.g. XXXX-1234
   internal  var  name : String? = nil
     internal var longName : String? { get{
-        if let strName = name where isSingleUse  {
+        if let strName = name, isSingleUse  {
            return strName + "  (Temporary Card)"
         }
         return name
@@ -61,28 +61,28 @@ public class PaymentMethod{
     
     }
     /// The month the credit card expires
-  public  var  expireMonth : String? = nil
+  open  var  expireMonth : String? = nil
     
     /// The year the credit card expires
-   public var expireYear : String? = nil
+   open var expireYear : String? = nil
     
     /// The credit card's  last 4 digits
-   public var lastFourDigits : String? = nil
+   open var lastFourDigits : String? = nil
     
     /// True if the payment method is the default payment method
-   public let isDefault : Bool
+   open let isDefault : Bool
     
     /// True if the payment method will be valid for a single use only
-   public let isSingleUse: Bool
+   open let isSingleUse: Bool
     
     ///A short form string of the issuer name
-   public let issuerShort: String
+   open let issuerShort: String
 
     ///The issuer name
-   public let issuer: CreditCardType
+   open let issuer: CreditCardType
     
     ///The issuer name
-     public let type: PaymentMethodType
+     open let type: PaymentMethodType
   
   //the JSON represintation of the object
   internal let JSON : NSDictionary
@@ -104,7 +104,7 @@ public class PaymentMethod{
             if let str = JSON["exp_month"] as? String{
                 expireMonth = str 
             }else if let str =  JSON["exp_month"] as? NSNumber{
-                expireMonth = String(str)
+                expireMonth = String(describing: str)
             }
             
             if let number = JSON["exp_year4"] as? NSNumber{
@@ -130,9 +130,9 @@ public class PaymentMethod{
            
             switch (source){
             case "paypal":
-                type = .PayPal
+                type = .payPal
             default:
-                type = .CreditCard
+                type = .creditCard
             }
             
             

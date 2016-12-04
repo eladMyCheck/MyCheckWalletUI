@@ -9,9 +9,9 @@
 import UIKit
 
 internal protocol CreditCardViewDelegate : class{
-    func deletedPaymentMethod(method : PaymentMethod)
+    func deletedPaymentMethod(_ method : PaymentMethod)
     func setPaymentAsDefault()
-  func showActivityIndicator(show: Bool)
+  func showActivityIndicator(_ show: Bool)
 }
 
 internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
@@ -28,30 +28,30 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     init(frame: CGRect, method: PaymentMethod){
         super.init(frame: frame)
       
-      let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+      let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
 
-        self.userInteractionEnabled = true
+        self.isUserInteractionEnabled = true
         self.paymentMethod = method
         
-         backgroundButton = UIButton(frame: CGRectMake(0, 0, 163, 102))
+         backgroundButton = UIButton(frame: CGRect(x: 0, y: 0, width: 163, height: 102))
         if  let backgroundButton = backgroundButton{
-        backgroundButton.addTarget(self, action: #selector(creditCardPressed(_:)), forControlEvents: .TouchUpInside)
-        backgroundButton.setImage(self.setImageForType(method.issuer), forState: .Normal)
+        backgroundButton.addTarget(self, action: #selector(creditCardPressed(_:)), for: .touchUpInside)
+        backgroundButton.setImage(self.setImageForType(method.issuer), for: UIControlState())
         backgroundButton.adjustsImageWhenHighlighted = false
         addSubview(backgroundButton)
         }
       
       if method.isSingleUse {
-      let singleUseImg = UIImageView(image:UIImage(named: "singleUseBanner", inBundle: bundle, compatibleWithTraitCollection: nil) )
-        singleUseImg.contentMode = .TopRight
+      let singleUseImg = UIImageView(image:UIImage(named: "singleUseBanner", in: bundle, compatibleWith: nil) )
+        singleUseImg.contentMode = .topRight
         singleUseImg.frame = (backgroundButton?.frame)!
         addSubview(singleUseImg)
       }
         //credit card number label
-        creditCardNumberlabel  = UILabel(frame: CGRectMake(10, 70, 80, 18))
+        creditCardNumberlabel  = UILabel(frame: CGRect(x: 10, y: 70, width: 80, height: 18))
         if let creditCardNumberlabel = creditCardNumberlabel {
-        creditCardNumberlabel.textAlignment = NSTextAlignment.Center
-        creditCardNumberlabel.textColor = UIColor.whiteColor()
+        creditCardNumberlabel.textAlignment = NSTextAlignment.center
+        creditCardNumberlabel.textColor = UIColor.white
         creditCardNumberlabel.font =  UIFont(name: creditCardNumberlabel.font.fontName, size: 9)
         if let lastFourDigits = method.lastFourDigits{
             creditCardNumberlabel.text = method.name
@@ -59,15 +59,15 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         addSubview(creditCardNumberlabel)
             }
         //expiration date label
-       expirationDateLabel = UILabel(frame: CGRectMake(112, 70, 30, 18))
+       expirationDateLabel = UILabel(frame: CGRect(x: 112, y: 70, width: 30, height: 18))
 
         if let expirationDateLabel = expirationDateLabel{
-        expirationDateLabel.textAlignment = NSTextAlignment.Center
-        expirationDateLabel.textColor = UIColor.whiteColor()
+        expirationDateLabel.textAlignment = NSTextAlignment.center
+        expirationDateLabel.textColor = UIColor.white
         expirationDateLabel.font =  UIFont(name: expirationDateLabel.font.fontName, size: 9)
-        if var year = method.expireYear, month = method.expireMonth{
+        if var year = method.expireYear, let month = method.expireMonth{
             if year.characters.count > 2 {
-                year = year.substringFromIndex(year.startIndex.advancedBy(2))
+                year = year.substring(from: year.characters.index(year.startIndex, offsetBy: 2))
                 
                 expirationDateLabel.text = String(format: "%@/%@", month, year)
                 addSubview(expirationDateLabel)
@@ -79,20 +79,20 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         
         //default card checkbox
       
-        self.checboxButton = UIButton(frame: CGRectMake(165, 0, 20, 20))
-        self.checboxButton?.addTarget(self, action: #selector(checkboxPressed(_:)), forControlEvents: .TouchUpInside)
+        self.checboxButton = UIButton(frame: CGRect(x: 165, y: 0, width: 20, height: 20))
+        self.checboxButton?.addTarget(self, action: #selector(checkboxPressed(_:)), for: .touchUpInside)
         self.checboxButton?.adjustsImageWhenHighlighted = false
         addSubview(self.checboxButton!)
         
         if ((self.paymentMethod!.isDefault) == true) {
-            self.checboxButton?.setImage(UIImage(named: "v", inBundle: bundle, compatibleWithTraitCollection: nil)!, forState: .Normal)
-            self.checboxButton?.hidden = false
+            self.checboxButton?.setImage(UIImage(named: "v", in: bundle, compatibleWith: nil)!, for: UIControlState())
+            self.checboxButton?.isHidden = false
         }else{
-            self.checboxButton?.hidden = true
+            self.checboxButton?.isHidden = true
         }
     }
     
-    func checkboxPressed(sender: UIButton!) {
+    func checkboxPressed(_ sender: UIButton!) {
         if editMode == true {
             MyCheckWallet.manager.deletePaymentMethod(self.paymentMethod!, success: {
                 printIfDebug("payment method deleted")
@@ -105,7 +105,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    func creditCardPressed(sender: UIButton!){
+    func creditCardPressed(_ sender: UIButton!){
         if editMode == false {
             if self.paymentMethod?.isDefault == false {
                 self.delegate?.showActivityIndicator(true)
@@ -131,7 +131,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         self.paymentMethod = nil
     }
     
-    internal func getType(type : String) -> CreditCardType {
+    internal func getType(_ type : String) -> CreditCardType {
         switch type {
         case "visa":
             return CreditCardType.Visa
@@ -153,44 +153,44 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    internal func setImageForType( type: CreditCardType) -> UIImage{
-        let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
+    internal func setImageForType( _ type: CreditCardType) -> UIImage{
+        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
         switch type {
         case .MasterCard:
-            return UIImage(named: "master_card_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "master_card_background", in: bundle, compatibleWith: nil)!
         case .Visa:
-            return UIImage(named: "visa_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "visa_background", in: bundle, compatibleWith: nil)!
         case .Diners:
-            return UIImage(named: "diners_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "diners_background", in: bundle, compatibleWith: nil)!
         case .Discover:
-            return UIImage(named: "discover_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "discover_background", in: bundle, compatibleWith: nil)!
         case .Amex:
-            return UIImage(named: "amex_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "amex_background", in: bundle, compatibleWith: nil)!
         case .Diners:
-            return UIImage(named: "diners_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "diners_background", in: bundle, compatibleWith: nil)!
         case .JCB:
-            return UIImage(named: "jcb_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "jcb_background", in: bundle, compatibleWith: nil)!
         case .Maestro:
-            return UIImage(named: "maestro_background", inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "maestro_background", in: bundle, compatibleWith: nil)!
             
         default:
-            return UIImage(named: "notype_background" , inBundle: bundle, compatibleWithTraitCollection: nil)!
+            return UIImage(named: "notype_background" , in: bundle, compatibleWith: nil)!
         }
     }
     
     func toggleEditMode(){
         self.editMode = !self.editMode
         if self.editMode == true {
-            let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-            self.checboxButton?.setImage(UIImage(named: "delete", inBundle: bundle, compatibleWithTraitCollection: nil)!, forState: .Normal)
-            self.checboxButton?.hidden = false
+            let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+            self.checboxButton?.setImage(UIImage(named: "delete", in: bundle, compatibleWith: nil)!, for: UIControlState())
+            self.checboxButton?.isHidden = false
         }else{
             if self.paymentMethod!.isDefault == true {
-                let bundle =  MCViewController.getBundle( NSBundle(forClass: MCAddCreditCardViewController.classForCoder()))
-                self.checboxButton?.setImage(UIImage(named: "v", inBundle: bundle, compatibleWithTraitCollection: nil)!, forState: .Normal)
-                self.checboxButton?.hidden = false
+                let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+                self.checboxButton?.setImage(UIImage(named: "v", in: bundle, compatibleWith: nil)!, for: UIControlState())
+                self.checboxButton?.isHidden = false
             }else{
-                self.checboxButton?.hidden = true
+                self.checboxButton?.isHidden = true
             }
         }
     }

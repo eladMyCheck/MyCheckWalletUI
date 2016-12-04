@@ -15,7 +15,7 @@ public enum ErrorCodes {
 internal class Networking {
     
     //the address to be used in order to fetch the data needed in order to configur the SDK
-    private enum CDNAddresses{
+    fileprivate enum CDNAddresses{
         static let test = "https://mywalletcdn-test.mycheckapp.com/configurations/7abb7fcd99ee10bbe2981825a560c4a2/v1/main.json"
         static let sandbox = "https://mywalletcdn-sandbox.mycheckapp.com/configurations/7abb7fcd99ee10bbe2981825a560c4a2/v1/main.json"
         static let prod = "https://mywalletcdn-prod.mycheckapp.com/configurations/7abb7fcd99ee10bbe2981825a560c4a2/v1/main.json"
@@ -28,7 +28,7 @@ internal class Networking {
     var domain : String?
     var PCIDomain: String?
     var environment = Environment.Sandbox
-    func configureWallet(environment: Environment , success: (domain: String , pci: String ,JSON: NSDictionary, strings: NSDictionary) -> Void ,  fail: ((NSError) -> Void)? ) -> Alamofire.Request {
+    func configureWallet(_ environment: Environment , success: @escaping (_ domain: String , _ pci: String ,_ JSON: NSDictionary, _ strings: NSDictionary) -> Void ,  fail: ((NSError) -> Void)? ) -> Alamofire.Request {
         var urlStr = CDNAddresses.prod
         self.environment = environment
         switch(environment){
@@ -68,7 +68,7 @@ internal class Networking {
     ///    - success: A block that is called if the user is logged in succesfully
     ///    - fail: Called when the function fails for any reason
     ///
-    func login( refreshToken: String , publishableKey: String , success: ((String) -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request?{
+    func login( _ refreshToken: String , publishableKey: String , success: @escaping ((String) -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request?{
         let params = [ "refreshToken": refreshToken , "publishableKey": publishableKey]
         
         
@@ -95,7 +95,7 @@ internal class Networking {
     }
     
    
-    func getPaymentMethods( accessToken: String , success: (( [PaymentMethod] ) -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request{
+    func getPaymentMethods( _ accessToken: String , success: @escaping (( [PaymentMethod] ) -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request{
         let params = [ "accessToken": accessToken]
         
         let urlStr = domain! + "/wallet/api/v1/wallet"
@@ -125,7 +125,7 @@ internal class Networking {
             }, fail: fail)
     }
     
-    func addCreditCard(rawNumber: String ,
+    func addCreditCard(_ rawNumber: String ,
                        expireMonth: String ,
                        expireYear: String ,
                        postalCode: String ,
@@ -134,9 +134,9 @@ internal class Networking {
                        isSingleUse: Bool ,
                        accessToken: String ,
                        environment: Environment ,
-                       success: (( PaymentMethod ) -> Void) ,
+                       success: @escaping (( PaymentMethod ) -> Void) ,
                        fail: ((NSError) -> Void)? ) -> Alamofire.Request{
-        var params = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "cardType" : type.rawValue , "is_single_use" : String(NSNumber(bool: isSingleUse))]
+        var params = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "cardType" : type.rawValue , "is_single_use" : String(describing: NSNumber(value: isSingleUse))]
        
         if environment != .Production{
         params["env"] = "test"
@@ -145,7 +145,7 @@ internal class Networking {
         return  request(PCIDomain! + "/PaymentManager/api/v1/paymentMethods/addCreditcard", method: .POST, parameters: params , success: { JSON in
             
             let methodJSON = JSON["pm"] as? NSDictionary
-            if let methodJSON = methodJSON where methodJSON.isKindOfClass(NSDictionary) == true{
+            if let methodJSON = methodJSON, methodJSON.isKindOfClass(NSDictionary) == true{
                 success(PaymentMethod(JSON: methodJSON )!)
             }else{
                 if let fail = fail{
@@ -161,7 +161,7 @@ internal class Networking {
             }, fail: fail , encoding: .JSON)
     }
     
-    func setPaymentMethodAsDefault( accessToken: String , methodId: String , success: (() -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request{
+    func setPaymentMethodAsDefault( _ accessToken: String , methodId: String , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request{
         let params = [ "accessToken": accessToken , "ID": methodId]
         
         let urlStr = domain! + "/wallet/api/v1/wallet/default"
@@ -172,7 +172,7 @@ internal class Networking {
             }, fail: fail)
     }
     
-    func deletePaymentMethod( accessToken: String , methodId: String, success: (() -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request{
+    func deletePaymentMethod( _ accessToken: String , methodId: String, success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request{
         let params = [ "accessToken": accessToken , "ID": methodId]
         let urlStr = domain! + "/wallet/api/v1/wallet/deletePaymentMethod"
         
@@ -183,7 +183,7 @@ internal class Networking {
     }
     
     //MARK: - private functions
-    internal  func request(url: String , method: Alamofire.Method , parameters: [String: AnyObject]? = nil , success: (( object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? , encoding: ParameterEncoding = .URL) -> Alamofire.Request {
+    internal  func request(_ url: String , method: Alamofire.Method , parameters: [String: AnyObject]? = nil , success: (( _ object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? , encoding: ParameterEncoding = .URL) -> Alamofire.Request {
         
         
         
@@ -268,10 +268,10 @@ internal class Networking {
     }
     
     
-    private static func convertDataToDictionary(data: NSData) -> [String:AnyObject]? {
+    fileprivate static func convertDataToDictionary(_ data: Data) -> [String:AnyObject]? {
         
         do {
-            return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+            return try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
         } catch let error as NSError {
             printIfDebug(error)
         }

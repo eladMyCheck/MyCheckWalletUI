@@ -13,7 +13,7 @@ import UIKit
 extension Networking {
     
     
-    func getBraintreeToken(accessToken: String , success: ((String) -> Void) , fail: ((NSError) -> Void)? )-> Alamofire.Request?{
+    func getBraintreeToken(_ accessToken: String , success: @escaping ((String) -> Void) , fail: ((NSError) -> Void)? )-> Alamofire.Request?{
         
         
      
@@ -43,7 +43,7 @@ extension Networking {
         
     }
     
-    func addPayPal(accessToken: String ,nonce: String, success: ((PaymentMethod?) -> Void) , fail: ((NSError) -> Void)? )-> Alamofire.Request?{
+    func addPayPal(_ accessToken: String ,nonce: String, success: @escaping ((PaymentMethod?) -> Void) , fail: ((NSError) -> Void)? )-> Alamofire.Request?{
         let params = [ "accessToken": accessToken , "source":"paypal" , "nonce":nonce]
         
         

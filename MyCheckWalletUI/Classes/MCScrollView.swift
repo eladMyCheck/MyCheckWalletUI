@@ -10,11 +10,11 @@ import UIKit
 
 class MCScrollView: UIScrollView {
     
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         if self.bounds.insetBy(dx: -100, dy: 0).contains(point){
-            let result = super.hitTest(point, withEvent: event)//superhitTest:point withEvent:event];
+            let result = super.hitTest(point, with: event)//superhitTest:point withEvent:event];
             
-            if ((result?.superview?.isKindOfClass(CreditCardView)) != nil){
+            if ((result?.superview?.isKind(of: CreditCardView.self)) != nil){
                 return result
             }
             else{
@@ -31,11 +31,11 @@ class MCScrollView: UIScrollView {
 
     }
     
-    override func touchesShouldCancelInContentView(view: UIView) -> Bool {
+    override func touchesShouldCancel(in view: UIView) -> Bool {
         if view is UIButton {
             return true
         }
-        return super.touchesShouldCancelInContentView(view)
+        return super.touchesShouldCancel(in: view)
     }
 
 }

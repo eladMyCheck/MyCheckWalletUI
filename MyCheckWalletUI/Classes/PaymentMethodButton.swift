@@ -9,7 +9,7 @@
 import UIKit
 
 class PaymentMethodButton: UIButton {
-    public var type : PaymentMethodType?
+    open var type : PaymentMethodType?
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
