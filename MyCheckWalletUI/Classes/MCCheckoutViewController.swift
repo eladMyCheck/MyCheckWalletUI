@@ -140,7 +140,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     func donePressed(_ sender: UIBarButtonItem){
         selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRow(inComponent: 0)]
-        self.paymentMethodSelectorTextField.text = self.selectedMethod!.longName
+        self.paymentMethodSelectorTextField.text = self.selectedMethod!.checkoutName
         if let selectedMethod = selectedMethod {
             self.typeImage.kf.setImage(with: self.imageURL(selectedMethod))
         }
@@ -166,7 +166,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             if paymentMethods.count > 0 {
                 creditCardNumberField.isHidden = true
                 self.paymentSelectorView.isHidden = false
-                self.paymentMethodSelectorTextField.text = self.selectedMethod!.longName
+                self.paymentMethodSelectorTextField.text = self.selectedMethod!.checkoutName
                 
                 self.typeImage.kf.setImage(with:self.imageURL(self.paymentMethods.first!))
                 
@@ -515,7 +515,7 @@ extension MCCheckoutViewController : UIPickerViewDelegate , UIPickerViewDataSour
     }
     
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.paymentMethods[row].longName
+        return self.paymentMethods[row].checkoutName
     }
 }
 

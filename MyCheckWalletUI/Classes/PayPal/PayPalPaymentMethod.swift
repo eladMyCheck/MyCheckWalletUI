@@ -17,7 +17,10 @@ class PayPalPaymentMethod: PaymentMethod {
     super.token = newValue
     }
   }
-  
+    override var checkoutName: String? {get{
+        return "PayPal"
+        }
+    }
   fileprivate static  let REFRESH_DEVICE_DATA_INTERVAL : TimeInterval = 13 * 60 // 12 minutes
   fileprivate var deviceData : String?
 
