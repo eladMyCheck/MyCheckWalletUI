@@ -107,7 +107,7 @@ open class MCAddCreditCardViewController: MCViewController {
     }
     @IBAction func cancelPressed(_ sender: AnyObject) {
         let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-        if self.isMember(of: MCCheckoutViewController) {
+        if self.isMember(of: MCCheckoutViewController.self) {
             typeImage.image = UIImage(named: "no_type_card_1" , in: bundle, compatibleWith: nil)
         }else{
             typeImage.image = UIImage(named: "no_type_card" , in: bundle, compatibleWith: nil)
@@ -195,14 +195,14 @@ open class MCAddCreditCardViewController: MCViewController {
         let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
 
         if type == .Unknown {
-            if self.isMember(of: MCCheckoutViewController) {
+            if self.isMember(of: MCCheckoutViewController.self) {
                 typeImage.image = UIImage(named: "no_type_card_1" , in: bundle, compatibleWith: nil)
             }else{
                 typeImage.image = UIImage(named: "no_type_card" , in: bundle, compatibleWith: nil)
             }
         }else{
         
-        typeImage.kf_setImageWithURL(imageURL(type))}
+        typeImage.kf.setImage(with:imageURL(type))}
     }
   
     internal func imageURL( _ type: CreditCardType) -> URL?{
@@ -314,7 +314,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
           return false
           }
             if txtAfterUpdate.length == 1 && string != "" && (txtAfterUpdate != "0" && txtAfterUpdate != "1"){// adding 0 to month if its not 1 or 2
-                txtAfterUpdate = "0" + (txtAfterUpdate as String)
+                txtAfterUpdate = ("0" + (txtAfterUpdate as String)) as NSString
             }
             if txtAfterUpdate.length == 2 && string != "" && (txtAfterUpdate.intValue > 12 ){// adding 0 to month if its not > 12
                 txtAfterUpdate = "0" + (txtAfterUpdate.substring(to: 1) as String) + "/" + (txtAfterUpdate.substring(from: 1) as String) as NSString
@@ -354,7 +354,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 
                 return false
             }else if txtAfterUpdate.length == 2 && string != ""{  // adding the slash
-                txtAfterUpdate = (txtAfterUpdate as String) + "/"
+                txtAfterUpdate = ((txtAfterUpdate as String) + "/") as NSString
             }
             textField.text = txtAfterUpdate as String
             return false

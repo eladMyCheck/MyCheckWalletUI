@@ -10,8 +10,8 @@ import Foundation
 extension UIColor{
 
     static func hex(_ hex:String) -> UIColor {
-
-        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercased()
+        let tmp = hex as! NSString
+        var cString:String = tmp.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines as CharacterSet).uppercased()
         
         if (cString.hasPrefix("#")) {
             cString = cString.substring(from: cString.characters.index(cString.startIndex, offsetBy: 1))

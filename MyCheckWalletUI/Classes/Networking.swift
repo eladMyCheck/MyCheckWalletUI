@@ -39,7 +39,7 @@ internal class Networking {
         default:
             urlStr = CDNAddresses.prod
         }
-        return  request(urlStr, method: .GET, parameters: nil , success: { JSON in
+        return  request(urlStr, method: .get, parameters: nil , success: { JSON in
             
             self.domain = JSON["Domain"] as! String
             self.PCIDomain = JSON["PCI"] as! String
@@ -49,12 +49,12 @@ internal class Networking {
             
             
             //getting the texts
-            self.request(textsURL, method: .GET, parameters: nil , success: { txtJSON in
+            self.request(textsURL, method: .get, parameters: nil , success: { txtJSON in
                 
                 
                 
                 
-                success(domain: self.domain!, pci: self.PCIDomain!, JSON: JSON, strings: txtJSON)
+                success(self.domain!, self.PCIDomain!, JSON, txtJSON)
                 }, fail: fail)
             
             
@@ -69,13 +69,13 @@ internal class Networking {
     ///    - fail: Called when the function fails for any reason
     ///
     func login( _ refreshToken: String , publishableKey: String , success: @escaping ((String) -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request?{
-        let params = [ "refreshToken": refreshToken , "publishableKey": publishableKey]
+        let params : Parameters = [ "refreshToken": refreshToken , "publishableKey": publishableKey]
         
         
         if let domain = domain {
             let urlStr = domain + "/users/api/v1/login"
             
-            return  request(urlStr, method: .GET, parameters: params , success: { JSON in
+            return  request(urlStr, method: .get, parameters: params , success: { JSON in
                 if let token = JSON["accessToken"] as? String{
                     success(token)
                  
@@ -100,7 +100,7 @@ internal class Networking {
         
         let urlStr = domain! + "/wallet/api/v1/wallet"
         
-        return  request(urlStr , method: .GET, parameters: params , success: { JSON in
+        return  request(urlStr , method: .get, parameters: params , success: { JSON in
             var returnArray : [PaymentMethod] = []
             
             if  let methodsJSON = JSON["PaymentMethods"] as? NSArray{
@@ -136,16 +136,16 @@ internal class Networking {
                        environment: Environment ,
                        success: @escaping (( PaymentMethod ) -> Void) ,
                        fail: ((NSError) -> Void)? ) -> Alamofire.Request{
-        var params = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "cardType" : type.rawValue , "is_single_use" : String(describing: NSNumber(value: isSingleUse))]
+        var params : Parameters = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "cardType" : type.rawValue , "is_single_use" : String(describing: NSNumber(value: isSingleUse))]
        
         if environment != .Production{
         params["env"] = "test"
         }
         
-        return  request(PCIDomain! + "/PaymentManager/api/v1/paymentMethods/addCreditcard", method: .POST, parameters: params , success: { JSON in
+        return  request(PCIDomain! + "/PaymentManager/api/v1/paymentMethods/addCreditcard", method: .post, parameters: params , success: { JSON in
             
             let methodJSON = JSON["pm"] as? NSDictionary
-            if let methodJSON = methodJSON, methodJSON.isKindOfClass(NSDictionary) == true{
+            if let methodJSON = methodJSON{
                 success(PaymentMethod(JSON: methodJSON )!)
             }else{
                 if let fail = fail{
@@ -158,7 +158,7 @@ internal class Networking {
             
             
             
-            }, fail: fail , encoding: .JSON)
+            }, fail: fail , encoding: JSONEncoding.default)
     }
     
     func setPaymentMethodAsDefault( _ accessToken: String , methodId: String , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request{
@@ -166,7 +166,7 @@ internal class Networking {
         
         let urlStr = domain! + "/wallet/api/v1/wallet/default"
         
-        return  request(urlStr,  method: .POST, parameters: params , success: { JSON in
+        return  request(urlStr,  method: .post, parameters: params , success: { JSON in
             success()
             
             }, fail: fail)
@@ -176,18 +176,18 @@ internal class Networking {
         let params = [ "accessToken": accessToken , "ID": methodId]
         let urlStr = domain! + "/wallet/api/v1/wallet/deletePaymentMethod"
         
-        return  request(urlStr, method: .POST , parameters:  params , success: { JSON in
+        return  request(urlStr, method: .post , parameters:  params , success: { JSON in
             success()
             
             }, fail: fail)
     }
     
     //MARK: - private functions
-    internal  func request(_ url: String , method: Alamofire.Method , parameters: [String: AnyObject]? = nil , success: (( _ object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? , encoding: ParameterEncoding = .URL) -> Alamofire.Request {
+    internal  func request(_ url: String , method: HTTPMethod , parameters: Parameters? = nil , success: (( _ object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? , encoding: ParameterEncoding = URLEncoding.default) -> Alamofire.Request {
         
         
         
-        let request = Alamofire.request(method, url, parameters:parameters , encoding:  encoding)
+        let request = Alamofire.request( url,method: method , parameters:parameters , encoding:  encoding)
             .validate(statusCode: 200..<201)
             .validate(contentType: ["application/json"])
             .responseString{ response in
@@ -196,7 +196,7 @@ internal class Networking {
             }.responseJSON { response in
                 
                 switch response.result {
-                case .Success(let JSON):
+                case .success(let JSON):
                     
                     //                    let responseJSON = JSON as! NSDictionary
                     //
@@ -215,13 +215,13 @@ internal class Networking {
                     //
                     //                    }
                     if let success = success {
-                        success(object: JSON as! NSDictionary)
+                        success( JSON as! NSDictionary)
                     }
                     
                     
                     
                     
-                case .Failure(let error):
+                case .failure(let error):
                     
                     
                     
@@ -238,14 +238,14 @@ internal class Networking {
                                 if let code = code , let msgKey = msgKey {
                                   let msg = LocalData.manager.getString("errors" + msgKey)
 
-                                    let errorWithMessage = NSError(domain: error.domain, code: code , userInfo: [NSLocalizedDescriptionKey : msg])
+                                    let errorWithMessage = NSError(domain: Const.serverErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : msg])
                                     
                                     fail(errorWithMessage)
                                 } else{
                                     fail(error as NSError)
                                 }
                             }else{
-                                fail(error)
+                                fail(error as NSError)
                             }
                         }
                     }

@@ -126,7 +126,9 @@ open class PaypalFactory : PaymentMethodFactory{
     
     
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-    but.kf_setImageWithURL(URL( string: LocalData.manager.getString("walletIconspaypal") ), forState: .Normal , placeholderImage: nil , optionsInfo: [.ScaleFactor(3.0)])
+    but.kf.setImage(with: URL( string: LocalData.manager.getString("walletIconspaypal") ), for: .normal , placeholder: nil , options: [.scaleFactor(3.0)])
+    
+    
     but.addTarget(self, action: #selector(PaypalFactory.addMethodButPressed(_:)), for: .touchUpInside)
     
     return but
@@ -145,16 +147,39 @@ open class PaypalFactory : PaymentMethodFactory{
   }
 }
 extension PaypalFactory : BTViewControllerPresentingDelegate{
-  @objc public func paymentDriver(_ driver: AnyObject, requestsDismissalOf viewController: UIViewController) {
-    if let delegate = self.delegate{
-      delegate.dismissViewController(viewController)
-      //  delegate.showLoadingIndicator(self, show: false)
+    /*!
+     @brief The payment driver requires presentation of a view controller in order to proceed.
+     
+     @discussion Your implementation should present the viewController modally, e.g. via
+     `presentViewController:animated:completion:`
+     
+     @param driver         The payment driver
+     @param viewController The view controller to present
+     */
+    @available(iOS 2.0, *)
+    public func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
+        if let delegate = self.delegate{
+            delegate.displayViewController(viewController)
+        }
     }
-  }
-  @objc public func paymentDriver(_ driver: AnyObject, requestsPresentationOf viewController: UIViewController){
-    if let delegate = self.delegate{
-      delegate.displayViewController(viewController)
+
+    /*!
+     @brief The payment driver requires dismissal of a view controller.
+     
+     @discussion Your implementation should dismiss the viewController, e.g. via
+     `dismissViewControllerAnimated:completion:`
+     
+     @param driver         The payment driver
+     @param viewController The view controller to be dismissed
+     */
+    @available(iOS 2.0, *)
+    public func paymentDriver(_ driver: Any, requestsDismissalOf viewController: UIViewController) {
+        if let delegate = self.delegate{
+            delegate.dismissViewController(viewController)
+            //  delegate.showLoadingIndicator(self, show: false)
+        }
     }
-  }
+
+
   
 }

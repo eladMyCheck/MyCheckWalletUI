@@ -142,7 +142,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRow(inComponent: 0)]
         self.paymentMethodSelectorTextField.text = self.selectedMethod!.longName
         if let selectedMethod = selectedMethod {
-            self.typeImage.kf_setImageWithURL(self.imageURL(selectedMethod))
+            self.typeImage.kf.setImage(with: self.imageURL(selectedMethod))
         }
         self.view.endEditing(true)
     }
@@ -168,7 +168,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                 self.paymentSelectorView.isHidden = false
                 self.paymentMethodSelectorTextField.text = self.selectedMethod!.longName
                 
-                self.typeImage.kf_setImageWithURL(self.imageURL(self.paymentMethods.first!))
+                self.typeImage.kf.setImage(with:self.imageURL(self.paymentMethods.first!))
                 
                 self.checkbox.isHidden = true
                 self.checkBoxLabel.isHidden = true

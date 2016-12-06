@@ -29,7 +29,7 @@ extension MyCheckWallet {
             }
         }
     }
-    func addPayPal(_ nonce: String, success: ((PaymentMethod?) -> Void) , fail: ((NSError) -> Void)? ){
+    func addPayPal(_ nonce: String, success: @escaping ((PaymentMethod?) -> Void) , fail: ((NSError) -> Void)? ){
         
         if let token = token{
             Networking.manager.addPayPal(token, nonce: nonce, success: success, fail: fail)

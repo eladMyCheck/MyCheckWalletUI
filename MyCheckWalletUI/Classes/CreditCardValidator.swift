@@ -194,7 +194,7 @@ internal class CreditCardValidator {
         
         for tuple in digitStrings.enumerated() {
             guard let digit = Int(tuple.element) else { return false }
-            let odd = tuple.index % 2 == 1
+            let odd = tuple.offset % 2 == 1
             
             switch (odd, digit) {
             case (true, 9):

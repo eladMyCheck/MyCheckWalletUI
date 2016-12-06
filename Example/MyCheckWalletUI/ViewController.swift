@@ -21,7 +21,7 @@ class ViewController: UIViewController {
        containerView.isHidden = true
         MyCheckWallet.manager.login("eyJpdiI6IkZ4N3hGMHU5UG42ZzMrOHlFcTFnRGc9PSIsInZhbHVlIjoibmJQR3VkVU9oN2NxbnB1T3BYV1NSM3FEbVNjQU52blB0Y2VnOEZycVZXZz0iLCJtYWMiOiJjYWI2NWY5Mzg5YTRmYmM5OWZjNWYyYjVjNTg0N2VkYWE3OWUzMGJlZWQwYWQ0MjNkNjMzYTRkMzNhMmVjNzNjIn0", success: {
             //The view should only be displaid after a user is logged in
-            self.containerView.hidden = false
+            self.containerView.isHidden = false
         
             } , fail: { error in
         
@@ -31,14 +31,14 @@ class ViewController: UIViewController {
 
 internal override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "checkout" {
-               checkoutViewController = segue.destinationViewController as? MCCheckoutViewController
+               checkoutViewController = segue.destination as? MCCheckoutViewController
           checkoutViewController?.checkoutDelegate = self
     }
 }
 //MARK: - actions
   @IBAction func paymentMethodsPressed(_ sender: AnyObject) {
     let controller = MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
-    self.presentViewController(controller, animated: true, completion: nil)
+    self.present(controller, animated: true, completion: nil)
   }
     
     
@@ -48,7 +48,7 @@ internal override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     //when a payment method is available you can get the method from the checkoutViewController using the selectedMethod variable. If it's nil non exist
     if let method = checkoutViewController!.selectedMethod {
     message =  " " + " token: " + method.token
-      UIPasteboard.generalPasteboard().string = method.token
+      UIPasteboard.general.string = method.token
 
     }
 
@@ -81,6 +81,6 @@ extension ViewController : MCPaymentMethodsViewControllerDelegate{
   
   
  func dismissedMCPaymentMethodsViewController(_ controller: MCPaymentMethodsViewController){
-     controller.dismissViewControllerAnimated(true, completion: nil)
+     controller.dismiss(animated: true, completion: nil)
   }
 }

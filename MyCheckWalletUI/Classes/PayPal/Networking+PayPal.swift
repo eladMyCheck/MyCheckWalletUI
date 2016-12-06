@@ -24,7 +24,7 @@ extension Networking {
         if let domain = domain {
             let urlStr = domain + "/wallet/api/v1/external-payment/vzero/token"
             
-            return  request(urlStr, method: .GET, parameters: params , success: { JSON in
+            return  request(urlStr, method: .get, parameters: params , success: { JSON in
                 if let newToken = JSON["token"] as? String{
                     success(newToken)
                 }else{
@@ -50,7 +50,7 @@ extension Networking {
         if let domain = domain {
             let urlStr = domain + "/wallet/api/v1/wallet/paymentMethod"
             
-            return  request(urlStr, method: .POST, parameters: params , success: { JSON in
+            return  request(urlStr, method: .post, parameters: params , success: { JSON in
                 let pm =  JSON["pm"] as! NSDictionary
                 let method = PaymentMethod(JSON: pm)
                 success(method)
