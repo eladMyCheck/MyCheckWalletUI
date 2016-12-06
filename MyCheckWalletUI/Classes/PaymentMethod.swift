@@ -54,7 +54,7 @@ open class PaymentMethod{
   internal  var  name : String? = nil
     internal var longName : String? { get{
         if let strName = name, isSingleUse  {
-           return strName + "  (Temporary Card)"
+           return strName + "  (Temp Card)"
         }
         return name
         }
