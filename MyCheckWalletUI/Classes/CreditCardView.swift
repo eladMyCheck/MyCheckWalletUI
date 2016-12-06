@@ -107,6 +107,9 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     
     func creditCardPressed(_ sender: UIButton!){
         if editMode == false {
+            if (self.paymentMethod?.isSingleUse)! {
+                return
+            }
             if self.paymentMethod?.isDefault == false {
                 self.delegate?.showActivityIndicator(true)
                 MyCheckWallet.manager.setPaymentMethodAsDefault(self.paymentMethod!, success: {
