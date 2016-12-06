@@ -52,14 +52,21 @@ open class PaymentMethod{
   
   // A string with a user readable description of the payment method, e.g. XXXX-1234
   internal  var  name : String? = nil
-    internal var longName : String? { get{
-        if let strName = name, isSingleUse  {
-           return strName + "  (Temp Card)"
+
+    var checkoutName: String? {get{
+        
+        guard let lastFourDigits = self.lastFourDigits else{
+        return self.issuerFull
         }
-        return name
+       
+        var toReturn = issuerFull + "-" + lastFourDigits
+        if isSingleUse{
+        
+        return toReturn  + "  (Temp Card)"
         }
+        return toReturn
+        }}
     
-    }
     /// The month the credit card expires
   open  var  expireMonth : String? = nil
     
@@ -77,6 +84,7 @@ open class PaymentMethod{
     
     ///A short form string of the issuer name
    open let issuerShort: String
+    private let issuerFull : String
 
     ///The issuer name
    open let issuer: CreditCardType
@@ -120,6 +128,7 @@ open class PaymentMethod{
             isSingleUse = number.boolValue
             issuerShort = JSON["issuer_short"] as! String
            let  issuerStr = JSON["issuer_full"] as! String
+            issuerFull = issuerStr
             let tmpType = CreditCardType(rawValue: issuerStr)
             if let tmpType = tmpType{
             issuer = tmpType
