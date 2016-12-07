@@ -29,6 +29,8 @@ internal class Networking {
     var PCIDomain: String?
     var environment = Environment.Sandbox
     func configureWallet(_ environment: Environment , success: @escaping (_ domain: String , _ pci: String ,_ JSON: NSDictionary, _ strings: NSDictionary) -> Void ,  fail: ((NSError) -> Void)? ) -> Alamofire.Request {
+        URLCache.shared .removeAllCachedResponses()
+
         var urlStr = CDNAddresses.prod
         self.environment = environment
         switch(environment){

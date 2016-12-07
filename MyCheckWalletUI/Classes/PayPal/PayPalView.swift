@@ -9,7 +9,10 @@
 import UIKit
 
 class PayPalView: CreditCardView {
-
+    var emailLabel : UILabel? {
+        get{
+        return creditCardNumberlabel
+        }}
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -20,7 +23,7 @@ class PayPalView: CreditCardView {
    override init(frame: CGRect, method: PaymentMethod){
    super.init(frame: frame, method: method)
     self.expirationDateLabel?.removeFromSuperview()
-//    self.creditCardNumberlabel?.removeFromSuperview()
+    emailLabel?.textColor = LocalData.manager.getColor("managePaymentMethodsColorspaypalCardText", fallback: (emailLabel?.textColor)!)
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
     let image = UIImage(named: "paypal_background" , in: bundle, compatibleWith: nil)
     backgroundButton!.setImage(image, for: UIControlState())
