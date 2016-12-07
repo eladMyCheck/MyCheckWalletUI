@@ -18,7 +18,7 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "MyCheckWalletUI/Classes/**/*",
+  "source_files": "MyCheckWalletUI/Classes/*",
   "resource_bundles": {
     "MyCheckWalletUI": [
       "MyCheckWalletUI/Assets/*"
@@ -31,12 +31,24 @@
     ],
     "Kingfisher": [
       "~> 3.0"
-    ],
-    "Braintree/PayPal": [
-
-    ],
-    "Braintree/DataCollector": [
-
     ]
-  }
+  },
+  "default_subspecs": "Core",
+  "subspecs": [
+    {
+      "name": "Core"
+    },
+    {
+      "name": "PayPal",
+      "source_files": "MyCheckWalletUI/Classes/paypal/**/*",
+      "dependencies": {
+        "Braintree/PayPal": [
+
+        ],
+        "Braintree/DataCollector": [
+
+        ]
+      }
+    }
+  ]
 }

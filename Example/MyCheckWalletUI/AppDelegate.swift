@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     MyCheckWallet.manager.configureWallet("pk_94v318RxSM2eyGa1Kvzp9uabGErti", environment: .Test)
       MyCheckWallet.logDebugData = true
-        PaypalFactory.initiate("com.mycheck.MyCheckWalletUI-Example")
+          PaypalFactory.initiate("com.mycheck.MyCheckWalletUI-Example")
                 return true
     }
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {

@@ -69,7 +69,7 @@ open class PaymentMethodFactory: NSObject {
     
     }
     func getCreditCardView(_ frame: CGRect, method: PaymentMethod) -> CreditCardView?{
-        return PayPalView(frame: frame, method: method)
+        return CreditCardView(frame: frame, method: method)
     }
   
   

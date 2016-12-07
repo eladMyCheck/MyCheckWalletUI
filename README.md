@@ -1,3 +1,4 @@
+MyCheckUI 
 # MyCheckWalletUI
 An SDK that supplies UI for payment method managment.
 
@@ -49,32 +50,32 @@ Before displaying any UI you will have to login:
 
 ```
 MyCheckWallet.manager.login(YOUR_REFRESH_TOKEN, success: {
-    //handle success
+//handle success
 } , fail: { error in
-    //handle failure
+//handle failure
 })
 ```
 Once you are logged in you can display the MyCheck UI. We have two UI elements
 
 ###MCCheckoutViewController
 This view controller is meant to be embedded inside your view controller. It allows the user the basic functions needed from a wallet:
-  1. Add a credit card
-  2. Select a credit card
+1. Add a credit card
+2. Select a credit card
 The view controller should be added into a container view. It can be done in two ways.
 
-  1. Interface builder: change the view controller that the container is connect to (by segue) to `MCCheckoutViewController`. 
-  2. In code: call MCCheckoutViewController.init() in order to create the instance.
+1. Interface builder: change the view controller that the container is connect to (by segue) to `MCCheckoutViewController`.
+2. In code: call MCCheckoutViewController.init() in order to create the instance.
 
 Once an instance is created you should set `checkoutDelegate` and implement  `checkoutViewShouldResizeHeight` in order to respond to height changes. You should resize the container view to have the height returned by the delegate method.
-When you want to use a payment method use the view controllers variable `selectedMethod` in order to get the method the user selected (or nil if nonexistent) 
+When you want to use a payment method use the view controllers variable `selectedMethod` in order to get the method the user selected (or nil if nonexistent)
 
 ###MCPaymentMethodsViewController
 This class is a full screen view controller that allows the user to fully manage his/her payment methods:
 
-  1. Display all his/her payment methods.
-  2. Choose a default payment method.
-  3. Delete payment methods.
-  4. Add payment methods.
+1. Display all his/her payment methods.
+2. Choose a default payment method.
+3. Delete payment methods.
+4. Add payment methods.
 
 In order to create a MCPaymentMethodsViewController instance call the constructor and present it like so:
 
@@ -84,7 +85,7 @@ self.presentViewController(controller, animated: true, completion: nil)
 
 ```
 
-You must also implement the MCPaymentMethodsViewControllerDelegate and dismiss the view controller when it is done 
+You must also implement the MCPaymentMethodsViewControllerDelegate and dismiss the view controller when it is done
 example
 
 ```
@@ -94,15 +95,36 @@ controller.dismissViewControllerAnimated(true, completion: nil)
 }
 
 ```
+## PayPal
+Their are a few extra steps to take in order for PayPal to work.
+Start by installing the PayPal model. This will add the Braintree PayPal SDK as well as extra source files from the MyCheck Wallet UI SDK. Add this line to your Podfile:
+
+```
+pod "MyCheckWalletUI/PayPal"
+```
+once this is done you will need to also add a line of code initializing the PayPal model. 
+```
+PaypalFactory.initiate(YOUR_PACKAGE_NAME)
+```
+The last line of code necessary is to allow the MyCheck Wallet UI SDK to respond to  app switching. This is necessary because the PayPal SDK opens an external app/ browser. 
+```
+
+func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+
+return MyCheckWallet.manager.handleOpenURL(url, sourceApplication: sourceApplication)
+
+}
+```
+
+Lastly, to fully support PayPal and the app switching it uses please edit your info.plist  as described in the "Register a URL type" section of the [PayPal Braintree SDK guide found here](https://developers.braintreepayments.com/guides/paypal/client-side/ios/v4).
+
 
 ## Authors
 
 Elad Schiller, eladsc@mycheckapp.com
-Mihail Kalichkov, mihailk@mycheckapp.com 
+Mihail Kalichkov, mihailk@mycheckapp.com
 ## License
 
 Please read the LICENSE file available in the project
-
-
 
 

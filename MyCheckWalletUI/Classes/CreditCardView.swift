@@ -79,7 +79,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         
         //default card checkbox
       
-        self.checboxButton = UIButton(frame: CGRect(x: 165, y: 0, width: 20, height: 20))
+        self.checboxButton = UIButton(frame: CGRect(x: 168, y: 0, width: 22, height: 22))
         self.checboxButton?.addTarget(self, action: #selector(checkboxPressed(_:)), for: .touchUpInside)
         self.checboxButton?.adjustsImageWhenHighlighted = false
         addSubview(self.checboxButton!)

@@ -10,7 +10,7 @@ import UIKit
 extension String {
   
   func fromBase64() -> String? {
-    guard let data = Data(base64Encoded: self, options: NSData.Base64DecodingOptions(rawValue: 0)) else {
+    guard let data = Data(base64Encoded: self, options: Data.Base64DecodingOptions(rawValue: 0)) else {
       return nil
     }
     
@@ -22,6 +22,6 @@ extension String {
       return nil
     }
     
-    return data.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+    return data.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
   }
 }

@@ -13,7 +13,7 @@ internal protocol MCCreditCardsViewControllerrDelegate {
 }
 
 internal class MCCreditCardsViewController: MCViewController , UIGestureRecognizerDelegate, CreditCardViewDelegate{
-    let cardViewWidth = 193.0 as CGFloat
+    let cardViewWidth = 210.0 as CGFloat
     var startMargin = 106 as CGFloat
     
     @IBOutlet weak var navBar: UINavigationBar!
