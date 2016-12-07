@@ -59,7 +59,7 @@ open class PaymentMethod{
         return self.issuerFull
         }
        
-        var toReturn = issuerFull + "-" + lastFourDigits
+        var toReturn = issuerFull.capitalizingFirstLetter() + " " + lastFourDigits
         if isSingleUse{
         
         return toReturn  + "  (Temp Card)"

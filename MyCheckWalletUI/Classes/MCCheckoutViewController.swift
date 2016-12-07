@@ -142,7 +142,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRow(inComponent: 0)]
         self.paymentMethodSelectorTextField.text = self.selectedMethod!.checkoutName
         if let selectedMethod = selectedMethod {
-            self.typeImage.kf.setImage(with: self.imageURL(selectedMethod))
+            self.typeImage.kf.setImage(with: self.imageURLForDropdown(selectedMethod))
         }
         self.view.endEditing(true)
     }
@@ -168,7 +168,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                 self.paymentSelectorView.isHidden = false
                 self.paymentMethodSelectorTextField.text = self.selectedMethod!.checkoutName
                 
-                self.typeImage.kf.setImage(with:self.imageURL(self.paymentMethods.first!))
+                self.typeImage.kf.setImage(with:self.imageURLForDropdown(self.paymentMethods.first!))
                 
                 self.checkbox.isHidden = true
                 self.checkBoxLabel.isHidden = true
@@ -188,8 +188,9 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         paymentMethodSelector.backgroundColor = UIColor.white
         paymentMethodSelectorTextField.inputView = paymentMethodSelector
         addDoneButtonOnPicker(paymentMethodSelectorTextField, action: #selector(donePressed(_: )))
+        self.errorLabel.text = "" //empty label in case it is displaying past errors
     }
-    internal override func imageURL( _ type: CreditCardType) -> URL?{
+    internal  func imageURLForDropdown( _ type: CreditCardType) -> URL?{
         switch type {
         case .MasterCard:
             return URL(string:  LocalData.manager.getString("cardsDropDownmastercard"))!
@@ -212,11 +213,11 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
 
     }
     
-    internal func imageURL( _ method: PaymentMethod) -> URL?{
+    internal func imageURLForDropdown( _ method: PaymentMethod) -> URL?{
         let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
         let type = method.type
         if type == .creditCard {
-        return imageURL(method.issuer)
+        return imageURLForDropdown(method.issuer)
         }
         if method.type == .payPal{
             return URL(string:  LocalData.manager.getString("cardsDropDownpaypal"))!
