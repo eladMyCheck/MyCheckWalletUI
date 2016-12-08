@@ -151,10 +151,11 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     
     func configureUI(){
-        creditCardNumberField.attributedPlaceholder = NSAttributedString(string:"1234 1234 1234 1234", attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
-        dateField.attributedPlaceholder = NSAttributedString(string:"mm/yy", attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
-        cvvField.attributedPlaceholder = NSAttributedString(string:"CVV", attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
-        zipField.attributedPlaceholder = NSAttributedString(string:"ZIP/Postal", attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
+      
+        creditCardNumberField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardNumPlaceHoldar" ,fallback: "1234 1234 1234 1234"), attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
+        dateField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardDatePlaceHoldar" ,fallback: dateField.placeholder), attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
+        cvvField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder), attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
+        zipField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder), attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
         for view in textFieldsBorderViews {
             view.layer.borderColor = UIColor(r: 124, g: 114, b: 112, a: 1).cgColor
             view.layer.borderWidth = 1.0
@@ -419,6 +420,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     }
     
     @objc internal override func setupUI(){
+        
         header.text = LocalData.manager.getString("checkoutPagecheckoutSubHeader" , fallback: header.text)
                 dropdownHeader.text = LocalData.manager.getString("checkoutPagecardDropDownHeader" , fallback:dropdownHeader.text)
         managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.title(for: UIControlState())) , for: UIControlState())
