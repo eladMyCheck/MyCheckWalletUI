@@ -18,6 +18,9 @@ class PayPalPaymentMethod: PaymentMethod {
     }
   }
     override var checkoutName: String? {get{
+        if isSingleUse {
+         return "PayPal (" + LocalData.manager.getString("checkoutPagetemporaryCard", fallback: "temporary card)") + ")"
+        }
         return "PayPal"
         }
     }

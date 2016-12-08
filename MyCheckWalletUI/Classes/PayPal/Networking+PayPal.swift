@@ -43,8 +43,8 @@ extension Networking {
         
     }
     
-    func addPayPal(_ accessToken: String ,nonce: String, success: @escaping ((PaymentMethod?) -> Void) , fail: ((NSError) -> Void)? )-> Alamofire.Request?{
-        let params = [ "accessToken": accessToken , "source":"paypal" , "nonce":nonce]
+    func addPayPal(_ accessToken: String ,nonce: String, singleUse: Bool ,success: @escaping ((PaymentMethod?) -> Void) , fail: ((NSError) -> Void)? )-> Alamofire.Request?{
+        let params = [ "accessToken": accessToken , "source":"paypal" , "nonce":nonce , "is_single_use":  String(describing: NSNumber(value: singleUse))]
         
         
         if let domain = domain {

@@ -227,6 +227,9 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
     
 }
 extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
+    internal func shouldBeSingleUse(_ controller: PaymentMethodFactory) -> Bool {
+        return false
+    }
     func error(_ controller: PaymentMethodFactory , error:NSError){
         printIfDebug( error.localizedDescription )
         
@@ -256,7 +259,8 @@ extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
     }
   func showLoadingIndicator(_ controller: PaymentMethodFactory, show: Bool) {
     show ? activityInidicator.startAnimating() : activityInidicator.stopAnimating()
-  
+    self.view.isUserInteractionEnabled = !show
+
   }
     
 }

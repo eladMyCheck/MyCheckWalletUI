@@ -53,8 +53,11 @@ open class PaypalFactory : PaymentMethodFactory{
               return;
             }
           }
-          if let nonce = nonce{
-            MyCheckWallet.manager.addPayPal(nonce.nonce, success: { method in
+          if let nonce = nonce , let delegate = self.delegate{
+            
+                let singleUse = delegate.shouldBeSingleUse(self)
+                
+            MyCheckWallet.manager.addPayPal(nonce.nonce, singleUse: singleUse, success: { method in
               var token = ""
               if let method = method {
                 token = method.token
@@ -75,8 +78,8 @@ open class PaypalFactory : PaymentMethodFactory{
             
             delegate.showLoadingIndicator(self, show: false)
             }
-          }
-        })
+            }
+            })
       }
       }, fail: {error in
         if let delegate = self.delegate{

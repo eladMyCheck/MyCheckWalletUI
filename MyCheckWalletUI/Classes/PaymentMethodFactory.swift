@@ -7,13 +7,15 @@
 //
                     
 import UIKit
-internal protocol PaymentMethodFactoryDelegate{
+ internal protocol PaymentMethodFactoryDelegate{
     func error(_ controller: PaymentMethodFactory , error:NSError)
     func addedPaymentMethod(_ controller: PaymentMethodFactory ,token:String)
     func displayViewController(_ controller: UIViewController )
 
     func dismissViewController(_ controller: UIViewController )
   func showLoadingIndicator(_ controller: PaymentMethodFactory ,show: Bool)
+    //askes the delegate if to add the payment method for single use or not
+      func shouldBeSingleUse(_ controller: PaymentMethodFactory) -> Bool
 }
 
 open class PaymentMethodFactory: NSObject {

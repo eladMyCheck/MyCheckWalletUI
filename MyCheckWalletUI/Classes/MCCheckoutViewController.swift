@@ -522,6 +522,10 @@ extension MCCheckoutViewController : UIPickerViewDelegate , UIPickerViewDataSour
 
 
 extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
+    internal func shouldBeSingleUse(_ controller: PaymentMethodFactory) -> Bool {
+        return checkbox.isSelected
+    }
+
     func error(_ controller: PaymentMethodFactory , error:NSError){
         printIfDebug( error.localizedDescription )
         
@@ -547,6 +551,7 @@ extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
     }
   func showLoadingIndicator(_ controller: PaymentMethodFactory, show: Bool) {
     self.showActivityIndicator( show)
+    self.view.isUserInteractionEnabled = !show
 
   }
 }
