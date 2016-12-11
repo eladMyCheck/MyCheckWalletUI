@@ -22,12 +22,16 @@ internal class LocalData{
     //adds all the strings to strings parameter where the key is the same key with a prefix of all its parent's keys
     func addStrings(_ prefix: String? , dictionary: NSDictionary){
         let prefixFinal = prefix == nil ? "" : prefix!
-        
         for (key , value) in dictionary{
+            let keyFinal = "\(prefixFinal)\(key)"
+
             if let str = value as? String{
-            strings["\(prefixFinal)\(key)"] = str
+            strings[keyFinal] = str
             }else if let dic = value as? NSDictionary{
-            self.addStrings( "\(prefixFinal)\(key)" , dictionary: dic)
+            self.addStrings( keyFinal , dictionary: dic)
+            }else if let num = value as? NSNumber{
+                strings[keyFinal] = String(describing: num)
+
             }
         }
     
@@ -50,5 +54,14 @@ internal class LocalData{
         }
         return fallback
    
+    }
+    
+    func getDouble(_ key: String , fallback: Double) -> Double{
+        let str = getString(key)
+        if str.characters.count > 0 {
+          return Double(str)!
+        }
+        return fallback
+        
     }
 }

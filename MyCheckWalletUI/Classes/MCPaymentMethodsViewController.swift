@@ -23,6 +23,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     fileprivate var creditCardVC: MCAddCreditCardViewController?
     fileprivate var creditCardListVC: MCCreditCardsViewController?
     
+    @IBOutlet weak var creditCardContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var walletsSuperview: UIView!
     ///The delegate method that will be called when the View Controller is ready to be dismissed.
     weak var delegate: MCPaymentMethodsViewControllerDelegate?
@@ -116,6 +117,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "creditCardSubViewController" {
             creditCardVC = segue.destination as? MCAddCreditCardViewController
+            creditCardVC?.containerHeight = creditCardContainerHeight
         }else if segue.identifier == "creditCardsViewController"{
             creditCardListVC = segue.destination as? MCCreditCardsViewController
             creditCardListVC!.paymentMethods = self.paymentMethods
