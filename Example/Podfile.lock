@@ -40,7 +40,7 @@ SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   Braintree: 3eee856da5d30357a55439283b4bb3dbaddcaa7c
   Kingfisher: 821466474ad7ffc375a4aecadfa05068cfed67b3
-  MyCheckWalletUI: 1c2ff6d4e27283e7716eb451b78718f294805a37
+  MyCheckWalletUI: 09c95a59cf496d400282cf1c2b31e23e1ddf5b64
 
 PODFILE CHECKSUM: e0f62291ea932f050b1b7e974b3f618eccf61c49
 

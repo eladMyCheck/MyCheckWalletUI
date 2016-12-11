@@ -18,6 +18,8 @@ open class MCAddCreditCardViewController: MCViewController {
     @IBOutlet weak var errorHeight: NSLayoutConstraint!
     
  internal weak var containerHeight: NSLayoutConstraint!
+    @IBOutlet weak var checkboxLabel: UILabel!
+    @IBOutlet weak var checkbox: UIButton!
 
     @IBOutlet internal weak var applyButton: UIButton!
     @IBOutlet internal var typeImage: UIImageView!
@@ -68,6 +70,10 @@ open class MCAddCreditCardViewController: MCViewController {
     
     
     //MARK: - actions
+    @IBAction func checkboxPressed(_ sender: UIButton) {
+        
+        sender.isSelected = !sender.isSelected
+    }
     @IBAction func ApplyPressed(_ sender: AnyObject) {
         
         if updateAndCheckValid(){

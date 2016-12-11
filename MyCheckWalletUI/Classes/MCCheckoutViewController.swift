@@ -31,7 +31,6 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBOutlet weak fileprivate  var paymentSelectorView: UIView!
     @IBOutlet weak  fileprivate  var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
     @IBOutlet weak var acceptedCreditCardsViewTopToCollapsableViewConstraint: NSLayoutConstraint!
-    @IBOutlet weak fileprivate var checkbox: UIButton!
     @IBOutlet weak fileprivate var paymentMethodSelectorTextField: UITextField!
     @IBOutlet weak fileprivate var colapsableContainer: UIView!
     @IBOutlet weak fileprivate var cancelButton: UIButton!
@@ -170,16 +169,13 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                 self.paymentMethodSelectorTextField.text = self.selectedMethod!.checkoutName
                 
                 self.typeImage.kf.setImage(with:self.imageURLForDropdown(self.paymentMethods.first!))
-                
-                self.checkbox.isHidden = true
-                self.checkBoxLabel.isHidden = true
+             
             }else{
                 let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
                 typeImage.image = UIImage(named: "no_type_card_1" , in: bundle, compatibleWith: nil)!
                 creditCardNumberField.isHidden = false
                 self.paymentSelectorView.isHidden = true
-                self.checkbox.isHidden = false
-                self.checkBoxLabel.isHidden = false
+   
             }
         }
         self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
@@ -299,7 +295,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         return true
     }
     
-    @IBAction func checkboxPressed(_ sender: UIButton) {
+    @IBAction override func checkboxPressed(_ sender: UIButton) {
         self.checkbox.isSelected = !self.checkbox.isSelected
     }
     
@@ -336,9 +332,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                 if method.isSingleUse == true{
                     
                   
-                    self.checkbox.isHidden = true
-                    self.checkBoxLabel.isHidden = true
-                    self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
+                                       self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
                     
                 }
                     self.newPaymenteMethodAdded()
@@ -394,7 +388,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     func moveAcceptedCreditCardsViewToCreditCardField(_ move : Bool , animated: Bool){
         let animationLength = animated ? 0.2 : 0
-        let baseHeight = 272.0 as Float
+        let baseHeight = 282.0 as Float
         self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
         self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
         
