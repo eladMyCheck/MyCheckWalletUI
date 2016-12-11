@@ -95,15 +95,21 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="RH6-Eu-QMK">
                             <rect key="frame" x="266" y="10" width="14" height="7"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAm-kq-Ygm">
+                            <rect key="frame" x="234" y="-1.5" width="46" height="30"/>
+                            <state key="normal" title="Button"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="0oB-XW-gXs" secondAttribute="trailing" constant="17" id="0oD-gs-CSi"/>
                         <constraint firstItem="0oB-XW-gXs" firstAttribute="leading" secondItem="pTi-ub-50G" secondAttribute="leading" id="CVe-Wq-cCz"/>
                         <constraint firstItem="0oB-XW-gXs" firstAttribute="top" secondItem="pTi-ub-50G" secondAttribute="top" id="H7O-oc-jHc"/>
+                        <constraint firstItem="QAm-kq-Ygm" firstAttribute="centerY" secondItem="RH6-Eu-QMK" secondAttribute="centerY" id="Q3C-Vx-EP7"/>
                         <constraint firstItem="RH6-Eu-QMK" firstAttribute="centerY" secondItem="pTi-ub-50G" secondAttribute="centerY" id="Rsc-SM-l7L"/>
                         <constraint firstAttribute="trailing" secondItem="RH6-Eu-QMK" secondAttribute="trailing" constant="8" id="Ty3-7i-8rR"/>
                         <constraint firstAttribute="bottom" secondItem="0oB-XW-gXs" secondAttribute="bottom" id="Vx4-zl-F0m"/>
+                        <constraint firstItem="QAm-kq-Ygm" firstAttribute="trailing" secondItem="RH6-Eu-QMK" secondAttribute="trailing" id="ZuJ-Dl-ibO"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234 1234 1234 1234" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YDa-E9-pMW">
