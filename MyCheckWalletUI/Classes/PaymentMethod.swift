@@ -62,7 +62,7 @@ open class PaymentMethod{
         var toReturn = issuerFull.capitalizingFirstLetter() + " " + lastFourDigits
         if isSingleUse{
         
-            return toReturn + " (" + LocalData.manager.getString("checkoutPagetemporaryCard", fallback: "temporary card)") + ")"
+            return toReturn + " " + LocalData.manager.getString("checkoutPagetemporaryCard", fallback: "(temporary card)")
         }
         return toReturn
         }}

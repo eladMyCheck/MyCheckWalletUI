@@ -34,6 +34,7 @@
                 <outlet property="dateField" destination="OMD-Q3-h8X" id="OP6-fk-k7i"/>
                 <outlet property="dateFieldBorderView" destination="kLK-VW-lfS" id="fbb-GT-29k"/>
                 <outlet property="dateUnderline" destination="tJI-vV-AMV" id="9dk-Li-X9B"/>
+                <outlet property="deleteBut" destination="QAm-kq-Ygm" id="IwA-pR-mHe"/>
                 <outlet property="dinersImageView" destination="Lj6-Qe-D0a" id="V34-bh-BIe"/>
                 <outlet property="discoverImageView" destination="eQ6-mT-kHy" id="Iu4-bj-BO7"/>
                 <outlet property="dropdownHeader" destination="kb4-tj-hY9" id="8xL-91-UgF"/>
@@ -96,8 +97,12 @@
                             <rect key="frame" x="266" y="10" width="14" height="7"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAm-kq-Ygm">
-                            <rect key="frame" x="234" y="-1.5" width="46" height="30"/>
-                            <state key="normal" title="Button"/>
+                            <rect key="frame" x="246" y="0.5" width="34" height="26"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
+                            <state key="normal" title="Delete"/>
+                            <connections>
+                                <action selector="deletePressed:" destination="-1" eventType="touchUpInside" id="WwC-RS-ZIo"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -287,7 +292,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNs-hB-C9a">
-                    <rect key="frame" x="-10" y="277.5" width="391" height="110"/>
+                    <rect key="frame" x="-10" y="260.5" width="391" height="110"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Add Card With" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPT-U7-LZa">
                             <rect key="frame" x="139" y="0.0" width="113" height="16"/>
@@ -386,7 +391,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0F-KO-oYg">
-                    <rect key="frame" x="0.0" y="397.5" width="375" height="110"/>
+                    <rect key="frame" x="0.0" y="380.5" width="375" height="110"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cards Accepted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wA0-gS-QqR">
                             <rect key="frame" x="136" y="0.0" width="103.5" height="16"/>
@@ -480,10 +485,10 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeh-NB-TXJ">
-                    <rect key="frame" x="16" y="210" width="343" height="48"/>
+                    <rect key="frame" x="16" y="226" width="343" height="35"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="343" id="RGD-j9-1ax"/>
-                        <constraint firstAttribute="height" constant="48" id="io2-BK-07I"/>
+                        <constraint firstAttribute="height" constant="35" id="io2-BK-07I"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
                     <color key="textColor" red="0.17120682570000001" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -505,7 +510,7 @@
                 <constraint firstAttribute="trailingMargin" secondItem="BNs-hB-C9a" secondAttribute="trailing" constant="-14" id="HOH-2U-89Y"/>
                 <constraint firstItem="xeh-NB-TXJ" firstAttribute="centerX" secondItem="hcW-t3-chb" secondAttribute="centerX" id="JqE-it-raM"/>
                 <constraint firstItem="e97-nh-J5G" firstAttribute="trailing" secondItem="YDa-E9-pMW" secondAttribute="trailing" id="Mdu-75-SuS"/>
-                <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="bottom" priority="500" constant="67" id="P3y-NT-FNU"/>
+                <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="bottom" priority="500" constant="50" id="P3y-NT-FNU"/>
                 <constraint firstItem="E0F-KO-oYg" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" id="Pr7-YP-Nq5"/>
                 <constraint firstItem="e97-nh-J5G" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="bottom" constant="10" id="QZI-bv-Xy6"/>
                 <constraint firstAttribute="trailingMargin" secondItem="fwe-gf-87l" secondAttribute="trailing" constant="-20" id="Rdc-1C-xxq"/>
@@ -514,11 +519,11 @@
                 <constraint firstItem="yxp-yO-zIk" firstAttribute="top" secondItem="hcW-t3-chb" secondAttribute="top" id="Vo6-8r-DRb"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="top" constant="-11" id="W6v-Sm-QyO"/>
                 <constraint firstItem="fwe-gf-87l" firstAttribute="top" secondItem="e97-nh-J5G" secondAttribute="bottom" id="W8Y-oh-h6N"/>
-                <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="xeh-NB-TXJ" secondAttribute="bottom" constant="19.5" id="WsA-jk-oOG"/>
+                <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="xeh-NB-TXJ" secondAttribute="bottom" id="WsA-jk-oOG"/>
                 <constraint firstItem="BNs-hB-C9a" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leadingMargin" constant="-18" id="dT8-OB-myU"/>
                 <constraint firstItem="Vdm-SI-4xu" firstAttribute="leading" secondItem="s8p-Cg-Laq" secondAttribute="leading" id="fW1-sa-ibW"/>
                 <constraint firstItem="kb4-tj-hY9" firstAttribute="centerY" secondItem="N0u-Ng-8ai" secondAttribute="centerY" id="fZV-o9-b91"/>
-                <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="fwe-gf-87l" secondAttribute="bottom" priority="999" constant="50" id="g22-4c-w4J"/>
+                <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="fwe-gf-87l" secondAttribute="bottom" priority="999" constant="33" id="g22-4c-w4J"/>
                 <constraint firstItem="e97-nh-J5G" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" constant="17" id="giQ-53-HWs"/>
                 <constraint firstItem="kb4-tj-hY9" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leadingMargin" constant="4" id="ico-Jo-aov"/>
                 <constraint firstAttribute="trailing" secondItem="E0F-KO-oYg" secondAttribute="trailing" id="jQz-yi-LDc"/>

@@ -29,6 +29,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     //Outlets
     @IBOutlet weak fileprivate  var paymentSelectorView: UIView!
+  
     @IBOutlet weak  fileprivate  var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
     @IBOutlet weak var acceptedCreditCardsViewTopToCollapsableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak fileprivate var paymentMethodSelectorTextField: UITextField!
@@ -62,6 +63,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBOutlet weak var walletsHeight: NSLayoutConstraint!
     @IBOutlet weak var walletButsContainer: UIView!
     
+    @IBOutlet weak var deleteBut: UIButton!
     
     @IBOutlet weak fileprivate var pciLabel: UILabel!
     
@@ -105,7 +107,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         super.viewWillAppear(animated)
         self.resetFields()
         MyCheckWallet.manager.factoryDelegate = self
-        
+        checkbox.isSelected = false
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
@@ -115,7 +117,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     
     fileprivate func assignImages(){
-      visaImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
+        visaImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
         mastercardImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsmastercard" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"))))
         dinersImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsdinersclub" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"))))
         discoverImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsdiscover" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"))))
@@ -142,6 +144,9 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         self.paymentMethodSelectorTextField.text = self.selectedMethod!.checkoutName
         if let selectedMethod = selectedMethod {
             self.typeImage.kf.setImage(with: self.imageURLForDropdown(selectedMethod))
+            
+            showDeleteBut(show: selectedMethod.isSingleUse)
+            
         }
         self.view.endEditing(true)
     }
@@ -150,7 +155,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     
     func configureUI(){
-      
+        
         creditCardNumberField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardNumPlaceHoldar" ,fallback: "1234 1234 1234 1234"), attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
         dateField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardDatePlaceHoldar" ,fallback: dateField.placeholder), attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
         cvvField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder), attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
@@ -169,13 +174,15 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                 self.paymentMethodSelectorTextField.text = self.selectedMethod!.checkoutName
                 
                 self.typeImage.kf.setImage(with:self.imageURLForDropdown(self.paymentMethods.first!))
-             
+                showDeleteBut(show: self.paymentMethods.first!.isSingleUse)
+                
+                
             }else{
                 let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
                 typeImage.image = UIImage(named: "no_type_card_1" , in: bundle, compatibleWith: nil)!
                 creditCardNumberField.isHidden = false
                 self.paymentSelectorView.isHidden = true
-   
+                
             }
         }
         self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
@@ -207,20 +214,20 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         default:
             return nil
         }
-
+        
     }
     
     internal func imageURLForDropdown( _ method: PaymentMethod) -> URL?{
         let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
         let type = method.type
         if type == .creditCard {
-        return imageURLForDropdown(method.issuer)
+            return imageURLForDropdown(method.issuer)
         }
         if method.type == .payPal{
             return URL(string:  LocalData.manager.getString("cardsDropDownpaypal"))!
-
+            
         }
-    return nil
+        return nil
     }
     
     internal func getType(_ type : String) -> CreditCardType {
@@ -258,6 +265,18 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             
         }
     }
+    
+    @IBAction func deletePressed(_ sender: UIButton) {
+        if let method = self.selectedMethod{
+            MyCheckWallet.manager.deletePaymentMethod(method, success: {
+               self.refreshPaymentMethods()
+            }, fail: { (error) in
+                printIfDebug("did not delete payment")
+                self.showError(errorStr: error.localizedDescription)
+                
+            })
+        }
+    }
     @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
         let controller : MCPaymentMethodsViewController
         //        if self.paymentMethods.count > 0 && self.paymentMethods.first?.isSingleUse == true {
@@ -273,7 +292,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     override internal func setFieldInvalid(_ field: UITextField , invalid: Bool){
         let badColor = LocalData.manager.getColor("checkoutPageColorserrorInput", fallback: UIColor.red)
         let goodColor = LocalData.manager.getColor("checkoutPageColorsfieldBorder", fallback: creditCardNumberField.textColor!)
-
+        
         let border = borderForField[field]
         border?.layer.borderColor = invalid ? badColor.cgColor :goodColor.cgColor
         field.textColor = invalid ? badColor : UIColor(r: 255, g: 255, b: 255, a: 1)
@@ -331,11 +350,11 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                 
                 if method.isSingleUse == true{
                     
-                  
-                                       self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
+                    
+                    self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
                     
                 }
-                    self.newPaymenteMethodAdded()
+                self.newPaymenteMethodAdded()
                 
                 self.creditCardNumberField.isUserInteractionEnabled = true
                 self.dateField.isUserInteractionEnabled = true
@@ -344,41 +363,41 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                 self.applyButton.isEnabled = true
                 self.cancelButton.isEnabled = true
                 self.showActivityIndicator(false)
-                }, fail: { error in
-                    self.applyButton.isEnabled = true
-                    self.cancelButton.isEnabled = true
-                    self.creditCardNumberField.isUserInteractionEnabled = true
-                    self.dateField.isUserInteractionEnabled = true
-                    self.cvvField.isUserInteractionEnabled = true
-                    self.zipField.isUserInteractionEnabled = true
-                    self.showActivityIndicator(false)
-                    self.errorLabel.text = error.localizedDescription
-                    if let delegate = self.delegate{
-                        self.errorLabel.text = error.localizedDescription
-                        delegate.recivedError(self, error:error)
-                    }
+            }, fail: { error in
+                self.applyButton.isEnabled = true
+                self.cancelButton.isEnabled = true
+                self.creditCardNumberField.isUserInteractionEnabled = true
+                self.dateField.isUserInteractionEnabled = true
+                self.cvvField.isUserInteractionEnabled = true
+                self.zipField.isUserInteractionEnabled = true
+                self.showActivityIndicator(false)
+                //   self.errorLabel.text = error.localizedDescription
+                self.showError(errorStr: error.localizedDescription)
+                if let delegate = self.delegate{
+                    delegate.recivedError(self, error:error)
+                }
             })
         }
         
     }
     
-  override func showActivityIndicator(_ show: Bool) {
-      if activityView == nil{
-        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
-        
-        activityView.center=CGPoint(x: self.view.center.x, y: self.view.center.y)
-        activityView.startAnimating()
-      activityView.hidesWhenStopped = true
-        self.view.addSubview(activityView)
-      }
-    show ? activityView.startAnimating() : activityView.stopAnimating()
+    override func showActivityIndicator(_ show: Bool) {
+        if activityView == nil{
+            activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+            
+            activityView.center=CGPoint(x: self.view.center.x, y: self.view.center.y)
+            activityView.startAnimating()
+            activityView.hidesWhenStopped = true
+            self.view.addSubview(activityView)
+        }
+        show ? activityView.startAnimating() : activityView.stopAnimating()
     }
     
     func newPaymenteMethodAdded(){
         MyCheckWallet.manager.getPaymentMethods({ (methods) in
             self.paymentMethods = methods
             if methods.count > 0 {
-            self.selectedMethod = methods[0]
+                self.selectedMethod = methods[0]
             }
             self.configureUI()
         }) { (error) in
@@ -388,7 +407,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     func moveAcceptedCreditCardsViewToCreditCardField(_ move : Bool , animated: Bool){
         let animationLength = animated ? 0.2 : 0
-        let baseHeight = 282.0 as Float
+        let baseHeight = 266.0 as Float
         self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
         self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
         
@@ -412,11 +431,14 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         self.setFieldInvalid(self.cvvField, invalid: false)
         self.setFieldInvalid(self.zipField, invalid: false)
     }
-    
+    fileprivate func showDeleteBut(show: Bool){
+        deleteBut.isHidden = !show // button should be displayed only for single use methods
+        pickerDownArrow.isHidden = show
+    }
     @objc internal override func setupUI(){
-        
+        deleteBut.setTitleColor(LocalData.manager.getColor("checkoutPageColorsdeleteButton" , fallback: deleteBut.titleColor(for: .normal)!), for: .normal )
         header.text = LocalData.manager.getString("checkoutPagecheckoutSubHeader" , fallback: header.text)
-                dropdownHeader.text = LocalData.manager.getString("checkoutPagecardDropDownHeader" , fallback:dropdownHeader.text)
+        dropdownHeader.text = LocalData.manager.getString("checkoutPagecardDropDownHeader" , fallback:dropdownHeader.text)
         managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.title(for: UIControlState())) , for: UIControlState())
         managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.title(for: UIControlState())) , for: .highlighted)
         
@@ -445,12 +467,12 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         footerLabel.textColor = LocalData.manager.getColor("checkoutPageColorscardAccepted", fallback: footerLabel.textColor!)
         view.backgroundColor = LocalData.manager.getColor("checkoutPageColorsbackground", fallback: UIColor.clear)
         for (key , view) in borderForField {
-        view.layer.borderColor = LocalData.manager.getColor("checkoutPageColorsfieldBorder", fallback: view.backgroundColor!).cgColor
-        view.layer.borderWidth = 1
+            view.layer.borderColor = LocalData.manager.getColor("checkoutPageColorsfieldBorder", fallback: view.backgroundColor!).cgColor
+            view.layer.borderWidth = 1
         }
         checkBoxLabel.textColor = LocalData.manager.getColor("checkoutPageColorsnotStoreCard", fallback: checkBoxLabel.textColor!)
         managePaymentMethodsButton.setTitleColor( LocalData.manager.getColor("checkoutPageColorsmanagePMButton", fallback: managePaymentMethodsButton.titleColor(for: UIControlState())!), for: UIControlState())
-       managePaymentMethodsButton.setTitleColor( LocalData.manager.getColor("checkoutPageColorsmanagePMButton", fallback: managePaymentMethodsButton.titleColor(for: .highlighted)!), for: .highlighted)
+        managePaymentMethodsButton.setTitleColor( LocalData.manager.getColor("checkoutPageColorsmanagePMButton", fallback: managePaymentMethodsButton.titleColor(for: .highlighted)!), for: .highlighted)
         dropdownHeader.textColor =  LocalData.manager.getColor("checkoutPageColorscardDropDownHeader", fallback: dropdownHeader.textColor!)
         let fieldColor = LocalData.manager.getColor("checkoutPageColorstextField", fallback: creditCardNumberField.textColor!)
         creditCardNumberField.textColor = fieldColor
@@ -458,7 +480,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         cvvField.textColor = fieldColor
         zipField.textColor = fieldColor
         errorLabel.textColor = LocalData.manager.getColor("checkoutPageColorserrorInput", fallback: creditCardNumberField.textColor!)
-
+        
         //setting up wallets UI
         if (walletButtons.count == 0 && MyCheckWallet.manager.isLoggedIn()) {
             switch MyCheckWallet.manager.factories.count {
@@ -489,7 +511,31 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         }
         
     }
-}
+    fileprivate func showError(errorStr: String){
+        self.errorLabel.text = errorStr
+        if errorStr.characters.count == 0 {
+                       return;
+        }
+        self.errorLabel.alpha = 0.0
+        //animating the error view in ... showing the error for a few seconds and removing again
+        
+        UIView.animate(withDuration: 0.3, animations:  {
+            self.errorLabel.alpha = 1.0
+            
+            
+            delay(0.3 + LocalData.manager.getDouble("ValueserrorTime", fallback: 7.0)){
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.errorLabel.alpha = 0.0
+                  
+                } , completion: { finished in
+                    self.errorLabel.text  = ""
+                    
+                })
+            }
+        }, completion: { finished in
+            
+        })
+    }}
 
 extension MCCheckoutViewController : MCPaymentMethodsViewControllerDelegate{
     
@@ -521,7 +567,7 @@ extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
     internal func shouldBeSingleUse(_ controller: PaymentMethodFactory) -> Bool {
         return checkbox.isSelected
     }
-
+    
     func error(_ controller: PaymentMethodFactory , error:NSError){
         printIfDebug( error.localizedDescription )
         
@@ -545,9 +591,9 @@ extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
     func dismissViewController(_ controller: UIViewController ){
         controller.dismiss(animated: true, completion: nil)
     }
-  func showLoadingIndicator(_ controller: PaymentMethodFactory, show: Bool) {
-    self.showActivityIndicator( show)
-    self.view.isUserInteractionEnabled = !show
-
-  }
+    func showLoadingIndicator(_ controller: PaymentMethodFactory, show: Bool) {
+        self.showActivityIndicator( show)
+        self.view.isUserInteractionEnabled = !show
+        
+    }
 }

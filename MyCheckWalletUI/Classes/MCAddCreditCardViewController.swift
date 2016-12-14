@@ -87,7 +87,7 @@ open class MCAddCreditCardViewController: MCViewController {
             self.dateField.isUserInteractionEnabled = false
             self.cvvField.isUserInteractionEnabled = false
             self.zipField.isUserInteractionEnabled = false
-            MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: false, success: {  token in
+            MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: checkbox.isSelected, success: {  token in
                 self.showActivityIndicator(false)
                 if let delegate = self.delegate{
                     
@@ -145,6 +145,7 @@ open class MCAddCreditCardViewController: MCViewController {
         setFieldInvalid(cvvField , invalid: false)
         setFieldInvalid(zipField , invalid: false)
         errorLabel.text = ""
+        checkbox.isSelected = false
         setImageForType(.Unknown)
         self.resignFirstResponder()
     }
