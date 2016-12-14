@@ -29,6 +29,8 @@ open class MCPaymentMethodsViewController: MCViewController {
     weak var delegate: MCPaymentMethodsViewControllerDelegate?
     
     internal var paymentMethods: Array<PaymentMethod>!
+    @IBOutlet weak var doNotStoreCheckbox: UIButton!
+    @IBOutlet weak var doNotStoreLabel: UILabel!
     
     @IBOutlet weak var walletHeaderLabel: UILabel!
     @IBOutlet weak var pciLabel: UILabel!
@@ -108,7 +110,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         MyCheckWallet.manager.factoryDelegate = self
-
+doNotStoreCheckbox.isSelected = false
     }
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -126,6 +128,9 @@ open class MCPaymentMethodsViewController: MCViewController {
     //MARK: - actions
     
    
+    @IBAction func doNotStorePressed(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
     //MARK: - private functions
     
     func showEnterCreditCard(_ show: Bool , animated: Bool){
@@ -165,7 +170,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     internal func setupUI(){
         titleLabel.text = LocalData.manager.getString("managePaymentMethodsheader" , fallback: titleLabel.text)
         self.footerLabel.text = LocalData.manager.getString("managePaymentMethodscardAcceptedWallet" , fallback: self.footerLabel.text)
-        
+        doNotStoreLabel.text = LocalData.manager.getString("managePaymentMethodsnotStoreCard" , fallback:doNotStoreLabel.text)
         //setting up colors
         view.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsbackground", fallback: UIColor.white)
         for seporator in seporators{
@@ -230,7 +235,7 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
 }
 extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
     internal func shouldBeSingleUse(_ controller: PaymentMethodFactory) -> Bool {
-        return false
+        return doNotStoreCheckbox.isSelected
     }
     func error(_ controller: PaymentMethodFactory , error:NSError){
         printIfDebug( error.localizedDescription )
