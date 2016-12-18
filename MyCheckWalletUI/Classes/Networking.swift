@@ -138,7 +138,7 @@ internal class Networking {
                        environment: Environment ,
                        success: @escaping (( PaymentMethod ) -> Void) ,
                        fail: ((NSError) -> Void)? ) -> Alamofire.Request{
-        var params : Parameters = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "cardType" : type.rawValue , " " : String(describing: NSNumber(value: isSingleUse))]
+        var params : Parameters = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "cardType" : type.rawValue , "is_single_use" : String(describing: NSNumber(value: isSingleUse))]
        
         if environment != .Production{
         params["env"] = "test"

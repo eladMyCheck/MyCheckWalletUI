@@ -31,10 +31,12 @@ open class PaypalFactory : PaymentMethodFactory{
       } , fail:nil)
   }
   override func getAddMethodViewControllere(  ){
-    
+   
     if let delegate = self.delegate{
       delegate.showLoadingIndicator(self, show: true)
-    }
+        let singleUse = delegate.shouldBeSingleUse(self)
+
+    
     MyCheckWallet.manager.getBraintreeToken({token in
       
       
@@ -54,25 +56,20 @@ open class PaypalFactory : PaymentMethodFactory{
             }
           }
           if let nonce = nonce , let delegate = self.delegate{
-            
-                let singleUse = delegate.shouldBeSingleUse(self)
-                
-            MyCheckWallet.manager.addPayPal(nonce.nonce, singleUse: singleUse, success: { method in
+          MyCheckWallet.manager.addPayPal(nonce.nonce, singleUse: singleUse, success: { method in
               var token = ""
               if let method = method {
                 token = method.token
               }
-              if let delegate = self.delegate{
                 delegate.showLoadingIndicator(self, show: false)
                 
                 delegate.addedPaymentMethod(self, token: token)
-              }
+            
               }, fail: { error in
-                if let delegate = self.delegate{
                   delegate.error(self, error: error)
                   delegate.showLoadingIndicator(self, show: false)
                   
-                }
+                
             })
           }else{                              if let delegate = self.delegate{
             
@@ -89,7 +86,7 @@ open class PaypalFactory : PaymentMethodFactory{
         }
         
     })
-    
+    }
   }
   
   
