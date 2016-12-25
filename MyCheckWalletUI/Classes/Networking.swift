@@ -199,24 +199,7 @@ internal class Networking {
                 
                 switch response.result {
                 case .success(let JSON):
-                    
-                    //                    let responseJSON = JSON as! NSDictionary
-                    //
-                    //                    let status = responseJSON["status"] as? String
-                    //                    if status != nil && status! == "ERROR"{
-                    //                        do{
-                    //                            let msg =  JSON["message"] as! String
-                    //                            let code = JSON["code"] as! Int
-                    //                            let error = NSError(domain: "sdffg", code: 3, userInfo: nil)
-                    //                            let errorWithMessage = NSError(domain: error.domain, code: code , userInfo: [NSLocalizedDescriptionKey : msg])
-                    //
-                    //                            fail(errorWithMessage)
-                    //                        } catch{
-                    //                            fail(error as NSError)
-                    //                        }
-                    //
-                    //                    }
-                    if let success = success {
+                                        if let success = success {
                         success( JSON as! NSDictionary)
                     }
                     
@@ -224,8 +207,6 @@ internal class Networking {
                     
                     
                 case .failure(let error):
-                    
-                    
                     
                     
                     if let fail = fail {
@@ -254,7 +235,7 @@ internal class Networking {
                     
                 }
         }
-        return request
+        return request                                          
     }
     
     func badJSONError() -> NSError{

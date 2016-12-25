@@ -146,7 +146,7 @@ doNotStoreCheckbox.isSelected = false
         UIView.animate(withDuration: animated ? 0.4 : 0.0, animations: {
             self.view.layoutIfNeeded()
             self.walletsSuperview.alpha = show ? 0.0 : 1.0
-
+            self.doNotStoreCheckbox.superview?.alpha = show ? 0.0 : 1.0
             self.creditCardListVC!.scrollView.alpha = show ? 0 : 1
             
         })
