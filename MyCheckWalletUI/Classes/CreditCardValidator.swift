@@ -97,7 +97,7 @@ internal class CreditCardValidator {
         }
         let validLegnth = cardLengthValid(type, length: numberOnly.characters.count)
         // check validity
-        valid = luhnCheck(numberOnly)
+        valid = luhnCheck(numberOnly) && type != .Unknown
         
         // format
         var formatted4 = ""
