@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
        containerView.isHidden = true
-        MyCheckWallet.manager.login("eyJpdiI6IkZ4N3hGMHU5UG42ZzMrOHlFcTFnRGc9PSIsInZhbHVlIjoibmJQR3VkVU9oN2NxbnB1T3BYV1NSM3FEbVNjQU52blB0Y2VnOEZycVZXZz0iLCJtYWMiOiJjYWI2NWY5Mzg5YTRmYmM5OWZjNWYyYjVjNTg0N2VkYWE3OWUzMGJlZWQwYWQ0MjNkNjMzYTRkMzNhMmVjNzNjIn0", success: {
+        MyCheckWallet.manager.login("eyJpdiI6InlxV2ZSWVJWOWdXc1lNeU92Y1VyRGc9PSIsInZhbHVlIjoiMU00MCtRUTZRQ3dLVFdkdE5pTGtyQT09IiwibWFjIjoiMzVhY2MxY2VhYzNlNTY2YzEzYzQzZmU2YzRlN2Q2NTNhOTZjMzliMjY2YjEyYWI4Yjg5ZmNmYWVmZTRjNmZhYiJ9", success: {
             //The view should only be displaid after a user is logged in
             self.containerView.isHidden = false
         

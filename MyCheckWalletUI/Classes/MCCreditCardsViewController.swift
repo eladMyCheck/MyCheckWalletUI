@@ -60,12 +60,12 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             creditCardCount = self.paymentMethods.count
         }
         
-        let addCreditCardView = AddCreditCardView(frame: CGRect(x: startMargin, y: 20, width: 168, height: 104) )
+        let addCreditCardView = AddCreditCardView(frame: CGRect(x: startMargin, y: 10, width: 168, height: 110) )
         self.scrollView.addSubview(addCreditCardView)
         
         for i in (0..<creditCardCount) {
             let method = self.paymentMethods[i]
-            let frame = CGRect(x: cardViewWidth*CGFloat(i+1)+startMargin, y: 20, width: cardViewWidth, height: 102)
+            let frame = CGRect(x: cardViewWidth*CGFloat(i+1)+startMargin, y: 10, width: cardViewWidth, height: 110)
             
             if method.type == .creditCard {
                 let cc = CreditCardView(frame: frame, method: method)

@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "paypal_big.png",
+      "filename" : "paypal_big (1).png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "paypal_big@2x.png",
+      "filename" : "paypal_big@2x (1).png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "paypal_big@3x.png",
+      "filename" : "paypal_big@3x (1).png",
       "scale" : "3x"
     }
   ],

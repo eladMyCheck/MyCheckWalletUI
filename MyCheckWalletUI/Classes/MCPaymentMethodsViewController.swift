@@ -48,6 +48,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     @IBOutlet fileprivate weak var amexImageView: UIImageView!
     @IBOutlet fileprivate weak var discoverImageView: UIImageView!
     
+    @IBOutlet weak var weAcceptSuperview: UIView!
     @IBOutlet weak internal var titleLabel: UILabel!
     @IBOutlet weak internal var footerLabel: UILabel!
     @IBAction func addCreditCardPressed(_ sender: AnyObject) {
@@ -147,6 +148,8 @@ doNotStoreCheckbox.isSelected = false
             self.view.layoutIfNeeded()
             self.walletsSuperview.alpha = show ? 0.0 : 1.0
             self.doNotStoreCheckbox.superview?.alpha = show ? 0.0 : 1.0
+            self.weAcceptSuperview.alpha = show ? 0.0 : 1.0
+            self.walletsSeporator.alpha = show ? 0.0 : 1.0
             self.creditCardListVC!.scrollView.alpha = show ? 0 : 1
             
         })
@@ -195,7 +198,7 @@ doNotStoreCheckbox.isSelected = false
             let horizontalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
             walletsSuperview.addConstraint(horizontalConstraint)
             
-            let verticalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+            let verticalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 16)
             walletsSuperview.addConstraint(verticalConstraint)
             
         }
