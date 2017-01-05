@@ -17,6 +17,10 @@ internal class LocalData{
     return [:] 
         }()
     
+    lazy var arrays : [String : [String]] = {
+        return [:]
+    }()
+    
     
     
     //adds all the strings to strings parameter where the key is the same key with a prefix of all its parent's keys
@@ -31,10 +35,14 @@ internal class LocalData{
             self.addStrings( keyFinal , dictionary: dic)
             }else if let num = value as? NSNumber{
                 strings[keyFinal] = String(describing: num)
-
+            }else if let arr = value as? Array<String>{
+                arrays[keyFinal] = value as? Array<String>
+                if keyFinal == "acceptedCardsCheckout"{
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "acceptedCardsCheckoutSet"), object: nil)
+                }
             }
         }
-    
+        
     }
     func getString(_ key: String , fallback: String? = nil) -> String{
         if let string = strings[key]  {
@@ -63,5 +71,13 @@ internal class LocalData{
         }
         return fallback
         
+    }
+    
+    func getArray(_ key: String ) -> Array<String> {
+        if let arr = arrays[key] {
+            return arr
+        }else{
+            return []
+        }
     }
 }

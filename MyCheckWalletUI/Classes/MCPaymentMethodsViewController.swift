@@ -42,11 +42,6 @@ open class MCPaymentMethodsViewController: MCViewController {
     @IBOutlet fileprivate weak var creditCardInCenterConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate weak var creditCardsVCCenterXConstraint: NSLayoutConstraint!
     @IBOutlet weak var walletsSeporator: UIView!
-    @IBOutlet fileprivate weak var visaImageView: UIImageView!
-    @IBOutlet fileprivate weak var mastercardImageView: UIImageView!
-    @IBOutlet fileprivate weak var dinersImageView: UIImageView!
-    @IBOutlet fileprivate weak var amexImageView: UIImageView!
-    @IBOutlet fileprivate weak var discoverImageView: UIImageView!
     
     @IBOutlet weak var weAcceptSuperview: UIView!
     @IBOutlet weak internal var titleLabel: UILabel!
@@ -163,11 +158,24 @@ doNotStoreCheckbox.isSelected = false
     }
     
     fileprivate func assignImages(){
-        visaImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
-        mastercardImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsmastercard" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"))))
-        dinersImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsdinersclub" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"))))
-        discoverImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsdiscover" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"))))
-        amexImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsAMEX" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"))))
+        let cardsImages = LocalData.manager.getArray("acceptedCardsPM")
+        let wrapper = UIView()
+        wrapper.translatesAutoresizingMaskIntoConstraints = false
+        weAcceptSuperview.addSubview(wrapper)
+        
+        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: weAcceptSuperview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: weAcceptSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 42)
+        let heightConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 26)
+        let width = cardsImages.count*48
+        let widthConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: CGFloat(width))
+            weAcceptSuperview.addConstraints([horizontalConstraint, verticalConstraint, heightConstraint, widthConstraint])
+        
+        for card in cardsImages {
+            let index = cardsImages.index(of: card)
+            let iv = UIImageView(frame: CGRect(x: 48*index!+5, y: 0, width: 38, height: 24))
+            iv.kf.setImage(with: URL(string: card))
+            wrapper.addSubview(iv)
+        }
     }
     
     internal func setupUI(){

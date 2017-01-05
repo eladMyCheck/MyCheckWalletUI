@@ -17,9 +17,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MCCheckoutViewController" customModule="MyCheckWalletUI" customModuleProvider="target">
             <connections>
+                <outlet property="acceptedCardSuperview" destination="E0F-KO-oYg" id="zex-qU-EGj"/>
                 <outlet property="acceptedCreditCardsViewTopToCollapsableViewConstraint" destination="g22-4c-w4J" id="f3R-BD-FJB"/>
                 <outlet property="acceptedCreditCardsViewTopToCreditCardFieldConstraint" destination="P3y-NT-FNU" id="E23-ip-ZsC"/>
-                <outlet property="amexImageView" destination="osc-iq-1VS" id="iGv-4F-ji7"/>
                 <outlet property="applyButton" destination="gcD-LR-2wa" id="Sl7-bj-aS3"/>
                 <outlet property="cancelButton" destination="LU0-WJ-369" id="xae-2h-NUg"/>
                 <outlet property="checkBoxLabel" destination="L3r-7Z-Iff" id="0zs-lw-rfY"/>
@@ -35,22 +35,18 @@
                 <outlet property="dateFieldBorderView" destination="kLK-VW-lfS" id="fbb-GT-29k"/>
                 <outlet property="dateUnderline" destination="tJI-vV-AMV" id="9dk-Li-X9B"/>
                 <outlet property="deleteBut" destination="QAm-kq-Ygm" id="IwA-pR-mHe"/>
-                <outlet property="dinersImageView" destination="Lj6-Qe-D0a" id="V34-bh-BIe"/>
-                <outlet property="discoverImageView" destination="eQ6-mT-kHy" id="Iu4-bj-BO7"/>
                 <outlet property="dropdownHeader" destination="kb4-tj-hY9" id="8xL-91-UgF"/>
                 <outlet property="errorLabel" destination="xeh-NB-TXJ" id="Lao-X5-Z2m"/>
                 <outlet property="footerLabel" destination="wA0-gS-QqR" id="tiH-uC-mzc"/>
                 <outlet property="header" destination="zZg-Fe-gBI" id="Khi-PH-iU6"/>
                 <outlet property="headerLineBG" destination="yxp-yO-zIk" id="A50-Tj-CSf"/>
                 <outlet property="managePaymentMethodsButton" destination="N0u-Ng-8ai" id="aSk-8L-Ohx"/>
-                <outlet property="mastercardImageView" destination="MnS-WV-a6q" id="llW-MM-ODq"/>
                 <outlet property="paymentMethodSelectorTextField" destination="0oB-XW-gXs" id="VNa-uS-phn"/>
                 <outlet property="paymentSelectorView" destination="pTi-ub-50G" id="Trh-iV-gnM"/>
                 <outlet property="pciLabel" destination="4Cy-p3-4hS" id="14P-R8-B2p"/>
                 <outlet property="pickerDownArrow" destination="RH6-Eu-QMK" id="Ydj-9G-57M"/>
                 <outlet property="typeImage" destination="bEb-a8-zXO" id="TlB-lv-NLk"/>
                 <outlet property="view" destination="hcW-t3-chb" id="EzT-ff-jko"/>
-                <outlet property="visaImageView" destination="FaP-qS-TYJ" id="WVD-e7-i4R"/>
                 <outlet property="walletButsContainer" destination="jxX-wJ-may" id="bhl-bf-7EP"/>
                 <outlet property="walletsHeight" destination="dTH-VS-OcA" id="hTY-zm-VyY"/>
                 <outlet property="walletsSuperview" destination="BNs-hB-C9a" id="868-ee-NDJ"/>
@@ -419,58 +415,10 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7v-IO-pcY">
-                            <rect key="frame" x="37" y="16" width="302" height="62"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visa_small" translatesAutoresizingMaskIntoConstraints="NO" id="FaP-qS-TYJ">
-                                    <rect key="frame" x="20" y="20" width="34" height="22"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="34" id="1fc-uF-uxk"/>
-                                        <constraint firstAttribute="height" constant="22" id="dAy-Un-zaD"/>
-                                    </constraints>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="master_small" translatesAutoresizingMaskIntoConstraints="NO" id="MnS-WV-a6q">
-                                    <rect key="frame" x="77" y="20" width="34" height="22"/>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diners_small" translatesAutoresizingMaskIntoConstraints="NO" id="Lj6-Qe-D0a">
-                                    <rect key="frame" x="134" y="20" width="34" height="22"/>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="amex_small" translatesAutoresizingMaskIntoConstraints="NO" id="osc-iq-1VS">
-                                    <rect key="frame" x="191" y="20" width="34" height="22"/>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discover_small" translatesAutoresizingMaskIntoConstraints="NO" id="eQ6-mT-kHy">
-                                    <rect key="frame" x="248" y="20" width="34" height="22"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstItem="eQ6-mT-kHy" firstAttribute="height" secondItem="osc-iq-1VS" secondAttribute="height" id="081-8y-CSZ"/>
-                                <constraint firstItem="Lj6-Qe-D0a" firstAttribute="height" secondItem="MnS-WV-a6q" secondAttribute="height" id="3yw-lU-FZ9"/>
-                                <constraint firstItem="osc-iq-1VS" firstAttribute="leading" secondItem="Lj6-Qe-D0a" secondAttribute="trailing" constant="23" id="5ik-Hc-oBN"/>
-                                <constraint firstItem="MnS-WV-a6q" firstAttribute="leading" secondItem="FaP-qS-TYJ" secondAttribute="trailing" constant="23" id="9x0-6t-Faf"/>
-                                <constraint firstItem="FaP-qS-TYJ" firstAttribute="leading" secondItem="G7v-IO-pcY" secondAttribute="leading" constant="20" id="Ed2-au-17T"/>
-                                <constraint firstItem="MnS-WV-a6q" firstAttribute="width" secondItem="FaP-qS-TYJ" secondAttribute="width" id="GSP-Ue-XWY"/>
-                                <constraint firstItem="Lj6-Qe-D0a" firstAttribute="width" secondItem="MnS-WV-a6q" secondAttribute="width" id="Jm5-SX-YfX"/>
-                                <constraint firstItem="osc-iq-1VS" firstAttribute="width" secondItem="Lj6-Qe-D0a" secondAttribute="width" id="Jo3-V3-cSD"/>
-                                <constraint firstItem="osc-iq-1VS" firstAttribute="centerY" secondItem="Lj6-Qe-D0a" secondAttribute="centerY" id="LmT-h5-s6v"/>
-                                <constraint firstItem="MnS-WV-a6q" firstAttribute="height" secondItem="FaP-qS-TYJ" secondAttribute="height" id="Lmn-m1-YZf"/>
-                                <constraint firstAttribute="height" constant="62" id="P7Q-mb-oXa"/>
-                                <constraint firstItem="FaP-qS-TYJ" firstAttribute="centerY" secondItem="G7v-IO-pcY" secondAttribute="centerY" id="Rav-BC-K9A"/>
-                                <constraint firstAttribute="width" constant="302" id="VtV-p0-H57"/>
-                                <constraint firstItem="Lj6-Qe-D0a" firstAttribute="centerY" secondItem="MnS-WV-a6q" secondAttribute="centerY" id="WeH-fN-Xz6"/>
-                                <constraint firstItem="MnS-WV-a6q" firstAttribute="centerY" secondItem="FaP-qS-TYJ" secondAttribute="centerY" id="YPq-Xo-7lf"/>
-                                <constraint firstItem="Lj6-Qe-D0a" firstAttribute="leading" secondItem="MnS-WV-a6q" secondAttribute="trailing" constant="23" id="YjU-eh-5fo"/>
-                                <constraint firstItem="eQ6-mT-kHy" firstAttribute="width" secondItem="osc-iq-1VS" secondAttribute="width" id="lY5-Wf-Q3O"/>
-                                <constraint firstItem="eQ6-mT-kHy" firstAttribute="leading" secondItem="osc-iq-1VS" secondAttribute="trailing" constant="23" id="nv8-1w-JFR"/>
-                                <constraint firstItem="osc-iq-1VS" firstAttribute="height" secondItem="Lj6-Qe-D0a" secondAttribute="height" id="qgM-AZ-hr5"/>
-                                <constraint firstItem="eQ6-mT-kHy" firstAttribute="centerY" secondItem="osc-iq-1VS" secondAttribute="centerY" id="td3-UV-5u4"/>
-                            </constraints>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="wA0-gS-QqR" firstAttribute="centerX" secondItem="E0F-KO-oYg" secondAttribute="centerX" id="0nT-ye-cCw"/>
-                        <constraint firstItem="G7v-IO-pcY" firstAttribute="centerX" secondItem="E0F-KO-oYg" secondAttribute="centerX" id="54R-C0-pB5"/>
                         <constraint firstItem="s8p-Cg-Laq" firstAttribute="leading" secondItem="E0F-KO-oYg" secondAttribute="leading" constant="20" id="KEV-Fc-I6i"/>
                         <constraint firstAttribute="trailing" secondItem="7pw-Ky-LRa" secondAttribute="trailing" constant="20" id="KMM-0d-eEw"/>
                         <constraint firstAttribute="height" constant="110" id="Muf-wu-Tho"/>
@@ -479,7 +427,6 @@
                         <constraint firstItem="wA0-gS-QqR" firstAttribute="top" secondItem="E0F-KO-oYg" secondAttribute="top" id="grn-Rc-gsY"/>
                         <constraint firstItem="wA0-gS-QqR" firstAttribute="leading" secondItem="s8p-Cg-Laq" secondAttribute="trailing" constant="8" id="ipl-v8-943"/>
                         <constraint firstItem="7pw-Ky-LRa" firstAttribute="centerY" secondItem="s8p-Cg-Laq" secondAttribute="centerY" id="mX8-js-2I4"/>
-                        <constraint firstItem="G7v-IO-pcY" firstAttribute="top" secondItem="wA0-gS-QqR" secondAttribute="bottom" id="mp8-hf-8gC"/>
                         <constraint firstItem="s8p-Cg-Laq" firstAttribute="centerY" secondItem="wA0-gS-QqR" secondAttribute="centerY" id="qGT-Cx-0tf"/>
                         <constraint firstItem="4Cy-p3-4hS" firstAttribute="centerX" secondItem="E0F-KO-oYg" secondAttribute="centerX" id="rG7-Nc-A2b"/>
                     </constraints>
@@ -541,14 +488,9 @@
         </view>
     </objects>
     <resources>
-        <image name="amex_small" width="36" height="22"/>
         <image name="checkoutCheckbox" width="17" height="17"/>
         <image name="checkoutCheckbox_v" width="17" height="17"/>
-        <image name="diners_small" width="36" height="22"/>
-        <image name="discover_small" width="36" height="22"/>
         <image name="dropdown" width="14" height="7"/>
-        <image name="master_small" width="36" height="22"/>
         <image name="no_type_card_1" width="24" height="17"/>
-        <image name="visa_small" width="36" height="22"/>
     </resources>
 </document>

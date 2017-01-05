@@ -51,6 +51,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBOutlet weak fileprivate var cvvBorderView: UIView!
     @IBOutlet weak fileprivate var zipFieldBorderView: UIView!
     
+    @IBOutlet weak var acceptedCardSuperview: UIView!
     @IBOutlet weak fileprivate var header: UILabel!
     @IBOutlet weak fileprivate var dropdownHeader: UILabel!
     @IBOutlet weak fileprivate var footerLabel: UILabel!
@@ -99,6 +100,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         //setting up UI and updating it if the user logges in... just incase
         setupUI()
         nc.addObserver(self, selector: #selector(MCCheckoutViewController.setupUI), name: NSNotification.Name(rawValue: MyCheckWallet.loggedInNotification), object: nil)
+        nc.addObserver(self, selector:#selector(MCCheckoutViewController.assignImages), name:NSNotification.Name(rawValue: "acceptedCardsCheckoutSet"), object: nil)
         
         
     }
@@ -116,13 +118,25 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     }
     
     
-    fileprivate func assignImages(){
-        visaImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsvisa" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/VI.png"))))
-        mastercardImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsmastercard" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/MC.png"))))
-        dinersImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsdinersclub" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DC.png"))))
-        discoverImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsdiscover" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/DS.png"))))
-        amexImageView.kf.setImage(with: URL(string: (LocalData.manager.getString("acceptedCardsAMEX" , fallback: "https://s3-eu-west-1.amazonaws.com/mywallet-sdk-sandbox/img/AX.png"))))
+    @objc fileprivate func assignImages(){
+        let cardsImages = LocalData.manager.getArray("acceptedCardsCheckout")
+        let wrapper = UIView()
+        wrapper.translatesAutoresizingMaskIntoConstraints = false
+        acceptedCardSuperview.addSubview(wrapper)
         
+        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: acceptedCardSuperview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: acceptedCardSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 32)
+        let heightConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 26)
+        let width = cardsImages.count*48
+        let widthConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: CGFloat(width))
+        acceptedCardSuperview.addConstraints([horizontalConstraint, verticalConstraint, heightConstraint, widthConstraint])
+        
+        for card in cardsImages {
+            let index = cardsImages.index(of: card)
+            let iv = UIImageView(frame: CGRect(x: 48*index!+5, y: 0, width: 38, height: 24))
+            iv.kf.setImage(with: URL(string: card))
+            wrapper.addSubview(iv)
+        }
     }
     
     fileprivate func addDoneButtonOnPicker(_ field: UITextField , action: Selector){
