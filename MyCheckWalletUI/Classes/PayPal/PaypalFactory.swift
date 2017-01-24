@@ -96,11 +96,13 @@ open class PaypalFactory : PaymentMethodFactory{
     let but = PaymentMethodButton(type: .custom)
     but.setBackgroundImage(UIImage(named: "paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
     but.type = .payPal
-    but.setImage(UIImage(named: "paypal_but", in: bundle, compatibleWith: nil), for: UIControlState())
+    //but.setImage(UIImage(named: "paypal_but", in: bundle, compatibleWith: nil), for: UIControlState())
     but.addTarget(self, action: #selector(PaypalFactory.addMethodButPressed(_:)), for: .touchUpInside)
     //    but.setBackgroundImage(UIImage(named: "amex_small" , inBundle: bundle, compatibleWithTraitCollection: nil), forState: .Highlighted)
     return but
   }
+    
+    
   override func getCreditCardView(_ frame: CGRect, method: PaymentMethod) -> CreditCardView?{
     return PayPalView(frame: frame, method: method)
   }

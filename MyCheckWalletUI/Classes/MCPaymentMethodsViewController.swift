@@ -209,6 +209,16 @@ doNotStoreCheckbox.isSelected = false
             let verticalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 16)
             walletsSuperview.addConstraint(verticalConstraint)
             
+            if let image = but.backgroundImage(for: .normal) , image.size.width != 0{
+            let ratio = image.size.height / image.size.width
+
+             let aspectRationConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: but, attribute: NSLayoutAttribute.width, multiplier: ratio, constant: 0)
+             walletsSuperview.addConstraint(aspectRationConstraint)
+            }
+            let widthConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.width, multiplier: 0.415625, constant: 0)
+            walletsSuperview.addConstraint(widthConstraint)
+walletsSuperview.layoutIfNeeded()
+            
         }
     }
     

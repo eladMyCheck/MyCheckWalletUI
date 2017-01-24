@@ -17,14 +17,17 @@ internal protocol CreditCardViewDelegate : class{
 internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     
     var paymentMethod : PaymentMethod?
-    var checboxButton : UIButton?
+   @IBOutlet weak var checboxButton : UIButton?
     var editMode = false
     var delegate : CreditCardViewDelegate?
     
     
-    var creditCardNumberlabel: UILabel?
-    var expirationDateLabel: UILabel?
-    var backgroundButton: UIButton?
+    @IBOutlet weak var tempCardIcon: UIImageView!
+   @IBOutlet weak var creditCardNumberlabel: UILabel?
+   @IBOutlet weak var expirationDateLabel: UILabel?
+  @IBOutlet weak  var backgroundButton: UIButton?
+   
+    
     init(frame: CGRect, method: PaymentMethod){
         super.init(frame: frame)
       
@@ -32,37 +35,29 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
 
         self.isUserInteractionEnabled = true
         self.paymentMethod = method
+//        
+//         backgroundButton = UIButton(frame: CGRect(x: 0, y: 0, width: frame.size.width - 47.0, height: frame.size.height - 4 ))
+//        if  let backgroundButton = backgroundButton{
+//        backgroundButton.addTarget(self, action: #selector(creditCardPressed(_:)), for: .touchUpInside)
+//        backgroundButton.setImage(self.setImageForType(method.issuer), for: UIControlState())
+//        backgroundButton.adjustsImageWhenHighlighted = false
+//        addSubview(backgroundButton)
+//        }
+      xibSetup()
         
-         backgroundButton = UIButton(frame: CGRect(x: 0, y: 0, width: 163, height: 102))
-        if  let backgroundButton = backgroundButton{
-        backgroundButton.addTarget(self, action: #selector(creditCardPressed(_:)), for: .touchUpInside)
-        backgroundButton.setImage(self.setImageForType(method.issuer), for: UIControlState())
-        backgroundButton.adjustsImageWhenHighlighted = false
-        addSubview(backgroundButton)
-        }
-      
-      if method.isSingleUse {
-      let singleUseImg = UIImageView(image:UIImage(named: "singleUseBanner", in: bundle, compatibleWith: nil) )
-        singleUseImg.contentMode = .topRight
-        singleUseImg.frame = (backgroundButton?.frame)!
-        addSubview(singleUseImg)
-      }
+     
+        tempCardIcon.isHidden = !method.isSingleUse
         //credit card number label
-        creditCardNumberlabel  = UILabel(frame: CGRect(x: 10, y: 70, width: 80, height: 18))
         if let creditCardNumberlabel = creditCardNumberlabel {
-        creditCardNumberlabel.textAlignment = NSTextAlignment.center
         creditCardNumberlabel.textColor = UIColor.white
         creditCardNumberlabel.font =  UIFont(name: creditCardNumberlabel.font.fontName, size: 9)
         if let lastFourDigits = method.lastFourDigits{
             creditCardNumberlabel.text = method.name
           }
-        addSubview(creditCardNumberlabel)
             }
         //expiration date label
-       expirationDateLabel = UILabel(frame: CGRect(x: 112, y: 70, width: 30, height: 18))
 
         if let expirationDateLabel = expirationDateLabel{
-        expirationDateLabel.textAlignment = NSTextAlignment.center
         expirationDateLabel.textColor = UIColor.white
         expirationDateLabel.font =  UIFont(name: expirationDateLabel.font.fontName, size: 9)
         if var year = method.expireYear, let month = method.expireMonth{
@@ -70,20 +65,17 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
                 year = year.substring(from: year.characters.index(year.startIndex, offsetBy: 2))
                 
                 expirationDateLabel.text = String(format: "%@/%@", month, year)
-                addSubview(expirationDateLabel)
             }
             }
         }
         
-        
+      
+    
+
         
         //default card checkbox
       
-        self.checboxButton = UIButton(frame: CGRect(x: 168, y: 0, width: 22, height: 22))
-        self.checboxButton?.addTarget(self, action: #selector(checkboxPressed(_:)), for: .touchUpInside)
-        self.checboxButton?.adjustsImageWhenHighlighted = false
-        addSubview(self.checboxButton!)
-        
+      
         if ((self.paymentMethod!.isDefault) == true) {
             self.checboxButton?.setImage(UIImage(named: "v", in: bundle, compatibleWith: nil)!, for: UIControlState())
             self.checboxButton?.isHidden = false
@@ -92,7 +84,25 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    func checkboxPressed(_ sender: UIButton!) {
+    //constuction helper function
+   private func xibSetup() {
+        //loading from nib
+        let bundle =  MCViewController.getBundle( Bundle(for: CreditCardView.classForCoder()))
+        let nib = UINib(nibName: "CreditCardView", bundle: bundle)
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        
+        
+        // use bounds not frame or it'll be offset
+        view.frame = bounds
+        
+        // Make the view stretch with containing view
+        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        // Adding custom subview on top of our view (over any custom drawing > see note below)
+        addSubview(view)
+    }
+    
+    
+   @IBAction func checkboxPressed(_ sender: UIButton!) {
         if editMode == true {
             MyCheckWallet.manager.deletePaymentMethod(self.paymentMethod!, success: {
                 printIfDebug("payment method deleted")
@@ -105,7 +115,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    func creditCardPressed(_ sender: UIButton!){
+   @IBAction func creditCardPressed(_ sender: UIButton!){
         if editMode == false {
             if (self.paymentMethod?.isSingleUse)! {
                 return
