@@ -13,7 +13,7 @@ internal protocol MCCreditCardsViewControllerrDelegate {
 }
 
 internal class MCCreditCardsViewController: MCViewController , UIGestureRecognizerDelegate, CreditCardViewDelegate{
-   let margin = 10.0 as CGFloat
+   let margin = 15.0 as CGFloat
     var cardViewWidth = 210 as CGFloat
     var startMargin = 106 as CGFloat
     
@@ -34,8 +34,11 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
               cardViewWidth =  696.0 / 1242 * screenWidth
-        startMargin = (UIScreen.main.bounds.width - cardViewWidth) / 2.0 + 15.0 as CGFloat
-        
+        startMargin = (UIScreen.main.bounds.width - cardViewWidth ) / 2.0  as CGFloat
+      //var point = scrollView.contentOffset
+     // point.x = (-0.5) * (cardViewWidth + margin + 0) + self.startMargin + 27 ;
+
+       // scrollView.setContentOffset(point, animated: true)
         self.scrollView.delegate = self;
         delay(0.2){
             self.setCreditCardsUI(false)
@@ -105,7 +108,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
                 if self.indexToScrollTo == 0{
                     self.indexToScrollTo =  1
                 }
-                self.scrollView.contentOffset = CGPoint(x: CGFloat(self.indexToScrollTo)*(self.cardViewWidth + self.margin) , y: 0)
+              //  self.scrollView.contentOffset = CGPoint(x: CGFloat(self.indexToScrollTo)*(self.cardViewWidth + self.margin) - self.margin - self.startMargin - 16 , y: 0)
                 self.currantIndex = self.indexToScrollTo
                 self.indexToScrollTo = 0
             }else{
@@ -202,19 +205,21 @@ extension MCCreditCardsViewController : UIScrollViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,
                                      withVelocity velocity: CGPoint,
                                                   targetContentOffset: UnsafeMutablePointer<CGPoint>){
+      printIfDebug("x location: \(targetContentOffset.pointee.x )")
+
         let kMaxIndex = 20000 as CGFloat
         let targetX = scrollView.contentOffset.x + velocity.x * 20.0 as CGFloat
         var targetIndex = round(targetX / (cardViewWidth + 0)) as CGFloat
         
         //     currantIndex = round( scrollView.contentOffset.x / (cardViewWidth + 0)) as CGFloat
-        printIfDebug("currantIndex: \(currantIndex) TargetIndex: \(targetIndex)")
         //taking care of scrollview jumping to its initial position when making very small swipes
         if (velocity.x > 0) {
             targetIndex = ceil(targetX / (self.cardViewWidth + 0.0))
         } else {
             targetIndex = floor(targetX / (self.cardViewWidth + 0.0));
         }
-        
+    //  printIfDebug("currantIndex: \(currantIndex) TargetIndex: \(targetIndex)")
+
         let currantIndexFloat =  CGFloat( currantIndex)
         
         if targetIndex < currantIndexFloat {
@@ -230,7 +235,13 @@ extension MCCreditCardsViewController : UIScrollViewDelegate {
         if targetIndex > kMaxIndex{
             targetIndex = kMaxIndex
         }
-        targetContentOffset.pointee.x = targetIndex * (cardViewWidth + 0);
+      let screenSize = UIScreen.main.bounds
+      let screenWidth = screenSize.width
+        targetContentOffset.pointee.x = (targetIndex - 0.5) * (cardViewWidth + margin + 0) + self.startMargin + 10 ;
+     // first objects center is not same becaus their is no checkbox to throw it off
+      if targetIndex == 0 {
+      targetContentOffset.pointee.x += 17
+      }
         currantIndex = Int( targetIndex)
     }
 }
