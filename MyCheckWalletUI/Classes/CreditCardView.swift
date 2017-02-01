@@ -24,6 +24,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var tempCardIcon: UIImageView!
    @IBOutlet weak var creditCardNumberlabel: UILabel?
+    @IBOutlet weak var numberToTrailing: NSLayoutConstraint!
    @IBOutlet weak var expirationDateLabel: UILabel?
   @IBOutlet weak  var backgroundButton: UIButton?
    
@@ -35,31 +36,30 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
 
         self.isUserInteractionEnabled = true
         self.paymentMethod = method
-//        
-//         backgroundButton = UIButton(frame: CGRect(x: 0, y: 0, width: frame.size.width - 47.0, height: frame.size.height - 4 ))
-//        if  let backgroundButton = backgroundButton{
-//        backgroundButton.addTarget(self, action: #selector(creditCardPressed(_:)), for: .touchUpInside)
-//        backgroundButton.setImage(self.setImageForType(method.issuer), for: UIControlState())
-//        backgroundButton.adjustsImageWhenHighlighted = false
-//        addSubview(backgroundButton)
-//        }
+
       xibSetup()
         
      
         tempCardIcon.isHidden = !method.isSingleUse
         //credit card number label
         if let creditCardNumberlabel = creditCardNumberlabel {
+            creditCardNumberlabel.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4)
+creditCardNumberlabel.layer.cornerRadius = 4
+            creditCardNumberlabel.clipsToBounds = true
         creditCardNumberlabel.textColor = UIColor.white
-        creditCardNumberlabel.font =  UIFont(name: creditCardNumberlabel.font.fontName, size: 9)
-        if let lastFourDigits = method.lastFourDigits{
-            creditCardNumberlabel.text = method.name
+        creditCardNumberlabel.font =  UIFont(name: creditCardNumberlabel.font.fontName, size: creditCardNumberlabel.font.pointSize)
+        if let lastFourDigits = method.lastFourDigits , let name = method.name{
+            creditCardNumberlabel.text = " \(name) "
           }
             }
         //expiration date label
 
         if let expirationDateLabel = expirationDateLabel{
         expirationDateLabel.textColor = UIColor.white
-        expirationDateLabel.font =  UIFont(name: expirationDateLabel.font.fontName, size: 9)
+            expirationDateLabel.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4)
+            expirationDateLabel.layer.cornerRadius = 4
+expirationDateLabel.clipsToBounds = true
+            expirationDateLabel.font =  UIFont(name: expirationDateLabel.font.fontName, size: expirationDateLabel.font.pointSize )
         if var year = method.expireYear, let month = method.expireMonth{
             if year.characters.count > 2 {
                 year = year.substring(from: year.characters.index(year.startIndex, offsetBy: 2))

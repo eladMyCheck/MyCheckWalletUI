@@ -99,7 +99,7 @@ open class MyCheckWallet{
     }
     
     fileprivate func configureWallet(_ publishableKey: String , environment: Environment , success: (() -> Void)? , fail:((_ error: NSError) -> Void)?){
-        Networking.manager.configureWallet(environment, success: { domain , pci , JSON , stringsJSON in
+        Networking.manager.configureWallet(publishableKey , environment: environment, success: { domain , pci , JSON , stringsJSON in
             
             //the 3rd party we are supporting.
             
@@ -129,7 +129,7 @@ open class MyCheckWallet{
         
         if let key = publishableKey {
             let loginFunc = {
-                let request = Networking.manager.login( refreshToken, publishableKey: key , success: {token in
+                let request = Networking.manager.login( refreshToken,  success: {token in
                     self.token = token
                     self.getPaymentMethods({paymentMethods in
                         let nc = NotificationCenter.default

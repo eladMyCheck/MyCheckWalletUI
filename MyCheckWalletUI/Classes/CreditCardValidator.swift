@@ -53,7 +53,7 @@ internal enum CardType: String {
         case .Visa:
             return "^4[0-9]{6,}([0-9]{3})?$"
         case .MasterCard:
-            return "^(5[1-5][0-9]{4}|677189)[0-9]{5,}$"
+            return "^(5[1-5]|222[1-9]|22[3-9]|2[3-6]|27[01]|2720)[0-9]{0,}$"
         case .Diners:
             return "^3(?:0[0-5]|[68][0-9])[0-9]{4,}$"
         case .Discover:

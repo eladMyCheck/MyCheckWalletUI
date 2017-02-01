@@ -17,7 +17,7 @@ internal protocol MCAddCreditCardViewControllerDelegate : class{
 open class MCAddCreditCardViewController: MCViewController {
     @IBOutlet weak var errorHeight: NSLayoutConstraint!
     
- internal weak var containerHeight: NSLayoutConstraint!
+ internal weak var containerHeight: NSLayoutConstraint?
     @IBOutlet weak var checkboxLabel: UILabel!
     @IBOutlet weak var checkbox: UIButton!
 
@@ -182,7 +182,7 @@ open class MCAddCreditCardViewController: MCViewController {
         cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.title(for: UIControlState())) , for: .highlighted)
         
         //setting colors
-        navBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsheaderBackground", fallback: navBar.backgroundColor!)
+        navBar.barTintColor = LocalData.manager.getColor("managePaymentMethodsColorsheaderBackground", fallback: navBar.backgroundColor!)
         
         errorLabel.textColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
         applyButton.backgroundColor = LocalData.manager.getColor("addCreditColorsapplyBackgroundColor", fallback: UIColor.white)
@@ -445,7 +445,9 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             UIView.animate(withDuration: 0.3, animations: {
                 self.errorHeight.constant = 0
                 self.view.layoutIfNeeded()
-                self.containerHeight.constant = 250.0
+                if let containerHeight =  self.containerHeight{
+                containerHeight.constant = 250.0
+                }
                 if let parent = self.parent {
                 parent.view.layoutIfNeeded()
                 }
@@ -458,7 +460,9 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         
         UIView.animate(withDuration: 0.3, animations:  {
             self.errorHeight.constant = 25.0
-            self.containerHeight.constant = 275.0
+            if let containerHeight =  self.containerHeight{
+             containerHeight.constant = 275.0
+            }
              self.errorLabel.alpha = 1.0
             self.parent?.view.layoutIfNeeded()
             
@@ -467,7 +471,9 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             delay(0.3 + LocalData.manager.getDouble("ValueserrorTime", fallback: 7.0)){
                 UIView.animate(withDuration: 0.3, animations: {
                     self.errorHeight.constant = 0
-                    self.containerHeight.constant = 250.0
+                    if let containerHeight =  self.containerHeight{
+                    containerHeight.constant = 250.0
+                    }
                      self.errorLabel.alpha = 0.0
                     self.view.layoutIfNeeded()
                     if let parent = self.parent {

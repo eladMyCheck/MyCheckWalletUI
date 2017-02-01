@@ -13,14 +13,15 @@ internal protocol MCCreditCardsViewControllerrDelegate {
 }
 
 internal class MCCreditCardsViewController: MCViewController , UIGestureRecognizerDelegate, CreditCardViewDelegate{
-   let margin = 15.0 as CGFloat
+    let margin = 5.0 as CGFloat
     var cardViewWidth = 210 as CGFloat
     var startMargin = 106 as CGFloat
-    
-    @IBOutlet weak var navBar: UINavigationBar!
+    var addCardWidth = 185.0 as CGFloat
+    var secondMargin = 5 as CGFloat
+    @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var scrollView: MCScrollView!
-    @IBOutlet weak var backBut: UIBarButtonItem!
+    @IBOutlet weak var backBut: UIButton!
     var activityView : UIActivityIndicatorView!
     var paymentMethods: Array<PaymentMethod>!
     var delegate : MCCreditCardsViewControllerrDelegate?
@@ -33,12 +34,15 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         super.viewDidLoad()
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
-              cardViewWidth =  696.0 / 1242 * screenWidth
-        startMargin = (UIScreen.main.bounds.width - cardViewWidth ) / 2.0  as CGFloat
-      //var point = scrollView.contentOffset
-     // point.x = (-0.5) * (cardViewWidth + margin + 0) + self.startMargin + 27 ;
-
-       // scrollView.setContentOffset(point, animated: true)
+        cardViewWidth =  696.0 / 1242 * screenWidth
+        addCardWidth = 610.0 / 1242 * screenWidth
+        startMargin = (UIScreen.main.bounds.width - addCardWidth ) / 2.0  as CGFloat
+        
+        secondMargin = margin + 33.0
+        //var point = scrollView.contentOffset
+        // point.x = (-0.5) * (cardViewWidth + margin + 0) + self.startMargin + 27 ;
+        
+        // scrollView.setContentOffset(point, animated: true)
         self.scrollView.delegate = self;
         delay(0.2){
             self.setCreditCardsUI(false)
@@ -66,31 +70,47 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             creditCardCount = self.paymentMethods.count
         }
         
-        let addCreditCardView = AddCreditCardView(frame: CGRect(x: startMargin, y: 0.5 * (scrollView.frame.size.height-cardHeight), width: cardViewWidth, height: cardHeight) )
-                self.scrollView.addSubview(addCreditCardView)
-               for i in (0..<creditCardCount) {
+        let addCreditCardView = AddCreditCardView(frame: CGRect(x: startMargin, y: 0.5 * (scrollView.frame.size.height-cardHeight), width: addCardWidth , height: cardHeight) )
+        self.scrollView.addSubview(addCreditCardView)
+        
+        
+        
+        for i in (0..<creditCardCount) {
             let method = self.paymentMethods[i]
-            let frame = CGRect(x:(margin + cardViewWidth)*CGFloat(i+1)+startMargin, y: 0.5 * (scrollView.frame.size.height-cardHeight), width: cardViewWidth , height: cardHeight)
+            var frame = CGRect(x:(margin + cardViewWidth)*CGFloat(i)+startMargin + addCardWidth + secondMargin  , y: 0.5 * (scrollView.frame.size.height-cardHeight), width: cardViewWidth , height: cardHeight)
             
-            if method.type == .creditCard {
-                let cc = CreditCardView(frame: frame, method: method)
-                
-                creditCards.add(cc)
-               
-                cc.delegate = self
-                self.scrollView.addSubview(cc)
-                
-            } else{//3rd party payment method
-                if let factory = MyCheckWallet.manager.getFactory(method.type){
-                    guard let cc = factory.getCreditCardView(frame, method: method) else{
-                        continue
+            //trying to create a card object, set it up and add it to the scroll view
+            if  let card : CreditCardView = {
+                var card : CreditCardView? = nil
+                if method.type == .creditCard{
+                    return  CreditCardView(frame: frame, method: method)
+                    
+                }else{
+                    if let factory = MyCheckWallet.manager.getFactory(method.type){
+                        
+                        guard let cc = factory.getCreditCardView(frame, method: method) else{
+                            return nil
+                        }
+                        return cc
                     }
-                    creditCards.add(cc)
-                    cc.delegate = self
-                    self.scrollView.addSubview(cc)
                 }
+                return nil
+                }(){//if we succeed in creating the card we will now set it up
+                
+                //updating the width to be more acurate (calculated directly from xib file)
+          
+                    creditCards.add(card)
+                    card.delegate = self
+                    self.scrollView.addSubview(card)
+                    
+                
+                
             }
+            
+            
         }
+        
+        
         
         if creditCardCount == 0 {
             self.editButton.setTitle("", for: UIControlState())
@@ -101,14 +121,14 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             self.editButton.isEnabled = true
         }
         
-        self.scrollView.contentSize = CGSize(width:CGFloat(creditCardCount+1)*(cardViewWidth + margin ) + startMargin * 2 - 15.0 , height:0.0)
+        self.scrollView.contentSize = CGSize(width:CGFloat(creditCardCount+1)*(cardViewWidth + margin ) + startMargin * 2 + secondMargin - margin - 15.0 , height:0.0)
         
         UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
             if creditCardCount > 0{
                 if self.indexToScrollTo == 0{
                     self.indexToScrollTo =  1
                 }
-              //  self.scrollView.contentOffset = CGPoint(x: CGFloat(self.indexToScrollTo)*(self.cardViewWidth + self.margin) - self.margin - self.startMargin - 16 , y: 0)
+                //  self.scrollView.contentOffset = CGPoint(x: CGFloat(self.indexToScrollTo)*(self.cardViewWidth + self.margin) - self.margin - self.startMargin - 16 , y: 0)
                 self.currantIndex = self.indexToScrollTo
                 self.indexToScrollTo = 0
             }else{
@@ -118,7 +138,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         })
     }
     //MARK: - actions
-    @IBAction internal func backPressed(_ sender: UIBarButtonItem) {
+    @IBAction internal func backPressed(_ sender: UIButton) {
         self.delegate?.backPressed()
         
     }
@@ -152,7 +172,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             self.editMode = !self.editMode
             self.updateButtonTxt()
             self.setCreditCardsUI(true)
-            }, fail: { error in
+        }, fail: { error in
         })
     }
     
@@ -164,33 +184,33 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     internal func reloadMethods(){
         showActivityIndicator(true)
         MyCheckWallet.manager.getPaymentMethods({ (array) in
-          self.showActivityIndicator(false)
+            self.showActivityIndicator(false)
             self.paymentMethods = array
             self.setCreditCardsUI(true)
             
-            }, fail: { error in
-              self.showActivityIndicator(false)
-
+        }, fail: { error in
+            self.showActivityIndicator(false)
+            
         })
     }
-  internal func showActivityIndicator(_ show: Bool) {
+    internal func showActivityIndicator(_ show: Bool) {
         if activityView == nil{
             activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
             
             activityView.center=CGPoint(x: self.view.center.x, y: self.view.center.y + 30)
             self.view.addSubview(activityView)
-          self.view.bringSubview(toFront: activityView)
-          activityView.startAnimating()
-
+            self.view.bringSubview(toFront: activityView)
+            activityView.startAnimating()
+            
         }
-    activityView.isHidden = !show
+        activityView.isHidden = !show
     }
     
     @objc fileprivate func setupUI(){
         
         navBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsheaderBackground", fallback: navBar.backgroundColor!)
         editButton.setTitleColor( LocalData.manager.getColor("managePaymentMethodsColorseditButtonText", fallback: editButton.titleColor(for: UIControlState())!)
-, for: UIControlState())
+            , for: UIControlState())
         backBut.tintColor = LocalData.manager.getColor("managePaymentMethodsColorsbackButton", fallback: navBar.backgroundColor!)
     }
     fileprivate func updateButtonTxt(){
@@ -203,10 +223,10 @@ extension MCCreditCardsViewController : UIScrollViewDelegate {
     
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,
-                                     withVelocity velocity: CGPoint,
-                                                  targetContentOffset: UnsafeMutablePointer<CGPoint>){
-      printIfDebug("x location: \(targetContentOffset.pointee.x )")
-
+                                   withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>){
+        printIfDebug("x location: \(targetContentOffset.pointee.x )")
+        
         let kMaxIndex = 20000 as CGFloat
         let targetX = scrollView.contentOffset.x + velocity.x * 20.0 as CGFloat
         var targetIndex = round(targetX / (cardViewWidth + 0)) as CGFloat
@@ -218,8 +238,8 @@ extension MCCreditCardsViewController : UIScrollViewDelegate {
         } else {
             targetIndex = floor(targetX / (self.cardViewWidth + 0.0));
         }
-    //  printIfDebug("currantIndex: \(currantIndex) TargetIndex: \(targetIndex)")
-
+        //  printIfDebug("currantIndex: \(currantIndex) TargetIndex: \(targetIndex)")
+        
         let currantIndexFloat =  CGFloat( currantIndex)
         
         if targetIndex < currantIndexFloat {
@@ -235,13 +255,13 @@ extension MCCreditCardsViewController : UIScrollViewDelegate {
         if targetIndex > kMaxIndex{
             targetIndex = kMaxIndex
         }
-      let screenSize = UIScreen.main.bounds
-      let screenWidth = screenSize.width
-        targetContentOffset.pointee.x = (targetIndex - 0.5) * (cardViewWidth + margin + 0) + self.startMargin + 10 ;
-     // first objects center is not same becaus their is no checkbox to throw it off
-      if targetIndex == 0 {
-      targetContentOffset.pointee.x += 17
-      }
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        targetContentOffset.pointee.x = (targetIndex - 0.5) * (cardViewWidth + margin ) + ( self.addCardWidth  + secondMargin  ) / 2
+        // first objects center is not same becaus their is no checkbox to throw it off
+        if targetIndex == 0 {
+            targetContentOffset.pointee.x = 0
+        }
         currantIndex = Int( targetIndex)
     }
 }

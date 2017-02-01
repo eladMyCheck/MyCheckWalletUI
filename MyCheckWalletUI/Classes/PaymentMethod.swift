@@ -138,7 +138,7 @@ open class PaymentMethod{
           name = JSON["name"] as? String
            
             switch (source){
-            case "paypal":
+            case "BRAINTREE":
                 type = .payPal
             default:
                 type = .creditCard

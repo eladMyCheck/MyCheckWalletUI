@@ -27,18 +27,29 @@ class PayPalView: CreditCardView {
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
     let image = UIImage(named: "paypal_background" , in: bundle, compatibleWith: nil)
     backgroundButton!.setImage(image, for: UIControlState())
-    if let creditCardNumberlabel = self.creditCardNumberlabel{
-        creditCardNumberlabel.textAlignment = NSTextAlignment.center;
+    if let numberToTrailing = self.numberToTrailing{
+       numberToTrailing.priority = 999
        
-        //moving the label into position
-        var frame = creditCardNumberlabel.frame
-        frame.size.width = backgroundButton!.frame.size.width - 20.0
-        frame.origin.y = 68
-        creditCardNumberlabel.frame = frame
+      
 
     }
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //moving the label into position
+        if let creditCardNumberlabel = self.creditCardNumberlabel{
+            creditCardNumberlabel.textAlignment = NSTextAlignment.center;
+            
+            //moving the label into position
+            var frame = creditCardNumberlabel.frame
+            frame.size.width = backgroundButton!.frame.size.width - 20.0
+            frame.origin.y = 68
+            creditCardNumberlabel.frame = frame
+            
+        }
     }
 }

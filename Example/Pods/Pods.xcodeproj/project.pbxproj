@@ -173,6 +173,7 @@
 		AE1EF48399533730D0066E04B22CA2D6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1681A284B7BBD1240259A33CAE8595DC /* SessionManager.swift */; };
 		AE27E31A9C5C3E0AF52C8647E6E7C316 /* PPOTAppSwitchUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F721032EA8CF13BCF3CEFF09703D45 /* PPOTAppSwitchUtil.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		AFF9BB505A69F67B0CDADD9D88459A39 /* BTHTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ACE86EF0D1FF209C3B0A6DB1071BEE /* BTHTTP.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
+		B2D4FFCE1E41CA7500D0589B /* Dictionary+Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D4FFCD1E41CA7500D0589B /* Dictionary+Append.swift */; };
 		B3B0A3D7C27CB45C77DF1961E1EA9E50 /* BraintreeCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E1C4D84D1B91B96F4B5B4465DD78EBF /* BraintreeCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4706B61D3815EB907ADA0540998A836 /* PPOTRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A13556B2E230B265586B5376F00C440 /* PPOTRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4F5D320C60668218345C82FBF2B9872 /* PayPalPaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363CF59D4F6A97677CE21C3E9F707FE4 /* PayPalPaymentMethod.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -345,7 +346,7 @@
 		275873B5A20B5FF17C6D3A2B2C4903C8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2795D1BBA7DE1F67586C42CEC7D59DB1 /* PPOTEncryptionHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTEncryptionHelper.h; path = BraintreePayPal/PayPalUtils/Public/PPOTEncryptionHelper.h; sourceTree = "<group>"; };
 		2846E7E3CA512289EBC75B5594789EB4 /* BTPayPalAccountNonce_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTPayPalAccountNonce_Internal.h; path = BraintreePayPal/BTPayPalAccountNonce_Internal.h; sourceTree = "<group>"; };
-		295BD3C22053CCF16DC8A28BFB5BC4EC /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Kingfisher.modulemap; sourceTree = "<group>"; };
+		295BD3C22053CCF16DC8A28BFB5BC4EC /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Kingfisher.modulemap; sourceTree = "<group>"; };
 		295C3CB86B8C2BDC2B0D6FEB39A2CACB /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
 		29F24836E846A2F658DF3D36815A1883 /* PPOTCheckoutSwitchRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTCheckoutSwitchRequest.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTCheckoutSwitchRequest.h; sourceTree = "<group>"; };
 		2A6401200A25DE4E634A69C2B021C0EF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -358,7 +359,7 @@
 		31C64A2D7930810A6E8A2A57CD4044DB /* PaymentMethodButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodButton.swift; sourceTree = "<group>"; };
 		31DF0EA0F81F6584C8E5A1FC42FF589F /* PPOTAuthorizationRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTAuthorizationRequest.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTAuthorizationRequest.m; sourceTree = "<group>"; };
 		31F382E7299F5411155DD14144998FF6 /* PaymentMethodFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodFactory.swift; sourceTree = "<group>"; };
-		328A3804DDA7BF5623D055BCBB0161E8 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		328A3804DDA7BF5623D055BCBB0161E8 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		34CCFE745CCAC6FA573A59A68E95216F /* BTAnalyticsMetadata.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTAnalyticsMetadata.m; path = BraintreeCore/BTAnalyticsMetadata.m; sourceTree = "<group>"; };
 		34EDBA001BA7C6CA743AA61B1B456FD9 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		35EE348F2F38C8DE0EAB72E444A5B96F /* BraintreePayPal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BraintreePayPal.h; path = BraintreePayPal/Public/BraintreePayPal.h; sourceTree = "<group>"; };
@@ -384,7 +385,7 @@
 		4B16C7B30E0F9C99D5EAC601D0A94FB3 /* BTLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTLogger.m; path = BraintreeCore/BTLogger.m; sourceTree = "<group>"; };
 		4B3810F529FF57B9049442911991CB02 /* BTClientMetadata.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTClientMetadata.m; path = BraintreeCore/BTClientMetadata.m; sourceTree = "<group>"; };
 		4CB70D9B8B5AE85EB7F6F823F97E71C3 /* PPOTSimpleKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTSimpleKeychain.h; path = BraintreePayPal/PayPalUtils/Public/PPOTSimpleKeychain.h; sourceTree = "<group>"; };
-		4DA9872B10E0DA0AFC3E1BDD77931E46 /* ProximaNovaSoftRegular.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftRegular.otf; sourceTree = "<group>"; };
+		4DA9872B10E0DA0AFC3E1BDD77931E46 /* ProximaNovaSoftRegular.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = ProximaNovaSoftRegular.otf; sourceTree = "<group>"; };
 		4FA83C00EF79357CD4BED87364995617 /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
 		512AB9A7CB31F01B8F79B18E56B3FB44 /* Pods-MyCheckWalletUI_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyCheckWalletUI_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		512B7EC85AED4641FD0B34DE1625D8B8 /* PPOTPinnedCertificates.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTPinnedCertificates.h; path = BraintreePayPal/PayPalUtils/Public/PPOTPinnedCertificates.h; sourceTree = "<group>"; };
@@ -397,7 +398,7 @@
 		54B6E45D750FB72E374F42CFFBF87D62 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55837EA7C7554A638DB1FE8661FA96FF /* PPOTOAuth2SwitchRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTOAuth2SwitchRequest.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTOAuth2SwitchRequest.m; sourceTree = "<group>"; };
 		5584E0B24DFB2A2386AE9BCE1E02FC50 /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sources/ImageDownloader.swift; sourceTree = "<group>"; };
-		55868FE66268C937DFB9F485ADB74F11 /* Braintree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Braintree.framework; path = Braintree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55868FE66268C937DFB9F485ADB74F11 /* Braintree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Braintree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A3E146D13BC8AE72986C956AB63696 /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		56D888B2AC0FECF99D30780F7D46DD12 /* PPOTCore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTCore.h; path = BraintreePayPal/PayPalOneTouch/Public/PPOTCore.h; sourceTree = "<group>"; };
 		57F1ABB7A8D56E8BCE9635DA4AC767D0 /* BTPaymentMethodNonceParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTPaymentMethodNonceParser.h; path = BraintreeCore/Public/BTPaymentMethodNonceParser.h; sourceTree = "<group>"; };
@@ -418,8 +419,8 @@
 		629A7D5C66BEF6D919F8DE7E42C2B8ED /* BTHTTPErrors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTHTTPErrors.m; path = BraintreeCore/BTHTTPErrors.m; sourceTree = "<group>"; };
 		63FB6A0C779343BDB6B12019AC8CE7D6 /* BTAppSwitch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTAppSwitch.h; path = BraintreeCore/Public/BTAppSwitch.h; sourceTree = "<group>"; };
 		642CE7E6EE1C60C28BE76C731EFE0B41 /* MCScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCScrollView.swift; sourceTree = "<group>"; };
-		666E044B686DF9E5E615DA4A8CFBB191 /* MyCheckWalletUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MyCheckWalletUI.modulemap; sourceTree = "<group>"; };
-		67426C4FD635535435F2D2CF01448145 /* MCPaymentMethodsViewController.swift.orig */ = {isa = PBXFileReference; includeInIndex = 1; path = MCPaymentMethodsViewController.swift.orig; sourceTree = "<group>"; };
+		666E044B686DF9E5E615DA4A8CFBB191 /* MyCheckWalletUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MyCheckWalletUI.modulemap; sourceTree = "<group>"; };
+		67426C4FD635535435F2D2CF01448145 /* MCPaymentMethodsViewController.swift.orig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = MCPaymentMethodsViewController.swift.orig; sourceTree = "<group>"; };
 		67823A6DBDBFA6D765671CCF65CDED1E /* PPOTCore_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTCore_Internal.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTCore_Internal.h; sourceTree = "<group>"; };
 		67E88C127B017BE417E36A3F8C0BE1E9 /* MCCheckoutViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCCheckoutViewController.swift; sourceTree = "<group>"; };
 		6A9A79F2C035F0CEAFAC8B1DFB417A31 /* BTPayPalDriver_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTPayPalDriver_Internal.h; path = BraintreePayPal/BTPayPalDriver_Internal.h; sourceTree = "<group>"; };
@@ -428,7 +429,7 @@
 		6F2A37D0B0A5E2AC428C076F5EB36349 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		727A00AD53F30FE03B7BB6864FD34BB5 /* CreditCardView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CreditCardView.xib; sourceTree = "<group>"; };
 		73680FF4931F4A524A30A840AF57A5A4 /* Pods-MyCheckWalletUI_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		74B810F37AEB34EE6B8AFA5A57A2F3FA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74B810F37AEB34EE6B8AFA5A57A2F3FA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75405EAE214FCB74CE441732918AEDFA /* ResourceBundle-MyCheckWalletUI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MyCheckWalletUI-Info.plist"; sourceTree = "<group>"; };
 		75C9AAE11DFF0B374B442DFE4603C466 /* String+MD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+MD5.swift"; path = "Sources/String+MD5.swift"; sourceTree = "<group>"; };
 		7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -456,13 +457,13 @@
 		8D59C9B27A9798FF8FFA9A859EF6A936 /* Pods-MyCheckWalletUI_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyCheckWalletUI_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8D61C4B5289DA3A020CB72C479FA57C5 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE2109F97FAF7E485E3031CE540BDF4 /* PPOTRequestFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTRequestFactory.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTRequestFactory.m; sourceTree = "<group>"; };
-		8DE5E2929B5DA95CC48D75909E8D18CE /* Pods_MyCheckWalletUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MyCheckWalletUI_Example.framework; path = "Pods-MyCheckWalletUI_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DE5E2929B5DA95CC48D75909E8D18CE /* Pods_MyCheckWalletUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCheckWalletUI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E2D8001C3FA0A39BBA777BC83433B1D /* BTAppSwitch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTAppSwitch.m; path = BraintreeCore/BTAppSwitch.m; sourceTree = "<group>"; };
 		8F3738CEF1AF51B5B31DD8CEFF06194E /* String+Capital.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Capital.swift"; sourceTree = "<group>"; };
 		9170120CB89B4144BD633A32F7818FAB /* PPOTTime.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTTime.m; path = BraintreePayPal/PayPalUtils/PPOTTime.m; sourceTree = "<group>"; };
 		918B9A612B134253F0889C9D239386CC /* Kingfisher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-umbrella.h"; sourceTree = "<group>"; };
-		9242FBCD44DE621973267C0EDE38D3EB /* Pods_MyCheckWalletUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MyCheckWalletUI_Tests.framework; path = "Pods-MyCheckWalletUI_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9242FBCD44DE621973267C0EDE38D3EB /* Pods_MyCheckWalletUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCheckWalletUI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93C34A6628A086B56AA4842B131CCF77 /* CreditCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		94D653FAC6E96947DDE278EB226390FD /* BTClientToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTClientToken.m; path = BraintreeCore/BTClientToken.m; sourceTree = "<group>"; };
 		9627DA8D98B78CA49C69BD1FE41D66E2 /* UITextField+Placeholder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITextField+Placeholder.swift"; sourceTree = "<group>"; };
@@ -486,21 +487,22 @@
 		A531516926F026DD43748FF6C2D3B0FE /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
 		A5A8234E70D177D464060C705E49E961 /* MyCheckWalletUI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-umbrella.h"; sourceTree = "<group>"; };
 		A6D97E3675FBDDA0B6FF4E299B6A072F /* PPOTAnalyticsTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTAnalyticsTracker.h; path = BraintreePayPal/PayPalOneTouch/Analytics/PPOTAnalyticsTracker.h; sourceTree = "<group>"; };
-		A77108DB7A8BAC9F0EB46D1DC6A798C5 /* Braintree.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Braintree.modulemap; sourceTree = "<group>"; };
+		A77108DB7A8BAC9F0EB46D1DC6A798C5 /* Braintree.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Braintree.modulemap; sourceTree = "<group>"; };
 		A819F47972EDF3A3F6512FBFDBE53C60 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		A86A73CB0EA2BA05104B7BCED5D575EC /* BTErrors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTErrors.m; path = BraintreeCore/BTErrors.m; sourceTree = "<group>"; };
-		A8FE842F2C78CF614B6E86CDC236379C /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8FE842F2C78CF614B6E86CDC236379C /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA46D6B44765A38FDC7972B4D6C45682 /* PPFPTIData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPFPTIData.m; path = BraintreePayPal/PayPalOneTouch/Analytics/PPFPTIData.m; sourceTree = "<group>"; };
-		AC657C56FB10E2C6433D0AFE081866BE /* Pods-MyCheckWalletUI_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MyCheckWalletUI_Tests.modulemap"; sourceTree = "<group>"; };
+		AC657C56FB10E2C6433D0AFE081866BE /* Pods-MyCheckWalletUI_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MyCheckWalletUI_Tests.modulemap"; sourceTree = "<group>"; };
 		AD8889FCFA64A0B41EDA3C04EA4DE6BB /* PPOTConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTConfiguration.h; path = BraintreePayPal/PayPalOneTouch/Configuration/PPOTConfiguration.h; sourceTree = "<group>"; };
 		AF298DE299048E4F6BED86CFDA49C92E /* PPOTResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTResult.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTResult.m; sourceTree = "<group>"; };
 		B0106DC39736BA8B188E9AA623B31D6E /* PPOTError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTError.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTError.h; sourceTree = "<group>"; };
 		B06974799D315855E1677D9FFE5205E6 /* MyCheckWalletUI.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MyCheckWalletUI.xcconfig; sourceTree = "<group>"; };
 		B0C656A28F161D59A15E6BF037FA1D7F /* PPOTOAuth2BrowserSwitchRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTOAuth2BrowserSwitchRequest.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTOAuth2BrowserSwitchRequest.h; sourceTree = "<group>"; };
+		B2D4FFCD1E41CA7500D0589B /* Dictionary+Append.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Append.swift"; sourceTree = "<group>"; };
 		B3399FE07DFB0BBA27C090B880B4B02B /* BTTokenizationService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTTokenizationService.h; path = BraintreeCore/Public/BTTokenizationService.h; sourceTree = "<group>"; };
 		B372339D78110BA585895AFAA3357C76 /* CheckoutViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CheckoutViewController.xib; sourceTree = "<group>"; };
 		B39F69777E6528EBF72A7F05D1425FFB /* Pods-MyCheckWalletUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		B441FF5450B7D69FD0A29D80B703B6B4 /* MyCheckWalletUI.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; path = MyCheckWalletUI.storyboard; sourceTree = "<group>"; };
+		B441FF5450B7D69FD0A29D80B703B6B4 /* MyCheckWalletUI.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = MyCheckWalletUI.storyboard; sourceTree = "<group>"; };
 		B497100BFFE99F5828C23786479DFFCA /* Pods-MyCheckWalletUI_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MyCheckWalletUI_Tests-dummy.m"; sourceTree = "<group>"; };
 		B50F4E3EBB11692FAC1F5EECD1AF767A /* KDataCollector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KDataCollector.h; path = BraintreeDataCollector/Kount/KDataCollector.h; sourceTree = "<group>"; };
 		B512D0FD58B98149C72E95CBEEF5C221 /* MCViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCViewController.swift; sourceTree = "<group>"; };
@@ -514,8 +516,8 @@
 		BF68FCB2236784347A328A4DD23BD206 /* KingfisherOptionsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherOptionsInfo.swift; path = Sources/KingfisherOptionsInfo.swift; sourceTree = "<group>"; };
 		BFA2D06B0DA3318EA3A7EBC0A7D751E8 /* PPOTOAuth2AppSwitchRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTOAuth2AppSwitchRequest.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTOAuth2AppSwitchRequest.m; sourceTree = "<group>"; };
 		C005DFF1134CFBC4441868A44FDED8F4 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h"; sourceTree = "<group>"; };
-		C1B2E242E41F3D763DCF254D2E23D5FA /* MyCheckWalletUI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyCheckWalletUI.bundle; path = MyCheckWalletUI.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1C616FAB1CDC46C9E07DE707AA42869 /* Pods-MyCheckWalletUI_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MyCheckWalletUI_Example.modulemap"; sourceTree = "<group>"; };
+		C1B2E242E41F3D763DCF254D2E23D5FA /* MyCheckWalletUI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCheckWalletUI.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1C616FAB1CDC46C9E07DE707AA42869 /* Pods-MyCheckWalletUI_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MyCheckWalletUI_Example.modulemap"; sourceTree = "<group>"; };
 		C346BC6A1B1B3DCF3EFA0F912D805F82 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C36C4EDFFB818C48479665F9183EBDD3 /* PPOTString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTString.m; path = BraintreePayPal/PayPalUtils/PPOTString.m; sourceTree = "<group>"; };
 		C3E6C16B57FCEBF5336AFD19F4D0F76C /* ImageProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProcessor.swift; path = Sources/ImageProcessor.swift; sourceTree = "<group>"; };
@@ -539,7 +541,7 @@
 		D3B6B4533D3E2F9623FF50C5E88AE8D9 /* BTLogger_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTLogger_Internal.h; path = BraintreeCore/BTLogger_Internal.h; sourceTree = "<group>"; };
 		D4E166ECBAABD3C73212297BD4C89761 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		D5252082955B7A6D09ED87561608E268 /* BTURLUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTURLUtils.m; path = BraintreeCore/BTURLUtils.m; sourceTree = "<group>"; };
-		D5AC997E79C3560022FEE5421D3706BC /* ProximaNovaSoftBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftBold.ttf; sourceTree = "<group>"; };
+		D5AC997E79C3560022FEE5421D3706BC /* ProximaNovaSoftBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = ProximaNovaSoftBold.ttf; sourceTree = "<group>"; };
 		D7884B6478BA92BAA6CFA5752216C72E /* PayPalOneTouch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalOneTouch.h; path = BraintreePayPal/PayPalOneTouch/Public/PayPalOneTouch.h; sourceTree = "<group>"; };
 		D7B7ABB065CCA013B83E917EDA230733 /* BTJSON.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTJSON.m; path = BraintreeCore/BTJSON.m; sourceTree = "<group>"; };
 		D8ACE86EF0D1FF209C3B0A6DB1071BEE /* BTHTTP.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTHTTP.m; path = BraintreeCore/BTHTTP.m; sourceTree = "<group>"; };
@@ -563,7 +565,7 @@
 		E8E2C9BE33AB6C58B0451E4133A5D313 /* MCPaymentMethodsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCPaymentMethodsViewController.swift; sourceTree = "<group>"; };
 		E965D3B6C7B80A48004832AC46084A64 /* RequestModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestModifier.swift; path = Sources/RequestModifier.swift; sourceTree = "<group>"; };
 		E96E2A41AF218CBC6F395EDE95B74608 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
-		ECBD0C55E81064F1628E54D1E747D425 /* MyCheckWalletUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MyCheckWalletUI.framework; path = MyCheckWalletUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECBD0C55E81064F1628E54D1E747D425 /* MyCheckWalletUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyCheckWalletUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED63CFA8F2DD1AE6EE5B5E2149081FEA /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		ED9C7E55B63360978BE7CC122A1D559C /* PPOTJSONHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTJSONHelper.m; path = BraintreePayPal/PayPalUtils/PPOTJSONHelper.m; sourceTree = "<group>"; };
 		EDBF074651BF4AB29778B369C59D7CD1 /* PPOTDevice.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTDevice.m; path = BraintreePayPal/PayPalUtils/PPOTDevice.m; sourceTree = "<group>"; };
@@ -697,7 +699,6 @@
 				D5AC997E79C3560022FEE5421D3706BC /* ProximaNovaSoftBold.ttf */,
 				4DA9872B10E0DA0AFC3E1BDD77931E46 /* ProximaNovaSoftRegular.otf */,
 			);
-			name = Assets;
 			path = Assets;
 			sourceTree = "<group>";
 		};
@@ -712,7 +713,6 @@
 				DAD52AA6A599C31CAB1D77DA19B23D92 /* PayPalUtils */,
 				9840FAD37293B4469202A9FFC3B9A606 /* Support Files */,
 			);
-			name = Braintree;
 			path = Braintree;
 			sourceTree = "<group>";
 		};
@@ -779,7 +779,6 @@
 			children = (
 				53DA847EDEE5B893C2657704B5F6421D /* PayPal */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -808,8 +807,8 @@
 				37AA26782F7675E1B4DF5716B387E77B /* UIColor+CustomColors.swift */,
 				D1CBA910C26435BF587476C2D98AF137 /* UIColor+Hex.swift */,
 				9627DA8D98B78CA49C69BD1FE41D66E2 /* UITextField+Placeholder.swift */,
+				B2D4FFCD1E41CA7500D0589B /* Dictionary+Append.swift */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -823,7 +822,6 @@
 				8C4D55C28B9F9A8373D1AFE8A0C4351C /* PayPalView.swift */,
 				A04FB8DB0B1E750CB9E79D4B010B6502 /* String+Base64.swift */,
 			);
-			name = PayPal;
 			path = PayPal;
 			sourceTree = "<group>";
 		};
@@ -980,7 +978,6 @@
 				A819F47972EDF3A3F6512FBFDBE53C60 /* Validation.swift */,
 				0F9046BA1C57C776D36F0C6F46CE97ED /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1094,7 +1091,6 @@
 			children = (
 				437C874E94AA9967CE84F3581E59F988 /* Classes */,
 			);
-			name = MyCheckWalletUI;
 			path = MyCheckWalletUI;
 			sourceTree = "<group>";
 		};
@@ -1103,7 +1099,6 @@
 			children = (
 				3EC6EE601BC51180BB0EC8E52D6861FF /* Classes */,
 			);
-			name = MyCheckWalletUI;
 			path = MyCheckWalletUI;
 			sourceTree = "<group>";
 		};
@@ -1126,7 +1121,6 @@
 			children = (
 				1288C71CB419ACB9400978C261BB9EF4 /* Assets */,
 			);
-			name = MyCheckWalletUI;
 			path = MyCheckWalletUI;
 			sourceTree = "<group>";
 		};
@@ -1210,7 +1204,6 @@
 				CADC934BBD01B042B5DAF9F4C8599896 /* UIButton+Kingfisher.swift */,
 				63CF7717D176E895E3E60B87F1BD899F /* Support Files */,
 			);
-			name = Kingfisher;
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
@@ -1664,6 +1657,7 @@
 				C982EA1AC8CB2A2E3E82DF6807B5AE96 /* Networking.swift in Sources */,
 				923CF7584F389163D9337CFCED29C5F9 /* PaymentMethod.swift in Sources */,
 				E79662B675EEE71C1AFA59ACA4E9E415 /* PaymentMethodButton.swift in Sources */,
+				B2D4FFCE1E41CA7500D0589B /* Dictionary+Append.swift in Sources */,
 				A48298FAE2D86877F5A425EAFF57FBF9 /* PaymentMethodFactory.swift in Sources */,
 				5156ED41BE6A4C3C2110B75823D8BCDF /* PaypalFactory.swift in Sources */,
 				B4F5D320C60668218345C82FBF2B9872 /* PayPalPaymentMethod.swift in Sources */,

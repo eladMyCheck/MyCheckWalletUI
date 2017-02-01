@@ -44,6 +44,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     @IBOutlet weak var walletsSeporator: UIView!
     
     @IBOutlet weak var weAcceptSuperview: UIView!
+    @IBOutlet weak var acceptedCards: UIView!
     @IBOutlet weak internal var titleLabel: UILabel!
     @IBOutlet weak internal var footerLabel: UILabel!
     @IBAction func addCreditCardPressed(_ sender: AnyObject) {
@@ -161,18 +162,19 @@ doNotStoreCheckbox.isSelected = false
         let cardsImages = LocalData.manager.getArray("acceptedCardsPM")
         let wrapper = UIView()
         wrapper.translatesAutoresizingMaskIntoConstraints = false
-        weAcceptSuperview.addSubview(wrapper)
+        acceptedCards.addSubview(wrapper)
         
-        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: weAcceptSuperview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: weAcceptSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 30)
-        let heightConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 26)
+        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
+        let verticalConstraint2 = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
         let width = cardsImages.count*48
         let widthConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: CGFloat(width))
-            weAcceptSuperview.addConstraints([horizontalConstraint, verticalConstraint, heightConstraint, widthConstraint])
+            acceptedCards.addConstraints([horizontalConstraint, verticalConstraint, verticalConstraint2, widthConstraint])
         
         for card in cardsImages {
             let index = cardsImages.index(of: card)
-            let iv = UIImageView(frame: CGRect(x: 48*index!+5, y: 0, width: 38, height: 24))
+            let iv = UIImageView(frame: CGRect(x: 48*index!+5, y: 0, width: 38, height: Int( acceptedCards.frame.size.height)))
+            iv.contentMode = .scaleAspectFit
             iv.kf.setImage(with: URL(string: card))
             wrapper.addSubview(iv)
         }

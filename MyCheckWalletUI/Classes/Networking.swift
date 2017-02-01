@@ -4,11 +4,18 @@ import UIKit
 import CoreData
 import Alamofire
 
+//A number of error codes you might encounter
 public enum ErrorCodes {
+    ///A non JSON answer received from the server or parsing failed on the JSON passed.
     static let badJSON = 971
+    /// The user is not logged in.
     static let notLoggedIn = 972
+    ///No action can be made since a publishable key was not supplied.
     static let MissingPublishableKey = 976
+    ///The SDK was not configured.
     static let notConifgured = 977
+    ///Access token expired. A new one must be generated using login.
+    static let tokenExpired = 121
     
 }
 
@@ -28,9 +35,24 @@ internal class Networking {
     var domain : String?
     var PCIDomain: String?
     var environment = Environment.Sandbox
-    func configureWallet(_ environment: Environment , success: @escaping (_ domain: String , _ pci: String ,_ JSON: NSDictionary, _ strings: NSDictionary) -> Void ,  fail: ((NSError) -> Void)? ) -> Alamofire.Request {
-        URLCache.shared .removeAllCachedResponses()
+    var refreshToken: String?
+    var publishableKey : String?
+    var token : String?
 
+    private var _UUID : String? = nil
+    private var UUID : String  {
+        get{
+            if let UUID = _UUID{
+                return UUID
+            }
+            _UUID  = NSUUID().uuidString
+            return _UUID!
+        } }
+    
+    
+    func configureWallet(_ publishableKey: String , environment: Environment , success: @escaping (_ domain: String , _ pci: String ,_ JSON: NSDictionary, _ strings: NSDictionary) -> Void ,  fail: ((NSError) -> Void)? ) -> Alamofire.Request? {
+        URLCache.shared .removeAllCachedResponses()
+self.publishableKey = publishableKey
         var urlStr = CDNAddresses.prod
         self.environment = environment
         switch(environment){
@@ -70,8 +92,8 @@ internal class Networking {
     ///    - success: A block that is called if the user is logged in succesfully
     ///    - fail: Called when the function fails for any reason
     ///
-    func login( _ refreshToken: String , publishableKey: String , success: @escaping ((String) -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request?{
-        let params : Parameters = [ "refreshToken": refreshToken , "publishableKey": publishableKey]
+    func login( _ refreshToken: String  , success: @escaping ((String) -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request?{
+        let params : Parameters = [ "refreshToken": refreshToken ]
         
         
         if let domain = domain {
@@ -79,6 +101,9 @@ internal class Networking {
             
             return  request(urlStr, method: .get, parameters: params , success: { JSON in
                 if let token = JSON["accessToken"] as? String{
+                    self.refreshToken = refreshToken
+                    self.token = token
+
                     success(token)
                  
                 }else{
@@ -97,7 +122,7 @@ internal class Networking {
     }
     
    
-    func getPaymentMethods( _ accessToken: String , success: @escaping (( [PaymentMethod] ) -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request{
+    func getPaymentMethods( _ accessToken: String , success: @escaping (( [PaymentMethod] ) -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request?{
         let params = [ "accessToken": accessToken]
         
         let urlStr = domain! + "/wallet/api/v1/wallet"
@@ -137,7 +162,7 @@ internal class Networking {
                        accessToken: String ,
                        environment: Environment ,
                        success: @escaping (( PaymentMethod ) -> Void) ,
-                       fail: ((NSError) -> Void)? ) -> Alamofire.Request{
+                       fail: ((NSError) -> Void)? ) -> Alamofire.Request?{
         var params : Parameters = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "cardType" : type.rawValue , "is_single_use" : String(describing: NSNumber(value: isSingleUse))]
        
         if environment != .Production{
@@ -163,7 +188,7 @@ internal class Networking {
             }, fail: fail , encoding: JSONEncoding.default)
     }
     
-    func setPaymentMethodAsDefault( _ accessToken: String , methodId: String , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request{
+    func setPaymentMethodAsDefault( _ accessToken: String , methodId: String , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request?{
         let params = [ "accessToken": accessToken , "ID": methodId]
         
         let urlStr = domain! + "/wallet/api/v1/wallet/default"
@@ -174,7 +199,7 @@ internal class Networking {
             }, fail: fail)
     }
     
-    func deletePaymentMethod( _ accessToken: String , methodId: String, success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request{
+    func deletePaymentMethod( _ accessToken: String , methodId: String, success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request?{
         let params = [ "accessToken": accessToken , "ID": methodId]
         let urlStr = domain! + "/wallet/api/v1/wallet/deletePaymentMethod"
         
@@ -185,11 +210,27 @@ internal class Networking {
     }
     
     //MARK: - private functions
-    internal  func request(_ url: String , method: HTTPMethod , parameters: Parameters? = nil , success: (( _ object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? , encoding: ParameterEncoding = URLEncoding.default) -> Alamofire.Request {
+    internal  func request(_ url: String , method: HTTPMethod , parameters: Parameters? = nil , success: (( _ object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? , encoding: ParameterEncoding = URLEncoding.default) -> Alamofire.Request? {
+        guard let pKey = publishableKey else{
+        return nil
+        }
+        //adding general parameters
+        var finalParams : Parameters = ["publishableKey":pKey]
         
+        if var params = parameters{
+            if let token = token {
+                params["accessToken"] = token
+            }
+            finalParams.append(other:params)
+        }
+        let headers: HTTPHeaders = [
+            "X-Uuid": UUID,
+            "device": UIDevice.current.name,
+            "OSVersion":UIDevice.current.systemVersion
+        ]
+
         
-        
-        let request = Alamofire.request( url,method: method , parameters:parameters , encoding:  encoding)
+        let request = Alamofire.request( url,method: method , parameters:finalParams , encoding:  encoding)
             .validate(statusCode: 200..<201)
             .validate(contentType: ["application/json"])
             .responseString{ response in
@@ -219,6 +260,17 @@ internal class Networking {
                                 let msgKey =  JSON["message"] as? String
                                 let code = JSON["code"] as? Int
                                 if let code = code , let msgKey = msgKey {
+                                    
+                                    
+                                    //expired token handeling (login again)
+                                    if let refreshToken = self.refreshToken, code == ErrorCodes.tokenExpired{
+                                        self.login(refreshToken, success: {token in
+                                            self.request(url, method: method, parameters: finalParams, success: success, fail: fail)
+                                            return
+                                        }, fail: fail)
+                                        
+                                    }
+                                    
                                   let msg = LocalData.manager.getString("errors" + msgKey)
 
                                     let errorWithMessage = NSError(domain: Const.serverErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : msg])
