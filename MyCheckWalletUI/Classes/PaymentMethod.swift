@@ -122,8 +122,11 @@ open class PaymentMethod{
             if let str =  JSON["last_4_digits"] as? String {
             lastFourDigits =  str
             }
-            number  = JSON["is_default"] as! NSNumber
-            isDefault = number.boolValue
+            if let defNum  = JSON["is_default"] as? NSNumber{
+            isDefault = defNum.boolValue
+            }else{
+                isDefault = false;
+            }
             number  = JSON["is_single_use"] as! NSNumber
             isSingleUse = number.boolValue
             issuerShort = JSON["issuer_short"] as! String
