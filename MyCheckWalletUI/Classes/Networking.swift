@@ -229,7 +229,7 @@ self.publishableKey = publishableKey
             "OSVersion":UIDevice.current.systemVersion
         ]
 
-        
+        debugPrint("params \(finalParams)" )                                                                             
         let request = Alamofire.request( url,method: method , parameters:finalParams , encoding:  encoding)
             .validate(statusCode: 200..<201)
             .validate(contentType: ["application/json"])
