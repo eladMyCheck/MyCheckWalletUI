@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
 
-    MyCheckWallet.manager.configureWallet("pk_94v318RxSM2eyGa1Kvzp9uabGErti", environment: .Sandbox)
+    MyCheckWallet.manager.configureWallet("pk_osz6r1mWpO7e5FqOHbeIP7CIYg0Gs", environment: .Test)
       MyCheckWallet.logDebugData = true
         PaypalFactory.initiate("com.mycheck.MyCheckWalletUI-Example")
                 return true
