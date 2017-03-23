@@ -238,8 +238,9 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             return imageURLForDropdown(method.issuer)
         }
         if method.type == .payPal{
-            return URL(string:  LocalData.manager.getString("cardsDropDownpaypal"))!
-            
+            if let url = URL(string: LocalData.manager.getString("cardsDropDownpaypal")) {
+                return url
+            }
         }
         return nil
     }
