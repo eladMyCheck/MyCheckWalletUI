@@ -14,7 +14,11 @@ PODS:
     - Braintree/PayPalDataCollector
     - Braintree/PayPalUtils
   - Braintree/PayPalUtils (4.7.5)
+<<<<<<< HEAD
   - Kingfisher (3.6.0)
+=======
+  - Kingfisher (3.5.0)
+>>>>>>> 71faf9d520647891f2495d95acff01b836702dcf
   - MyCheckWalletUI (0.0.9):
     - Alamofire (~> 4.0)
     - Kingfisher (~> 3.0)
@@ -22,9 +26,12 @@ PODS:
   - MyCheckWalletUI/Core (0.0.9):
     - Alamofire (~> 4.0)
     - Kingfisher (~> 3.0)
+<<<<<<< HEAD
   - MyCheckWalletUI/MasterPass (0.0.9):
     - Alamofire (~> 4.0)
     - Kingfisher (~> 3.0)
+=======
+>>>>>>> 71faf9d520647891f2495d95acff01b836702dcf
   - MyCheckWalletUI/PayPal (0.0.9):
     - Alamofire (~> 4.0)
     - Braintree/DataCollector
@@ -43,9 +50,14 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Braintree: 07a215df0cb2d06997e39df564f9ae175908b0e9
+<<<<<<< HEAD
   Kingfisher: 300035f9a40634dc9b452d946c9f22250688fecd
   MyCheckWalletUI: f767c4d0056d9401b8761e9cc9a08ea17ee256cc
+=======
+  Kingfisher: 7c62087039d93d26c54c8dd9b0b588d2ce55cef6
+  MyCheckWalletUI: 40a197c6682bf19b90d527d2b9f0eddf0baf015c
+>>>>>>> 71faf9d520647891f2495d95acff01b836702dcf
 
 PODFILE CHECKSUM: 31c607d05cfb252df00f1102837484061d7e1387
 
-COCOAPODS: 1.2.0.beta.3
+COCOAPODS: 1.2.0.beta.1

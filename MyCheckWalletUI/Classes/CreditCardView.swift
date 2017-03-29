@@ -71,7 +71,7 @@ expirationDateLabel.clipsToBounds = true
         
       
     
-
+        backgroundButton?.setImage(setImageForType(method.issuer), for: .normal)
         
         //default card checkbox
       

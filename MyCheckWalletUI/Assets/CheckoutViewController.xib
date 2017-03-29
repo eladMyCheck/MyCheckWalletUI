@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -76,10 +76,10 @@
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTi-ub-50G">
-                    <rect key="frame" x="69" y="80" width="288" height="27"/>
+                    <rect key="frame" x="62" y="80" width="295" height="27"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0oB-XW-gXs" customClass="MCTextField" customModule="MyCheckWalletUI" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="271" height="27"/>
+                            <rect key="frame" x="0.0" y="0.0" width="278" height="27"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -90,10 +90,10 @@
                             </connections>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="RH6-Eu-QMK">
-                            <rect key="frame" x="266" y="10" width="14" height="7"/>
+                            <rect key="frame" x="273" y="10" width="14" height="7"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAm-kq-Ygm">
-                            <rect key="frame" x="246" y="0.0" width="34" height="26"/>
+                            <rect key="frame" x="253" y="0.0" width="34" height="26"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
                             <state key="normal" title="Delete"/>
                             <connections>
@@ -114,7 +114,7 @@
                     </constraints>
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234 1234 1234 1234" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YDa-E9-pMW">
-                    <rect key="frame" x="69" y="80" width="288" height="27"/>
+                    <rect key="frame" x="62" y="80" width="295" height="27"/>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="27" id="NVE-5c-b1D"/>
@@ -452,7 +452,7 @@
                 <constraint firstAttribute="trailing" secondItem="yxp-yO-zIk" secondAttribute="trailing" id="9tF-LC-7Ao"/>
                 <constraint firstItem="YDa-E9-pMW" firstAttribute="centerY" secondItem="bEb-a8-zXO" secondAttribute="centerY" constant="1" id="BnW-eh-iZg"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="leading" secondItem="bEb-a8-zXO" secondAttribute="leading" constant="-9" id="CPL-Aq-mw7"/>
-                <constraint firstItem="YDa-E9-pMW" firstAttribute="leading" secondItem="bEb-a8-zXO" secondAttribute="trailing" constant="14" id="DUc-ye-9Rq"/>
+                <constraint firstItem="YDa-E9-pMW" firstAttribute="leading" secondItem="bEb-a8-zXO" secondAttribute="trailing" constant="7" id="DUc-ye-9Rq"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="bottom" secondItem="YDa-E9-pMW" secondAttribute="bottom" constant="11" id="FTB-vX-XSv"/>
                 <constraint firstAttribute="trailingMargin" secondItem="BNs-hB-C9a" secondAttribute="trailing" constant="-14" id="HOH-2U-89Y"/>
                 <constraint firstItem="xeh-NB-TXJ" firstAttribute="centerX" secondItem="hcW-t3-chb" secondAttribute="centerX" id="JqE-it-raM"/>
