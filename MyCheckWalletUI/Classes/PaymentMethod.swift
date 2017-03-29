@@ -17,6 +17,7 @@ public enum PaymentMethodType {
     case payPal
     /// Master Pass.
     case masterPass
+    //Credit Card
     case creditCard
     case non
 }
@@ -143,6 +144,9 @@ open class PaymentMethod{
             switch (source){
             case "BRAINTREE":
                 type = .payPal
+            case "MASTERPASS":
+                type = .masterPass
+
             default:
                 type = .creditCard
             }

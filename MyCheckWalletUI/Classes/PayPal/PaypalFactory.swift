@@ -10,7 +10,9 @@ import UIKit
 import Braintree
 
 open class PaypalFactory : PaymentMethodFactory{
-  
+    //was the factory ever initiated.
+    static var initiated = false
+
   override var type :PaymentMethodType { get { return PaymentMethodType.payPal }}
   
   open static func initiate(_ scheme: String){
@@ -95,6 +97,7 @@ open class PaypalFactory : PaymentMethodFactory{
     
     let but = PaymentMethodButton(type: .custom)
     but.setBackgroundImage(UIImage(named: "paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
+    but.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgPaypal")), for: .normal , options: [.scaleFactor(2.0)])
     but.type = .payPal
     //but.setImage(UIImage(named: "paypal_but", in: bundle, compatibleWith: nil), for: UIControlState())
     but.addTarget(self, action: #selector(PaypalFactory.addMethodButPressed(_:)), for: .touchUpInside)
@@ -128,7 +131,7 @@ open class PaypalFactory : PaymentMethodFactory{
     
     
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-    but.kf.setImage(with: URL( string: LocalData.manager.getString("walletIconspaypal") ), for: .normal , placeholder: nil , options: [.scaleFactor(3.0)])
+    but.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgPaypalCheckout") ), for: .normal ,  options: [.scaleFactor(3.0)])
     
     
     but.addTarget(self, action: #selector(PaypalFactory.addMethodButPressed(_:)), for: .touchUpInside)

@@ -133,7 +133,7 @@ open class MyCheckWallet{
                     self.token = token
                     self.getPaymentMethods({paymentMethods in
                         let nc = NotificationCenter.default
-                        nc.post(name: NSNotification.Name(rawValue: MyCheckWallet.refreshPaymentMethodsNotification),object: nil)
+                           nc.post(name: NSNotification.Name(rawValue: MyCheckWallet.refreshPaymentMethodsNotification),object: nil)
                         nc.post(name: NSNotification.Name(rawValue: MyCheckWallet.loggedInNotification), object: nil)
                         success()
                         

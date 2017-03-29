@@ -54,7 +54,11 @@ paypal.source_files = 'MyCheckWalletUI/Classes/paypal/**/*'
 
 paypal.dependency 'Braintree/PayPal'
 paypal.dependency 'Braintree/DataCollector'
-end
 
+
+end
+s.subspec 'MasterPass' do |masterpass|
+masterpass.source_files = 'MyCheckWalletUI/Classes/MasterPass/**/*'
+end
 
 end

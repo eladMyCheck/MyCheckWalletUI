@@ -20,9 +20,7 @@ import UIKit
 
 open class PaymentMethodFactory: NSObject {
     internal var delegate : PaymentMethodFactoryDelegate? = nil
-    //was the factory ever initiated.
-    static var initiated = false
-
+   
     var type :PaymentMethodType { get { return PaymentMethodType.non }}
     
        func getAddMethodViewControllere( ){

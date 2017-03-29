@@ -197,10 +197,9 @@ doNotStoreCheckbox.isSelected = false
     
     
     fileprivate func setWalletButtons(){
-        
-        walletsSeporator.isHidden = MyCheckWallet.manager.factories.count == 0
-        for factory in MyCheckWallet.manager.factories{
-            
+        switch MyCheckWallet.manager.factories.count {
+        case 1:
+            let factory = MyCheckWallet.manager.factories[0]
             let  but = factory.getAddMethodButton()
             self.walletsSuperview.addSubview(but)
             but.translatesAutoresizingMaskIntoConstraints = false
@@ -212,15 +211,64 @@ doNotStoreCheckbox.isSelected = false
             walletsSuperview.addConstraint(verticalConstraint)
             
             if let image = but.backgroundImage(for: .normal) , image.size.width != 0{
-            let ratio = image.size.height / image.size.width
-
-             let aspectRationConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: but, attribute: NSLayoutAttribute.width, multiplier: ratio, constant: 0)
-             walletsSuperview.addConstraint(aspectRationConstraint)
+                let ratio = image.size.height / image.size.width
+                
+                let aspectRationConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: but, attribute: NSLayoutAttribute.width, multiplier: ratio, constant: 0)
+                walletsSuperview.addConstraint(aspectRationConstraint)
             }
             let widthConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.width, multiplier: 0.415625, constant: 0)
             walletsSuperview.addConstraint(widthConstraint)
-walletsSuperview.layoutIfNeeded()
+        case 2:
+            var buttons : [UIButton] = []
+            for factory in MyCheckWallet.manager.factories{
+                
+                let  but = factory.getAddMethodButton()
+                buttons.append( but)
+                self.walletsSuperview.addSubview(but)
+
+                //vertical constaint
+                let verticalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 16)
+                walletsSuperview.addConstraint(verticalConstraint)
+                but.translatesAutoresizingMaskIntoConstraints = false
+                
+                //button aspect ration should have the images ration
+                if let image = but.backgroundImage(for: .normal) , image.size.width != 0{
+                    let ratio = image.size.height / image.size.width
+                    
+                    let aspectRationConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: but, attribute: NSLayoutAttribute.width, multiplier: ratio, constant: 0)
+                    walletsSuperview.addConstraint(aspectRationConstraint)
+                }
+                
+                //the width will hold its prepotion for all device sizes
+                let widthConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.width, multiplier: 0.415625, constant: 0)
+                walletsSuperview.addConstraint(widthConstraint)
+
+
+            }
+           
+            let  but1 = buttons[0]
+            let  but2 = buttons[1]
+            let margin = 20//0.0845410628 * walletsSuperview.frame.size.width;
             
+            let constraint1Str = "H:|-(\(margin))-[but1]"
+            let constraint2Str = "H:[but2]-(\(margin))-|"
+
+        walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint1Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but1":but1]))
+            
+            walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint2Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but2":but2]))
+
+            
+          
+          
+            
+        default:
+            break;
+        }
+        walletsSuperview.layoutIfNeeded()
+
+        walletsSeporator.isHidden = MyCheckWallet.manager.factories.count == 0
+        for factory in MyCheckWallet.manager.factories{
+        
         }
     }
     

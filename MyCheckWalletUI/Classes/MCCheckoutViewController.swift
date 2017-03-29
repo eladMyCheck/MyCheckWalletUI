@@ -95,7 +95,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         }
         borderForField = [creditCardNumberField : creditCardBorderView, dateField : dateFieldBorderView, cvvField : cvvBorderView, zipField : zipFieldBorderView]
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(MCCheckoutViewController.refreshPaymentMethods), name: NSNotification.Name(rawValue: MyCheckWallet.refreshPaymentMethodsNotification), object: nil)
+           nc.addObserver(self, selector: #selector(MCCheckoutViewController.receivedPaymentMethodsUpdateNotification), name: NSNotification.Name(rawValue: MyCheckWallet.refreshPaymentMethodsNotification), object: nil)
         
         //setting up UI and updating it if the user logges in... just incase
         setupUI()
@@ -265,12 +265,27 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             return CreditCardType.Unknown
         }
     }
-    @objc fileprivate func refreshPaymentMethods(){
+    
+    @objc fileprivate func receivedPaymentMethodsUpdateNotification(notification: NSNotification){
+        refreshPaymentMethods()
+    }
+    @objc fileprivate func refreshPaymentMethods(defaultsToken: String? = nil ){
         MyCheckWallet.manager.getPaymentMethods({ (methods) in
             self.paymentMethods = methods
             if methods.count == 0 {
                 self.selectedMethod = nil
-            }else{
+            }else if let defaultsToken = defaultsToken {
+                for method in methods{
+                    if method.token == defaultsToken{
+                        self.selectedMethod = method
+                        break;
+                    }
+                }
+                //will be reached only if the token is not found
+                self.selectedMethod = methods.first
+
+            
+            }else {
                 self.selectedMethod = methods.first
                 
             }
@@ -511,12 +526,41 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                 let horizontalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: walletButsContainer, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
                 walletsSuperview.addConstraint(horizontalConstraint)
                 
-                let verticalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: walletButsContainer, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
-                walletButsContainer.addConstraint(verticalConstraint)
-                walletButtons.append(but)
-                but.isEnabled = true
-                but.isUserInteractionEnabled = true
-                print( but.bounds , "    " , but.frame)
+            case 2:
+                
+                var buttons : [UIButton] = []
+                for factory in MyCheckWallet.manager.factories{
+                    
+                    let  but = factory.getSmallAddMethodButton()
+                    but.translatesAutoresizingMaskIntoConstraints = false
+
+                    buttons.append( but)
+                    self.walletButsContainer.addSubview(but)
+                    
+                    //vertical constaint
+                    let verticalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: walletButsContainer, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+                    walletButsContainer.addConstraint(verticalConstraint)
+                    walletButtons.append(but)
+                    but.isEnabled = true
+                    but.isUserInteractionEnabled = true
+                    print( but.bounds , "    " , but.frame)
+                    
+                }
+                
+                let  but1 = buttons[0]
+                let  but2 = buttons[1]
+                let margin = 20//0.0845410628 * walletsSuperview.frame.size.width;
+                let butWidth = 0.409375 * walletButsContainer.frame.size.width
+                let constraint1Str = "H:|-(\(margin))-[but1(\(butWidth))]"
+                let constraint2Str = "H:[but2(\(butWidth))]-(\(margin))-|"
+                
+                walletButsContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint1Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but1":but1]))
+                
+                walletButsContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint2Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but2":but2]))
+                
+                
+                
+walletButsContainer.layoutIfNeeded()
             default:// multiple wallets
                 for factory in MyCheckWallet.manager.factories{
                     //TO-DO implement adding multiple wallets
@@ -596,7 +640,7 @@ extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
     }
     
     func addedPaymentMethod(_ controller: PaymentMethodFactory ,token:String){
-        refreshPaymentMethods()
+        refreshPaymentMethods(defaultsToken: token)
     }
     func displayViewController(_ controller: UIViewController ){
         self.present(controller, animated: true, completion: nil)

@@ -5,6 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'MyCheckWalletUI_Example' do
   pod 'MyCheckWalletUI', :path => '../'
    pod 'MyCheckWalletUI/PayPal', :path => '../'
+   pod 'MyCheckWalletUI/MasterPass', :path => '../'
 
   target 'MyCheckWalletUI_Tests' do
     inherit! :search_paths
