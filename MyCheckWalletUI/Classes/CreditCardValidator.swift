@@ -41,7 +41,7 @@ fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-internal enum CardType: String {
+private enum CardType: String {
     case Unknown, Amex, Visa, MasterCard, Diners, Discover, JCB, Elo, Hipercard,Maestro, UnionPay
     
     static let allCards = [Amex, Visa, MasterCard, Diners, Discover, JCB, Elo, Hipercard,Maestro, UnionPay]
@@ -73,50 +73,131 @@ internal enum CardType: String {
             return ""
         }
     }
-    
+    func getCreditCardType() -> CreditCardType {
+        switch self {
+        case .Amex:
+            return .Amex
+        case .Diners:
+            return .Diners
+        case .Discover:
+            return .Discover
+        case .JCB:
+            return .JCB
+        case .Maestro:
+            return .Maestro
+        case .MasterCard:
+            return .MasterCard
+        case .Visa:
+            return .Visa
+            
+        default:
+            return .Unknown
+        }
+    }
 }
 
-internal class CreditCardValidator {
+internal struct CreditCardValidator {
+    private var cardNumber: String?
+    private var DOB: String?
+    private var CVV: String?
+    private var ZIP: String?
     
+    private var _cardType : CardType = .Unknown
+    var cardType : CreditCardType{
+        get{
+        return _cardType.getCreditCardType()
+        }
+    }
+     var formattedCardNumber :String? = nil
+
+     var numberHasvalidFormat: Bool = false
+    var numberHasvalidLength: Bool = false
+    var numberIsCompleteAndValid : Bool {
+        get{
+        return numberHasvalidFormat && numberHasvalidLength
+        }
+    }
+    var ZIPIsValid : Bool {
+        get{
+            guard let ZIP = ZIP else{
+                return false;
+            }
+            let ZIPNoSpaces = ZIP.replacingOccurrences(of: " ", with: "")
+            let alphaNumeric = ZIPNoSpaces.range(of: "^[a-zA-Z0-9]+$", options: .regularExpression) != nil
+            return 3...8 ~= ZIPNoSpaces.characters.count && alphaNumeric
+
+        }
+    }
+    var DOBIsValid = false
+    var CVVIsValid : Bool {
+        get{
+            guard let CVV = CVV else {
+                return false
+            }
+            return 3...4 ~= CVV.characters.count
+        }
+    }
     
+    var CreditDetailsValid : Bool {
+        get{
+        return numberIsCompleteAndValid && DOBIsValid && CVVIsValid && ZIPIsValid
+        }
+    }
+    var reachedMaxCardLength: Bool {
+        get{
+            if let cardNumber = cardNumber{
+                let cardNumberWithoutFormating =  cardNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression) as String
+                return cardNumberWithoutFormating.characters.count >= maxLengthForType(cardType)
+            }
+            return false
+        }
+    }
     
-    internal static func checkCardNumber(_ input: String) -> (type: CreditCardType, formatted: String, valid: Bool, complete: Bool) {
-        // Get only numbers from the input string
-        let numberOnly = input.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression) as String
+    init(cardNumber: String? = nil , DOB: String? = nil, CVV: String? = nil, ZIP: String? = nil) {
+        self.cardNumber = cardNumber
+        self.DOB = DOB
+        self.CVV = CVV
+        self.ZIP = ZIP
         
-        var type: CardType = .Unknown
-        var formatted = ""
-        var valid = false
+        if let cardNumber = cardNumber {
+      
         
-        // detect card type
+        let cardNumberWithoutFormating =  cardNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression) as String
+        
+        //getting type
         for card in CardType.allCards {
-            if (matchesRegex(card.regex, text: numberOnly)) {
-                type = card
+            if (matchesRegex(card.regex, text: cardNumberWithoutFormating)) {
+                _cardType = card
                 break
             }
         }
-        let validLegnth = cardLengthValid(type, length: numberOnly.characters.count)
-        // check validity
-        valid = luhnCheck(numberOnly) && type != .Unknown
         
-        // format
+        // format number e.g. 1111 1111 1111 1111
         var formatted4 = ""
-        for character in numberOnly.characters {
+            var formatedNumTmp = ""
+        for character in cardNumberWithoutFormating.characters {
             if formatted4.characters.count == 4 {
-                formatted += formatted4 + " "
+                formatedNumTmp += formatted4 + " "
                 formatted4 = ""
             }
             formatted4.append(character)
         }
+            formatedNumTmp += formatted4 // the rest
+
+        formattedCardNumber = formatedNumTmp // the rest
         
-        formatted += formatted4 // the rest
-        
-        // return the tuple
-        return (convertCardType(type), formatted, valid , validLegnth  )
+        numberHasvalidFormat = luhnCheck(cardNumberWithoutFormating) && cardType != .Unknown
+        numberHasvalidLength =  cardLengthValid(_cardType, length: cardNumberWithoutFormating.characters.count)
+            
+        }
+        if let DOB = DOB {
+        DOBIsValid = isValidDate(DOB)
+        }
     }
     
+    
     //The asumption is that input has only 1-9 and / in it
-    internal static func isValidDate(_ inputDate: String) -> Bool {
+    private func isValidDate(_ inputDate: String) -> Bool {
         if inputDate.characters.count != 5 && inputDate.characters.count != 7{
             return false
         }
@@ -132,7 +213,7 @@ internal class CreditCardValidator {
         
         let year =  components.year! - 2000 // last 2 digits of date
         let month = components.month
-        let day = components.day
+//        let day = components.day
         
         let inputYear = Int(split[1])
         let inputmonth = Int(split[0])
@@ -149,22 +230,24 @@ internal class CreditCardValidator {
         return false
         
     }
-    internal static func cardLengthValid(_ type: CardType , length: Int) -> Bool{
+    
+
+    private func cardLengthValid(_ type: CardType , length: Int) -> Bool{
         switch type {
         case .Amex:
             return 15 == length
         case .Diners:
-            return length >= 14 && length <= 16
+            return  14...16 ~= length
         case .Visa:
             return 16 == length || 13 == length
         case .JCB , .Discover , .MasterCard:
             return 16 == length
         default:
-            return length >= 13
+            return 13...19  ~= length
         }
     }
     
-    internal static func maxLengthForType(_ type: CreditCardType) -> Int{
+    private func maxLengthForType(_ type: CreditCardType) -> Int{
         switch type {
         case .Amex:
             return 15
@@ -178,7 +261,7 @@ internal class CreditCardValidator {
             return 19
         }
     }
-    fileprivate static func matchesRegex(_ regex: String!, text: String!) -> Bool {
+    fileprivate  func matchesRegex(_ regex: String!, text: String!) -> Bool {
         do {
             let regex = try NSRegularExpression(pattern: regex, options: [.caseInsensitive])
             let nsString = text as NSString
@@ -188,7 +271,7 @@ internal class CreditCardValidator {
             return false
         }
     }
-    fileprivate static func luhnCheck(_ number: String) -> Bool {
+    fileprivate  func luhnCheck(_ number: String) -> Bool {
         var sum = 0
         let digitStrings = number.characters.reversed().map { String($0) }
         
@@ -208,26 +291,6 @@ internal class CreditCardValidator {
         
         return sum % 10 == 0
     }
-    fileprivate static func convertCardType(_ type : CardType) -> CreditCardType{
-        switch type {
-        case .Amex:
-            return .Amex
-        case .Diners:
-            return .Diners
-        case .Discover:
-            return .Discover
-        case .JCB:
-            return .JCB
-        case .Maestro:
-            return .Maestro
-        case .MasterCard:
-            return .MasterCard
-        case .Visa:
-            return .Visa
-
-        default:
-            return .Unknown
-        }
-    }
+   
     
 }

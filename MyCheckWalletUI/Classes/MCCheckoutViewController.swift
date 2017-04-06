@@ -357,11 +357,10 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         })
     }
     @IBAction func applyButPressed(_ sender: AnyObject) {
-        if updateAndCheckValid(){
+        let validator = updateAndCheckValid()
+        if validator.numberIsCompleteAndValid{
             self.view.endEditing(true)
             
-            //getting type
-            let (type ,_,_,_) = CreditCardValidator.checkCardNumber(creditCardNumberField.text!)
             
             
             let dateStr = formatedString(dateField)
@@ -374,7 +373,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             self.dateField.isUserInteractionEnabled = false
             self.cvvField.isUserInteractionEnabled = false
             self.zipField.isUserInteractionEnabled = false
-            MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: self.checkbox.isSelected, success: {  method in
+            MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: validator.cardType, isSingleUse: self.checkbox.isSelected, success: {  method in
                 self.resetFields()
                 // self.selectedMethod = method
                 

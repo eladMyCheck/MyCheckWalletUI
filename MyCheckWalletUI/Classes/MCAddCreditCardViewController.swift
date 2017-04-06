@@ -75,10 +75,10 @@ open class MCAddCreditCardViewController: MCViewController {
         sender.isSelected = !sender.isSelected
     }
     @IBAction func ApplyPressed(_ sender: AnyObject) {
-        
-        if updateAndCheckValid(){
+        let validator = updateAndCheckValid()
+        if validator.CreditDetailsValid{
             self.showActivityIndicator(true)
-            let (type ,_,_,_) = CreditCardValidator.checkCardNumber(creditCardNumberField.text!)
+            
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split(separator: "/").map(String.init)
             applyButton.isEnabled = false
@@ -87,7 +87,7 @@ open class MCAddCreditCardViewController: MCViewController {
             self.dateField.isUserInteractionEnabled = false
             self.cvvField.isUserInteractionEnabled = false
             self.zipField.isUserInteractionEnabled = false
-            MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: type, isSingleUse: checkbox.isSelected, success: {  token in
+            MyCheckWallet.manager.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: validator.cardType, isSingleUse: checkbox.isSelected, success: {  token in
                 self.showActivityIndicator(false)
                 if let delegate = self.delegate{
                     
@@ -245,24 +245,15 @@ open class MCAddCreditCardViewController: MCViewController {
         field.textColor = invalid ? UIColor.fieldTextInvalid() : UIColor.fieldTextValid()
     }
     
-    func updateAndCheckValid() -> Bool{
-        let ( type , formated , ccValid , validLength) = CreditCardValidator.checkCardNumber(creditCardNumberField.text!)
-        
-        let valid = ccValid && validLength
-        setFieldInvalid(creditCardNumberField , invalid: !valid)
-        let dateValid = CreditCardValidator.isValidDate(dateField.text!)
-        setFieldInvalid(dateField , invalid: !dateValid)
-        let cvvValid = cvvField.text?.characters.count == 4 || cvvField.text?.characters.count == 3
-        setFieldInvalid(cvvField , invalid: !cvvValid)
+    func updateAndCheckValid() -> CreditCardValidator{
+let validator = CreditCardValidator(cardNumber: creditCardNumberField.text, DOB: dateField.text, CVV: cvvField.text, ZIP: zipField.text)
+        setFieldInvalid(creditCardNumberField , invalid: !validator.numberIsCompleteAndValid)
+        setFieldInvalid(dateField , invalid: !validator.DOBIsValid)
+        setFieldInvalid(cvvField , invalid: !validator.CVVIsValid)
+        setFieldInvalid(zipField , invalid: !validator.ZIPIsValid)
         
         
-        let  txtToCheck = (zipField.text?.replacingOccurrences(of: " ", with: ""))! // check without space
-        let alphaNumeric = txtToCheck.range(of: "^[a-zA-Z0-9]+$", options: .regularExpression) != nil
-        let zipValid = txtToCheck.characters.count >= 3 && txtToCheck.characters.count <= 8 && alphaNumeric
-        setFieldInvalid(zipField , invalid: !zipValid)
-        
-        
-        return valid && dateValid && cvvValid && zipValid
+        return validator
     }
 }
 
@@ -292,30 +283,24 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         switch textField {
             
         case creditCardNumberField:
-            //if the string is valid and we just want to go to next field then dont add new char and go to date
-            let ( _ , _ , wasValid , wasValidLength) =  CreditCardValidator.checkCardNumber(  textField.text!)
-            
-            //            if wasValidLength && wasValid && string != ""{
-            //                return false
-            //            }
+           
             if string == ""  && txtAfterUpdate.hasSuffix(" "){// if backspace and white spaces is last remove it
                 textField.text = txtAfterUpdate.substring(to: txtAfterUpdate.length-1)
                 return false
             }
             
             
-            let ( type , formated , valid , validLength) =  CreditCardValidator.checkCardNumber(txtAfterUpdate as String)
-            let maxLength = CreditCardValidator.maxLengthForType(type)
-            setImageForType(type) // setting correct icon image
-            if !valid && txtAfterUpdate.replacingOccurrences(of: " ", with: "").characters.count >= maxLength{//dont allow typing more if invalid
+            let validator =  CreditCardValidator(cardNumber: txtAfterUpdate as String)
+            setImageForType(validator.cardType) // setting correct icon image
+            if !validator.numberHasvalidFormat && validator.reachedMaxCardLength{//dont allow typing more if invalid
                 return false
             }
             
-            if valid && validLength{//if done move to next field
-                textField.text = formated
+            if validator.numberIsCompleteAndValid{//if done move to next field
+                textField.text = validator.formattedCardNumber
                 return false
             }
-            textField.text = formated
+            textField.text = validator.formattedCardNumber
             return false
             
         case dateField:
@@ -329,7 +314,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 txtAfterUpdate = "0" + (txtAfterUpdate.substring(to: 1) as String) + "/" + (txtAfterUpdate.substring(from: 1) as String) as NSString
             }
             
-            let valid = CreditCardValidator.isValidDate(txtAfterUpdate as String)
+            let valid = CreditCardValidator(DOB:txtAfterUpdate as? String).DOBIsValid
             let month = txtAfterUpdate.components(separatedBy: "/")[0] as String
             if month.characters.count > 2 {
                 return false
@@ -369,7 +354,6 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             return false
             
         case cvvField:
-            let ( type , formated , valid , fullLength) =  CreditCardValidator.checkCardNumber(txtAfterUpdate as String)
             
             let maxLength =  4
             

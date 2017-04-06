@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://bitbucket.org/erez_spatz/mycheckwalletui-ios.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.3'
 
   s.source_files = 'MyCheckWalletUI/Classes/*'
   
@@ -61,4 +61,8 @@ s.subspec 'MasterPass' do |masterpass|
 masterpass.source_files = 'MyCheckWalletUI/Classes/MasterPass/**/*'
 end
 
+s.subspec 'VisaCheckout' do |visacheckout|
+visacheckout.source_files = 'MyCheckWalletUI/Classes/VisaCheckout/*'
+visacheckout.vendored_frameworks = 'MyCheckWalletUI/Classes/VisaCheckout/frameworks/*'
+end
 end
