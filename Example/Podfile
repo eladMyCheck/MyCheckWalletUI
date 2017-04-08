@@ -10,6 +10,9 @@ target 'MyCheckWalletUI_Example' do
 
   target 'MyCheckWalletUI_Tests' do
     inherit! :search_paths
+    pod 'MyCheckWalletUI', :path => '../'
+    pod 'MyCheckWalletUI/PayPal', :path => '../'
+    pod 'MyCheckWalletUI/MasterPass', :path => '../'
     pod 'Quick'
     pod 'Nimble'
 
