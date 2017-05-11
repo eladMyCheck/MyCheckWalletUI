@@ -16,6 +16,17 @@ public enum Environment {
     case Sandbox
     /// The latest version of the Server code. The code will work with sandbox and test payment methods like the sandbox environment. It might have new untested and unstable code. Should not be used without consulting with a member of the MyCheck team first!
     case Test
+  func getString() ->String{
+    switch self {
+    case .Sandbox:
+      return "sandbox";
+    case .Test:
+      return "test"
+    case .Production:
+      return "production"
+    
+    }
+  }
 }
 
 

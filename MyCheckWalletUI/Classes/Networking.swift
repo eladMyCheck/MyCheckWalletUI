@@ -166,10 +166,9 @@ self.publishableKey = publishableKey
                        fail: ((NSError) -> Void)? ) -> Alamofire.Request?{
         var params : Parameters = [ "accessToken" : accessToken , "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "cardType" : type.rawValue , "is_single_use" : String(describing: NSNumber(value: isSingleUse))]
        
-        if environment != .Production{
-        params["env"] = "test"
-        }
-        
+      
+      
+        params["env"] = environment.getString()
         return  request(PCIDomain! + "/PaymentManager/api/v1/paymentMethods/addCreditcard", method: .post, parameters: params , success: { JSON in
             
             let methodJSON = JSON["pm"] as? NSDictionary

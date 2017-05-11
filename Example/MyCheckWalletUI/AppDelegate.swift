@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     MyCheckWallet.manager.configureWallet("pk_fXACc6bLgs3zECbwSZyaXl7NrIa9P", environment: .Sandbox)
       MyCheckWallet.logDebugData = true
-         PaypalFactory.initiate("com.mycheck.MyCheckWalletUI-Example")
+         PaypalFactory.initiate("com.mycheck.MyCheckWalletUI")
           MasterPassFactory.initiate()
                 return true
     }
