@@ -51,13 +51,17 @@ end
 
 s.subspec 'PayPal' do |paypal|
 paypal.source_files = 'MyCheckWalletUI/Classes/paypal/**/*'
-paypal.dependency = 'MyCheckWalletUI/Core'
+paypal.dependency  'MyCheckWalletUI/Core'
 paypal.dependency 'Braintree/PayPal'
 paypal.dependency 'Braintree/DataCollector'
-
+paypal.ios.deployment_target = '9.3'
+paypal.platform = :ios, '9.3'
 
 end
 s.subspec 'MasterPass' do |masterpass|
+masterpass.ios.deployment_target = '9.3'
+masterpass.platform = :ios, '9.3'
+
 masterpass.source_files = 'MyCheckWalletUI/Classes/MasterPass/**/*'
 end
 
