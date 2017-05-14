@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MyCheckWalletUI'
-  s.version          = '0.0.10'
+  s.version          = '0.0.11'
   s.summary          = 'An SDK that supplies UI for payment method managment.'
 
 # This description is used to generate tags and improve search results.
@@ -61,8 +61,8 @@ s.subspec 'MasterPass' do |masterpass|
 masterpass.source_files = 'MyCheckWalletUI/Classes/MasterPass/**/*'
 end
 
-s.subspec 'VisaCheckout' do |visacheckout|
-visacheckout.source_files = 'MyCheckWalletUI/Classes/VisaCheckout/*'
-visacheckout.vendored_frameworks = 'MyCheckWalletUI/Classes/VisaCheckout/frameworks/*'
-end
+#s.subspec 'VisaCheckout' do |visacheckout|
+#visacheckout.source_files = 'MyCheckWalletUI/Classes/VisaCheckout/*'
+#visacheckout.vendored_frameworks = 'MyCheckWalletUI/Classes/VisaCheckout/frameworks/*'
+#end
 end
