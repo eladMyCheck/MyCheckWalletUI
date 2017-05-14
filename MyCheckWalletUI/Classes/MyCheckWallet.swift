@@ -122,7 +122,6 @@ open class MyCheckWallet{
     /// Login a user and get an access_token that can be used for getting and setting data on the user.
     ///
     ///   - parameter refreshToken: The refresh token acquired from your server (that intern calls the MyCheck server that generates it)
-    ///   - parameter publishableKey: The publishable key used for the refresh token
     ///   - parameter success: A block that is called if the user is logged in succesfully
     ///   - parameter fail: Called when the function fails for any reason
     open func login( _ refreshToken: String  , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) {

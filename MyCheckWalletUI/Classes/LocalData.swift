@@ -35,7 +35,7 @@ internal class LocalData{
             self.addStrings( keyFinal , dictionary: dic)
             }else if let num = value as? NSNumber{
                 strings[keyFinal] = String(describing: num)
-            }else if let arr = value as? Array<String>{
+            }else if value is Array<String>{
                 arrays[keyFinal] = value as? Array<String>
                 if keyFinal == "acceptedCardsCheckout"{
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "acceptedCardsCheckoutSet"), object: nil)

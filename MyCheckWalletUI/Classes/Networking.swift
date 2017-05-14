@@ -49,7 +49,7 @@ internal class Networking {
             return _UUID!
         } }
     
-    
+    @discardableResult
     func configureWallet(_ publishableKey: String , environment: Environment , success: @escaping (_ domain: String , _ pci: String ,_ JSON: NSDictionary, _ strings: NSDictionary) -> Void ,  fail: ((NSError) -> Void)? ) -> Alamofire.Request? {
         URLCache.shared .removeAllCachedResponses()
 self.publishableKey = publishableKey
@@ -65,8 +65,8 @@ self.publishableKey = publishableKey
         }
         return  request(urlStr, method: .get, parameters: nil , success: { JSON in
             
-            self.domain = JSON["Domain"] as! String
-            self.PCIDomain = JSON["PCI"] as! String
+            self.domain = JSON["Domain"] as? String
+            self.PCIDomain = JSON["PCI"] as? String
             let langObj = JSON["lang"] as! NSDictionary
             
             let textsURL = langObj["en"] as! String
@@ -170,7 +170,7 @@ self.publishableKey = publishableKey
         params["env"] = "test"
         }
         
-        return  request(PCIDomain! + "/PaymentManager/api/v1/paymentMethods/addCreditcard", method: .post, parameters: params , success: { JSON in
+        return  request(PCIDomain! + "/PaymentManager/api/v1/paymentMethods/addCreditcard", method: .post, parameters: params , encoding: JSONEncoding.default, success: { JSON in
             
             let methodJSON = JSON["pm"] as? NSDictionary
             if let methodJSON = methodJSON{
@@ -186,7 +186,7 @@ self.publishableKey = publishableKey
             
             
             
-            }, fail: fail , encoding: JSONEncoding.default)
+            }, fail: fail )
     }
     
     func setPaymentMethodAsDefault( _ accessToken: String , methodId: String , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) -> Alamofire.Request?{
@@ -211,7 +211,8 @@ self.publishableKey = publishableKey
     }
     
     //MARK: - private functions
-    internal  func request(_ url: String , method: HTTPMethod , parameters: Parameters? = nil , success: (( _ object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? , encoding: ParameterEncoding = URLEncoding.default) -> Alamofire.Request? {
+    @discardableResult
+    internal  func request(_ url: String , method: HTTPMethod , parameters: Parameters? = nil ,encoding: ParameterEncoding = URLEncoding.default , success: (( _ object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? ) -> Alamofire.Request? {
         guard let pKey = publishableKey else{
         return nil
         }

@@ -60,7 +60,7 @@ open class PaymentMethod{
         return self.issuerFull
         }
        
-        var toReturn = issuerFull.capitalizingFirstLetter() + " " + lastFourDigits
+        let toReturn = issuerFull.capitalizingFirstLetter() + " " + lastFourDigits
         if isSingleUse{
         
             return toReturn + " " + LocalData.manager.getString("checkoutPagetemporaryCard", fallback: "(temporary card)")
@@ -100,7 +100,7 @@ open class PaymentMethod{
     ///    - JSON: A JSON that comes from the wallet endpoint
     ///    - Returns: A payment method object or nil if the JSON is invalid or missing non optional parameters.
     internal init?(JSON: NSDictionary){
-        do {
+
             guard let source = JSON["source"] as? String else{
                 return nil
             }
@@ -152,9 +152,7 @@ open class PaymentMethod{
             }
             
             
-        } catch {
-            return nil
-        }
+       
         
     }
   

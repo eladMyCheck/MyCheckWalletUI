@@ -7,9 +7,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'MyCheckWalletUI'
-  s.version          = '0.0.9'
-  s.summary          = 'An SDK that supplies UI for payment method managment.'
+s.name             = 'MyCheckWalletUI'
+s.version          = '0.0.9'
+s.summary          = 'An SDK that supplies UI for payment method managment.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,28 +17,28 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = 'README.md'
+s.description      = 'README.md'
 
-  s.homepage         = 'https://mycheckapp.com'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'elad schiller' => 'eladsc@mycheck.co.il' }
-  s.source           = { :git => 'https://bitbucket.org/erez_spatz/mycheckwalletui-ios.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+s.homepage         = 'https://mycheckapp.com'
+# s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+s.license          = { :type => 'MIT', :file => 'LICENSE' }
+s.author           = { 'elad schiller' => 'eladsc@mycheck.co.il' }
+s.source           = { :git => 'https://bitbucket.org/erez_spatz/mycheckwalletui-ios.git', :tag => s.version.to_s }
+# s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.3'
+s.ios.deployment_target = '9.3'
 
-  s.source_files = 'MyCheckWalletUI/Classes/*'
-  
-   s.resource_bundles = {
-     'MyCheckWalletUI' => ['MyCheckWalletUI/Assets/*']
-   }
+s.source_files = 'MyCheckWalletUI/Classes/*'
+
+s.resource_bundles = {
+'MyCheckWalletUI' => ['MyCheckWalletUI/Assets/*']
+}
 s.requires_arc = 'true'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+# s.public_header_files = 'Pod/Classes/**/*.h'
+# s.frameworks = 'UIKit', 'MapKit'
 s.dependency 'Alamofire', '~> 4.0'
- s.dependency 'Kingfisher', '~> 3.0'
+s.dependency 'Kingfisher', '~> 3.0'
 
 
 

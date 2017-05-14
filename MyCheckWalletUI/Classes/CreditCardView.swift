@@ -48,7 +48,7 @@ creditCardNumberlabel.layer.cornerRadius = 4
             creditCardNumberlabel.clipsToBounds = true
         creditCardNumberlabel.textColor = UIColor.white
         creditCardNumberlabel.font =  UIFont(name: creditCardNumberlabel.font.fontName, size: creditCardNumberlabel.font.pointSize)
-        if let lastFourDigits = method.lastFourDigits , let name = method.name{
+        if let _ = method.lastFourDigits , let name = method.name{
             creditCardNumberlabel.text = " \(name) "
           }
             }
@@ -179,8 +179,6 @@ expirationDateLabel.clipsToBounds = true
             return UIImage(named: "discover_background", in: bundle, compatibleWith: nil)!
         case .Amex:
             return UIImage(named: "amex_background", in: bundle, compatibleWith: nil)!
-        case .Diners:
-            return UIImage(named: "diners_background", in: bundle, compatibleWith: nil)!
         case .JCB:
             return UIImage(named: "jcb_background", in: bundle, compatibleWith: nil)!
         case .Maestro:
