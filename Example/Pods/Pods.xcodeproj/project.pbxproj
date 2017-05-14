@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02734365A655D6564877AC2341891B0E /* PPOTRequest_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 917AA733EBF64850A3AC6565FD1977DB /* PPOTRequest_Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		02AEFFE1E6A3EBB06E34EBB48EDF9908 /* UITextField+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9875A549A708D2AAA038F62C2F14FE /* UITextField+Placeholder.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		02AEFFE1E6A3EBB06E34EBB48EDF9908 /* UITextField+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9F26118B438917AF5F3D38A31CE2D4 /* UITextField+Placeholder.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		02C4BD18F596EE9CAD396A6342CAD17B /* BTLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 468DFDBC6BE773B351478FD0EEE8E196 /* BTLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03C25DA359AB2636BBFD02F27D05B29A /* PPOTAuthorizationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBDE199BB353614B66695D9D47EF896 /* PPOTAuthorizationRequest.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		047C0E6C399C478C9A8AA1138A11FC6B /* BTDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFFAB00CFD75DB4A90B218E0219E2B /* BTDataCollector.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
@@ -30,7 +30,7 @@
 		0E9CC28AC8E34FE8E1C87E933E04BC7A /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F880760E7883D79A3C02A722981C1ED8 /* ImageProcessor.swift */; };
 		10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD204F8330E334B2473518C4F59AF5A7 /* Timeline.swift */; };
 		1136313C8BC8C8C9307F6E9BCBB42D06 /* BTPayPalRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDC5C68846C430FDF31A87098795D56 /* BTPayPalRequestFactory.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
-		11893F0F06B26D63A843D4B5F58B1E0B /* PaypalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFDDE91B01870DFE255DD08425D1850 /* PaypalFactory.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		11893F0F06B26D63A843D4B5F58B1E0B /* PaypalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19761418DF3F4970F6A6437E70E40EA /* PaypalFactory.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1370CC0037C0C35C53A748565B709469 /* Pods-MyCheckWalletUI_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6AED777BAE0B24BF2D5EE12B668554 /* Pods-MyCheckWalletUI_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1455087F008B60E23FFF971514394CE6 /* PayPalUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B9ACF8A174E96EC601C70328E581CB0 /* PayPalUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16409C737271C4F1D7FEEFB91E317D5A /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 161F1F5F70E338BE5F11932F01648B50 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,22 +45,22 @@
 		1A6427FD596BDA1EBFF5901E6343A275 /* BTPayPalAccountNonce_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = B16BF51A286008F87FB84D71D365D852 /* BTPayPalAccountNonce_Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1AF2EAA435606E17A7550FED8505A069 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3850E1AD9CE02221B08166F1B7C70834 /* CoreLocation.framework */; };
 		1B1B2DAD131498246E2839E179D99930 /* World+DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = D43568666214E409DBA3C524DF23278B /* World+DSL.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1B6E154860DF86D71498981956E98636 /* MCAddCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FF703FE625BC28121CE011FADBBE74 /* MCAddCreditCardViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1B6E154860DF86D71498981956E98636 /* MCAddCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4013D552EAC74616941A3AF6B89CDAB /* MCAddCreditCardViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CE3139F1AA09D5DCB41F598BA5CA6DA /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1BFC928A33F4B297C9B4D39CEB1B720B /* Quick-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D98478CE8DFA8A48781338E991AC80C7 /* Quick-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C2E22714A8056F147FB386DD50FEA7D /* PPOTURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 416E50ED7CD6581F4D5CFB15EC8CA536 /* PPOTURLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D3543A36DFCE7092705A21CC1AA72B8 /* PPOTAppSwitchResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E0A76DB2924A403F121E061B7249AC58 /* PPOTAppSwitchResponse.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1D38E4B80632C8C2E5E09DEE7370A551 /* ProximaNovaSoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 598AF410D7E5BB3D3C43C8C86BDB12EF /* ProximaNovaSoftRegular.otf */; };
-		1D496C125893C9A188FED9F98F9B0A5E /* MCCreditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F52C664C721B4DDA45691D79277280 /* MCCreditCardsViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1D38E4B80632C8C2E5E09DEE7370A551 /* ProximaNovaSoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BE02444DF1BD761FB38469208D1CA5B1 /* ProximaNovaSoftRegular.otf */; };
+		1D496C125893C9A188FED9F98F9B0A5E /* MCCreditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D0D7F4B8F3B474F37488E734B4CC0E /* MCCreditCardsViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1DBC23AD4AC3439D7590B8290527B31A /* PPOTSimpleKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = F3D3BDB890D6C1B5BF1FCC45FB1C15A1 /* PPOTSimpleKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E1A8F385FB0314C97222557FEE2F71A /* PPOTRequestFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9081955159C5D42180ADBD3EBEB136B9 /* PPOTRequestFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E1CE28FFCCD7499620B47C910E9B9E9 /* BeLogical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C329F47352AD1CA32EB702D66B6F40 /* BeLogical.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		1F2EA1F2CF3C2A7F81F56DBB3992C7AD /* MCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55169FC74894B52B3ECABDB8400F5FB5 /* MCTextField.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2018864B0C4C86905137BAB24C5264A3 /* Networking+MasterPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EBDBC6582D05E2657BB017E34B2C76 /* Networking+MasterPass.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1F2EA1F2CF3C2A7F81F56DBB3992C7AD /* MCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D793E7D0968F433E759A712C96EE54E /* MCTextField.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2018864B0C4C86905137BAB24C5264A3 /* Networking+MasterPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF388BB6CB5544413219919A251F64A /* Networking+MasterPass.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2282EA50CCF5727D05E00CEA08E6A53C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461A689D8856E9405C482DE1A1FF60C1 /* Foundation.framework */; };
 		22E9F6FA56858A5F7A5D664E5968ECB0 /* NMBExceptionCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A56AE34DC72F665EA7EFD664379CA93 /* NMBExceptionCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		23E7AE8EDFFEA05095BF8673D0BF4DCE /* PPOTCheckoutBrowserSwitchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF024617219896D5D46F4D18A1F9787 /* PPOTCheckoutBrowserSwitchRequest.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
-		24B6E936F6DC2F30DAFA195E6293ACB2 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439C744038C4A9A152FFB9B3624B64D /* CreditCardValidator.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		24B6E936F6DC2F30DAFA195E6293ACB2 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35914112E89FE11404D572C4FBFF2E6C /* CreditCardValidator.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		25D1805055756CAA69A167CA03B2465C /* ContainElementSatisfying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A28BB17D2A6D7B871AD7B094D0F33 /* ContainElementSatisfying.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		25D7312BBE513DAB0ACBC1814DDC7C86 /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67FF44A91DBD851AEF3A9E8E5BBAC4 /* CwlDarwinDefinitions.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		271FC1B9D73161139353F4307C761DED /* PPOTCore.m in Sources */ = {isa = PBXBuildFile; fileRef = C07B8A7006C572251EE47884220D7413 /* PPOTCore.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
@@ -70,7 +70,7 @@
 		2B82E03563F41E115B71C8A41E4A0BE7 /* BTURLUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 592F44876E7945B808620F864029DEE8 /* BTURLUtils.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2C2FDF812DADB3FC41925AE6FA32C293 /* BTErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = E476ACC1D648237721CF73BFB884291C /* BTErrors.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		2CA18991519336C12B92DE2E133517FC /* PPOTPinnedCertificates.h in Headers */ = {isa = PBXBuildFile; fileRef = 3470A31A518AB41ED929104F582842A0 /* PPOTPinnedCertificates.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D2180DB9713842C2E59880180A55F1C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415CA860B463DDAD7A0B93985BBD437 /* Networking.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2D2180DB9713842C2E59880180A55F1C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F96A90A33DB9FE594583FF85205493 /* Networking.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2D9432371032DE65EDFF840413442883 /* BTClientMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D61324EB7D38DD119F0B456394DE0C7 /* BTClientMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E22753D4EB086015A8C6A802195C5C3 /* PPDataCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = E11915183E1DB9C5CB32A82FE0CD4546 /* PPDataCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E5E570FFC49EF98550401421A243C0F /* CacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498FC928E79479921C045B6E664554A3 /* CacheSerializer.swift */; };
@@ -78,7 +78,7 @@
 		2F29E63C6C334167C31C6A5C8383432D /* PPOTAnalyticsDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 197416EAEE8C194EC1E67A7EC45A448A /* PPOTAnalyticsDefines.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2F2DA5BA5AE1FB074F387E97115F47D5 /* mach_excServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C0D5E3ACAF945C7A978DEA2EE282AEF /* mach_excServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F612F80E14F867774615F3EA584AC6D /* PPOTPersistentRequestData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C762A2964DB30B950E3C1A0E9DD5544 /* PPOTPersistentRequestData.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		306ADB48FCAAA30DE32DA6377E70B5EA /* MCScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3632EA4D819E9025654F7A089AB0F2 /* MCScrollView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		306ADB48FCAAA30DE32DA6377E70B5EA /* MCScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E32D75AD9A054DAFA888D34DC7715 /* MCScrollView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3188F20170CF4F90319B7A65D09E59CD /* BTHTTPErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = CEF255C3F1C5EFAC424BB830453858A7 /* BTHTTPErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		31C39ED8CB1C9317F1F2840FC919662D /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACD663288B86EE1312C75EF7E832336 /* PostNotification.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		326B3090AA43A4BD82B7EE0A5C2B34BF /* Callsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3A2AEF78871EAA34441F033798AA5 /* Callsite.swift */; };
@@ -99,18 +99,18 @@
 		3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC61FB4683D7E6F9356FDBBA177078E /* TaskDelegate.swift */; };
 		378B44CAA91C2106076668FDE72E1E02 /* KingfisherOptionsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6947F86A889BF77F348E7DC7DB88AAC /* KingfisherOptionsInfo.swift */; };
 		37C5AC3FE6711A1117819AC5A18EE5C4 /* CwlBadInstructionException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50867D8067A29AB9C76DDC8881CBAB2F /* CwlBadInstructionException.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		383DB18C1507572BDD78088C60790C7D /* MasterPassFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEE0D735632E7B36E65D737A38EEEA /* MasterPassFactory.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		383DB18C1507572BDD78088C60790C7D /* MasterPassFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBD827D2DBC4589963059EDB7B6A90E /* MasterPassFactory.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3912F592A3D22CEE41D191AF8D2B163B /* PPOTCheckoutRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 653BE7543203C6F1C878D7EDA8DE1311 /* PPOTCheckoutRequest.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		391ECC37AE556789967F2B528F288845 /* BTPostalAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B1CD5FC2178D91ACBD79B52E0AD320B /* BTPostalAddress.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		394825E4A53C40731B73B64C8BB717D6 /* paypal in Resources */ = {isa = PBXBuildFile; fileRef = 4456D66EA6E78A3193DDBB26C5B8C72E /* paypal */; };
+		394825E4A53C40731B73B64C8BB717D6 /* paypal in Resources */ = {isa = PBXBuildFile; fileRef = AC0C126EF576275D661222C267A65FF5 /* paypal */; };
 		394C8BC34EC9119E620358B90863C48C /* PPOTBillingAgreementRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0453FA2ECE80E41072AD928DFBA270 /* PPOTBillingAgreementRequest.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		3B3A88E074630B1EBC2139F4F70F0443 /* ThrowAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228BA3779FFF94FCE5E2F6FE33060AC2 /* ThrowAssertion.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3C66D2692E811DAE57A244A67E7AC555 /* BeVoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B8FDD7FD68286E749A7645EEBBF8A /* BeVoid.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3D1A89FDD6B579BAA92AD398E5C019F9 /* EndWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDFA252C685CBD0C9BF8EB8445477FA /* EndWith.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3E04D23B2995705A6106D41F3E3E4E33 /* ExpectationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3ED645633207B7EFBBFE3FB9492A17 /* ExpectationMessage.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		4089E39F76F86466B8DDD39A1C1ABB6B /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B01B79309CD3BA746680DE6E746F36 /* Filter.swift */; };
-		40D53E08085767D46A031A6C887F1580 /* PayPalPaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7366BEDBCEAB728F25B3798CFCCBDC /* PayPalPaymentMethod.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		42089BD00D1B5C441BE6B80282B0AAE5 /* MCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805B7824088372C2337D42A57D1C38 /* MCViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		40D53E08085767D46A031A6C887F1580 /* PayPalPaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80833A9C252B1E3F323B126B8153070 /* PayPalPaymentMethod.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		42089BD00D1B5C441BE6B80282B0AAE5 /* MCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE47C56974E2A47EAF3CF093E2E1D691 /* MCViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		42102106660C4A7EEFFF81B7ECAF3DD9 /* BTClientMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC012D0D74AFA89777E42882856E850 /* BTClientMetadata.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		433EE711561ABEFB51A172BCE21F7263 /* PPOTOAuth2BrowserSwitchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D077AFE501A989C60B49735384F5604 /* PPOTOAuth2BrowserSwitchRequest.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		4365909495A559600714780DCB97DAAF /* PPOTOAuth2AppSwitchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 861510F24B687355481160FD549FD528 /* PPOTOAuth2AppSwitchRequest.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
@@ -118,15 +118,15 @@
 		4385DCC256F882EB8C57F345E4F5B36D /* PPOTVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = AF19996F5A3ACC4DE058973B2AB19BB4 /* PPOTVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		43ACF9D21B35532951718919E1725E63 /* BTHTTPErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F67E52BF4E85D46DC585CDA0BCAC5 /* BTHTTPErrors.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		44F2690693DCC719269920FFDF491ED0 /* PPOTError.m in Sources */ = {isa = PBXBuildFile; fileRef = C571902BBADF75704D99587525BE029F /* PPOTError.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
-		456822F035F7A3FE3DC8727511B9EAE6 /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2EE02D06F0A5EBFD3DB15431B24780 /* CreditCardView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		456822F035F7A3FE3DC8727511B9EAE6 /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9DA668113FAB77B864769BDBAEB237 /* CreditCardView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		45F183320C688F9978649F30ABE21D09 /* MatchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57E5776A0419532B75582FFA4E37A68 /* MatchError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		460CEA41EBB7F2765A709202498DC40B /* PPOTPersistentRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = BB879C5A0B83516CE25912E9BCD616D0 /* PPOTPersistentRequestData.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		480A7BEBEC78A7FE9BDC350CEBCC1632 /* BraintreeDataCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3EAE3FCC353CDCA3196881A65FE661 /* BraintreeDataCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48C4326D0D8DFCB9C3246296D5842121 /* PPOTResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F2C59209539E996F9D2F0C70F4221A /* PPOTResult.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		48CC638038A231E020366B790A6C3691 /* PPOTRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B29A9646D53B26C9934DDC621E6A848A /* PPOTRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		493DA7F3BBF3D86B88BC74BD232DF2B2 /* MCMasterPass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58521C14D06E39388BBB956930A175E8 /* MCMasterPass.xcassets */; };
+		493DA7F3BBF3D86B88BC74BD232DF2B2 /* MCMasterPass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F576F4CECC0FF08ACB9F6B1003B99E9 /* MCMasterPass.xcassets */; };
 		4A6F179EE67732F81FDB89D1D32AA6A0 /* BTPayPalAccountNonce.h in Headers */ = {isa = PBXBuildFile; fileRef = CE0ECE8B7064EB354264F4814BA154DE /* BTPayPalAccountNonce.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C8D77A38D4E4F18F423D71CBA02606C /* ProximaNovaSoftBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D026E5C8D8E9C0FB26A33BCA4DA7BB3 /* ProximaNovaSoftBold.ttf */; };
+		4C8D77A38D4E4F18F423D71CBA02606C /* ProximaNovaSoftBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2ADC37CDC38187D326BF753AFD1F803E /* ProximaNovaSoftBold.ttf */; };
 		4C955443369E8AB1F2547F09DF893940 /* BTDataCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 18E7C43AA46703FBAC5A535B3D0A66BA /* BTDataCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CDACD8A5A6CFB688838AA988E7D1E43 /* Nimble-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A8396CECD841ACDCED9983360B5BDD37 /* Nimble-dummy.m */; };
 		4CDDDB9207A4D9C7972E1274583D3687 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1970209D3A000FB2D99D64D1499B377 /* Alamofire.framework */; };
@@ -142,10 +142,10 @@
 		52B6A159F2C2AB26AF2B15A4D61389F9 /* Braintree-Version.h in Headers */ = {isa = PBXBuildFile; fileRef = A7F38E29C17050FF96E8CEB8E9707F06 /* Braintree-Version.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		531C54B1C10BA0F17A2B7D81D02BD390 /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A2AB082FB42AAE652F97D3973B7CFC8 /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6628B61DD7B2044181C60E0D8DA85932 /* Request.swift */; };
-		54B01FDD9EBF736F58017241232A581A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF1754C0BAF797CA195C438CC79658 /* Media.xcassets */; };
+		54B01FDD9EBF736F58017241232A581A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 643977E7798918F66C0F742EB277F684 /* Media.xcassets */; };
 		54CC2049C937561A469575AF9E6A6FE9 /* NimbleEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6FBB85625F36EB10AB45E64C57F20 /* NimbleEnvironment.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		54DBCE6C2BE3CF8EF61F24F6D34CC24F /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB4B601BECBFE6D80C604B7BCAAD726 /* UIColor+Hex.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		55826CF418525103259A27E1477469E6 /* MCPayPal.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9798BE08D68ED7FE29C0EF7A2A2FF3 /* MCPayPal.xcassets */; };
+		54DBCE6C2BE3CF8EF61F24F6D34CC24F /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3BB681B9D549C58D04C7B69E8F4AA4 /* UIColor+Hex.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		55826CF418525103259A27E1477469E6 /* MCPayPal.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9D1CD593F9CD02419CDCE269EC29A57 /* MCPayPal.xcassets */; };
 		5640DEBA4F5242F2FE4877FA33B4F959 /* PPOTCheckoutBrowserSwitchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 62CCD492F6F02E567830C92A471AAE66 /* PPOTCheckoutBrowserSwitchRequest.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		564B88C350BFC0DEB3F94B6E8921940A /* ExampleHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B8A79262735276FEAC36043C7F3580 /* ExampleHooks.swift */; };
 		5754B7F0A45DC5536068097AAEF544E2 /* BTAPIPinnedCertificates.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EC8B36ECF65D00827A4E6DF14A19A3 /* BTAPIPinnedCertificates.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
@@ -167,8 +167,8 @@
 		67C917F2ADFC57E4A965814FD92A4200 /* ExampleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028FADB9265A9DB73C420DD0CED427E4 /* ExampleMetadata.swift */; };
 		68FD03C72D719117929696B62038B3D7 /* NMBExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44E99F6A03452DFAB508BE4307D4A06 /* NMBExpectation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		691CD95794BC51BFF39FD7CEE3162234 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2609A24C5CED837DA569327EE840BF3C /* Configuration.swift */; };
-		69E6B04AA2B9F36B711AA8807C67DE9E /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E426BB11B567D43AF2189B741993C9F /* LocalData.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		69ED7A8494255B2F1AD500A46BD136D0 /* Networking.swift.orig in Sources */ = {isa = PBXBuildFile; fileRef = EEB3C26496ED4FE955DC9B92521525C4 /* Networking.swift.orig */; };
+		69E6B04AA2B9F36B711AA8807C67DE9E /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC5F3A19EB3C6FD6C6870CFF42C9A09 /* LocalData.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		69ED7A8494255B2F1AD500A46BD136D0 /* Networking.swift.orig in Sources */ = {isa = PBXBuildFile; fileRef = 32606E8D8222D14ED0F289C9C96BEE66 /* Networking.swift.orig */; };
 		6A375593407BC7937234B2B6A0811760 /* Kingfisher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AC82AD7E9804464CFCE40D120C2591 /* Kingfisher-dummy.m */; };
 		6AD5A4E23405F146ACC0D93AC24258B5 /* PPOTOAuth2AppSwitchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E75D6ED2C9A928730F48775C982FF3C0 /* PPOTOAuth2AppSwitchRequest.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6B1090670BE3A73402F8BADFB621E9ED /* PPOTMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = F94603AA6378E24EE37D3EFDBF6FCDB1 /* PPOTMacros.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
@@ -180,13 +180,13 @@
 		6DA770087D354CDCD3889CDAE7C4C698 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D35D453F96FCCE09992C5D023E641 /* Box.swift */; };
 		6DACD1C1A4CE2C79F466FEF962D645E9 /* BTConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 697AA8E57B8AEB5CBDF057C972A224D4 /* BTConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F4EA556E5E03E4BFFD9973260FA554E /* World.h in Headers */ = {isa = PBXBuildFile; fileRef = 38C838B9DEBFBE307D0A548EA559B3EA /* World.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		71C43945779E3232EB43A75C77F711B5 /* MyCheckWalletUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6F41804EB32D0B3DC5CB39809CC6F88 /* MyCheckWalletUI.storyboard */; };
-		71C55F6E079CCD572F32F4F7AD2877A2 /* Networking+PayPal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596A1163673742F1D476469DB9D37F8F /* Networking+PayPal.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		71C43945779E3232EB43A75C77F711B5 /* MyCheckWalletUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 338F4935F40E3EB04A5D4A328D0E8E00 /* MyCheckWalletUI.storyboard */; };
+		71C55F6E079CCD572F32F4F7AD2877A2 /* Networking+PayPal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA0E1A79A89B911F569B5B97A3E5BE7 /* Networking+PayPal.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		739FAFDFB15142AC4E90B5EC6431011A /* PPFPTIData.h in Headers */ = {isa = PBXBuildFile; fileRef = DC19010406ED4043F284939BBFEA1BBA /* PPFPTIData.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		73BC5AC2ECDB8722E085F14B53E0D24E /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D6B88254D8123DC7FAF2DA06138E /* AssertionRecorder.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		75538A8B20C7A20AF3D54BBF35D56FFE /* BeLessThanOrEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4509CCF81985FB5EF5AFBDB417A91FA3 /* BeLessThanOrEqual.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		757F12104C88D7A45E6A9016DC2F9D5E /* BTConfiguration+DataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F3E26CAB4CAFAD8A6258310D0784EA /* BTConfiguration+DataCollector.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
-		758439C48DCC329B8E05D2DA7E42FE08 /* AddMasterPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CA0B370F19A5D5A17A6733AF01D54D /* AddMasterPassViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		758439C48DCC329B8E05D2DA7E42FE08 /* AddMasterPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64184AB629851A488CE700879937DD /* AddMasterPassViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		75ABB48E3C30C2D736C3D05D6FD566A8 /* BeNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F958988A8A5A910613FB328A88878A /* BeNil.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		762074EEC1CAF9483EE8B928642D2489 /* BTConfiguration+DataCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C27381EFE525321462ACC9B839F5E63 /* BTConfiguration+DataCollector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7636F846675C9F4ED96E00C6C19A4890 /* KingfisherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4777896FFE7573DF238E9F4EC2580BF /* KingfisherManager.swift */; };
@@ -194,11 +194,11 @@
 		778820A677DA329DCC2442968F35B228 /* PPOTDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF0C558788FB132C9289611DABAC04 /* PPOTDevice.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		77C6B6CEEDE5303333C558A5C55B84D2 /* PPOTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BE965D827EB26A1864F19615B7A84 /* PPOTConfiguration.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		782A9FCDC5406767EC409F54287E85EA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A855AE0F8A08AF6D85B6BBD90E91102A /* MessageUI.framework */; };
-		7953CAC8F1EAA1149A6771F7F33C8094 /* MyCheckWalletUI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EDF3893DF2E82FEE8D258EBB22E13C /* MyCheckWalletUI-dummy.m */; };
-		7A0B277FBBBAB989FAD14E8AC4F15E3B /* MyCheckWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB152DC67880F4F52BB0FC9D06950C /* MyCheckWallet.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7A76E32745A3360AFAAEF36178AED404 /* CheckoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02C267AC8921A3074DBBFF414BFF0711 /* CheckoutViewController.xib */; };
+		7953CAC8F1EAA1149A6771F7F33C8094 /* MyCheckWalletUI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8817AB165EEBE0DFA6DD0110817DF3F8 /* MyCheckWalletUI-dummy.m */; };
+		7A0B277FBBBAB989FAD14E8AC4F15E3B /* MyCheckWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65C331905D07420EBB1BBA31F287B2C /* MyCheckWallet.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7A76E32745A3360AFAAEF36178AED404 /* CheckoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8A4FC5286DE6A230606CFB0D0783610 /* CheckoutViewController.xib */; };
 		7B5FE28C7EA4122B0598738E54DBEBD8 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A71EC9315F38DB1BA2BCA820EF1AA1C /* SessionDelegate.swift */; };
-		7D3591F5F2D957A4C328BDCB552792E7 /* MyCheckWalletUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FF6DBF47FAA3C8FCD722FCC6CAACCA3 /* MyCheckWalletUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7D3591F5F2D957A4C328BDCB552792E7 /* MyCheckWalletUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D4FEBF091178FBF40251786C4C76F1 /* MyCheckWalletUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D8CC01E8C9EFFF9F4D65406CDE0AB66 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773B24D5CF37308AC21DCA8AB2AD7FC0 /* Result.swift */; };
 		7DE147A7942D5AD5143725D9332C18E3 /* PPOTResult_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C4697A55AC98CAC54171E4C116692617 /* PPOTResult_Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7E0C9AE6468A5DF91F0F4C7A387D725C /* BeAKindOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46E703882C3A014BBF11A14C2134E7F /* BeAKindOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -206,7 +206,7 @@
 		82A8AAAF83F1F1DCBBA17130A5BFBF8F /* PPDataCollector_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC849C6FDEE942C024456BA4882F26B /* PPDataCollector_Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		84911481399AA9D18AB2CC564E9D0040 /* Pods-MyCheckWalletUI_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6263697EB59BB353A1C00D5446EC4FA8 /* Pods-MyCheckWalletUI_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		86B7DA678C8705523C300947117C0706 /* ImageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF075301C0228E93E099CE01AF890259 /* ImageTransition.swift */; };
-		8850DEB155D0B49083F34C384F1DE8B5 /* PayPalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E220A6DBF0575F717FA32A5A1675E07 /* PayPalView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8850DEB155D0B49083F34C384F1DE8B5 /* PayPalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2A65E6510AB980F71BEC9750A2AE51 /* PayPalView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8B48482AC580932F9BEA8A9696F0A1D8 /* PPOTAppSwitchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 90ABB72833F470576AAC5A738C0D75FC /* PPOTAppSwitchResponse.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		8B55BD430033027AD5FF22D630DD9F62 /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = E497B2908F5E74A6B10E6CF809604FE7 /* DSL.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		8DA7E6883118CB3C8132B64D3D43AE0B /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C80A7C8F5B4B9820F48F0743A1014 /* Resource.swift */; };
@@ -217,7 +217,7 @@
 		9312478C4192EE5A2337405C6F96A28F /* BTURLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DF013538ECC5ABBD52D1A39F586AE641 /* BTURLUtils.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		939FE14F1D7B4559033D115EE22AEDBA /* PPFPTIData.m in Sources */ = {isa = PBXBuildFile; fileRef = 849801A7F4BD914CAB971419EFD60614 /* PPFPTIData.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		94F4400E2C4DAA151A604798B6B07991 /* PPOTConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = C94EF0A8094555374A5911DCA6FA3E2B /* PPOTConfiguration.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		95EE0BCD22321D19801344E909827BE0 /* MyCheckWallet+MasterPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACDBCFD2A3F41FEFE6D3A6A8B4384A5 /* MyCheckWallet+MasterPass.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95EE0BCD22321D19801344E909827BE0 /* MyCheckWallet+MasterPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC66FFA0618742F6ECB13D6EA1F8D54 /* MyCheckWallet+MasterPass.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		96132E7432F8DD315A88A07C6B4F9C72 /* NMBStringify.h in Headers */ = {isa = PBXBuildFile; fileRef = 46B3E7EE7CA92786215B0E044AC4C095 /* NMBStringify.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		967449AA9E5E92E72B6646EFFA275118 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1275A06DC81BB2C4E0B5CC46EFF5B /* DSL.swift */; };
 		97479585ECCD4E938B0FC65ADEFCBC86 /* PPOTCheckoutAppSwitchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 573AEDE34318A27B806222DC38D9BE23 /* PPOTCheckoutAppSwitchRequest.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
@@ -230,7 +230,7 @@
 		9BABD30B32A8C7523884A3DEC9130C56 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3EB91E9819B034D34399F71FFEB8303 /* UIKit.framework */; };
 		9C56BCA9214D9F2853B54B289998238F /* BTDataCollector_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D670B7392F6048A02E5419BA9859A56 /* BTDataCollector_Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9C99E45B90BD95712D9878994BFC8B88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461A689D8856E9405C482DE1A1FF60C1 /* Foundation.framework */; };
-		9D4B67128877799A57F7C8DDC166FB62 /* String+Capital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02400E55E93CAF1BD9CE3F3E2F6E7063 /* String+Capital.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9D4B67128877799A57F7C8DDC166FB62 /* String+Capital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F496BEA72DE1F0BA9609C12479E42D1 /* String+Capital.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9ED2BB2981896E0A39EFA365503F58CE /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD9917B8E8220CFC4E2BFF1DEC838C /* AFError.swift */; };
 		9F30A8AA8B1A4A79C51EEBF7B7FF6C42 /* BTKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = C23FAEA2DA566118EC499C07078B06D9 /* BTKeychain.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		9F826F893E86EB86591B637A1CE4B13A /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A1D1208A967F161613E2460687AB2 /* String+MD5.swift */; };
@@ -240,7 +240,7 @@
 		A38DB858F3BECA3E92AA5555CF35355A /* BTJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EDE33BA3775B15473494CD3C364105B /* BTJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3D0E4E4F04500822BCB5C1EFDBDBE71 /* PPOTRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B6FCEAC240C060372E85A5F561A2A6 /* PPOTRequest.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		A502064E2F361EA25DEA0A73E090AEEF /* BTAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ADB1E9168D396576EAC82E44A9C4A3F /* BTAPIClient.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
-		A5E7CE6FCC867582DD04FDDBC4B69197 /* PaymentMethodFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C1D0EAB4F43A10B9D93EEAA0ACB9F5 /* PaymentMethodFactory.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5E7CE6FCC867582DD04FDDBC4B69197 /* PaymentMethodFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F983A3A98D89C5B39A5126B94B48D2B /* PaymentMethodFactory.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A61ADD214AA182EEB2AC95EA3F3D658F /* XCTestObservationCenter+Register.m in Sources */ = {isa = PBXBuildFile; fileRef = B96DAAE7C285C8B546081C619AED7131 /* XCTestObservationCenter+Register.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		A6224D717A8399190DEC038D393E7C78 /* BTAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 89A1493137B34EA68B436106BA613B82 /* BTAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A74537420FF0CEDC6B9E82E1DC4C2B15 /* Contain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A6A72197DAC85833950FC768E7ED46 /* Contain.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -259,15 +259,15 @@
 		AF1174085D9BC5D50FCE0480E9C2BE94 /* BeGreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E3A97298D794D54E5DFED5BA6C937C /* BeGreaterThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		AF624678234D0405DB54181EDFCC30E4 /* BTAnalyticsMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 9792F08DEAA7E1ABD1F7939C770015F2 /* BTAnalyticsMetadata.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AFCB780949DB9F1A3232499A2E01EB7F /* PPOTJSONHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5097D297D6A0F3FCCD457E7F0D13F95B /* PPOTJSONHelper.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
-		B09B9E14C3485234728786789B609C94 /* MCPaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C88693A1F6E82C08521FC1EDE771C8 /* MCPaymentMethodsViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B09B9E14C3485234728786789B609C94 /* MCPaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62064E68169DA5C499FFCD9B27929FC8 /* MCPaymentMethodsViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B0E5D757CA9A380CFBEF0D1CC76F3F3E /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C4A9F7F89E337145C2878C9EAC654B /* QCKDSL.m */; };
 		B102ABE4E54B71B3D2C2118E2782FAB9 /* BeLessThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B5152E2DA986152215D5514B2A1AB1 /* BeLessThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		B2C151B20635A480E1937E3D2B509BB4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3EE70097EE716DB9A6EF7B6C1F6868 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		B3042080DB39C777B7FDF82CE45C0386 /* BTPaymentMethodNonce.h in Headers */ = {isa = PBXBuildFile; fileRef = C147A4AA4775E36AA1EDBCB25DEDCD04 /* BTPaymentMethodNonce.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B354D2D5ADEE53420CD8291F2AC7C29D /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983DC55D57FD95AA33AD9E7B957979CE /* PaymentMethod.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B354D2D5ADEE53420CD8291F2AC7C29D /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528C886E4B7FCD86EB8078FDADDFB1D /* PaymentMethod.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B37D0376FCEB3133F44CF5F4416C58E1 /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A7CB414643ECEC6B3339F68B8F3BEFB /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B45FEABFC6F934A1A50826D7C0483637 /* BTPayPalDriver_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = DA849027EC8968B94E738D89DAFE280D /* BTPayPalDriver_Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B51A182E891EAE4C350FB7153161AEE5 /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35897B6FBF8DF45FBE287613B5DEE2 /* UIColor+CustomColors.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B51A182E891EAE4C350FB7153161AEE5 /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F401C4BBAC88141886E59E2F269786A /* UIColor+CustomColors.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5AF683CE2E6CC5D42E459BDADC801DC /* PPOTCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C48832909D9DCDD1921FE2BD7DB6038B /* PPOTCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5BB3793F6F3A1A950E597D70EF6E642 /* Pods-MyCheckWalletUI_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EAF1C249718DE182D0B2A13DC2E53 /* Pods-MyCheckWalletUI_Example-dummy.m */; };
 		B65FCF589DA398C3EFE0128064E510EC /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3DB07CDB0614B350C2424927B928AB /* MultipartFormData.swift */; };
@@ -278,7 +278,7 @@
 		BA8A0190EB665A4A7755928507E98196 /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BE08D9EB6C506C692ED56BB2974B75 /* Quick-dummy.m */; };
 		BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71578FF3A477291E5B42AC6195B220E /* Validation.swift */; };
 		BC7B9761322C74FA27969BD55833BA47 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3769C8BBA27251502B49359DAE1DA4 /* Errors.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		BDE1F754B90A160EED7214315F270556 /* CreditCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87C53B64BC54AA2CA2C56109174BCF5 /* CreditCardView.xib */; };
+		BDE1F754B90A160EED7214315F270556 /* CreditCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2E9670DDC1E6B18DC77D84E56CADDA /* CreditCardView.xib */; };
 		BE5C3B06097FF91E47D50CF31A1277E1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDC1E0C06BF9F672CB70C95E61DA844 /* XCTest.framework */; };
 		BE5C67A07E289FE1F9BE27335B159997 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF9D40E68E6D5D6E902D21C15DD368 /* ParameterEncoding.swift */; };
 		BEDA7B2C0E189A07B1B642D5FFBB8F1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461A689D8856E9405C482DE1A1FF60C1 /* Foundation.framework */; };
@@ -289,7 +289,7 @@
 		C13371C3996770927C6A2B763CE1FE5C /* BTJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF01A7A4EA8F95E5A2372FB11AF82 /* BTJSON.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		C1B3280F92CC0625B25B360FEA35FE02 /* PPOTCheckoutSwitchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EBABC73EE06585E5EC3077EC8BB23C4 /* PPOTCheckoutSwitchRequest.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C1D862177DC2999FAC710AC25F253BD0 /* BeAnInstanceOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78775074794CAB63AE08D336D7CD7F /* BeAnInstanceOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		C1DB4FDB97446C8A3607ABC84D92F30A /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D934519F34565C2D41D78938E0EA262 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C1DB4FDB97446C8A3607ABC84D92F30A /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E459A1B2970D8D1C0152BC2416EABE /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1DD90CCD703B0221B243B34CAD86F29 /* BTLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A0B6A7A477EB76738B3F43BAACE0B3 /* BTLogger.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		C2D89D600EC4462B3DE69FCDAEB249C7 /* PPOTTime.h in Headers */ = {isa = PBXBuildFile; fileRef = 96E0E4872EF48EE50207EE8D484F59BA /* PPOTTime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C32637E742E25C6F8BB8A8E8F0939414 /* PPOTError.h in Headers */ = {isa = PBXBuildFile; fileRef = DDDCC4F1AED6C9F5F416BFD650A5636C /* PPOTError.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -309,7 +309,7 @@
 		CF55697859D633C852C3586384647EB6 /* NimbleXCTestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92C0863A4DBF7D5994AE95FB4CD883 /* NimbleXCTestHandler.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		D242339588BCF8E5E3DD5D9A5FDB38CC /* PPOTSwitchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68FBF1446B52B3B01001BF7372CBFF /* PPOTSwitchRequest.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		D3B3DCD9DBF14C7D03D947C99F6EDAB3 /* BTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B17564030E876D6E42197EEDA7C98F /* BTConfiguration.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
-		D3E58041BE8344D2E8A81A6494BC41C6 /* MCCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0661FC5A0495572090010743FAA2011 /* MCCheckoutViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D3E58041BE8344D2E8A81A6494BC41C6 /* MCCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED109F1FE5549BF36EA4080E225660 /* MCCheckoutViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D3FD037F7F65B25FBB2B48ADED64FA73 /* PPOTDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 08ACD0AD131B5A67644B503833E14170 /* PPOTDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4776E6BF53CDDB48B81A16CB78B96BA /* SuiteHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD7787C443F883D303307242CBD6A0A /* SuiteHooks.swift */; };
 		D513FDC6FA4BC37FB1AEF448B0D274E0 /* PPOTPinnedCertificates.m in Sources */ = {isa = PBXBuildFile; fileRef = 8745D84FB78BCDC21307DD512B60B8EE /* PPOTPinnedCertificates.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
@@ -318,22 +318,22 @@
 		DABCD7E664AC68AB7770A013643520D9 /* BTEnums.h in Headers */ = {isa = PBXBuildFile; fileRef = 405B2DBDBAFEA0EBCFD7D46DC44F743F /* BTEnums.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC6080C64C269628C3F5107BE87055E2 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ABD11074B9488F8DAC0CA1E9837F2 /* ImageDownloader.swift */; };
 		DDBCEF8AFA106234A789452311F0878C /* PPDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4FC756EBFAD90C0C5EA61C68FF4B19 /* PPDataCollector.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
-		DE477894CACE26A59C09B0B3EA402778 /* AddCreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680B0FE48EB27A9A9AF03661D5C4F7CD /* AddCreditCardView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE477894CACE26A59C09B0B3EA402778 /* AddCreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E53DDF31E538E0840E6929A82936890 /* AddCreditCardView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DF026F6F406A4FB6CEA63B0A4B9E27DD /* AllPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECB87280517D4E4110056A245B3BE0D /* AllPass.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		DF56AE42843411578B8840C7BE8F73B5 /* PPOTAnalyticsTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D3B8BD616C5D6B4B2B6D7F23F7353B9 /* PPOTAnalyticsTracker.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E03684BFC68D3EB9B520F352EF4CED04 /* PPOTJSONHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 46C5D21CEC67A117518BFB24FCEF50D3 /* PPOTJSONHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E153C679355ABFFD59A0CDE41467A2D6 /* MyCheckWallet+PayPal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416792D98ABB1D3F474FE5D0871423D /* MyCheckWallet+PayPal.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		E308E0C10F2C5515B7BC85A9FCDAFF9C /* PaymentMethodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BAD541D30A8AD0B3EF3ABFBFB0980 /* PaymentMethodButton.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E153C679355ABFFD59A0CDE41467A2D6 /* MyCheckWallet+PayPal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF1DDCAEAD57C215AABAF663867BEC /* MyCheckWallet+PayPal.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E308E0C10F2C5515B7BC85A9FCDAFF9C /* PaymentMethodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB252CD51BDDF8D6C129FE97730AB4B /* PaymentMethodButton.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E3289735775B3169804B816EC89748D6 /* XCTestSuite+QuickTestSuiteBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A44DEFDFAD21D007747CCAB61F3B30 /* XCTestSuite+QuickTestSuiteBuilder.m */; };
 		E37A2935CE1C0DD1FB053C93687AFB48 /* PPOTCheckoutAppSwitchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 753A05050BA1D40926CF3F8565086E84 /* PPOTCheckoutAppSwitchRequest.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		E4DA08C64DD19EBC20EDF6CAA905941E /* Dictionary+Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878235D7D1660BEE8BDD86BE8AF0BDCF /* Dictionary+Append.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E4DA08C64DD19EBC20EDF6CAA905941E /* Dictionary+Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22F701BA65085B2CABC6C47553A3E7A /* Dictionary+Append.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E4F51A186B0D964A28C13E0E6F1D8EDB /* NSString+C99ExtendedIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E0CFE35E9BEFE2E7FABA8E549DE351 /* NSString+C99ExtendedIdentifier.swift */; };
 		E540383802858A429384943D4FCF4EA1 /* BTPayPalRequestFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 803A8335257A939355FB573581D0C53F /* BTPayPalRequestFactory.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E60D3B981462A76548B8F52CCC24E3C4 /* QuickSpec.h in Headers */ = {isa = PBXBuildFile; fileRef = 4506FB823E2EFB6EC0C355220FE556CD /* QuickSpec.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7F06BA7BF1A039E5A5234311D60A705 /* BraintreeCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 80A81C4073915A90FE28F7AB75023EF3 /* BraintreeCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8D98770A0F2FFECC4F4543BEF00184A /* QuickConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D90EDA221E1504EFDF736EDCBB47A60 /* QuickConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E9255E509F5D963FD171D412AB55ADB1 /* BTErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 447BCBFA29D490389ADF102686C09471 /* BTErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA624E17A40E38A01EEFBDF91B309C5B /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7DA9860E75A6C6339D8BA8EAC6557A /* String+Base64.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EA624E17A40E38A01EEFBDF91B309C5B /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695EDA97EB2E6262B7866E1971829B0 /* String+Base64.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EA816A580C3858934ED6FE92040C26DD /* RequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B244F5144837FBD3B28AA1E885AE01 /* RequestModifier.swift */; };
 		EA92C1F056F86AA1472C6110A560BD41 /* BTPayPalCreditFinancingAmount.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CE097977AE30894B6DEE54F7B4C536 /* BTPayPalCreditFinancingAmount.m */; settings = {COMPILER_FLAGS = "-Wall -Werror -Wextra"; }; };
 		EAAA05EBBC34225C0DB45797712E24A1 /* AsyncMatcherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EC899C4C83D8A62AB2F1548671D634 /* AsyncMatcherWrapper.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -470,22 +470,16 @@
 		003F67E52BF4E85D46DC585CDA0BCAC5 /* BTHTTPErrors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTHTTPErrors.m; path = BraintreeCore/BTHTTPErrors.m; sourceTree = "<group>"; };
 		00E9288A46187757766268D3320F8AB1 /* Pods_MyCheckWalletUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MyCheckWalletUI_Tests.framework; path = "Pods-MyCheckWalletUI_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F3A2AEF78871EAA34441F033798AA5 /* Callsite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Callsite.swift; path = Sources/Quick/Callsite.swift; sourceTree = "<group>"; };
-		02400E55E93CAF1BD9CE3F3E2F6E7063 /* String+Capital.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Capital.swift"; sourceTree = "<group>"; };
 		028FADB9265A9DB73C420DD0CED427E4 /* ExampleMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleMetadata.swift; path = Sources/Quick/ExampleMetadata.swift; sourceTree = "<group>"; };
-		02C267AC8921A3074DBBFF414BFF0711 /* CheckoutViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CheckoutViewController.xib; sourceTree = "<group>"; };
 		03F398256244EFEE8ABAB1261314FB97 /* NMBExceptionCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBExceptionCapture.m; path = Sources/NimbleObjectiveC/NMBExceptionCapture.m; sourceTree = "<group>"; };
-		0439C744038C4A9A152FFB9B3624B64D /* CreditCardValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
-		04EB152DC67880F4F52BB0FC9D06950C /* MyCheckWallet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MyCheckWallet.swift; sourceTree = "<group>"; };
 		08656D4CFE833BC083FBE8044C5907EA /* Pods-MyCheckWalletUI_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		08ACD0AD131B5A67644B503833E14170 /* PPOTDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTDevice.h; path = BraintreePayPal/PayPalUtils/Public/PPOTDevice.h; sourceTree = "<group>"; };
-		08EDF3893DF2E82FEE8D258EBB22E13C /* MyCheckWalletUI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MyCheckWalletUI-dummy.m"; sourceTree = "<group>"; };
 		09BE08D9EB6C506C692ED56BB2974B75 /* Quick-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Quick-dummy.m"; sourceTree = "<group>"; };
 		0B0453FA2ECE80E41072AD928DFBA270 /* PPOTBillingAgreementRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTBillingAgreementRequest.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTBillingAgreementRequest.m; sourceTree = "<group>"; };
 		0B6AED777BAE0B24BF2D5EE12B668554 /* Pods-MyCheckWalletUI_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MyCheckWalletUI_Example-umbrella.h"; sourceTree = "<group>"; };
+		0D793E7D0968F433E759A712C96EE54E /* MCTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCTextField.swift; sourceTree = "<group>"; };
 		0E1B635480E7DAB22B51885AD1265C7B /* BTAPIPinnedCertificates.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTAPIPinnedCertificates.h; path = BraintreeCore/BTAPIPinnedCertificates.h; sourceTree = "<group>"; };
 		0E3ED645633207B7EFBBFE3FB9492A17 /* ExpectationMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpectationMessage.swift; path = Sources/Nimble/ExpectationMessage.swift; sourceTree = "<group>"; };
-		0E426BB11B567D43AF2189B741993C9F /* LocalData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
-		0F7366BEDBCEAB728F25B3798CFCCBDC /* PayPalPaymentMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PayPalPaymentMethod.swift; sourceTree = "<group>"; };
 		119987184A3BD2E20DC20DA9FEB136C2 /* BTPayPalCreditFinancing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTPayPalCreditFinancing.h; path = BraintreePayPal/Public/BTPayPalCreditFinancing.h; sourceTree = "<group>"; };
 		13E68EEFCFAE1F8A9BD29489D9BD7969 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1443B91C89D87EC81D0312EA02CBBE0A /* BTTokenizationService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTTokenizationService.h; path = BraintreeCore/Public/BTTokenizationService.h; sourceTree = "<group>"; };
@@ -495,7 +489,7 @@
 		161F1F5F70E338BE5F11932F01648B50 /* CwlPreconditionTesting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlPreconditionTesting.h; path = Sources/Lib/CwlPreconditionTesting/CwlPreconditionTesting/Mach/CwlPreconditionTesting.h; sourceTree = "<group>"; };
 		163A4C66F213A71FF3377098B778856A /* Indicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Indicator.swift; path = Sources/Indicator.swift; sourceTree = "<group>"; };
 		16F02DD8A92B1A3B4A5FD961D10D82C0 /* Nimble-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-umbrella.h"; sourceTree = "<group>"; };
-		17C1D0EAB4F43A10B9D93EEAA0ACB9F5 /* PaymentMethodFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodFactory.swift; sourceTree = "<group>"; };
+		17D4FEBF091178FBF40251786C4C76F1 /* MyCheckWalletUI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-umbrella.h"; sourceTree = "<group>"; };
 		185D35D453F96FCCE09992C5D023E641 /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
 		18A2D0214518AF4A289EA0601C58413C /* ImageCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = Sources/ImageCache.swift; sourceTree = "<group>"; };
 		18BE13413E105352D8105A0E38D50070 /* BTPayPalRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTPayPalRequest.h; path = BraintreePayPal/Public/BTPayPalRequest.h; sourceTree = "<group>"; };
@@ -512,9 +506,9 @@
 		1BF715B887542077982EF51A2D820E1A /* BTConfiguration+PayPal.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "BTConfiguration+PayPal.m"; path = "BraintreePayPal/BTConfiguration+PayPal.m"; sourceTree = "<group>"; };
 		1DC012D0D74AFA89777E42882856E850 /* BTClientMetadata.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTClientMetadata.m; path = BraintreeCore/BTClientMetadata.m; sourceTree = "<group>"; };
 		1EC032435536DC7F56241D333015C5CA /* QuickSpec.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpec.m; path = Sources/QuickObjectiveC/QuickSpec.m; sourceTree = "<group>"; };
+		1F496BEA72DE1F0BA9609C12479E42D1 /* String+Capital.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Capital.swift"; sourceTree = "<group>"; };
 		1F91FEE4EAC671D50A3F6B21347DAFD2 /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
 		20215C26E49CB990A1188387186CFAE9 /* BTAnalyticsService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTAnalyticsService.m; path = BraintreeCore/BTAnalyticsService.m; sourceTree = "<group>"; };
-		211BAD541D30A8AD0B3EF3ABFBFB0980 /* PaymentMethodButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodButton.swift; sourceTree = "<group>"; };
 		219A799B7CB92104C0863A29F0A1C885 /* PayPalDataCollector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalDataCollector.h; path = BraintreePayPal/PayPalDataCollector/Public/PayPalDataCollector.h; sourceTree = "<group>"; };
 		2246162F8DA567743A65281241668FF9 /* NMBObjCMatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBObjCMatcher.swift; path = Sources/Nimble/Adapters/NMBObjCMatcher.swift; sourceTree = "<group>"; };
 		228BA3779FFF94FCE5E2F6FE33060AC2 /* ThrowAssertion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowAssertion.swift; path = Sources/Nimble/Matchers/ThrowAssertion.swift; sourceTree = "<group>"; };
@@ -526,15 +520,20 @@
 		27CDB953459714A41C8D00124425860A /* PPOTAppSwitchUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTAppSwitchUtil.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTAppSwitchUtil.h; sourceTree = "<group>"; };
 		28F3E26CAB4CAFAD8A6258310D0784EA /* BTConfiguration+DataCollector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "BTConfiguration+DataCollector.m"; path = "BraintreeDataCollector/Public/BTConfiguration+DataCollector.m"; sourceTree = "<group>"; };
 		2ADB1E9168D396576EAC82E44A9C4A3F /* BTAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTAPIClient.m; path = BraintreeCore/BTAPIClient.m; sourceTree = "<group>"; };
+		2ADC37CDC38187D326BF753AFD1F803E /* ProximaNovaSoftBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftBold.ttf; sourceTree = "<group>"; };
 		2B1CD5FC2178D91ACBD79B52E0AD320B /* BTPostalAddress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTPostalAddress.h; path = BraintreeCore/Public/BTPostalAddress.h; sourceTree = "<group>"; };
 		2D61324EB7D38DD119F0B456394DE0C7 /* BTClientMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTClientMetadata.h; path = BraintreeCore/Public/BTClientMetadata.h; sourceTree = "<group>"; };
+		2DEF1DDCAEAD57C215AABAF663867BEC /* MyCheckWallet+PayPal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MyCheckWallet+PayPal.swift"; sourceTree = "<group>"; };
 		2E00B16867CCEF468E52646FFAA80D9B /* PPOTRequestFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTRequestFactory.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTRequestFactory.m; sourceTree = "<group>"; };
-		2F3632EA4D819E9025654F7A089AB0F2 /* MCScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCScrollView.swift; sourceTree = "<group>"; };
 		2F5505ED3C708AFB20FA99EF3930BC2A /* KDataCollector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KDataCollector.h; path = BraintreeDataCollector/Kount/KDataCollector.h; sourceTree = "<group>"; };
+		2FD5625CA26EDE1985FAFBE76D732995 /* MyCheckWalletUI.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MyCheckWalletUI.xcconfig; sourceTree = "<group>"; };
 		31AEC9758E4D90D6C6C9FBA6AC7F62AF /* Pods-MyCheckWalletUI_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Example-resources.sh"; sourceTree = "<group>"; };
+		32606E8D8222D14ED0F289C9C96BEE66 /* Networking.swift.orig */ = {isa = PBXFileReference; includeInIndex = 1; path = Networking.swift.orig; sourceTree = "<group>"; };
 		3377A891F37FB12DFA93244D31F09CE3 /* BTPaymentMethodNonceParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTPaymentMethodNonceParser.m; path = BraintreeCore/BTPaymentMethodNonceParser.m; sourceTree = "<group>"; };
+		338F4935F40E3EB04A5D4A328D0E8E00 /* MyCheckWalletUI.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; path = MyCheckWalletUI.storyboard; sourceTree = "<group>"; };
 		3470A31A518AB41ED929104F582842A0 /* PPOTPinnedCertificates.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTPinnedCertificates.h; path = BraintreePayPal/PayPalUtils/Public/PPOTPinnedCertificates.h; sourceTree = "<group>"; };
 		35708716A0F5D7D596B402E3E9955FA4 /* BTAnalyticsMetadata.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTAnalyticsMetadata.m; path = BraintreeCore/BTAnalyticsMetadata.m; sourceTree = "<group>"; };
+		35914112E89FE11404D572C4FBFF2E6C /* CreditCardValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
 		35AD64B25C4E91D8E772D6C76C7EBC12 /* PPOTAnalyticsTracker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTAnalyticsTracker.m; path = BraintreePayPal/PayPalOneTouch/Analytics/PPOTAnalyticsTracker.m; sourceTree = "<group>"; };
 		36F1AE653453D60B03F40AE7C2DB7A59 /* BeGreaterThanOrEqualTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThanOrEqualTo.swift; path = Sources/Nimble/Matchers/BeGreaterThanOrEqualTo.swift; sourceTree = "<group>"; };
 		37598B2CEC01BCD4C5D22EC8C13FB6E5 /* BTHTTP.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTHTTP.m; path = BraintreeCore/BTHTTP.m; sourceTree = "<group>"; };
@@ -545,11 +544,8 @@
 		38F861722116C77406836962F1A3CC21 /* BTAPIClient_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTAPIClient_Internal.h; path = BraintreeCore/BTAPIClient_Internal.h; sourceTree = "<group>"; };
 		39A44DEFDFAD21D007747CCAB61F3B30 /* XCTestSuite+QuickTestSuiteBuilder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestSuite+QuickTestSuiteBuilder.m"; path = "Sources/QuickObjectiveC/XCTestSuite+QuickTestSuiteBuilder.m"; sourceTree = "<group>"; };
 		39CA868F2F1E7FFC84AA6DB3A7338F09 /* BTKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTKeychain.h; path = BraintreeCore/BTKeychain.h; sourceTree = "<group>"; };
-		3ACDBCFD2A3F41FEFE6D3A6A8B4384A5 /* MyCheckWallet+MasterPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MyCheckWallet+MasterPass.swift"; sourceTree = "<group>"; };
 		3B4FC756EBFAD90C0C5EA61C68FF4B19 /* PPDataCollector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPDataCollector.m; path = BraintreePayPal/PayPalDataCollector/PPDataCollector.m; sourceTree = "<group>"; };
 		3B89C6F5E7528E077733DC8A859A8504 /* BTAppSwitch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTAppSwitch.m; path = BraintreeCore/BTAppSwitch.m; sourceTree = "<group>"; };
-		3C5DE7D2E2EAAA664E8453A3BDE51EF9 /* MyCheckWalletUI-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-prefix.pch"; sourceTree = "<group>"; };
-		3D026E5C8D8E9C0FB26A33BCA4DA7BB3 /* ProximaNovaSoftBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftBold.ttf; sourceTree = "<group>"; };
 		3D3337FABDA4104DE2407ADC575D8512 /* MyCheckWalletUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MyCheckWalletUI.framework; path = MyCheckWalletUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D52B6BC2ABD3D277722B7788B2CF2BA /* ToSucceed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToSucceed.swift; path = Sources/Nimble/Matchers/ToSucceed.swift; sourceTree = "<group>"; };
 		3D670B7392F6048A02E5419BA9859A56 /* BTDataCollector_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTDataCollector_Internal.h; path = BraintreeDataCollector/BTDataCollector_Internal.h; sourceTree = "<group>"; };
@@ -561,7 +557,6 @@
 		416E50ED7CD6581F4D5CFB15EC8CA536 /* PPOTURLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTURLSession.h; path = BraintreePayPal/PayPalUtils/Public/PPOTURLSession.h; sourceTree = "<group>"; };
 		425C5542320FD9F3F85A144E6A24A2BD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		440044E36B589C5DADACF157E65F642C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4456D66EA6E78A3193DDBB26C5B8C72E /* paypal */ = {isa = PBXFileReference; includeInIndex = 1; path = paypal; sourceTree = "<group>"; };
 		44666E8E691D4116960BAFCD154F112A /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		447BCBFA29D490389ADF102686C09471 /* BTErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTErrors.h; path = BraintreeCore/Public/BTErrors.h; sourceTree = "<group>"; };
 		44C6FBB85625F36EB10AB45E64C57F20 /* NimbleEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleEnvironment.swift; path = Sources/Nimble/Adapters/NimbleEnvironment.swift; sourceTree = "<group>"; };
@@ -573,7 +568,6 @@
 		46B3E7EE7CA92786215B0E044AC4C095 /* NMBStringify.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBStringify.h; path = Sources/NimbleObjectiveC/NMBStringify.h; sourceTree = "<group>"; };
 		46B647B3696C681F1DE8EF4FC676B499 /* BTPayPalCreditFinancing.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTPayPalCreditFinancing.m; path = BraintreePayPal/BTPayPalCreditFinancing.m; sourceTree = "<group>"; };
 		46C5D21CEC67A117518BFB24FCEF50D3 /* PPOTJSONHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTJSONHelper.h; path = BraintreePayPal/PayPalUtils/Public/PPOTJSONHelper.h; sourceTree = "<group>"; };
-		46F52C664C721B4DDA45691D79277280 /* MCCreditCardsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCCreditCardsViewController.swift; sourceTree = "<group>"; };
 		473A28BB17D2A6D7B871AD7B094D0F33 /* ContainElementSatisfying.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContainElementSatisfying.swift; path = Sources/Nimble/Matchers/ContainElementSatisfying.swift; sourceTree = "<group>"; };
 		47D8606D75489ED1EAD08B4AA1FBF232 /* PPOTTime.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTTime.m; path = BraintreePayPal/PayPalUtils/PPOTTime.m; sourceTree = "<group>"; };
 		4828250ACB3015E483764850C58A411E /* World.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = World.swift; path = Sources/Quick/World.swift; sourceTree = "<group>"; };
@@ -586,12 +580,14 @@
 		4A7F4FAEBAD47C2FFCA14E3D89C6044A /* Pods-MyCheckWalletUI_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MyCheckWalletUI_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		4B468FDA039421856D78DB5EEC24EE89 /* Braintree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Braintree.framework; path = Braintree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C55232AA96B025BDAB4327CB8CF0B9F /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
-		4CB4B601BECBFE6D80C604B7BCAAD726 /* UIColor+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		4CE3139F1AA09D5DCB41F598BA5CA6DA /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		4D077AFE501A989C60B49735384F5604 /* PPOTOAuth2BrowserSwitchRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTOAuth2BrowserSwitchRequest.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTOAuth2BrowserSwitchRequest.m; sourceTree = "<group>"; };
+		4DF388BB6CB5544413219919A251F64A /* Networking+MasterPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Networking+MasterPass.swift"; sourceTree = "<group>"; };
 		4E411A9B673C578B56D37C239768F20A /* Braintree-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Braintree-prefix.pch"; sourceTree = "<group>"; };
+		4E8989243444CA8B32A66AF72C6EAA21 /* MyCheckWalletUI-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-prefix.pch"; sourceTree = "<group>"; };
 		4EDE33BA3775B15473494CD3C364105B /* BTJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTJSON.h; path = BraintreeCore/Public/BTJSON.h; sourceTree = "<group>"; };
 		4EFDFE9092DCC3B849E94A877A50EE65 /* FailureMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FailureMessage.swift; path = Sources/Nimble/FailureMessage.swift; sourceTree = "<group>"; };
+		4F983A3A98D89C5B39A5126B94B48D2B /* PaymentMethodFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodFactory.swift; sourceTree = "<group>"; };
 		4FDFA252C685CBD0C9BF8EB8445477FA /* EndWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EndWith.swift; path = Sources/Nimble/Matchers/EndWith.swift; sourceTree = "<group>"; };
 		501AF0465AD6F7C1A7D3E55706C4275E /* PPFPTITracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPFPTITracker.h; path = BraintreePayPal/PayPalOneTouch/Analytics/PPFPTITracker.h; sourceTree = "<group>"; };
 		50867D8067A29AB9C76DDC8881CBAB2F /* CwlBadInstructionException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlBadInstructionException.swift; path = Sources/Lib/CwlPreconditionTesting/CwlPreconditionTesting/CwlBadInstructionException.swift; sourceTree = "<group>"; };
@@ -599,24 +595,23 @@
 		512AB9A7CB31F01B8F79B18E56B3FB44 /* Pods-MyCheckWalletUI_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyCheckWalletUI_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		51A6A72197DAC85833950FC768E7ED46 /* Contain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Contain.swift; path = Sources/Nimble/Matchers/Contain.swift; sourceTree = "<group>"; };
 		52FAE50CB2F67A9ABAA23D0F4A68FD80 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mach_excServer.c; path = Sources/Lib/CwlPreconditionTesting/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
-		55169FC74894B52B3ECABDB8400F5FB5 /* MCTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCTextField.swift; sourceTree = "<group>"; };
+		53F96A90A33DB9FE594583FF85205493 /* Networking.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		55CF0C558788FB132C9289611DABAC04 /* PPOTDevice.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTDevice.m; path = BraintreePayPal/PayPalUtils/PPOTDevice.m; sourceTree = "<group>"; };
 		573AEDE34318A27B806222DC38D9BE23 /* PPOTCheckoutAppSwitchRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTCheckoutAppSwitchRequest.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTCheckoutAppSwitchRequest.m; sourceTree = "<group>"; };
-		58521C14D06E39388BBB956930A175E8 /* MCMasterPass.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = MCMasterPass.xcassets; sourceTree = "<group>"; };
 		589D98B384CA7BFBF9D099543A43C6DC /* Braintree.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Braintree.modulemap; sourceTree = "<group>"; };
 		592F44876E7945B808620F864029DEE8 /* BTURLUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTURLUtils.h; path = BraintreeCore/BTURLUtils.h; sourceTree = "<group>"; };
-		596A1163673742F1D476469DB9D37F8F /* Networking+PayPal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Networking+PayPal.swift"; sourceTree = "<group>"; };
-		598AF410D7E5BB3D3C43C8C86BDB12EF /* ProximaNovaSoftRegular.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftRegular.otf; sourceTree = "<group>"; };
 		599F0C265F9E145D63A10F2AFB590E55 /* BTAppSwitch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTAppSwitch.h; path = BraintreeCore/Public/BTAppSwitch.h; sourceTree = "<group>"; };
 		59EC8345CCF68FFEF0E8AC932CF5BE48 /* RaisesException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RaisesException.swift; path = Sources/Nimble/Matchers/RaisesException.swift; sourceTree = "<group>"; };
 		5A9F55B5C048215B4B1568621E8620FB /* Quick-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-prefix.pch"; sourceTree = "<group>"; };
 		5B235A67EA40C4BA633970D0B2898D25 /* PPOTURLSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTURLSession.m; path = BraintreePayPal/PayPalUtils/PPOTURLSession.m; sourceTree = "<group>"; };
 		5C39DDF5984E0F281A5A25F1165276A2 /* QCKDSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QCKDSL.h; path = Sources/QuickObjectiveC/DSL/QCKDSL.h; sourceTree = "<group>"; };
+		5CA0E1A79A89B911F569B5B97A3E5BE7 /* Networking+PayPal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Networking+PayPal.swift"; sourceTree = "<group>"; };
 		5DFEA0C607976B4A2ED41FECE87A0BAA /* BTTokenizationService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTTokenizationService.m; path = BraintreeCore/BTTokenizationService.m; sourceTree = "<group>"; };
-		5E220A6DBF0575F717FA32A5A1675E07 /* PayPalView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PayPalView.swift; sourceTree = "<group>"; };
 		5EBABC73EE06585E5EC3077EC8BB23C4 /* PPOTCheckoutSwitchRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTCheckoutSwitchRequest.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTCheckoutSwitchRequest.h; sourceTree = "<group>"; };
+		5FC5F3A19EB3C6FD6C6870CFF42C9A09 /* LocalData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
 		61069683617A6A763C1FF8F8EDCDEF93 /* CwlCatchException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlCatchException.swift; path = Sources/Lib/CwlPreconditionTesting/CwlCatchException/CwlCatchException.swift; sourceTree = "<group>"; };
 		61CE097977AE30894B6DEE54F7B4C536 /* BTPayPalCreditFinancingAmount.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTPayPalCreditFinancingAmount.m; path = BraintreePayPal/BTPayPalCreditFinancingAmount.m; sourceTree = "<group>"; };
+		62064E68169DA5C499FFCD9B27929FC8 /* MCPaymentMethodsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCPaymentMethodsViewController.swift; sourceTree = "<group>"; };
 		6263697EB59BB353A1C00D5446EC4FA8 /* Pods-MyCheckWalletUI_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MyCheckWalletUI_Tests-umbrella.h"; sourceTree = "<group>"; };
 		62CCD492F6F02E567830C92A471AAE66 /* PPOTCheckoutBrowserSwitchRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTCheckoutBrowserSwitchRequest.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTCheckoutBrowserSwitchRequest.h; sourceTree = "<group>"; };
 		62F4FCA81FEDDC026D08729D915A72B2 /* CurrentTestCaseTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CurrentTestCaseTracker.h; path = Sources/NimbleObjectiveC/CurrentTestCaseTracker.h; sourceTree = "<group>"; };
@@ -624,6 +619,7 @@
 		633E96B9DE78CE4D5D6D8B1AA920D76D /* PPOTSwitchRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTSwitchRequest.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTSwitchRequest.h; sourceTree = "<group>"; };
 		63B5AB3583327A41C6DF9251AB0DC8BE /* NMBStringify.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBStringify.m; path = Sources/NimbleObjectiveC/NMBStringify.m; sourceTree = "<group>"; };
 		641F87811D08542BF3FE5D5799CF20D7 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		643977E7798918F66C0F742EB277F684 /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		64B17564030E876D6E42197EEDA7C98F /* BTConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTConfiguration.m; path = BraintreeCore/BTConfiguration.m; sourceTree = "<group>"; };
 		653BE7543203C6F1C878D7EDA8DE1311 /* PPOTCheckoutRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTCheckoutRequest.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTCheckoutRequest.m; sourceTree = "<group>"; };
 		6628B61DD7B2044181C60E0D8DA85932 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
@@ -631,17 +627,19 @@
 		667C4E433076C571BE1B78E48CE3DAA7 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		66FD4BAC9E2953FBA79E57755D4B966D /* PPOTAuthorizationRequest_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTAuthorizationRequest_Internal.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTAuthorizationRequest_Internal.h; sourceTree = "<group>"; };
 		68009E49D3636DCC35D4F6DB43E7B49D /* Expression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Sources/Nimble/Expression.swift; sourceTree = "<group>"; };
-		680B0FE48EB27A9A9AF03661D5C4F7CD /* AddCreditCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddCreditCardView.swift; sourceTree = "<group>"; };
 		697AA8E57B8AEB5CBDF057C972A224D4 /* BTConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTConfiguration.h; path = BraintreeCore/Public/BTConfiguration.h; sourceTree = "<group>"; };
 		6A71EC9315F38DB1BA2BCA820EF1AA1C /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		6A7CB414643ECEC6B3339F68B8F3BEFB /* CwlMachBadInstructionHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlMachBadInstructionHandler.h; path = Sources/Lib/CwlPreconditionTesting/CwlMachBadInstructionHandler/include/CwlMachBadInstructionHandler.h; sourceTree = "<group>"; };
 		6AA9B295C3169EC8039BA222BAD50C20 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		6CBD827D2DBC4589963059EDB7B6A90E /* MasterPassFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MasterPassFactory.swift; sourceTree = "<group>"; };
 		6D3769C8BBA27251502B49359DAE1DA4 /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = Sources/Nimble/Utils/Errors.swift; sourceTree = "<group>"; };
 		6D49A1E12D80A4DC3BC391A0A5BEB795 /* URL+FileName.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URL+FileName.swift"; path = "Sources/Quick/URL+FileName.swift"; sourceTree = "<group>"; };
 		6D90EDA221E1504EFDF736EDCBB47A60 /* QuickConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickConfiguration.h; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.h; sourceTree = "<group>"; };
 		6E3EAE3FCC353CDCA3196881A65FE661 /* BraintreeDataCollector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BraintreeDataCollector.h; path = BraintreeDataCollector/Public/BraintreeDataCollector.h; sourceTree = "<group>"; };
+		6F401C4BBAC88141886E59E2F269786A /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
 		6FB3EC0B63941C5239E125A2A9613F09 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		706507F0EB0AEB813C57A8C7BE900F84 /* PayPalOneTouch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalOneTouch.h; path = BraintreePayPal/PayPalOneTouch/Public/PayPalOneTouch.h; sourceTree = "<group>"; };
+		72E7E2D4D0CEAD24E137BEB0205C2462 /* ResourceBundle-MyCheckWalletUI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MyCheckWalletUI-Info.plist"; sourceTree = "<group>"; };
 		72F4008B29AA79C7E8AE59A47051B83D /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Quick.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73680FF4931F4A524A30A840AF57A5A4 /* Pods-MyCheckWalletUI_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		74F34422BABA722DC4F9DD78BDBCC08F /* Quick.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Quick.xcconfig; sourceTree = "<group>"; };
@@ -649,41 +647,43 @@
 		756A58100D893359F49B4883EEBA4B4A /* DSL+Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DSL+Wait.swift"; path = "Sources/Nimble/DSL+Wait.swift"; sourceTree = "<group>"; };
 		763CEA1E31075452B19CE934F0D8FC65 /* PPDefaultConfigurationJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPDefaultConfigurationJSON.h; path = BraintreePayPal/PayPalOneTouch/Configuration/PPDefaultConfigurationJSON.h; sourceTree = "<group>"; };
 		7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.release.xcconfig"; sourceTree = "<group>"; };
+		765431BAA7B152C434210989ED1E4745 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		773B24D5CF37308AC21DCA8AB2AD7FC0 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		778956B6AED4928C9B5B4FAB92EBC7EC /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
-		78EBDBC6582D05E2657BB017E34B2C76 /* Networking+MasterPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Networking+MasterPass.swift"; sourceTree = "<group>"; };
 		799B183CD464DD673B6C90891D7047DD /* Kingfisher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Kingfisher.h; path = Sources/Kingfisher.h; sourceTree = "<group>"; };
 		7A56AE34DC72F665EA7EFD664379CA93 /* NMBExceptionCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBExceptionCapture.h; path = Sources/NimbleObjectiveC/NMBExceptionCapture.h; sourceTree = "<group>"; };
+		7B9DA668113FAB77B864769BDBAEB237 /* CreditCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
+		7B9F26118B438917AF5F3D38A31CE2D4 /* UITextField+Placeholder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITextField+Placeholder.swift"; sourceTree = "<group>"; };
 		7C27381EFE525321462ACC9B839F5E63 /* BTConfiguration+DataCollector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "BTConfiguration+DataCollector.h"; path = "BraintreeDataCollector/Public/BTConfiguration+DataCollector.h"; sourceTree = "<group>"; };
 		7CD913241B05EBC76CECA5DCD751B26E /* BTPaymentMethodNonce.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTPaymentMethodNonce.m; path = BraintreeCore/BTPaymentMethodNonce.m; sourceTree = "<group>"; };
 		7D005E9C1F97EA8407A4474D2B03EF83 /* BeCloseTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeCloseTo.swift; path = Sources/Nimble/Matchers/BeCloseTo.swift; sourceTree = "<group>"; };
-		7D2EE02D06F0A5EBFD3DB15431B24780 /* CreditCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		7D3B8BD616C5D6B4B2B6D7F23F7353B9 /* PPOTAnalyticsTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTAnalyticsTracker.h; path = BraintreePayPal/PayPalOneTouch/Analytics/PPOTAnalyticsTracker.h; sourceTree = "<group>"; };
 		7E5CBB70F278052E71C8E52568CA2267 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Image.swift; sourceTree = "<group>"; };
-		7E7DA9860E75A6C6339D8BA8EAC6557A /* String+Base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		7ECB87280517D4E4110056A245B3BE0D /* AllPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AllPass.swift; path = Sources/Nimble/Matchers/AllPass.swift; sourceTree = "<group>"; };
 		7EE7533092409B03F0712EE351175133 /* Nimble.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.xcconfig; sourceTree = "<group>"; };
+		7F3BB681B9D549C58D04C7B69E8F4AA4 /* UIColor+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		803A8335257A939355FB573581D0C53F /* BTPayPalRequestFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTPayPalRequestFactory.h; path = BraintreePayPal/BTPayPalRequestFactory.h; sourceTree = "<group>"; };
 		80A81C4073915A90FE28F7AB75023EF3 /* BraintreeCore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BraintreeCore.h; path = BraintreeCore/Public/BraintreeCore.h; sourceTree = "<group>"; };
 		81B6FCEAC240C060372E85A5F561A2A6 /* PPOTRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTRequest.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTRequest.m; sourceTree = "<group>"; };
 		81C329F47352AD1CA32EB702D66B6F40 /* BeLogical.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLogical.swift; path = Sources/Nimble/Matchers/BeLogical.swift; sourceTree = "<group>"; };
-		81FF703FE625BC28121CE011FADBBE74 /* MCAddCreditCardViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCAddCreditCardViewController.swift; sourceTree = "<group>"; };
 		8241C9C99484C8E5E246BFAEEE4D9C11 /* Match.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Sources/Nimble/Matchers/Match.swift; sourceTree = "<group>"; };
 		8315576B1BBA5FAE5E26E5C754BA5370 /* BTHTTP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTHTTP.h; path = BraintreeCore/BTHTTP.h; sourceTree = "<group>"; };
 		83B22F1799C1746691E08BA3FDF77993 /* PPOTEncryptionHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTEncryptionHelper.m; path = BraintreePayPal/PayPalUtils/PPOTEncryptionHelper.m; sourceTree = "<group>"; };
 		849801A7F4BD914CAB971419EFD60614 /* PPFPTIData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPFPTIData.m; path = BraintreePayPal/PayPalOneTouch/Analytics/PPFPTIData.m; sourceTree = "<group>"; };
-		85805B7824088372C2337D42A57D1C38 /* MCViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCViewController.swift; sourceTree = "<group>"; };
+		84E459A1B2970D8D1C0152BC2416EABE /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h"; sourceTree = "<group>"; };
 		861510F24B687355481160FD549FD528 /* PPOTOAuth2AppSwitchRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTOAuth2AppSwitchRequest.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTOAuth2AppSwitchRequest.m; sourceTree = "<group>"; };
 		8745D84FB78BCDC21307DD512B60B8EE /* PPOTPinnedCertificates.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTPinnedCertificates.m; path = BraintreePayPal/PayPalUtils/PPOTPinnedCertificates.m; sourceTree = "<group>"; };
 		875CF8598AB95237658D78F216C5055A /* AnimatedImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedImageView.swift; path = Sources/AnimatedImageView.swift; sourceTree = "<group>"; };
-		878235D7D1660BEE8BDD86BE8AF0BDCF /* Dictionary+Append.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Dictionary+Append.swift"; sourceTree = "<group>"; };
 		87B8A79262735276FEAC36043C7F3580 /* ExampleHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleHooks.swift; path = Sources/Quick/Hooks/ExampleHooks.swift; sourceTree = "<group>"; };
+		8817AB165EEBE0DFA6DD0110817DF3F8 /* MyCheckWalletUI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MyCheckWalletUI-dummy.m"; sourceTree = "<group>"; };
+		888E32D75AD9A054DAFA888D34DC7715 /* MCScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCScrollView.swift; sourceTree = "<group>"; };
 		89A1493137B34EA68B436106BA613B82 /* BTAPIClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTAPIClient.h; path = BraintreeCore/Public/BTAPIClient.h; sourceTree = "<group>"; };
 		8A2AB082FB42AAE652F97D3973B7CFC8 /* CwlCatchException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlCatchException.h; path = Sources/Lib/CwlPreconditionTesting/CwlCatchExceptionSupport/include/CwlCatchException.h; sourceTree = "<group>"; };
 		8B9ACF8A174E96EC601C70328E581CB0 /* PayPalUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PayPalUtils.h; path = BraintreePayPal/PayPalUtils/Public/PayPalUtils.h; sourceTree = "<group>"; };
 		8D59C9B27A9798FF8FFA9A859EF6A936 /* Pods-MyCheckWalletUI_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyCheckWalletUI_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8D627D683BBFD40E96F0FE7F2C1BD693 /* MatcherFunc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherFunc.swift; path = Sources/Nimble/Matchers/MatcherFunc.swift; sourceTree = "<group>"; };
 		8D946097ED5ED2B646B3C092995028A8 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Nimble.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E53DDF31E538E0840E6929A82936890 /* AddCreditCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddCreditCardView.swift; sourceTree = "<group>"; };
 		8F07B0C8FDA0062310B7C479DC852F34 /* BTClientToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTClientToken.h; path = BraintreeCore/Public/BTClientToken.h; sourceTree = "<group>"; };
 		8F56EF565DC059729F00508A25616A8E /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
 		9081955159C5D42180ADBD3EBEB136B9 /* PPOTRequestFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTRequestFactory.h; path = BraintreePayPal/PayPalOneTouch/Public/PPOTRequestFactory.h; sourceTree = "<group>"; };
@@ -692,7 +692,6 @@
 		91943B1CF73998812D62698526E67757 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
 		91CD6D2E605855AB585294EBE03C9B71 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Nimble/DSL.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		94CA0B370F19A5D5A17A6733AF01D54D /* AddMasterPassViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddMasterPassViewController.swift; sourceTree = "<group>"; };
 		954ABD11074B9488F8DAC0CA1E9837F2 /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sources/ImageDownloader.swift; sourceTree = "<group>"; };
 		962015B4248B34372974ADCFFF58EB06 /* QuickSelectedTestSuiteBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickSelectedTestSuiteBuilder.swift; path = Sources/Quick/QuickSelectedTestSuiteBuilder.swift; sourceTree = "<group>"; };
 		9680342F31394CFF6C71A9555B06E1CF /* PPOTCheckoutRequest_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTCheckoutRequest_Internal.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTCheckoutRequest_Internal.h; sourceTree = "<group>"; };
@@ -701,7 +700,6 @@
 		96EFCB11FF612EBF6B282A34595DC9E3 /* AssertionDispatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionDispatcher.swift; path = Sources/Nimble/Adapters/AssertionDispatcher.swift; sourceTree = "<group>"; };
 		977C40ED69243FB8814857E7E890C7AF /* Example.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Sources/Quick/Example.swift; sourceTree = "<group>"; };
 		9792F08DEAA7E1ABD1F7939C770015F2 /* BTAnalyticsMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTAnalyticsMetadata.h; path = BraintreeCore/BTAnalyticsMetadata.h; sourceTree = "<group>"; };
-		983DC55D57FD95AA33AD9E7B957979CE /* PaymentMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		98B01B79309CD3BA746680DE6E746F36 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Filter.swift; sourceTree = "<group>"; };
 		98FC620E212088B9505E80F890217569 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		99E060A66D25710E1B4DFCFD6DB6F5CB /* BTPayPalRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTPayPalRequest.m; path = BraintreePayPal/BTPayPalRequest.m; sourceTree = "<group>"; };
@@ -715,29 +713,31 @@
 		9C762A2964DB30B950E3C1A0E9DD5544 /* PPOTPersistentRequestData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTPersistentRequestData.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTPersistentRequestData.h; sourceTree = "<group>"; };
 		9CAD72CFAB26C25513400B31A6648486 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		9D0A984947E94022D24803802A82FC1A /* Pods_MyCheckWalletUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MyCheckWalletUI_Example.framework; path = "Pods-MyCheckWalletUI_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D934519F34565C2D41D78938E0EA262 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h"; sourceTree = "<group>"; };
 		9E3D711F1E691C75BFCF27DC2101C3D9 /* Nimble.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Nimble.modulemap; sourceTree = "<group>"; };
+		9F576F4CECC0FF08ACB9F6B1003B99E9 /* MCMasterPass.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = MCMasterPass.xcassets; sourceTree = "<group>"; };
 		9F58993CF0F42E02D74C7A4B12F5DEC9 /* PPOTCheckoutSwitchRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTCheckoutSwitchRequest.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTCheckoutSwitchRequest.m; sourceTree = "<group>"; };
-		9FF6DBF47FAA3C8FCD722FCC6CAACCA3 /* MyCheckWalletUI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-umbrella.h"; sourceTree = "<group>"; };
 		A0359CE59D835404A470D2828432D8B6 /* BeEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeEmpty.swift; path = Sources/Nimble/Matchers/BeEmpty.swift; sourceTree = "<group>"; };
-		A0661FC5A0495572090010743FAA2011 /* MCCheckoutViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCCheckoutViewController.swift; sourceTree = "<group>"; };
 		A190478335293457B82A538D11A70355 /* Braintree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Braintree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1EC899C4C83D8A62AB2F1548671D634 /* AsyncMatcherWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncMatcherWrapper.swift; path = Sources/Nimble/Matchers/AsyncMatcherWrapper.swift; sourceTree = "<group>"; };
+		A1ED109F1FE5549BF36EA4080E225660 /* MCCheckoutViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCCheckoutViewController.swift; sourceTree = "<group>"; };
 		A46822AC623358CE797863FA1A2C5CB7 /* Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Closures.swift; path = Sources/Quick/Hooks/Closures.swift; sourceTree = "<group>"; };
+		A65C331905D07420EBB1BBA31F287B2C /* MyCheckWallet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MyCheckWallet.swift; sourceTree = "<group>"; };
+		A695EDA97EB2E6262B7866E1971829B0 /* String+Base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
+		A6D0D7F4B8F3B474F37488E734B4CC0E /* MCCreditCardsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCCreditCardsViewController.swift; sourceTree = "<group>"; };
 		A7F38E29C17050FF96E8CEB8E9707F06 /* Braintree-Version.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Braintree-Version.h"; path = "BraintreeCore/Braintree-Version.h"; sourceTree = "<group>"; };
 		A7FA0C3CE0B9681C5A8EE0F8B1103584 /* ErrorUtility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ErrorUtility.swift; path = Sources/Quick/ErrorUtility.swift; sourceTree = "<group>"; };
 		A819366C90C45FFC2B0993DBFDD2413B /* PPOTOAuth2BrowserSwitchRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTOAuth2BrowserSwitchRequest.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTOAuth2BrowserSwitchRequest.h; sourceTree = "<group>"; };
 		A82F1945EEA7A7CF142E640FA7738D35 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
 		A8396CECD841ACDCED9983360B5BDD37 /* Nimble-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Nimble-dummy.m"; sourceTree = "<group>"; };
 		A855AE0F8A08AF6D85B6BBD90E91102A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
-		A87C53B64BC54AA2CA2C56109174BCF5 /* CreditCardView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CreditCardView.xib; sourceTree = "<group>"; };
 		A8EC8B36ECF65D00827A4E6DF14A19A3 /* BTAPIPinnedCertificates.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTAPIPinnedCertificates.m; path = BraintreeCore/BTAPIPinnedCertificates.m; sourceTree = "<group>"; };
 		A9E0CFE35E9BEFE2E7FABA8E549DE351 /* NSString+C99ExtendedIdentifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSString+C99ExtendedIdentifier.swift"; path = "Sources/Quick/NSString+C99ExtendedIdentifier.swift"; sourceTree = "<group>"; };
 		AB6EF22BF6074C09D05C4299AFA8C3B7 /* BTLogger_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTLogger_Internal.h; path = BraintreeCore/BTLogger_Internal.h; sourceTree = "<group>"; };
-		AC35897B6FBF8DF45FBE287613B5DEE2 /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
+		AC0C126EF576275D661222C267A65FF5 /* paypal */ = {isa = PBXFileReference; includeInIndex = 1; path = paypal; sourceTree = "<group>"; };
 		AC657C56FB10E2C6433D0AFE081866BE /* Pods-MyCheckWalletUI_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MyCheckWalletUI_Tests.modulemap"; sourceTree = "<group>"; };
 		ACC2E004E6B0985F1D887ECE115A34F1 /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/Kingfisher.swift; sourceTree = "<group>"; };
 		AD79A7E5A03227E9C7BCB69C3A120482 /* BTClientToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTClientToken.m; path = BraintreeCore/BTClientToken.m; sourceTree = "<group>"; };
+		AEB252CD51BDDF8D6C129FE97730AB4B /* PaymentMethodButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodButton.swift; sourceTree = "<group>"; };
 		AF19996F5A3ACC4DE058973B2AB19BB4 /* PPOTVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTVersion.h; path = BraintreePayPal/PayPalUtils/Public/PPOTVersion.h; sourceTree = "<group>"; };
 		B0173BDD27BE0F1DB7C3144981BD97D8 /* BraintreePayPal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BraintreePayPal.h; path = BraintreePayPal/Public/BraintreePayPal.h; sourceTree = "<group>"; };
 		B0504B11104C78FAB5930AF283069D85 /* PPOTMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTMacros.h; path = BraintreePayPal/PayPalUtils/Public/PPOTMacros.h; sourceTree = "<group>"; };
@@ -747,26 +747,24 @@
 		B268205915D439CE1EF163D21E8F4FF6 /* Expectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expectation.swift; path = Sources/Nimble/Expectation.swift; sourceTree = "<group>"; };
 		B29A9646D53B26C9934DDC621E6A848A /* PPOTRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTRequest.h; path = BraintreePayPal/PayPalOneTouch/Public/PPOTRequest.h; sourceTree = "<group>"; };
 		B2B5270EE3AE91C453A06B88F22E9C2D /* ImagePrefetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImagePrefetcher.swift; path = Sources/ImagePrefetcher.swift; sourceTree = "<group>"; };
-		B2FEE0D735632E7B36E65D737A38EEEA /* MasterPassFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MasterPassFactory.swift; sourceTree = "<group>"; };
 		B34B8FDD7FD68286E749A7645EEBBF8A /* BeVoid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeVoid.swift; path = Sources/Nimble/Matchers/BeVoid.swift; sourceTree = "<group>"; };
 		B39F69777E6528EBF72A7F05D1425FFB /* Pods-MyCheckWalletUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		B416792D98ABB1D3F474FE5D0871423D /* MyCheckWallet+PayPal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MyCheckWallet+PayPal.swift"; sourceTree = "<group>"; };
 		B497100BFFE99F5828C23786479DFFCA /* Pods-MyCheckWalletUI_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MyCheckWalletUI_Tests-dummy.m"; sourceTree = "<group>"; };
 		B6947F86A889BF77F348E7DC7DB88AAC /* KingfisherOptionsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherOptionsInfo.swift; path = Sources/KingfisherOptionsInfo.swift; sourceTree = "<group>"; };
 		B70F1BBEFC9BAF1CF7624689434A3590 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		B7AF9D40E68E6D5D6E902D21C15DD368 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		B80833A9C252B1E3F323B126B8153070 /* PayPalPaymentMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PayPalPaymentMethod.swift; sourceTree = "<group>"; };
 		B8A0B6A7A477EB76738B3F43BAACE0B3 /* BTLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTLogger.m; path = BraintreeCore/BTLogger.m; sourceTree = "<group>"; };
 		B96DAAE7C285C8B546081C619AED7131 /* XCTestObservationCenter+Register.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestObservationCenter+Register.m"; path = "Sources/NimbleObjectiveC/XCTestObservationCenter+Register.m"; sourceTree = "<group>"; };
-		BA9875A549A708D2AAA038F62C2F14FE /* UITextField+Placeholder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITextField+Placeholder.swift"; sourceTree = "<group>"; };
 		BB879C5A0B83516CE25912E9BCD616D0 /* PPOTPersistentRequestData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTPersistentRequestData.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTPersistentRequestData.m; sourceTree = "<group>"; };
 		BD41543341362737ADE3465F66519E37 /* BeginWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeginWith.swift; path = Sources/Nimble/Matchers/BeginWith.swift; sourceTree = "<group>"; };
+		BE02444DF1BD761FB38469208D1CA5B1 /* ProximaNovaSoftRegular.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftRegular.otf; sourceTree = "<group>"; };
 		BF075301C0228E93E099CE01AF890259 /* ImageTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageTransition.swift; path = Sources/ImageTransition.swift; sourceTree = "<group>"; };
 		BFA1791DD9A51512924CF051DF554D51 /* QuickSpecBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpecBase.m; path = Sources/QuickSpecBase/QuickSpecBase.m; sourceTree = "<group>"; };
 		BFDC1E0C06BF9F672CB70C95E61DA844 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C07B8A7006C572251EE47884220D7413 /* PPOTCore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTCore.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTCore.m; sourceTree = "<group>"; };
 		C0861A0693F41F759FD206993291B1CA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0C1D1611B5BDBC3865989BA698694F8 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0FF1754C0BAF797CA195C438CC79658 /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		C11768640186036D92FC31C7949B29C2 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
 		C147A4AA4775E36AA1EDBCB25DEDCD04 /* BTPaymentMethodNonce.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTPaymentMethodNonce.h; path = BraintreeCore/Public/BTPaymentMethodNonce.h; sourceTree = "<group>"; };
 		C1C616FAB1CDC46C9E07DE707AA42869 /* Pods-MyCheckWalletUI_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MyCheckWalletUI_Example.modulemap"; sourceTree = "<group>"; };
@@ -776,17 +774,17 @@
 		C2B5152E2DA986152215D5514B2A1AB1 /* BeLessThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThan.swift; path = Sources/Nimble/Matchers/BeLessThan.swift; sourceTree = "<group>"; };
 		C30656B1320EF679D4C384A952988BD8 /* libPPRiskComponent.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libPPRiskComponent.a; path = BraintreePayPal/PayPalDataCollector/Risk/libPPRiskComponent.a; sourceTree = "<group>"; };
 		C346BC6A1B1B3DCF3EFA0F912D805F82 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4013D552EAC74616941A3AF6B89CDAB /* MCAddCreditCardViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCAddCreditCardViewController.swift; sourceTree = "<group>"; };
 		C43A1D1208A967F161613E2460687AB2 /* String+MD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+MD5.swift"; path = "Sources/String+MD5.swift"; sourceTree = "<group>"; };
 		C4697A55AC98CAC54171E4C116692617 /* PPOTResult_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTResult_Internal.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTResult_Internal.h; sourceTree = "<group>"; };
 		C469AC58DC7CCAF079EDD62F79BCC9B9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C48832909D9DCDD1921FE2BD7DB6038B /* PPOTCore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTCore.h; path = BraintreePayPal/PayPalOneTouch/Public/PPOTCore.h; sourceTree = "<group>"; };
 		C48927C33ACDEB652EA8AE852D6A3734 /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
-		C4C88693A1F6E82C08521FC1EDE771C8 /* MCPaymentMethodsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCPaymentMethodsViewController.swift; sourceTree = "<group>"; };
 		C4DFFAB00CFD75DB4A90B218E0219E2B /* BTDataCollector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTDataCollector.m; path = BraintreeDataCollector/BTDataCollector.m; sourceTree = "<group>"; };
 		C571902BBADF75704D99587525BE029F /* PPOTError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTError.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTError.m; sourceTree = "<group>"; };
-		C6F41804EB32D0B3DC5CB39809CC6F88 /* MyCheckWalletUI.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; path = MyCheckWalletUI.storyboard; sourceTree = "<group>"; };
 		C73A0DBD7B018C62234D7B2AEBE7CF27 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		C7F31C01A22E7741C99B0B64F89083C6 /* Nimble.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Nimble.h; path = Sources/Nimble/Nimble.h; sourceTree = "<group>"; };
+		C8A4FC5286DE6A230606CFB0D0783610 /* CheckoutViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CheckoutViewController.xib; sourceTree = "<group>"; };
 		C92F065B40C51D38B2C7398002E0E16A /* BTViewControllerPresentingDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTViewControllerPresentingDelegate.h; path = BraintreeCore/Public/BTViewControllerPresentingDelegate.h; sourceTree = "<group>"; };
 		C93FE421A8E7C7ABB8E94AD4137FFC25 /* Kingfisher.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.xcconfig; sourceTree = "<group>"; };
 		C94EF0A8094555374A5911DCA6FA3E2B /* PPOTConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTConfiguration.h; path = BraintreePayPal/PayPalOneTouch/Configuration/PPOTConfiguration.h; sourceTree = "<group>"; };
@@ -802,11 +800,11 @@
 		D334AF6B2F92DA23E77F4B1654FEC3EB /* Braintree-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Braintree-umbrella.h"; sourceTree = "<group>"; };
 		D381A7D401D5D7A8B84CD8CC0247B704 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D39DAC719F4C906882579BD9C300117F /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
-		D415CA860B463DDAD7A0B93985BBD437 /* Networking.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		D43568666214E409DBA3C524DF23278B /* World+DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "World+DSL.h"; path = "Sources/QuickObjectiveC/DSL/World+DSL.h"; sourceTree = "<group>"; };
 		D44E99F6A03452DFAB508BE4307D4A06 /* NMBExpectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBExpectation.swift; path = Sources/Nimble/Adapters/NMBExpectation.swift; sourceTree = "<group>"; };
 		D46E703882C3A014BBF11A14C2134E7F /* BeAKindOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAKindOf.swift; path = Sources/Nimble/Matchers/BeAKindOf.swift; sourceTree = "<group>"; };
 		D4777896FFE7573DF238E9F4EC2580BF /* KingfisherManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherManager.swift; path = Sources/KingfisherManager.swift; sourceTree = "<group>"; };
+		D718D6631BB747FAB5F78E93BDAADD6E /* MyCheckWalletUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MyCheckWalletUI.modulemap; sourceTree = "<group>"; };
 		D7F2C59209539E996F9D2F0C70F4221A /* PPOTResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTResult.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTResult.m; sourceTree = "<group>"; };
 		D857CB091FC4CC8396C661FFF2E04EE2 /* Kingfisher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-umbrella.h"; sourceTree = "<group>"; };
 		D930F0604EDE3FF0870D05EC09C31462 /* QuickSpecBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickSpecBase.h; path = Sources/QuickSpecBase/include/QuickSpecBase.h; sourceTree = "<group>"; };
@@ -816,13 +814,15 @@
 		DBDC5C68846C430FDF31A87098795D56 /* BTPayPalRequestFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTPayPalRequestFactory.m; path = BraintreePayPal/BTPayPalRequestFactory.m; sourceTree = "<group>"; };
 		DC19010406ED4043F284939BBFEA1BBA /* PPFPTIData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPFPTIData.h; path = BraintreePayPal/PayPalOneTouch/Analytics/PPFPTIData.h; sourceTree = "<group>"; };
 		DCA0A6809B66AF17FB497A1664A09B0D /* PPOTEncryptionHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTEncryptionHelper.h; path = BraintreePayPal/PayPalUtils/Public/PPOTEncryptionHelper.h; sourceTree = "<group>"; };
+		DDC66FFA0618742F6ECB13D6EA1F8D54 /* MyCheckWallet+MasterPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MyCheckWallet+MasterPass.swift"; sourceTree = "<group>"; };
 		DDDCC4F1AED6C9F5F416BFD650A5636C /* PPOTError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTError.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTError.h; sourceTree = "<group>"; };
-		DE9798BE08D68ED7FE29C0EF7A2A2FF3 /* MCPayPal.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = MCPayPal.xcassets; sourceTree = "<group>"; };
+		DE2E9670DDC1E6B18DC77D84E56CADDA /* CreditCardView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CreditCardView.xib; sourceTree = "<group>"; };
 		DEBDE199BB353614B66695D9D47EF896 /* PPOTAuthorizationRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTAuthorizationRequest.m; path = BraintreePayPal/PayPalOneTouch/Models/PPOTAuthorizationRequest.m; sourceTree = "<group>"; };
 		DF013538ECC5ABBD52D1A39F586AE641 /* BTURLUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTURLUtils.m; path = BraintreeCore/BTURLUtils.m; sourceTree = "<group>"; };
 		E0A76DB2924A403F121E061B7249AC58 /* PPOTAppSwitchResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTAppSwitchResponse.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTAppSwitchResponse.h; sourceTree = "<group>"; };
 		E11915183E1DB9C5CB32A82FE0CD4546 /* PPDataCollector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPDataCollector.h; path = BraintreePayPal/PayPalDataCollector/Public/PPDataCollector.h; sourceTree = "<group>"; };
 		E11E5FC4F78B3C4A43640369D52EB9F4 /* BTAnalyticsService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTAnalyticsService.h; path = BraintreeCore/BTAnalyticsService.h; sourceTree = "<group>"; };
+		E19761418DF3F4970F6A6437E70E40EA /* PaypalFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaypalFactory.swift; sourceTree = "<group>"; };
 		E1FFF904751D7A98FF6D99171944205F /* PPRCClientMetadataIDProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPRCClientMetadataIDProvider.h; path = BraintreePayPal/PayPalDataCollector/Risk/PPRCClientMetadataIDProvider.h; sourceTree = "<group>"; };
 		E476ACC1D648237721CF73BFB884291C /* BTErrors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTErrors.m; path = BraintreeCore/BTErrors.m; sourceTree = "<group>"; };
 		E497B2908F5E74A6B10E6CF809604FE7 /* DSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DSL.m; path = Sources/NimbleObjectiveC/DSL.m; sourceTree = "<group>"; };
@@ -830,22 +830,20 @@
 		E75D6ED2C9A928730F48775C982FF3C0 /* PPOTOAuth2AppSwitchRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTOAuth2AppSwitchRequest.h; path = BraintreePayPal/PayPalOneTouch/Models/PPOTOAuth2AppSwitchRequest.h; sourceTree = "<group>"; };
 		E8742D284B37BCEFD849DAAAA81BE3E7 /* PPOTString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTString.m; path = BraintreePayPal/PayPalUtils/PPOTString.m; sourceTree = "<group>"; };
 		E939A8578E8DC34279C14FC6EF35A31E /* MyCheckWalletUI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyCheckWalletUI.bundle; path = MyCheckWalletUI.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9D1CD593F9CD02419CDCE269EC29A57 /* MCPayPal.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = MCPayPal.xcassets; sourceTree = "<group>"; };
 		EA1BE965D827EB26A1864F19615B7A84 /* PPOTConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTConfiguration.m; path = BraintreePayPal/PayPalOneTouch/Configuration/PPOTConfiguration.m; sourceTree = "<group>"; };
 		EA67FF44A91DBD851AEF3A9E8E5BBAC4 /* CwlDarwinDefinitions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlDarwinDefinitions.swift; path = Sources/Lib/CwlPreconditionTesting/CwlPreconditionTesting/CwlDarwinDefinitions.swift; sourceTree = "<group>"; };
 		EBB789DE3F5EC2F97CC334BAD3A5EB40 /* BTPayPalDriver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTPayPalDriver.h; path = BraintreePayPal/Public/BTPayPalDriver.h; sourceTree = "<group>"; };
 		EBBAD3E5DB830CDA66FFFE5AED43184F /* CwlMachBadInstructionHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlMachBadInstructionHandler.m; path = Sources/Lib/CwlPreconditionTesting/CwlMachBadInstructionHandler/CwlMachBadInstructionHandler.m; sourceTree = "<group>"; };
 		EBD963EDD421E5FBF88371B8031B9D74 /* BeIdenticalTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeIdenticalTo.swift; path = Sources/Nimble/Matchers/BeIdenticalTo.swift; sourceTree = "<group>"; };
-		EBFDDE91B01870DFE255DD08425D1850 /* PaypalFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaypalFactory.swift; sourceTree = "<group>"; };
-		EC725080E911686A692CBB759FBDE2F1 /* MyCheckWalletUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MyCheckWalletUI.modulemap; sourceTree = "<group>"; };
-		ECF515515375AFF95B81AA74A25CC2D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED94F0167B303CF06312D70B42CEA143 /* BTPostalAddress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BTPostalAddress.m; path = BraintreeCore/BTPostalAddress.m; sourceTree = "<group>"; };
 		EE22E0FF1E4CD2E6A81F41369ACD7A6A /* BTConfiguration+PayPal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "BTConfiguration+PayPal.h"; path = "BraintreePayPal/Public/BTConfiguration+PayPal.h"; sourceTree = "<group>"; };
 		EE2F2628F8FE1645FC45713A804BE665 /* Pods-MyCheckWalletUI_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MyCheckWalletUI_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		EEB3C26496ED4FE955DC9B92521525C4 /* Networking.swift.orig */ = {isa = PBXFileReference; includeInIndex = 1; path = Networking.swift.orig; sourceTree = "<group>"; };
 		EF3FEDBB10C6E4CA071B890C06A3C5AA /* Predicate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Predicate.swift; path = Sources/Nimble/Matchers/Predicate.swift; sourceTree = "<group>"; };
 		EF9B164ED26ED6B4216627D17E910484 /* Pods-MyCheckWalletUI_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Example-frameworks.sh"; sourceTree = "<group>"; };
 		F02AF475AC10ECF08F8B2632B224007E /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Kingfisher.modulemap; sourceTree = "<group>"; };
 		F09C80A7C8F5B4B9820F48F0743A1014 /* Resource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Sources/Resource.swift; sourceTree = "<group>"; };
+		F22F701BA65085B2CABC6C47553A3E7A /* Dictionary+Append.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Dictionary+Append.swift"; sourceTree = "<group>"; };
 		F2A7D71F2418A08C6790629B4A3B532C /* PPOTResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTResult.h; path = BraintreePayPal/PayPalOneTouch/Public/PPOTResult.h; sourceTree = "<group>"; };
 		F2C4A9F7F89E337145C2878C9EAC654B /* QCKDSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QCKDSL.m; path = Sources/QuickObjectiveC/DSL/QCKDSL.m; sourceTree = "<group>"; };
 		F2E59DBE661092593DA5C708555022B9 /* World+DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "World+DSL.swift"; path = "Sources/Quick/DSL/World+DSL.swift"; sourceTree = "<group>"; };
@@ -854,20 +852,22 @@
 		F3EB91E9819B034D34399F71FFEB8303 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F4B0DAC102865D5DB9D136308E0C3CCE /* Nimble-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-prefix.pch"; sourceTree = "<group>"; };
 		F4E5C98FB8C84A34AB7C1C3C9E10E771 /* Pods-MyCheckWalletUI_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Tests-resources.sh"; sourceTree = "<group>"; };
+		F528C886E4B7FCD86EB8078FDADDFB1D /* PaymentMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		F65A7B538D409C49D68B39A578E9DB99 /* HooksPhase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HooksPhase.swift; path = Sources/Quick/Hooks/HooksPhase.swift; sourceTree = "<group>"; };
 		F71578FF3A477291E5B42AC6195B220E /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		F7337FDF4D3FCA1A48E4012F7C275D0A /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
-		F7ADCFEDE10D922207165444C8396F8B /* ResourceBundle-MyCheckWalletUI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MyCheckWalletUI-Info.plist"; sourceTree = "<group>"; };
 		F866C4502DAAA664B9C08D8199040C35 /* Equal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Equal.swift; path = Sources/Nimble/Matchers/Equal.swift; sourceTree = "<group>"; };
 		F880760E7883D79A3C02A722981C1ED8 /* ImageProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProcessor.swift; path = Sources/ImageProcessor.swift; sourceTree = "<group>"; };
 		F94603AA6378E24EE37D3EFDBF6FCDB1 /* PPOTMacros.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PPOTMacros.m; path = BraintreePayPal/PayPalUtils/PPOTMacros.m; sourceTree = "<group>"; };
 		F9E3A97298D794D54E5DFED5BA6C937C /* BeGreaterThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThan.swift; path = Sources/Nimble/Matchers/BeGreaterThan.swift; sourceTree = "<group>"; };
 		FA09D6B88254D8123DC7FAF2DA06138E /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
 		FA7792645C50EE2FA1AA82C883C85244 /* PPOTString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PPOTString.h; path = BraintreePayPal/PayPalUtils/Public/PPOTString.h; sourceTree = "<group>"; };
+		FB64184AB629851A488CE700879937DD /* AddMasterPassViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddMasterPassViewController.swift; sourceTree = "<group>"; };
+		FC2A65E6510AB980F71BEC9750A2AE51 /* PayPalView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PayPalView.swift; sourceTree = "<group>"; };
 		FC71266DCE33B048C5A678CD4E30BCA1 /* DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DSL.h; path = Sources/NimbleObjectiveC/DSL.h; sourceTree = "<group>"; };
 		FCA1275A06DC81BB2C4E0B5CC46EFF5B /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Quick/DSL/DSL.swift; sourceTree = "<group>"; };
-		FD90473300402A844750F28D3916805C /* MyCheckWalletUI.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MyCheckWalletUI.xcconfig; sourceTree = "<group>"; };
 		FDF500CCD2D480E57955DB5E60A73844 /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
+		FE47C56974E2A47EAF3CF093E2E1D691 /* MCViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1009,47 +1009,44 @@
 			path = Quick;
 			sourceTree = "<group>";
 		};
-		1D38EB70D9CB7631C25FB7A8A37E6722 /* Support Files */ = {
+		1CAA054E53CEDD9175F709DB14F32C46 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				ECF515515375AFF95B81AA74A25CC2D8 /* Info.plist */,
-				EC725080E911686A692CBB759FBDE2F1 /* MyCheckWalletUI.modulemap */,
-				FD90473300402A844750F28D3916805C /* MyCheckWalletUI.xcconfig */,
-				08EDF3893DF2E82FEE8D258EBB22E13C /* MyCheckWalletUI-dummy.m */,
-				3C5DE7D2E2EAAA664E8453A3BDE51EF9 /* MyCheckWalletUI-prefix.pch */,
-				9FF6DBF47FAA3C8FCD722FCC6CAACCA3 /* MyCheckWalletUI-umbrella.h */,
-				F7ADCFEDE10D922207165444C8396F8B /* ResourceBundle-MyCheckWalletUI-Info.plist */,
+				342D22C63B3544419BE818788DA3746F /* MyCheckWalletUI */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/MyCheckWalletUI";
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		2A7BC52599E7C9B6B0E6182026A925A3 /* Classes */ = {
+		273015C7D716B7BC0624FEFABB66CF9F /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				680B0FE48EB27A9A9AF03661D5C4F7CD /* AddCreditCardView.swift */,
-				0439C744038C4A9A152FFB9B3624B64D /* CreditCardValidator.swift */,
-				7D2EE02D06F0A5EBFD3DB15431B24780 /* CreditCardView.swift */,
-				878235D7D1660BEE8BDD86BE8AF0BDCF /* Dictionary+Append.swift */,
-				0E426BB11B567D43AF2189B741993C9F /* LocalData.swift */,
-				81FF703FE625BC28121CE011FADBBE74 /* MCAddCreditCardViewController.swift */,
-				A0661FC5A0495572090010743FAA2011 /* MCCheckoutViewController.swift */,
-				46F52C664C721B4DDA45691D79277280 /* MCCreditCardsViewController.swift */,
-				C4C88693A1F6E82C08521FC1EDE771C8 /* MCPaymentMethodsViewController.swift */,
-				2F3632EA4D819E9025654F7A089AB0F2 /* MCScrollView.swift */,
-				55169FC74894B52B3ECABDB8400F5FB5 /* MCTextField.swift */,
-				85805B7824088372C2337D42A57D1C38 /* MCViewController.swift */,
-				04EB152DC67880F4F52BB0FC9D06950C /* MyCheckWallet.swift */,
-				9D934519F34565C2D41D78938E0EA262 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */,
-				D415CA860B463DDAD7A0B93985BBD437 /* Networking.swift */,
-				EEB3C26496ED4FE955DC9B92521525C4 /* Networking.swift.orig */,
-				983DC55D57FD95AA33AD9E7B957979CE /* PaymentMethod.swift */,
-				211BAD541D30A8AD0B3EF3ABFBFB0980 /* PaymentMethodButton.swift */,
-				17C1D0EAB4F43A10B9D93EEAA0ACB9F5 /* PaymentMethodFactory.swift */,
-				02400E55E93CAF1BD9CE3F3E2F6E7063 /* String+Capital.swift */,
-				AC35897B6FBF8DF45FBE287613B5DEE2 /* UIColor+CustomColors.swift */,
-				4CB4B601BECBFE6D80C604B7BCAAD726 /* UIColor+Hex.swift */,
-				BA9875A549A708D2AAA038F62C2F14FE /* UITextField+Placeholder.swift */,
+				BE41796C2EA82384CFC6BD345130803E /* MyCheckWalletUI */,
+				1CAA054E53CEDD9175F709DB14F32C46 /* Resources */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		2BE27FF16DC25270C89304609029C11D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C8A4FC5286DE6A230606CFB0D0783610 /* CheckoutViewController.xib */,
+				DE2E9670DDC1E6B18DC77D84E56CADDA /* CreditCardView.xib */,
+				9F576F4CECC0FF08ACB9F6B1003B99E9 /* MCMasterPass.xcassets */,
+				E9D1CD593F9CD02419CDCE269EC29A57 /* MCPayPal.xcassets */,
+				643977E7798918F66C0F742EB277F684 /* Media.xcassets */,
+				338F4935F40E3EB04A5D4A328D0E8E00 /* MyCheckWalletUI.storyboard */,
+				AC0C126EF576275D661222C267A65FF5 /* paypal */,
+				2ADC37CDC38187D326BF753AFD1F803E /* ProximaNovaSoftBold.ttf */,
+				BE02444DF1BD761FB38469208D1CA5B1 /* ProximaNovaSoftRegular.otf */,
+			);
+			name = Assets;
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		2E4896FD8E96DF9AFAD641B9CE65403E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7940CD00AC1A47329035765A833E3FB5 /* MasterPass */,
 			);
 			name = Classes;
 			path = Classes;
@@ -1164,6 +1161,15 @@
 			path = Nimble;
 			sourceTree = "<group>";
 		};
+		342D22C63B3544419BE818788DA3746F /* MyCheckWalletUI */ = {
+			isa = PBXGroup;
+			children = (
+				2BE27FF16DC25270C89304609029C11D /* Assets */,
+			);
+			name = MyCheckWalletUI;
+			path = MyCheckWalletUI;
+			sourceTree = "<group>";
+		};
 		389B501B6147CC2FE0171A282D8D3CDC /* Kingfisher */ = {
 			isa = PBXGroup;
 			children = (
@@ -1194,6 +1200,15 @@
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
+		3961DC3DB43EA4BF2F0F9BF1796E38BA /* MyCheckWalletUI */ = {
+			isa = PBXGroup;
+			children = (
+				A6A32D964BD72EC78FC78C07D93FD1CE /* Classes */,
+			);
+			name = MyCheckWalletUI;
+			path = MyCheckWalletUI;
+			sourceTree = "<group>";
+		};
 		534DF6E9238FAF7CEFE1FE8F671B9C21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1214,6 +1229,15 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		569BCC51509BE41AB09C2993861C0C8B /* MyCheckWalletUI */ = {
+			isa = PBXGroup;
+			children = (
+				2E4896FD8E96DF9AFAD641B9CE65403E /* Classes */,
+			);
+			name = MyCheckWalletUI;
+			path = MyCheckWalletUI;
+			sourceTree = "<group>";
+		};
 		5C77037805E5582A9D394701780FBB43 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1229,17 +1253,18 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		5CC8A81DE021BF2A441F123E0FD91E49 /* MyCheckWalletUI */ = {
+		5CEFBCDB90BDAC49F88BFDDD230E2EC3 /* PayPal */ = {
 			isa = PBXGroup;
 			children = (
-				FEA6771C7A7C4F963120C730DED11162 /* MasterPass */,
-				BAD0E7D39E01957A80C4BAD9329CEC8A /* MyCheckWalletUI */,
-				84CA8F23959729A4002BD62D218D4FFF /* PayPal */,
-				B59E4D0EB521BAD3B35E4BFCBD81B9AC /* Resources */,
-				1D38EB70D9CB7631C25FB7A8A37E6722 /* Support Files */,
+				2DEF1DDCAEAD57C215AABAF663867BEC /* MyCheckWallet+PayPal.swift */,
+				5CA0E1A79A89B911F569B5B97A3E5BE7 /* Networking+PayPal.swift */,
+				E19761418DF3F4970F6A6437E70E40EA /* PaypalFactory.swift */,
+				B80833A9C252B1E3F323B126B8153070 /* PayPalPaymentMethod.swift */,
+				FC2A65E6510AB980F71BEC9750A2AE51 /* PayPalView.swift */,
+				A695EDA97EB2E6262B7866E1971829B0 /* String+Base64.swift */,
 			);
-			name = MyCheckWalletUI;
-			path = ../..;
+			name = PayPal;
+			path = PayPal;
 			sourceTree = "<group>";
 		};
 		60D1754057B3ABE833D109CDCD75959D /* Pods-MyCheckWalletUI_Tests */ = {
@@ -1260,24 +1285,32 @@
 			path = "Target Support Files/Pods-MyCheckWalletUI_Tests";
 			sourceTree = "<group>";
 		};
-		6466541AD692E5AD25398CD5FD6BE4B7 /* PayPal */ = {
+		6446D0831CAA0BBBDDA4A86C248C6E45 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B416792D98ABB1D3F474FE5D0871423D /* MyCheckWallet+PayPal.swift */,
-				596A1163673742F1D476469DB9D37F8F /* Networking+PayPal.swift */,
-				EBFDDE91B01870DFE255DD08425D1850 /* PaypalFactory.swift */,
-				0F7366BEDBCEAB728F25B3798CFCCBDC /* PayPalPaymentMethod.swift */,
-				5E220A6DBF0575F717FA32A5A1675E07 /* PayPalView.swift */,
-				7E7DA9860E75A6C6339D8BA8EAC6557A /* String+Base64.swift */,
-			);
-			name = PayPal;
-			path = PayPal;
-			sourceTree = "<group>";
-		};
-		6CBDB31E267DCC9C06AA57D9F98179AB /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				6466541AD692E5AD25398CD5FD6BE4B7 /* PayPal */,
+				8E53DDF31E538E0840E6929A82936890 /* AddCreditCardView.swift */,
+				35914112E89FE11404D572C4FBFF2E6C /* CreditCardValidator.swift */,
+				7B9DA668113FAB77B864769BDBAEB237 /* CreditCardView.swift */,
+				F22F701BA65085B2CABC6C47553A3E7A /* Dictionary+Append.swift */,
+				5FC5F3A19EB3C6FD6C6870CFF42C9A09 /* LocalData.swift */,
+				C4013D552EAC74616941A3AF6B89CDAB /* MCAddCreditCardViewController.swift */,
+				A1ED109F1FE5549BF36EA4080E225660 /* MCCheckoutViewController.swift */,
+				A6D0D7F4B8F3B474F37488E734B4CC0E /* MCCreditCardsViewController.swift */,
+				62064E68169DA5C499FFCD9B27929FC8 /* MCPaymentMethodsViewController.swift */,
+				888E32D75AD9A054DAFA888D34DC7715 /* MCScrollView.swift */,
+				0D793E7D0968F433E759A712C96EE54E /* MCTextField.swift */,
+				FE47C56974E2A47EAF3CF093E2E1D691 /* MCViewController.swift */,
+				A65C331905D07420EBB1BBA31F287B2C /* MyCheckWallet.swift */,
+				84E459A1B2970D8D1C0152BC2416EABE /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */,
+				53F96A90A33DB9FE594583FF85205493 /* Networking.swift */,
+				32606E8D8222D14ED0F289C9C96BEE66 /* Networking.swift.orig */,
+				F528C886E4B7FCD86EB8078FDADDFB1D /* PaymentMethod.swift */,
+				AEB252CD51BDDF8D6C129FE97730AB4B /* PaymentMethodButton.swift */,
+				4F983A3A98D89C5B39A5126B94B48D2B /* PaymentMethodFactory.swift */,
+				1F496BEA72DE1F0BA9609C12479E42D1 /* String+Capital.swift */,
+				6F401C4BBAC88141886E59E2F269786A /* UIColor+CustomColors.swift */,
+				7F3BB681B9D549C58D04C7B69E8F4AA4 /* UIColor+Hex.swift */,
+				7B9F26118B438917AF5F3D38A31CE2D4 /* UITextField+Placeholder.swift */,
 			);
 			name = Classes;
 			path = Classes;
@@ -1310,6 +1343,14 @@
 			path = "../Target Support Files/Braintree";
 			sourceTree = "<group>";
 		};
+		709FFA3C837A74676B593FD12E009B65 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8A1BEE18ED86D6DAF6A944A9B22AE10 /* MyCheckWalletUI */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		75034F4CB281A19F78777A31AA6908D6 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1336,33 +1377,28 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7940CD00AC1A47329035765A833E3FB5 /* MasterPass */ = {
+			isa = PBXGroup;
+			children = (
+				FB64184AB629851A488CE700879937DD /* AddMasterPassViewController.swift */,
+				6CBD827D2DBC4589963059EDB7B6A90E /* MasterPassFactory.swift */,
+				DDC66FFA0618742F6ECB13D6EA1F8D54 /* MyCheckWallet+MasterPass.swift */,
+				4DF388BB6CB5544413219919A251F64A /* Networking+MasterPass.swift */,
+			);
+			name = MasterPass;
+			path = MasterPass;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				93DB641F42059F6AD7833AB2F3521BC1 /* Development Pods */,
+				709FFA3C837A74676B593FD12E009B65 /* Development Pods */,
 				534DF6E9238FAF7CEFE1FE8F671B9C21 /* Frameworks */,
 				77D66FE91899043A85F2A0195CE48903 /* Pods */,
 				2EF93D683EE2439A5787AF181C3632B1 /* Products */,
 				5689091645B779F341D21413DE0AB80F /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		84CA8F23959729A4002BD62D218D4FFF /* PayPal */ = {
-			isa = PBXGroup;
-			children = (
-				84D25E1FA0AB65D9DA848EF57C407ABB /* MyCheckWalletUI */,
-			);
-			name = PayPal;
-			sourceTree = "<group>";
-		};
-		84D25E1FA0AB65D9DA848EF57C407ABB /* MyCheckWalletUI */ = {
-			isa = PBXGroup;
-			children = (
-				6CBDB31E267DCC9C06AA57D9F98179AB /* Classes */,
-			);
-			name = MyCheckWalletUI;
-			path = MyCheckWalletUI;
 			sourceTree = "<group>";
 		};
 		8654E48375DA2D1B4776CEB4287BD1BA /* Support Files */ = {
@@ -1402,33 +1438,12 @@
 			name = PayPal;
 			sourceTree = "<group>";
 		};
-		927E3BA020EB364DF6ADAF0CB8715071 /* MyCheckWalletUI */ = {
+		93055DC1D2C7CBD9DFF6069E29CB4966 /* MasterPass */ = {
 			isa = PBXGroup;
 			children = (
-				E1CDB82615C1CEF96BBE26218DD287FB /* Assets */,
-			);
-			name = MyCheckWalletUI;
-			path = MyCheckWalletUI;
-			sourceTree = "<group>";
-		};
-		93DB641F42059F6AD7833AB2F3521BC1 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5CC8A81DE021BF2A441F123E0FD91E49 /* MyCheckWalletUI */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		A039454F697E297FC29CD0BEBA29D2F2 /* MasterPass */ = {
-			isa = PBXGroup;
-			children = (
-				94CA0B370F19A5D5A17A6733AF01D54D /* AddMasterPassViewController.swift */,
-				B2FEE0D735632E7B36E65D737A38EEEA /* MasterPassFactory.swift */,
-				3ACDBCFD2A3F41FEFE6D3A6A8B4384A5 /* MyCheckWallet+MasterPass.swift */,
-				78EBDBC6582D05E2657BB017E34B2C76 /* Networking+MasterPass.swift */,
+				569BCC51509BE41AB09C2993861C0C8B /* MyCheckWalletUI */,
 			);
 			name = MasterPass;
-			path = MasterPass;
 			sourceTree = "<group>";
 		};
 		A3C9C281806670C06CC4C5DB78C273AE /* Frameworks */ = {
@@ -1437,6 +1452,15 @@
 				B0C4D896DD5D6DA5AE53DE9DD6425344 /* libDeviceCollectorLibrary.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A6A32D964BD72EC78FC78C07D93FD1CE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5CEFBCDB90BDAC49F88BFDDD230E2EC3 /* PayPal */,
+			);
+			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		AA25ADED101A6E4B3A9D4BEC55D8BFA2 /* Support Files */ = {
@@ -1548,21 +1572,21 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		B59E4D0EB521BAD3B35E4BFCBD81B9AC /* Resources */ = {
+		BE41796C2EA82384CFC6BD345130803E /* MyCheckWalletUI */ = {
 			isa = PBXGroup;
 			children = (
-				927E3BA020EB364DF6ADAF0CB8715071 /* MyCheckWalletUI */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		BAD0E7D39E01957A80C4BAD9329CEC8A /* MyCheckWalletUI */ = {
-			isa = PBXGroup;
-			children = (
-				2A7BC52599E7C9B6B0E6182026A925A3 /* Classes */,
+				6446D0831CAA0BBBDDA4A86C248C6E45 /* Classes */,
 			);
 			name = MyCheckWalletUI;
 			path = MyCheckWalletUI;
+			sourceTree = "<group>";
+		};
+		C31A3CE629C1BA8198E935D2AEBAA6AE /* PayPal */ = {
+			isa = PBXGroup;
+			children = (
+				3961DC3DB43EA4BF2F0F9BF1796E38BA /* MyCheckWalletUI */,
+			);
+			name = PayPal;
 			sourceTree = "<group>";
 		};
 		CD9154607C9A8A0B9541B7AF403C7B51 /* PayPalOneTouch */ = {
@@ -1671,47 +1695,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E1CDB82615C1CEF96BBE26218DD287FB /* Assets */ = {
+		F8A1BEE18ED86D6DAF6A944A9B22AE10 /* MyCheckWalletUI */ = {
 			isa = PBXGroup;
 			children = (
-				02C267AC8921A3074DBBFF414BFF0711 /* CheckoutViewController.xib */,
-				A87C53B64BC54AA2CA2C56109174BCF5 /* CreditCardView.xib */,
-				58521C14D06E39388BBB956930A175E8 /* MCMasterPass.xcassets */,
-				DE9798BE08D68ED7FE29C0EF7A2A2FF3 /* MCPayPal.xcassets */,
-				C0FF1754C0BAF797CA195C438CC79658 /* Media.xcassets */,
-				C6F41804EB32D0B3DC5CB39809CC6F88 /* MyCheckWalletUI.storyboard */,
-				4456D66EA6E78A3193DDBB26C5B8C72E /* paypal */,
-				3D026E5C8D8E9C0FB26A33BCA4DA7BB3 /* ProximaNovaSoftBold.ttf */,
-				598AF410D7E5BB3D3C43C8C86BDB12EF /* ProximaNovaSoftRegular.otf */,
-			);
-			name = Assets;
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		E53AB91CB3DD3234EF5DDA4086D17F72 /* MyCheckWalletUI */ = {
-			isa = PBXGroup;
-			children = (
-				F32A2163A0B1690ED7286AFB7633CC56 /* Classes */,
+				273015C7D716B7BC0624FEFABB66CF9F /* Core */,
+				93055DC1D2C7CBD9DFF6069E29CB4966 /* MasterPass */,
+				C31A3CE629C1BA8198E935D2AEBAA6AE /* PayPal */,
+				FD9DE403BA8D7DFE8E712DEDEC03251C /* Support Files */,
 			);
 			name = MyCheckWalletUI;
-			path = MyCheckWalletUI;
+			path = ../..;
 			sourceTree = "<group>";
 		};
-		F32A2163A0B1690ED7286AFB7633CC56 /* Classes */ = {
+		FD9DE403BA8D7DFE8E712DEDEC03251C /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A039454F697E297FC29CD0BEBA29D2F2 /* MasterPass */,
+				765431BAA7B152C434210989ED1E4745 /* Info.plist */,
+				D718D6631BB747FAB5F78E93BDAADD6E /* MyCheckWalletUI.modulemap */,
+				2FD5625CA26EDE1985FAFBE76D732995 /* MyCheckWalletUI.xcconfig */,
+				8817AB165EEBE0DFA6DD0110817DF3F8 /* MyCheckWalletUI-dummy.m */,
+				4E8989243444CA8B32A66AF72C6EAA21 /* MyCheckWalletUI-prefix.pch */,
+				17D4FEBF091178FBF40251786C4C76F1 /* MyCheckWalletUI-umbrella.h */,
+				72E7E2D4D0CEAD24E137BEB0205C2462 /* ResourceBundle-MyCheckWalletUI-Info.plist */,
 			);
-			name = Classes;
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		FEA6771C7A7C4F963120C730DED11162 /* MasterPass */ = {
-			isa = PBXGroup;
-			children = (
-				E53AB91CB3DD3234EF5DDA4086D17F72 /* MyCheckWalletUI */,
-			);
-			name = MasterPass;
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/MyCheckWalletUI";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2666,7 +2674,7 @@
 		};
 		6D014C8F8849DBD2190CE04674859C43 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD90473300402A844750F28D3916805C /* MyCheckWalletUI.xcconfig */;
+			baseConfigurationReference = 2FD5625CA26EDE1985FAFBE76D732995 /* MyCheckWalletUI.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyCheckWalletUI";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2920,7 +2928,7 @@
 		};
 		BEF278215D090927BFE0F1F5E4359AA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD90473300402A844750F28D3916805C /* MyCheckWalletUI.xcconfig */;
+			baseConfigurationReference = 2FD5625CA26EDE1985FAFBE76D732995 /* MyCheckWalletUI.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyCheckWalletUI";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3040,7 +3048,7 @@
 		};
 		E481AEFB32A1383A8590E1E3C54E48DF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD90473300402A844750F28D3916805C /* MyCheckWalletUI.xcconfig */;
+			baseConfigurationReference = 2FD5625CA26EDE1985FAFBE76D732995 /* MyCheckWalletUI.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -3072,7 +3080,7 @@
 		};
 		F3753456F93661F21B486075527D2AD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD90473300402A844750F28D3916805C /* MyCheckWalletUI.xcconfig */;
+			baseConfigurationReference = 2FD5625CA26EDE1985FAFBE76D732995 /* MyCheckWalletUI.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

@@ -28,11 +28,8 @@ s.source           = { :git => 'https://bitbucket.org/erez_spatz/mycheckwalletui
 
 s.ios.deployment_target = '9.3'
 
-s.source_files = 'MyCheckWalletUI/Classes/*'
 
-s.resource_bundles = {
-'MyCheckWalletUI' => ['MyCheckWalletUI/Assets/*']
-}
+
 s.requires_arc = 'true'
 
 # s.public_header_files = 'Pod/Classes/**/*.h'
@@ -46,14 +43,19 @@ s.default_subspec = 'Core'
 
 s.subspec 'Core' do |core|
 # the core. with no 3rd party wallets
-
+core.source_files = 'MyCheckWalletUI/Classes/*'
+core.resource_bundles = {
+'MyCheckWalletUI' => ['MyCheckWalletUI/Assets/*']
+}
 end
 
 s.subspec 'PayPal' do |paypal|
-paypal.source_files = 'MyCheckWalletUI/Classes/paypal/**/*'
-paypal.dependency  'MyCheckWalletUI'
+paypal.dependency 'MyCheckWalletUI/Core'
+
 paypal.dependency 'Braintree/PayPal'
 paypal.dependency 'Braintree/DataCollector'
+
+paypal.source_files = 'MyCheckWalletUI/Classes/paypal/**/*'
 paypal.ios.deployment_target = '9.3'
 paypal.platform = :ios, '9.3'
 
@@ -63,6 +65,8 @@ masterpass.ios.deployment_target = '9.3'
 masterpass.platform = :ios, '9.3'
 
 masterpass.source_files = 'MyCheckWalletUI/Classes/MasterPass/**/*'
+masterpass.dependency 'MyCheckWalletUI/Core'
+
 end
 
 #s.subspec 'VisaCheckout' do |visacheckout|
