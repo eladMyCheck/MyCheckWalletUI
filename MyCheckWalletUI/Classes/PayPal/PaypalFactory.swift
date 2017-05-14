@@ -8,7 +8,7 @@
 
 import UIKit
 import Braintree
-
+import MyCheckWalletUI
 open class PaypalFactory : PaymentMethodFactory{
     //was the factory ever initiated.
     static var initiated = false
