@@ -169,8 +169,13 @@ self.publishableKey = publishableKey
       
       
         params["env"] = environment.getString()
-        return  request(PCIDomain! + "/PaymentManager/api/v1/paymentMethods/addCreditcard", method: .post, parameters: params , success: { JSON in
-            
+        return  request(PCIDomain! + "/PaymentManager/api/v1/paymentMethods/addCreditcard",
+                        method: .post,
+                        parameters: params ,
+                        encoding: JSONEncoding.default,
+                        addedHeaders: ["Content-Type":"application/json"]
+, success: { JSON in
+    
             let methodJSON = JSON["pm"] as? NSDictionary
             if let methodJSON = methodJSON{
                 success(PaymentMethod(JSON: methodJSON )!)
@@ -211,7 +216,7 @@ self.publishableKey = publishableKey
     
     //MARK: - private functions
     @discardableResult
-    internal  func request(_ url: String , method: HTTPMethod , parameters: Parameters? = nil ,encoding: ParameterEncoding = URLEncoding.default , success: (( _ object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? ) -> Alamofire.Request? {
+    internal  func request(_ url: String , method: HTTPMethod , parameters: Parameters? = nil ,encoding: ParameterEncoding = URLEncoding.default ,addedHeaders: HTTPHeaders? = nil, success: (( _ object: NSDictionary  ) -> Void)? , fail: ((NSError) -> Void)? ) -> Alamofire.Request? {
         guard let pKey = publishableKey else{
         return nil
         }
@@ -224,14 +229,18 @@ self.publishableKey = publishableKey
             }
             finalParams.append(other:params)
         }
-        let headers: HTTPHeaders = [
+        var headers: HTTPHeaders = [
             "X-Uuid": UUID,
             "device": UIDevice.current.name,
             "OSVersion":UIDevice.current.systemVersion
         ]
-
+        if let addedHeaders = addedHeaders{
+        
+        headers.append(other: addedHeaders)
+        
+        }
         debugPrint("params \(finalParams)" )                                                                             
-        let request = Alamofire.request( url,method: method , parameters:finalParams , encoding:  encoding)
+        let request = Alamofire.request( url,method: method , parameters:finalParams , encoding:  encoding , headers: headers)
             .validate(statusCode: 200..<201)
             .validate(contentType: ["application/json"])
             .responseString{ response in
