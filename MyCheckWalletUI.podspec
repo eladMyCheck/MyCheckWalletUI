@@ -34,7 +34,7 @@ s.requires_arc = 'true'
 
 # s.public_header_files = 'Pod/Classes/**/*.h'
 # s.frameworks = 'UIKit', 'MapKit'
-s.dependency 'Alamofire', '~> 4.0'
+s.dependency 'MyCheckCore'
 s.dependency 'Kingfisher', '~> 3.0'
 
 
@@ -43,7 +43,9 @@ s.default_subspec = 'Core'
 
 s.subspec 'Core' do |core|
 # the core. with no 3rd party wallets
-core.source_files = 'MyCheckWalletUI/Classes/*'
+core.source_files = 'MyCheckWalletUI/Classes/*' , 'MyCheckWalletUI/Classes/ViewControllers/*' ,'MyCheckWalletUI/Classes/extensionTools/*'
+
+
 core.resource_bundles = {
 'MyCheckWalletUI' => ['MyCheckWalletUI/Assets/*']
 }

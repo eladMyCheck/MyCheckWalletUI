@@ -104,7 +104,7 @@ expirationDateLabel.clipsToBounds = true
     
    @IBAction func checkboxPressed(_ sender: UIButton!) {
         if editMode == true {
-            MyCheckWallet.manager.deletePaymentMethod(self.paymentMethod!, success: {
+            Wallet.shared.deletePaymentMethod(self.paymentMethod!, success: {
                 printIfDebug("payment method deleted")
                 if let del = self.delegate{
                     del.deletedPaymentMethod(self.paymentMethod!)
@@ -122,7 +122,7 @@ expirationDateLabel.clipsToBounds = true
             }
             if self.paymentMethod?.isDefault == false {
                 self.delegate?.showActivityIndicator(true)
-                MyCheckWallet.manager.setPaymentMethodAsDefault(self.paymentMethod!, success: {
+                Wallet.shared.setPaymentMethodAsDefault(self.paymentMethod!, success: {
                   self.delegate?.showActivityIndicator(false)
 
                     printIfDebug("payment set as default")

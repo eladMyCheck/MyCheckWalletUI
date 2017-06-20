@@ -1,36 +1,40 @@
 PODS:
-  - Alamofire (4.4.0)
-  - Braintree/Core (4.8.2)
-  - Braintree/DataCollector (4.8.2):
+  - Alamofire (4.5.0)
+  - Braintree/Core (4.8.3)
+  - Braintree/DataCollector (4.8.3):
     - Braintree/Core
-  - Braintree/PayPal (4.8.2):
+  - Braintree/PayPal (4.8.3):
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPalDataCollector (4.8.2):
+  - Braintree/PayPalDataCollector (4.8.3):
     - Braintree/Core
     - Braintree/PayPalUtils
-  - Braintree/PayPalOneTouch (4.8.2):
+  - Braintree/PayPalOneTouch (4.8.3):
     - Braintree/Core
     - Braintree/PayPalDataCollector
     - Braintree/PayPalUtils
-  - Braintree/PayPalUtils (4.8.2)
-  - Kingfisher (3.9.1)
-  - MyCheckWalletUI/Core (0.0.12):
+  - Braintree/PayPalUtils (4.8.3)
+  - Kingfisher (3.10.2)
+  - MyCheckCore (0.0.7):
     - Alamofire (~> 4.0)
+  - MyCheckWalletUI/Core (0.0.14):
     - Kingfisher (~> 3.0)
-  - MyCheckWalletUI/MasterPass (0.0.12):
-    - Alamofire (~> 4.0)
+    - MyCheckCore
+  - MyCheckWalletUI/MasterPass (0.0.14):
     - Kingfisher (~> 3.0)
-  - MyCheckWalletUI/PayPal (0.0.12):
-    - Alamofire (~> 4.0)
+    - MyCheckCore
+    - MyCheckWalletUI/Core
+  - MyCheckWalletUI/PayPal (0.0.14):
     - Braintree/DataCollector
     - Braintree/PayPal
     - Kingfisher (~> 3.0)
+    - MyCheckCore
     - MyCheckWalletUI/Core
-  - Nimble (7.0.0)
+  - Nimble (7.0.1)
   - Quick (1.1.0)
 
 DEPENDENCIES:
+  - MyCheckCore (from `../../MyCheck-Core`)
   - MyCheckWalletUI/Core (from `../`)
   - MyCheckWalletUI/MasterPass (from `../`)
   - MyCheckWalletUI/PayPal (from `../`)
@@ -38,17 +42,20 @@ DEPENDENCIES:
   - Quick
 
 EXTERNAL SOURCES:
+  MyCheckCore:
+    :path: ../../MyCheck-Core
   MyCheckWalletUI:
     :path: ../
 
 SPEC CHECKSUMS:
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  Braintree: 54216849aa3239401d82f2236a678b2bda7e1362
-  Kingfisher: 6729a0baaa458245bfb8cd5a1296c71c10d6eb6c
-  MyCheckWalletUI: c6160c1f5e630ec34db0099dab24d8f0d9c6ed58
-  Nimble: 874982b605d4d752fcac6be695d13c502de84b1b
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Braintree: e91ccdfb26365d342ee4c42d668aa3cb57a6fb18
+  Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
+  MyCheckCore: 2c0ae300c59ca78be5caf935389589b9de5cbfd3
+  MyCheckWalletUI: 1a70be54b7ab26dc59acce75050a5d47f629435d
+  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
 
-PODFILE CHECKSUM: 5cd4bc64c4e51f1ef61c4d469cc14f13bdeed649
+PODFILE CHECKSUM: 84a5a1117e50d4608e88704dd2c508d631464864
 
 COCOAPODS: 1.2.0.beta.3

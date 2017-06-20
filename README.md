@@ -41,7 +41,7 @@ to the top of the class where you want to use MyCheckWallet.
 In your app delegat's `application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)` function call the configure function of the MyCheckWallet singlton:
 
 ```
-MyCheckWallet.manager.configureWallet(YOUR_PUBLISHABLE_KEY, environment: Environment.sandbox)
+MyCheckWallet.shared.configureWallet(YOUR_PUBLISHABLE_KEY, environment: Environment.sandbox)
 ```
 This will setup the SDK to work with the desired environment.
 
@@ -49,7 +49,7 @@ Before displaying any UI you will have to login:
 
 
 ```
-MyCheckWallet.manager.login(YOUR_REFRESH_TOKEN, success: {
+MyCheckWallet.shared.login(YOUR_REFRESH_TOKEN, success: {
 //handle success
 } , fail: { error in
 //handle failure
@@ -111,7 +111,7 @@ The last line of code necessary is to allow the MyCheck Wallet UI SDK to respond
 
 func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
 
-return MyCheckWallet.manager.handleOpenURL(url, sourceApplication: sourceApplication)
+return MyCheckWallet.shared.handleOpenURL(url, sourceApplication: sourceApplication)
 
 }
 ```

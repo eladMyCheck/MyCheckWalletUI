@@ -8,6 +8,7 @@
 
 import UIKit
 import MyCheckWalletUI
+import MyCheckCore
 class ViewController: UIViewController {
   
      var checkoutViewController : MCCheckoutViewController?
@@ -19,7 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
        containerView.isHidden = true
-        MyCheckWallet.manager.login("eyJpdiI6IlRmT2d1QjZJWWtwTVljTXlZdmZjS0E9PSIsInZhbHVlIjoieFVudUJDc0xyRjdzV1JmdHc3dkdwUT09IiwibWFjIjoiMThhMTQyYTA0M2NmODJhYmYwY2FkNjM0MDE0MWY4YzJmZjYzZjRjYmNjMDdhMjdlM2IyN2RhODI0NTBiN2VmNiJ9", success: {
+        Session.shared.login("eyJpdiI6ImprMnJDVnVDZzBsXC9BNXBEWE9JRnJ3PT0iLCJ2YWx1ZSI6Ill2NFliVGpMOHk0QkVhT25BdHk2U3duS1k0WXJrZ2xPeW5aQVhUWWt5c1wvbjZiSGJndExOZEpcL2Z1bmdUMHV2diIsIm1hYyI6IjhjMzcwMWRjYWYxYWM5NTFiYmUyNjUwNTI2MGQ2NDlkMWFjZjZjNzIyZTgxOTRjN2QyMGMwN2JmM2MyYzc3NjIifQ==", success: {
             //The view should only be displaid after a user is logged in
             self.containerView.isHidden = false
         

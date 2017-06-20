@@ -39,7 +39,7 @@ class PayPalPaymentMethod: PaymentMethod {
   
   func refreshDeviceData() {
     
-    MyCheckWallet.manager.getBraintreeToken({token in
+    Wallet.shared.getBraintreeToken({token in
       
       if let btApiClient = BTAPIClient(authorization: token){
         let dataCollector = BTDataCollector(apiClient: btApiClient)

@@ -18,7 +18,7 @@ open class MasterPassFactory : PaymentMethodFactory{
   open static func initiate(){
     if !initiated {
       let factory = MasterPassFactory()
-      MyCheckWallet.manager.factories.append(factory)
+      Wallet.shared.factories.append(factory)
       initiated = true
       
       
@@ -31,7 +31,7 @@ open class MasterPassFactory : PaymentMethodFactory{
       delegate.showLoadingIndicator(self, show: true)
 
     
-        MyCheckWallet.manager.getMasterPassCredentials(masterPassURL: "TO-DO", success: {token , merchant in
+        Wallet.shared.getMasterPassCredentials(masterPassURL: "TO-DO", success: {token , merchant in
         
             delegate.showLoadingIndicator(self, show: false)
             let controller = AddMasterPassViewController(delegate: self)
@@ -65,7 +65,7 @@ open class MasterPassFactory : PaymentMethodFactory{
     
 
   @objc fileprivate func addMethodButPressed(_ sender: UIButton){
-    if MyCheckWallet.manager.hasPaymentMethodOfType(.masterPass){
+    if Wallet.shared.hasPaymentMethodOfType(.masterPass){
       
       
       if let delegate = self.delegate{
@@ -102,7 +102,7 @@ extension MasterPassFactory : AddMasterPassViewControllerDelegate{
     func addMasterPassReturned(payload: String){
         if let delegate = self.delegate{
             let singleUse = delegate.shouldBeSingleUse(self)
-        MyCheckWallet.manager.addMasterPass(payload, singleUse: singleUse, success: {method in
+        Wallet.shared.addMasterPass(payload: payload, singleUse: singleUse, success: {method in
             if let delegate = self.delegate ,  let method = method{
                 
                 delegate.addedPaymentMethod(self, token: method.token)

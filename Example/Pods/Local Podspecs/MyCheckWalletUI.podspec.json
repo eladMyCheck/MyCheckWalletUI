@@ -1,6 +1,6 @@
 {
   "name": "MyCheckWalletUI",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "summary": "An SDK that supplies UI for payment method managment.",
   "description": "README.md",
   "homepage": "https://mycheckapp.com",
@@ -13,15 +13,15 @@
   },
   "source": {
     "git": "https://bitbucket.org/erez_spatz/mycheckwalletui-ios.git",
-    "tag": "0.0.12"
+    "tag": "0.0.14"
   },
   "platforms": {
     "ios": "9.3"
   },
   "requires_arc": "true",
   "dependencies": {
-    "Alamofire": [
-      "~> 4.0"
+    "MyCheckCore": [
+
     ],
     "Kingfisher": [
       "~> 3.0"
@@ -31,7 +31,11 @@
   "subspecs": [
     {
       "name": "Core",
-      "source_files": "MyCheckWalletUI/Classes/*",
+      "source_files": [
+        "MyCheckWalletUI/Classes/*",
+        "MyCheckWalletUI/Classes/ViewControllers/*",
+        "MyCheckWalletUI/Classes/extensionTools/*"
+      ],
       "resource_bundles": {
         "MyCheckWalletUI": [
           "MyCheckWalletUI/Assets/*"
@@ -61,7 +65,12 @@
       "platforms": {
         "ios": "9.3"
       },
-      "source_files": "MyCheckWalletUI/Classes/MasterPass/**/*"
+      "source_files": "MyCheckWalletUI/Classes/MasterPass/**/*",
+      "dependencies": {
+        "MyCheckWalletUI/Core": [
+
+        ]
+      }
     }
   ]
 }

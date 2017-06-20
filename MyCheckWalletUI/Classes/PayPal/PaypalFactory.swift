@@ -17,7 +17,7 @@ open class PaypalFactory : PaymentMethodFactory{
   open static func initiate(_ scheme: String){
     if !initiated {
       let factory = PaypalFactory()
-      MyCheckWallet.manager.factories.append(factory)
+      Wallet.shared.factories.append(factory)
       initiated = true
       
       BTAppSwitch.setReturnURLScheme(scheme)
@@ -26,7 +26,7 @@ open class PaypalFactory : PaymentMethodFactory{
   }
   override func configureAfterLogin(){
     //getting the token
-    MyCheckWallet.manager.getBraintreeToken( {
+    Wallet.shared.getBraintreeToken( {
       token in
       printIfDebug(token);
       } , fail:nil)
@@ -38,7 +38,7 @@ open class PaypalFactory : PaymentMethodFactory{
         let singleUse = delegate.shouldBeSingleUse(self)
 
     
-    MyCheckWallet.manager.getBraintreeToken({token in
+    Wallet.shared.getBraintreeToken({token in
       
       
       
@@ -57,7 +57,7 @@ open class PaypalFactory : PaymentMethodFactory{
             }
           }
           if let nonce = nonce , let delegate = self.delegate{
-          MyCheckWallet.manager.addPayPal(nonce.nonce, singleUse: singleUse, success: { method in
+          Wallet.shared.addPayPal(nonce.nonce, singleUse: singleUse, success: { method in
               var token = ""
               if let method = method {
                 token = method.token
@@ -109,7 +109,7 @@ open class PaypalFactory : PaymentMethodFactory{
     return PayPalView(frame: frame, method: method)
   }
   @objc fileprivate func addMethodButPressed(_ sender: UIButton){
-    if MyCheckWallet.manager.hasPaymentMethodOfType(.payPal){
+    if Wallet.shared.hasPaymentMethodOfType(.payPal){
       
       
       if let delegate = self.delegate{
