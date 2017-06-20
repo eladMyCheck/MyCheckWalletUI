@@ -16,7 +16,7 @@
     "tag": "0.0.14"
   },
   "platforms": {
-    "ios": "9.3"
+    "ios": "9.0"
   },
   "requires_arc": "true",
   "dependencies": {
@@ -57,13 +57,13 @@
       },
       "source_files": "MyCheckWalletUI/Classes/paypal/**/*",
       "platforms": {
-        "ios": "9.3"
+        "ios": "9.0"
       }
     },
     {
       "name": "MasterPass",
       "platforms": {
-        "ios": "9.3"
+        "ios": "9.0"
       },
       "source_files": "MyCheckWalletUI/Classes/MasterPass/**/*",
       "dependencies": {

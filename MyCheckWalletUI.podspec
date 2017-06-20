@@ -26,7 +26,7 @@ s.author           = { 'elad schiller' => 'eladsc@mycheck.co.il' }
 s.source           = { :git => 'https://bitbucket.org/erez_spatz/mycheckwalletui-ios.git', :tag => s.version.to_s }
 # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-s.ios.deployment_target = '9.3'
+s.ios.deployment_target = '9.0'
 
 
 
@@ -58,13 +58,13 @@ paypal.dependency 'Braintree/PayPal'
 paypal.dependency 'Braintree/DataCollector'
 
 paypal.source_files = 'MyCheckWalletUI/Classes/paypal/**/*'
-paypal.ios.deployment_target = '9.3'
-paypal.platform = :ios, '9.3'
+paypal.ios.deployment_target = '9.0'
+paypal.platform = :ios, '9.0'
 
 end
 s.subspec 'MasterPass' do |masterpass|
-masterpass.ios.deployment_target = '9.3'
-masterpass.platform = :ios, '9.3'
+masterpass.ios.deployment_target = '9.0'
+masterpass.platform = :ios, '9.0'
 
 masterpass.source_files = 'MyCheckWalletUI/Classes/MasterPass/**/*'
 masterpass.dependency 'MyCheckWalletUI/Core'

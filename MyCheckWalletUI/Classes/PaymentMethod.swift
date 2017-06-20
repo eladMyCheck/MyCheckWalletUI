@@ -10,16 +10,16 @@ import Foundation
 
 
 ///The diffrant 3rd party wallets that can be supported by MyCheck Wallet.
-public enum PaymentMethodType {
+public enum PaymentMethodType : String{
     /// Visa Checkout.
-    case visaCheckout
+    case visaCheckout = "Visa Checkout"
     /// Support PayPal using the Brain Tree SDK.
-    case payPal
+    case payPal = "PayPal"
     /// Master Pass.
-    case masterPass
+    case masterPass = "MasterPass"
     //Credit Card
-    case creditCard
-    case non
+    case creditCard = "Credit Card"
+    case non = "Non"
 }
 
 ///A Credit Card issuer type.
