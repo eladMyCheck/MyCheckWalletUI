@@ -19,6 +19,9 @@ public enum PaymentMethodType : String{
     case masterPass = "MasterPass"
     //Credit Card
     case creditCard = "Credit Card"
+    //ApplePay
+    case applePay = "ApplePay"
+    
     case non = "Non"
 }
 

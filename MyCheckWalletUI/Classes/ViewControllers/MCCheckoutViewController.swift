@@ -62,10 +62,10 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     //3rd party wallet payment methods UI elements
     @IBOutlet weak var walletsSuperview: UIView!
     @IBOutlet weak var walletsHeight: NSLayoutConstraint!
-    @IBOutlet weak var walletButsContainer: UIView!
     
     @IBOutlet weak var deleteBut: UIButton!
     
+    @IBOutlet weak var firstLineWalletButs: UIStackView!
     @IBOutlet weak fileprivate var pciLabel: UILabel!
     
     fileprivate var walletButtons : [PaymentMethodButton] = []
@@ -495,7 +495,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         pickerDownArrow.tintColor = LocalData.manager.getColor("checkoutPageColorspickerArrowColor", fallback: UIColor.clear)
         footerLabel.textColor = LocalData.manager.getColor("checkoutPageColorscardAccepted", fallback: footerLabel.textColor!)
         view.backgroundColor = LocalData.manager.getColor("checkoutPageColorsbackground", fallback: UIColor.clear)
-        for (key , view) in borderForField {
+        for (_ , view) in borderForField {
             view.layer.borderColor = LocalData.manager.getColor("checkoutPageColorsfieldBorder", fallback: view.backgroundColor!).cgColor
             view.layer.borderWidth = 1
         }
@@ -516,52 +516,38 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             case 0:
                 walletsHeight.constant = 0
                 walletsSuperview.isHidden = true
-            case 1:
-                //adding button to center of container
-                let factory = Wallet.shared.factories[0]
-                let but = factory.getSmallAddMethodButton()
-                self.walletButsContainer.addSubview(but)
-                but.translatesAutoresizingMaskIntoConstraints = false
+                // case 1:
+                //   //adding button to center of container
+                //  let factory = Wallet.shared.factories[0]
+                //  let but = factory.getSmallAddMethodButton()
+                //  self.firstLineWalletButs.addArrangedSubview(but)
+                //   but.translatesAutoresizingMaskIntoConstraints = false
                 
-                let horizontalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: walletButsContainer, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-                walletsSuperview.addConstraint(horizontalConstraint)
                 
-            case 2:
+            case 1,2:
                 
-                var buttons : [UIButton] = []
                 for factory in Wallet.shared.factories{
                     
                     let  but = factory.getSmallAddMethodButton()
-                    but.translatesAutoresizingMaskIntoConstraints = false
+                    but.translatesAutoresizingMaskIntoConstraints = true
 
-                    buttons.append( but)
-                    self.walletButsContainer.addSubview(but)
                     
-                    //vertical constaint
-                    let verticalConstraint = NSLayoutConstraint(item: but, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: walletButsContainer, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
-                    walletButsContainer.addConstraint(verticalConstraint)
+                    //I am assuming their are 2 views in the stack view (one left most and one right most)they add padding to insure the size is correct and the items are centered.
+                    self.firstLineWalletButs.insertArrangedSubview(but, at: self.firstLineWalletButs.arrangedSubviews.count - 1)
+
                     walletButtons.append(but)
+                    
                     but.isEnabled = true
                     but.isUserInteractionEnabled = true
                     print( but.bounds , "    " , but.frame)
                     
                 }
                 
-                let  but1 = buttons[0]
-                let  but2 = buttons[1]
-                let margin = 20//0.0845410628 * walletsSuperview.frame.size.width;
-                let butWidth = 0.409375 * walletButsContainer.frame.size.width
-                let constraint1Str = "H:|-(\(margin))-[but1(\(butWidth))]"
-                let constraint2Str = "H:[but2(\(butWidth))]-(\(margin))-|"
-                
-                walletButsContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint1Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but1":but1]))
-                
-                walletButsContainer.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint2Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but2":but2]))
+           
                 
                 
                 
-walletButsContainer.layoutIfNeeded()
-            default:// multiple wallets
+                            default:// multiple wallets
                 for factory in Wallet.shared.factories{
                     //TO-DO implement adding multiple wallets
                 }
