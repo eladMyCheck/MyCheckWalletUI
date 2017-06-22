@@ -91,17 +91,16 @@ open class PaypalFactory : PaymentMethodFactory{
   }
   
   
-  override func getAddMethodButton() -> PaymentMethodButton{
+  override func getAddMethodButton() -> PaymentMethodButtonRapper{
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
     
-    let but = PaymentMethodButton(type: .custom)
-    but.setBackgroundImage(UIImage(named: "paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
-    but.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgPaypal")), for: .normal , options: [.scaleFactor(2.0)])
-    but.type = .payPal
+    let butRap = PaymentMethodButtonRapper(forType: .payPal)
+    butRap.button.setBackgroundImage(UIImage(named: "paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
+    butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgPaypal")), for: .normal , options: [.scaleFactor(2.0)])
     //but.setImage(UIImage(named: "paypal_but", in: bundle, compatibleWith: nil), for: UIControlState())
-    but.addTarget(self, action: #selector(PaypalFactory.addMethodButPressed(_:)), for: .touchUpInside)
+    butRap.button.addTarget(self, action: #selector(PaypalFactory.addMethodButPressed(_:)), for: .touchUpInside)
     //    but.setBackgroundImage(UIImage(named: "amex_small" , inBundle: bundle, compatibleWithTraitCollection: nil), forState: .Highlighted)
-    return but
+    return butRap
   }
     
     
@@ -123,19 +122,18 @@ open class PaypalFactory : PaymentMethodFactory{
   }
   
   
-  override func getSmallAddMethodButton() -> PaymentMethodButton{
-    let but = super.getSmallAddMethodButton()
-    
-    but.type = .payPal
+  override func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
+    var butRap = super.getSmallAddMethodButton()
+    butRap.type = .payPal
     
     
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-    but.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgPaypalCheckout") ), for: .normal ,  options: [.scaleFactor(3.0)])
+    butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgPaypalCheckout") ), for: .normal ,  options: [.scaleFactor(3.0)])
     
     
-    but.addTarget(self, action: #selector(PaypalFactory.addMethodButPressed(_:)), for: .touchUpInside)
+    butRap.button.addTarget(self, action: #selector(PaypalFactory.addMethodButPressed(_:)), for: .touchUpInside)
     
-    return but
+    return butRap
   }
   //for returning urls in the app delegate
   open  override func handleOpenURL(_ url: URL, sourceApplication: String?) -> Bool{

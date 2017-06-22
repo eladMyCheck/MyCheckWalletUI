@@ -68,7 +68,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBOutlet weak var firstLineWalletButs: UIStackView!
     @IBOutlet weak fileprivate var pciLabel: UILabel!
     
-    fileprivate var walletButtons : [PaymentMethodButton] = []
+    fileprivate var walletButtons : [PaymentMethodButtonRapper] = []
     internal var borderForField : [UITextField : UIView] = [:]
     
     internal static func createMCCheckoutViewController() -> MCCheckoutViewController{
@@ -528,18 +528,18 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                 
                 for factory in Wallet.shared.factories{
                     
-                    let  but = factory.getSmallAddMethodButton()
-                    but.translatesAutoresizingMaskIntoConstraints = true
+                    let  butRap = factory.getSmallAddMethodButton()
+                    butRap.button.translatesAutoresizingMaskIntoConstraints = true
 
                     
                     //I am assuming their are 2 views in the stack view (one left most and one right most)they add padding to insure the size is correct and the items are centered.
-                    self.firstLineWalletButs.insertArrangedSubview(but, at: self.firstLineWalletButs.arrangedSubviews.count - 1)
+                    self.firstLineWalletButs.insertArrangedSubview(butRap.button, at: self.firstLineWalletButs.arrangedSubviews.count - 1)
 
-                    walletButtons.append(but)
+                    walletButtons.append(butRap)
                     
-                    but.isEnabled = true
-                    but.isUserInteractionEnabled = true
-                    print( but.bounds , "    " , but.frame)
+                    butRap.button.isEnabled = true
+                    butRap.button.isUserInteractionEnabled = true
+                    print( butRap.button.bounds , "    " , butRap.button.frame)
                     
                 }
                 

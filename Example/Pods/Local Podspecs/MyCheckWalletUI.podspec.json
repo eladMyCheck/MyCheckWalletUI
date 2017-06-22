@@ -71,6 +71,18 @@
 
         ]
       }
+    },
+    {
+      "name": "ApplePay",
+      "dependencies": {
+        "MyCheckWalletUI/Core": [
+
+        ]
+      },
+      "source_files": "MyCheckWalletUI/Classes/ApplePay/**/*",
+      "platforms": {
+        "ios": "9.0"
+      }
     }
   ]
 }

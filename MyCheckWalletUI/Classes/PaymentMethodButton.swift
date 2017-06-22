@@ -8,14 +8,12 @@
 
 import UIKit
 
-class PaymentMethodButton: UIButton {
-    open var type : PaymentMethodType?
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+internal struct PaymentMethodButtonRapper {
+     var type: PaymentMethodType
+    let button: UIButton
+    
+    init(button: UIButton = UIButton(type: .custom), forType type: PaymentMethodType) {
+        self.button = button
+        self.type = type
     }
-    */
-  
 }

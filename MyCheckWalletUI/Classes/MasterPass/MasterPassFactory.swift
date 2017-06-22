@@ -48,18 +48,17 @@ open class MasterPassFactory : PaymentMethodFactory{
       }
     }
   
-  override func getAddMethodButton() -> PaymentMethodButton{
+  override func getAddMethodButton() -> PaymentMethodButtonRapper{
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
     
-    let but = PaymentMethodButton(type: .custom)
-    but.setBackgroundImage(UIImage(named: "masterpass_paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
-    but.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpass")), for: .normal , options: [.scaleFactor(2.0)])
+    let butRap = PaymentMethodButtonRapper(forType: .masterPass)
+    butRap.button.setBackgroundImage(UIImage(named: "masterpass_paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
+    butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpass")), for: .normal , options: [.scaleFactor(2.0)])
 
-    but.type = .masterPass
     //but.setImage(UIImage(named: "paypal_but", in: bundle, compatibleWith: nil), for: UIControlState())
-    but.addTarget(self, action: #selector(MasterPassFactory.addMethodButPressed(_:)), for: .touchUpInside)
+    butRap.button.addTarget(self, action: #selector(MasterPassFactory.addMethodButPressed(_:)), for: .touchUpInside)
     //    but.setBackgroundImage(UIImage(named: "amex_small" , inBundle: bundle, compatibleWithTraitCollection: nil), forState: .Highlighted)
-    return but
+    return butRap
   }
     
     
@@ -79,20 +78,20 @@ open class MasterPassFactory : PaymentMethodFactory{
   }
   
   
-  override func getSmallAddMethodButton() -> PaymentMethodButton{
-    let but = super.getSmallAddMethodButton()
+  override func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
+    var butRap = super.getSmallAddMethodButton()
     
-    but.type = .masterPass
+    butRap.type = .masterPass
     
-    let i = LocalData.manager.getString("walletImgMasterpassCheckout")
+    //  let i = LocalData.manager.getString("walletImgMasterpassCheckout")
     
-    let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-    but.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpassCheckout") ), for: .normal , options: [.scaleFactor(3.0)])
+    //  let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+    butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpassCheckout") ), for: .normal , options: [.scaleFactor(3.0)])
     
     
-    but.addTarget(self, action: #selector(MasterPassFactory.addMethodButPressed(_:)), for: .touchUpInside)
+    butRap.button.addTarget(self, action: #selector(MasterPassFactory.addMethodButPressed(_:)), for: .touchUpInside)
     
-    return but
+    return butRap
   }
 }
 

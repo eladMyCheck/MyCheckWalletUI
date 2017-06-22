@@ -71,6 +71,17 @@ masterpass.dependency 'MyCheckWalletUI/Core'
 
 end
 
+s.subspec 'ApplePay' do |applepay|
+applepay.dependency 'MyCheckWalletUI/Core'
+spec.frameworks = 'PassKit'
+
+applepay.source_files = 'MyCheckWalletUI/Classes/ApplePay/**/*'
+applepay.ios.deployment_target = '9.0'
+applepay.platform = :ios, '9.0'
+
+end
+
+
 #s.subspec 'VisaCheckout' do |visacheckout|
 #visacheckout.source_files = 'MyCheckWalletUI/Classes/VisaCheckout/*'
 #visacheckout.vendored_frameworks = 'MyCheckWalletUI/Classes/VisaCheckout/frameworks/*'

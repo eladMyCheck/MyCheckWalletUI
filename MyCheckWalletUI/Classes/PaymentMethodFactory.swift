@@ -32,36 +32,36 @@ open class PaymentMethodFactory: NSObject {
         }
         }
     
-    func getAddMethodButton() -> PaymentMethodButton{
-        let but = PaymentMethodButton()
+    func getAddMethodButton() -> PaymentMethodButtonRapper{
+        let but = PaymentMethodButtonRapper(forType: .non)
         return but
     }
     
     //this button is meant for use in the checkout view controller
-    func getSmallAddMethodButton() -> PaymentMethodButton{
-        let but = PaymentMethodButton()
+    func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
+        let butRap = PaymentMethodButtonRapper(forType: .non)
         let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
 
         let image = UIImage(named: "checkout_wallet_but_bg" , in: bundle, compatibleWith: nil)
-        but.frame = CGRect(x: 0, y: 0, width: 133.0, height: 41.0)
-        but.setBackgroundImage(image, for: UIControlState())
-        but.addConstraint(NSLayoutConstraint(
-            item: but,
+        butRap.button.frame = CGRect(x: 0, y: 0, width: 133.0, height: 41.0)
+        butRap.button.setBackgroundImage(image, for: UIControlState())
+        butRap.button.addConstraint(NSLayoutConstraint(
+            item: butRap.button,
             attribute: .width,
             relatedBy: .equal,
             toItem: nil,
             attribute: .notAnAttribute,
             multiplier: 1.0,
             constant: 133))
-        but.addConstraint(NSLayoutConstraint(
-            item: but,
+        butRap.button.addConstraint(NSLayoutConstraint(
+            item: butRap.button,
             attribute: .height,
             relatedBy: .equal,
             toItem: nil,
             attribute: .notAnAttribute,
             multiplier: 1.0,
             constant: 41))
-        return but
+        return butRap
     }
     
     //this is called by the mycheck wallet singlton after the user has logged in
