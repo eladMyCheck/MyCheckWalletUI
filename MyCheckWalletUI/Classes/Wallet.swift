@@ -29,6 +29,9 @@ open class Wallet{
     //used for the add credit card API call.
     internal var PCIDomain: String?
     
+    //will answer and update applepay specific logic
+    internal var applePayLogic: ApplePayInterface?
+    
     //loaded all the languages in the config file
     fileprivate var loadedLanguages = false
     
@@ -154,6 +157,10 @@ open class Wallet{
                         mutableMethods[i] = newMethod
                     }
                 }
+            }
+            
+            if let applePayLogic = self.applePayLogic{
+            
             }
             self.methods = mutableMethods
             success(mutableMethods)

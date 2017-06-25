@@ -9,10 +9,7 @@
 import UIKit
 
 class ApplePayView: CreditCardView {
-    var emailLabel : UILabel? {
-        get{
-        return creditCardNumberlabel
-        }}
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -23,9 +20,8 @@ class ApplePayView: CreditCardView {
    override init(frame: CGRect, method: PaymentMethod){
    super.init(frame: frame, method: method)
     self.expirationDateLabel?.removeFromSuperview()
-    emailLabel?.textColor = LocalData.manager.getColor("managePaymentMethodsColorsApplePayCardText", fallback: (emailLabel?.textColor)!)
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-    let image = UIImage(named: "ApplePay_background" , in: bundle, compatibleWith: nil)
+    let image = UIImage(named: "applePayBackground" , in: bundle, compatibleWith: nil)
     backgroundButton!.setImage(image, for: UIControlState())
     if let numberToTrailing = self.numberToTrailing{
        numberToTrailing.priority = 999
@@ -44,12 +40,7 @@ class ApplePayView: CreditCardView {
         if let creditCardNumberlabel = self.creditCardNumberlabel{
             creditCardNumberlabel.textAlignment = NSTextAlignment.center;
             
-            //moving the label into position
-            var frame = creditCardNumberlabel.frame
-            frame.size.width = backgroundButton!.frame.size.width - 20.0
-            frame.origin.y = 68
-            creditCardNumberlabel.frame = frame
-            
+                        
         }
     }
 }

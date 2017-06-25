@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Braintree
 class ApplePayPaymentMethod: PaymentMethod {
   open override var token : String{
     get{
@@ -28,27 +27,12 @@ class ApplePayPaymentMethod: PaymentMethod {
   fileprivate var deviceData : String?
 
   internal convenience init?(other:PaymentMethod){
-      self.init(JSON: other.JSON)
-    refreshDeviceData()
-    delay(ApplePayPaymentMethod.REFRESH_DEVICE_DATA_INTERVAL, closure: {
-      self.refreshDeviceData()
+    self.init(for: .applePay, name: "Apple Pay", Id: "ApplePay", token: "ApplePay", checkoutName: "Apple Pay")
     
-    })
-      }
+    }
   
   
-  func refreshDeviceData() {
-    
-    Wallet.shared.getBraintreeToken({token in
-      
-      if let btApiClient = BTAPIClient(authorization: token){
-        let dataCollector = BTDataCollector(apiClient: btApiClient)
-        dataCollector.collectFraudData({data in
-          self.deviceData = data
-        })
-      }
-      }, fail: nil)
-  }
+  
   
   fileprivate func createFinalToken() -> String{
     if let deviceData = deviceData{

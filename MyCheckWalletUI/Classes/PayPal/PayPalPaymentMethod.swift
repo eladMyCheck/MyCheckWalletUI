@@ -28,7 +28,7 @@ class PayPalPaymentMethod: PaymentMethod {
   fileprivate var deviceData : String?
 
   internal convenience init?(other:PaymentMethod){
-      self.init(JSON: other.JSON)
+      self.init(JSON: other.JSON!)
     refreshDeviceData()
     delay(PayPalPaymentMethod.REFRESH_DEVICE_DATA_INTERVAL, closure: {
       self.refreshDeviceData()

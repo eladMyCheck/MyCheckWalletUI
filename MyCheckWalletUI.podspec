@@ -73,7 +73,7 @@ end
 
 s.subspec 'ApplePay' do |applepay|
 applepay.dependency 'MyCheckWalletUI/Core'
-spec.frameworks = 'PassKit'
+applepay.frameworks = 'PassKit'
 
 applepay.source_files = 'MyCheckWalletUI/Classes/ApplePay/**/*'
 applepay.ios.deployment_target = '9.0'

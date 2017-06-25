@@ -52,115 +52,135 @@ open class PaymentMethod{
     /// The Id of the payment method.
     open let Id : String
     /// The token that must be used in order to chard the payment method.
-   open var token : String 
-  
-  // A string with a user readable description of the payment method, e.g. XXXX-1234
-  internal  var  name : String? = nil
-
+    open var token : String
+    
+    // A string with a user readable description of the payment method, e.g. XXXX-1234
+    internal  var  name : String? = nil
+    
     var checkoutName: String? {get{
         
         guard let lastFourDigits = self.lastFourDigits else{
-        return self.issuerFull
+            return self.issuerFull
         }
-       
+        
         let toReturn = issuerFull.capitalizingFirstLetter() + " " + lastFourDigits
         if isSingleUse{
-        
+            
             return toReturn + " " + LocalData.manager.getString("checkoutPagetemporaryCard", fallback: "(temp card)")
         }
         return toReturn
         }}
     
     /// The month the credit card expires
-  open  var  expireMonth : String? = nil
+    open  var  expireMonth : String? = nil
     
     /// The year the credit card expires
-   open var expireYear : String? = nil
+    open var expireYear : String? = nil
     
     /// The credit card's  last 4 digits
-   open var lastFourDigits : String? = nil
+    open var lastFourDigits : String? = nil
     
     /// True if the payment method is the default payment method
-   open let isDefault : Bool
+    open var isDefault : Bool
     
     /// True if the payment method will be valid for a single use only
-   open let isSingleUse: Bool
+    open let isSingleUse: Bool
     
     ///A short form string of the issuer name
-   open let issuerShort: String
+    open let issuerShort: String
     private let issuerFull : String
-
-    ///The issuer name
-   open let issuer: CreditCardType
     
     ///The issuer name
-     open let type: PaymentMethodType
-  
-  //the JSON represintation of the object
-  internal let JSON : NSDictionary
+    open let issuer: CreditCardType
+    
+    ///The issuer name
+    open let type: PaymentMethodType
+    
+    //the JSON represintation of the object
+    internal let JSON : NSDictionary?
+    
+    
+    
+    internal  init(for type: PaymentMethodType, name:String?, Id: String, token: String , checkoutName: String?){
+        self.type = type
+        self.name = name
+        self.Id = Id
+        self.token = token
+        issuer = .Unknown
+        issuerFull = ""
+        issuerShort = ""
+        isDefault = false
+        isSingleUse = false
+        JSON = nil
+    }
+    
     ///Init function
     ///
     ///    - JSON: A JSON that comes from the wallet endpoint
     ///    - Returns: A payment method object or nil if the JSON is invalid or missing non optional parameters.
     internal init?(JSON: NSDictionary){
-
-            guard let source = JSON["source"] as? String else{
-                return nil
-            }
-            self.JSON = JSON
-            var number = JSON["id"] as! NSNumber
-            Id = number.stringValue
-            
-            token = JSON["token"] as! String
-            
-            if let str = JSON["exp_month"] as? String{
-                expireMonth = str 
-            }else if let str =  JSON["exp_month"] as? NSNumber{
-                expireMonth = String(describing: str)
-            }
-            
-            if let number = JSON["exp_year4"] as? NSNumber{
+        
+        guard let source = JSON["source"] as? String else{
+            return nil
+        }
+        self.JSON = JSON
+        var number = JSON["id"] as! NSNumber
+        Id = number.stringValue
+        
+        token = JSON["token"] as! String
+        
+        if let str = JSON["exp_month"] as? String{
+            expireMonth = str
+        }else if let str =  JSON["exp_month"] as? NSNumber{
+            expireMonth = String(describing: str)
+        }
+        
+        if let number = JSON["exp_year4"] as? NSNumber{
             let yearInt = Int(number)
-                 expireYear = String(yearInt)
-            }
-            if let str =  JSON["last_4_digits"] as? String {
+            expireYear = String(yearInt)
+        }
+        if let str =  JSON["last_4_digits"] as? String {
             lastFourDigits =  str
-            }
-            if let defNum  = JSON["is_default"] as? NSNumber{
+        }
+        if let defNum  = JSON["is_default"] as? NSNumber{
             isDefault = defNum.boolValue
-            }else{
-                isDefault = false;
-            }
-            number  = JSON["is_single_use"] as! NSNumber
-            isSingleUse = number.boolValue
-            issuerShort = JSON["issuer_short"] as! String
-           let  issuerStr = JSON["issuer_full"] as! String
-            issuerFull = issuerStr
-            let tmpType = CreditCardType(rawValue: issuerStr)
-            if let tmpType = tmpType{
+        }else{
+            isDefault = false;
+        }
+        number  = JSON["is_single_use"] as! NSNumber
+        isSingleUse = number.boolValue
+        issuerShort = JSON["issuer_short"] as! String
+        let  issuerStr = JSON["issuer_full"] as! String
+        issuerFull = issuerStr
+        let tmpType = CreditCardType(rawValue: issuerStr)
+        if let tmpType = tmpType{
             issuer = tmpType
-            }else{
+        }else{
             issuer = .Unknown
-            }
-          name = JSON["name"] as? String
-           
-            switch (source){
-            case "BRAINTREE":
-                type = .payPal
-            case "MASTERPASS":
-                type = .masterPass
-
-            default:
-                type = .creditCard
-            }
+        }
+        name = JSON["name"] as? String
+        
+        switch (source){
+        case "BRAINTREE":
+            type = .payPal
+        case "MASTERPASS":
+            type = .masterPass
             
-            
-       
+        default:
+            type = .creditCard
+        }
+        
+        
+        
         
     }
-  
-  internal convenience init?(other:PaymentMethod){
-      self.init(JSON: other.JSON)
-      }
     
+    internal convenience init?(other:PaymentMethod){
+        guard let JSON = other.JSON else{
+            self.init(for: other.type, name: other.name, Id: other.Id, token: other.token, checkoutName: other.checkoutName)
+        return
+        }
+        self.init(JSON: JSON)
+        
+    }
 }
