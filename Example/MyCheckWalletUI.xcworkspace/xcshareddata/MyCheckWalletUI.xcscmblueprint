@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5E2598217CBA39E90E74156492C7A949A1684F0A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5E2598217CBA39E90E74156492C7A949A1684F0A" : 9223372036854775807,
+    "96C3624047D866750E5BEA5981E1F554BCCD0768" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DE16DB19-8902-4377-A49D-64B11632F076",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5E2598217CBA39E90E74156492C7A949A1684F0A" : "MyCheckWalletUI\/",
+    "96C3624047D866750E5BEA5981E1F554BCCD0768" : "MyCheck-Core\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MyCheckWalletUI",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/MyCheckWalletUI.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/erez_spatz\/mycheckwalletui-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5E2598217CBA39E90E74156492C7A949A1684F0A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/erez_spatz\/mycheckcore-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "96C3624047D866750E5BEA5981E1F554BCCD0768"
+    }
+  ]
+}
