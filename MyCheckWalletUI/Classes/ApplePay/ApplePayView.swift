@@ -9,38 +9,53 @@
 import UIKit
 
 class ApplePayView: CreditCardView {
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-   override init(frame: CGRect, method: PaymentMethod){
-   super.init(frame: frame, method: method)
+  
+  
+  override init(frame: CGRect, method: PaymentMethod){
+    super.init(frame: frame, method: method)
     self.expirationDateLabel?.removeFromSuperview()
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
     let image = UIImage(named: "applePayBackground" , in: bundle, compatibleWith: nil)
     backgroundButton!.setImage(image, for: UIControlState())
-    if let numberToTrailing = self.numberToTrailing{
-       numberToTrailing.priority = 999
-       
+    self.creditCardNumberlabel?.removeFromSuperview()
+  }
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+  }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    //moving the label into position
+    if let creditCardNumberlabel = self.creditCardNumberlabel{
+      creditCardNumberlabel.textAlignment = NSTextAlignment.center;
       
+      
+    }
+  }
+  
+  //their is no edit mode so the overide has an empty implementation
+  override func toggleEditMode(){
+    self.editMode = !self.editMode
+    self.checboxButton?.isHidden = self.editMode
 
-    }
-    }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+  }
+  
+  @IBAction override func creditCardPressed(_ sender: UIButton!){
+    if editMode == false {
+      
+      if let paymentMethod = self.paymentMethod , paymentMethod.isDefault == false {
+        
+        ApplePayFactory.changeApplePayDefault(to: true)
+        printIfDebug("payment set as default")
+        if let del = self.delegate{
+          del.setPaymentAsDefault(method: paymentMethod)
+          
+        }
+      }
+      
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        //moving the label into position
-        if let creditCardNumberlabel = self.creditCardNumberlabel{
-            creditCardNumberlabel.textAlignment = NSTextAlignment.center;
-            
-                        
-        }
-    }
+  }
+  
+  
 }

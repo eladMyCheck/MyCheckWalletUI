@@ -180,9 +180,11 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         })
     }
     
-    internal func setPaymentAsDefault(){
-        
-        reloadMethods()
+  internal func setPaymentAsDefault(method: PaymentMethod){
+    if method.type != .applePay{
+        ApplePayFactory.changeApplePayDefault(to: false)
+    }
+      reloadMethods()
         
     }
     internal func reloadMethods(){

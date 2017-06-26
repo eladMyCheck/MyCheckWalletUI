@@ -34,7 +34,8 @@
       "source_files": [
         "MyCheckWalletUI/Classes/*",
         "MyCheckWalletUI/Classes/ViewControllers/*",
-        "MyCheckWalletUI/Classes/extensionTools/*"
+        "MyCheckWalletUI/Classes/extensionTools/*",
+        "MyCheckWalletUI/Classes/interfaces/*"
       ],
       "resource_bundles": {
         "MyCheckWalletUI": [
@@ -79,6 +80,7 @@
 
         ]
       },
+      "frameworks": "PassKit",
       "source_files": "MyCheckWalletUI/Classes/ApplePay/**/*",
       "platforms": {
         "ios": "9.0"

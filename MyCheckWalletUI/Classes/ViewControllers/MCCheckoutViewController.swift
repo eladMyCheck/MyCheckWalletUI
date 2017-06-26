@@ -98,10 +98,15 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
            nc.addObserver(self, selector: #selector(MCCheckoutViewController.receivedPaymentMethodsUpdateNotification), name: NSNotification.Name(rawValue: Wallet.refreshPaymentMethodsNotification), object: nil)
         
         //setting up UI and updating it if the user logges in... just incase
-        setupUI()
+      Wallet.shared.configureWallet(success: {
+       self.setupUI()
+        self.refreshPaymentMethods()
+
+      }, fail: nil)
+     
         nc.addObserver(self, selector: #selector(MCCheckoutViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
         nc.addObserver(self, selector:#selector(MCCheckoutViewController.assignImages), name:NSNotification.Name(rawValue: "acceptedCardsCheckoutSet"), object: nil)
-        
+      
         
     }
     
@@ -232,17 +237,22 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     }
     
     internal func imageURLForDropdown( _ method: PaymentMethod) -> URL?{
-        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-        let type = method.type
-        if type == .creditCard {
-            return imageURLForDropdown(method.issuer)
+      
+      switch method.type {
+      case .creditCard:
+        return imageURLForDropdown(method.issuer)
+      case .payPal:
+          if let url = URL(string: LocalData.manager.getString("cardsDropDownpaypal")) {
+            return url
         }
-        if method.type == .payPal{
-            if let url = URL(string: LocalData.manager.getString("cardsDropDownpaypal")) {
-                return url
-            }
+      case .applePay:
+        if let url = URL(string: LocalData.manager.getString("cardsDropDownapplepay")) {
+          return url
         }
-        return nil
+      default: break
+        
+      }
+               return nil
     }
     
     internal func getType(_ type : String) -> CreditCardType {

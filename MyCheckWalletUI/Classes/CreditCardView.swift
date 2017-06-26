@@ -10,7 +10,7 @@ import UIKit
 
 internal protocol CreditCardViewDelegate : class{
     func deletedPaymentMethod(_ method : PaymentMethod)
-    func setPaymentAsDefault()
+  func setPaymentAsDefault(method: PaymentMethod)
   func showActivityIndicator(_ show: Bool)
 }
 
@@ -127,7 +127,7 @@ expirationDateLabel.clipsToBounds = true
 
                     printIfDebug("payment set as default")
                     if let del = self.delegate{
-                        del.setPaymentAsDefault()
+                        del.setPaymentAsDefault(method: self.paymentMethod!)
                         
                     }
                     }, fail: { (error) in

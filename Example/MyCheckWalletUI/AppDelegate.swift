@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Session.shared.configure("pk_4eUo454a5WvduVnLadAjFWxrRwHnR", environment: .test)
         Session.logDebugData = true
-        PaypalFactory.initiate("com.mycheck.MyCheckWalletUI")
-
+       // PaypalFactory.initiate("com.mycheck.MyCheckWalletUI")
+ApplePayFactory.initiate("FF")
         //MasterPassFactory.initiate()
         return true
     }

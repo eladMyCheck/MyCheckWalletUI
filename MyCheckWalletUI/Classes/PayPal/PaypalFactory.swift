@@ -65,7 +65,8 @@ open class PaypalFactory : PaymentMethodFactory{
                 delegate.showLoadingIndicator(self, show: false)
                 
                 delegate.addedPaymentMethod(self, token: token)
-            
+            Wallet.shared.addedAPaymentMethod()
+
               }, fail: { error in
                   delegate.error(self, error: error)
                   delegate.showLoadingIndicator(self, show: false)

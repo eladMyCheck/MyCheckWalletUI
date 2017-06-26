@@ -286,6 +286,16 @@
                         <action selector="managePaymentMethodsButtonPressed:" destination="-1" eventType="touchUpInside" id="mz6-VD-Nja"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeh-NB-TXJ">
+                    <rect key="frame" x="16" y="228" width="343" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="343" id="RGD-j9-1ax"/>
+                        <constraint firstAttribute="height" constant="35" id="io2-BK-07I"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
+                    <color key="textColor" red="0.17120682570000001" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNs-hB-C9a">
                     <rect key="frame" x="0.0" y="261" width="375" height="110"/>
                     <subviews>
@@ -318,16 +328,6 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeh-NB-TXJ">
-                                    <rect key="frame" x="16" y="29" width="343" height="35"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="343" id="RGD-j9-1ax"/>
-                                        <constraint firstAttribute="height" constant="35" id="io2-BK-07I"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
-                                    <color key="textColor" red="0.17120682570000001" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="OIn-IS-AAt">
                                     <rect key="frame" x="6" y="9.5" width="363" height="55"/>
                                     <subviews>
@@ -356,12 +356,10 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="xeh-NB-TXJ" firstAttribute="centerX" secondItem="fy5-4p-QyT" secondAttribute="centerX" id="2pc-Kl-jRB"/>
                                 <constraint firstItem="OIn-IS-AAt" firstAttribute="leading" secondItem="fy5-4p-QyT" secondAttribute="leading" constant="6" id="BeW-oE-KeJ"/>
                                 <constraint firstAttribute="trailing" secondItem="OIn-IS-AAt" secondAttribute="trailing" constant="6" id="LB6-88-9dx"/>
                                 <constraint firstItem="L3r-7Z-Iff" firstAttribute="leading" secondItem="Vdm-SI-4xu" secondAttribute="trailing" constant="10" id="Ll6-xg-r8w"/>
                                 <constraint firstItem="L3r-7Z-Iff" firstAttribute="centerY" secondItem="Vdm-SI-4xu" secondAttribute="centerY" id="NcZ-fb-RAL"/>
-                                <constraint firstItem="xeh-NB-TXJ" firstAttribute="centerY" secondItem="fy5-4p-QyT" secondAttribute="centerY" id="Wym-Lo-P6O"/>
                                 <constraint firstItem="Vdm-SI-4xu" firstAttribute="top" secondItem="OIn-IS-AAt" secondAttribute="bottom" constant="7.5" id="tae-M9-eei"/>
                                 <constraint firstItem="OIn-IS-AAt" firstAttribute="top" secondItem="fy5-4p-QyT" secondAttribute="top" constant="9.5" id="vph-BQ-lEp"/>
                             </constraints>
@@ -466,7 +464,9 @@
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="leading" secondItem="bEb-a8-zXO" secondAttribute="leading" constant="-9" id="CPL-Aq-mw7"/>
                 <constraint firstItem="YDa-E9-pMW" firstAttribute="leading" secondItem="bEb-a8-zXO" secondAttribute="trailing" constant="7" id="DUc-ye-9Rq"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="bottom" secondItem="YDa-E9-pMW" secondAttribute="bottom" constant="11" id="FTB-vX-XSv"/>
+                <constraint firstItem="xeh-NB-TXJ" firstAttribute="top" secondItem="fwe-gf-87l" secondAttribute="bottom" id="KNW-QR-It3"/>
                 <constraint firstItem="e97-nh-J5G" firstAttribute="trailing" secondItem="YDa-E9-pMW" secondAttribute="trailing" id="Mdu-75-SuS"/>
+                <constraint firstItem="xeh-NB-TXJ" firstAttribute="centerX" secondItem="hcW-t3-chb" secondAttribute="centerX" id="ONp-3C-eKc"/>
                 <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="bottom" priority="500" constant="50" id="P3y-NT-FNU"/>
                 <constraint firstItem="E0F-KO-oYg" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" id="Pr7-YP-Nq5"/>
                 <constraint firstItem="e97-nh-J5G" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="bottom" constant="10" id="QZI-bv-Xy6"/>

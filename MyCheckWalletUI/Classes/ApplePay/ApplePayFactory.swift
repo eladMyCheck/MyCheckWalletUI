@@ -8,6 +8,7 @@
 
 import UIKit
 import PassKit
+import MyCheckCore
 open class ApplePayFactory : PaymentMethodFactory{
     //was the factory ever initiated.
     static var initiated = false
@@ -31,10 +32,10 @@ open class ApplePayFactory : PaymentMethodFactory{
     open static func initiate(_ scheme: String){
         if !initiated {
             //if the user can't make payments we will not add it to the wallet
-            if PKPaymentAuthorizationViewController.canMakePayments() {
+            if ApplePayFactory.deviceSupportsApplePay() {
                 let factory = ApplePayFactory()
                 Wallet.shared.factories.append(factory)
-                Wallet.shared.applePayLogic = self as! ApplePayInterface
+              Wallet.shared.applePayLogic = factory as ApplePayInterface
             }
             initiated = true
             
@@ -62,19 +63,22 @@ open class ApplePayFactory : PaymentMethodFactory{
         butRap.button.setBackgroundImage(UIImage(named: "paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
         
         //creating the apple pay button and adding it into the super button
-        let appleBut = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
+      let appleBut = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
+
         appleBut.translatesAutoresizingMaskIntoConstraints = false
         
         butRap.button.addSubview(appleBut)
-        
-        appleBut.widthAnchor.constraint(equalToConstant: 90).priority = 900
-        appleBut.heightAnchor.constraint(equalToConstant: 44)
-        appleBut.leadingAnchor.constraint(greaterThanOrEqualTo: butRap.button.leadingAnchor, constant: 10)
-        appleBut.trailingAnchor.constraint(greaterThanOrEqualTo: butRap.button.trailingAnchor, constant: 10)
-        
+
+      let widthConstraint = appleBut.widthAnchor.constraint(equalToConstant: 90)
+      widthConstraint.priority = 900
+      widthConstraint.isActive = true
+//      appleBut.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        appleBut.leadingAnchor.constraint(greaterThanOrEqualTo: butRap.button.leadingAnchor, constant: 10).isActive = true
+        appleBut.trailingAnchor.constraint(greaterThanOrEqualTo: butRap.button.trailingAnchor, constant: 10).isActive = true
+//        
         appleBut.centerXAnchor.constraint(equalTo: butRap.button.centerXAnchor).isActive = true
         appleBut.centerYAnchor.constraint(equalTo: butRap.button.centerYAnchor).isActive = true
-        
+      
         
         //adding target
         butRap.button.addTarget(self, action: #selector(ApplePayFactory.addMethodButPressed(_:)), for: .touchUpInside)
@@ -89,7 +93,7 @@ open class ApplePayFactory : PaymentMethodFactory{
     override func getCreditCardView(_ frame: CGRect, method: PaymentMethod) -> CreditCardView?{
         return ApplePayView(frame: frame, method: method)
     }
-    
+  
     @objc fileprivate func addMethodButPressed(_ sender: UIButton){
         
         //opening the wallet app
@@ -127,15 +131,11 @@ open class ApplePayFactory : PaymentMethodFactory{
     
     //ApplePay specific functions
     
-    fileprivate func canPayWithApplePay() -> Bool{
-        return  PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: self.supportedPaymentNetworks)
-        
     }
-}
 
 
 extension ApplePayFactory: ApplePayInterface{
-    func isApplePayDefault() -> Bool {
+    static func isApplePayDefault() -> Bool {
         if canPayWithApplePay(){
             return LocalData.wasApplePayDefault()
         }
@@ -143,13 +143,34 @@ extension ApplePayFactory: ApplePayInterface{
         return false
     }
     
-    func changeApplePayDefault(to newDefault: Bool) {
+    static func changeApplePayDefault(to newDefault: Bool) {
         if canPayWithApplePay(){
             LocalData.changeApplePayDefault(to: newDefault)
         }
     }
+  static func getApplePayPaymentMethod() -> PaymentMethod?{
+    if canPayWithApplePay(){
+    return    ApplePayPaymentMethod.init(isDefault: isApplePayDefault())
     
+    }
+    
+    return nil
+    
+  }
+  
+  static func canPayWithApplePay() -> Bool{
+   // return  PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: self.supportedPaymentNetworks)
+    return true
+  }
+  
+  static func deviceSupportsApplePay() -> Bool{
+    //return  PKPaymentAuthorizationViewController.canMakePayments()
+    return true
+  }
+
+  
 }
+
 
 
 
