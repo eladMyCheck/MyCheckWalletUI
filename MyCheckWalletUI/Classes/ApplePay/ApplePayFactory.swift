@@ -17,9 +17,9 @@ open class ApplePayFactory : PaymentMethodFactory{
     
     
     
-    private var _supportedPaymentNetworks: [PKPaymentNetwork]?
+    private static var _supportedPaymentNetworks: [PKPaymentNetwork]?
     //The methods apple pay should support for this device
-    fileprivate var supportedPaymentNetworks: [PKPaymentNetwork] { get{
+    fileprivate static var supportedPaymentNetworks: [PKPaymentNetwork] { get{
         
         guard let cached = _supportedPaymentNetworks else {
             let strings = LocalData.manager.getArray("supportedApplePayCardTypes")
@@ -35,7 +35,7 @@ open class ApplePayFactory : PaymentMethodFactory{
             if ApplePayFactory.deviceSupportsApplePay() {
                 let factory = ApplePayFactory()
                 Wallet.shared.factories.append(factory)
-              Wallet.shared.applePayLogic = factory as ApplePayInterface
+              Wallet.shared.applePayLogic = factory as ApplePayStateInterface
             }
             initiated = true
             
@@ -90,7 +90,7 @@ open class ApplePayFactory : PaymentMethodFactory{
     }
     
     
-    override func getCreditCardView(_ frame: CGRect, method: PaymentMethod) -> CreditCardView?{
+    override func getCreditCardView(_ frame: CGRect, method: PaymentMethodInterface) -> CreditCardView?{
         return ApplePayView(frame: frame, method: method)
     }
   
@@ -130,11 +130,14 @@ open class ApplePayFactory : PaymentMethodFactory{
     
     
     //ApplePay specific functions
-    
+    private static func deviceSupportsApplePay() -> Bool{
+        return PKPaymentAuthorizationViewController.canMakePayments()
+        
+    }
     }
 
 
-extension ApplePayFactory: ApplePayInterface{
+extension ApplePayFactory: ApplePayStateInterface{
     static func isApplePayDefault() -> Bool {
         if canPayWithApplePay(){
             return LocalData.wasApplePayDefault()
@@ -159,14 +162,14 @@ extension ApplePayFactory: ApplePayInterface{
   }
   
   static func canPayWithApplePay() -> Bool{
-   // return  PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: self.supportedPaymentNetworks)
-    return true
+    return applePayConfigured() && PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: ApplePayFactory.supportedPaymentNetworks)
   }
   
-  static func deviceSupportsApplePay() -> Bool{
-    //return  PKPaymentAuthorizationViewController.canMakePayments()
-    return true
+  static func applePayConfigured() -> Bool{
+    return initiated
   }
+
+   
 
   
 }

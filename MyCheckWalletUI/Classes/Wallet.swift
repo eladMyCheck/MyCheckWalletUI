@@ -30,7 +30,7 @@ open class Wallet{
   internal var PCIDomain: String?
   
   //will answer and update applepay specific logic
-  internal var applePayLogic: ApplePayInterface?
+  internal var applePayLogic: ApplePayStateInterface?
   
   //loaded all the languages in the config file
   fileprivate var loadedLanguages = false
@@ -72,10 +72,10 @@ open class Wallet{
   internal var factories: [PaymentMethodFactory] = []
   
   //remembers the braintree token
-  var braintreeToken : String? = nil
+  internal var braintreeToken : String? = nil
   
   internal var token: String?
-  open var methods:  [PaymentMethod] = []
+  internal var methods:  [PaymentMethodInterface] = []
   
   
   ///This property points to the singlton object. It should be used for calling all the functions in the class.
@@ -144,20 +144,12 @@ open class Wallet{
   ///
   ///   - parameter success: A block that is called if the user is logged in succesfully
   ///   - parameter fail: Called when the function fails for any reason
-  internal func getPaymentMethods( _ success: @escaping (( [PaymentMethod] ) -> Void) , fail: ((NSError) -> Void)? ) {
+  internal func getPaymentMethods( _ success: @escaping (( [PaymentMethodInterface] ) -> Void) , fail: ((NSError) -> Void)? ) {
     self.callPaymentMethods( success: {
       methods in
       var mutableMethods = methods
-      for (i,method) in mutableMethods.enumerated().reversed() {
-        if !self.hasFactory(method.type){
-          mutableMethods.remove(at: i)
-        }else{
-          //if it is of the factorys type replace it with the subclass otherwise do nothing
-          if let newMethod = self.createPaymentMethodSubclass(method) {
-            mutableMethods[i] = newMethod
-          }
-        }
-      }
+        mutableMethods.first(where: { $0.type == .applePay })sdkjbsdlvkj;   
+
       
       //Apple pay logic is handled localy.
       if  let applePayMethod = ApplePayFactory.getApplePayPaymentMethod(){
@@ -203,7 +195,7 @@ open class Wallet{
                               cvc: String ,
                               type: CreditCardType ,
                               isSingleUse: Bool ,
-                              success: @escaping (( PaymentMethod ) -> Void) ,
+                              success: @escaping (( PaymentMethodInterface ) -> Void) ,
                               fail: ((NSError) -> Void)? ){
     var params : [String: Any] = [  "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "cardType" : type.rawValue , "is_single_use" : String(describing: NSNumber(value: isSingleUse))]
     
@@ -244,7 +236,7 @@ open class Wallet{
   ///    - parameter success: A block that is called if the user is logged in succesfully
   ///    - parameter fail: Called when the function fails for any reason
   
-  internal func setPaymentMethodAsDefault( _ method: PaymentMethod,  success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ){
+  internal func setPaymentMethodAsDefault( _ method: PaymentMethodInterface,  success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ){
     
     //apple pay is handled localy
     if  method.type == .applePay{
@@ -273,7 +265,7 @@ open class Wallet{
   ///   - parameter fail: Called when the function fails for any reason
   
   
-  internal func deletePaymentMethod( _ method: PaymentMethod , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) {
+  internal func deletePaymentMethod( _ method: PaymentMethodInterface , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) {
     let params = [  "ID": method.Id]
     let urlStr = Networking.shared.domain! + URIs.deletePaymentMethod
     
@@ -315,7 +307,7 @@ open class Wallet{
     return false
   }
   
-  internal func createPaymentMethodSubclass(_ method: PaymentMethod) -> PaymentMethod?{
+  internal func createPaymentMethodSubclass(_ method: PaymentMethodInterface) -> PaymentMethod?{
     if let factory = Wallet.shared.getFactory(method.type){
       return factory.getPaymentMethod(method)
     }

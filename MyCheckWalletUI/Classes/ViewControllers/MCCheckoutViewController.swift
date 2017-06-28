@@ -22,14 +22,14 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     //variables
     
     /// This variable will always have the currant payment method selected by the user. In the case where the user doesn't have a payment method the variable will be nil.
-    open var selectedMethod : PaymentMethod?
+    public var selectedMethod : PaymentMethodInterface?
     
     ///The delegate that will be updated with MCCheckoutViewController height changes
     open var checkoutDelegate : CheckoutDelegate?
     
     //Outlets
     @IBOutlet weak fileprivate  var paymentSelectorView: UIView!
-  
+    
     @IBOutlet weak  fileprivate  var acceptedCreditCardsViewTopToCreditCardFieldConstraint: NSLayoutConstraint!
     @IBOutlet weak var acceptedCreditCardsViewTopToCollapsableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak fileprivate var paymentMethodSelectorTextField: UITextField!
@@ -37,7 +37,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBOutlet weak fileprivate var cancelButton: UIButton!
     @IBOutlet fileprivate var textFieldsBorderViews: [UIView]!
     @IBOutlet weak fileprivate var managePaymentMethodsButton: UIButton!
-    var paymentMethodSelector : UIPickerView = UIPickerView()
+    fileprivate var paymentMethodSelector : UIPickerView = UIPickerView()
     fileprivate var paymentMethods: Array<PaymentMethod>! = []
     
     @IBOutlet weak fileprivate var visaImageView: UIImageView!
@@ -56,16 +56,16 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBOutlet weak fileprivate var dropdownHeader: UILabel!
     @IBOutlet weak fileprivate var footerLabel: UILabel!
     
-    @IBOutlet weak var headerLineBG: UIView!
-    @IBOutlet weak var pickerDownArrow: UIImageView!
+    @IBOutlet weak fileprivate var headerLineBG: UIView!
+    @IBOutlet weak fileprivate var pickerDownArrow: UIImageView!
     
     //3rd party wallet payment methods UI elements
-    @IBOutlet weak var walletsSuperview: UIView!
-    @IBOutlet weak var walletsHeight: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var walletsSuperview: UIView!
+    @IBOutlet weak fileprivate var walletsHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var deleteBut: UIButton!
+    @IBOutlet weak fileprivate var deleteBut: UIButton!
     
-    @IBOutlet weak var firstLineWalletButs: UIStackView!
+    @IBOutlet weak fileprivate var firstLineWalletButs: UIStackView!
     @IBOutlet weak fileprivate var pciLabel: UILabel!
     
     fileprivate var walletButtons : [PaymentMethodButtonRapper] = []
@@ -78,6 +78,8 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         super.init(nibName: "CheckoutViewController", bundle: MCViewController.getBundle(Bundle(for: MCCheckoutViewController.self)))
     }
     
+    //MARK - Initiaters
+
     ///The preferred costructor to be used in order to create the View Controller
     init(){
         super.init(nibName: "CheckoutViewController", bundle: MCViewController.getBundle(Bundle(for: MCCheckoutViewController.self)))
@@ -86,6 +88,9 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     required convenience public init?(coder aDecoder: NSCoder) {
         self.init()
     }
+    
+    //MARK - Lifecycle functions
+
     override open func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
@@ -95,18 +100,18 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         }
         borderForField = [creditCardNumberField : creditCardBorderView, dateField : dateFieldBorderView, cvvField : cvvBorderView, zipField : zipFieldBorderView]
         let nc = NotificationCenter.default
-           nc.addObserver(self, selector: #selector(MCCheckoutViewController.receivedPaymentMethodsUpdateNotification), name: NSNotification.Name(rawValue: Wallet.refreshPaymentMethodsNotification), object: nil)
+        nc.addObserver(self, selector: #selector(MCCheckoutViewController.receivedPaymentMethodsUpdateNotification), name: NSNotification.Name(rawValue: Wallet.refreshPaymentMethodsNotification), object: nil)
         
         //setting up UI and updating it if the user logges in... just incase
-      Wallet.shared.configureWallet(success: {
-       self.setupUI()
-        self.refreshPaymentMethods()
-
-      }, fail: nil)
-     
+        Wallet.shared.configureWallet(success: {
+            self.setupUI()
+            self.refreshPaymentMethods()
+            
+        }, fail: nil)
+        
         nc.addObserver(self, selector: #selector(MCCheckoutViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
         nc.addObserver(self, selector:#selector(MCCheckoutViewController.assignImages), name:NSNotification.Name(rawValue: "acceptedCardsCheckoutSet"), object: nil)
-      
+        
         
     }
     
@@ -122,6 +127,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         
     }
     
+    //MARK: - private methods
     
     @objc fileprivate func assignImages(){
         let cardsImages = LocalData.manager.getArray("acceptedCardsCheckout")
@@ -237,22 +243,22 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     }
     
     internal func imageURLForDropdown( _ method: PaymentMethod) -> URL?{
-      
-      switch method.type {
-      case .creditCard:
-        return imageURLForDropdown(method.issuer)
-      case .payPal:
-          if let url = URL(string: LocalData.manager.getString("cardsDropDownpaypal")) {
-            return url
-        }
-      case .applePay:
-        if let url = URL(string: LocalData.manager.getString("cardsDropDownapplepay")) {
-          return url
-        }
-      default: break
         
-      }
-               return nil
+        switch method.type {
+        case .creditCard:
+            return imageURLForDropdown(method.issuer)
+        case .payPal:
+            if let url = URL(string: LocalData.manager.getString("cardsDropDownpaypal")) {
+                return url
+            }
+        case .applePay:
+            if let url = URL(string: LocalData.manager.getString("cardsDropDownapplePay")) {
+                return url
+            }
+        default: break
+            
+        }
+        return nil
     }
     
     internal func getType(_ type : String) -> CreditCardType {
@@ -294,8 +300,8 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                 }
                 //will be reached only if the token is not found
                 self.selectedMethod = methods.first
-
-            
+                
+                
             }else {
                 self.selectedMethod = methods.first
                 
@@ -309,7 +315,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     @IBAction func deletePressed(_ sender: UIButton) {
         if let method = self.selectedMethod{
             Wallet.shared.deletePaymentMethod(method, success: {
-               self.refreshPaymentMethods()
+                self.refreshPaymentMethods()
             }, fail: { (error) in
                 printIfDebug("did not delete payment")
                 self.showError(errorStr: error.localizedDescription)
@@ -540,11 +546,11 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                     
                     let  butRap = factory.getSmallAddMethodButton()
                     butRap.button.translatesAutoresizingMaskIntoConstraints = true
-
+                    
                     
                     //I am assuming their are 2 views in the stack view (one left most and one right most)they add padding to insure the size is correct and the items are centered.
                     self.firstLineWalletButs.insertArrangedSubview(butRap.button, at: self.firstLineWalletButs.arrangedSubviews.count - 1)
-
+                    
                     walletButtons.append(butRap)
                     
                     butRap.button.isEnabled = true
@@ -553,11 +559,11 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                     
                 }
                 
-           
                 
                 
                 
-                            default:// multiple wallets
+                
+            default:// multiple wallets
                 for factory in Wallet.shared.factories{
                     //TO-DO implement adding multiple wallets
                 }
@@ -568,7 +574,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     fileprivate func showError(errorStr: String){
         self.errorLabel.text = errorStr
         if errorStr.characters.count == 0 {
-                       return;
+            return;
         }
         self.errorLabel.alpha = 0.0
         //animating the error view in ... showing the error for a few seconds and removing again
@@ -580,7 +586,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             delay(0.3 + LocalData.manager.getDouble("ValueserrorTime", fallback: 7.0)){
                 UIView.animate(withDuration: 0.3, animations: {
                     self.errorLabel.alpha = 0.0
-                  
+                    
                 } , completion: { finished in
                     self.errorLabel.text  = ""
                     
@@ -627,9 +633,9 @@ extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
         
         let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert);
         let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "alert ok but"), style: .default, handler:
-            {(alert: UIAlertAction!) in
-                
-                
+        {(alert: UIAlertAction!) in
+            
+            
         })
         alert.addAction(defaultAction)
         self.present(alert, animated: true, completion: nil)

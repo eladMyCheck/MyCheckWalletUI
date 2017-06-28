@@ -200,42 +200,9 @@ open class MCAddCreditCardViewController: MCViewController {
             value.backgroundColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: value.backgroundColor!)
         }
     }
-    internal func setImageForType( _ type: CreditCardType){
-        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-        
-        if type == .Unknown {
-            if self.isMember(of: MCCheckoutViewController.self) {
-                typeImage.image = UIImage(named: "no_type_card_1" , in: bundle, compatibleWith: nil)
-            }else{
-                typeImage.image = UIImage(named: "no_type_card" , in: bundle, compatibleWith: nil)
-            }
-        }else{
-            
-            typeImage.kf.setImage(with:imageURL(type))}
-    }
+   
     
-    internal func imageURL( _ type: CreditCardType) -> URL?{
-        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-        switch type {
-        case .MasterCard:
-            return URL(string:  LocalData.manager.getString("addCreditImagesmastercard"))!
-        case .Visa:
-            return URL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
-        case .Diners:
-            return URL(string:  LocalData.manager.getString("addCreditImagesdinersclub"))!
-        case .Discover:
-            return URL(string:  LocalData.manager.getString("addCreditImagesdiscover"))!
-        case .Amex:
-            return URL(string:  LocalData.manager.getString("addCreditImagesamex"))!
-        case .JCB:
-            return URL(string:  LocalData.manager.getString("addCreditImagesJCB"))!
-        case .Maestro:
-            return URL(string:  LocalData.manager.getString("addCreditImagesmaestro"))!
-            
-        default:
-            return URL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
-        }
-    }
+   
     
     
     //sets the UI to show the field has an invalid value or not

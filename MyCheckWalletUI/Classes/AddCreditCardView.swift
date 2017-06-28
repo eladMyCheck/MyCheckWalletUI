@@ -10,7 +10,7 @@ import UIKit
 
 class AddCreditCardView: UIView , UIGestureRecognizerDelegate{
     
-    var paymentMethod : PaymentMethod?
+    var paymentMethod : PaymentMethodInterface?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -10,23 +10,31 @@ import Foundation
 import MyCheckCore
 
 extension Wallet{
-
-    func callPaymentMethods( success: @escaping (( [PaymentMethod] ) -> Void) , fail: ((NSError) -> Void)? ) {
+    
+    func callPaymentMethods( success: @escaping (( [PaymentMethodInterface] ) -> Void) , fail: ((NSError) -> Void)? ) {
         let params: [String: Any] = [ : ]
         
         let urlStr = Networking.shared.domain! + URIs.paymentMethods
         
         self.request(urlStr , method: .get, parameters: params , success: { JSON in
-            var returnArray : [PaymentMethod] = []
+            var returnArray : [PaymentMethodInterface] = []
             
             if  let methodsJSON = JSON["PaymentMethods"] as? NSArray{
                 
                 for dic in methodsJSON as! [NSDictionary]{
-                    if let method = PaymentMethod(JSON: dic){
-                        if let factory = Wallet.shared.getFactory(method.type){
-                            
+                    
+                    //checking the type of the card and creating the correct stuct
+                    if let source = dic["source"] as? String {
+                        let type = PaymentMethodType(source: source)
+                        if let factory = Wallet.shared.getFactory(type) , let method = factory.getPaymentMethod(JSON: dic){
+                            returnArray.append(method)
+                            continue
                         }
-                        returnArray.append(method)
+                        
+                        if  let method = CreditCardPaymentMethod(JSON: dic){
+                            returnArray.append(method)
+                            continue
+                        }
                     }
                 }
                 returnArray.sort(by: {$0.isSingleUse && !$1.isSingleUse}) //sorts temporary cards to be first in the list
@@ -41,5 +49,5 @@ extension Wallet{
             
         }, fail: fail)
     }
-
+    
 }

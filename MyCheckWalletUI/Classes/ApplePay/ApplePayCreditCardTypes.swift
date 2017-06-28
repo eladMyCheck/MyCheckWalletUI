@@ -22,7 +22,7 @@ internal enum ApplePayCreditCardTypes: String {
     case quicPay = "QuicPay"
     case iDCredit = "IDCredit"
     
-   
+    //TO-DO improve this (no one is actauly using the enum...
     //Converts ApplePayCreditCardTypes to PKPaymentNetwork if the ios version supports iot and nil otherwise
     private func convert( ) -> PKPaymentNetwork?{
         switch self {
@@ -78,8 +78,7 @@ internal enum ApplePayCreditCardTypes: String {
             } else {
                 return nil
             }
-        default:
-            return nil
+      
         }
     }
     

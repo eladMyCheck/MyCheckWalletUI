@@ -9,73 +9,69 @@
 import UIKit
 
 internal protocol CreditCardViewDelegate : class{
-    func deletedPaymentMethod(_ method : PaymentMethod)
-  func setPaymentAsDefault(method: PaymentMethod)
-  func showActivityIndicator(_ show: Bool)
+    func deletedPaymentMethod(_ method : PaymentMethodInterface)
+    func setPaymentAsDefault(method: PaymentMethodInterface)
+    func showActivityIndicator(_ show: Bool)
 }
 
 internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     
-    var paymentMethod : PaymentMethod?
-   @IBOutlet weak var checboxButton : UIButton?
+    var paymentMethod : PaymentMethodInterface?
+    @IBOutlet weak var checboxButton : UIButton?
     var editMode = false
     var delegate : CreditCardViewDelegate?
     
     
     @IBOutlet weak var tempCardIcon: UIImageView!
-   @IBOutlet weak var creditCardNumberlabel: UILabel?
+    @IBOutlet weak var creditCardNumberlabel: UILabel?
     @IBOutlet weak var numberToTrailing: NSLayoutConstraint!
-   @IBOutlet weak var expirationDateLabel: UILabel?
-  @IBOutlet weak  var backgroundButton: UIButton?
-   
+    @IBOutlet weak var expirationDateLabel: UILabel?
+    @IBOutlet weak  var backgroundButton: UIButton?
     
-    init(frame: CGRect, method: PaymentMethod){
+    
+    init(frame: CGRect, method: PaymentMethodInterface){
         super.init(frame: frame)
-      
-      let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-
+        
+        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+        
         self.isUserInteractionEnabled = true
         self.paymentMethod = method
-
-      xibSetup()
         
-     
+        xibSetup()
+        
+        
         tempCardIcon.isHidden = !method.isSingleUse
         //credit card number label
         if let creditCardNumberlabel = creditCardNumberlabel {
             creditCardNumberlabel.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4)
-creditCardNumberlabel.layer.cornerRadius = 4
+            creditCardNumberlabel.layer.cornerRadius = 4
             creditCardNumberlabel.clipsToBounds = true
-        creditCardNumberlabel.textColor = UIColor.white
-        creditCardNumberlabel.font =  UIFont(name: creditCardNumberlabel.font.fontName, size: creditCardNumberlabel.font.pointSize)
-        if let _ = method.lastFourDigits , let name = method.name{
-            creditCardNumberlabel.text = " \(name) "
-          }
-            }
+            creditCardNumberlabel.textColor = UIColor.white
+            creditCardNumberlabel.font =  UIFont(name: creditCardNumberlabel.font.fontName, size: creditCardNumberlabel.font.pointSize)
+            creditCardNumberlabel.text = method.extaDescription
+            
+        }
         //expiration date label
-
+        
         if let expirationDateLabel = expirationDateLabel{
-        expirationDateLabel.textColor = UIColor.white
+            expirationDateLabel.textColor = UIColor.white
             expirationDateLabel.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4)
             expirationDateLabel.layer.cornerRadius = 4
-expirationDateLabel.clipsToBounds = true
+            expirationDateLabel.clipsToBounds = true
             expirationDateLabel.font =  UIFont(name: expirationDateLabel.font.fontName, size: expirationDateLabel.font.pointSize )
-        if var year = method.expireYear, let month = method.expireMonth{
-            if year.characters.count > 2 {
-                year = year.substring(from: year.characters.index(year.startIndex, offsetBy: 2))
-                
-                expirationDateLabel.text = String(format: "%@/%@", month, year)
-            }
-            }
+            
+            expirationDateLabel.text = method.extraSecondaryDescription
+            
+            
         }
         
-      
-    
+        
+        
         backgroundButton?.setImage(setImageForType(method.issuer), for: .normal)
         
         //default card checkbox
-      
-      
+        
+        
         if ((self.paymentMethod!.isDefault) == true) {
             self.checboxButton?.setImage(UIImage(named: "v", in: bundle, compatibleWith: nil)!, for: UIControlState())
             self.checboxButton?.isHidden = false
@@ -85,7 +81,7 @@ expirationDateLabel.clipsToBounds = true
     }
     
     //constuction helper function
-   private func xibSetup() {
+    private func xibSetup() {
         //loading from nib
         let bundle =  MCViewController.getBundle( Bundle(for: CreditCardView.classForCoder()))
         let nib = UINib(nibName: "CreditCardView", bundle: bundle)
@@ -102,20 +98,20 @@ expirationDateLabel.clipsToBounds = true
     }
     
     
-   @IBAction func checkboxPressed(_ sender: UIButton!) {
+    @IBAction func checkboxPressed(_ sender: UIButton!) {
         if editMode == true {
             Wallet.shared.deletePaymentMethod(self.paymentMethod!, success: {
                 printIfDebug("payment method deleted")
                 if let del = self.delegate{
                     del.deletedPaymentMethod(self.paymentMethod!)
                 }
-                }, fail: { (error) in
-                    printIfDebug("did not delete payment")
+            }, fail: { (error) in
+                printIfDebug("did not delete payment")
             })
         }
     }
     
-   @IBAction func creditCardPressed(_ sender: UIButton!){
+    @IBAction func creditCardPressed(_ sender: UIButton!){
         if editMode == false {
             if (self.paymentMethod?.isSingleUse)! {
                 return
@@ -123,17 +119,17 @@ expirationDateLabel.clipsToBounds = true
             if self.paymentMethod?.isDefault == false {
                 self.delegate?.showActivityIndicator(true)
                 Wallet.shared.setPaymentMethodAsDefault(self.paymentMethod!, success: {
-                  self.delegate?.showActivityIndicator(false)
-
+                    self.delegate?.showActivityIndicator(false)
+                    
                     printIfDebug("payment set as default")
                     if let del = self.delegate{
                         del.setPaymentAsDefault(method: self.paymentMethod!)
                         
                     }
-                    }, fail: { (error) in
-                      self.delegate?.showActivityIndicator(false)
-
-                        printIfDebug("did not set payment as default")
+                }, fail: { (error) in
+                    self.delegate?.showActivityIndicator(false)
+                    
+                    printIfDebug("did not set payment as default")
                 })
             }
         }

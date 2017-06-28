@@ -14,7 +14,4 @@ extension URIs{
 }
 
 
-extension Wallet {
 
-    
-}

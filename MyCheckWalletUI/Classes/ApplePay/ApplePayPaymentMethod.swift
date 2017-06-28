@@ -7,7 +7,8 @@
 //
 
 import UIKit
-class ApplePayPaymentMethod: PaymentMethod {
+  import MyCheckCore
+class ApplePayPaymentMethod: PaymentMethodInterface  {
   
   override var checkoutName: String? {get{
                return "Apple Pay"
@@ -21,8 +22,13 @@ class ApplePayPaymentMethod: PaymentMethod {
   
 
   
-  
+    public func generatePaymentId(success: (String) -> Void, fail: (NSError) -> Void) {
+        success(Id)
+    }
+
   
   
   
 }
+
+  
