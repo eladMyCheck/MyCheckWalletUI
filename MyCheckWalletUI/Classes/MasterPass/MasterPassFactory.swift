@@ -104,7 +104,7 @@ extension MasterPassFactory : AddMasterPassViewControllerDelegate{
         Wallet.shared.addMasterPass(payload: payload, singleUse: singleUse, success: {method in
             if let delegate = self.delegate ,  let method = method{
                 Wallet.shared.addedAPaymentMethod()
-                delegate.addedPaymentMethod(self, token: method.token)
+                delegate.addedPaymentMethod(self, method: method)
             }
         }, fail: {error in
             if let delegate = self.delegate{

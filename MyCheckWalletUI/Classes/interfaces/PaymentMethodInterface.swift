@@ -43,7 +43,7 @@ public enum PaymentMethodType : String{
 }
 
 
-public protocol PaymentMethodInterface: PaymentIdProtocol ,CustomStringConvertible{
+public protocol PaymentMethodInterface: Chargeable ,CustomStringConvertible  {
    
     var  isSingleUse : Bool{ get}
     
@@ -57,14 +57,63 @@ public protocol PaymentMethodInterface: PaymentIdProtocol ,CustomStringConvertib
     var extaDescription: String{get}
     //used to display extra data abou the method , for example the expiration date
     var extraSecondaryDescription: String{get}
-    
+  
+  //The ID of the payment method. It is optional because it is created by the server and Apple Pay , for example , doesnt always have it in hand.
+  var ID: String{get}
     ///Init function
     ///
     ///    - JSON: A JSON that comes from the wallet endpoint
     ///    - Returns: A payment method object or nil if the JSON is invalid or missing non optional parameters.
     init?(JSON: NSDictionary)
-    //sets up the image in the button reprisenting the payment method
-    func setupMethodBackgroundImage(for button: UIButton)
-    //sets up the image reprisenting the payment method
-    func setupMethodImage(for button: UIImageView, fallback: UIImage)
+  
+  //gets the background image for the payment method. For MyCheck use only.
+  func getBackgroundImage() -> UIImage
+  //loads the correct image icon for the checkout page.
+  func setupMethodImage(for imageview: UIImageView)
+
+}
+extension PaymentMethodInterface{
+  public static func ==(lhs: Self, rhs: Self) -> Bool{
+  return lhs.ID == rhs.ID &&
+    lhs.type == rhs.type &&
+    lhs.isSingleUse == rhs.isSingleUse &&
+    lhs.isDefault == rhs.isDefault &&
+    lhs.extaDescription == rhs.extaDescription &&
+    lhs.extraSecondaryDescription == rhs.extraSecondaryDescription
+  }
+}
+
+extension PaymentMethodInterface{
+  func getBackgroundImage() -> UIImage {
+    let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+    switch self.type {
+    case .applePay:
+      return UIImage(named: "apple_pay_background", in: bundle, compatibleWith: nil)!
+    case .payPal:
+      return UIImage(named: "paypal_background", in: bundle, compatibleWith: nil)!
+      //      case .masterPass:
+      //        return UIImage(named: "diners_background", in: bundle, compatibleWith: nil)!
+      //      case .visaCheckout:
+    //        return UIImage(named: "discover_background", in: bundle, compatibleWith: nil)!
+    default:
+      return UIImage(named: "notype_background" , in: bundle, compatibleWith: nil)!
+    }
+  }
+}
+
+extension PaymentMethodType{
+  func imageURLForDropdown( ) -> URL?{
+    switch self {
+    case .applePay:
+      return URL(string:  LocalData.manager.getString("cardsDropDownapplePay"))!
+    case .payPal:
+      return URL(string:  LocalData.manager.getString("cardsDropDownpaypal"))!
+      //    case .masterPass:
+      //      return URL(string:  LocalData.manager.getString("cardsDropDowndinersclub"))!
+      //    case .visaCheckout:
+    //      return URL(string:  LocalData.manager.getString("cardsDropDowndiscover"))!
+    default:
+      return nil
+    }
+  }
 }

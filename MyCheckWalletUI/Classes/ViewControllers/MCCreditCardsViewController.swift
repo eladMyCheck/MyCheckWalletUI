@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MyCheckCore
 internal protocol MCCreditCardsViewControllerrDelegate {
     func backPressed()
 }
@@ -23,7 +23,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     @IBOutlet weak var scrollView: MCScrollView!
     @IBOutlet weak var backBut: UIButton!
     var activityView : UIActivityIndicatorView!
-    var paymentMethods: Array<PaymentMethod>!
+    var paymentMethods: Array<PaymentMethodInterface>!
     var delegate : MCCreditCardsViewControllerrDelegate?
     var creditCards : NSMutableArray = []
     var editMode : Bool = false
@@ -158,9 +158,9 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         
     }
     
-    internal  func deletedPaymentMethod(_ method: PaymentMethod) {
+    internal  func deletedPaymentMethod(_ method: PaymentMethodInterface) {
         for i in (0..<self.paymentMethods.count) {
-            if method.Id == self.paymentMethods[i].Id {
+            if method.ID == self.paymentMethods[i].ID {
                 if i > 0 {
                     self.indexToScrollTo = i
                 }else{
@@ -180,7 +180,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         })
     }
     
-  internal func setPaymentAsDefault(method: PaymentMethod){
+  internal func setPaymentAsDefault(method: PaymentMethodInterface){
     if method.type != .applePay{
         ApplePayFactory.changeApplePayDefault(to: false)
     }

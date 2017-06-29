@@ -1,19 +1,5 @@
 PODS:
   - Alamofire (4.5.0)
-  - Braintree/Core (4.8.4)
-  - Braintree/DataCollector (4.8.4):
-    - Braintree/Core
-  - Braintree/PayPal (4.8.4):
-    - Braintree/Core
-    - Braintree/PayPalOneTouch
-  - Braintree/PayPalDataCollector (4.8.4):
-    - Braintree/Core
-    - Braintree/PayPalUtils
-  - Braintree/PayPalOneTouch (4.8.4):
-    - Braintree/Core
-    - Braintree/PayPalDataCollector
-    - Braintree/PayPalUtils
-  - Braintree/PayPalUtils (4.8.4)
   - Kingfisher (3.10.2)
   - MyCheckCore (0.0.7):
     - Alamofire (~> 4.0)
@@ -24,16 +10,6 @@ PODS:
   - MyCheckWalletUI/Core (0.0.14):
     - Kingfisher (~> 3.0)
     - MyCheckCore
-  - MyCheckWalletUI/MasterPass (0.0.14):
-    - Kingfisher (~> 3.0)
-    - MyCheckCore
-    - MyCheckWalletUI/Core
-  - MyCheckWalletUI/PayPal (0.0.14):
-    - Braintree/DataCollector
-    - Braintree/PayPal
-    - Kingfisher (~> 3.0)
-    - MyCheckCore
-    - MyCheckWalletUI/Core
   - Nimble (7.0.1)
   - Quick (1.1.0)
 
@@ -41,26 +17,23 @@ DEPENDENCIES:
   - MyCheckCore (from `../../MyCheck-Core`)
   - MyCheckWalletUI/ApplePay (from `../`)
   - MyCheckWalletUI/Core (from `../`)
-  - MyCheckWalletUI/MasterPass (from `../`)
-  - MyCheckWalletUI/PayPal (from `../`)
   - Nimble
   - Quick
 
 EXTERNAL SOURCES:
   MyCheckCore:
-    :path: ../../MyCheck-Core
+    :path: "../../MyCheck-Core"
   MyCheckWalletUI:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  Braintree: b14041582732676facd0b7237bc08cfdc0cbf988
   Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
   MyCheckCore: 2c0ae300c59ca78be5caf935389589b9de5cbfd3
   MyCheckWalletUI: 00df6d45007ef5e54650c4ab3274c76fcf4677a4
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
 
-PODFILE CHECKSUM: dd5cbb040b28c9f956bc9b6aa953f257612ae9fc
+PODFILE CHECKSUM: aa4761223e649e523ef63d5d9aba137c3c28522c
 
-COCOAPODS: 1.2.0.beta.3
+COCOAPODS: 1.2.1

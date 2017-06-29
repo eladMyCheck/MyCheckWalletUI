@@ -42,7 +42,7 @@ extension Wallet {
         
     }
     
-    func addMasterPass(payload: String, singleUse: Bool ,success: @escaping ((PaymentMethod?) -> Void) , fail: ((NSError) -> Void)? ){
+    func addMasterPass(payload: String, singleUse: Bool ,success: @escaping ((PaymentMethodInterface?) -> Void) , fail: ((NSError) -> Void)? ){
         let params = [  "source":"masterpass" , "masterpass_payload":payload , "is_single_use":  String(describing: NSNumber(value: singleUse))]
         
         
@@ -51,7 +51,7 @@ extension Wallet {
             
             self.request(urlStr, method: .post, parameters: params , success: { JSON in
                 let pm =  JSON["pm"] as! NSDictionary
-                let method = PaymentMethod(JSON: pm)
+                let method = CreditCardPaymentMethod(JSON: pm)
                 success(method)
                 }, fail: fail)
         }else{

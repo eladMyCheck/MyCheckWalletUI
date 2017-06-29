@@ -148,7 +148,7 @@ open class Wallet{
     self.callPaymentMethods( success: {
       methods in
       var mutableMethods = methods
-        mutableMethods.first(where: { $0.type == .applePay })sdkjbsdlvkj;   
+      
 
       
       //Apple pay logic is handled localy.
@@ -160,7 +160,8 @@ open class Wallet{
         }
         if applePayMethod.isDefault{
          //making all other methods to not be default
-          mutableMethods = mutableMethods.map({value in
+          mutableMethods = mutableMethods.map({method in
+            var value = method
             value.isDefault = false
           return value
           })
@@ -216,7 +217,7 @@ open class Wallet{
             ApplePayFactory.changeApplePayDefault(to: false)
           
           
-          success(PaymentMethod(JSON: methodJSON )!)
+          success(CreditCardPaymentMethod(JSON: methodJSON )!)
         }else{
           if let fail = fail{
             if let errormessage = JSON["message"] as? String{
@@ -245,7 +246,7 @@ open class Wallet{
     }
 
     
-    let params = [  "ID": method.Id]
+    let params = [  "ID": method.ID]
     
     let urlStr = Networking.shared.domain! + URIs.setMethodAsDefault
     
@@ -266,7 +267,7 @@ open class Wallet{
   
   
   internal func deletePaymentMethod( _ method: PaymentMethodInterface , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) {
-    let params = [  "ID": method.Id]
+    let params = [  "ID": method.ID]
     let urlStr = Networking.shared.domain! + URIs.deletePaymentMethod
     
     self.request(urlStr, method: .post , parameters:  params , success: { JSON in
@@ -307,12 +308,7 @@ open class Wallet{
     return false
   }
   
-  internal func createPaymentMethodSubclass(_ method: PaymentMethodInterface) -> PaymentMethod?{
-    if let factory = Wallet.shared.getFactory(method.type){
-      return factory.getPaymentMethod(method)
-    }
-    return method
-  }
+ 
   
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 internal protocol PaymentMethodFactoryDelegate{
     func error(_ controller: PaymentMethodFactory , error:NSError)
-    func addedPaymentMethod(_ controller: PaymentMethodFactory ,token:String)
+    func addedPaymentMethod(_ controller: PaymentMethodFactory ,method:PaymentMethodInterface)
     func displayViewController(_ controller: UIViewController )
     
     func dismissViewController(_ controller: UIViewController )

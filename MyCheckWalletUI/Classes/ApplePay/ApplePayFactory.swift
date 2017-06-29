@@ -120,13 +120,7 @@ open class ApplePayFactory : PaymentMethodFactory{
     }
     
     
-    //creats a new copy of the payment method but as the desired subclass
-    internal override func getPaymentMethod(_ other: PaymentMethod) -> PaymentMethod?{
-        if other.type == .applePay{
-            return ApplePayPaymentMethod(other: other)
-        }
-        return PaymentMethod(other: other)!
-    }
+    
     
     
     //ApplePay specific functions
@@ -151,9 +145,9 @@ extension ApplePayFactory: ApplePayStateInterface{
             LocalData.changeApplePayDefault(to: newDefault)
         }
     }
-  static func getApplePayPaymentMethod() -> PaymentMethod?{
+  static func getApplePayPaymentMethod() -> PaymentMethodInterface?{
     if canPayWithApplePay(){
-    return    ApplePayPaymentMethod.init(isDefault: isApplePayDefault())
+    return    ApplePayPaymentMethod.init(methodIsDefault: isApplePayDefault())
     
     }
     

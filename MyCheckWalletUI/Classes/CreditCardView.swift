@@ -67,7 +67,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         
         
         
-        backgroundButton?.setImage(setImageForType(method.issuer), for: .normal)
+        backgroundButton?.setImage(method.getBackgroundImage(), for: .normal)
         
         //default card checkbox
         
@@ -162,28 +162,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    internal func setImageForType( _ type: CreditCardType) -> UIImage{
-        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-        switch type {
-        case .MasterCard:
-            return UIImage(named: "master_card_background", in: bundle, compatibleWith: nil)!
-        case .Visa:
-            return UIImage(named: "visa_background", in: bundle, compatibleWith: nil)!
-        case .Diners:
-            return UIImage(named: "diners_background", in: bundle, compatibleWith: nil)!
-        case .Discover:
-            return UIImage(named: "discover_background", in: bundle, compatibleWith: nil)!
-        case .Amex:
-            return UIImage(named: "amex_background", in: bundle, compatibleWith: nil)!
-        case .JCB:
-            return UIImage(named: "jcb_background", in: bundle, compatibleWith: nil)!
-        case .Maestro:
-            return UIImage(named: "maestro_background", in: bundle, compatibleWith: nil)!
-            
-        default:
-            return UIImage(named: "notype_background" , in: bundle, compatibleWith: nil)!
-        }
-    }
+   
     
     func toggleEditMode(){
         self.editMode = !self.editMode
@@ -202,3 +181,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         }
     }
 }
+
+
+ 
+

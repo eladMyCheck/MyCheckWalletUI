@@ -146,10 +146,11 @@ open class MCAddCreditCardViewController: MCViewController {
         setFieldInvalid(zipField , invalid: false)
         errorLabel.text = ""
         checkbox.isSelected = false
-        setImageForType(.Unknown)
+        setImageForType(type: .Unknown)
         self.resignFirstResponder()
     }
     //MARK: - overides
+  @discardableResult
     override open func resignFirstResponder() -> Bool {
         super.resignFirstResponder()
         creditCardNumberField.resignFirstResponder()
@@ -258,7 +259,8 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             
             
             let validator =  CreditCardValidator(cardNumber: txtAfterUpdate as String)
-            setImageForType(validator.cardType) // setting correct icon image
+            
+            setImageForType(type: validator.cardType)
             if !validator.numberHasvalidFormat && validator.reachedMaxCardLength{//dont allow typing more if invalid
                 return false
             }
@@ -269,7 +271,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             }
             textField.text = validator.formattedCardNumber
             return false
-            
+          
         case dateField:
             if txtAfterUpdate == "00" {
                 return false
@@ -452,5 +454,49 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         }
         activityView.isHidden = !show
     }
+  //sets the image to the correct credit card type
+  internal func setImageForType(type: CreditCardType){
+    guard let url = type.smallImageURL() else{
+      let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+
+      if self.isMember(of: MCCheckoutViewController.self) {
+        typeImage.image = UIImage(named: "no_type_card_1" , in: bundle, compatibleWith: nil)
+      }else{
+        typeImage.image = UIImage(named: "no_type_card" , in: bundle, compatibleWith: nil)
+      }
+      return
+    }
     
+
+    typeImage.kf.setImage(with: url)
+
+  }
 }
+
+fileprivate extension CreditCardType{
+  fileprivate func smallImageURL() -> URL?{
+    // let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+    switch self {
+    case .MasterCard:
+      return URL(string:  LocalData.manager.getString("addCreditImagesmastercard"))!
+    case .Visa:
+      return URL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
+    case .Diners:
+      return URL(string:  LocalData.manager.getString("addCreditImagesdinersclub"))!
+    case .Discover:
+      return URL(string:  LocalData.manager.getString("addCreditImagesdiscover"))!
+    case .Amex:
+      return URL(string:  LocalData.manager.getString("addCreditImagesamex"))!
+    case .JCB:
+      return URL(string:  LocalData.manager.getString("addCreditImagesJCB"))!
+    case .Maestro:
+      return URL(string:  LocalData.manager.getString("addCreditImagesmaestro"))!
+      
+    default:
+      
+      return nil
+    }
+  }
+
+}
+

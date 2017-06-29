@@ -28,7 +28,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     ///The delegate method that will be called when the View Controller is ready to be dismissed.
     weak var delegate: MCPaymentMethodsViewControllerDelegate?
     
-    internal var paymentMethods: Array<PaymentMethod>!
+    internal var paymentMethods: Array<PaymentMethodInterface>!
     @IBOutlet weak var doNotStoreCheckbox: UIButton!
     @IBOutlet weak var doNotStoreLabel: UILabel!
     
@@ -50,7 +50,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     @IBAction func addCreditCardPressed(_ sender: AnyObject) {
         showEnterCreditCard(true , animated: true)
     }
-    internal static func createPaymentMethodsView (_ delegate: MCPaymentMethodsViewControllerDelegate?, withPaymentMethods : Array<PaymentMethod>!) -> MCPaymentMethodsViewController
+    internal static func createPaymentMethodsView (_ delegate: MCPaymentMethodsViewControllerDelegate?, withPaymentMethods : Array<PaymentMethodInterface>!) -> MCPaymentMethodsViewController
     {
         
         let storyboard = MCViewController.getStoryboard(  Bundle(for: self.classForCoder()))
@@ -321,7 +321,7 @@ extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
         self.present(alert, animated: true, completion: nil)
     }
     
-    func addedPaymentMethod(_ controller: PaymentMethodFactory ,token:String){
+    func addedPaymentMethod(_ controller: PaymentMethodFactory ,method:PaymentMethodInterface){
         if let creditCardListVC = creditCardListVC{
             creditCardListVC.reloadMethods()
             self.showEnterCreditCard(false , animated: true)

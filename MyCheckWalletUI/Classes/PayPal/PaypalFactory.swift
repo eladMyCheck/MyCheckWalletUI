@@ -58,13 +58,10 @@ open class PaypalFactory : PaymentMethodFactory{
           }
           if let nonce = nonce , let delegate = self.delegate{
           Wallet.shared.addPayPal(nonce.nonce, singleUse: singleUse, success: { method in
-              var token = ""
-              if let method = method {
-                token = method.token
-              }
+              
                 delegate.showLoadingIndicator(self, show: false)
                 
-                delegate.addedPaymentMethod(self, token: token)
+                delegate.addedPaymentMethod(self, method: method)
             Wallet.shared.addedAPaymentMethod()
 
               }, fail: { error in
@@ -105,7 +102,7 @@ open class PaypalFactory : PaymentMethodFactory{
   }
     
     
-  override func getCreditCardView(_ frame: CGRect, method: PaymentMethod) -> CreditCardView?{
+  override func getCreditCardView(_ frame: CGRect, method: PaymentMethodInterface) -> CreditCardView?{
     return PayPalView(frame: frame, method: method)
   }
   @objc fileprivate func addMethodButPressed(_ sender: UIButton){
@@ -141,13 +138,7 @@ open class PaypalFactory : PaymentMethodFactory{
     return   BTAppSwitch.handleOpen(url, sourceApplication:sourceApplication)
   }
   
-  //creats a new copy of the payment method but as the desired subclass
-  internal override func getPaymentMethod(_ other: PaymentMethod) -> PaymentMethod?{
-    if other.type == .payPal{
-      return PayPalPaymentMethod(other: other)
-    }
-    return PaymentMethod(other: other)!
-  }
+
 }
 extension PaypalFactory : BTViewControllerPresentingDelegate{
     /*!

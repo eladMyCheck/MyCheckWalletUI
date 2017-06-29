@@ -11,9 +11,10 @@ import UIKit
 class ApplePayView: CreditCardView {
   
   
-  override init(frame: CGRect, method: PaymentMethod){
+  override init(frame: CGRect, method: PaymentMethodInterface){
     super.init(frame: frame, method: method)
     self.expirationDateLabel?.removeFromSuperview()
+    self.tempCardIcon.removeFromSuperview()
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
     let image = UIImage(named: "applePayBackground" , in: bundle, compatibleWith: nil)
     backgroundButton!.setImage(image, for: UIControlState())
