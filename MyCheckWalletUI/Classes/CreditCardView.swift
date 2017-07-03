@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MyCheckCore
 
 internal protocol CreditCardViewDelegate : class{
     func deletedPaymentMethod(_ method : PaymentMethodInterface)

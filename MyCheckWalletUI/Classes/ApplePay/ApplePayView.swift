@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MyCheckCore
 
 class ApplePayView: CreditCardView {
   
@@ -46,7 +47,7 @@ class ApplePayView: CreditCardView {
       
       if let paymentMethod = self.paymentMethod , paymentMethod.isDefault == false {
         
-        ApplePayFactory.changeApplePayDefault(to: true)
+        Wallet.shared.applePayController.changeApplePayDefault(to: true)
         printIfDebug("payment set as default")
         if let del = self.delegate{
           del.setPaymentAsDefault(method: paymentMethod)

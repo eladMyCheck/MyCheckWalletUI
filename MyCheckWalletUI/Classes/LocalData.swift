@@ -27,9 +27,7 @@ internal class LocalData{
     func addStrings(_ prefix: String? , dictionary: NSDictionary){
         let prefixFinal = prefix == nil ? "" : prefix!
         for (key , value) in dictionary{
-            if(key as! String == "acceptedCardsCheckout"){
-            let b = 1
-            }
+            
             let keyFinal = "\(prefixFinal)\(key)"
 
             if let str = value as? String{

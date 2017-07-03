@@ -30,7 +30,7 @@ open class Wallet{
   internal var PCIDomain: String?
   
   //will answer and update applepay specific logic
-  internal var applePayLogic: ApplePayStateInterface?
+  public var applePayController: ApplePayController = NoApplePayState()
   
   //loaded all the languages in the config file
   fileprivate var loadedLanguages = false
@@ -152,11 +152,11 @@ open class Wallet{
 
       
       //Apple pay logic is handled localy.
-      if  let applePayMethod = ApplePayFactory.getApplePayPaymentMethod(){
+      if  let applePayMethod = Wallet.shared.applePayController.getApplePayPaymentMethod(){
         
         //if we dont have any other method we will set apple pay as default
         if mutableMethods.count == 0 {
-          ApplePayFactory.changeApplePayDefault(to: true)
+          Wallet.shared.applePayController.changeApplePayDefault(to: true)
         }
         if applePayMethod.isDefault{
          //making all other methods to not be default
@@ -214,7 +214,7 @@ open class Wallet{
         let methodJSON = JSON["pm"] as? NSDictionary
         if let methodJSON = methodJSON{
           //apple pay should stop being default
-            ApplePayFactory.changeApplePayDefault(to: false)
+            Wallet.shared.applePayController.changeApplePayDefault(to: false)
           
           
           success(CreditCardPaymentMethod(JSON: methodJSON )!)
@@ -241,7 +241,7 @@ open class Wallet{
     
     //apple pay is handled localy
     if  method.type == .applePay{
-      ApplePayFactory.changeApplePayDefault(to: true)
+      Wallet.shared.applePayController.changeApplePayDefault(to: true)
       success()
     }
 
@@ -253,7 +253,7 @@ open class Wallet{
     self.request(urlStr,  method: .post, parameters: params , success: { JSON in
       //apple pay should stop being default
       if  method.type == .applePay{
-        ApplePayFactory.changeApplePayDefault(to: false)
+        Wallet.shared.applePayController.changeApplePayDefault(to: false)
       }
       success()
       
@@ -279,7 +279,7 @@ open class Wallet{
   }
   //should be called by the various factorys when a method is set as defauult in order to update apple pay
   internal func addedAPaymentMethod(){
-      ApplePayFactory.changeApplePayDefault(to: false)
+      Wallet.shared.applePayController.changeApplePayDefault(to: false)
     
   
   }

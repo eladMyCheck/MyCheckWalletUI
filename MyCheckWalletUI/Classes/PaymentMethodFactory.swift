@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MyCheckCore
+
 internal protocol PaymentMethodFactoryDelegate{
     func error(_ controller: PaymentMethodFactory , error:NSError)
     func addedPaymentMethod(_ controller: PaymentMethodFactory ,method:PaymentMethodInterface)

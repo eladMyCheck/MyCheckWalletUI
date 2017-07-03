@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MyCheckCore
 
 class AddCreditCardView: UIView , UIGestureRecognizerDelegate{
     

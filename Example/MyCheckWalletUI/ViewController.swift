@@ -48,7 +48,7 @@ internal override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
     //when a payment method is available you can get the method from the checkoutViewController using the selectedMethod variable. If it's nil non exist
     if let method = checkoutViewController!.selectedMethod {
-      method.generatePaymentToken(success: {token in
+      method.generatePaymentToken( for: nil, displayDelegate: nil, success: {token in
         message =  " " + " token: " + token
         UIPasteboard.general.string = token
 

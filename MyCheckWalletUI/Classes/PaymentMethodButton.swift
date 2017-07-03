@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MyCheckCore
 
 internal struct PaymentMethodButtonRapper {
      var type: PaymentMethodType

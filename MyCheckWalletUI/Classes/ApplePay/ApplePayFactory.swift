@@ -16,31 +16,43 @@ open class ApplePayFactory : PaymentMethodFactory{
     override var type :PaymentMethodType { get { return PaymentMethodType.applePay }}
     
     
+    fileprivate let credentials: ApplePayCredentials
+  
     
-    private static var _supportedPaymentNetworks: [PKPaymentNetwork]?
-    //The methods apple pay should support for this device
-    fileprivate static var supportedPaymentNetworks: [PKPaymentNetwork] { get{
-        
-        guard let cached = _supportedPaymentNetworks else {
-            let strings = LocalData.manager.getArray("supportedApplePayCardTypes")
-            return ApplePayCreditCardTypes.stringsToPKPaymentNetworks(strings: strings)
-            
-        }
-        return cached
-        }
+    private init(credentials: ApplePayCredentials) {
+        self.credentials = credentials
+        super.init()
+
     }
-    open static func initiate(_ scheme: String){
+    
+    open static func initiate(merchantIdentifier: String){
         if !initiated {
             //if the user can't make payments we will not add it to the wallet
             if ApplePayFactory.deviceSupportsApplePay() {
-                let factory = ApplePayFactory()
-                Wallet.shared.factories.append(factory)
-              Wallet.shared.applePayLogic = factory as ApplePayStateInterface
-            }
-            initiated = true
-            
+                
+                //fetching all the ApplePayCredentials
+                Wallet.shared.configureWallet(success: {
+                    let creditCardsStrings = LocalData.manager.getArray("applePaysupportedApplePayCardTypes")
+                    let creditCards = ApplePayCreditCardTypes.stringsToPKPaymentNetworks(strings: creditCardsStrings)
+                    
+                    let credentials = ApplePayCredentials(merchantIdentifier: merchantIdentifier,
+                                                          currencyCode: LocalData.manager.getString("applePaycurrencyCode"),
+                                                          countryCode: LocalData.manager.getString("applePaycountryCode"),
+                                                          ApplePayCreditCardTypes: creditCards)
+                    
+                    
+                    let factory = ApplePayFactory(credentials: credentials)
+                    Wallet.shared.factories.append(factory)
+                    Wallet.shared.applePayController = ApplePayState(credentials: credentials)
+                    
+                
+                    initiated = true
+
+                }, fail: nil)
+                
             
         }
+    }
     }
     
     override func getAddMethodViewControllere(  ){
@@ -130,43 +142,6 @@ open class ApplePayFactory : PaymentMethodFactory{
     }
     }
 
-
-extension ApplePayFactory: ApplePayStateInterface{
-    static func isApplePayDefault() -> Bool {
-        if canPayWithApplePay(){
-            return LocalData.wasApplePayDefault()
-        }
-        
-        return false
-    }
-    
-    static func changeApplePayDefault(to newDefault: Bool) {
-        if canPayWithApplePay(){
-            LocalData.changeApplePayDefault(to: newDefault)
-        }
-    }
-  static func getApplePayPaymentMethod() -> PaymentMethodInterface?{
-    if canPayWithApplePay(){
-    return    ApplePayPaymentMethod.init(methodIsDefault: isApplePayDefault())
-    
-    }
-    
-    return nil
-    
-  }
-  
-  static func canPayWithApplePay() -> Bool{
-    return applePayConfigured() && PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: ApplePayFactory.supportedPaymentNetworks)
-  }
-  
-  static func applePayConfigured() -> Bool{
-    return initiated
-  }
-
-   
-
-  
-}
 
 
 

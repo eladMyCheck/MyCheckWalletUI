@@ -22,18 +22,18 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   MyCheckCore:
-    :path: "../../MyCheck-Core"
+    :path: ../../MyCheck-Core
   MyCheckWalletUI:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
   MyCheckCore: 2c0ae300c59ca78be5caf935389589b9de5cbfd3
-  MyCheckWalletUI: 00df6d45007ef5e54650c4ab3274c76fcf4677a4
+  MyCheckWalletUI: 56da5a9a9c6a7041e3a9e50fefc4826ba09ea192
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
 
 PODFILE CHECKSUM: aa4761223e649e523ef63d5d9aba137c3c28522c
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0.beta.3

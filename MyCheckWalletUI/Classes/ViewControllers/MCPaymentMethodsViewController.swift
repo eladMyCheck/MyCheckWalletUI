@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MyCheckCore
 
 ///The protocol updates on important changes in MCPaymentMethodsViewController
 public protocol MCPaymentMethodsViewControllerDelegate : class{

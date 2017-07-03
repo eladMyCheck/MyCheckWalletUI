@@ -173,7 +173,7 @@ extension CreditCardPaymentMethod: PaymentMethodInterface{
   }
   
  
-  public func generatePaymentToken(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate?, success: (String) -> Void, fail: (NSError) -> Void) {
+  public func generatePaymentToken(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate?, success: @escaping (String) -> Void,  fail: @escaping (NSError) -> Void) {
     success(token)
 
   }

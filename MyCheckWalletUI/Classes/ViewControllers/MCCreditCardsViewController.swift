@@ -182,7 +182,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     
   internal func setPaymentAsDefault(method: PaymentMethodInterface){
     if method.type != .applePay{
-        ApplePayFactory.changeApplePayDefault(to: false)
+        Wallet.shared.applePayController.changeApplePayDefault(to: false)
     }
       reloadMethods()
         
