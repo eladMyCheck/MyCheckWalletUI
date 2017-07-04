@@ -18,11 +18,11 @@ extension URIs{
 
 extension Wallet {
     
-    func addApplePay(applePayToken: String, cardType: String , success: @escaping ((String) -> Void) , fail: ((NSError) -> Void)? ){
+  func addApplePay(applePayToken: String, cardType: String ,isPending: Bool, success: @escaping ((String) -> Void) , fail: ((NSError) -> Void)? ){
         
         
         
-        let params: [String: Any] = [ "source": "applepay" , "token": applePayToken, "card_type": cardType]
+        let params: [String: Any] = [ "source": "applepay" , "token": applePayToken, "card_type": cardType , "is_caped": !isPending]
         
         if let domain = Networking.shared.domain {
             let urlStr = domain + URIs.addApplePay
@@ -47,7 +47,7 @@ extension Wallet {
         
     }
     
-    func hasPendingApplePayToken(success: @escaping ((Bool) -> Void) , fail: ((NSError) -> Void)? ){
+    func hasPendingApplePayToken(success: @escaping ((Bool , String?) -> Void) , fail: ((NSError) -> Void)? ){
         let params: [String: Any] = [ : ]
         
         let urlStr = Networking.shared.domain! + URIs.paymentMethods
@@ -62,14 +62,14 @@ extension Wallet {
             }
             
             for dic in methodsJSON as! [NSDictionary]{
-                
+              
                 //checking the type of the card and creating the correct stuct
-                if let source = dic["source"] as? String  , let pendingToken = dic["is_capped"] as? NSNumber, PaymentMethodType(source: source) == .applePay{
-                    success(pendingToken.boolValue)
+                if let source = dic["source"] as? String  , let isCapped = dic["is_capped"] as? NSNumber, let token = dic["token"] as? String, PaymentMethodType(source: source) == .applePay && isCapped == false{
+                    success(true , token)
                     return
                 }
             }
-            success(false)
+            success(false , nil)
         }, fail: fail)
     }
 }

@@ -82,53 +82,71 @@
     
     func generatePaymentToken(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate?, success: @escaping (String) -> Void, fail: @escaping (NSError) -> Void) {
         guard let displayDelegate = displayDelegate else {
-           fail( ErrorCodes.MissingDisplayViewControllerDelegate.getError())
+           fail( ErrorCodes.missingDisplayViewControllerDelegate.getError())
         return
         }
         
-        //To-do when the user has already added apple pay
-        //creating the apple pay VC
-        let request = PKPaymentRequest(applePayCredentials: applePayCredentials, paymentDetails: details)
-        let controller = PKPaymentAuthorizationViewController(paymentRequest: request)
-        if controller == nil {// in reality it sometimes is nil! so the warning is
-        fail(ErrorCodes.applePayFailed.getError())
-            return
+        //when the user has already added apple pay dont create a new one
+      Wallet.shared.hasPendingApplePayToken(success: { hasApplePayToken , token in
+        if let token = token , hasApplePayToken {
+        success(token)
+          return
+        }else{//no apple pay token
+        self.sendNewApplePayPendingToken(for: details, displayDelegate: displayDelegate, success: success, fail: fail)
         }
-        
-        //resonding to the delegate
-        let del = AuthorizationViewControllerDelegateResponder(
-            
-            didAuthorize:{payment,controller,completion in
-                guard let token = String(data: payment.token.paymentData, encoding: .utf8) , let cardName = payment.token.paymentMethod.network?.rawValue else{
-                    fail(ErrorCodes.applePayFailed.getError())
-                    completion(.failure)
-
-                    return
-                }
-                Wallet.shared.addApplePay(applePayToken: token, cardType: cardName, success: {token in
-                    success(token)
-                    completion(.success)
-                }, fail: {error in
-                    fail(error)
-                    completion(.failure)
-
-                })
-        }
-            ,
-            
-            didFinish:{ controller in
-                    displayDelegate.dismiss(viewController: controller)
-                    
-                
-        })
-        a = del//TO-DO fix this (bad access error if we take it off)
-        //handeling the delegate calls inline
-        controller.delegate = del
-        displayDelegate.display(viewController: controller)
+      }, fail: fail)
+      
+      
     }
     
+    private func sendNewApplePayPendingToken(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate, success: @escaping (String) -> Void, fail: @escaping (NSError) -> Void) {
     
-  }
+      //creating the apple pay VC
+      let request = PKPaymentRequest(applePayCredentials: applePayCredentials, paymentDetails: details)
+      //In reality this returns nil sometimes so we need to do this casting $(^&%#
+      let optionalController = PKPaymentAuthorizationViewController(paymentRequest: request) as PKPaymentAuthorizationViewController?
+      guard let controller = optionalController else {
+        fail(ErrorCodes.applePayFailed.getError())
+        return
+      }
+      var callbackCalled = false
+
+      //resonding to the delegate
+      let del = AuthorizationViewControllerDelegateResponder(
+        didAuthorize:{payment,controller,completion in
+          guard let token = String(data: payment.token.paymentData, encoding: .utf8) , let cardName = payment.token.paymentMethod.network?.rawValue else{
+            fail(ErrorCodes.applePayFailed.getError())
+            completion(.failure)
+            callbackCalled = true
+            return
+          }
+          Wallet.shared.addApplePay(applePayToken: token, cardType: cardName, isPending: true, success: {token in
+            success(token)
+            completion(.success)
+            callbackCalled = true
+
+          }, fail: {error in
+            fail(error)
+            completion(.failure)
+            callbackCalled = true
+
+          })
+      }
+        ,
+        
+        didFinish:{ controller in
+          displayDelegate.dismiss(viewController: controller)
+          if callbackCalled == false{
+          fail(ErrorCodes.actionCanceledByUser.getError(message: "User Canceled Apple Pay Payment"))
+          }
+          
+      })
+      a = del//TO-DO fix this (bad access error if we take it off)
+      //handeling the delegate calls inline
+      controller.delegate = del
+      displayDelegate.display(viewController: controller)
+    }
+    }
   
   fileprivate extension PKPaymentRequest{
     convenience init(applePayCredentials: ApplePayCredentials, paymentDetails: PaymentDetailsProtocol? = nil){

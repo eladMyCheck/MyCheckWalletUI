@@ -11,6 +11,7 @@ import PassKit
 import MyCheckCore
 
 struct ApplePayState: ApplePayController{
+  
     let credentials: ApplePayCredentials
     
     init(credentials: ApplePayCredentials) {
@@ -38,6 +39,9 @@ struct ApplePayState: ApplePayController{
         return nil
         
     }
+  
+  /// Get a payment method that reprisents Apple Pay
+ 
     
     func canPayWithApplePay() -> Bool{
         return applePayConfigured() && PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: credentials.applePayCreditCardTypes)
