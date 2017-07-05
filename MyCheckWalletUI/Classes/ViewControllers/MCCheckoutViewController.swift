@@ -432,7 +432,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
   
   func moveAcceptedCreditCardsViewToCreditCardField(_ move : Bool , animated: Bool){
     let animationLength = animated ? 0.2 : 0
-    let baseHeight = 266.0 as Float
+    let baseHeight = 296.0 as Float
     self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
     self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
     
@@ -510,7 +510,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     if (walletButtons.count == 0 && Session.shared.isLoggedIn()) {
       switch Wallet.shared.factories.count {
       case 0:
-        walletsHeight.constant = 0
+        walletsHeight.constant = 30
         walletsSuperview.isHidden = true
         // case 1:
         //   //adding button to center of container
