@@ -1,108 +1,836 @@
 {
   "warnings": [
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCAddCreditCardViewController.swift",
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ApplePay/ApplePayFactory.swift",
+      "line": 12,
+      "symbol": "ApplePayFactory",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 176,
+      "symbol": "CreditCardPaymentMethod.generatePaymentToken(for:displayDelegate:success:fail:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 176,
+      "symbol": "CreditCardPaymentMethod.generatePaymentToken(for:displayDelegate:success:fail:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 176,
+      "symbol": "CreditCardPaymentMethod.generatePaymentToken(for:displayDelegate:success:fail:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 176,
+      "symbol": "CreditCardPaymentMethod.generatePaymentToken(for:displayDelegate:success:fail:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 176,
+      "symbol": "CreditCardPaymentMethod.generatePaymentToken(for:displayDelegate:success:fail:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 196,
+      "symbol": "CreditCardPaymentMethod.isSingleUse",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 196,
+      "symbol": "CreditCardPaymentMethod.isSingleUse",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 196,
+      "symbol": "CreditCardPaymentMethod.isSingleUse",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 196,
+      "symbol": "CreditCardPaymentMethod.isSingleUse",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 196,
+      "symbol": "CreditCardPaymentMethod.isSingleUse",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 201,
+      "symbol": "CreditCardPaymentMethod.extaDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 201,
+      "symbol": "CreditCardPaymentMethod.extaDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 201,
+      "symbol": "CreditCardPaymentMethod.extaDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 201,
+      "symbol": "CreditCardPaymentMethod.extaDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 201,
+      "symbol": "CreditCardPaymentMethod.extaDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 205,
+      "symbol": "CreditCardPaymentMethod.extraSecondaryDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 205,
+      "symbol": "CreditCardPaymentMethod.extraSecondaryDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 205,
+      "symbol": "CreditCardPaymentMethod.extraSecondaryDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 205,
+      "symbol": "CreditCardPaymentMethod.extraSecondaryDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 205,
+      "symbol": "CreditCardPaymentMethod.extraSecondaryDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 226,
+      "symbol": "CreditCardPaymentMethod.ID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 226,
+      "symbol": "CreditCardPaymentMethod.ID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 226,
+      "symbol": "CreditCardPaymentMethod.ID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 226,
+      "symbol": "CreditCardPaymentMethod.ID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 226,
+      "symbol": "CreditCardPaymentMethod.ID",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 235,
+      "symbol": "CreditCardPaymentMethod.getBackgroundImage()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 235,
+      "symbol": "CreditCardPaymentMethod.getBackgroundImage()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 235,
+      "symbol": "CreditCardPaymentMethod.getBackgroundImage()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 235,
+      "symbol": "CreditCardPaymentMethod.getBackgroundImage()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 235,
+      "symbol": "CreditCardPaymentMethod.getBackgroundImage()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 257,
+      "symbol": "CreditCardPaymentMethod.setupMethodImage(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 257,
+      "symbol": "CreditCardPaymentMethod.setupMethodImage(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 257,
+      "symbol": "CreditCardPaymentMethod.setupMethodImage(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 257,
+      "symbol": "CreditCardPaymentMethod.setupMethodImage(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/CreditCardPaymentMethod.swift",
+      "line": 257,
+      "symbol": "CreditCardPaymentMethod.setupMethodImage(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MasterPass/MasterPassFactory.swift",
+      "line": 11,
+      "symbol": "MasterPassFactory",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/PayPal/PaypalFactory.swift",
+      "line": null,
+      "symbol": "PaypalFactory",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/PayPal/PaypalFactory.swift",
+      "line": 11,
+      "symbol": "PaypalFactory",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/PaymentMethodFactory.swift",
+      "line": 23,
+      "symbol": "PaymentMethodFactory",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/PaymentMethodFactory.swift",
+      "line": 23,
+      "symbol": "PaymentMethodFactory",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/PaymentMethodFactory.swift",
+      "line": 23,
+      "symbol": "PaymentMethodFactory",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/PaymentMethodFactory.swift",
+      "line": 23,
+      "symbol": "PaymentMethodFactory",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/PaymentMethodFactory.swift",
+      "line": 23,
+      "symbol": "PaymentMethodFactory",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCAddCreditCardViewController.swift",
       "line": null,
       "symbol": "MCAddCreditCardViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCAddCreditCardViewController.swift",
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCAddCreditCardViewController.swift",
+      "line": null,
+      "symbol": "MCAddCreditCardViewController",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCAddCreditCardViewController.swift",
+      "line": null,
+      "symbol": "MCAddCreditCardViewController",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCAddCreditCardViewController.swift",
+      "line": null,
+      "symbol": "MCAddCreditCardViewController",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCAddCreditCardViewController.swift",
+      "line": null,
+      "symbol": "MCAddCreditCardViewController",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCAddCreditCardViewController.swift",
       "line": 17,
       "symbol": "MCAddCreditCardViewController",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 74,
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCAddCreditCardViewController.swift",
+      "line": 17,
+      "symbol": "MCAddCreditCardViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCAddCreditCardViewController.swift",
+      "line": 17,
+      "symbol": "MCAddCreditCardViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCAddCreditCardViewController.swift",
+      "line": 17,
+      "symbol": "MCAddCreditCardViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCAddCreditCardViewController.swift",
+      "line": 17,
+      "symbol": "MCAddCreditCardViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 88,
       "symbol": "MCCheckoutViewController.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 77,
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 88,
+      "symbol": "MCCheckoutViewController.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 88,
+      "symbol": "MCCheckoutViewController.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 88,
+      "symbol": "MCCheckoutViewController.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 88,
+      "symbol": "MCCheckoutViewController.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 94,
       "symbol": "MCCheckoutViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 95,
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 94,
+      "symbol": "MCCheckoutViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 94,
+      "symbol": "MCCheckoutViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 94,
+      "symbol": "MCCheckoutViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 94,
+      "symbol": "MCCheckoutViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 118,
       "symbol": "MCCheckoutViewController.viewWillAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 389,
-      "symbol": "MCCheckoutViewController.dismissedMCPaymentMethodsViewController(_:)",
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 118,
+      "symbol": "MCCheckoutViewController.viewWillAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 408,
-      "symbol": "MCCheckoutViewController.numberOfComponentsInPickerView(_:)",
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 118,
+      "symbol": "MCCheckoutViewController.viewWillAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 412,
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 118,
+      "symbol": "MCCheckoutViewController.viewWillAppear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 118,
+      "symbol": "MCCheckoutViewController.viewWillAppear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 125,
+      "symbol": "MCCheckoutViewController.viewWillDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 125,
+      "symbol": "MCCheckoutViewController.viewWillDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 125,
+      "symbol": "MCCheckoutViewController.viewWillDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 125,
+      "symbol": "MCCheckoutViewController.viewWillDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 125,
+      "symbol": "MCCheckoutViewController.viewWillDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 591,
+      "symbol": "MCCheckoutViewController.numberOfComponents(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 591,
+      "symbol": "MCCheckoutViewController.numberOfComponents(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 591,
+      "symbol": "MCCheckoutViewController.numberOfComponents(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 591,
+      "symbol": "MCCheckoutViewController.numberOfComponents(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 591,
+      "symbol": "MCCheckoutViewController.numberOfComponents(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 595,
       "symbol": "MCCheckoutViewController.pickerView(_:numberOfRowsInComponent:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCCheckoutViewController.swift",
-      "line": 417,
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 595,
+      "symbol": "MCCheckoutViewController.pickerView(_:numberOfRowsInComponent:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 595,
+      "symbol": "MCCheckoutViewController.pickerView(_:numberOfRowsInComponent:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 595,
+      "symbol": "MCCheckoutViewController.pickerView(_:numberOfRowsInComponent:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 595,
+      "symbol": "MCCheckoutViewController.pickerView(_:numberOfRowsInComponent:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 600,
       "symbol": "MCCheckoutViewController.pickerView(_:titleForRow:forComponent:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCPaymentMethodsViewController.swift",
-      "line": 74,
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 600,
+      "symbol": "MCCheckoutViewController.pickerView(_:titleForRow:forComponent:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 600,
+      "symbol": "MCCheckoutViewController.pickerView(_:titleForRow:forComponent:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 600,
+      "symbol": "MCCheckoutViewController.pickerView(_:titleForRow:forComponent:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCCheckoutViewController.swift",
+      "line": 600,
+      "symbol": "MCCheckoutViewController.pickerView(_:titleForRow:forComponent:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 82,
       "symbol": "MCPaymentMethodsViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCPaymentMethodsViewController.swift",
-      "line": 97,
-      "symbol": "MCPaymentMethodsViewController.prepareForSegue(_:sender:)",
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 82,
+      "symbol": "MCPaymentMethodsViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCPaymentMethodsViewController.swift",
-      "line": 177,
-      "symbol": "UIImageView.imageFromUrl(_:)",
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 82,
+      "symbol": "MCPaymentMethodsViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MCViewController.swift",
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 82,
+      "symbol": "MCPaymentMethodsViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 82,
+      "symbol": "MCPaymentMethodsViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 108,
+      "symbol": "MCPaymentMethodsViewController.viewDidAppear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 108,
+      "symbol": "MCPaymentMethodsViewController.viewDidAppear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 108,
+      "symbol": "MCPaymentMethodsViewController.viewDidAppear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 108,
+      "symbol": "MCPaymentMethodsViewController.viewDidAppear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 108,
+      "symbol": "MCPaymentMethodsViewController.viewDidAppear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 113,
+      "symbol": "MCPaymentMethodsViewController.viewWillDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 113,
+      "symbol": "MCPaymentMethodsViewController.viewWillDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 113,
+      "symbol": "MCPaymentMethodsViewController.viewWillDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 113,
+      "symbol": "MCPaymentMethodsViewController.viewWillDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 113,
+      "symbol": "MCPaymentMethodsViewController.viewWillDisappear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 117,
+      "symbol": "MCPaymentMethodsViewController.prepare(for:sender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 117,
+      "symbol": "MCPaymentMethodsViewController.prepare(for:sender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 117,
+      "symbol": "MCPaymentMethodsViewController.prepare(for:sender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 117,
+      "symbol": "MCPaymentMethodsViewController.prepare(for:sender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCPaymentMethodsViewController.swift",
+      "line": 117,
+      "symbol": "MCPaymentMethodsViewController.prepare(for:sender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCViewController.swift",
       "line": 11,
       "symbol": "MCViewController",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/MyCheckWallet.swift",
-      "line": 36,
-      "symbol": "MyCheckWallet.methods",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCViewController.swift",
+      "line": 11,
+      "symbol": "MCViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/Networking.swift",
-      "line": 6,
-      "symbol": "ErrorCodes",
-      "symbol_kind": "source.lang.swift.decl.enum",
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCViewController.swift",
+      "line": 11,
+      "symbol": "MCViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCViewController.swift",
+      "line": 11,
+      "symbol": "MCViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/ViewControllers/MCViewController.swift",
+      "line": 11,
+      "symbol": "MCViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/Wallet.swift",
+      "line": 142,
+      "symbol": "Wallet.handleOpenURL(_:sourceApplication:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/Wallet.swift",
+      "line": 142,
+      "symbol": "Wallet.handleOpenURL(_:sourceApplication:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/Wallet.swift",
+      "line": 142,
+      "symbol": "Wallet.handleOpenURL(_:sourceApplication:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/Wallet.swift",
+      "line": 142,
+      "symbol": "Wallet.handleOpenURL(_:sourceApplication:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/eladschiller/Documents/iOS Projects/MyCheckWalletUI/MyCheckWalletUI/Classes/Wallet.swift",
+      "line": 142,
+      "symbol": "Wallet.handleOpenURL(_:sourceApplication:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
   ],

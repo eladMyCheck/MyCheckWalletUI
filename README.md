@@ -1,4 +1,3 @@
-MyCheckUI 
 # MyCheckWalletUI
 An SDK that supplies UI for payment method managment.
 
@@ -8,11 +7,12 @@ An SDK that supplies UI for payment method managment.
 To run the example project, clone the repo, and run `pod install` from the Example directory first. The example demonstrates displaying a Checkout view controller , displaying a payment manager view controller and getting the token when ready to pay.
 
 ## Requirements
-iOS 8 or above.
+iOS 9 or above.
+Swift 3.0
 
 ## Installation
 
-MyCheckWallet is available through [CocoaPods](http://cocoapods.org). You will first need to ask a MyCheck team member to give you read privileges to the MyCheck Repository. Once you have gotten the privileges, install
+MyCheckWalletUI is available through [CocoaPods](http://cocoapods.org). You will first need to ask a MyCheck team member to give you read privileges to the MyCheck Repository. Once you have gotten the privileges, install
 it by simply adding the following lines to the top of your Podfile:
 
 ```
@@ -31,32 +31,35 @@ pod "MyCheckWalletUI"
 Now you can run 'pod install'
 
 ## Use
+In order to manage the users session (login, logout etc.) you will need to use the session singleton.
+
 Start by adding
 ```
-import MyCheckWalletUI
+import MyCheckCore
 ```
 
-to the top of the class where you want to use MyCheckWallet.
 
-In your app delegat's `application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)` function call the configure function of the MyCheckWallet singlton:
+to the top of the class where you want to use MyCheck.
+
+In your app delegate's `application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)` function call the configure function of the Session singleton:
 
 ```
-MyCheckWallet.shared.configureWallet(YOUR_PUBLISHABLE_KEY, environment: Environment.sandbox)
+Session.shared.configure(YOUR_PUBLISHABLE_KEY, environment: .sandbox)
 ```
 This will setup the SDK to work with the desired environment.
 
-Before displaying any UI you will have to login:
+Before using any other functions you will have to login the user. Login is done by first obtaining a refresh token from your server (that, in turn, will obtain it from the MyCheck server using the secret). Once you have the refresh token call the login function on the Session singleton:
 
 
 ```
-MyCheckWallet.shared.login(YOUR_REFRESH_TOKEN, success: {
-//handle success
-} , fail: { error in
-//handle failure
-})
-```
-Once you are logged in you can display the MyCheck UI. We have two UI elements
+Session.shared.login(REFRESH_TOKEN, success: HANDLE_SUCCESS
+}, fail: HANDLE_FAIL)
 
+```
+Once you are logged in add
+```
+import MyCheckWalletUI
+```
 ###MCCheckoutViewController
 This view controller is meant to be embedded inside your view controller. It allows the user the basic functions needed from a wallet:
 1. Add a credit card
@@ -118,11 +121,24 @@ return MyCheckWallet.shared.handleOpenURL(url, sourceApplication: sourceApplicat
 
 Lastly, to fully support PayPal and the app switching it uses please edit your info.plist  as described in the "Register a URL type" section of the [PayPal Braintree SDK guide found here](https://developers.braintreepayments.com/guides/paypal/client-side/ios/v4).
 
+## Apple Pay
+Their are a few extra steps to take in order for Apple Pay to work.
+Start by configuring your environment to support Apple Pay by following [these instructions](https://developer.apple.com/library/content/ApplePay_Guide/Configuration.html#//apple_ref/doc/uid/TP40014764-CH2-SW1).  Send the certificate you have created to a member of the MyCheck team. 
+now install the Apple Pay model of the MyCheckWalletUI SDK by adding this line to your Podfile:
+
+```
+pod "MyCheckWalletUI/ApplePay"
+```
+After running `pod install`  you will need to also add a line of code initializing the Apple Pay model with the merchant identifier you have created in the apple developers site in the last step . 
+```
+ApplePayFactory.initiate(merchantIdentifier: YOUR_MERCHANT_ID)
+```
+The line of code above should be added in the  `application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)` function of your application delegate after calling configure. Thats it for now. You will need to make a few more changes to add Apple Pay support to the Dine SDK, this is discussed in the Dine SDK README file and getting started guide.
+
 
 ## Authors
 
-Elad Schiller, eladsc@mycheckapp.com
-Mihail Kalichkov, mihailk@mycheckapp.com
+Elad Schiller, eladsc@mycheckapp.co.il
 ## License
 
 Please read the LICENSE file available in the project
