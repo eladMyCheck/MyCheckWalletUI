@@ -241,7 +241,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
   }
   
-   internal func getType(_ type : String) -> CreditCardType {
+  internal func getType(_ type : String) -> CreditCardType {
     switch type {
     case "visa":
       return CreditCardType.Visa
@@ -266,7 +266,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
   @objc fileprivate func receivedPaymentMethodsUpdateNotification(notification: NSNotification){
     refreshPaymentMethods()
   }
-   fileprivate func refreshPaymentMethods(defaultMethod: PaymentMethodInterface? = nil ){
+  fileprivate func refreshPaymentMethods(defaultMethod: PaymentMethodInterface? = nil ){
     Wallet.shared.getPaymentMethods({ (methods) in
       self.paymentMethods = methods
       if methods.count == 0 {
@@ -304,15 +304,16 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     }
   }
   @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
-    let controller : MCPaymentMethodsViewController
-    //        if self.paymentMethods.count > 0 && self.paymentMethods.first?.isSingleUse == true {
-    //            controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
-    //        }else{
-    controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self)
-    //  }
+    
+    guard let controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self) else{
+      printIfDebug("cannot display VC since user is not logged in")
+      
+      return
+    }
     
     self.present(controller, animated: true, completion: nil)
     controller.delegate = self
+    
   }
   
   override internal func setFieldInvalid(_ field: UITextField , invalid: Bool){

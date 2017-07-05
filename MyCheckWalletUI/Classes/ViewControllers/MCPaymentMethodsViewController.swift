@@ -65,9 +65,12 @@ open class MCPaymentMethodsViewController: MCViewController {
     ///Create an instance of the manage payment methods page.
     ///
     ///   - parameter delegate: The delegate will be called when the View controller should be dismissed.
-    ///    - returns: An instance of MCPaymentMethodsViewController that is ready for display.
+    ///    - returns: An instance of MCPaymentMethodsViewController that is ready for display or nil if the user is not logged in.
     
-    open static func createPaymentMethodsViewController(_ delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController{
+    open static func createPaymentMethodsViewController(_ delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController?{
+      if !Session.shared.isLoggedIn(){
+      return nil
+      }
         let storyboard = MCViewController.getStoryboard(  Bundle(for: self.classForCoder()))
         let controller = storyboard.instantiateViewController(withIdentifier: "MCPaymentMethodsViewController") as! MCPaymentMethodsViewController
         
