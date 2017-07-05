@@ -18,7 +18,7 @@ class ApplePayView: CreditCardView {
     self.tempCardIcon.removeFromSuperview()
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
     let image = UIImage(named: "applePayBackground" , in: bundle, compatibleWith: nil)
-    backgroundButton!.setImage(image, for: UIControlState())
+    backgroundButton!.setBackgroundImage(image, for: .normal)
     self.creditCardNumberlabel?.removeFromSuperview()
   }
   required init?(coder aDecoder: NSCoder) {
