@@ -95,15 +95,7 @@ public struct CreditCardPaymentMethod{
   
   
   
-  //internal init?(other:CreditCardPaymentMethod){
-  //  guard let JSON = other.JSON else{
-  // self.init(for: other.type, name: other.name, Id: other.Id, token: other.token, checkoutName: other.checkoutName)
-  //return
-  //}
-  //self.init(JSON: JSON)
-  //
-  // }
-}
+  }
 
 extension CreditCardPaymentMethod: PaymentMethodInterface{
  
@@ -119,9 +111,10 @@ extension CreditCardPaymentMethod: PaymentMethodInterface{
   
   ///Init function
   ///
-  ///    - JSON: A JSON that comes from the wallet endpoint
-  ///    - Returns: A payment method object or nil if the JSON is invalid or missing non optional parameters.
-  public init?(JSON: NSDictionary){
+  ///    - parameter JSON: A JSON that comes from the wallet endpoint
+  ///    - returns: A payment method object or nil if the JSON is invalid or missing non optional parameters.
+  
+    public init?(JSON: NSDictionary){
     
     guard let source = JSON["source"] as? String else{
       return nil
@@ -177,7 +170,7 @@ extension CreditCardPaymentMethod: PaymentMethodInterface{
     success(token)
 
   }
-  
+    ///A readable description of the Credit Card e.g. XXXX - 1234
   public var description: String {get{
     
     guard let lastFourDigits = self.lastFourDigits else{

@@ -48,7 +48,7 @@ Session.shared.configure(YOUR_PUBLISHABLE_KEY, environment: .sandbox)
 ```
 This will setup the SDK to work with the desired environment.
 
-Before using any other functions you will have to login the user. Login is done by first obtaining a refresh token from your server (that, in turn, will obtain it from the MyCheck server using the secret). Once you have the refresh token call the login function on the Session singleton:
+Before using any other functions you will have to login the user. Login is done by first obtaining a refresh token from your server (that, in turn, will obtain it from the MyCheck server using the secret key). Once you have the refresh token call the login function on the Session singleton:
 
 
 ```
@@ -62,8 +62,8 @@ import MyCheckWalletUI
 ```
 ###MCCheckoutViewController
 This view controller is meant to be embedded inside your view controller. It allows the user the basic functions needed from a wallet:
-1. Add a credit card
-2. Select a credit card
+1. Add a payment method
+2. Select a payment method
 The view controller should be added into a container view. It can be done in two ways.
 
 1. Interface builder: change the view controller that the container is connect to (by segue) to `MCCheckoutViewController`.
@@ -89,7 +89,7 @@ self.presentViewController(controller, animated: true, completion: nil)
 ```
 
 You must also implement the MCPaymentMethodsViewControllerDelegate and dismiss the view controller when it is done
-example
+(see example)
 
 ```
 
@@ -99,7 +99,7 @@ controller.dismissViewControllerAnimated(true, completion: nil)
 
 ```
 ## PayPal
-Their are a few extra steps to take in order for PayPal to work.
+There are additional steps to take in order for PayPal to work.
 Start by installing the PayPal model. This will add the Braintree PayPal SDK as well as extra source files from the MyCheck Wallet UI SDK. Add this line to your Podfile:
 
 ```
