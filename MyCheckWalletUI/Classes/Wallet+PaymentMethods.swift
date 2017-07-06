@@ -37,7 +37,6 @@ extension Wallet{
                         }
                     }
                 }
-                returnArray.sort(by: {$0.isSingleUse && !$1.isSingleUse}) //sorts temporary cards to be first in the list
                 success(returnArray)
             }else{
                 if let fail = fail{

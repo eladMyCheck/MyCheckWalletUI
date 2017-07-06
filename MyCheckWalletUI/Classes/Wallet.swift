@@ -35,9 +35,16 @@ open class Wallet{
     //loaded all the languages in the config file
     fileprivate var loadedLanguages = false
     
-    // the user token
     internal var factories: [PaymentMethodFactory] = []
     
+    internal var factoriesDic: [PaymentMethodType : PaymentMethodFactory] {get{
+        var dic: [PaymentMethodType : PaymentMethodFactory] = [:]
+        for factory in factories {
+        dic[factory.type] = factory
+        }
+        return dic
+        }}
+
     //remembers the braintree token
     internal var braintreeToken : String? = nil
     
@@ -54,7 +61,15 @@ open class Wallet{
         self.configureWallet(success: nil, fail: nil)
     }
     
-    
+    /// Adds a new kind of payment method factory to the wallet. This will enable the use if the kind of payment method added.
+    ///
+    /// - Parameter factory: The factory you wish to add to the wallet.
+    private func addFactory(factory: PaymentMethodFactory?){
+        
+        guard let factory = factory else{ return}
+        
+        factories.append(factory)
+    }
     //the delegate that should be updated with sub wallet changes
     internal var factoryDelegate: PaymentMethodFactoryDelegate? {
         set{

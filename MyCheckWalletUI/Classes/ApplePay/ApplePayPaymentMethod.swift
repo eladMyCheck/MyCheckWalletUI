@@ -57,7 +57,7 @@
     
     override var description: String{get{return name}}
     
-    var isSingleUse: Bool{get{return true}}
+    var isSingleUse: Bool{get{return false}}
     
     
     
