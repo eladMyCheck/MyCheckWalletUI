@@ -8,96 +8,68 @@
 
 import Foundation
 import PassKit
-internal enum ApplePayCreditCardTypes: String {
-    case amex = "Amex"
-    case carteBancaire = "CarteBancaire"
-    case chinaUnionPay = "ChinaUnionPay"
-    case discover = "Discover"
-    case interac = "Interac"
-    case masterCard = "MasterCard"
-    case privateLabel = "PrivateLabel"
-    case visa = "Visa"
-    case jCB = "JCB"
-    case suica = "Suica"
-    case quicPay = "QuicPay"
-    case iDCredit = "IDCredit"
-    
-    //TO-DO improve this (no one is actauly using the enum...
-    //Converts ApplePayCreditCardTypes to PKPaymentNetwork if the ios version supports iot and nil otherwise
-    private func convert( ) -> PKPaymentNetwork?{
-        switch self {
-        case .amex:
-            return .amex
-        case .carteBancaire:
+
+
+
+extension PKPaymentNetwork{
+   
+    init?(string: String){
+        switch string {
+        case "Amex":
+           self = .amex
+        case "CarteBancaire":
             if #available(iOS 10.3, *) {
-                return .carteBancaire
+                self = .carteBancaire
             } else {
                 return nil
             }
-        case .chinaUnionPay:
+        case "ChinaUnionPay":
             if #available(iOS 9.2, *) {
-                return .chinaUnionPay
+                self =  .chinaUnionPay
             } else {
                 return nil
             }
-        case .discover:
-            return .discover
-        case .interac:
+        case "Discover":
+            self =  .discover
+        case "Interac":
             if #available(iOS 9.2, *) {
-                return .interac
+                self =  .interac
             } else {
                 return nil
             }
-        case .masterCard:
-            return .masterCard
-        case .privateLabel:
-            return .privateLabel
-        case .visa:
-            return .visa
-        case .jCB:
+        case "MasterCard":
+            self =  .masterCard
+        case "PrivateLabel":
+            self =  .privateLabel
+        case "Visa":
+            self =  .visa
+        case "JCB":
             if #available(iOS 10.1, *) {
-                return .JCB
+                self =  .JCB
             } else {
                 return nil
             }
-        case .suica:
+        case "Suica":
             if #available(iOS 10.1, *) {
-                return .suica
+                self =  .suica
             } else {
                 return nil
             }
-        case .quicPay:
+        case "QuicPay":
             if #available(iOS 10.3, *) {
-                return .quicPay
+                self =  .quicPay
             } else {
                 return nil
             }
-        case .iDCredit:
+        case "IDCredit":
             if #available(iOS 10.3, *) {
-                return .idCredit
+                self =  .idCredit
             } else {
                 return nil
             }
-      
+        default: return nil
         }
-    }
-    
-   internal static func stringsToPKPaymentNetworks(strings: [String]) -> [PKPaymentNetwork] {
-        let networskArray = strings.map{
-            ApplePayCreditCardTypes(rawValue: $0)
-            }
-            .flatMap{ $0 }
-            .map{
-                $0.convert()
-            }
-            .flatMap{$0}
 
-        return networskArray
     }
-  
-  
-  
-
 }
-
 

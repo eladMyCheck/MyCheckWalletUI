@@ -33,10 +33,14 @@ open class ApplePayFactory : PaymentMethodFactory{
                 //fetching all the ApplePayCredentials
                 Wallet.shared.configureWallet(success: {
                     let creditCardsStrings = LocalData.manager.getArray("applePaysupportedApplePayCardTypes")
-                    let creditCards = ApplePayCreditCardTypes.stringsToPKPaymentNetworks(strings: creditCardsStrings)
+                    //converting to payment network and removing nil 
+                    let creditCards =  creditCardsStrings.map{
+                        PKPaymentNetwork(string: $0)
+                        }
+                        .flatMap{ $0 }
                     
                     let credentials = ApplePayCredentials(merchantIdentifier: merchantIdentifier,
-                                                          currencyCode: LocalData.manager.getString("applePaycurrencyCode"),
+                                                          currencyCode: LocalData.manager.getString("currencyCode"),
                                                           countryCode: LocalData.manager.getString("applePaycountryCode"),
                                                           ApplePayCreditCardTypes: creditCards)
                     
@@ -81,21 +85,27 @@ open class ApplePayFactory : PaymentMethodFactory{
         
         butRap.button.addSubview(appleBut)
 
-      let widthConstraint = appleBut.widthAnchor.constraint(equalToConstant: 90)
-      widthConstraint.priority = 900
-      widthConstraint.isActive = true
-//      appleBut.heightAnchor.constraint(equalToConstant: 44).isActive = true
         appleBut.leadingAnchor.constraint(greaterThanOrEqualTo: butRap.button.leadingAnchor, constant: 10).isActive = true
         appleBut.trailingAnchor.constraint(greaterThanOrEqualTo: butRap.button.trailingAnchor, constant: 10).isActive = true
 //        
         appleBut.centerXAnchor.constraint(equalTo: butRap.button.centerXAnchor).isActive = true
         appleBut.centerYAnchor.constraint(equalTo: butRap.button.centerYAnchor).isActive = true
       
+        //aspect ratio
+               let aspectRatioConstraint = NSLayoutConstraint(item: appleBut,
+                                                       attribute: .height,
+                                                       relatedBy: .equal,
+                                                       toItem: appleBut,
+                                                       attribute: .width,
+                                                       multiplier: (109.0 / 502.0),
+                                                       constant: 0)
+        
+        appleBut.addConstraint(aspectRatioConstraint)
         
         //adding target
         butRap.button.addTarget(self, action: #selector(ApplePayFactory.addMethodButPressed(_:)), for: .touchUpInside)
         appleBut.addTarget(self, action: #selector(ApplePayFactory.addMethodButPressed(_:)), for: .touchUpInside)
-        
+
         
         
         return butRap
@@ -116,19 +126,35 @@ open class ApplePayFactory : PaymentMethodFactory{
     
     override func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
         
-        let  butRapper = super.getSmallAddMethodButton()
-        let superFrame = butRapper.button.frame
+        let  butRap = super.getSmallAddMethodButton()
+        butRap.button.setBackgroundImage(nil, for: .normal)
+        let superFrame = butRap.button.frame
         
         //creating the apple pay button and adding it into the super button
-        let appleBut = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
+        let appleBut = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .white)
         appleBut.frame = CGRect(x: 0, y: 0, width: superFrame.size.width - 20, height: superFrame.size.height - 20)
         
-        butRapper.button.addSubview(appleBut)
-        appleBut.center = butRapper.button.center
-        butRapper.button.addTarget(self, action: #selector(ApplePayFactory.addMethodButPressed(_:)), for: .touchUpInside)
+        butRap.button.addSubview(appleBut)
+        appleBut.center = butRap.button.center
+        
+        
+        //creating the apple pay button and adding it into the super button
+        
+        appleBut.translatesAutoresizingMaskIntoConstraints = false
+        
+        butRap.button.addSubview(appleBut)
+        
+        appleBut.leadingAnchor.constraint(equalTo: butRap.button.leadingAnchor, constant: 0).isActive = true
+        appleBut.trailingAnchor.constraint(equalTo: butRap.button.trailingAnchor, constant: 0).isActive = true
+        //
+        appleBut.topAnchor.constraint(equalTo: butRap.button.topAnchor, constant: 0).isActive = true
+        appleBut.bottomAnchor.constraint(equalTo: butRap.button.bottomAnchor, constant: 0).isActive = true
+
+        
+        butRap.button.addTarget(self, action: #selector(ApplePayFactory.addMethodButPressed(_:)), for: .touchUpInside)
         appleBut.addTarget(self, action: #selector(ApplePayFactory.addMethodButPressed(_:)), for: .touchUpInside)
         
-        return butRapper
+        return butRap
     }
     
     

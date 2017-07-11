@@ -623,6 +623,7 @@ extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
   }
   
   func addedPaymentMethod(_ controller: PaymentMethodFactory ,method:PaymentMethodInterface){
+    
     refreshPaymentMethods(defaultMethod:  method)
   }
   func displayViewController(_ controller: UIViewController ){

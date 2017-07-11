@@ -1,6 +1,6 @@
 {
   "name": "MyCheckWalletUI",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "summary": "An SDK that supplies UI for payment method managment.",
   "description": "README.md",
   "homepage": "https://mycheckapp.com",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://bitbucket.org/erez_spatz/mycheckwalletui-ios.git",
-    "tag": "0.0.14"
+    "tag": "0.0.15"
   },
   "platforms": {
     "ios": "9.0"
@@ -45,36 +45,6 @@
       }
     },
     {
-      "name": "PayPal",
-      "dependencies": {
-        "MyCheckWalletUI/Core": [
-
-        ],
-        "Braintree/PayPal": [
-
-        ],
-        "Braintree/DataCollector": [
-
-        ]
-      },
-      "source_files": "MyCheckWalletUI/Classes/paypal/**/*",
-      "platforms": {
-        "ios": "9.0"
-      }
-    },
-    {
-      "name": "MasterPass",
-      "platforms": {
-        "ios": "9.0"
-      },
-      "source_files": "MyCheckWalletUI/Classes/MasterPass/**/*",
-      "dependencies": {
-        "MyCheckWalletUI/Core": [
-
-        ]
-      }
-    },
-    {
       "name": "ApplePay",
       "dependencies": {
         "MyCheckWalletUI/Core": [
@@ -86,6 +56,11 @@
       "platforms": {
         "ios": "9.0"
       }
+    },
+    {
+      "name": "VisaCheckout",
+      "source_files": "MyCheckWalletUI/Classes/VisaCheckout/*",
+      "vendored_frameworks": "MyCheckWalletUI/Classes/VisaCheckout/frameworks/*"
     }
   ]
 }
