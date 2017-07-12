@@ -283,7 +283,7 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
         outputForTesting.text = error.localizedDescription
     }
     func addedNewPaymentMethod(_ controller: MCAddCreditCardViewController ,token:String){
-        Wallet.shared.getPaymentMethods({ (methods) in
+        Wallet.shared.getPaymentMethods(success: { (methods) in
             self.paymentMethods = methods
             self.creditCardListVC!.paymentMethods = methods
             self.creditCardListVC!.setCreditCardsUI(true)

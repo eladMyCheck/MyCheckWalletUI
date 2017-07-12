@@ -50,7 +50,7 @@ open class Wallet{
     
     internal var token: String?
     
-    internal var methods:  [PaymentMethodInterface] = []
+    internal var methods:  [PaymentMethodInterface]?
     
     
     ///This property points to the singlton object. It should be used for calling all the functions in the class.
@@ -169,7 +169,7 @@ open class Wallet{
     ///
     ///   - parameter success: A block that is called if the user is logged in succesfully
     ///   - parameter fail: Called when the function fails for any reason
-    internal func getPaymentMethods( _ success: @escaping (( [PaymentMethodInterface] ) -> Void) , fail: ((NSError) -> Void)? ) {
+    internal func getPaymentMethods( success success: @escaping (( [PaymentMethodInterface] ) -> Void) , fail: ((NSError) -> Void)? ) {
         self.callPaymentMethods( success: {
             methods in
             var mutableMethods = methods
@@ -204,6 +204,34 @@ open class Wallet{
         
     }
     
+    /// Get the default payment method.
+    ///
+    /// - Parameters:
+    ///   - success: will return the default payment method
+    ///   - fail: Will return an error if the call failed or no payment method is available.
+    public func getDefaultPaymentMehthod(success: @escaping (( PaymentMethodInterface ) -> Void) , fail: ((NSError) -> Void)? ) {
+        if let methods = self.methods  {
+            if let found = methods.first(where: { $0.isDefault }) {
+                success( found)
+            }else{
+                if let fail = fail {
+                fail(ErrorCodes.noPaymentMethods.getError())
+                }
+            }
+            return
+        }
+        
+        getPaymentMethods( success:{methods in
+            if let found = methods.first(where: { $0.isDefault }) {
+                success( found )
+            }else{
+                if let fail = fail {
+                    fail(ErrorCodes.noPaymentMethods.getError())
+                }
+            }
+
+        }, fail:fail)
+    }
     /// Adds a new credit card to the MyCheck Wallet
     ///
     ///    - parameter expireMonth: The month the card expires
@@ -315,6 +343,9 @@ open class Wallet{
     
     //returns true if and only if the latest list of methods received from the server contains a payment method of the 'type'
     internal func hasPaymentMethodOfType(_ type: PaymentMethodType) -> Bool{
+        guard let methods = methods else{
+        return false
+        }
         for method in methods {
             if method.type == type{
                 return true
@@ -328,7 +359,7 @@ open class Wallet{
     
     
     fileprivate func refreshPaymentMethodsAndPostNotification(){
-        Wallet.shared.getPaymentMethods({ (array) in
+        Wallet.shared.getPaymentMethods(success:{ (array) in
             let nc = NotificationCenter.default
             nc.post(name: Notification.Name(rawValue: Wallet.refreshPaymentMethodsNotification),object: nil)
             

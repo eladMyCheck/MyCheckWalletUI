@@ -168,7 +168,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
                 }
             }
         }
-        Wallet.shared.getPaymentMethods({ (array) in
+        Wallet.shared.getPaymentMethods(success: { (array) in
             self.paymentMethods = array
             for cc in self.creditCards as! [CreditCardView]{
                 cc.toggleEditMode()
@@ -189,7 +189,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     }
     internal func reloadMethods(){
         showActivityIndicator(true)
-        Wallet.shared.getPaymentMethods({ (array) in
+        Wallet.shared.getPaymentMethods(success: { (array) in
             self.showActivityIndicator(false)
             self.paymentMethods = array
             self.setCreditCardsUI(true)

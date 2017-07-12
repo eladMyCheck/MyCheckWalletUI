@@ -267,7 +267,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     refreshPaymentMethods()
   }
   fileprivate func refreshPaymentMethods(defaultMethod: PaymentMethodInterface? = nil ){
-    Wallet.shared.getPaymentMethods({ (methods) in
+    Wallet.shared.getPaymentMethods(success: { (methods) in
       self.paymentMethods = methods
       if methods.count == 0 {
         self.selectedMethod = nil
@@ -420,7 +420,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
   }
   
   func newPaymenteMethodAdded(){
-    Wallet.shared.getPaymentMethods({ (methods) in
+    Wallet.shared.getPaymentMethods(success: { (methods) in
       self.paymentMethods = methods
       if methods.count > 0 {
         self.selectedMethod = methods[0]
