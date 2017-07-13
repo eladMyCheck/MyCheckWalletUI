@@ -135,6 +135,17 @@ ApplePayFactory.initiate(merchantIdentifier: YOUR_MERCHANT_ID)
 ```
 The line of code above should be added in the  `application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)` function of your application delegate after calling configure. Thats it for now. You will need to make a few more changes to add Apple Pay support to the Dine SDK, this is discussed in the Dine SDK README file and getting started guide.
 
+## Visa Checkout
+Start by installing the Visa Checkout model. This will add the Visa Checkout SDK as well as extra source files from the MyCheck Wallet UI SDK. Add this line to your Podfile:
+
+```
+pod "MyCheckWalletUI/VisaCheckout"
+```
+once this is done you will need to also add a line of code initializing the Visa Checkout model. 
+```
+VisaCheckoutFactory.initiate(apiKey: VISA_CHECKOUT_API_KEY )
+```
+Please make sure the api key has the corresponding environment to the one the MyCheck Wallet was configured with. 
 
 ## Authors
 
