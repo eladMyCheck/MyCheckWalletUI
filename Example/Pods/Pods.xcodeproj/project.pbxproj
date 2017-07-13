@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00A1317BA629D12AE9BAB0384BB079C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39953DA45C61CCA54FDB92865EA064F /* Foundation.framework */; };
+		01B406C86741672E3CE1CA86DDCED226 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69715C372227D15F06F8136661139414 /* XCTest.framework */; };
 		03C458937FD0EF5A79E22AEA92DFD8E4 /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C7FC646EA9CDD26F495B09201A323 /* LocalData.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		043CB3474A501E92FBB619C8CF79A0CF /* MCPayPal.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2F07F56137A7FD906ADEE03F021D4B /* MCPayPal.xcassets */; };
 		051B2AF789E6D4E648C099830025DED9 /* CwlCatchBadInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28929002E33129A8037B160E5A7664BE /* CwlCatchBadInstruction.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		0572C5A1A76C1238DD37FC8C4DE7A3CC /* NoApplePayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54EE8AB601D5CB363CAF0E2E735920 /* NoApplePayState.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		076A524CCE68771A5F9391BAC0EA18E9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4839F921E7C8909C53C750AF90D78FFD /* Alamofire.framework */; };
@@ -20,12 +23,10 @@
 		13FFB80108E7D4736271A0175DD240DE /* WalletRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782536AEC30D87680EAFA8F171FA78A /* WalletRequest.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		15F192484CD7833C82BBB6500CE24C50 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824FA4A688D9A9FCB11A75ADD3F0183B /* ImageProcessor.swift */; };
 		16409C737271C4F1D7FEEFB91E317D5A /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = E913C36114E64A644983D9B286C69B3F /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		17BFFFFCA13F96F60F1D24BEA437D41D /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DB76D991B181AF2089C1703F987140 /* PassKit.framework */; };
 		17C8EE7DF3F57C8F99EAF63C6E61EA99 /* FailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103739FED1C79936A0710C27101FCABB /* FailureMessage.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		18C1D77EBB591A780FD8C587A549A197 /* World.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BFA2F35FAA3C30F4B2631B1287D8FD /* World.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1A3E19B9F5EEB773C3BB61CA42F8BF62 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5918EE02BAD4345A3013B6314AD3AC7 /* DSL.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5639ACEB7F913756DB9493D7CDEEF33C /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1CD62C972F530494212D7650F6C5EB37 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9FB40770BFD8BC367135649CE4472D /* CFNetwork.framework */; };
 		1E1CE28FFCCD7499620B47C910E9B9E9 /* BeLogical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19185010048FE8DBDBF606849D6E74FE /* BeLogical.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		1F65D9A32E19E95F3DBBB936C37940B3 /* ApplePayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241DA7AC6FBDFBAD9BAAAF04FFE7F6EC /* ApplePayView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F9D95C57864416D56FADC88A5A50457 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86611C3DB0F8A0081673667C09C9A25 /* ImageDownloader.swift */; };
@@ -33,9 +34,9 @@
 		21933F3BBC1E37C48C0D7E34FDD1EC12 /* ApplePayCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6784E77FD0AE34402EB4A3BD4E6DB365 /* ApplePayCredentials.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		22E9F6FA56858A5F7A5D664E5968ECB0 /* NMBExceptionCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 41C79AA9AC3668223ED5DCA314F3BB96 /* NMBExceptionCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2301644704F741828CBC8406883A0F47 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5905457967A28495EFC8A047139D76ED /* Session.swift */; };
-		23471A7275FB1F3DB4399D652E2D6036 /* MCPayPal.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39E208193A16CFA75C9A7EDB52E83AEA /* MCPayPal.xcassets */; };
 		23AE91E6FF0BB4C9F47E3A467788C6FB /* MyCheckWalletUI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D658C248AC8D948DD4FC2C52738BA2A3 /* MyCheckWalletUI-dummy.m */; };
 		23B956A659AF2E76734D07458429F29F /* ThreadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92386AA70E667F91491C3F10A9CF7379 /* ThreadHelper.swift */; };
+		25496FA1165A27B5000AC5730A3127DD /* MCMasterPass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EFD66736A5244114BF4BE68B6624994 /* MCMasterPass.xcassets */; };
 		25D1805055756CAA69A167CA03B2465C /* ContainElementSatisfying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E280AF57806ACFC6067F32E23717C15 /* ContainElementSatisfying.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		25D7312BBE513DAB0ACBC1814DDC7C86 /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825231687B42ADC732AC2E7864079071 /* CwlDarwinDefinitions.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		2667B4C6EBD7D56628F9A7025768E630 /* Dictionary+Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A747F03F9A6DD60A7EE791330D99391 /* Dictionary+Append.swift */; };
@@ -57,6 +58,7 @@
 		31C39ED8CB1C9317F1F2840FC919662D /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEFDFD4B4A9A67AFFABFA0D2C9FF752 /* PostNotification.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		32AF51C8AA2E3303FB9E0DCD19C34925 /* World+DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D548694BC6701BF77351C1AC2C598CA /* World+DSL.swift */; };
 		32B38992751B96F21324BFC9923BFCBD /* AssertionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46531A1BF41157461B7A500F773C24BF /* AssertionDispatcher.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		331AD0999ADE190439B1D95C24833522 /* MCApplePay.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D228904AF2CDC650655C09445317BCF /* MCApplePay.xcassets */; };
 		3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02E2AA51C121D27AEA67DD9E4FD3BA4 /* TaskDelegate.swift */; };
 		36F504803AC5AE737F3A7F227A2883BE /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A296DC6492DB34B19816323CF0B2A86 /* Image.swift */; };
 		37C5AC3FE6711A1117819AC5A18EE5C4 /* CwlBadInstructionException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306510AC1CDD00DDF976B0499B72452F /* CwlBadInstructionException.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -66,25 +68,27 @@
 		3E04D23B2995705A6106D41F3E3E4E33 /* ExpectationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5027A0D64574A4E53ABD39A7CCBAF0 /* ExpectationMessage.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3E8D253BEFF1388C27088AE8D14D050C /* Quick-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A8C3BAE1FC9CB0E6ABB5746B7DAAD9A /* Quick-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F2A2A1940FBE921847ED80C8781F1C2 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4901C6320FAF070697E94C402D4E4 /* Box.swift */; };
+		4037424897174B416416BB0A1F2BE6D4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0626D6388F149E8864FDA282F5C39BCE /* Media.xcassets */; };
 		40D6E593E52EBA0F513A645EFEE8EC22 /* Pods-MyCheckWalletUI_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B6AED777BAE0B24BF2D5EE12B668554 /* Pods-MyCheckWalletUI_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4122BFE3451EE9086FD4256D7AA47A0B /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04614D3433FEFDD788426E8EBCB7D3D6 /* RequestProtocol.swift */; };
 		45F183320C688F9978649F30ABE21D09 /* MatchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65410CE07822B47555EFD849AE8F2F6 /* MatchError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		4868BBB08A47287BAA67B324204FF392 /* PaymentMethodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615E8D10E8468BDD2AC7D8A56CB8820 /* PaymentMethodButton.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4AA322A0EFB95311A7D16C402A22EEA0 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB9D2C5EB2267C2F78179496C92CEB7 /* PassKit.framework */; };
 		4AA9389857B11B7B67B85C40059FEF13 /* MyCheckCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777EECB6ABDF9D8151CB756A3C28C1AE /* MyCheckCore.framework */; };
 		4AD00EED32EA5B3D946BD06BD7A425AF /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF39E988E95A94F4C0E7F8D3C38C314 /* Resource.swift */; };
 		4BAC441ADBEB7947FF90B1881C2620AB /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1EC6356F1FBAB43A1A7E41A74E90E5 /* Filter.swift */; };
 		4CDACD8A5A6CFB688838AA988E7D1E43 /* Nimble-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 61200C5931895F50BF823D0D87C2F915 /* Nimble-dummy.m */; };
 		4D68C35510D1E911C9B89840FC4B777F /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = FF18161C48A4F0DEA4919396046A3F05 /* mach_excServer.c */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		4EE25FA4C2596266104AE032D4844349 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F9C694AA1FFFAC7165C3793272CD0 /* Foundation.framework */; };
 		4F8CBB9F8F5CC1B43C7C15055365A387 /* Data+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DA15BA6FEAAEE8483A7F97DCCE7BE /* Data+JSON.swift */; };
 		4FABBF5CA8F735F48035BE4144613CB7 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D02D6B20FC648FF716BC29DEED40D00 /* Expression.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		50698F14E7847E18B907E9373FBF4C21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39953DA45C61CCA54FDB92865EA064F /* Foundation.framework */; };
+		51DBF5DD5A15ED963E8C99E0DB9326B0 /* ProximaNovaSoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EE8CBA2C0A1475DDC611B6EAA3474D5A /* ProximaNovaSoftRegular.otf */; };
 		523246FC3C285842CC807FC60D2332AA /* Dictionary+Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9AEA7EE38EA4A4D942F204AC4AF5FE /* Dictionary+Append.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		531C54B1C10BA0F17A2B7D81D02BD390 /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = F70FB52DCBDD558BE195169E11B2BCF9 /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912679B762F155DA7379AB68EBFB0C9C /* Request.swift */; };
 		543277E952320427CA23C5BAF41E929F /* MyCheckWallet+VisaCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE8E5FCD4AC1F3B5E461146166A016 /* MyCheckWallet+VisaCheckout.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		54CC2049C937561A469575AF9E6A6FE9 /* NimbleEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1ABF15EAFC547EF87DD1A1D7454D63 /* NimbleEnvironment.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		55DAD0C780AD2ED0AAD856F48334CE71 /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 895C2F9EEC3A0C29C4EEB0623AAC6065 /* Quick-dummy.m */; };
-		55EB3828E91ADF71180735E7F80493D2 /* MCMasterPass.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7E08DF2E329CF35E1E6DE0E80B1F40A /* MCMasterPass.xcassets */; };
 		58C0125D796A97541FDE3414001D8A92 /* BeEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC073AEC3CB5B126567F7DEEC6269DBE /* BeEmpty.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		58D59820A0A8FE7634DEF48A33FB328C /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C07E169388C83C315E72F6D37ACC592 /* DSL.swift */; };
 		58D964317DFBB10F54A273CB12843017 /* BeGreaterThanOrEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988F928C991DB76688DFF3D8364872C4 /* BeGreaterThanOrEqualTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -112,14 +116,13 @@
 		6CB4890B9BF5F846E980634AFE83917D /* NMBExceptionCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = FECC58E1BD8038B87D57234F9F195642 /* NMBExceptionCapture.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		6CCE5C060E513B23AB54CD35C29DDBEF /* World+DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = C9819588A79B95DF6DBB1B0BA2C4DC65 /* World+DSL.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6CFF9F92B6F0DCCB777BA2BCF7CA6E4E /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740255B4B7DD9712F50DFA38D1870C99 /* Money.swift */; };
-		710C9ECC94D0A984C0E6F149F0622B8C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63A29110FB2232ECFCB1706902130AF3 /* Media.xcassets */; };
 		719B948486823482842A2FC6D3435305 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0B09A8A3346FA081D6DA14D4BE6321 /* Networking.swift */; };
 		72F6D8F97803C639EA0417C69A123FF6 /* ExampleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4213295B8C69E179B78F38D71D38FF /* ExampleMetadata.swift */; };
+		73B9C996AED49ED7CF8EC2A6F1738059 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39953DA45C61CCA54FDB92865EA064F /* Foundation.framework */; };
 		73BC5AC2ECDB8722E085F14B53E0D24E /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D091A08B2D114D2BA934823ADC406D /* AssertionRecorder.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		75538A8B20C7A20AF3D54BBF35D56FFE /* BeLessThanOrEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D98CA80857B77C0A7C1E49426B00684 /* BeLessThanOrEqual.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		757F638BA004DB1FD27E4C9F3688BC11 /* ExampleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D35A2DD2D444802C89F37D257881C6E /* ExampleGroup.swift */; };
 		75ABB48E3C30C2D736C3D05D6FD566A8 /* BeNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA42E2A9BDCB5928B03CC224CA99181 /* BeNil.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		778CC49C84E604003F7C5ECD877649B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F9C694AA1FFFAC7165C3793272CD0 /* Foundation.framework */; };
 		7B262B1E8AC91308347656FCF82E1192 /* ImageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB8C4A4C1A3B20D9875B0CF916489F /* ImageTransition.swift */; };
 		7B5FE28C7EA4122B0598738E54DBEBD8 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD055E35F1FB5B0392A2ADBE3977F9E /* SessionDelegate.swift */; };
 		7D8CC01E8C9EFFF9F4D65406CDE0AB66 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265C0D8B871722541904FED6F2E3854 /* Result.swift */; };
@@ -129,49 +132,45 @@
 		84E4DFED25B4E0897E48D82FC85287AD /* QuickSpecBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 4870E413E468B802F7514EE551E37FFF /* QuickSpecBase.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		856F91B9EB21C3F5D37F169DC6FA1252 /* MyCheckWalletUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5789FDEC43E9A40AF7CD3F5F38F8E15 /* MyCheckWalletUI.bundle */; };
 		85C0CDAB795CF79695C33693867B2AB7 /* LocalData+ApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E032A4C1BC320277D8C3F1410CCFDD /* LocalData+ApplePay.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		861BE1AA8EC4E071A7AF064EFF25CE59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39953DA45C61CCA54FDB92865EA064F /* Foundation.framework */; };
 		8B55BD430033027AD5FF22D630DD9F62 /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 074B5AFE9716E2C15B3428393C3431C2 /* DSL.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		8C5890A2E762F87EA85F0E430FECA3C4 /* ApplePayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A84D77897760590A581B7DB672B1B /* ApplePayController.swift */; };
-		8E0B65791D9597EB680A6623E11E8A86 /* MCApplePay.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E56B6022B8F853B01DEEA6333BE2A533 /* MCApplePay.xcassets */; };
-		91CE3095FDF52B6FE3D3F9647BFD6E46 /* CheckoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C786345FE2180CB07A716EC2275033 /* CheckoutViewController.xib */; };
-		9271E8BBEFF52D3376D7EBD41EE66A52 /* paypal in Resources */ = {isa = PBXBuildFile; fileRef = 54D3C496F661A2637FB3A94883F3AA04 /* paypal */; };
 		934A36D6B847A9B437846EB47FD3C9C4 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8444290017D6F3F9B2606EE7DD174BE /* Filter.swift */; };
+		9436F618055F1B43E4723C692BB22EC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39953DA45C61CCA54FDB92865EA064F /* Foundation.framework */; };
 		96132E7432F8DD315A88A07C6B4F9C72 /* NMBStringify.h in Headers */ = {isa = PBXBuildFile; fileRef = 57134FDEF0AE08E6A554A8C6A47814EB /* NMBStringify.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964B704634F8CC288F6CA92420413698 /* MyCheckCore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F6A7F57FA652A9BD6A7BD7361FFA40 /* MyCheckCore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		96631DDC05DBAF086CD4C803840DF682 /* CreditCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 178160A40C29D4F5EFB1178BD3C9920A /* CreditCardView.xib */; };
 		988EED125395950177DC14AF9BC87D8D /* HaveCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0A911B0EE17EE88DC757981740F951 /* HaveCount.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		9C1BB53BA70217F566B36537A3A63880 /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD1669A6D99CC7F411C27F37F8FDC9B /* AnimatedImageView.swift */; };
 		9EC0A3AD97BA63E7C823C9C3BFA4D5BE /* VisaCheckoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7528D26B9F1B7777EC192AEC4600B881 /* VisaCheckoutFactory.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9ED2BB2981896E0A39EFA365503F58CE /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E73FC054FCD4C4973BA27A8EDFF405 /* AFError.swift */; };
-		A04BFC558D69E7DBB68023C80A9CFE4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F9C694AA1FFFAC7165C3793272CD0 /* Foundation.framework */; };
-		A25B8EF31576BA84A35F33FEA36090F8 /* ProximaNovaSoftBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDEB060FA3725C82FCF8CB20BC2B1F13 /* ProximaNovaSoftBold.ttf */; };
+		A0074C3234B39ACDD3A470DCD3379983 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39953DA45C61CCA54FDB92865EA064F /* Foundation.framework */; };
 		A266BCFDECD5CF6C681327E2993F4DE1 /* PaymentDetailsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005A1634C7B4971B54A90C96906F4FA0 /* PaymentDetailsProtocol.swift */; };
 		A2A6F71B727312BD45CC7A4AAD7B0AB7 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA3D5CF9DCD13CD1183B427028E4C7E /* NetworkReachabilityManager.swift */; };
 		A32A578FF55CB2DE6FC48F32B86CBF92 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E28B9DAF866ED2A903EC67A4BA31B5 /* World.swift */; };
 		A37FE2AF353801D1CFD3F6CDEAA119DE /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099FAD04FAF57A9B5D7AD4885A6A6C57 /* Example.swift */; };
 		A4920323DF93ADD67E31F187C3575243 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F717925C457054B5EE3E8ED040D98996 /* UIColor+Hex.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A501BDAFA95280D7E7ED10281BDD2460 /* MyCheckWalletUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0226D82FE68EDA8AFB58D955D19051D2 /* MyCheckWalletUI.storyboard */; };
 		A61ADD214AA182EEB2AC95EA3F3D658F /* XCTestObservationCenter+Register.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B0842211A759C0B9C40625120D4781 /* XCTestObservationCenter+Register.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		A665AB83AFA9893E6BD85E8E2902C11B /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B8BC99D86782D51BFDD58870F80DAD /* CreditCardView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A69A6F6033994451835B5A25C5DB7C15 /* ProximaNovaSoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A682C761B84BA3EA28C3FE712D07BA5D /* ProximaNovaSoftRegular.otf */; };
 		A74537420FF0CEDC6B9E82E1DC4C2B15 /* Contain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640B77F7C7EDA9B5743BE5A6ABF0B333 /* Contain.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		A7C13C62E4116CA964A3E82179092AD5 /* NMBObjCMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5A7EC5E6FCF65571BE691B70B48FB5 /* NMBObjCMatcher.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		A9EEEA7477981DEEBC72432DE9990A4B /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5826945AE035F028E6D0D64B29E1D38D /* Alamofire-dummy.m */; };
+		AA8999A0EE6BD9A4352551907C87DCA2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C22D448C413FA65682F67B2463FB05AC /* CFNetwork.framework */; };
 		AB860DDD59CD5022F61D6BD31F634CAC /* ImagePrefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B625C993623F6DF0348EA8B804B3090F /* ImagePrefetcher.swift */; };
+		AD5473E1DD2823D4DC2FDDB9DA8B6951 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39953DA45C61CCA54FDB92865EA064F /* Foundation.framework */; };
 		AD7D765AAB413E695900A7B7F44F1F69 /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C29FBA655F7677176679F03EDC2A4F3 /* QCKDSL.m */; };
 		ADE8861B03BBF26CA73A34B3156CA7AF /* MCAddCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190104D36CBBBDEA87D3EDFBB90DFF6B /* MCAddCreditCardViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ADEE95A3A188BE3095990E20766BCCC8 /* DSL+Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85317AF21DEF7A683A74B35C6DE3EBE3 /* DSL+Wait.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		AE1EF48399533730D0066E04B22CA2D6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CCDED38F51B074A2E9CEE5D9B4E66 /* SessionManager.swift */; };
 		AE4DA49ECD693BF384CD824DF02D7C6E /* NMBStringify.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD04551020E119C35E4D1531FE582A9 /* NMBStringify.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		AF1174085D9BC5D50FCE0480E9C2BE94 /* BeGreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA47640BCCAE2B519BCCF1A715CB2E /* BeGreaterThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		B0AD7F67422B818C7AC9E0E7F0D592BE /* CreditCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A939D6DF1C97CAA85F6C1E6F63A9E6E /* CreditCardView.xib */; };
 		B102ABE4E54B71B3D2C2118E2782FAB9 /* BeLessThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1F53AE94024CE4DB5D6A8257E5F148 /* BeLessThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		B1346CD75B0A7E0F26651704134DD6D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F9C694AA1FFFAC7165C3793272CD0 /* Foundation.framework */; };
 		B2C151B20635A480E1937E3D2B509BB4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B5A19AFC0D643BE7A50AEA101C1A2 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		B37D0376FCEB3133F44CF5F4416C58E1 /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EFF12A0622E88828FC97DEFE48D1975 /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B40E622D3A30FB1B99C4D266539765FE /* Wallet+PaymentMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D3E210F049C772B5E19F5047E78278 /* Wallet+PaymentMethods.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B65FCF589DA398C3EFE0128064E510EC /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E62CCBD7745D4EB62655672F48C040 /* MultipartFormData.swift */; };
 		B6614DBFA9B0E655A05A8576878A47CB /* Chargeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C4CC5E0227455E7B1F31356E7B0BDD /* Chargeable.swift */; };
 		B6B04E5655BD8C2A94C505E0D6894330 /* MCCreditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0770445ECE365B46291FD291F40C8446 /* MCCreditCardsViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B8A53855B8DCDE9AA775F0E0341317F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F9C694AA1FFFAC7165C3793272CD0 /* Foundation.framework */; };
 		BB2D09C37CAA41F61C8231B42449818F /* ImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE916B926EC41AB318B9AEF081352C /* ImageView+Kingfisher.swift */; };
 		BB62CA1FF6FDAC02DB8F1691A845060F /* PaymentMethodInterface+getBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F335C1D64F35BC1BB57AD472A8016F /* PaymentMethodInterface+getBackgroundImage.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B88218D53C5C87BD000E4D986A2849 /* Validation.swift */; };
@@ -184,11 +183,12 @@
 		C048FBADAE48D38EF69E0DFA788D0CF3 /* Pods-MyCheckWalletUI_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6263697EB59BB353A1C00D5446EC4FA8 /* Pods-MyCheckWalletUI_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C06FA100C1BBEE34B863BCB8A65359C1 /* MatcherFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2125ED030C2231512886F6A538FACADB /* MatcherFunc.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		C1D862177DC2999FAC710AC25F253BD0 /* BeAnInstanceOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331B8E50D9AE1514CEE8970BF00DDD20 /* BeAnInstanceOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		C29EF9A3463200D147A221BB67E3D184 /* CheckoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67558EBD8903A82F620DA98608BE6BA5 /* CheckoutViewController.xib */; };
+		C2B9D9E5F48EF5EE5BE18EECC6EE165F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39953DA45C61CCA54FDB92865EA064F /* Foundation.framework */; };
 		C3B1A7E0024A06554CBE973A69DFEDA2 /* CwlMachBadInstructionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BC77E11BBE7FAE13FFB45DC2B2BCD599 /* CwlMachBadInstructionHandler.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		C6ACD521B1705593A2A6CA681A8966B9 /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B60E88FE8F4539082E11DE9AD95BCB /* QuickTestSuite.swift */; };
 		C8320A6164C870ADDB8A855ADEBBBDC9 /* Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7635617F5567E4EDA49B48C9333121 /* Equal.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		C8A24B5D1DE2CE90CDB894280AB8DC89 /* UIButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E59ED2C8A2C22A4F3090748C5326D4 /* UIButton+Kingfisher.swift */; };
-		C9657E2F59000C84663A69A1BF42EA0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F9C694AA1FFFAC7165C3793272CD0 /* Foundation.framework */; };
 		C9A6570BE31A17455F1E62F6507AD076 /* QuickSpecBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAABDE8DA435B62006CE98E7A2891BE /* QuickSpecBase.m */; };
 		CAF4E3DE0B7F55F7AE0A96DBE878783A /* PaymentMethodFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869A2D52BD9EE7F6B8AAC87194A938F5 /* PaymentMethodFactory.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CB6D60925223897FFA2662667DF83E8A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0C3FD167789E70F3B94D573B0E2A4 /* Response.swift */; };
@@ -203,7 +203,6 @@
 		D3BA14D763A1D1C33D81D69C3FF95B8D /* QuickSelectedTestSuiteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEDA9483D025A9E38C2A16CE327A3C5 /* QuickSelectedTestSuiteBuilder.swift */; };
 		D4D6C0A689145B53E332183C4B1AA8A2 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD95DE01DE679A20A1442D9E0A4C70 /* Indicator.swift */; };
 		D535F967F08593E5B52B238DE0793E6F /* Kingfisher.h in Headers */ = {isa = PBXBuildFile; fileRef = EB53BDAA7E73E424BF302BD7B1F202F7 /* Kingfisher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D602E33D0F1F19158AEEC26E6F697311 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F9C694AA1FFFAC7165C3793272CD0 /* Foundation.framework */; };
 		D63AAAFB8177DFD229F270C1416E11C7 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A6085FA45A3FD8A64E4826EA497AAD /* Configuration.swift */; };
 		D7DA45C7E37701D35CCFD1DDFB856323 /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FE93F4A76C1F7E5C497FE302C7B6FE /* UIColor+CustomColors.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D7F44E70FBF99B6917AFB2218064DCF3 /* CacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695701F98ED75900EA81F4E8D69D2B3E /* CacheSerializer.swift */; };
@@ -214,12 +213,10 @@
 		DF026F6F406A4FB6CEA63B0A4B9E27DD /* AllPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5ADA71AE9588041023E3E933B3BA4 /* AllPass.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		E2B4162321220A6405A902D6BDB00C28 /* AddCreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230FBEA8D593C05B694E6EC37A0DCC52 /* AddCreditCardView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E31D9ECACCCF91BA47600348F7387D80 /* Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A08584CD6DFFA31853BE1FBD287DAB /* Kingfisher.swift */; };
-		E47722253B5504DAE9E903E924C19EA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9F9C694AA1FFFAC7165C3793272CD0 /* Foundation.framework */; };
 		E4B825117791A3C085047A5CA1786AA4 /* String+IsNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F493CC6E5DAF592A598DF98BD6406C8 /* String+IsNumber.swift */; };
 		E4C926642899F374901C981BBCC99DC1 /* ApplePayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F8115DED3DA1DFCF18F9BF761B8DFE /* ApplePayFactory.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E553190FD0B2931D819737FF60DB1541 /* QuickSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEB89FB6F68C7FF65AD14A0CEE2B220 /* QuickSpec.m */; };
 		E596AA30174E7E785E3C4DF4AB02951A /* ExampleHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF790D17EB910ECADAFC1391C6322F40 /* ExampleHooks.swift */; };
-		E68FF91947D68391F756A302A7F36F25 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A346063A3E0CEE56582CD5CE6BA114 /* XCTest.framework */; };
 		E99EB82B0FD88F5805CE281EFFEC927C /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BFCF079129059461722999EBB2B9F /* Wallet.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EAAA05EBBC34225C0DB45797712E24A1 /* AsyncMatcherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1930CBAFDD1FB6157E0404FA7B4EE6 /* AsyncMatcherWrapper.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		EAC70AD0AA66944A3165AB7070AB3319 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4FAF59C20DB5BC0A5E0424E5B7A0D9 /* CreditCardValidator.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -232,16 +229,19 @@
 		EFD264FC408EBF3BA2528E70B08DDD94 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5DCC5036C3A8E4FC055AF1396A6E52 /* Notifications.swift */; };
 		EFED4E6073F25DC126044F93A8F73953 /* MCScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0399E2D474F53DBB6EAFC959BC47F8E0 /* MCScrollView.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EFFD5DD27E4C68DBE4A438750E09B1B2 /* MCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85E21387548431CFA036B5E2EE114C /* MCViewController.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F18A398313F9C1CCD541778B764E4A72 /* paypal in Resources */ = {isa = PBXBuildFile; fileRef = 75C899E2C8E9403969BCA07AE85C3831 /* paypal */; };
 		F28003B228B82B7E1497D4F41F55A31E /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EF83C5D682941A84180DDE99CC43DF /* Match.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F2F46DDB7D7FC3B69CCFA48E84DC9108 /* KingfisherOptionsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C612460093497B489984A83F20006F /* KingfisherOptionsInfo.swift */; };
 		F3BAA36614ABDBC0538B0DEA99CF80A0 /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC240DBB581602034EA015AB8D4CB0E9 /* SourceLocation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F482D0D45B1739892267B81A0C4D35E8 /* MyCheckCore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D70FD570E4A46FDF7C728FE5877C03 /* MyCheckCore-dummy.m */; };
 		F4BD249C60F21F5E0F7C1FAC8A5BC2AF /* BeIdenticalTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FE5ED02D65AF473450703D7A6D55BB /* BeIdenticalTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		F62F1770FFCB402C5FB9FD2F459675A3 /* MyCheckWalletUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9850A7CC9487EB0909921BA53216540 /* MyCheckWalletUI.storyboard */; };
 		F6BECD98B97CBFEBE2C96F0E9E72A6C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00C65C3C43C2DE63FA7F7AA7CD82BAD /* ResponseSerialization.swift */; };
 		F8B3D3092ED0417E8CDF32033F6122F5 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B18933D4672004C7C20BB3153611BEE /* Alamofire.swift */; };
 		F9649DD59BAEE88C6864EEFE73ECA88C /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED664825D38C573D9D739D1DA522676A /* AdapterProtocols.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		FAC6583069B8519930310B6F90B96D7D /* SuiteHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC180E30B4CBE74FE8CD8644EFF66CB5 /* SuiteHooks.swift */; };
 		FB433A84B0A557CD5E5948A8B6705024 /* DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = DBB47CC059B68640DD2BA499FC4BAA63 /* DSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE391BB28A0A0F9095FFF93655A98342 /* ProximaNovaSoftBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDAB6BE97609084460E8F30683B14B45 /* ProximaNovaSoftBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -356,9 +356,9 @@
 		005A1634C7B4971B54A90C96906F4FA0 /* PaymentDetailsProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentDetailsProtocol.swift; sourceTree = "<group>"; };
 		00D0C3FD167789E70F3B94D573B0E2A4 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		01C6C287FF21B205C7CF85D4E673EAB1 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
-		0226D82FE68EDA8AFB58D955D19051D2 /* MyCheckWalletUI.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; path = MyCheckWalletUI.storyboard; sourceTree = "<group>"; };
 		0399E2D474F53DBB6EAFC959BC47F8E0 /* MCScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCScrollView.swift; sourceTree = "<group>"; };
 		04614D3433FEFDD788426E8EBCB7D3D6 /* RequestProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		0626D6388F149E8864FDA282F5C39BCE /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		074B5AFE9716E2C15B3428393C3431C2 /* DSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DSL.m; path = Sources/NimbleObjectiveC/DSL.m; sourceTree = "<group>"; };
 		0770445ECE365B46291FD291F40C8446 /* MCCreditCardsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCCreditCardsViewController.swift; sourceTree = "<group>"; };
 		08656D4CFE833BC083FBE8044C5907EA /* Pods-MyCheckWalletUI_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -379,7 +379,6 @@
 		13E68EEFCFAE1F8A9BD29489D9BD7969 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		154411CD9AF08A56DE40134D53091EB2 /* Nimble.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.xcconfig; sourceTree = "<group>"; };
 		16CA47640BCCAE2B519BCCF1A715CB2E /* BeGreaterThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThan.swift; path = Sources/Nimble/Matchers/BeGreaterThan.swift; sourceTree = "<group>"; };
-		178160A40C29D4F5EFB1178BD3C9920A /* CreditCardView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CreditCardView.xib; sourceTree = "<group>"; };
 		1782536AEC30D87680EAFA8F171FA78A /* WalletRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WalletRequest.swift; sourceTree = "<group>"; };
 		1885B7733B6C988BDCAAE76803EE6115 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		18F70715434FE5AF8583653C3A9AD93A /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
@@ -387,6 +386,7 @@
 		19185010048FE8DBDBF606849D6E74FE /* BeLogical.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLogical.swift; path = Sources/Nimble/Matchers/BeLogical.swift; sourceTree = "<group>"; };
 		1A2879428908A2B9DE09F4636C0BDA87 /* MCCheckoutViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCCheckoutViewController.swift; sourceTree = "<group>"; };
 		1A296DC6492DB34B19816323CF0B2A86 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Image.swift; sourceTree = "<group>"; };
+		1A2F07F56137A7FD906ADEE03F021D4B /* MCPayPal.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = MCPayPal.xcassets; sourceTree = "<group>"; };
 		1B15AA9D8EC580539639DF43FF84864E /* Pods-MyCheckWalletUI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		1B24F3A09A3FEBFFC769C4C41063BF4D /* ToSucceed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToSucceed.swift; path = Sources/Nimble/Matchers/ToSucceed.swift; sourceTree = "<group>"; };
 		1B84D68BAEFDC87897FB9E2C39116F16 /* BeCloseTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeCloseTo.swift; path = Sources/Nimble/Matchers/BeCloseTo.swift; sourceTree = "<group>"; };
@@ -400,7 +400,6 @@
 		230FBEA8D593C05B694E6EC37A0DCC52 /* AddCreditCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddCreditCardView.swift; sourceTree = "<group>"; };
 		241DA7AC6FBDFBAD9BAAAF04FFE7F6EC /* ApplePayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ApplePayView.swift; sourceTree = "<group>"; };
 		244A6ADE998E41FC7ACE53473CA740CD /* MyCheckCore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MyCheckCore.modulemap; sourceTree = "<group>"; };
-		24DB76D991B181AF2089C1703F987140 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/PassKit.framework; sourceTree = DEVELOPER_DIR; };
 		25FBE7F217425F9DD6003E5A4D44437C /* ThrowError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowError.swift; path = Sources/Nimble/Matchers/ThrowError.swift; sourceTree = "<group>"; };
 		26061DC1624B5AD63A8A531803705FC2 /* ApplePayState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ApplePayState.swift; sourceTree = "<group>"; };
 		26BE8E5FCD4AC1F3B5E461146166A016 /* MyCheckWallet+VisaCheckout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MyCheckWallet+VisaCheckout.swift"; sourceTree = "<group>"; };
@@ -414,7 +413,7 @@
 		2B4E4EEB13FFE2B5E6D75F4CEB3114B5 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
 		2B542A07E9D4EEF7315CD1C3765F37BB /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BAB0C51ED7398379B13DD61B8C8606A /* CreditCardPaymentMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardPaymentMethod.swift; sourceTree = "<group>"; };
-		2D9FB40770BFD8BC367135649CE4472D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		2D228904AF2CDC650655C09445317BCF /* MCApplePay.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = MCApplePay.xcassets; sourceTree = "<group>"; };
 		2E2037B45859747BB0C7EE5620C62800 /* URL+FileName.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URL+FileName.swift"; path = "Sources/Quick/URL+FileName.swift"; sourceTree = "<group>"; };
 		306510AC1CDD00DDF976B0499B72452F /* CwlBadInstructionException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlBadInstructionException.swift; path = Sources/Lib/CwlPreconditionTesting/CwlPreconditionTesting/CwlBadInstructionException.swift; sourceTree = "<group>"; };
 		31AEC9758E4D90D6C6C9FBA6AC7F62AF /* Pods-MyCheckWalletUI_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Example-resources.sh"; sourceTree = "<group>"; };
@@ -423,7 +422,6 @@
 		35823B4CD58D73D121703ECA3AD24A73 /* NSString+C99ExtendedIdentifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSString+C99ExtendedIdentifier.swift"; path = "Sources/Quick/NSString+C99ExtendedIdentifier.swift"; sourceTree = "<group>"; };
 		365A84D77897760590A581B7DB672B1B /* ApplePayController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ApplePayController.swift; sourceTree = "<group>"; };
 		36DA92958008CAB3537DBB14BE0362F9 /* PaymentMethodInterface.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodInterface.swift; sourceTree = "<group>"; };
-		39E208193A16CFA75C9A7EDB52E83AEA /* MCPayPal.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = MCPayPal.xcassets; sourceTree = "<group>"; };
 		3A726B9B89E50DA8A3EA53F5A476E02F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B18933D4672004C7C20BB3153611BEE /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		3F3AFF58AE98102A0AD495146ACBC37F /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
@@ -449,7 +447,6 @@
 		4F171C90DA58EAA1651DAB2D1D7279FD /* MyCheckCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MyCheckCore.framework; path = MyCheckCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5117781040879E23885087FD12E6FF13 /* String+MD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+MD5.swift"; path = "Sources/String+MD5.swift"; sourceTree = "<group>"; };
 		512AB9A7CB31F01B8F79B18E56B3FB44 /* Pods-MyCheckWalletUI_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyCheckWalletUI_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		54D3C496F661A2637FB3A94883F3AA04 /* paypal */ = {isa = PBXFileReference; includeInIndex = 1; path = paypal; sourceTree = "<group>"; };
 		5639ACEB7F913756DB9493D7CDEEF33C /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		57134FDEF0AE08E6A554A8C6A47814EB /* NMBStringify.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBStringify.h; path = Sources/NimbleObjectiveC/NMBStringify.h; sourceTree = "<group>"; };
 		5826945AE035F028E6D0D64B29E1D38D /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
@@ -460,34 +457,36 @@
 		5DC5358970CF8A89BB1D074764297063 /* RaisesException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RaisesException.swift; path = Sources/Nimble/Matchers/RaisesException.swift; sourceTree = "<group>"; };
 		5E8B2494D6986055A0714CF5D92F1944 /* MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-MyCheckWalletUI-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F493CC6E5DAF592A598DF98BD6406C8 /* String+IsNumber.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+IsNumber.swift"; sourceTree = "<group>"; };
-		5F9F9C694AA1FFFAC7165C3793272CD0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5FCA37E785A9D5A7DF8FA3595C5A3CF6 /* ApplePayPaymentMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ApplePayPaymentMethod.swift; sourceTree = "<group>"; };
 		5FD1669A6D99CC7F411C27F37F8FDC9B /* AnimatedImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedImageView.swift; path = Sources/AnimatedImageView.swift; sourceTree = "<group>"; };
 		61200C5931895F50BF823D0D87C2F915 /* Nimble-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Nimble-dummy.m"; sourceTree = "<group>"; };
 		614DCBB0028313ADCF86519312150275 /* Quick.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Quick.xcconfig; sourceTree = "<group>"; };
 		6263697EB59BB353A1C00D5446EC4FA8 /* Pods-MyCheckWalletUI_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MyCheckWalletUI_Tests-umbrella.h"; sourceTree = "<group>"; };
 		62EF83C5D682941A84180DDE99CC43DF /* Match.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Sources/Nimble/Matchers/Match.swift; sourceTree = "<group>"; };
-		63A29110FB2232ECFCB1706902130AF3 /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		63D70FD570E4A46FDF7C728FE5877C03 /* MyCheckCore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MyCheckCore-dummy.m"; sourceTree = "<group>"; };
 		640B77F7C7EDA9B5743BE5A6ABF0B333 /* Contain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Contain.swift; path = Sources/Nimble/Matchers/Contain.swift; sourceTree = "<group>"; };
 		65C4CC5E0227455E7B1F31356E7B0BDD /* Chargeable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Chargeable.swift; sourceTree = "<group>"; };
 		66D091A08B2D114D2BA934823ADC406D /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
+		67558EBD8903A82F620DA98608BE6BA5 /* CheckoutViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CheckoutViewController.xib; sourceTree = "<group>"; };
 		676B4E697950174EBD6C5915DEE30122 /* Pods_MyCheckWalletUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MyCheckWalletUI_Example.framework; path = "Pods-MyCheckWalletUI_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6784E77FD0AE34402EB4A3BD4E6DB365 /* ApplePayCredentials.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ApplePayCredentials.swift; sourceTree = "<group>"; };
 		695701F98ED75900EA81F4E8D69D2B3E /* CacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CacheSerializer.swift; path = Sources/CacheSerializer.swift; sourceTree = "<group>"; };
+		69715C372227D15F06F8136661139414 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		69E62CCBD7745D4EB62655672F48C040 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		6A65E61F912C6C88136522B7FBD08C63 /* MyCheckWalletUI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-umbrella.h"; sourceTree = "<group>"; };
 		6B39F27AAD44E1C321422513F7CBA13A /* Kingfisher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Kingfisher-dummy.m"; sourceTree = "<group>"; };
 		6B47F91221AD4207EE84ED347B9285C5 /* BillEntryItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BillEntryItem.swift; sourceTree = "<group>"; };
 		6D35A2DD2D444802C89F37D257881C6E /* ExampleGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleGroup.swift; path = Sources/Quick/ExampleGroup.swift; sourceTree = "<group>"; };
 		6D98CA80857B77C0A7C1E49426B00684 /* BeLessThanOrEqual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThanOrEqual.swift; path = Sources/Nimble/Matchers/BeLessThanOrEqual.swift; sourceTree = "<group>"; };
+		6DB9D2C5EB2267C2F78179496C92CEB7 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/PassKit.framework; sourceTree = DEVELOPER_DIR; };
+		6EFD66736A5244114BF4BE68B6624994 /* MCMasterPass.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = MCMasterPass.xcassets; sourceTree = "<group>"; };
 		6EFF12A0622E88828FC97DEFE48D1975 /* CwlMachBadInstructionHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlMachBadInstructionHandler.h; path = Sources/Lib/CwlPreconditionTesting/CwlMachBadInstructionHandler/include/CwlMachBadInstructionHandler.h; sourceTree = "<group>"; };
 		6F5A7EC5E6FCF65571BE691B70B48FB5 /* NMBObjCMatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBObjCMatcher.swift; path = Sources/Nimble/Adapters/NMBObjCMatcher.swift; sourceTree = "<group>"; };
 		73680FF4931F4A524A30A840AF57A5A4 /* Pods-MyCheckWalletUI_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		73D7CC3C2B9B16DD272BF39A0D53B2AE /* MyCheckCore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MyCheckCore.xcconfig; sourceTree = "<group>"; };
 		740255B4B7DD9712F50DFA38D1870C99 /* Money.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		7528D26B9F1B7777EC192AEC4600B881 /* VisaCheckoutFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VisaCheckoutFactory.swift; sourceTree = "<group>"; };
-		75C786345FE2180CB07A716EC2275033 /* CheckoutViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CheckoutViewController.xib; sourceTree = "<group>"; };
+		75C899E2C8E9403969BCA07AE85C3831 /* paypal */ = {isa = PBXFileReference; includeInIndex = 1; path = paypal; sourceTree = "<group>"; };
 		75FB4F8A7B74E673355756CCF0EF20BB /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = Sources/Nimble/Utils/Errors.swift; sourceTree = "<group>"; };
 		7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.release.xcconfig"; sourceTree = "<group>"; };
 		76E59ED2C8A2C22A4F3090748C5326D4 /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
@@ -510,6 +509,7 @@
 		884CD4D6EE608D97D83BD48D964A0A27 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		895C2F9EEC3A0C29C4EEB0623AAC6065 /* Quick-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Quick-dummy.m"; sourceTree = "<group>"; };
 		89E28B9DAF866ED2A903EC67A4BA31B5 /* World.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = World.swift; path = Sources/Quick/World.swift; sourceTree = "<group>"; };
+		8A939D6DF1C97CAA85F6C1E6F63A9E6E /* CreditCardView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CreditCardView.xib; sourceTree = "<group>"; };
 		8A9AEA7EE38EA4A4D942F204AC4AF5FE /* Dictionary+Append.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Dictionary+Append.swift"; sourceTree = "<group>"; };
 		8C07E169388C83C315E72F6D37ACC592 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Quick/DSL/DSL.swift; sourceTree = "<group>"; };
 		8CE33E0BC260C858ADC50347E8567D57 /* QuickConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickConfiguration.h; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.h; sourceTree = "<group>"; };
@@ -528,10 +528,8 @@
 		988F928C991DB76688DFF3D8364872C4 /* BeGreaterThanOrEqualTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThanOrEqualTo.swift; path = Sources/Nimble/Matchers/BeGreaterThanOrEqualTo.swift; sourceTree = "<group>"; };
 		9E1930CBAFDD1FB6157E0404FA7B4EE6 /* AsyncMatcherWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncMatcherWrapper.swift; path = Sources/Nimble/Matchers/AsyncMatcherWrapper.swift; sourceTree = "<group>"; };
 		A03C8B69E15A02646460F81917C35FCF /* Nimble-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-prefix.pch"; sourceTree = "<group>"; };
-		A2A346063A3E0CEE56582CD5CE6BA114 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A5789FDEC43E9A40AF7CD3F5F38F8E15 /* MyCheckWalletUI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyCheckWalletUI.bundle; path = MyCheckWalletUI.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FB887D8D0A47560DBBCF026C847A93 /* Quick-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-prefix.pch"; sourceTree = "<group>"; };
-		A682C761B84BA3EA28C3FE712D07BA5D /* ProximaNovaSoftRegular.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftRegular.otf; sourceTree = "<group>"; };
 		A875FA20BEAABEAA88C724C8A2BB79A7 /* Nimble.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Nimble.modulemap; sourceTree = "<group>"; };
 		A9A405097ECFCE145542B70B2FFB390A /* BeginWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeginWith.swift; path = Sources/Nimble/Matchers/BeginWith.swift; sourceTree = "<group>"; };
 		AAF39E988E95A94F4C0E7F8D3C38C314 /* Resource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Sources/Resource.swift; sourceTree = "<group>"; };
@@ -557,11 +555,13 @@
 		BC240DBB581602034EA015AB8D4CB0E9 /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
 		BC77E11BBE7FAE13FFB45DC2B2BCD599 /* CwlMachBadInstructionHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlMachBadInstructionHandler.m; path = Sources/Lib/CwlPreconditionTesting/CwlMachBadInstructionHandler/CwlMachBadInstructionHandler.m; sourceTree = "<group>"; };
 		BD0A911B0EE17EE88DC757981740F951 /* HaveCount.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HaveCount.swift; path = Sources/Nimble/Matchers/HaveCount.swift; sourceTree = "<group>"; };
+		BDAB6BE97609084460E8F30683B14B45 /* ProximaNovaSoftBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftBold.ttf; sourceTree = "<group>"; };
 		BEA3382A0DB6B60830589F9027961ABC /* Pods_MyCheckWalletUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MyCheckWalletUI_Tests.framework; path = "Pods-MyCheckWalletUI_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00C65C3C43C2DE63FA7F7AA7CD82BAD /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		C02E2AA51C121D27AEA67DD9E4FD3BA4 /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
 		C033A3EF0B641C24E6471BE5C2D98B03 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1C616FAB1CDC46C9E07DE707AA42869 /* Pods-MyCheckWalletUI_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MyCheckWalletUI_Example.modulemap"; sourceTree = "<group>"; };
+		C22D448C413FA65682F67B2463FB05AC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		C2FF4E9D9358E9334DBCFE28EDC951EE /* QCKDSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QCKDSL.h; path = Sources/QuickObjectiveC/DSL/QCKDSL.h; sourceTree = "<group>"; };
 		C346BC6A1B1B3DCF3EFA0F912D805F82 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4BD86978772227B4B89F20D7FBBEBB3 /* Expectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expectation.swift; path = Sources/Nimble/Expectation.swift; sourceTree = "<group>"; };
@@ -571,7 +571,6 @@
 		C9819588A79B95DF6DBB1B0BA2C4DC65 /* World+DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "World+DSL.h"; path = "Sources/QuickObjectiveC/DSL/World+DSL.h"; sourceTree = "<group>"; };
 		C9866BB4750AC846D7E60CDC812CC200 /* MyCheckWalletUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MyCheckWalletUI.framework; path = MyCheckWalletUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD4FAF59C20DB5BC0A5E0424E5B7A0D9 /* CreditCardValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
-		CDEB060FA3725C82FCF8CB20BC2B1F13 /* ProximaNovaSoftBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftBold.ttf; sourceTree = "<group>"; };
 		CE3DA15BA6FEAAEE8483A7F97DCCE7BE /* Data+JSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Data+JSON.swift"; sourceTree = "<group>"; };
 		D0B88218D53C5C87BD000E4D986A2849 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		D0D9A933BB5E32F5767567814FAC6561 /* XCTestSuite+QuickTestSuiteBuilder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestSuite+QuickTestSuiteBuilder.m"; path = "Sources/QuickObjectiveC/XCTestSuite+QuickTestSuiteBuilder.m"; sourceTree = "<group>"; };
@@ -585,6 +584,7 @@
 		D65410CE07822B47555EFD849AE8F2F6 /* MatchError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatchError.swift; path = Sources/Nimble/Matchers/MatchError.swift; sourceTree = "<group>"; };
 		D658C248AC8D948DD4FC2C52738BA2A3 /* MyCheckWalletUI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MyCheckWalletUI-dummy.m"; sourceTree = "<group>"; };
 		D6AC0C08E4B82EF8B2341C038C74B675 /* BeVoid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeVoid.swift; path = Sources/Nimble/Matchers/BeVoid.swift; sourceTree = "<group>"; };
+		D9850A7CC9487EB0909921BA53216540 /* MyCheckWalletUI.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = MyCheckWalletUI.storyboard; sourceTree = "<group>"; };
 		DAA3D5CF9DCD13CD1183B427028E4C7E /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		DAB03B7E778D6DE90B1B327041751EC4 /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
 		DBB47CC059B68640DD2BA499FC4BAA63 /* DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DSL.h; path = Sources/NimbleObjectiveC/DSL.h; sourceTree = "<group>"; };
@@ -597,9 +597,7 @@
 		E2CE0F53E5B7AF6C709E4961CFD65793 /* VisaCheckoutSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisaCheckoutSDK.framework; path = MyCheckWalletUI/Classes/VisaCheckout/frameworks/VisaCheckoutSDK.framework; sourceTree = "<group>"; };
 		E4A08584CD6DFFA31853BE1FBD287DAB /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/Kingfisher.swift; sourceTree = "<group>"; };
 		E4B36EAFE2446A4675B8B9C2A5343A92 /* MyCheckCore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckCore-prefix.pch"; sourceTree = "<group>"; };
-		E56B6022B8F853B01DEEA6333BE2A533 /* MCApplePay.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = MCApplePay.xcassets; sourceTree = "<group>"; };
 		E5918EE02BAD4345A3013B6314AD3AC7 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Nimble/DSL.swift; sourceTree = "<group>"; };
-		E7E08DF2E329CF35E1E6DE0E80B1F40A /* MCMasterPass.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = MCMasterPass.xcassets; sourceTree = "<group>"; };
 		E913C36114E64A644983D9B286C69B3F /* CwlPreconditionTesting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlPreconditionTesting.h; path = Sources/Lib/CwlPreconditionTesting/CwlPreconditionTesting/Mach/CwlPreconditionTesting.h; sourceTree = "<group>"; };
 		E9551B6BCAF667722A0DE10B8A048201 /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Kingfisher.modulemap; sourceTree = "<group>"; };
 		E98817604FFB2152A403877047282C53 /* Wallet+ApplePay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Wallet+ApplePay.swift"; sourceTree = "<group>"; };
@@ -609,8 +607,10 @@
 		ED664825D38C573D9D739D1DA522676A /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
 		EE2F2628F8FE1645FC45713A804BE665 /* Pods-MyCheckWalletUI_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MyCheckWalletUI_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		EE7635617F5567E4EDA49B48C9333121 /* Equal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Equal.swift; path = Sources/Nimble/Matchers/Equal.swift; sourceTree = "<group>"; };
+		EE8CBA2C0A1475DDC611B6EAA3474D5A /* ProximaNovaSoftRegular.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftRegular.otf; sourceTree = "<group>"; };
 		EF9B164ED26ED6B4216627D17E910484 /* Pods-MyCheckWalletUI_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Example-frameworks.sh"; sourceTree = "<group>"; };
 		F32F8699A4643CBF2A3F836623D96E28 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F39953DA45C61CCA54FDB92865EA064F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		F3ACEF89EBA8B6A7CA9DD26B8CEA656D /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Quick.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3DCFF1FE7DAD38023BD679660315BE4 /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
 		F4E5C98FB8C84A34AB7C1C3C9E10E771 /* Pods-MyCheckWalletUI_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -640,7 +640,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				076A524CCE68771A5F9391BAC0EA18E9 /* Alamofire.framework in Frameworks */,
-				D602E33D0F1F19158AEEC26E6F697311 /* Foundation.framework in Frameworks */,
+				A0074C3234B39ACDD3A470DCD3379983 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,10 +649,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				280AB46BDAF10381B49B6EC230B45EAC /* Alamofire.framework in Frameworks */,
-				C9657E2F59000C84663A69A1BF42EA0C /* Foundation.framework in Frameworks */,
+				C2B9D9E5F48EF5EE5BE18EECC6EE165F /* Foundation.framework in Frameworks */,
 				62673A63BF430824670B2BDBBC7D495B /* Kingfisher.framework in Frameworks */,
 				4AA9389857B11B7B67B85C40059FEF13 /* MyCheckCore.framework in Frameworks */,
-				17BFFFFCA13F96F60F1D24BEA437D41D /* PassKit.framework in Frameworks */,
+				4AA322A0EFB95311A7D16C402A22EEA0 /* PassKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,7 +660,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EE25FA4C2596266104AE032D4844349 /* Foundation.framework in Frameworks */,
+				50698F14E7847E18B907E9373FBF4C21 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +675,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A04BFC558D69E7DBB68023C80A9CFE4E /* Foundation.framework in Frameworks */,
+				73B9C996AED49ED7CF8EC2A6F1738059 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,7 +683,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				778CC49C84E604003F7C5ECD877649B8 /* Foundation.framework in Frameworks */,
+				861BE1AA8EC4E071A7AF064EFF25CE59 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,8 +691,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CD62C972F530494212D7650F6C5EB37 /* CFNetwork.framework in Frameworks */,
-				B8A53855B8DCDE9AA775F0E0341317F3 /* Foundation.framework in Frameworks */,
+				AA8999A0EE6BD9A4352551907C87DCA2 /* CFNetwork.framework in Frameworks */,
+				00A1317BA629D12AE9BAB0384BB079C3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,7 +700,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1346CD75B0A7E0F26651704134DD6D4 /* Foundation.framework in Frameworks */,
+				9436F618055F1B43E4723C692BB22EC3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,8 +708,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E47722253B5504DAE9E903E924C19EA5 /* Foundation.framework in Frameworks */,
-				E68FF91947D68391F756A302A7F36F25 /* XCTest.framework in Frameworks */,
+				AD5473E1DD2823D4DC2FDDB9DA8B6951 /* Foundation.framework in Frameworks */,
+				01B406C86741672E3CE1CA86DDCED226 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,6 +869,24 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		49FDE0358713816F70F4A1514BEDA543 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				67558EBD8903A82F620DA98608BE6BA5 /* CheckoutViewController.xib */,
+				8A939D6DF1C97CAA85F6C1E6F63A9E6E /* CreditCardView.xib */,
+				2D228904AF2CDC650655C09445317BCF /* MCApplePay.xcassets */,
+				6EFD66736A5244114BF4BE68B6624994 /* MCMasterPass.xcassets */,
+				1A2F07F56137A7FD906ADEE03F021D4B /* MCPayPal.xcassets */,
+				0626D6388F149E8864FDA282F5C39BCE /* Media.xcassets */,
+				D9850A7CC9487EB0909921BA53216540 /* MyCheckWalletUI.storyboard */,
+				75C899E2C8E9403969BCA07AE85C3831 /* paypal */,
+				BDAB6BE97609084460E8F30683B14B45 /* ProximaNovaSoftBold.ttf */,
+				EE8CBA2C0A1475DDC611B6EAA3474D5A /* ProximaNovaSoftRegular.otf */,
+			);
+			name = Assets;
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		5310C253B4916CEF4585559BDFB1D19F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -983,24 +1001,6 @@
 			path = tools;
 			sourceTree = "<group>";
 		};
-		7D4FD947A6D2F9254DD174EDE7C6BE92 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				75C786345FE2180CB07A716EC2275033 /* CheckoutViewController.xib */,
-				178160A40C29D4F5EFB1178BD3C9920A /* CreditCardView.xib */,
-				E56B6022B8F853B01DEEA6333BE2A533 /* MCApplePay.xcassets */,
-				E7E08DF2E329CF35E1E6DE0E80B1F40A /* MCMasterPass.xcassets */,
-				39E208193A16CFA75C9A7EDB52E83AEA /* MCPayPal.xcassets */,
-				63A29110FB2232ECFCB1706902130AF3 /* Media.xcassets */,
-				0226D82FE68EDA8AFB58D955D19051D2 /* MyCheckWalletUI.storyboard */,
-				54D3C496F661A2637FB3A94883F3AA04 /* paypal */,
-				CDEB060FA3725C82FCF8CB20BC2B1F13 /* ProximaNovaSoftBold.ttf */,
-				A682C761B84BA3EA28C3FE712D07BA5D /* ProximaNovaSoftRegular.otf */,
-			);
-			name = Assets;
-			path = Assets;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -1054,7 +1054,7 @@
 				4839F921E7C8909C53C750AF90D78FFD /* Alamofire.framework */,
 				F32F8699A4643CBF2A3F836623D96E28 /* Kingfisher.framework */,
 				777EECB6ABDF9D8151CB756A3C28C1AE /* MyCheckCore.framework */,
-				C1D2726A31F28D33087F05E57DA57F74 /* iOS */,
+				DACCED1D8B9B214B4312CE61B82EF482 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1150,17 +1150,6 @@
 			);
 			name = MyCheckCore;
 			path = MyCheckCore;
-			sourceTree = "<group>";
-		};
-		C1D2726A31F28D33087F05E57DA57F74 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				2D9FB40770BFD8BC367135649CE4472D /* CFNetwork.framework */,
-				5F9F9C694AA1FFFAC7165C3793272CD0 /* Foundation.framework */,
-				24DB76D991B181AF2089C1703F987140 /* PassKit.framework */,
-				A2A346063A3E0CEE56582CD5CE6BA114 /* XCTest.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		C3D648199701BB1C7B65C6CFED3ECA48 /* Classes */ = {
@@ -1264,10 +1253,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		DACCED1D8B9B214B4312CE61B82EF482 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				C22D448C413FA65682F67B2463FB05AC /* CFNetwork.framework */,
+				F39953DA45C61CCA54FDB92865EA064F /* Foundation.framework */,
+				6DB9D2C5EB2267C2F78179496C92CEB7 /* PassKit.framework */,
+				69715C372227D15F06F8136661139414 /* XCTest.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		DDF12F0F36C1081214897EB474828CAE /* MyCheckWalletUI */ = {
 			isa = PBXGroup;
 			children = (
-				7D4FD947A6D2F9254DD174EDE7C6BE92 /* Assets */,
+				49FDE0358713816F70F4A1514BEDA543 /* Assets */,
 			);
 			name = MyCheckWalletUI;
 			path = MyCheckWalletUI;
@@ -1598,7 +1598,7 @@
 			buildPhases = (
 				BBA4F9F9E3BF2798711829ED1A4E817B /* Sources */,
 				8F75D4FD1213D5CBD89B7B2D4257B976 /* Frameworks */,
-				87EB65B06407BF164C87812769C6F408 /* Resources */,
+				1B2FF313003E0C719081E9A7F36070E9 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1649,7 +1649,7 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
@@ -1678,28 +1678,28 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1B2FF313003E0C719081E9A7F36070E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C29EF9A3463200D147A221BB67E3D184 /* CheckoutViewController.xib in Resources */,
+				B0AD7F67422B818C7AC9E0E7F0D592BE /* CreditCardView.xib in Resources */,
+				331AD0999ADE190439B1D95C24833522 /* MCApplePay.xcassets in Resources */,
+				25496FA1165A27B5000AC5730A3127DD /* MCMasterPass.xcassets in Resources */,
+				043CB3474A501E92FBB619C8CF79A0CF /* MCPayPal.xcassets in Resources */,
+				4037424897174B416416BB0A1F2BE6D4 /* Media.xcassets in Resources */,
+				F62F1770FFCB402C5FB9FD2F459675A3 /* MyCheckWalletUI.storyboard in Resources */,
+				F18A398313F9C1CCD541778B764E4A72 /* paypal in Resources */,
+				FE391BB28A0A0F9095FFF93655A98342 /* ProximaNovaSoftBold.ttf in Resources */,
+				51DBF5DD5A15ED963E8C99E0DB9326B0 /* ProximaNovaSoftRegular.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72CA5C8A9EC5DE693F623D91294F7A9B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				856F91B9EB21C3F5D37F169DC6FA1252 /* MyCheckWalletUI.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		87EB65B06407BF164C87812769C6F408 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				91CE3095FDF52B6FE3D3F9647BFD6E46 /* CheckoutViewController.xib in Resources */,
-				96631DDC05DBAF086CD4C803840DF682 /* CreditCardView.xib in Resources */,
-				8E0B65791D9597EB680A6623E11E8A86 /* MCApplePay.xcassets in Resources */,
-				55EB3828E91ADF71180735E7F80493D2 /* MCMasterPass.xcassets in Resources */,
-				23471A7275FB1F3DB4399D652E2D6036 /* MCPayPal.xcassets in Resources */,
-				710C9ECC94D0A984C0E6F149F0622B8C /* Media.xcassets in Resources */,
-				A501BDAFA95280D7E7ED10281BDD2460 /* MyCheckWalletUI.storyboard in Resources */,
-				9271E8BBEFF52D3376D7EBD41EE66A52 /* paypal in Resources */,
-				A25B8EF31576BA84A35F33FEA36090F8 /* ProximaNovaSoftBold.ttf in Resources */,
-				A69A6F6033994451835B5A25C5DB7C15 /* ProximaNovaSoftRegular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2048,10 +2048,80 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		073DD4A739D85C6316CD9D056D18D431 /* Debug */ = {
+		09D24C736A9021675B7C6B0C5FF4A2ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAC625F5F44ABDE112CA7C6A8B99970B /* Kingfisher.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Kingfisher/Kingfisher-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Kingfisher/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Kingfisher/Kingfisher.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Kingfisher;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		28ABF6BEB2F3A1628FFACB77054EC5D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 614DCBB0028313ADCF86519312150275 /* Quick.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Quick/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Quick;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		33AEB7EFB49E3C3C816E6946C3F3FB9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B39F69777E6528EBF72A7F05D1425FFB /* Pods-MyCheckWalletUI_Example.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2077,17 +2147,20 @@
 				PRODUCT_NAME = Pods_MyCheckWalletUI_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		0A29B6F510198AF64EFD762EF6FA97A5 /* Release */ = {
+		36211266014646E8B4514D8C35A32C1F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18F70715434FE5AF8583653C3A9AD93A /* Alamofire.xcconfig */;
+			baseConfigurationReference = 73D7CC3C2B9B16DD272BF39A0D53B2AE /* MyCheckCore.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2099,16 +2172,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/MyCheckCore/MyCheckCore-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MyCheckCore/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				MODULEMAP_FILE = "Target Support Files/MyCheckCore/MyCheckCore.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Alamofire;
+				PRODUCT_NAME = MyCheckCore;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2116,112 +2190,12 @@
 			};
 			name = Release;
 		};
-		16051027C32E1162E65BD0A611F4F156 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 614DCBB0028313ADCF86519312150275 /* Quick.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Quick/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Quick;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		4041B2724316422ADCAB6FB936609859 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81CB09A78F6A418E5F4F98AE8193B42E /* MyCheckWalletUI.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = MyCheckWalletUI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		58AA9DDC20AE2A168F53AD1712739D5E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08656D4CFE833BC083FBE8044C5907EA /* Pods-MyCheckWalletUI_Tests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-MyCheckWalletUI_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MyCheckWalletUI_Tests/Pods-MyCheckWalletUI_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_MyCheckWalletUI_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */ = {
+		4E487F173E6C9664F4E9E26B9635D23C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2229,10 +2203,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
@@ -2261,47 +2238,16 @@
 			};
 			name = Debug;
 		};
-		6126A06D69B5017D259B8D0F6E44F9B4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 614DCBB0028313ADCF86519312150275 /* Quick.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Quick/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Quick;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		643777710D167E3616AAAAD1EAA9FD33 /* Release */ = {
+		53F8000765AF63DA3C526F6BC6D946CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 73D7CC3C2B9B16DD272BF39A0D53B2AE /* MyCheckCore.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2314,91 +2260,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MyCheckCore/MyCheckCore.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = MyCheckCore;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6F2E33CB6AA88D5C62ACBD97C8861002 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81CB09A78F6A418E5F4F98AE8193B42E /* MyCheckWalletUI.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = MyCheckWalletUI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		7FC4F21AD152C1DF5BD5AB5C2F360DC2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81CB09A78F6A418E5F4F98AE8193B42E /* MyCheckWalletUI.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyCheckWalletUI";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/ResourceBundle-MyCheckWalletUI-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = MyCheckWalletUI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		A029FC733DA7BCC5839D4615ED604FB4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 154411CD9AF08A56DE40134D53091EB2 /* Nimble.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Nimble;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2407,15 +2273,16 @@
 			};
 			name = Debug;
 		};
-		A8304FC779F5FBB66E7B18541DAB350B /* Release */ = {
+		6636BE5537CBDD6F640402F6BA719927 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FAC625F5F44ABDE112CA7C6A8B99970B /* Kingfisher.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2428,145 +2295,24 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Kingfisher/Kingfisher.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = Kingfisher;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		B073FF5C0BA07B837517ECB0730BAEB9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 154411CD9AF08A56DE40134D53091EB2 /* Nimble.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Nimble;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B4CF96223247DEA29F2FD23202C187F0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81CB09A78F6A418E5F4F98AE8193B42E /* MyCheckWalletUI.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyCheckWalletUI";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/ResourceBundle-MyCheckWalletUI-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = MyCheckWalletUI;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		C3A0095130BCCD669E4BECFA9910B513 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-MyCheckWalletUI_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MyCheckWalletUI_Example/Pods-MyCheckWalletUI_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_MyCheckWalletUI_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CF464B6D8F6F6B08FFD18D8F81980DC4 /* Debug */ = {
+		676A6EEA97D2AD8175E34D97BF0EF8BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B15AA9D8EC580539639DF43FF84864E /* Pods-MyCheckWalletUI_Tests.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2592,38 +2338,7 @@
 				PRODUCT_NAME = Pods_MyCheckWalletUI_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D03B597A2FC726B63047D25D3236DC18 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73D7CC3C2B9B16DD272BF39A0D53B2AE /* MyCheckCore.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MyCheckCore/MyCheckCore-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MyCheckCore/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MyCheckCore/MyCheckCore.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = MyCheckCore;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2632,43 +2347,264 @@
 			};
 			name = Debug;
 		};
-		D5263B5DAA90133F20C552D0171E3ACC /* Debug */ = {
+		7987843C15D49323B940B4B9ABB27318 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAC625F5F44ABDE112CA7C6A8B99970B /* Kingfisher.xcconfig */;
+			baseConfigurationReference = 81CB09A78F6A418E5F4F98AE8193B42E /* MyCheckWalletUI.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Kingfisher/Kingfisher-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Kingfisher/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Kingfisher/Kingfisher.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Kingfisher;
+				MODULEMAP_FILE = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = MyCheckWalletUI;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		F383079BFBF927813EA3613CFB679FDE /* Debug */ = {
+		7D072D0D174F12EAACC1862DA756E67A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 18F70715434FE5AF8583653C3A9AD93A /* Alamofire.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7FC4F21AD152C1DF5BD5AB5C2F360DC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81CB09A78F6A418E5F4F98AE8193B42E /* MyCheckWalletUI.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyCheckWalletUI";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/ResourceBundle-MyCheckWalletUI-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = MyCheckWalletUI;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		916CDBF091A3ED60D93755D76074DAB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 614DCBB0028313ADCF86519312150275 /* Quick.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Quick/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Quick;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B4CF96223247DEA29F2FD23202C187F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81CB09A78F6A418E5F4F98AE8193B42E /* MyCheckWalletUI.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyCheckWalletUI";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/ResourceBundle-MyCheckWalletUI-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = MyCheckWalletUI;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		BDD0139D6EB93FA375F887ABD62DAB2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BECADF2B995121CF5BA7C9138D1275A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-MyCheckWalletUI_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MyCheckWalletUI_Example/Pods-MyCheckWalletUI_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MyCheckWalletUI_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C0AD91041FD1C942F601F31D1BDF35E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81CB09A78F6A418E5F4F98AE8193B42E /* MyCheckWalletUI.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MyCheckWalletUI/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MyCheckWalletUI/MyCheckWalletUI.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = MyCheckWalletUI;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C9660A42FEDD040185578ADA021EC8E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18F70715434FE5AF8583653C3A9AD93A /* Alamofire.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2690,6 +2626,114 @@
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D9DCF4BD4E90121D63C09C410A1BB9E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08656D4CFE833BC083FBE8044C5907EA /* Pods-MyCheckWalletUI_Tests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-MyCheckWalletUI_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MyCheckWalletUI_Tests/Pods-MyCheckWalletUI_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MyCheckWalletUI_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F0BE9F21CC451E6E481AD11ECB9F4CFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 154411CD9AF08A56DE40134D53091EB2 /* Nimble.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Nimble;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FF2E959C56F73D64BA78EAE7B55A097C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 154411CD9AF08A56DE40134D53091EB2 /* Nimble.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Nimble;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2704,8 +2748,8 @@
 		01B0355E5F28DED26D69E67B1C387EDC /* Build configuration list for PBXNativeTarget "Quick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				16051027C32E1162E65BD0A611F4F156 /* Debug */,
-				6126A06D69B5017D259B8D0F6E44F9B4 /* Release */,
+				28ABF6BEB2F3A1628FFACB77054EC5D4 /* Debug */,
+				916CDBF091A3ED60D93755D76074DAB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2713,8 +2757,8 @@
 		14EA6E920982478B32DFE7D82DCA4E64 /* Build configuration list for PBXNativeTarget "MyCheckWalletUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4041B2724316422ADCAB6FB936609859 /* Debug */,
-				6F2E33CB6AA88D5C62ACBD97C8861002 /* Release */,
+				C0AD91041FD1C942F601F31D1BDF35E6 /* Debug */,
+				7987843C15D49323B940B4B9ABB27318 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2722,8 +2766,8 @@
 		1C3EA91BE40E1855460158AB90B4D6D9 /* Build configuration list for PBXNativeTarget "MyCheckCore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D03B597A2FC726B63047D25D3236DC18 /* Debug */,
-				643777710D167E3616AAAAD1EAA9FD33 /* Release */,
+				53F8000765AF63DA3C526F6BC6D946CD /* Debug */,
+				36211266014646E8B4514D8C35A32C1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2731,8 +2775,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */,
-				B7324857C38B065FEB1EEE3105C2367A /* Release */,
+				4E487F173E6C9664F4E9E26B9635D23C /* Debug */,
+				BDD0139D6EB93FA375F887ABD62DAB2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2740,8 +2784,8 @@
 		419E5D95491847CD79841B971A8A3277 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F383079BFBF927813EA3613CFB679FDE /* Debug */,
-				0A29B6F510198AF64EFD762EF6FA97A5 /* Release */,
+				C9660A42FEDD040185578ADA021EC8E0 /* Debug */,
+				7D072D0D174F12EAACC1862DA756E67A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2749,8 +2793,8 @@
 		439502BDB29394EE0D69336E69C8494C /* Build configuration list for PBXNativeTarget "Nimble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A029FC733DA7BCC5839D4615ED604FB4 /* Debug */,
-				B073FF5C0BA07B837517ECB0730BAEB9 /* Release */,
+				FF2E959C56F73D64BA78EAE7B55A097C /* Debug */,
+				F0BE9F21CC451E6E481AD11ECB9F4CFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2758,8 +2802,8 @@
 		66819D22A1CF928AEE67FD15232570E9 /* Build configuration list for PBXNativeTarget "Kingfisher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D5263B5DAA90133F20C552D0171E3ACC /* Debug */,
-				A8304FC779F5FBB66E7B18541DAB350B /* Release */,
+				6636BE5537CBDD6F640402F6BA719927 /* Debug */,
+				09D24C736A9021675B7C6B0C5FF4A2ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2776,8 +2820,8 @@
 		DBA06F195692BC016B6137041A61CE96 /* Build configuration list for PBXNativeTarget "Pods-MyCheckWalletUI_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CF464B6D8F6F6B08FFD18D8F81980DC4 /* Debug */,
-				58AA9DDC20AE2A168F53AD1712739D5E /* Release */,
+				676A6EEA97D2AD8175E34D97BF0EF8BB /* Debug */,
+				D9DCF4BD4E90121D63C09C410A1BB9E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2785,8 +2829,8 @@
 		FE76948C4EB738B4BFB7DA3BA47F743A /* Build configuration list for PBXNativeTarget "Pods-MyCheckWalletUI_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				073DD4A739D85C6316CD9D056D18D431 /* Debug */,
-				C3A0095130BCCD669E4BECFA9910B513 /* Release */,
+				33AEB7EFB49E3C3C816E6946C3F3FB9D /* Debug */,
+				BECADF2B995121CF5BA7C9138D1275A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

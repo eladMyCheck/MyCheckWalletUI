@@ -206,9 +206,9 @@ open class Wallet{
     
     /// Get the default payment method.
     ///
-    /// - Parameters:
-    ///   - success: will return the default payment method
-    ///   - fail: Will return an error if the call failed or no payment method is available.
+    ///   - parameter success: Will return the default payment method
+    ///   - parameter fail: Will return an error if the call failed or no payment method is available.
+  
     public func getDefaultPaymentMehthod(success: @escaping (( PaymentMethodInterface ) -> Void) , fail: ((NSError) -> Void)? ) {
         if let methods = self.methods  {
             if let found = methods.first(where: { $0.isDefault }) {

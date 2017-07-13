@@ -60,6 +60,18 @@ Once you are logged in add
 ```
 import MyCheckWalletUI
 ```
+
+###Wallet
+The Wallet singleton can be used in order to obtain a payment method if the `MCCheckoutViewController`  is not used for checkout. If this is the case the default payment method can be used.
+
+Wallet.shared.getDefaultPaymentMehthod(success: {method in
+
+}, fail: {
+error in
+
+})
+
+
 ###MCCheckoutViewController
 This view controller is meant to be embedded inside your view controller. It allows the user the basic functions needed from a wallet:
 1. Add a payment method
