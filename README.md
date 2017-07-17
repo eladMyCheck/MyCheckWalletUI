@@ -64,13 +64,14 @@ import MyCheckWalletUI
 ###Wallet
 The Wallet singleton can be used in order to obtain a payment method if the `MCCheckoutViewController`  is not used for checkout. If this is the case the default payment method can be used.
 
+```
 Wallet.shared.getDefaultPaymentMehthod(success: {method in
 
 }, fail: {
 error in
 
 })
-
+```
 
 ###MCCheckoutViewController
 This view controller is meant to be embedded inside your view controller. It allows the user the basic functions needed from a wallet:
@@ -122,8 +123,8 @@ once this is done you will need to also add a line of code initializing the PayP
 PaypalFactory.initiate(YOUR_PACKAGE_NAME)
 ```
 The last line of code necessary is to allow the MyCheck Wallet UI SDK to respond to  app switching. This is necessary because the PayPal SDK opens an external app/ browser. 
-```
 
+```
 func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
 
 return MyCheckWallet.shared.handleOpenURL(url, sourceApplication: sourceApplication)
@@ -135,7 +136,7 @@ Lastly, to fully support PayPal and the app switching it uses please edit your i
 
 ## Apple Pay
 Their are a few extra steps to take in order for Apple Pay to work.
-Start by configuring your environment to support Apple Pay by following [these instructions](https://developer.apple.com/library/content/ApplePay_Guide/Configuration.html#//apple_ref/doc/uid/TP40014764-CH2-SW1).  Send the certificate you have created to a member of the MyCheck team. 
+Start by configuring your environment to support Apple Pay by following [these instructions](https://developer.apple.com/library/content/ApplePay_Guide/Configuration.html#//apple_ref/doc/uid/TP40014764-CH2-SW1).  Send a p12 with the the certificate and private key you have created  and the merchant Id to a member of the MyCheck team. 
 now install the Apple Pay model of the MyCheckWalletUI SDK by adding this line to your Podfile:
 
 ```

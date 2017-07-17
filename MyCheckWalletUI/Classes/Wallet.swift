@@ -138,7 +138,7 @@ open class Wallet{
             }
             
             Networking.shared.request(textsURL, method: .get, success: { strings in
-                LocalData.manager.addStrings(nil , dictionary: walletUIJSON as NSDictionary)
+                LocalData.manager.addStrings(nil , dictionary: strings as NSDictionary)
                 self.loadedLanguages = true
                 
                 if let success = success{
