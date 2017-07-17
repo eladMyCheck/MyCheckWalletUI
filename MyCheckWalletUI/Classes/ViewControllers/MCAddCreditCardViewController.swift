@@ -283,7 +283,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 txtAfterUpdate = "0" + (txtAfterUpdate.substring(to: 1) as String) + "/" + (txtAfterUpdate.substring(from: 1) as String) as NSString
             }
             
-            let valid = CreditCardValidator(DOB:txtAfterUpdate as? String).DOBIsValid
+            let valid = CreditCardValidator(DOB:txtAfterUpdate as String).DOBIsValid
             let month = txtAfterUpdate.components(separatedBy: "/")[0] as String
             if month.characters.count > 2 {
                 return false

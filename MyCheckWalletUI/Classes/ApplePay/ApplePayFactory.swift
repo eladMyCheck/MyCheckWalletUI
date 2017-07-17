@@ -86,8 +86,7 @@ open class ApplePayFactory : PaymentMethodFactory{
         butRap.button.addSubview(appleBut)
 
         appleBut.leadingAnchor.constraint(greaterThanOrEqualTo: butRap.button.leadingAnchor, constant: 10).isActive = true
-        appleBut.trailingAnchor.constraint(greaterThanOrEqualTo: butRap.button.trailingAnchor, constant: 10).isActive = true
-//        
+
         appleBut.centerXAnchor.constraint(equalTo: butRap.button.centerXAnchor).isActive = true
         appleBut.centerYAnchor.constraint(equalTo: butRap.button.centerYAnchor).isActive = true
       
@@ -146,7 +145,7 @@ open class ApplePayFactory : PaymentMethodFactory{
         
         appleBut.leadingAnchor.constraint(equalTo: butRap.button.leadingAnchor, constant: 0).isActive = true
         appleBut.trailingAnchor.constraint(equalTo: butRap.button.trailingAnchor, constant: 0).isActive = true
-        //
+
         appleBut.topAnchor.constraint(equalTo: butRap.button.topAnchor, constant: 0).isActive = true
         appleBut.bottomAnchor.constraint(equalTo: butRap.button.bottomAnchor, constant: 0).isActive = true
 

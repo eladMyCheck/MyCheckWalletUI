@@ -61,12 +61,7 @@ open class VisaCheckoutFactory : PaymentMethodFactory{
         
         butRap.button.setBackgroundImage(UIImage(named: "paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
         
-        
-        
-        
-        
-        
-        
+     
         //creating the apple pay button and adding it into the super button
         let innerBut = UIButton(type: .custom)
         innerBut.kf.setImage(with: URL(string:LocalData.manager.getString("walletImgViseCheckout")), for: .normal)
@@ -74,13 +69,9 @@ open class VisaCheckoutFactory : PaymentMethodFactory{
         
         butRap.button.addSubview(innerBut)
         
-//        let widthConstraint = innerBut.widthAnchor.constraint(equalToConstant: 90)
-//        widthConstraint.priority = 900
-//        widthConstraint.isActive = true
-        //      appleBut.heightAnchor.constraint(equalToConstant: 44).isActive = true
+
         innerBut.leadingAnchor.constraint(greaterThanOrEqualTo: butRap.button.leadingAnchor, constant: 10).isActive = true
-        innerBut.trailingAnchor.constraint(greaterThanOrEqualTo: butRap.button.trailingAnchor, constant: 10).isActive = true
-        //
+
         innerBut.centerXAnchor.constraint(equalTo: butRap.button.centerXAnchor).isActive = true
         innerBut.centerYAnchor.constraint(equalTo: butRap.button.centerYAnchor).isActive = true
         //aspect ratio
@@ -118,14 +109,9 @@ open class VisaCheckoutFactory : PaymentMethodFactory{
         innerBut.translatesAutoresizingMaskIntoConstraints = false
         
         butRap.button.addSubview(innerBut)
-        
-        //        let widthConstraint = innerBut.widthAnchor.constraint(equalToConstant: 90)
-        //        widthConstraint.priority = 900
-        //        widthConstraint.isActive = true
-        //      appleBut.heightAnchor.constraint(equalToConstant: 44).isActive = true
+
         innerBut.leadingAnchor.constraint(greaterThanOrEqualTo: butRap.button.leadingAnchor, constant: 10).isActive = true
-        innerBut.trailingAnchor.constraint(greaterThanOrEqualTo: butRap.button.trailingAnchor, constant: 10).isActive = true
-        //
+
         innerBut.centerXAnchor.constraint(equalTo: butRap.button.centerXAnchor).isActive = true
         innerBut.centerYAnchor.constraint(equalTo: butRap.button.centerYAnchor).isActive = true
         //aspect ratio

@@ -137,9 +137,9 @@ doNotStoreCheckbox.isSelected = false
     func showEnterCreditCard(_ show: Bool , animated: Bool){
         creditCardVC!.resetView()
         if show{
-            creditCardVC!.becomeFirstResponder()
+          _ = creditCardVC!.becomeFirstResponder()
         }else{
-            creditCardVC!.resignFirstResponder()
+             _ = creditCardVC!.resignFirstResponder()
             
         }
         creditCardInCenterConstraint.priority = show ? 999 : 1

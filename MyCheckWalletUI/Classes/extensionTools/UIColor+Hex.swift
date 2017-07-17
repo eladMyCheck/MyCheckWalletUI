@@ -10,7 +10,7 @@ import Foundation
 extension UIColor{
 
     static func hex(_ hex:String) -> UIColor {
-        let tmp = hex as! NSString
+        let tmp = hex as NSString
         var cString:String = tmp.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines as CharacterSet).uppercased()
         
         if (cString.hasPrefix("#")) {

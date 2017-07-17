@@ -86,7 +86,11 @@
         return
         }
         
-        //when the user has already added apple pay dont create a new one
+        //when the user has already added apple pay dont create a new one IF it is a pending payment only!
+        if let details = details{
+            self.sendNewApplePayPendingToken(for: details, displayDelegate: displayDelegate, success: success, fail: fail)
+
+        }else{
       Wallet.shared.hasPendingApplePayToken(success: { hasApplePayToken , token in
         if let token = token , hasApplePayToken {
         success(token)
@@ -95,7 +99,7 @@
         self.sendNewApplePayPendingToken(for: details, displayDelegate: displayDelegate, success: success, fail: fail)
         }
       }, fail: fail)
-      
+        }
       
     }
     
@@ -114,12 +118,13 @@
       //resonding to the delegate
       let del = AuthorizationViewControllerDelegateResponder(
         didAuthorize:{payment,controller,completion in
-          guard let token = String(data: payment.token.paymentData, encoding: .utf8) , let cardName = payment.token.paymentMethod.network?.rawValue else{
+          guard  let cardName = payment.token.paymentMethod.network?.rawValue else{
             fail(ErrorCodes.applePayFailed.getError())
             completion(.failure)
             callbackCalled = true
             return
           }
+            let token = payment.token.paymentData.base64EncodedString()
           Wallet.shared.addApplePay(applePayToken: token, cardType: cardName, isPending: true, success: {token in
             success(token)
             completion(.success)
@@ -160,11 +165,15 @@
         requiredShippingAddressFields = [];
         guard let paymentDetails = paymentDetails else{ // If payment details are not passed I assume it is a pending amount
             
-            let item = PKPaymentSummaryItem(label: "total", amount: NSDecimalNumber(value: 0.01), type: .pending)
+            let item = PKPaymentSummaryItem(label: LocalData.manager.getString("applePayApplePayPreAuthTxt", fallback: "Total"), amount: NSDecimalNumber(value: 0.01), type: .pending)
             paymentSummaryItems = [item]
             return
         }
         paymentSummaryItems = paymentDetails.getOrderedBillEntryArray().map { value in PKPaymentSummaryItem(label: value.name, amount: NSDecimalNumber(value: value.amount.rawValue))
+        }
+        //the last item should have the localized name.
+        if let totalItem = paymentSummaryItems.last{
+        totalItem.label = LocalData.manager.getString("applePayApplePayPayTxt", fallback: totalItem.label)
         }
     }
     

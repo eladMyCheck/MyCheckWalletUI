@@ -544,10 +544,10 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         
         
         
-      default:// multiple wallets
-        for factory in Wallet.shared.factories{
-          //TO-DO implement adding multiple wallets
-        }
+      default:break// multiple wallets
+//        for factory in Wallet.shared.factories{
+//          //TO-DO implement adding multiple wallets
+//        }
       }
     }
     

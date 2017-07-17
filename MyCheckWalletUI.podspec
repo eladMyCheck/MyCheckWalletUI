@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MyCheckWalletUI'
-  s.version          = '0.0.16'
+  s.version          = '1.0.0'
   s.summary          = 'An SDK that supplies UI for payment method managment.'
 
 # This description is used to generate tags and improve search results.
@@ -34,7 +34,7 @@ s.requires_arc = 'true'
 
 # s.public_header_files = 'Pod/Classes/**/*.h'
 # s.frameworks = 'UIKit', 'MapKit'
-s.dependency 'MyCheckCore', :git => 'https://eladsc@bitbucket.org/erez_spatz/mycheckcore-ios.git'
+s.dependency 'MyCheckCore'
 s.dependency 'Kingfisher', '~> 3.0'
 
 
@@ -84,8 +84,12 @@ end
 
 
 s.subspec 'VisaCheckout' do |visacheckout|
+visacheckout.dependency 'MyCheckWalletUI/Core'
+
 visacheckout.source_files = 'MyCheckWalletUI/Classes/VisaCheckout/*'
 visacheckout.vendored_frameworks = 'MyCheckWalletUI/Classes/VisaCheckout/frameworks/*'
+visacheckout.ios.deployment_target = '9.0'
+visacheckout.platform = :ios, '9.0'
 end
 
 end
