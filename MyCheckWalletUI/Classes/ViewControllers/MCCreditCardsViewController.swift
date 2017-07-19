@@ -39,10 +39,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         startMargin = (UIScreen.main.bounds.width - addCardWidth ) / 2.0  as CGFloat
         
         secondMargin = margin + 33.0
-        //var point = scrollView.contentOffset
-        // point.x = (-0.5) * (cardViewWidth + margin + 0) + self.startMargin + 27 ;
-        
-        // scrollView.setContentOffset(point, animated: true)
+       
         self.scrollView.delegate = self;
         delay(0.1){
             self.setCreditCardsUI(false)

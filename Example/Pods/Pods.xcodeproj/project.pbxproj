@@ -165,6 +165,8 @@
 		AF1174085D9BC5D50FCE0480E9C2BE94 /* BeGreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA47640BCCAE2B519BCCF1A715CB2E /* BeGreaterThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		B0AD7F67422B818C7AC9E0E7F0D592BE /* CreditCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A939D6DF1C97CAA85F6C1E6F63A9E6E /* CreditCardView.xib */; };
 		B102ABE4E54B71B3D2C2118E2782FAB9 /* BeLessThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1F53AE94024CE4DB5D6A8257E5F148 /* BeLessThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		B29128A61F1F92D2001EB0A1 /* MCAddCreditCardViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29128A51F1F92D2001EB0A1 /* MCAddCreditCardViewControllerModel.swift */; };
+		B29128A81F1FA2B2001EB0A1 /* MCAddCreditCardViewControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29128A71F1FA2B2001EB0A1 /* MCAddCreditCardViewControllerState.swift */; };
 		B2C151B20635A480E1937E3D2B509BB4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B5A19AFC0D643BE7A50AEA101C1A2 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		B37D0376FCEB3133F44CF5F4416C58E1 /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EFF12A0622E88828FC97DEFE48D1975 /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B40E622D3A30FB1B99C4D266539765FE /* Wallet+PaymentMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D3E210F049C772B5E19F5047E78278 /* Wallet+PaymentMethods.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -380,7 +382,7 @@
 		154411CD9AF08A56DE40134D53091EB2 /* Nimble.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.xcconfig; sourceTree = "<group>"; };
 		16CA47640BCCAE2B519BCCF1A715CB2E /* BeGreaterThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThan.swift; path = Sources/Nimble/Matchers/BeGreaterThan.swift; sourceTree = "<group>"; };
 		1782536AEC30D87680EAFA8F171FA78A /* WalletRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WalletRequest.swift; sourceTree = "<group>"; };
-		1885B7733B6C988BDCAAE76803EE6115 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		1885B7733B6C988BDCAAE76803EE6115 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		18F70715434FE5AF8583653C3A9AD93A /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
 		190104D36CBBBDEA87D3EDFBB90DFF6B /* MCAddCreditCardViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCAddCreditCardViewController.swift; sourceTree = "<group>"; };
 		19185010048FE8DBDBF606849D6E74FE /* BeLogical.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLogical.swift; path = Sources/Nimble/Matchers/BeLogical.swift; sourceTree = "<group>"; };
@@ -399,7 +401,7 @@
 		22BFA2F35FAA3C30F4B2631B1287D8FD /* World.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = World.h; path = Sources/QuickObjectiveC/World.h; sourceTree = "<group>"; };
 		230FBEA8D593C05B694E6EC37A0DCC52 /* AddCreditCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddCreditCardView.swift; sourceTree = "<group>"; };
 		241DA7AC6FBDFBAD9BAAAF04FFE7F6EC /* ApplePayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ApplePayView.swift; sourceTree = "<group>"; };
-		244A6ADE998E41FC7ACE53473CA740CD /* MyCheckCore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MyCheckCore.modulemap; sourceTree = "<group>"; };
+		244A6ADE998E41FC7ACE53473CA740CD /* MyCheckCore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MyCheckCore.modulemap; sourceTree = "<group>"; };
 		25FBE7F217425F9DD6003E5A4D44437C /* ThrowError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowError.swift; path = Sources/Nimble/Matchers/ThrowError.swift; sourceTree = "<group>"; };
 		26061DC1624B5AD63A8A531803705FC2 /* ApplePayState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ApplePayState.swift; sourceTree = "<group>"; };
 		26BE8E5FCD4AC1F3B5E461146166A016 /* MyCheckWallet+VisaCheckout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MyCheckWallet+VisaCheckout.swift"; sourceTree = "<group>"; };
@@ -411,7 +413,7 @@
 		2AF61730623EF14390196BC79A1DC973 /* ThrowAssertion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowAssertion.swift; path = Sources/Nimble/Matchers/ThrowAssertion.swift; sourceTree = "<group>"; };
 		2B1EC6356F1FBAB43A1A7E41A74E90E5 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
 		2B4E4EEB13FFE2B5E6D75F4CEB3114B5 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
-		2B542A07E9D4EEF7315CD1C3765F37BB /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B542A07E9D4EEF7315CD1C3765F37BB /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BAB0C51ED7398379B13DD61B8C8606A /* CreditCardPaymentMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardPaymentMethod.swift; sourceTree = "<group>"; };
 		2D228904AF2CDC650655C09445317BCF /* MCApplePay.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = MCApplePay.xcassets; sourceTree = "<group>"; };
 		2E2037B45859747BB0C7EE5620C62800 /* URL+FileName.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URL+FileName.swift"; path = "Sources/Quick/URL+FileName.swift"; sourceTree = "<group>"; };
@@ -444,7 +446,7 @@
 		4C539DFF87A02A465302F267D7694C9E /* Nimble-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-umbrella.h"; sourceTree = "<group>"; };
 		4CB46A4718C26D9807ED41EF113ACEDD /* MatcherProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherProtocols.swift; path = Sources/Nimble/Matchers/MatcherProtocols.swift; sourceTree = "<group>"; };
 		4EE4E2D1C81EA1BA1C8382DB67A0E179 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
-		4F171C90DA58EAA1651DAB2D1D7279FD /* MyCheckCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MyCheckCore.framework; path = MyCheckCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F171C90DA58EAA1651DAB2D1D7279FD /* MyCheckCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyCheckCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5117781040879E23885087FD12E6FF13 /* String+MD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+MD5.swift"; path = "Sources/String+MD5.swift"; sourceTree = "<group>"; };
 		512AB9A7CB31F01B8F79B18E56B3FB44 /* Pods-MyCheckWalletUI_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyCheckWalletUI_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5639ACEB7F913756DB9493D7CDEEF33C /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
@@ -468,7 +470,7 @@
 		65C4CC5E0227455E7B1F31356E7B0BDD /* Chargeable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Chargeable.swift; sourceTree = "<group>"; };
 		66D091A08B2D114D2BA934823ADC406D /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
 		67558EBD8903A82F620DA98608BE6BA5 /* CheckoutViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CheckoutViewController.xib; sourceTree = "<group>"; };
-		676B4E697950174EBD6C5915DEE30122 /* Pods_MyCheckWalletUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MyCheckWalletUI_Example.framework; path = "Pods-MyCheckWalletUI_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		676B4E697950174EBD6C5915DEE30122 /* Pods_MyCheckWalletUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCheckWalletUI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6784E77FD0AE34402EB4A3BD4E6DB365 /* ApplePayCredentials.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ApplePayCredentials.swift; sourceTree = "<group>"; };
 		695701F98ED75900EA81F4E8D69D2B3E /* CacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CacheSerializer.swift; path = Sources/CacheSerializer.swift; sourceTree = "<group>"; };
 		69715C372227D15F06F8136661139414 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -486,7 +488,7 @@
 		73D7CC3C2B9B16DD272BF39A0D53B2AE /* MyCheckCore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MyCheckCore.xcconfig; sourceTree = "<group>"; };
 		740255B4B7DD9712F50DFA38D1870C99 /* Money.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		7528D26B9F1B7777EC192AEC4600B881 /* VisaCheckoutFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VisaCheckoutFactory.swift; sourceTree = "<group>"; };
-		75C899E2C8E9403969BCA07AE85C3831 /* paypal */ = {isa = PBXFileReference; includeInIndex = 1; path = paypal; sourceTree = "<group>"; };
+		75C899E2C8E9403969BCA07AE85C3831 /* paypal */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = paypal; sourceTree = "<group>"; };
 		75FB4F8A7B74E673355756CCF0EF20BB /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = Sources/Nimble/Utils/Errors.swift; sourceTree = "<group>"; };
 		7650095AD331CAC9329EA5BA181D0ED7 /* Pods-MyCheckWalletUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.release.xcconfig"; sourceTree = "<group>"; };
 		76E59ED2C8A2C22A4F3090748C5326D4 /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
@@ -502,11 +504,11 @@
 		81CB09A78F6A418E5F4F98AE8193B42E /* MyCheckWalletUI.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MyCheckWalletUI.xcconfig; sourceTree = "<group>"; };
 		824FA4A688D9A9FCB11A75ADD3F0183B /* ImageProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProcessor.swift; path = Sources/ImageProcessor.swift; sourceTree = "<group>"; };
 		825231687B42ADC732AC2E7864079071 /* CwlDarwinDefinitions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlDarwinDefinitions.swift; path = Sources/Lib/CwlPreconditionTesting/CwlPreconditionTesting/CwlDarwinDefinitions.swift; sourceTree = "<group>"; };
-		83FD2569B68907A79A49A9B53B50E0B3 /* Quick.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Quick.modulemap; sourceTree = "<group>"; };
+		83FD2569B68907A79A49A9B53B50E0B3 /* Quick.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Quick.modulemap; sourceTree = "<group>"; };
 		84DE916B926EC41AB318B9AEF081352C /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		85317AF21DEF7A683A74B35C6DE3EBE3 /* DSL+Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DSL+Wait.swift"; path = "Sources/Nimble/DSL+Wait.swift"; sourceTree = "<group>"; };
 		869A2D52BD9EE7F6B8AAC87194A938F5 /* PaymentMethodFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodFactory.swift; sourceTree = "<group>"; };
-		884CD4D6EE608D97D83BD48D964A0A27 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		884CD4D6EE608D97D83BD48D964A0A27 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		895C2F9EEC3A0C29C4EEB0623AAC6065 /* Quick-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Quick-dummy.m"; sourceTree = "<group>"; };
 		89E28B9DAF866ED2A903EC67A4BA31B5 /* World.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = World.swift; path = Sources/Quick/World.swift; sourceTree = "<group>"; };
 		8A939D6DF1C97CAA85F6C1E6F63A9E6E /* CreditCardView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CreditCardView.xib; sourceTree = "<group>"; };
@@ -519,7 +521,7 @@
 		8E280AF57806ACFC6067F32E23717C15 /* ContainElementSatisfying.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContainElementSatisfying.swift; path = Sources/Nimble/Matchers/ContainElementSatisfying.swift; sourceTree = "<group>"; };
 		912679B762F155DA7379AB68EBFB0C9C /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		92386AA70E667F91491C3F10A9CF7379 /* ThreadHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThreadHelper.swift; path = Sources/ThreadHelper.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93F803783350A36DBDCB6C2213B4A924 /* UITextField+Placeholder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITextField+Placeholder.swift"; sourceTree = "<group>"; };
 		96309EE32BA57D7D65E21CDBF38B50FC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96DF862D4E72F08EF65A121617B95EB8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -528,19 +530,21 @@
 		988F928C991DB76688DFF3D8364872C4 /* BeGreaterThanOrEqualTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThanOrEqualTo.swift; path = Sources/Nimble/Matchers/BeGreaterThanOrEqualTo.swift; sourceTree = "<group>"; };
 		9E1930CBAFDD1FB6157E0404FA7B4EE6 /* AsyncMatcherWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncMatcherWrapper.swift; path = Sources/Nimble/Matchers/AsyncMatcherWrapper.swift; sourceTree = "<group>"; };
 		A03C8B69E15A02646460F81917C35FCF /* Nimble-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-prefix.pch"; sourceTree = "<group>"; };
-		A5789FDEC43E9A40AF7CD3F5F38F8E15 /* MyCheckWalletUI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyCheckWalletUI.bundle; path = MyCheckWalletUI.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5789FDEC43E9A40AF7CD3F5F38F8E15 /* MyCheckWalletUI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCheckWalletUI.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FB887D8D0A47560DBBCF026C847A93 /* Quick-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-prefix.pch"; sourceTree = "<group>"; };
-		A875FA20BEAABEAA88C724C8A2BB79A7 /* Nimble.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Nimble.modulemap; sourceTree = "<group>"; };
+		A875FA20BEAABEAA88C724C8A2BB79A7 /* Nimble.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Nimble.modulemap; sourceTree = "<group>"; };
 		A9A405097ECFCE145542B70B2FFB390A /* BeginWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeginWith.swift; path = Sources/Nimble/Matchers/BeginWith.swift; sourceTree = "<group>"; };
 		AAF39E988E95A94F4C0E7F8D3C38C314 /* Resource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Sources/Resource.swift; sourceTree = "<group>"; };
 		ABAF651F8F44B7030BC5885483133672 /* EndWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EndWith.swift; path = Sources/Nimble/Matchers/EndWith.swift; sourceTree = "<group>"; };
 		ABDF267BDF85568334D04188AE6359DF /* VisaCheckoutButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VisaCheckoutButton.swift; sourceTree = "<group>"; };
 		AC073AEC3CB5B126567F7DEEC6269DBE /* BeEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeEmpty.swift; path = Sources/Nimble/Matchers/BeEmpty.swift; sourceTree = "<group>"; };
-		AC657C56FB10E2C6433D0AFE081866BE /* Pods-MyCheckWalletUI_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MyCheckWalletUI_Tests.modulemap"; sourceTree = "<group>"; };
+		AC657C56FB10E2C6433D0AFE081866BE /* Pods-MyCheckWalletUI_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MyCheckWalletUI_Tests.modulemap"; sourceTree = "<group>"; };
 		AD85E21387548431CFA036B5E2EE114C /* MCViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCViewController.swift; sourceTree = "<group>"; };
 		AEE28AC6C0D22218884B9B4D8BFF7FDF /* Functional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Functional.swift; path = Sources/Nimble/Utils/Functional.swift; sourceTree = "<group>"; };
 		AFD055E35F1FB5B0392A2ADBE3977F9E /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		B16545B03B7500845D3E6F4B96901789 /* Nimble.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Nimble.h; path = Sources/Nimble/Nimble.h; sourceTree = "<group>"; };
+		B29128A51F1F92D2001EB0A1 /* MCAddCreditCardViewControllerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAddCreditCardViewControllerModel.swift; sourceTree = "<group>"; };
+		B29128A71F1FA2B2001EB0A1 /* MCAddCreditCardViewControllerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAddCreditCardViewControllerState.swift; sourceTree = "<group>"; };
 		B2B8BC99D86782D51BFDD58870F80DAD /* CreditCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		B2D3E210F049C772B5E19F5047E78278 /* Wallet+PaymentMethods.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Wallet+PaymentMethods.swift"; sourceTree = "<group>"; };
 		B39F69777E6528EBF72A7F05D1425FFB /* Pods-MyCheckWalletUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyCheckWalletUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -555,12 +559,12 @@
 		BC240DBB581602034EA015AB8D4CB0E9 /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
 		BC77E11BBE7FAE13FFB45DC2B2BCD599 /* CwlMachBadInstructionHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlMachBadInstructionHandler.m; path = Sources/Lib/CwlPreconditionTesting/CwlMachBadInstructionHandler/CwlMachBadInstructionHandler.m; sourceTree = "<group>"; };
 		BD0A911B0EE17EE88DC757981740F951 /* HaveCount.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HaveCount.swift; path = Sources/Nimble/Matchers/HaveCount.swift; sourceTree = "<group>"; };
-		BDAB6BE97609084460E8F30683B14B45 /* ProximaNovaSoftBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftBold.ttf; sourceTree = "<group>"; };
-		BEA3382A0DB6B60830589F9027961ABC /* Pods_MyCheckWalletUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MyCheckWalletUI_Tests.framework; path = "Pods-MyCheckWalletUI_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDAB6BE97609084460E8F30683B14B45 /* ProximaNovaSoftBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = ProximaNovaSoftBold.ttf; sourceTree = "<group>"; };
+		BEA3382A0DB6B60830589F9027961ABC /* Pods_MyCheckWalletUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCheckWalletUI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00C65C3C43C2DE63FA7F7AA7CD82BAD /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		C02E2AA51C121D27AEA67DD9E4FD3BA4 /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
 		C033A3EF0B641C24E6471BE5C2D98B03 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1C616FAB1CDC46C9E07DE707AA42869 /* Pods-MyCheckWalletUI_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MyCheckWalletUI_Example.modulemap"; sourceTree = "<group>"; };
+		C1C616FAB1CDC46C9E07DE707AA42869 /* Pods-MyCheckWalletUI_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MyCheckWalletUI_Example.modulemap"; sourceTree = "<group>"; };
 		C22D448C413FA65682F67B2463FB05AC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		C2FF4E9D9358E9334DBCFE28EDC951EE /* QCKDSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QCKDSL.h; path = Sources/QuickObjectiveC/DSL/QCKDSL.h; sourceTree = "<group>"; };
 		C346BC6A1B1B3DCF3EFA0F912D805F82 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -569,7 +573,7 @@
 		C615E8D10E8468BDD2AC7D8A56CB8820 /* PaymentMethodButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentMethodButton.swift; sourceTree = "<group>"; };
 		C77165D9660EABD9161F4D0F2A8B6007 /* Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Closures.swift; path = Sources/Quick/Hooks/Closures.swift; sourceTree = "<group>"; };
 		C9819588A79B95DF6DBB1B0BA2C4DC65 /* World+DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "World+DSL.h"; path = "Sources/QuickObjectiveC/DSL/World+DSL.h"; sourceTree = "<group>"; };
-		C9866BB4750AC846D7E60CDC812CC200 /* MyCheckWalletUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MyCheckWalletUI.framework; path = MyCheckWalletUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9866BB4750AC846D7E60CDC812CC200 /* MyCheckWalletUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyCheckWalletUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD4FAF59C20DB5BC0A5E0424E5B7A0D9 /* CreditCardValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
 		CE3DA15BA6FEAAEE8483A7F97DCCE7BE /* Data+JSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Data+JSON.swift"; sourceTree = "<group>"; };
 		D0B88218D53C5C87BD000E4D986A2849 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
@@ -593,13 +597,13 @@
 		DFD04551020E119C35E4D1531FE582A9 /* NMBStringify.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBStringify.m; path = Sources/NimbleObjectiveC/NMBStringify.m; sourceTree = "<group>"; };
 		E1B0842211A759C0B9C40625120D4781 /* XCTestObservationCenter+Register.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestObservationCenter+Register.m"; path = "Sources/NimbleObjectiveC/XCTestObservationCenter+Register.m"; sourceTree = "<group>"; };
 		E265C0D8B871722541904FED6F2E3854 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
-		E2816A0F416E641402C0CD000A21BBCE /* MyCheckWalletUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MyCheckWalletUI.modulemap; sourceTree = "<group>"; };
+		E2816A0F416E641402C0CD000A21BBCE /* MyCheckWalletUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MyCheckWalletUI.modulemap; sourceTree = "<group>"; };
 		E2CE0F53E5B7AF6C709E4961CFD65793 /* VisaCheckoutSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisaCheckoutSDK.framework; path = MyCheckWalletUI/Classes/VisaCheckout/frameworks/VisaCheckoutSDK.framework; sourceTree = "<group>"; };
 		E4A08584CD6DFFA31853BE1FBD287DAB /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/Kingfisher.swift; sourceTree = "<group>"; };
 		E4B36EAFE2446A4675B8B9C2A5343A92 /* MyCheckCore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckCore-prefix.pch"; sourceTree = "<group>"; };
 		E5918EE02BAD4345A3013B6314AD3AC7 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Nimble/DSL.swift; sourceTree = "<group>"; };
 		E913C36114E64A644983D9B286C69B3F /* CwlPreconditionTesting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlPreconditionTesting.h; path = Sources/Lib/CwlPreconditionTesting/CwlPreconditionTesting/Mach/CwlPreconditionTesting.h; sourceTree = "<group>"; };
-		E9551B6BCAF667722A0DE10B8A048201 /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Kingfisher.modulemap; sourceTree = "<group>"; };
+		E9551B6BCAF667722A0DE10B8A048201 /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Kingfisher.modulemap; sourceTree = "<group>"; };
 		E98817604FFB2152A403877047282C53 /* Wallet+ApplePay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Wallet+ApplePay.swift"; sourceTree = "<group>"; };
 		EAEDA9483D025A9E38C2A16CE327A3C5 /* QuickSelectedTestSuiteBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickSelectedTestSuiteBuilder.swift; path = Sources/Quick/QuickSelectedTestSuiteBuilder.swift; sourceTree = "<group>"; };
 		EB53BDAA7E73E424BF302BD7B1F202F7 /* Kingfisher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Kingfisher.h; path = Sources/Kingfisher.h; sourceTree = "<group>"; };
@@ -607,11 +611,11 @@
 		ED664825D38C573D9D739D1DA522676A /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
 		EE2F2628F8FE1645FC45713A804BE665 /* Pods-MyCheckWalletUI_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MyCheckWalletUI_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		EE7635617F5567E4EDA49B48C9333121 /* Equal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Equal.swift; path = Sources/Nimble/Matchers/Equal.swift; sourceTree = "<group>"; };
-		EE8CBA2C0A1475DDC611B6EAA3474D5A /* ProximaNovaSoftRegular.otf */ = {isa = PBXFileReference; includeInIndex = 1; path = ProximaNovaSoftRegular.otf; sourceTree = "<group>"; };
+		EE8CBA2C0A1475DDC611B6EAA3474D5A /* ProximaNovaSoftRegular.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = ProximaNovaSoftRegular.otf; sourceTree = "<group>"; };
 		EF9B164ED26ED6B4216627D17E910484 /* Pods-MyCheckWalletUI_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Example-frameworks.sh"; sourceTree = "<group>"; };
 		F32F8699A4643CBF2A3F836623D96E28 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F39953DA45C61CCA54FDB92865EA064F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		F3ACEF89EBA8B6A7CA9DD26B8CEA656D /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Quick.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3ACEF89EBA8B6A7CA9DD26B8CEA656D /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3DCFF1FE7DAD38023BD679660315BE4 /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
 		F4E5C98FB8C84A34AB7C1C3C9E10E771 /* Pods-MyCheckWalletUI_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyCheckWalletUI_Tests-resources.sh"; sourceTree = "<group>"; };
 		F70FB52DCBDD558BE195169E11B2BCF9 /* CwlCatchException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlCatchException.h; path = Sources/Lib/CwlPreconditionTesting/CwlCatchExceptionSupport/include/CwlCatchException.h; sourceTree = "<group>"; };
@@ -621,7 +625,7 @@
 		F87CC4BE4F234E71787AEB8058CC14DE /* Predicate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Predicate.swift; path = Sources/Nimble/Matchers/Predicate.swift; sourceTree = "<group>"; };
 		F9D8A994BB0DDA53D5998B7351364D5B /* ApplePayCreditCardTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ApplePayCreditCardTypes.swift; sourceTree = "<group>"; };
 		F9FE93F4A76C1F7E5C497FE302C7B6FE /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
-		FA0B7CEF5463A8808B0245818D6E9E9E /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Nimble.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA0B7CEF5463A8808B0245818D6E9E9E /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA4213295B8C69E179B78F38D71D38FF /* ExampleMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleMetadata.swift; path = Sources/Quick/ExampleMetadata.swift; sourceTree = "<group>"; };
 		FA775191C6E1903EAFE83DDD9E4E423C /* MyCheckWalletUI-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MyCheckWalletUI-prefix.pch"; sourceTree = "<group>"; };
 		FAC625F5F44ABDE112CA7C6A8B99970B /* Kingfisher.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.xcconfig; sourceTree = "<group>"; };
@@ -629,7 +633,7 @@
 		FC30641B33D6E2E9D1B59E62835DA915 /* RequestModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestModifier.swift; path = Sources/RequestModifier.swift; sourceTree = "<group>"; };
 		FD5DCC5036C3A8E4FC055AF1396A6E52 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		FECC58E1BD8038B87D57234F9F195642 /* NMBExceptionCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBExceptionCapture.m; path = Sources/NimbleObjectiveC/NMBExceptionCapture.m; sourceTree = "<group>"; };
-		FF18161C48A4F0DEA4919396046A3F05 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mach_excServer.c; path = Sources/Lib/CwlPreconditionTesting/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
+		FF18161C48A4F0DEA4919396046A3F05 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mach_excServer.c; path = Sources/Lib/CwlPreconditionTesting/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
 		FF1F53AE94024CE4DB5D6A8257E5F148 /* BeLessThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThan.swift; path = Sources/Nimble/Matchers/BeLessThan.swift; sourceTree = "<group>"; };
 		FF790D17EB910ECADAFC1391C6322F40 /* ExampleHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleHooks.swift; path = Sources/Quick/Hooks/ExampleHooks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -741,7 +745,6 @@
 				04614D3433FEFDD788426E8EBCB7D3D6 /* RequestProtocol.swift */,
 				806490B75F85A22C6733641FC4CC5A8E /* SessionProtocol.swift */,
 			);
-			name = protocols;
 			path = protocols;
 			sourceTree = "<group>";
 		};
@@ -776,7 +779,6 @@
 				D0E032A4C1BC320277D8C3F1410CCFDD /* LocalData+ApplePay.swift */,
 				E98817604FFB2152A403877047282C53 /* Wallet+ApplePay.swift */,
 			);
-			name = ApplePay;
 			path = ApplePay;
 			sourceTree = "<group>";
 		};
@@ -816,7 +818,6 @@
 				D0D9A933BB5E32F5767567814FAC6561 /* XCTestSuite+QuickTestSuiteBuilder.m */,
 				6D7B62E7CB6B159AED425034149F8BEF /* Support Files */,
 			);
-			name = Quick;
 			path = Quick;
 			sourceTree = "<group>";
 		};
@@ -847,7 +848,6 @@
 				76E59ED2C8A2C22A4F3090748C5326D4 /* UIButton+Kingfisher.swift */,
 				00871E86A659BB7D59CFC08AE277F8B3 /* Support Files */,
 			);
-			name = Kingfisher;
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
@@ -857,7 +857,6 @@
 				6B47F91221AD4207EE84ED347B9285C5 /* BillEntryItem.swift */,
 				740255B4B7DD9712F50DFA38D1870C99 /* Money.swift */,
 			);
-			name = models;
 			path = models;
 			sourceTree = "<group>";
 		};
@@ -883,7 +882,6 @@
 				BDAB6BE97609084460E8F30683B14B45 /* ProximaNovaSoftBold.ttf */,
 				EE8CBA2C0A1475DDC611B6EAA3474D5A /* ProximaNovaSoftRegular.otf */,
 			);
-			name = Assets;
 			path = Assets;
 			sourceTree = "<group>";
 		};
@@ -908,7 +906,6 @@
 				8CD86EE4913DC73954898867B3B9CFAC /* extensionTools */,
 				8FC2B9F19CE60D9E0C275C6E41AA7DB6 /* ViewControllers */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -988,7 +985,6 @@
 			children = (
 				C3D648199701BB1C7B65C6CFED3ECA48 /* Classes */,
 			);
-			name = MyCheckWalletUI;
 			path = MyCheckWalletUI;
 			sourceTree = "<group>";
 		};
@@ -997,7 +993,6 @@
 			children = (
 				2A2324C785DC756A3395BF97D99098E2 /* CompareOptionals.swift */,
 			);
-			name = tools;
 			path = tools;
 			sourceTree = "<group>";
 		};
@@ -1031,20 +1026,19 @@
 				F717925C457054B5EE3E8ED040D98996 /* UIColor+Hex.swift */,
 				93F803783350A36DBDCB6C2213B4A924 /* UITextField+Placeholder.swift */,
 			);
-			name = extensionTools;
 			path = extensionTools;
 			sourceTree = "<group>";
 		};
 		8FC2B9F19CE60D9E0C275C6E41AA7DB6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B29128A41F1F92AD001EB0A1 /* MCAddCreditCardViewController */,
 				190104D36CBBBDEA87D3EDFBB90DFF6B /* MCAddCreditCardViewController.swift */,
 				1A2879428908A2B9DE09F4636C0BDA87 /* MCCheckoutViewController.swift */,
 				0770445ECE365B46291FD291F40C8446 /* MCCreditCardsViewController.swift */,
 				BA12E792DB9FE2252C190AB6A614F479 /* MCPaymentMethodsViewController.swift */,
 				AD85E21387548431CFA036B5E2EE114C /* MCViewController.swift */,
 			);
-			name = ViewControllers;
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
@@ -1088,7 +1082,6 @@
 			children = (
 				5310C253B4916CEF4585559BDFB1D19F /* Classes */,
 			);
-			name = MyCheckWalletUI;
 			path = MyCheckWalletUI;
 			sourceTree = "<group>";
 		};
@@ -1108,6 +1101,15 @@
 			);
 			name = "Pods-MyCheckWalletUI_Example";
 			path = "Target Support Files/Pods-MyCheckWalletUI_Example";
+			sourceTree = "<group>";
+		};
+		B29128A41F1F92AD001EB0A1 /* MCAddCreditCardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B29128A51F1F92D2001EB0A1 /* MCAddCreditCardViewControllerModel.swift */,
+				B29128A71F1FA2B2001EB0A1 /* MCAddCreditCardViewControllerState.swift */,
+			);
+			path = MCAddCreditCardViewController;
 			sourceTree = "<group>";
 		};
 		B56310554D6295892FE9EFFFDE6B1AE9 /* Support Files */ = {
@@ -1130,7 +1132,6 @@
 			children = (
 				2EAE66C640F774A5D2B22C58D6EAAD82 /* ApplePay */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -1139,7 +1140,6 @@
 			children = (
 				B6C4923AF99DF6DD1B3F23855C084F39 /* Classes */,
 			);
-			name = MyCheckWalletUI;
 			path = MyCheckWalletUI;
 			sourceTree = "<group>";
 		};
@@ -1148,7 +1148,6 @@
 			children = (
 				D3BE4A17EC6240F58BC106D6D31236FC /* Classes */,
 			);
-			name = MyCheckCore;
 			path = MyCheckCore;
 			sourceTree = "<group>";
 		};
@@ -1157,7 +1156,6 @@
 			children = (
 				CDCA7BA481A478BA8050E996FEC60F71 /* VisaCheckout */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -1192,7 +1190,6 @@
 				D0B88218D53C5C87BD000E4D986A2849 /* Validation.swift */,
 				D2C4EB886AB64C074DCEE6FE98CC2403 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1205,7 +1202,6 @@
 				ABDF267BDF85568334D04188AE6359DF /* VisaCheckoutButton.swift */,
 				7528D26B9F1B7777EC192AEC4600B881 /* VisaCheckoutFactory.swift */,
 			);
-			name = VisaCheckout;
 			path = VisaCheckout;
 			sourceTree = "<group>";
 		};
@@ -1233,7 +1229,6 @@
 				27D4E859B93E9E53176AD81FCC37A5B9 /* protocols */,
 				7AEF61962DCD1FC8739EE1EB8F2966F9 /* tools */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -1269,7 +1264,6 @@
 			children = (
 				49FDE0358713816F70F4A1514BEDA543 /* Assets */,
 			);
-			name = MyCheckWalletUI;
 			path = MyCheckWalletUI;
 			sourceTree = "<group>";
 		};
@@ -1294,7 +1288,6 @@
 				7A747F03F9A6DD60A7EE791330D99391 /* Dictionary+Append.swift */,
 				5F493CC6E5DAF592A598DF98BD6406C8 /* String+IsNumber.swift */,
 			);
-			name = extenshions;
 			path = extenshions;
 			sourceTree = "<group>";
 		};
@@ -1304,7 +1297,6 @@
 				29F335C1D64F35BC1BB57AD472A8016F /* PaymentMethodInterface+getBackgroundImage.swift */,
 				C4CFBAB98C3A5CF1D9DF136BAF54FB09 /* PaymentMethodType+imageURLForFropDown.swift */,
 			);
-			name = extensions;
 			path = extensions;
 			sourceTree = "<group>";
 		};
@@ -1382,7 +1374,6 @@
 				E1B0842211A759C0B9C40625120D4781 /* XCTestObservationCenter+Register.m */,
 				EDEBDA048D2E72BEBFAAF9909C7AC6E7 /* Support Files */,
 			);
-			name = Nimble;
 			path = Nimble;
 			sourceTree = "<group>";
 		};
@@ -1903,6 +1894,7 @@
 				23AE91E6FF0BB4C9F47E3A467788C6FB /* MyCheckWalletUI-dummy.m in Sources */,
 				5966E022BDB4FFCF8756A1A051547157 /* Networking+VisaCheckout.swift in Sources */,
 				0572C5A1A76C1238DD37FC8C4DE7A3CC /* NoApplePayState.swift in Sources */,
+				B29128A61F1F92D2001EB0A1 /* MCAddCreditCardViewControllerModel.swift in Sources */,
 				4868BBB08A47287BAA67B324204FF392 /* PaymentMethodButton.swift in Sources */,
 				CAF4E3DE0B7F55F7AE0A96DBE878783A /* PaymentMethodFactory.swift in Sources */,
 				BB62CA1FF6FDAC02DB8F1691A845060F /* PaymentMethodInterface+getBackgroundImage.swift in Sources */,
@@ -1911,6 +1903,7 @@
 				D7DA45C7E37701D35CCFD1DDFB856323 /* UIColor+CustomColors.swift in Sources */,
 				A4920323DF93ADD67E31F187C3575243 /* UIColor+Hex.swift in Sources */,
 				D2FCFF4B21916AAA29FE811949BD5837 /* UITextField+Placeholder.swift in Sources */,
+				B29128A81F1FA2B2001EB0A1 /* MCAddCreditCardViewControllerState.swift in Sources */,
 				31434A77029A148A3DF50C981C32B891 /* VisaCheckoutButton.swift in Sources */,
 				9EC0A3AD97BA63E7C823C9C3BFA4D5BE /* VisaCheckoutFactory.swift in Sources */,
 				CC6594C2A35754F2EDAD653865692576 /* Wallet+ApplePay.swift in Sources */,
