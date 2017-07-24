@@ -165,6 +165,11 @@
 		AF1174085D9BC5D50FCE0480E9C2BE94 /* BeGreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA47640BCCAE2B519BCCF1A715CB2E /* BeGreaterThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		B0AD7F67422B818C7AC9E0E7F0D592BE /* CreditCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A939D6DF1C97CAA85F6C1E6F63A9E6E /* CreditCardView.xib */; };
 		B102ABE4E54B71B3D2C2118E2782FAB9 /* BeLessThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1F53AE94024CE4DB5D6A8257E5F148 /* BeLessThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		B26C94AF1F24C9D30066C0C8 /* AddCreditCardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26C94A91F24C9D30066C0C8 /* AddCreditCardInteractor.swift */; };
+		B26C94B01F24C9D30066C0C8 /* AddCreditCardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26C94AA1F24C9D30066C0C8 /* AddCreditCardModels.swift */; };
+		B26C94B11F24C9D30066C0C8 /* AddCreditCardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26C94AB1F24C9D30066C0C8 /* AddCreditCardPresenter.swift */; };
+		B26C94B21F24C9D30066C0C8 /* AddCreditCardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26C94AC1F24C9D30066C0C8 /* AddCreditCardRouter.swift */; };
+		B26C94B31F24C9D30066C0C8 /* AddCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26C94AD1F24C9D30066C0C8 /* AddCreditCardViewController.swift */; };
 		B29128A61F1F92D2001EB0A1 /* MCAddCreditCardViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29128A51F1F92D2001EB0A1 /* MCAddCreditCardViewControllerModel.swift */; };
 		B29128A81F1FA2B2001EB0A1 /* MCAddCreditCardViewControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29128A71F1FA2B2001EB0A1 /* MCAddCreditCardViewControllerState.swift */; };
 		B2C151B20635A480E1937E3D2B509BB4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B5A19AFC0D643BE7A50AEA101C1A2 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -543,6 +548,11 @@
 		AEE28AC6C0D22218884B9B4D8BFF7FDF /* Functional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Functional.swift; path = Sources/Nimble/Utils/Functional.swift; sourceTree = "<group>"; };
 		AFD055E35F1FB5B0392A2ADBE3977F9E /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		B16545B03B7500845D3E6F4B96901789 /* Nimble.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Nimble.h; path = Sources/Nimble/Nimble.h; sourceTree = "<group>"; };
+		B26C94A91F24C9D30066C0C8 /* AddCreditCardInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardInteractor.swift; sourceTree = "<group>"; };
+		B26C94AA1F24C9D30066C0C8 /* AddCreditCardModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardModels.swift; sourceTree = "<group>"; };
+		B26C94AB1F24C9D30066C0C8 /* AddCreditCardPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardPresenter.swift; sourceTree = "<group>"; };
+		B26C94AC1F24C9D30066C0C8 /* AddCreditCardRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardRouter.swift; sourceTree = "<group>"; };
+		B26C94AD1F24C9D30066C0C8 /* AddCreditCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardViewController.swift; sourceTree = "<group>"; };
 		B29128A51F1F92D2001EB0A1 /* MCAddCreditCardViewControllerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAddCreditCardViewControllerModel.swift; sourceTree = "<group>"; };
 		B29128A71F1FA2B2001EB0A1 /* MCAddCreditCardViewControllerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAddCreditCardViewControllerState.swift; sourceTree = "<group>"; };
 		B2B8BC99D86782D51BFDD58870F80DAD /* CreditCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
@@ -1108,6 +1118,11 @@
 			children = (
 				B29128A51F1F92D2001EB0A1 /* MCAddCreditCardViewControllerModel.swift */,
 				B29128A71F1FA2B2001EB0A1 /* MCAddCreditCardViewControllerState.swift */,
+				B26C94A91F24C9D30066C0C8 /* AddCreditCardInteractor.swift */,
+				B26C94AA1F24C9D30066C0C8 /* AddCreditCardModels.swift */,
+				B26C94AB1F24C9D30066C0C8 /* AddCreditCardPresenter.swift */,
+				B26C94AC1F24C9D30066C0C8 /* AddCreditCardRouter.swift */,
+				B26C94AD1F24C9D30066C0C8 /* AddCreditCardViewController.swift */,
 			);
 			path = MCAddCreditCardViewController;
 			sourceTree = "<group>";
@@ -1870,8 +1885,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2B4162321220A6405A902D6BDB00C28 /* AddCreditCardView.swift in Sources */,
+				B26C94B31F24C9D30066C0C8 /* AddCreditCardViewController.swift in Sources */,
 				21933F3BBC1E37C48C0D7E34FDD1EC12 /* ApplePayCredentials.swift in Sources */,
 				DE50846A94400DF096513EF733C31FED /* ApplePayCreditCardTypes.swift in Sources */,
+				B26C94AF1F24C9D30066C0C8 /* AddCreditCardInteractor.swift in Sources */,
 				E4C926642899F374901C981BBCC99DC1 /* ApplePayFactory.swift in Sources */,
 				5C2F69EA955561ACA1B49049B4F164F5 /* ApplePayPaymentMethod.swift in Sources */,
 				2EE8BB70CB280EA45EF8467AA39ADE58 /* ApplePayState.swift in Sources */,
@@ -1881,10 +1898,12 @@
 				EAC70AD0AA66944A3165AB7070AB3319 /* CreditCardValidator.swift in Sources */,
 				A665AB83AFA9893E6BD85E8E2902C11B /* CreditCardView.swift in Sources */,
 				523246FC3C285842CC807FC60D2332AA /* Dictionary+Append.swift in Sources */,
+				B26C94B01F24C9D30066C0C8 /* AddCreditCardModels.swift in Sources */,
 				85C0CDAB795CF79695C33693867B2AB7 /* LocalData+ApplePay.swift in Sources */,
 				03C458937FD0EF5A79E22AEA92DFD8E4 /* LocalData.swift in Sources */,
 				ADE8861B03BBF26CA73A34B3156CA7AF /* MCAddCreditCardViewController.swift in Sources */,
 				308D340BDE8BFA713BF89D1AC8803C82 /* MCCheckoutViewController.swift in Sources */,
+				B26C94B21F24C9D30066C0C8 /* AddCreditCardRouter.swift in Sources */,
 				B6B04E5655BD8C2A94C505E0D6894330 /* MCCreditCardsViewController.swift in Sources */,
 				D8C12086880A5888BA70D3F9C03D0E1A /* MCPaymentMethodsViewController.swift in Sources */,
 				EFED4E6073F25DC126044F93A8F73953 /* MCScrollView.swift in Sources */,
@@ -1904,6 +1923,7 @@
 				A4920323DF93ADD67E31F187C3575243 /* UIColor+Hex.swift in Sources */,
 				D2FCFF4B21916AAA29FE811949BD5837 /* UITextField+Placeholder.swift in Sources */,
 				B29128A81F1FA2B2001EB0A1 /* MCAddCreditCardViewControllerState.swift in Sources */,
+				B26C94B11F24C9D30066C0C8 /* AddCreditCardPresenter.swift in Sources */,
 				31434A77029A148A3DF50C981C32B891 /* VisaCheckoutButton.swift in Sources */,
 				9EC0A3AD97BA63E7C823C9C3BFA4D5BE /* VisaCheckoutFactory.swift in Sources */,
 				CC6594C2A35754F2EDAD653865692576 /* Wallet+ApplePay.swift in Sources */,

@@ -1,6 +1,6 @@
 {
   "name": "MyCheckWalletUI",
-  "version": "0.0.15",
+  "version": "1.0.1",
   "summary": "An SDK that supplies UI for payment method managment.",
   "description": "README.md",
   "homepage": "https://mycheckapp.com",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://bitbucket.org/erez_spatz/mycheckwalletui-ios.git",
-    "tag": "0.0.15"
+    "tag": "1.0.1"
   },
   "platforms": {
     "ios": "9.0"
@@ -59,8 +59,16 @@
     },
     {
       "name": "VisaCheckout",
+      "dependencies": {
+        "MyCheckWalletUI/Core": [
+
+        ]
+      },
       "source_files": "MyCheckWalletUI/Classes/VisaCheckout/*",
-      "vendored_frameworks": "MyCheckWalletUI/Classes/VisaCheckout/frameworks/*"
+      "vendored_frameworks": "MyCheckWalletUI/Classes/VisaCheckout/frameworks/*",
+      "platforms": {
+        "ios": "9.0"
+      }
     }
   ]
 }

@@ -165,7 +165,7 @@
         requiredShippingAddressFields = [];
         guard let paymentDetails = paymentDetails else{ // If payment details are not passed I assume it is a pending amount
             
-            let item = PKPaymentSummaryItem(label: LocalData.manager.getString("applePayApplePayPreAuthTxt", fallback: "Total"), amount: NSDecimalNumber(value: 0.01), type: .pending)
+            let item = PKPaymentSummaryItem(label: LocalData.manager.getString("applePayApplePayPreAuthTxt", fallback: "Total"), amount: NSDecimalNumber(value: 1.5), type: .pending)
             paymentSummaryItems = [item]
             return
         }
