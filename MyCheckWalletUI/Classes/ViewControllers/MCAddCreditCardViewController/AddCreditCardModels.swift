@@ -14,121 +14,162 @@ import UIKit
 
 enum AddCreditCard
 {
-    //MARK: State and form info
-    enum State {
-        case inputingDetails
-        
-        case callingServer
-    }
-    struct FormData {
-        let number: String
-        let date: String
-        let cvv: String
-        let zip: String?
-    }
-    // MARK: Use cases
+  
+  
+  //MARK: State and form info
+  enum State {
+    case inputingDetails
     
-    enum SubmitForm
+    case callingServer
+  }
+  
+  
+  struct FormData {
+    let number: String
+    let date: String
+    let cvv: String
+    let zip: String?
+    
+    /// Returns a new Form Data with the specified fields chaged
+    ///
+    /// - Parameter fields: the fields you would like to change
+    /// - Returns: the new updated form data
+    func FormDataWithUpdatedFields(fields:[(type: AddCreditCard.TextChanged.FieldType , newValue:String)]) -> FormData{
+      var number = self.number
+      var date = self.date
+      var cvv = self.cvv
+      var zip = self.zip
+      for (type , value) in fields{
+        switch type {
+        case .number:
+          number = value
+        case .date:
+          date = value
+        case .cvv:
+          cvv = value
+        case .zip:
+          zip = value
+        }
+      }
+        return FormData(number: number, date: date, cvv: cvv, zip: zip)
+      }
+    
+    
+    /// Returns a validator on the form data
+    ///
+    /// - Returns: Returns a validator on the form data
+    func getValidatorForForm() -> CreditCardValidator{
+    return CreditCardValidator(cardNumber: number, DOB: date, CVV: cvv, ZIP: zip)
+    }
+  }
+  // MARK: Use cases
+  
+  enum SubmitForm
+  {
+    
+    
+    struct Request
     {
-        struct Request
-        {
-            let number: String
-            let date: String
-            let cvv: String
-            let zip: String?
-        }
-        struct Response
-        {
-            let inputValid = numberValid && dateValid && cvvValid && zipValid
-            let numberValid: String
-            let dateValid: String
-            let cvvValid: String
-            let zipValid: String
-        }
-        struct ViewModel
-        {
-            struct failResponse {
-                let inputValid = numberValid && dateValid && cvvValid && zipValid
-                let numberValid: Bool
-                let dateValid: Bool
-                let cvvValid: Bool
-                let zipValid: Bool
-                let errorMessage
-                
-            }
-            
-            enum addCreditCardResponse {
-                case success
-                case fail(failResponse)
-            }
-            
-        }
+      let number: String
+      let date: String
+      let cvv: String
+      let zip: String?
     }
     
     
-    enum TextChanged
+    struct Response
     {
-        enum FieldType {
-            case number
-            case date
-            case cvv
-            case zip
-        }
-        
-        struct Request
-        {
-            let type: FieldType
-            let string: String
-        }
-        struct Response
-        {
-            let type: FieldType
-            let text: String
-            let valid: Bool
-        }
-        
-        struct ViewModel
-        {
-            struct failResponse {
-                let inputValid = numberValid && dateValid && cvvValid && zipValid
-                let numberValid: Bool
-                let dateValid: Bool
-                let cvvValid: Bool
-                let zipValid: Bool
-                let errorMessage
-                
-            }
-            
-            enum addCreditCardResponse {
-                case success
-                case fail(failResponse)
-            }
-            
-        }
-        
-        
-        
-        enum stateChange
-        {
-            struct Response
-            {
-                
-                
-                let state: State
-            }
-            
-            struct ViewModel
-            {
-                
-                enum stateChangeResponse {
-                    let showLoadingView: Bool
-                }
-                
-            }
-            
-        }
+      var inputValid: Bool { get{return numberValid && dateValid && cvvValid && zipValid}}
+      let number: String
+      let date: String
+      let cvv: String
+      let zip: String?
+      
+      let numberValid: Bool
+      let dateValid: Bool
+      let cvvValid: Bool
+      let zipValid: Bool
     }
     
     
+    struct ViewModel
+    {
+      struct failResponse {
+        var inputValid: Bool { get{return numberValid && dateValid && cvvValid && zipValid}}
+        let numberValid: Bool
+        let dateValid: Bool
+        let cvvValid: Bool
+        let zipValid: Bool
+        let errorMessage: String
+        
+      }
+      
+      enum addCreditCardResponse {
+        case success
+        case fail(failResponse)
+      }
+      
+    }
+  }
+  
+  
+  enum TextChanged
+  {
+    enum FieldType {
+      case number
+      case date
+      case cvv
+      case zip
+    }
     
+    struct Request
+    {
+      let type: FieldType
+      let string: String
+    }
+    struct Response
+    {
+      let type: FieldType
+      let text: String
+      let prefixOfValidValue: Bool
+      let cardType: CreditCardType
+    }
+    
+    struct ViewModel
+    {
+      enum cardTypeUpdate {
+        case updateCardTypeImage(String)
+        case noUpdate
+        case showPlaceholder
+      }
+      
+      struct textChangedResponse {
+        let type: FieldType
+        let text: String
+        let cardTypeIconUpdate: cardTypeUpdate
+      }
+    }
+    
+  }
+  
+  
+  enum StateChange
+  {
+    struct Response
+    {
+      
+      
+      let state: State
+    }
+    
+    struct ViewModel
+    {
+      
+      struct stateChangeResponse {
+        let showLoadingView: Bool
+      }
+      
+    }
+    
+  }
 }

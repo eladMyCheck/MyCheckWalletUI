@@ -129,6 +129,35 @@ internal struct CreditCardValidator {
         }
     }
     var DOBIsValid = false
+  
+  
+  enum dobPrefixValid {
+    case notValid
+    case valid(formatted: String)
+  }
+  
+  /// generates the valid string for a given date user input
+  var validStringFromInput: dobPrefixValid{
+    guard var dob = self.DOB  else {
+      return .notValid
+    }
+    switch dob.characters.count {
+    case 0:
+      return .valid(formatted: dob)
+    case 1:
+      if Int(string: dob) == nil{
+      return .notValid
+      }
+      if dob != "1" && dob != "2"{//adding a 0 since their is no month begining with 2...9
+      dob = "0" + dob + "/"
+      }
+      return .valid(formatted: dob)
+    case 2:
+    default:
+      <#code#>
+    }
+  
+  }
     var CVVIsValid : Bool {
         get{
             guard let CVV = CVV else {
@@ -152,7 +181,17 @@ internal struct CreditCardValidator {
             return false
         }
     }
-    
+  
+  var numberIsToLong: Bool {
+    get{
+      if let cardNumber = cardNumber{
+        let cardNumberWithoutFormating =  cardNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression) as String
+        return cardNumberWithoutFormating.characters.count > maxLengthForType(cardType)
+      }
+      return false
+    }
+  }
+  
     init(cardNumber: String? = nil , DOB: String? = nil, CVV: String? = nil, ZIP: String? = nil) {
         self.cardNumber = cardNumber
         self.DOB = DOB

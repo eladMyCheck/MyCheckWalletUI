@@ -14,11 +14,16 @@ import UIKit
 
 protocol AddCreditCardDisplayLogic: class
 {
-  func displaySomething(viewModel: AddCreditCard.Something.ViewModel)
+  func changeLoadingView(viewModel: AddCreditCard.StateChange.ViewModel)
+  
+  func updateField(viewModel: AddCreditCard.TextChanged.ViewModel)
+  
+  func formSubmitionResponse(viewModel: AddCreditCard.SubmitForm.ViewModel) 
 }
 
-class AddCreditCardViewController: UIViewController, AddCreditCardDisplayLogic
+class AddCreditCardViewController: UIViewController
 {
+  
   var interactor: AddCreditCardBusinessLogic?
   var router: (NSObjectProtocol & AddCreditCardRoutingLogic & AddCreditCardDataPassing)?
 
@@ -81,7 +86,6 @@ class AddCreditCardViewController: UIViewController, AddCreditCardDisplayLogic
     let nc = NotificationCenter.default
     nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
 
-    doSomething()
   }
   
   // MARK: Do something
@@ -146,14 +150,53 @@ class AddCreditCardViewController: UIViewController, AddCreditCardDisplayLogic
     }
     
   
-  func doSomething()
-  {
-    let request = AddCreditCard.Something.Request()
-    interactor?.doSomething(request: request)
+  
+}
+
+extension AddCreditCardViewController: AddCreditCardDisplayLogic{
+  func changeLoadingView(viewModel: AddCreditCard.StateChange.ViewModel) {
+    
   }
   
-  func displaySomething(viewModel: AddCreditCard.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
+  
+  func formSubmitionResponse(viewModel: AddCreditCard.SubmitForm.ViewModel) {
+    
   }
+  func updateField(viewModel: AddCreditCard.TextChanged.ViewModel) {
+    
+  }
+}
+
+// MARK - private methods
+extension AddCreditCardViewController{
+  
+  
+  fileprivate func addNextButtonOnKeyboard(_ field: UITextField , action: Selector)
+  {
+    let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+    doneToolbar.barStyle = UIBarStyle.blackTranslucent
+    
+    let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+    let done: UIBarButtonItem = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.done, target: self, action: action)
+    
+    let items = [flexSpace , done]
+    
+    
+    doneToolbar.items = items
+    doneToolbar.sizeToFit()
+    
+    field.inputAccessoryView = doneToolbar
+    
+  }
+
+ @objc fileprivate func nextPressed(_ sender: UIBarButtonItem){
+    if creditCardNumberField.isFirstResponder{
+      dateField.becomeFirstResponder()
+    } else if dateField.isFirstResponder{
+      cvvField.becomeFirstResponder()
+    } else if cvvField.isFirstResponder{
+      zipField.becomeFirstResponder()
+    }
+  }
+
 }

@@ -14,12 +14,13 @@ import UIKit
 
 protocol AddCreditCardPresentationLogic
 {
-    func presentSubmitFormResponse(response: AddCreditCard.SubmitForm.Response)
-    func present
-    
-    func displayLoadingIndicator(display: Bool)
-    
-
+  func presentSubmitFormResponse(response: AddCreditCard.SubmitForm.Response)
+  
+  func presentTextChangeResponse(response: AddCreditCard.TextChanged.Response)
+  
+  func stateChanged(response: AddCreditCard.StateChange.Response)
+  
+  
 }
 
 class AddCreditCardPresenter: AddCreditCardPresentationLogic
@@ -28,9 +29,18 @@ class AddCreditCardPresenter: AddCreditCardPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: AddCreditCard.Something.Response)
+  func presentSubmitFormResponse(response: AddCreditCard.SubmitForm.Response)
   {
-    let viewModel = AddCreditCard.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+    //    let viewModel = AddCreditCard.Something.ViewModel()
+    //    viewController?.displaySomething(viewModel: viewModel)
   }
+  
+  func stateChanged(response: AddCreditCard.StateChange.Response){
+    
+  }
+  
+  func presentTextChangeResponse(response: AddCreditCard.TextChanged.Response){
+    
+  }
+  
 }

@@ -13,6 +13,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* PaymentMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* PaymentMethods.swift */; };
+		B21F7C691F27545B00517F10 /* AddCreditCardInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21F7C681F27545B00517F10 /* AddCreditCardInteractorTest.swift */; };
 		B2CC35FF1F01423B0018EF17 /* PaymentMethods.json in Resources */ = {isa = PBXBuildFile; fileRef = B2CC35FE1F01423B0018EF17 /* PaymentMethods.json */; };
 		B2E59D431E952CFD00AF4469 /* TestCreditCardValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E59D411E952AEC00AF4469 /* TestCreditCardValidation.swift */; };
 		B8F29D2131854F978E1F6511 /* Pods_MyCheckWalletUI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDFCF0CC69C9D529AFB5925 /* Pods_MyCheckWalletUI_Tests.framework */; };
@@ -46,6 +47,7 @@
 		607FACEB1AFB9204008FA782 /* PaymentMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethods.swift; sourceTree = "<group>"; };
 		7CDFCF0CC69C9D529AFB5925 /* Pods_MyCheckWalletUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCheckWalletUI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		816A39C179CD8F100C122930 /* Pods-MyCheckWalletUI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCheckWalletUI_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyCheckWalletUI_Tests/Pods-MyCheckWalletUI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		B21F7C681F27545B00517F10 /* AddCreditCardInteractorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardInteractorTest.swift; sourceTree = "<group>"; };
 		B2CC35FE1F01423B0018EF17 /* PaymentMethods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PaymentMethods.json; sourceTree = "<group>"; };
 		B2E59D411E952AEC00AF4469 /* TestCreditCardValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCreditCardValidation.swift; sourceTree = "<group>"; };
 		F173C1816C138039DA8A3A5B /* Pods-MyCheckWalletUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCheckWalletUI_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyCheckWalletUI_Example/Pods-MyCheckWalletUI_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				607FACEB1AFB9204008FA782 /* PaymentMethods.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				B2E59D411E952AEC00AF4469 /* TestCreditCardValidation.swift */,
+				B21F7C681F27545B00517F10 /* AddCreditCardInteractorTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B21F7C691F27545B00517F10 /* AddCreditCardInteractorTest.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* PaymentMethods.swift in Sources */,
 				B2E59D431E952CFD00AF4469 /* TestCreditCardValidation.swift in Sources */,
 			);

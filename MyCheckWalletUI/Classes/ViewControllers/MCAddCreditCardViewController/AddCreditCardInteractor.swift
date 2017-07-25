@@ -14,33 +14,54 @@ import UIKit
 
 protocol AddCreditCardBusinessLogic
 {
-    func changeTextInField(request: AddCreditCard.TextChanged.Request)
-    func submitForm(request: AddCreditCard.SubmitForm.Request)
-    
+  func changeTextInField(request: AddCreditCard.TextChanged.Request)
+  func submitForm(request: AddCreditCard.SubmitForm.Request)
+  
 }
 
 protocol AddCreditCardDataStore
 {
-    //var name: String { get set }
+  //var name: String { get set }
 }
 
 class AddCreditCardInteractor: AddCreditCardBusinessLogic, AddCreditCardDataStore
 {
-    var presenter: AddCreditCardPresentationLogic?
-    var state = AddCreditCard.State.inputingDetails
-    var model = AddCreditCard.FormData.init(number: "", date: "", cvv: "", zip: "")
-    //var name: String = ""
+  var presenter: AddCreditCardPresentationLogic?
+  var state = AddCreditCard.State.inputingDetails
+  var model = AddCreditCard.FormData.init(number: "", date: "", cvv: "", zip: "")
+  //var name: String = ""
+  
+  // MARK: Do something
+  
+  func changeTextInField(request: AddCreditCard.TextChanged.Request)
+  {
+    let updatedForm = model.FormDataWithUpdatedFields(fields: [(request.type , request.string)])
+    let validator = updatedForm.getValidatorForForm()
     
-    // MARK: Do something
-    
-    func changeTextInField(request: AddCreditCard.TextChanged.Request)
-    {
-        switch request.type{
-        case .number(text: text, imageURL: urlStr):
-            
-            
-            
-        }
+    var prefixOfValidValue: Bool {
+      switch request.type {
+      case .number:
+        return  !validator.numberIsToLong
+      case .date:
+        return validator.DOBIsValid
+      case .cvv:
+        return validator.CVVIsValid
+      case .zip:
+        return validator.ZIPIsValid
         
+      }
     }
+    
+    if prefixOfValidValue{
+      model = updatedForm
+    }
+    let carType = model.getValidatorForForm().cardType
+    let response = AddCreditCard.TextChanged.Response(type: request.type, text: request.string, prefixOfValidValue: prefixOfValidValue, cardType: carType)
+    if let presenter = presenter{
+      presenter.presentTextChangeResponse(response: response)
+    }
+  }
+  func submitForm(request: AddCreditCard.SubmitForm.Request){
+    
+  }
 }
