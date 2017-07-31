@@ -461,6 +461,71 @@ class AddCreditCardInteractorTest: XCTestCase {
         
         
     }
+    
+    func testSubmitFormWithInValidDataWithDiffrantCompination(){
+        let interactor = AddCreditCardInteractor()
+        let spy = AddCreditCardOutputSpy()
+        interactor.presenter = spy
+        //Given
+        
+        //testing a hole bunch of combos of valid and invalid data
+        let invalidData = ["411" , "11/11" , "1" , ""]
+        let validData = ["4111111111111111" , "11/19" , "123" , "12345"]
+        for  i in 0..<4{
+            for  j in i..<4{
+                
+                var data: [String] = []
+                var validField: [Bool] = []
+                for k in 0..<4{
+                    data.append(( k >= i && k <= j ) ? invalidData[k] : validData[k])
+                    validField.append(( k >= i && k <= j ) ? false : true)
+
+                }
+
+                interactor.model = AddCreditCard.FormData(number: "", date: "", cvv: "", zip: "", singleUse:false)
+                //When
+                let req = AddCreditCard.SubmitForm.Request(number: data[0], date: data[1], cvv: data[2], zip: data[3], singleUse: false)
+                interactor.submitForm(request: req)
+                
+                //Then
+                guard let response = spy.submitFormResponse else{
+                    XCTFail("no response receieved")
+                    return
+                }
+                XCTAssert(spy.stateChanges == []) // invalid input should not change state
+                
+                switch response {
+                case .addedCreditCard:
+                    XCTFail("should of failed")
+                case .failedToAddCard(let failedResponse):
+                    XCTAssert(failedResponse.inputValid == false , "the input should be invalid")
+                    XCTAssert(failedResponse.serverErrorMessage == nil , "no server call")
+                    XCTAssert(failedResponse.fieldValidity.reduce(0, { $0 +  ($1.1 ? 1 : 0) }) == 1  , "amount of valid fields is wrong")
+                    for  (type , valid) in failedResponse.fieldValidity{
+                        switch type {
+                        case .number:
+                            XCTAssert(valid == validField[0] , "number should validity should be \(validField[0])")
+                        case .date:
+                            XCTAssert(valid == validField[1] , "date should validity should be \(validField[1])")
+                        case .cvv:
+                            XCTAssert(valid == validField[2] , "cvv should validity should be \(validField[2])")
+                        case .zip:
+                            XCTAssert(valid == validField[3] , "zip should validity should be \(validField[3])")
+
+                            
+                        }
+                    }
+                    
+            }
+        }
+       
+            
+            
+        }
+        
+        
+    }
+
 
 }
 
