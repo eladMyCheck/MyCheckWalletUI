@@ -12,6 +12,8 @@
 
 import UIKit
 
+
+
 enum AddCreditCard
 {
   
@@ -23,18 +25,25 @@ enum AddCreditCard
     case callingServer
   }
   
-  
+    enum FieldType {
+        case number
+        case date
+        case cvv
+        case zip
+    }
+    
+    //The model of the interactor
   struct FormData {
     let number: String
     let date: String
     let cvv: String
     let zip: String?
-    
-    /// Returns a new Form Data with the specified fields chaged
+    let singleUse: Bool
+    /// Returns a new Form Data with the specified fields changed
     ///
     /// - Parameter fields: the fields you would like to change
     /// - Returns: the new updated form data
-    func FormDataWithUpdatedFields(fields:[(type: AddCreditCard.TextChanged.FieldType , newValue:String)]) -> FormData{
+    func FormDataWithUpdatedFields(fields:[(type: AddCreditCard.FieldType , newValue:String)], singleUse:Bool? = nil ) -> FormData{
       var number = self.number
       var date = self.date
       var cvv = self.cvv
@@ -51,7 +60,10 @@ enum AddCreditCard
           zip = value
         }
       }
-        return FormData(number: number, date: date, cvv: cvv, zip: zip)
+         let single = singleUse ?? self.singleUse
+    
+
+        return FormData(number: number, date: date, cvv: cvv, zip: zip, singleUse: single)
       }
     
     
@@ -62,6 +74,13 @@ enum AddCreditCard
     return CreditCardValidator(cardNumber: number, DOB: date, CVV: cvv, ZIP: zip)
     }
   }
+    
+    
+    
+    
+    
+    
+    
   // MARK: Use cases
   
   enum SubmitForm
@@ -74,59 +93,67 @@ enum AddCreditCard
       let date: String
       let cvv: String
       let zip: String?
+        let singleUse: Bool
     }
     
     
-    struct Response
+    enum Response
     {
-      var inputValid: Bool { get{return numberValid && dateValid && cvvValid && zipValid}}
-      let number: String
-      let date: String
-      let cvv: String
-      let zip: String?
+        struct FailedResponse {
+            var inputValid: Bool { get{return fieldValidity.reduce(true){ $0 && $1.1}}}
+
+            let fieldValidity: [(FieldType , Bool)]
+          
+            let serverErrorMessage: String?
+        }
+        
+        
+        case addedCreditCard
+        
+        
+        case failedToAddCard(failedResponse: FailedResponse)
       
-      let numberValid: Bool
-      let dateValid: Bool
-      let cvvValid: Bool
-      let zipValid: Bool
+ 
     }
     
     
     struct ViewModel
     {
-      struct failResponse {
-        var inputValid: Bool { get{return numberValid && dateValid && cvvValid && zipValid}}
-        let numberValid: Bool
-        let dateValid: Bool
-        let cvvValid: Bool
-        let zipValid: Bool
+        struct FieldPresentation{
+            let FieldType: FieldType
+            let textColor: UIColor
+            let underlineColor: UIColor
+        }
+      
+        
+        struct failResponse {
+        let fieldPresentations: [FieldPresentation]
         let errorMessage: String
         
       }
       
-      enum addCreditCardResponse {
+      
+        enum addCreditCardResponse {
         case success
         case fail(failResponse)
       }
       
+        
     }
   }
   
   
   enum TextChanged
   {
-    enum FieldType {
-      case number
-      case date
-      case cvv
-      case zip
-    }
+   
     
     struct Request
     {
       let type: FieldType
       let string: String
     }
+    
+    
     struct Response
     {
       let type: FieldType
@@ -135,19 +162,41 @@ enum AddCreditCard
       let cardType: CreditCardType
     }
     
+    
     struct ViewModel
     {
-      enum cardTypeUpdate {
-        case updateCardTypeImage(String)
-        case noUpdate
+      enum CardTypeUpdate {
+        
+        case updateCardTypeImage(URL)
+       
         case showPlaceholder
+        
+        
+        static public func ==(lhs: CardTypeUpdate, rhs: CardTypeUpdate) -> Bool {
+            switch (lhs, rhs) {
+            case let (.updateCardTypeImage(a),   .updateCardTypeImage(b)):
+                    return a == b
+            case (.showPlaceholder , .showPlaceholder):
+                return true
+            default:
+                return false
+            }
+        }
       }
-      
-      struct textChangedResponse {
+
+        
         let type: FieldType
+        
         let text: String
-        let cardTypeIconUpdate: cardTypeUpdate
-      }
+        
+        let cardTypeIconUpdate: CardTypeUpdate
+        
+        let textColor: UIColor
+        
+        let underlineColor: UIColor
+        
+
+      
     }
     
   }
@@ -155,19 +204,23 @@ enum AddCreditCard
   
   enum StateChange
   {
+    
+    
     struct Response
     {
-      
-      
       let state: State
     }
+    
     
     struct ViewModel
     {
       
+        
       struct stateChangeResponse {
+        
         let showLoadingView: Bool
-      }
+      
+        }
       
     }
     

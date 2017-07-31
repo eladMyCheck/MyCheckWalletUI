@@ -8,8 +8,27 @@
 
 import Foundation
 
+internal protocol KeyValueStorageProtocol{
+    
+    func getString(_ key: String , fallback: String?) -> String
+    
+    func getColor(_ key: String , fallback: UIColor) -> UIColor
+    
+    func getDouble(_ key: String , fallback: Double) -> Double
+    
+    func getArray(_ key: String ) -> Array<String>
+    
+}
 
-internal class LocalData{
+extension KeyValueStorageProtocol{
+    func getString(_ key: String , fallback: String? = nil) -> String{
+        return getString(key, fallback: fallback)
+    }
+    
+  
+
+}
+internal class LocalData : KeyValueStorageProtocol{
 
     static let manager = LocalData()
     

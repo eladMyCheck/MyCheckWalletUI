@@ -128,33 +128,64 @@ internal struct CreditCardValidator {
 
         }
     }
+    
+    var ZIPIsPrefixOfValid : Bool {
+        get{
+            guard let ZIP = ZIP else{
+                return false;
+            }
+           
+            let ZIPNoSpaces = ZIP.replacingOccurrences(of: " ", with: "")
+            if ZIPNoSpaces.characters.count == 0 {
+                return true
+            }
+            let alphaNumeric = ZIPNoSpaces.range(of: "^[a-zA-Z0-9]+$", options: .regularExpression) != nil
+            return 0...8 ~= ZIPNoSpaces.characters.count && alphaNumeric
+            
+        }
+    }
     var DOBIsValid = false
   
   
-  enum dobPrefixValid {
+  internal enum DobPrefixValid {
     case notValid
     case valid(formatted: String)
   }
   
   /// generates the valid string for a given date user input
-  var validStringFromInput: dobPrefixValid{
+    ///
+    /// - Parameter enteredTxt: was text entered (otherwise it was removed)
+    /// - Returns: the valid prefix or .notValid
+    func validDOBStringFromInput(enteredTxt:Bool) -> DobPrefixValid{
     guard var dob = self.DOB  else {
       return .notValid
     }
+        if dob.characters.count > 0 && Int(dob.replacingOccurrences(of: "/", with: "")) == nil{
+            return .notValid
+        }
     switch dob.characters.count {
     case 0:
       return .valid(formatted: dob)
     case 1:
-      if Int(string: dob) == nil{
-      return .notValid
-      }
+     
       if dob != "1" && dob != "2"{//adding a 0 since their is no month begining with 2...9
       dob = "0" + dob + "/"
       }
       return .valid(formatted: dob)
     case 2:
+        if enteredTxt {
+        dob = dob + "/"
+    }
+    return .valid(formatted: dob)
+
+    case 3...7:
+        if !enteredTxt && dob.characters.count == 3 {
+            dob = dob.substring(to: dob.index(dob.endIndex, offsetBy: -2))
+
+        }
+        return .valid(formatted: dob)
     default:
-      <#code#>
+      return .notValid
     }
   
   }
@@ -163,10 +194,23 @@ internal struct CreditCardValidator {
             guard let CVV = CVV else {
                 return false
             }
+            if  Int(CVV) == nil{
+                return false
+            }
             return 3...4 ~= CVV.characters.count
         }
     }
-    
+    var CVVIsPrefixOfValid : Bool {
+        get{
+            guard let CVV = CVV else {
+                return false
+            }
+            if CVV.characters.count > 0 && Int(CVV) == nil{
+                return false
+            }
+            return 0...4 ~= CVV.characters.count
+        }
+    }
     var CreditDetailsValid : Bool {
         get{
         return numberIsCompleteAndValid && DOBIsValid && CVVIsValid && ZIPIsValid

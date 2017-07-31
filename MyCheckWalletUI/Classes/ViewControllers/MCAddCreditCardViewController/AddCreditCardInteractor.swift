@@ -28,40 +28,82 @@ class AddCreditCardInteractor: AddCreditCardBusinessLogic, AddCreditCardDataStor
 {
   var presenter: AddCreditCardPresentationLogic?
   var state = AddCreditCard.State.inputingDetails
-  var model = AddCreditCard.FormData.init(number: "", date: "", cvv: "", zip: "")
+  var model = AddCreditCard.FormData.init(number: "", date: "", cvv: "", zip: "", singleUse: false)
   //var name: String = ""
   
   // MARK: Do something
   
   func changeTextInField(request: AddCreditCard.TextChanged.Request)
   {
-    let updatedForm = model.FormDataWithUpdatedFields(fields: [(request.type , request.string)])
-    let validator = updatedForm.getValidatorForForm()
     
+    
+    var updatedForm = model.FormDataWithUpdatedFields(fields: [(request.type , request.string)])
+    let validator = updatedForm.getValidatorForForm()
+    var updatedTxt = request.string
     var prefixOfValidValue: Bool {
       switch request.type {
       case .number:
         return  !validator.numberIsToLong
       case .date:
-        return validator.DOBIsValid
-      case .cvv:
-        return validator.CVVIsValid
+        let valid =  validator.validDOBStringFromInput(enteredTxt: updatedForm.date.characters.count > model.date.characters.count)
+       
+        switch valid {
+        case .notValid:
+            return false
+        case .valid:
+            return true
+        }
+              case .cvv:
+        return validator.CVVIsPrefixOfValid
       case .zip:
-        return validator.ZIPIsValid
+        return validator.ZIPIsPrefixOfValid
         
       }
     }
     
     if prefixOfValidValue{
-      model = updatedForm
+        if request.type == .date{//may need to update the string with the slash
+            let valid =  validator.validDOBStringFromInput(enteredTxt: updatedForm.date.characters.count > model.date.characters.count)
+            if case let .valid(formatted) = valid {
+            updatedForm = model.FormDataWithUpdatedFields(fields: [(request.type ,formatted)])
+                updatedTxt = formatted
+            }
+        }
     }
+    model = updatedForm
+
     let carType = model.getValidatorForForm().cardType
-    let response = AddCreditCard.TextChanged.Response(type: request.type, text: request.string, prefixOfValidValue: prefixOfValidValue, cardType: carType)
+    let response = AddCreditCard.TextChanged.Response(type: request.type, text: updatedTxt, prefixOfValidValue: prefixOfValidValue, cardType: carType)
     if let presenter = presenter{
       presenter.presentTextChangeResponse(response: response)
     }
   }
-  func submitForm(request: AddCreditCard.SubmitForm.Request){
     
-  }
+    
+  func submitForm(request: AddCreditCard.SubmitForm.Request){
+  self.model =  self.model.FormDataWithUpdatedFields(fields: [
+        (.number, request.number),
+        (.date, request.date),
+        (.cvv, request.cvv),
+        (.zip, request.zip!)
+        ])
+    let validator = self.model.getValidatorForForm()
+    
+    if validator.CreditDetailsValid{
+        //TO-DO valid input
+    }else{//Invalid input
+        
+        let failedStruct = AddCreditCard.SubmitForm.Response.FailedResponse(fieldValidity: [
+            (AddCreditCard.FieldType.number , validator.numberIsCompleteAndValid),
+            (AddCreditCard.FieldType.date , validator.DOBIsValid),
+            (AddCreditCard.FieldType.cvv , validator.CVVIsValid),
+            (AddCreditCard.FieldType.zip , validator.ZIPIsValid)
+            ] , serverErrorMessage: nil)
+    let response = AddCreditCard.SubmitForm.Response.failedToAddCard(failedResponse: failedStruct)
+        
+        presenter?.presentSubmitFormResponse(response: response)
+    }
+
+    
+    }
 }

@@ -14,81 +14,83 @@ import UIKit
 
 protocol AddCreditCardDisplayLogic: class
 {
-  func changeLoadingView(viewModel: AddCreditCard.StateChange.ViewModel)
-  
-  func updateField(viewModel: AddCreditCard.TextChanged.ViewModel)
-  
-  func formSubmitionResponse(viewModel: AddCreditCard.SubmitForm.ViewModel) 
+    
+    func updateField(viewModel: AddCreditCard.TextChanged.ViewModel)
+    
+    func formSubmitionResponse(viewModel: AddCreditCard.SubmitForm.ViewModel)
+    
+    func changeLoadingView(viewModel: AddCreditCard.StateChange.ViewModel)
+    
 }
 
 class AddCreditCardViewController: UIViewController
 {
-  
-  var interactor: AddCreditCardBusinessLogic?
-  var router: (NSObjectProtocol & AddCreditCardRoutingLogic & AddCreditCardDataPassing)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = AddCreditCardInteractor()
-    let presenter = AddCreditCardPresenter()
-    let router = AddCreditCardRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    
+    var interactor: AddCreditCardBusinessLogic?
+    var router: (NSObjectProtocol & AddCreditCardRoutingLogic & AddCreditCardDataPassing)?
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    //setting up the UI
-    underlineForField = [creditCardNumberField : creditCardUnderline , dateField : dateUnderline , cvvField : cvvUnderline , zipField : zipUnderline]
     
-    addNextButtonOnKeyboard(creditCardNumberField, action: #selector(nextPressed(_: )))
-    addNextButtonOnKeyboard(dateField, action: #selector(nextPressed(_: )))
-    addNextButtonOnKeyboard(cvvField, action: #selector(nextPressed(_: )))
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
     
-    //setting up UI and updating it if the user logges in... just incase
-    setupUI()
-    let nc = NotificationCenter.default
-    nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
-
-  }
-  
-  // MARK: Do something
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = AddCreditCardInteractor()
+        let presenter = AddCreditCardPresenter()
+        let router = AddCreditCardRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        //setting up the UI
+        underlineForField = [creditCardNumberField : creditCardUnderline , dateField : dateUnderline , cvvField : cvvUnderline , zipField : zipUnderline]
+        
+        addNextButtonOnKeyboard(creditCardNumberField, action: #selector(nextPressed(_: )))
+        addNextButtonOnKeyboard(dateField, action: #selector(nextPressed(_: )))
+        addNextButtonOnKeyboard(cvvField, action: #selector(nextPressed(_: )))
+        
+        //setting up UI and updating it if the user logges in... just incase
+        setupUI()
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
+        
+    }
+    
+    // MARK: Do something
     @IBOutlet weak var errorHeight: NSLayoutConstraint!
     
     internal weak var containerHeight: NSLayoutConstraint?
@@ -149,54 +151,54 @@ class AddCreditCardViewController: UIViewController
         }
     }
     
-  
-  
+    
+    
 }
 
 extension AddCreditCardViewController: AddCreditCardDisplayLogic{
-  func changeLoadingView(viewModel: AddCreditCard.StateChange.ViewModel) {
+    func changeLoadingView(viewModel: AddCreditCard.StateChange.ViewModel) {
+        
+    }
     
-  }
-  
-  
-  func formSubmitionResponse(viewModel: AddCreditCard.SubmitForm.ViewModel) {
     
-  }
-  func updateField(viewModel: AddCreditCard.TextChanged.ViewModel) {
-    
-  }
+    func formSubmitionResponse(viewModel: AddCreditCard.SubmitForm.ViewModel) {
+        
+    }
+    func updateField(viewModel: AddCreditCard.TextChanged.ViewModel) {
+        
+    }
 }
 
 // MARK - private methods
 extension AddCreditCardViewController{
-  
-  
-  fileprivate func addNextButtonOnKeyboard(_ field: UITextField , action: Selector)
-  {
-    let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
-    doneToolbar.barStyle = UIBarStyle.blackTranslucent
-    
-    let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-    let done: UIBarButtonItem = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.done, target: self, action: action)
-    
-    let items = [flexSpace , done]
     
     
-    doneToolbar.items = items
-    doneToolbar.sizeToFit()
-    
-    field.inputAccessoryView = doneToolbar
-    
-  }
-
- @objc fileprivate func nextPressed(_ sender: UIBarButtonItem){
-    if creditCardNumberField.isFirstResponder{
-      dateField.becomeFirstResponder()
-    } else if dateField.isFirstResponder{
-      cvvField.becomeFirstResponder()
-    } else if cvvField.isFirstResponder{
-      zipField.becomeFirstResponder()
+    fileprivate func addNextButtonOnKeyboard(_ field: UITextField , action: Selector)
+    {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = UIBarStyle.blackTranslucent
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.done, target: self, action: action)
+        
+        let items = [flexSpace , done]
+        
+        
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        field.inputAccessoryView = doneToolbar
+        
     }
-  }
-
+    
+    @objc fileprivate func nextPressed(_ sender: UIBarButtonItem){
+        if creditCardNumberField.isFirstResponder{
+            dateField.becomeFirstResponder()
+        } else if dateField.isFirstResponder{
+            cvvField.becomeFirstResponder()
+        } else if cvvField.isFirstResponder{
+            zipField.becomeFirstResponder()
+        }
+    }
+    
 }

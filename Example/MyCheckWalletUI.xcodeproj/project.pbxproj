@@ -14,6 +14,8 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* PaymentMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* PaymentMethods.swift */; };
 		B21F7C691F27545B00517F10 /* AddCreditCardInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21F7C681F27545B00517F10 /* AddCreditCardInteractorTest.swift */; };
+		B2B82B231F2A12FB00CF6749 /* AddCreditCardPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B82B221F2A12FB00CF6749 /* AddCreditCardPresenterTest.swift */; };
+		B2B82B281F2A365600CF6749 /* KeyValueStorageProtocolMockAndSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B82B271F2A365600CF6749 /* KeyValueStorageProtocolMockAndSpy.swift */; };
 		B2CC35FF1F01423B0018EF17 /* PaymentMethods.json in Resources */ = {isa = PBXBuildFile; fileRef = B2CC35FE1F01423B0018EF17 /* PaymentMethods.json */; };
 		B2E59D431E952CFD00AF4469 /* TestCreditCardValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E59D411E952AEC00AF4469 /* TestCreditCardValidation.swift */; };
 		B8F29D2131854F978E1F6511 /* Pods_MyCheckWalletUI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDFCF0CC69C9D529AFB5925 /* Pods_MyCheckWalletUI_Tests.framework */; };
@@ -48,6 +50,8 @@
 		7CDFCF0CC69C9D529AFB5925 /* Pods_MyCheckWalletUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCheckWalletUI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		816A39C179CD8F100C122930 /* Pods-MyCheckWalletUI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCheckWalletUI_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyCheckWalletUI_Tests/Pods-MyCheckWalletUI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		B21F7C681F27545B00517F10 /* AddCreditCardInteractorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardInteractorTest.swift; sourceTree = "<group>"; };
+		B2B82B221F2A12FB00CF6749 /* AddCreditCardPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCreditCardPresenterTest.swift; sourceTree = "<group>"; };
+		B2B82B271F2A365600CF6749 /* KeyValueStorageProtocolMockAndSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueStorageProtocolMockAndSpy.swift; sourceTree = "<group>"; };
 		B2CC35FE1F01423B0018EF17 /* PaymentMethods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PaymentMethods.json; sourceTree = "<group>"; };
 		B2E59D411E952AEC00AF4469 /* TestCreditCardValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCreditCardValidation.swift; sourceTree = "<group>"; };
 		F173C1816C138039DA8A3A5B /* Pods-MyCheckWalletUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCheckWalletUI_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyCheckWalletUI_Example/Pods-MyCheckWalletUI_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,11 +136,13 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				B2B82B261F2A363800CF6749 /* Shared Mocks and Spys */,
 				B2CC35FD1F0142240018EF17 /* JSONs */,
 				607FACEB1AFB9204008FA782 /* PaymentMethods.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				B2E59D411E952AEC00AF4469 /* TestCreditCardValidation.swift */,
 				B21F7C681F27545B00517F10 /* AddCreditCardInteractorTest.swift */,
+				B2B82B221F2A12FB00CF6749 /* AddCreditCardPresenterTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -166,6 +172,14 @@
 				7CDFCF0CC69C9D529AFB5925 /* Pods_MyCheckWalletUI_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B2B82B261F2A363800CF6749 /* Shared Mocks and Spys */ = {
+			isa = PBXGroup;
+			children = (
+				B2B82B271F2A365600CF6749 /* KeyValueStorageProtocolMockAndSpy.swift */,
+			);
+			path = "Shared Mocks and Spys";
 			sourceTree = "<group>";
 		};
 		B2CC35FD1F0142240018EF17 /* JSONs */ = {
@@ -328,7 +342,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A983232444C293BE29EB8303 /* [CP] Copy Pods Resources */ = {
@@ -373,7 +387,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -394,6 +408,8 @@
 			files = (
 				B21F7C691F27545B00517F10 /* AddCreditCardInteractorTest.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* PaymentMethods.swift in Sources */,
+				B2B82B231F2A12FB00CF6749 /* AddCreditCardPresenterTest.swift in Sources */,
+				B2B82B281F2A365600CF6749 /* KeyValueStorageProtocolMockAndSpy.swift in Sources */,
 				B2E59D431E952CFD00AF4469 /* TestCreditCardValidation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

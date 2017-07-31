@@ -33,7 +33,7 @@
       "name": "Core",
       "source_files": [
         "MyCheckWalletUI/Classes/*",
-        "MyCheckWalletUI/Classes/ViewControllers/*",
+        "MyCheckWalletUI/Classes/ViewControllers/**/*",
         "MyCheckWalletUI/Classes/extensionTools/*",
         "MyCheckWalletUI/Classes/interfaces/*",
         "MyCheckWalletUI/Classes/extensions/*"

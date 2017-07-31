@@ -14,33 +14,83 @@ import UIKit
 
 protocol AddCreditCardPresentationLogic
 {
-  func presentSubmitFormResponse(response: AddCreditCard.SubmitForm.Response)
-  
-  func presentTextChangeResponse(response: AddCreditCard.TextChanged.Response)
-  
-  func stateChanged(response: AddCreditCard.StateChange.Response)
-  
-  
+    func presentSubmitFormResponse(response: AddCreditCard.SubmitForm.Response)
+    
+    func presentTextChangeResponse(response: AddCreditCard.TextChanged.Response)
+    
+    func stateChanged(response: AddCreditCard.StateChange.Response)
+    
+    
 }
 
 class AddCreditCardPresenter: AddCreditCardPresentationLogic
 {
-  weak var viewController: AddCreditCardDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSubmitFormResponse(response: AddCreditCard.SubmitForm.Response)
-  {
-    //    let viewModel = AddCreditCard.Something.ViewModel()
-    //    viewController?.displaySomething(viewModel: viewModel)
-  }
-  
-  func stateChanged(response: AddCreditCard.StateChange.Response){
+    internal var localData: KeyValueStorageProtocol = LocalData.manager
     
-  }
-  
-  func presentTextChangeResponse(response: AddCreditCard.TextChanged.Response){
+    internal let errorColor =  LocalData.manager.getColor("addCreditColorsinputError", fallback: UIColor.fieldUnderlineInvalid())
     
-  }
-  
+    internal let normalColor =  UIColor.fieldUnderline()
+    
+    weak var viewController: AddCreditCardDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentSubmitFormResponse(response: AddCreditCard.SubmitForm.Response)
+    {
+        
+    }
+    
+    func stateChanged(response: AddCreditCard.StateChange.Response){
+        
+    }
+    
+    func presentTextChangeResponse(response: AddCreditCard.TextChanged.Response){
+        guard let controller = self.viewController else{
+            return
+        }
+        
+        //getting image
+        
+        var iconUpdate = AddCreditCard.TextChanged.ViewModel.CardTypeUpdate.showPlaceholder
+        if let  url = response.cardType.smallImageURL(database: localData) {
+            iconUpdate = AddCreditCard.TextChanged.ViewModel.CardTypeUpdate.updateCardTypeImage(url)
+        }
+        
+        let viewModel = AddCreditCard.TextChanged.ViewModel(type: response.type, text: response.text, cardTypeIconUpdate: iconUpdate, textColor: UIColor.fieldTextValid(), underlineColor: UIColor.fieldUnderline())
+        
+        controller.updateField(viewModel: viewModel)
+    }
+    
+}
+
+fileprivate extension CreditCardType{
+    fileprivate func smallImageURL(database: KeyValueStorageProtocol? = nil) -> URL?{
+        
+        var localData: KeyValueStorageProtocol = LocalData.manager
+        if let database = database{
+        localData = database
+        }
+        // let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+        switch self {
+        case .MasterCard:
+            return URL(string:  localData.getString("addCreditImagesmastercard"))!
+        case .Visa:
+            return URL(string: localData.getString("addCreditImagesvisa"))!
+        case .Diners:
+            return URL(string:  localData.getString("addCreditImagesdinersclub"))!
+        case .Discover:
+            return URL(string:  localData.getString("addCreditImagesdiscover"))!
+        case .Amex:
+            return URL(string:  localData.getString("addCreditImagesamex"))!
+        case .JCB:
+            return URL(string:  localData.getString("addCreditImagesJCB"))!
+        case .Maestro:
+            return URL(string:  localData.getString("addCreditImagesmaestro"))!
+            
+        default:
+            
+            return nil
+        }
+    }
+    
 }
