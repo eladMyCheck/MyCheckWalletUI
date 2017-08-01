@@ -245,7 +245,7 @@ open class Wallet{
     internal func addCreditCard(_ rawNumber: String ,
                                 expireMonth: String ,
                                 expireYear: String ,
-                                postalCode: String ,
+                                postalCode: String? ,
                                 cvc: String ,
                                 type: CreditCardType ,
                                 isSingleUse: Bool ,

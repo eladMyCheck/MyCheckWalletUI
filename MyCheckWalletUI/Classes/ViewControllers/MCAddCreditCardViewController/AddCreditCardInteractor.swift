@@ -11,7 +11,7 @@
 //
 
 import UIKit
-
+import MyCheckWalletUI
 protocol AddCreditCardBusinessLogic
 {
   func changeTextInField(request: AddCreditCard.TextChanged.Request)
@@ -90,7 +90,30 @@ class AddCreditCardInteractor: AddCreditCardBusinessLogic, AddCreditCardDataStor
     let validator = self.model.getValidatorForForm()
     
     if validator.CreditDetailsValid{
-        //TO-DO valid input
+        
+        let month =  model.date.substring(to: model.date.index(model.date.startIndex, offsetBy: 2))
+        let year =  model.date.substring(from: model.date.index(model.date.startIndex, offsetBy: 3))
+
+
+        Wallet.shared.addCreditCard(model.number, expireMonth: month, expireYear: year, postalCode: model.zip, cvc: model.zip ?? "", type: validator.cardType, isSingleUse: model.singleUse, success: {
+        method in
+                let response = AddCreditCard.SubmitForm.Response.addedCreditCard
+            self.presenter?.presentSubmitFormResponse(response: response)
+            
+        }, fail: {
+            
+        error in
+            
+            let failedStruct = AddCreditCard.SubmitForm.Response.FailedResponse(fieldValidity: [
+                (AddCreditCard.FieldType.number , validator.numberIsCompleteAndValid),
+                (AddCreditCard.FieldType.date , validator.DOBIsValid),
+                (AddCreditCard.FieldType.cvv , validator.CVVIsValid),
+                (AddCreditCard.FieldType.zip , validator.ZIPIsValid)
+                ] , serverErrorMessage: error.localizedDescription)
+            let response = AddCreditCard.SubmitForm.Response.failedToAddCard(failedResponse: failedStruct)
+        
+            self.presenter?.presentSubmitFormResponse(response: response)
+        })
     }else{//Invalid input
         
         let failedStruct = AddCreditCard.SubmitForm.Response.FailedResponse(fieldValidity: [

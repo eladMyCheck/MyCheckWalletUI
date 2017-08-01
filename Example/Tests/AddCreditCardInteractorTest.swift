@@ -397,40 +397,9 @@ class AddCreditCardInteractorTest: XCTestCase {
     
     //MARK - Submit form tests
     
-    func testSubmitFormWithInValidInput(){
-        let interactor = AddCreditCardInteractor()
-        let spy = AddCreditCardOutputSpy()
-        interactor.presenter = spy
-        //Given
-        interactor.model = AddCreditCard.FormData(number: "", date: "", cvv: "", zip: "", singleUse:false)
-        //When
-        let req = AddCreditCard.SubmitForm.Request(number: "411", date: "12/13", cvv: "1", zip: "a", singleUse: false)
-        interactor.submitForm(request: req)
-        
-        //Then
-        guard let response = spy.submitFormResponse else{
-        XCTFail("no response receieved")
-            return
-        }
-        XCTAssert(spy.stateChanges == []) // invalid input should not change state
-        
-        switch response {
-        case .addedCreditCard:
-            XCTFail("should of failed")
-        case .failedToAddCard(let failedResponse):
-            XCTAssert(failedResponse.inputValid == false , "the input should be invalid")
-            XCTAssert(failedResponse.serverErrorMessage == nil , "no server call")
-            XCTAssert(failedResponse.fieldValidity.count == 4 , "all fields should be sent")
-            XCTAssert(failedResponse.fieldValidity.reduce(false, { $0 || $1.1 }) == false , "all fields should be false")
-
-
-        }
-        
-
-    }
     
     
-    func testSubmitFormWithInValidNumberOnly(){
+    func testSubmitFormWithValidNumberOnly(){
         let interactor = AddCreditCardInteractor()
         let spy = AddCreditCardOutputSpy()
         interactor.presenter = spy
@@ -500,7 +469,7 @@ class AddCreditCardInteractorTest: XCTestCase {
                 case .failedToAddCard(let failedResponse):
                     XCTAssert(failedResponse.inputValid == false , "the input should be invalid")
                     XCTAssert(failedResponse.serverErrorMessage == nil , "no server call")
-                    XCTAssert(failedResponse.fieldValidity.reduce(0, { $0 +  ($1.1 ? 1 : 0) }) == 1  , "amount of valid fields is wrong")
+                    XCTAssert(failedResponse.fieldValidity.reduce(0, { $0 +  ($1.1 ? 1 : 0) }) == validField.reduce(0, { $0 +  ($1 ? 1 : 0) })  , "amount of valid fields is wrong")
                     for  (type , valid) in failedResponse.fieldValidity{
                         switch type {
                         case .number:
@@ -526,6 +495,37 @@ class AddCreditCardInteractorTest: XCTestCase {
         
     }
 
+    func testSubmitFormWithValidInput(){
+        let interactor = AddCreditCardInteractor()
+        let spy = AddCreditCardOutputSpy()
+        interactor.presenter = spy
+        //Given
+        interactor.model = AddCreditCard.FormData(number: "", date: "", cvv: "", zip: "", singleUse:false)
+        //When
+        let req = AddCreditCard.SubmitForm.Request(number: "4111111111111111", date: "12/19", cvv: "123", zip: "12345", singleUse: false)
+        interactor.submitForm(request: req)
+        
+        //Then
+        guard let response = spy.submitFormResponse else{
+            XCTFail("no response receieved")
+            return
+        }
+        XCTAssert(spy.stateChanges == []) // invalid input should not change state
+        
+        switch response {
+        case .addedCreditCard:
+            XCTFail("should of failed")
+        case .failedToAddCard(let failedResponse):
+            XCTAssert(failedResponse.inputValid == true , "the input should be valid")
+            XCTAssert(failedResponse.serverErrorMessage == nil , "no server call")
+            XCTAssert(failedResponse.fieldValidity.count == 4 , "all fields should be sent")
+            XCTAssert(failedResponse.fieldValidity.reduce(true, { $0 && $1.1 }) == true , "all fields should be true")
+            
+            
+        }
+        
+        
+    }
 
 }
 
