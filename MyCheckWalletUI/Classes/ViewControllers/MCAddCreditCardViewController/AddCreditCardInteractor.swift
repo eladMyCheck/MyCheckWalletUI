@@ -94,39 +94,49 @@ class AddCreditCardInteractor: AddCreditCardBusinessLogic, AddCreditCardDataStor
         let month =  model.date.substring(to: model.date.index(model.date.startIndex, offsetBy: 2))
         let year =  model.date.substring(from: model.date.index(model.date.startIndex, offsetBy: 3))
 
-
+presenter?.stateChanged(response: AddCreditCard.StateChange.Response(state: .callingServer))
+        
         Wallet.shared.addCreditCard(model.number, expireMonth: month, expireYear: year, postalCode: model.zip, cvc: model.zip ?? "", type: validator.cardType, isSingleUse: model.singleUse, success: {
         method in
+            
+            self.presenter?.stateChanged(response: AddCreditCard.StateChange.Response(state: .inputingDetails))
+
                 let response = AddCreditCard.SubmitForm.Response.addedCreditCard
             self.presenter?.presentSubmitFormResponse(response: response)
+
+        }, fail: {error in
             
-        }, fail: {
+            self.presenter?.stateChanged(response: AddCreditCard.StateChange.Response(state: .inputingDetails))
+
+            let failedStruct = self.createFailedResponse(validator: validator, message: error.localizedDescription)
             
-        error in
-            
-            let failedStruct = AddCreditCard.SubmitForm.Response.FailedResponse(fieldValidity: [
-                (AddCreditCard.FieldType.number , validator.numberIsCompleteAndValid),
-                (AddCreditCard.FieldType.date , validator.DOBIsValid),
-                (AddCreditCard.FieldType.cvv , validator.CVVIsValid),
-                (AddCreditCard.FieldType.zip , validator.ZIPIsValid)
-                ] , serverErrorMessage: error.localizedDescription)
             let response = AddCreditCard.SubmitForm.Response.failedToAddCard(failedResponse: failedStruct)
         
             self.presenter?.presentSubmitFormResponse(response: response)
         })
     }else{//Invalid input
         
-        let failedStruct = AddCreditCard.SubmitForm.Response.FailedResponse(fieldValidity: [
-            (AddCreditCard.FieldType.number , validator.numberIsCompleteAndValid),
-            (AddCreditCard.FieldType.date , validator.DOBIsValid),
-            (AddCreditCard.FieldType.cvv , validator.CVVIsValid),
-            (AddCreditCard.FieldType.zip , validator.ZIPIsValid)
-            ] , serverErrorMessage: nil)
-    let response = AddCreditCard.SubmitForm.Response.failedToAddCard(failedResponse: failedStruct)
+        let failedStruct = createFailedResponse(validator: validator, message: nil)
+        let response = AddCreditCard.SubmitForm.Response.failedToAddCard(failedResponse: failedStruct)
         
         presenter?.presentSubmitFormResponse(response: response)
     }
 
     
     }
+    private func createFailedResponse(validator: CreditCardValidator , message: String?) ->
+        AddCreditCard.SubmitForm.Response.FailedResponse{
+            
+        let failedStruct = AddCreditCard.SubmitForm.Response.FailedResponse(fieldValidity: [
+            (AddCreditCard.FieldType.number , validator.numberIsCompleteAndValid),
+            (AddCreditCard.FieldType.date , validator.DOBIsValid),
+            (AddCreditCard.FieldType.cvv , validator.CVVIsValid),
+            (AddCreditCard.FieldType.zip , validator.ZIPIsValid)
+            ] , serverErrorMessage: message)
+        
+        return failedStruct
+
+    }
 }
+
+

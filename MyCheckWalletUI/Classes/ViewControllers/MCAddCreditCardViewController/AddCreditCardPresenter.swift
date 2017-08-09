@@ -55,8 +55,16 @@ class AddCreditCardPresenter: AddCreditCardPresentationLogic
         if let  url = response.cardType.smallImageURL(database: localData) {
             iconUpdate = AddCreditCard.TextChanged.ViewModel.CardTypeUpdate.updateCardTypeImage(url)
         }
+        //formatting the text of the number
+        var numberTxt = response.text
+        for i in stride(from: 12 , to: 0, by: -4) {
+            if numberTxt.characters.count <= i{
+                continue
+            }
+            numberTxt.insert(" ", at: numberTxt.index(numberTxt.startIndex , offsetBy: i))
+        }
         
-        let viewModel = AddCreditCard.TextChanged.ViewModel(type: response.type, text: response.text, cardTypeIconUpdate: iconUpdate, textColor: UIColor.fieldTextValid(), underlineColor: UIColor.fieldUnderline())
+        let viewModel = AddCreditCard.TextChanged.ViewModel(type: response.type, text: numberTxt, cardTypeIconUpdate: iconUpdate, textColor: UIColor.fieldTextValid(), underlineColor: UIColor.fieldUnderline())
         
         controller.updateField(viewModel: viewModel)
     }

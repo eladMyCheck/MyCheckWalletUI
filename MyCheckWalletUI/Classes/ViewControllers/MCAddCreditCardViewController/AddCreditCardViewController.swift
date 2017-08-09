@@ -157,7 +157,9 @@ class AddCreditCardViewController: UIViewController
 
 extension AddCreditCardViewController: AddCreditCardDisplayLogic{
     func changeLoadingView(viewModel: AddCreditCard.StateChange.ViewModel) {
-        
+        if viewModel.showLoadingView{
+            
+        }
     }
     
     

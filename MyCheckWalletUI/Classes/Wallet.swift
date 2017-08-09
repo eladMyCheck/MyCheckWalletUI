@@ -56,7 +56,8 @@ open class Wallet{
     ///This property points to the singlton object. It should be used for calling all the functions in the class.
     open static let shared = Wallet()
     
-    
+    //Used for session managment and calling server.
+    internal var network: RequestProtocol = Networking.shared;
     init() {
         self.configureWallet(success: nil, fail: nil)
     }
@@ -137,7 +138,7 @@ open class Wallet{
                 return
             }
             
-            Networking.shared.request(textsURL, method: .get, success: { strings in
+            self.network.request(textsURL, method: .get, parameters: nil, success: { strings in
                 LocalData.manager.addStrings(nil , dictionary: strings as NSDictionary)
                 self.loadedLanguages = true
                 
@@ -381,11 +382,11 @@ extension Wallet {
         if !loadedLanguages{
             Wallet.shared.configureWallet(success: {
                 self.loadedLanguages = true
-                Networking.shared.request(url, method: method, parameters: parameters, encoding: encoding, addedHeaders:addedHeaders, success: success, fail: fail)
+                self.network.request(url, method: method, parameters: parameters, encoding: encoding, addedHeaders:addedHeaders, success: success, fail: fail)
                 
             }, fail: fail)
         }else{
-            Networking.shared.request(url, method: method, parameters: parameters, encoding: encoding, addedHeaders:addedHeaders, success: success, fail: fail)
+            self.network.request(url, method: method, parameters: parameters, encoding: encoding, addedHeaders:addedHeaders, success: success, fail: fail)
         }
         
     }

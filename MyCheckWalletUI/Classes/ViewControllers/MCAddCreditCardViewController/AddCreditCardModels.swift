@@ -214,14 +214,9 @@ enum AddCreditCard
     
     struct ViewModel
     {
-      
-        
-      struct stateChangeResponse {
-        
+ 
         let showLoadingView: Bool
-      
-        }
-      
+  
     }
     
   }
