@@ -12,6 +12,16 @@
 
 import UIKit
 
+internal protocol AddCreditCardViewControllerDelegate : class{
+    
+    func recivedError(_ controller: AddCreditCardViewController , error:NSError)
+    
+    func addedNewPaymentMethod(_ controller: AddCreditCardViewController ,token:String)
+    
+    func canceled()
+}
+
+
 protocol AddCreditCardDisplayLogic: class
 {
     
@@ -113,9 +123,9 @@ class AddCreditCardViewController: UIViewController
     @IBOutlet weak var navBar: UINavigationBar!
     
     internal var underlineForField : [UITextField : UIView]?
-    internal var activityView : UIActivityIndicatorView!
+    internal var activityView : UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
-    weak  var delegate : MCAddCreditCardViewControllerDelegate?
+    weak  var delegate : AddCreditCardViewControllerDelegate?
     
     
     // MARK private methods
@@ -149,23 +159,75 @@ class AddCreditCardViewController: UIViewController
             key.placeholderColor(LocalData.manager.getColor("addCreditColorshintTextColor" , fallback: UIColor.lightGray))
             value.backgroundColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: value.backgroundColor!)
         }
+        self.activityView.center=CGPoint(x: self.view.center.x, y: self.view.center.y + 104)
+        self.activityView.isHidden = true
+        self.activityView.hidesWhenStopped = true
+        self.view.addSubview(activityView)
+        
+    
+
     }
+    
+    
+   
     
     
     
 }
 
 extension AddCreditCardViewController: AddCreditCardDisplayLogic{
+    
     func changeLoadingView(viewModel: AddCreditCard.StateChange.ViewModel) {
+        let UIEnabled = viewModel.showLoadingView
+        
+        applyButton.isEnabled = UIEnabled
+        cancelBut.isEnabled = UIEnabled
+        self.creditCardNumberField.isUserInteractionEnabled = UIEnabled
+        self.dateField.isUserInteractionEnabled = UIEnabled
+        self.cvvField.isUserInteractionEnabled = UIEnabled
+        self.zipField.isUserInteractionEnabled = UIEnabled
+
+        
         if viewModel.showLoadingView{
-            
+            self.activityView.startAnimating()
+        }else{
+        self.activityView.stopAnimating()
         }
     }
     
     
     func formSubmitionResponse(viewModel: AddCreditCard.SubmitForm.ViewModel) {
-        
+        switch viewModel {
+        case .success:
+            if let delegate = self.delegate{
+                delegate.addedNewPaymentMethod(self, token:"")
+
+            }
+        case .fail(let failObJ):
+            self.showError(errorStr: failObJ.errorMessage)
+            for fieldPresentation in failObJ.fieldPresentations{
+            
+                switch fieldPresentation.FieldType {
+                case .number:
+                    creditCardNumberField.textColor = fieldPresentation.textColor
+                    creditCardUnderline.backgroundColor = fieldPresentation.underlineColor
+                case .date:
+                    dateField.textColor = fieldPresentation.textColor
+                    dateField.backgroundColor = fieldPresentation.underlineColor
+                case .cvv:
+                    cvvField.textColor = fieldPresentation.textColor
+                    cvvField.backgroundColor = fieldPresentation.underlineColor
+                case .zip:
+                    zipField.textColor = fieldPresentation.textColor
+                    zipField.backgroundColor = fieldPresentation.underlineColor
+
+                    
+                }}
+
+        }
     }
+    
+    
     func updateField(viewModel: AddCreditCard.TextChanged.ViewModel) {
         
     }
@@ -203,4 +265,54 @@ extension AddCreditCardViewController{
         }
     }
     
+    fileprivate func showError(errorStr: String){
+        self.errorLabel.text = errorStr
+        if errorStr.characters.count == 0 {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.errorHeight.constant = 0
+                self.view.layoutIfNeeded()
+                if let containerHeight =  self.containerHeight{
+                    containerHeight.constant = 250.0
+                }
+                if let parent = self.parent {
+                    parent.view.layoutIfNeeded()
+                }
+                
+            })
+            return;
+        }
+        self.errorLabel.alpha = 0.0
+        //animating the error view in ... showing the error for a few seconds and removing again
+        
+        UIView.animate(withDuration: 0.3, animations:  {
+            self.errorHeight.constant = 25.0
+            if let containerHeight =  self.containerHeight{
+                containerHeight.constant = 275.0
+            }
+            self.errorLabel.alpha = 1.0
+            self.parent?.view.layoutIfNeeded()
+            
+            self.view.layoutIfNeeded()
+            
+            delay(0.3 + LocalData.manager.getDouble("ValueserrorTime", fallback: 7.0)){
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.errorHeight.constant = 0
+                    if let containerHeight =  self.containerHeight{
+                        containerHeight.constant = 250.0
+                    }
+                    self.errorLabel.alpha = 0.0
+                    self.view.layoutIfNeeded()
+                    if let parent = self.parent {
+                        
+                        parent.view.layoutIfNeeded()
+                    }
+                } , completion: { finished in
+                    self.errorLabel.text  = ""
+                    
+                })
+            }
+        }, completion: { finished in
+            
+        })
+    }
 }

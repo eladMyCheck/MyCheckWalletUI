@@ -117,7 +117,7 @@ enum AddCreditCard
     }
     
     
-    struct ViewModel
+    enum ViewModel
     {
         struct FieldPresentation{
             let FieldType: FieldType
@@ -133,10 +133,12 @@ enum AddCreditCard
       }
       
       
-        enum addCreditCardResponse {
+        
         case success
+        
+        
         case fail(failResponse)
-      }
+      
       
         
     }
