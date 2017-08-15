@@ -166,11 +166,11 @@ open class Wallet{
         return handle
     }
     
-    /// Gets a list of all the payment methods the user has saved in the MyCheck server
+    /// Gets a list of all the payment methods the user can use to make payments.
     ///
     ///   - parameter success: A block that is called if the user is logged in succesfully
     ///   - parameter fail: Called when the function fails for any reason
-    internal func getPaymentMethods( success: @escaping (( [PaymentMethodInterface] ) -> Void) , fail: ((NSError) -> Void)? ) {
+    public func getPaymentMethods( success: @escaping (( [PaymentMethodInterface] ) -> Void) , fail: ((NSError) -> Void)? ) {
         self.callPaymentMethods( success: {
             methods in
             var mutableMethods = methods
