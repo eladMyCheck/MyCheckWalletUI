@@ -14,128 +14,128 @@ import UIKit
 import MyCheckWalletUI
 protocol AddCreditCardBusinessLogic
 {
-  func changeTextInField(request: AddCreditCard.TextChanged.Request)
-  func submitForm(request: AddCreditCard.SubmitForm.Request)
-  
+    func changeTextInField(request: AddCreditCard.TextChanged.Request)
+    func submitForm(request: AddCreditCard.SubmitForm.Request)
+    
 }
 
 protocol AddCreditCardDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class AddCreditCardInteractor: AddCreditCardBusinessLogic, AddCreditCardDataStore
 {
-  var presenter: AddCreditCardPresentationLogic?
-  var state = AddCreditCard.State.inputingDetails
-  var model = AddCreditCard.FormData.init(number: "", date: "", cvv: "", zip: "", singleUse: false)
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func changeTextInField(request: AddCreditCard.TextChanged.Request)
-  {
+    var presenter: AddCreditCardPresentationLogic?
+    var state = AddCreditCard.State.inputingDetails
+    var model = AddCreditCard.FormData.init(number: "", date: "", cvv: "", zip: "", singleUse: false)
+    //var name: String = ""
     
+    // MARK: Do something
     
-    var updatedForm = model.FormDataWithUpdatedFields(fields: [(request.type , request.string)])
-    let validator = updatedForm.getValidatorForForm()
-    var updatedTxt = request.string
-    var prefixOfValidValue: Bool {
-      switch request.type {
-      case .number:
-        return  !validator.numberIsToLong
-      case .date:
-        let valid =  validator.validDOBStringFromInput(enteredTxt: updatedForm.date.characters.count > model.date.characters.count)
-       
-        switch valid {
-        case .notValid:
-            return false
-        case .valid:
-            return true
-        }
-              case .cvv:
-        return validator.CVVIsPrefixOfValid
-      case .zip:
-        return validator.ZIPIsPrefixOfValid
+    func changeTextInField(request: AddCreditCard.TextChanged.Request)
+    {
         
-      }
-    }
-    
-    if prefixOfValidValue{
-        if request.type == .date{//may need to update the string with the slash
-            let valid =  validator.validDOBStringFromInput(enteredTxt: updatedForm.date.characters.count > model.date.characters.count)
-            if case let .valid(formatted) = valid {
-            updatedForm = model.FormDataWithUpdatedFields(fields: [(request.type ,formatted)])
-                updatedTxt = formatted
+        
+        var updatedForm = model.FormDataWithUpdatedFields(fields: [(request.type , request.string)])
+        let validator = updatedForm.getValidatorForForm()
+        var updatedTxt = request.string
+        var prefixOfValidValue: Bool {
+            switch request.type {
+            case .number:
+                return  !validator.numberIsToLong
+            case .date:
+                let valid =  validator.validDOBStringFromInput(enteredTxt: updatedForm.date.characters.count > model.date.characters.count)
+                
+                switch valid {
+                case .notValid:
+                    return false
+                case .valid:
+                    return true
+                }
+            case .cvv:
+                return validator.CVVIsPrefixOfValid
+            case .zip:
+                return validator.ZIPIsPrefixOfValid
+                
             }
         }
-    }
-    model = updatedForm
-
-    let carType = model.getValidatorForForm().cardType
-    let response = AddCreditCard.TextChanged.Response(type: request.type, text: updatedTxt, prefixOfValidValue: prefixOfValidValue, cardType: carType)
-    if let presenter = presenter{
-      presenter.presentTextChangeResponse(response: response)
-    }
-  }
-    
-    
-  func submitForm(request: AddCreditCard.SubmitForm.Request){
-  self.model =  self.model.FormDataWithUpdatedFields(fields: [
-        (.number, request.number),
-        (.date, request.date),
-        (.cvv, request.cvv),
-        (.zip, request.zip!)
-        ])
-    let validator = self.model.getValidatorForForm()
-    
-    if validator.CreditDetailsValid{
         
-        let month =  model.date.substring(to: model.date.index(model.date.startIndex, offsetBy: 2))
-        let year =  model.date.substring(from: model.date.index(model.date.startIndex, offsetBy: 3))
-
-presenter?.stateChanged(response: AddCreditCard.StateChange.Response(state: .callingServer))
+        if prefixOfValidValue{
+            if request.type == .date{//may need to update the string with the slash
+                let valid =  validator.validDOBStringFromInput(enteredTxt: updatedForm.date.characters.count > model.date.characters.count)
+                if case let .valid(formatted) = valid {
+                    updatedForm = model.FormDataWithUpdatedFields(fields: [(request.type ,formatted)])
+                    updatedTxt = formatted
+                }
+            }
+        }
+        model = updatedForm
         
-        Wallet.shared.addCreditCard(model.number, expireMonth: month, expireYear: year, postalCode: model.zip, cvc: model.zip ?? "", type: validator.cardType, isSingleUse: model.singleUse, success: {
-        method in
+        let carType = model.getValidatorForForm().cardType
+        let response = AddCreditCard.TextChanged.Response(type: request.type, text: updatedTxt, prefixOfValidValue: prefixOfValidValue, cardType: carType)
+        if let presenter = presenter{
+            presenter.presentTextChangeResponse(response: response)
+        }
+    }
+    
+    
+    func submitForm(request: AddCreditCard.SubmitForm.Request){
+        self.model =  self.model.FormDataWithUpdatedFields(fields: [
+            (.number, request.number),
+            (.date, request.date),
+            (.cvv, request.cvv),
+            (.zip, request.zip!)
+            ])
+        let validator = self.model.getValidatorForForm()
+        
+        if validator.CreditDetailsValid{
             
-            self.presenter?.stateChanged(response: AddCreditCard.StateChange.Response(state: .inputingDetails))
-
+            let month =  model.date.substring(to: model.date.index(model.date.startIndex, offsetBy: 2))
+            let year =  model.date.substring(from: model.date.index(model.date.startIndex, offsetBy: 3))
+            
+            presenter?.stateChanged(response: AddCreditCard.StateChange.Response(state: .callingServer))
+            
+            Wallet.shared.addCreditCard(model.number, expireMonth: month, expireYear: year, postalCode: model.zip, cvc: model.zip ?? "", type: validator.cardType, isSingleUse: model.singleUse, success: {
+                method in
+                
+                self.presenter?.stateChanged(response: AddCreditCard.StateChange.Response(state: .inputingDetails))
+                
                 let response = AddCreditCard.SubmitForm.Response.addedCreditCard
-            self.presenter?.presentSubmitFormResponse(response: response)
-
-        }, fail: {error in
+                self.presenter?.presentSubmitFormResponse(response: response)
+                
+            }, fail: {error in
+                
+                self.presenter?.stateChanged(response: AddCreditCard.StateChange.Response(state: .inputingDetails))
+                
+                let failedStruct = self.createFailedResponse(validator: validator, message: error.localizedDescription)
+                
+                let response = AddCreditCard.SubmitForm.Response.failedToAddCard(failedResponse: failedStruct)
+                
+                self.presenter?.presentSubmitFormResponse(response: response)
+            })
+        }else{//Invalid input
             
-            self.presenter?.stateChanged(response: AddCreditCard.StateChange.Response(state: .inputingDetails))
-
-            let failedStruct = self.createFailedResponse(validator: validator, message: error.localizedDescription)
-            
+            let failedStruct = createFailedResponse(validator: validator, message: nil)
             let response = AddCreditCard.SubmitForm.Response.failedToAddCard(failedResponse: failedStruct)
+            
+            presenter?.presentSubmitFormResponse(response: response)
+        }
         
-            self.presenter?.presentSubmitFormResponse(response: response)
-        })
-    }else{//Invalid input
         
-        let failedStruct = createFailedResponse(validator: validator, message: nil)
-        let response = AddCreditCard.SubmitForm.Response.failedToAddCard(failedResponse: failedStruct)
-        
-        presenter?.presentSubmitFormResponse(response: response)
-    }
-
-    
     }
     private func createFailedResponse(validator: CreditCardValidator , message: String?) ->
         AddCreditCard.SubmitForm.Response.FailedResponse{
             
-        let failedStruct = AddCreditCard.SubmitForm.Response.FailedResponse(fieldValidity: [
-            (AddCreditCard.FieldType.number , validator.numberIsCompleteAndValid),
-            (AddCreditCard.FieldType.date , validator.DOBIsValid),
-            (AddCreditCard.FieldType.cvv , validator.CVVIsValid),
-            (AddCreditCard.FieldType.zip , validator.ZIPIsValid)
-            ] , serverErrorMessage: message)
-        
-        return failedStruct
-
+            let failedStruct = AddCreditCard.SubmitForm.Response.FailedResponse(fieldValidity: [
+                (AddCreditCard.FieldType.number , validator.numberIsCompleteAndValid),
+                (AddCreditCard.FieldType.date , validator.DOBIsValid),
+                (AddCreditCard.FieldType.cvv , validator.CVVIsValid),
+                (AddCreditCard.FieldType.zip , validator.ZIPIsValid)
+                ] , serverErrorMessage: message)
+            
+            return failedStruct
+            
     }
 }
 
