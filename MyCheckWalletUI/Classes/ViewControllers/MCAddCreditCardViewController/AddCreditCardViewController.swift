@@ -33,74 +33,10 @@ protocol AddCreditCardDisplayLogic: class
     
 }
 
-class AddCreditCardViewController: UIViewController
+open class AddCreditCardViewController: UIViewController
 {
     
-    var interactor: AddCreditCardBusinessLogic?
-    var router: (NSObjectProtocol & AddCreditCardRoutingLogic & AddCreditCardDataPassing)?
     
-    // MARK: Object lifecycle
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder)
-    {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    // MARK: Setup
-    
-    private func setup()
-    {
-        let viewController = self
-        let interactor = AddCreditCardInteractor()
-        let presenter = AddCreditCardPresenter()
-        let router = AddCreditCardRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
-    }
-    
-    // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
-    // MARK: View lifecycle
-    
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-        //setting up the UI
-        underlineForField = [creditCardNumberField : creditCardUnderline , dateField : dateUnderline , cvvField : cvvUnderline , zipField : zipUnderline]
-        
-        addNextButtonOnKeyboard(creditCardNumberField, action: #selector(nextPressed(_: )))
-        addNextButtonOnKeyboard(dateField, action: #selector(nextPressed(_: )))
-        addNextButtonOnKeyboard(cvvField, action: #selector(nextPressed(_: )))
-        
-        //setting up UI and updating it if the user logges in... just incase
-        setupUI()
-        let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
-        
-    }
-    
-    // MARK: Do something
     @IBOutlet weak var errorHeight: NSLayoutConstraint!
     
     internal weak var containerHeight: NSLayoutConstraint?
@@ -126,6 +62,72 @@ class AddCreditCardViewController: UIViewController
     internal var activityView : UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     weak  var delegate : AddCreditCardViewControllerDelegate?
+    
+    var interactor: AddCreditCardBusinessLogic?
+    var router: (NSObjectProtocol & AddCreditCardRoutingLogic & AddCreditCardDataPassing)?
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
+    
+    required public init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = AddCreditCardInteractor()
+        let presenter = AddCreditCardPresenter()
+        let router = AddCreditCardRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    // MARK: View lifecycle
+    
+    override open func viewDidLoad()
+    {
+        super.viewDidLoad()
+        //setting up the UI
+        underlineForField = [creditCardNumberField : creditCardUnderline , dateField : dateUnderline , cvvField : cvvUnderline , zipField : zipUnderline]
+        
+        addNextButtonOnKeyboard(creditCardNumberField, action: #selector(nextPressed(_: )))
+        addNextButtonOnKeyboard(dateField, action: #selector(nextPressed(_: )))
+        addNextButtonOnKeyboard(cvvField, action: #selector(nextPressed(_: )))
+        
+        //setting up UI and updating it if the user logges in... just incase
+        setupUI()
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(AddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
+        
+    }
+    
+   
     
     
     // MARK private methods
@@ -229,6 +231,36 @@ extension AddCreditCardViewController: AddCreditCardDisplayLogic{
     
     
     func updateField(viewModel: AddCreditCard.TextChanged.ViewModel) {
+        var field: UITextField? = nil
+        switch viewModel.type{
+        case .number:
+            field = self.creditCardNumberField
+        case .date:
+             field = self.dateField
+        case .cvv:
+             field = self.cvvField
+        case.zip:
+             field = self.zipField
+        }
+        let underline = underlineForField?[field!]
+
+        underline?.backgroundColor = viewModel.underlineColor
+        field?.textColor = viewModel.textColor
+        field?.text = viewModel.text
+        
+        
+        //setting image
+        let bundle =  MCViewController.getBundle( Bundle(for: AddCreditCardViewController.classForCoder()))
+        switch viewModel.cardTypeIconUpdate{
+        case .showPlaceholder:
+            if self.isMember(of: AddCreditCardViewController.self) {
+                typeImage.image = UIImage(named: "no_type_card_1" , in: bundle, compatibleWith: nil)
+            }else{
+                typeImage.image = UIImage(named: "no_type_card" , in: bundle, compatibleWith: nil)
+            }
+        case.updateCardTypeImage(let url):
+            typeImage.kf.setImage(with: url)
+        }
         
     }
 }

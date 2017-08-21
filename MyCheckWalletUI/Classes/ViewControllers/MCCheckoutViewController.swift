@@ -316,108 +316,108 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
   }
   
-  override internal func setFieldInvalid(_ field: UITextField , invalid: Bool){
-    let badColor = LocalData.manager.getColor("checkoutPageColorserrorInput", fallback: UIColor.red)
-    let goodColor = LocalData.manager.getColor("checkoutPageColorsfieldBorder", fallback: creditCardNumberField.textColor!)
-    
-    let border = borderForField[field]
-    border?.layer.borderColor = invalid ? badColor.cgColor :goodColor.cgColor
-    field.textColor = invalid ? badColor : UIColor(r: 255, g: 255, b: 255, a: 1)
-  }
-  
-  internal func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-    switch textField {
-    case creditCardNumberField:
-      UIView.animate(withDuration: 0.4, animations: {
-        self.moveAcceptedCreditCardsViewToCreditCardField(false, animated: true)
-      })
-      break
-    case paymentMethodSelectorTextField:
-      break
-    default:
-      return true
-    }
-    
-    return true
-  }
-  
-  @IBAction override func checkboxPressed(_ sender: UIButton) {
-    self.checkbox.isSelected = !self.checkbox.isSelected
-  }
-  
-  @IBAction func cancelButPressed(_ sender: AnyObject) {
-    super.cancelPressed(sender)
-    self.resetFields()
-    self.view.endEditing(true)
-    UIView.animate(withDuration: 0.4, animations: {
-      self.moveAcceptedCreditCardsViewToCreditCardField(true , animated: true)
-    })
-  }
-  @IBAction func applyButPressed(_ sender: AnyObject) {
-    let validator = updateAndCheckValid()
-    if validator.numberIsCompleteAndValid{
-      self.view.endEditing(true)
-      
-      
-      
-      let dateStr = formatedString(dateField)
-      let split = dateStr.characters.split(separator: "/").map(String.init)
-      self.showActivityIndicator( true)
-      self.applyButton.isEnabled = false
-      self.cancelButton.isEnabled = false
-      
-      self.creditCardNumberField.isUserInteractionEnabled = false
-      self.dateField.isUserInteractionEnabled = false
-      self.cvvField.isUserInteractionEnabled = false
-      self.zipField.isUserInteractionEnabled = false
-      Wallet.shared.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: validator.cardType, isSingleUse: self.checkbox.isSelected, success: {  method in
-        self.resetFields()
-        // self.selectedMethod = method
-        
-        if method.isSingleUse == true{
-          
-          
-          self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
-          
-        }
-        self.newPaymenteMethodAdded()
-        
-        self.creditCardNumberField.isUserInteractionEnabled = true
-        self.dateField.isUserInteractionEnabled = true
-        self.cvvField.isUserInteractionEnabled = true
-        self.zipField.isUserInteractionEnabled = true
-        self.applyButton.isEnabled = true
-        self.cancelButton.isEnabled = true
-        self.showActivityIndicator(false)
-      }, fail: { error in
-        self.applyButton.isEnabled = true
-        self.cancelButton.isEnabled = true
-        self.creditCardNumberField.isUserInteractionEnabled = true
-        self.dateField.isUserInteractionEnabled = true
-        self.cvvField.isUserInteractionEnabled = true
-        self.zipField.isUserInteractionEnabled = true
-        self.showActivityIndicator(false)
-        //   self.errorLabel.text = error.localizedDescription
-        self.showError(errorStr: error.localizedDescription)
-        if let delegate = self.delegate{
-          delegate.recivedError(self, error:error)
-        }
-      })
-    }
-    
-  }
-  
-  override func showActivityIndicator(_ show: Bool) {
-    if activityView == nil{
-      activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
-      
-      activityView.center=CGPoint(x: self.view.center.x, y: self.view.center.y)
-      activityView.startAnimating()
-      activityView.hidesWhenStopped = true
-      self.view.addSubview(activityView)
-    }
-    show ? activityView.startAnimating() : activityView.stopAnimating()
-  }
+//  override internal func setFieldInvalid(_ field: UITextField , invalid: Bool){
+//    let badColor = LocalData.manager.getColor("checkoutPageColorserrorInput", fallback: UIColor.red)
+//    let goodColor = LocalData.manager.getColor("checkoutPageColorsfieldBorder", fallback: creditCardNumberField.textColor!)
+//    
+//    let border = borderForField[field]
+//    border?.layer.borderColor = invalid ? badColor.cgColor :goodColor.cgColor
+//    field.textColor = invalid ? badColor : UIColor(r: 255, g: 255, b: 255, a: 1)
+//  }
+//  
+//  internal func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//    switch textField {
+//    case creditCardNumberField:
+//      UIView.animate(withDuration: 0.4, animations: {
+//        self.moveAcceptedCreditCardsViewToCreditCardField(false, animated: true)
+//      })
+//      break
+//    case paymentMethodSelectorTextField:
+//      break
+//    default:
+//      return true
+//    }
+//    
+//    return true
+//  }
+//  
+//  @IBAction override func checkboxPressed(_ sender: UIButton) {
+//    self.checkbox.isSelected = !self.checkbox.isSelected
+//  }
+//  
+//  @IBAction func cancelButPressed(_ sender: AnyObject) {
+//    super.cancelPressed(sender)
+//    self.resetFields()
+//    self.view.endEditing(true)
+//    UIView.animate(withDuration: 0.4, animations: {
+//      self.moveAcceptedCreditCardsViewToCreditCardField(true , animated: true)
+//    })
+//  }
+//  @IBAction func applyButPressed(_ sender: AnyObject) {
+//    let validator = updateAndCheckValid()
+//    if validator.numberIsCompleteAndValid{
+//      self.view.endEditing(true)
+//      
+//      
+//      
+//      let dateStr = formatedString(dateField)
+//      let split = dateStr.characters.split(separator: "/").map(String.init)
+//      self.showActivityIndicator( true)
+//      self.applyButton.isEnabled = false
+//      self.cancelButton.isEnabled = false
+//      
+//      self.creditCardNumberField.isUserInteractionEnabled = false
+//      self.dateField.isUserInteractionEnabled = false
+//      self.cvvField.isUserInteractionEnabled = false
+//      self.zipField.isUserInteractionEnabled = false
+//      Wallet.shared.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: validator.cardType, isSingleUse: self.checkbox.isSelected, success: {  method in
+//        self.resetFields()
+//        // self.selectedMethod = method
+//        
+//        if method.isSingleUse == true{
+//          
+//          
+//          self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
+//          
+//        }
+//        self.newPaymenteMethodAdded()
+//        
+//        self.creditCardNumberField.isUserInteractionEnabled = true
+//        self.dateField.isUserInteractionEnabled = true
+//        self.cvvField.isUserInteractionEnabled = true
+//        self.zipField.isUserInteractionEnabled = true
+//        self.applyButton.isEnabled = true
+//        self.cancelButton.isEnabled = true
+//        self.showActivityIndicator(false)
+//      }, fail: { error in
+//        self.applyButton.isEnabled = true
+//        self.cancelButton.isEnabled = true
+//        self.creditCardNumberField.isUserInteractionEnabled = true
+//        self.dateField.isUserInteractionEnabled = true
+//        self.cvvField.isUserInteractionEnabled = true
+//        self.zipField.isUserInteractionEnabled = true
+//        self.showActivityIndicator(false)
+//        //   self.errorLabel.text = error.localizedDescription
+//        self.showError(errorStr: error.localizedDescription)
+//        if let delegate = self.delegate{
+//          delegate.recivedError(self, error:error)
+//        }
+//      })
+//    }
+//    
+//  }
+//  
+//  override func showActivityIndicator(_ show: Bool) {
+//    if activityView == nil{
+//      activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+//      
+//      activityView.center=CGPoint(x: self.view.center.x, y: self.view.center.y)
+//      activityView.startAnimating()
+//      activityView.hidesWhenStopped = true
+//      self.view.addSubview(activityView)
+//    }
+//    show ? activityView.startAnimating() : activityView.stopAnimating()
+//  }
   
   func newPaymenteMethodAdded(){
     Wallet.shared.getPaymentMethods(success: { (methods) in
@@ -452,10 +452,10 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     self.dateField.text = ""
     self.cvvField.text = ""
     self.zipField.text = ""
-    self.setFieldInvalid(self.creditCardNumberField, invalid: false)
-    self.setFieldInvalid(self.dateField, invalid: false)
-    self.setFieldInvalid(self.cvvField, invalid: false)
-    self.setFieldInvalid(self.zipField, invalid: false)
+//    self.setFieldInvalid(self.creditCardNumberField, invalid: false)
+//    self.setFieldInvalid(self.dateField, invalid: false)
+//    self.setFieldInvalid(self.cvvField, invalid: false)
+//    self.setFieldInvalid(self.zipField, invalid: false)
   }
   fileprivate func showDeleteBut(show: Bool){
     deleteBut.isHidden = !show // button should be displayed only for single use methods
@@ -634,7 +634,7 @@ extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
     controller.dismiss(animated: true, completion: nil)
   }
   func showLoadingIndicator(_ controller: PaymentMethodFactory, show: Bool) {
-    self.showActivityIndicator( show)
+    //self.showActivityIndicator( show)
     self.view.isUserInteractionEnabled = !show
     
   }

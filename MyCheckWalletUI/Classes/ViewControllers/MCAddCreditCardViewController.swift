@@ -198,7 +198,7 @@ open class MCAddCreditCardViewController: MCViewController {
         for (key , value) in underlineForField!{
             key.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: key.textColor!)
             key.placeholderColor(LocalData.manager.getColor("addCreditColorshintTextColor" , fallback: UIColor.lightGray))
-            value.backgroundColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: value.backgroundColor!)
+            //value.backgroundColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: value.backgroundColor!)
         }
     }
    

@@ -88,6 +88,26 @@ class AddCreditCardPresenterTest: XCTestCase {
         XCTAssert(viewModel.cardTypeIconUpdate == AddCreditCard.TextChanged.ViewModel.CardTypeUpdate.updateCardTypeImage(URL(string: imgURLStr)!), "should be valid color")
 
     }
+    
+    func testSubmitFormSuccess(){
+        //Arrange
+        let presenter = AddCreditCardPresenter()
+        let spy = AddCreditCardDisplayLogicSpy()
+        presenter.viewController = spy
+        
+        let response = AddCreditCard.SubmitForm.Response.addedCreditCard
+        //Act
+        presenter.presentSubmitFormResponse(response: response)
+
+        //Assert
+        switch spy.submitVM! {
+        case .success:
+        break //this should happen
+        default:
+            XCTFail("should of succeedded")
+        }
+        
+    }
 
 
     

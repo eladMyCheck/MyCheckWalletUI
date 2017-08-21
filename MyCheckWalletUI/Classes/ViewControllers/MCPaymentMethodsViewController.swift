@@ -135,7 +135,7 @@ doNotStoreCheckbox.isSelected = false
     //MARK: - private functions
     
     func showEnterCreditCard(_ show: Bool , animated: Bool){
-        creditCardVC!.resetView()
+        // creditCardVC!.resetView()
         if show{
           _ = creditCardVC!.becomeFirstResponder()
         }else{

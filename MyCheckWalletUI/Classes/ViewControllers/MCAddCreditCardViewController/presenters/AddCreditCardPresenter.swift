@@ -37,7 +37,18 @@ class AddCreditCardPresenter: AddCreditCardPresentationLogic
     
     func presentSubmitFormResponse(response: AddCreditCard.SubmitForm.Response)
     {
-        
+        switch response{
+        case .addedCreditCard:
+            viewController?.formSubmitionResponse(viewModel: AddCreditCard.SubmitForm.ViewModel.success)
+        case .failedToAddCard(let failedData):
+            
+            let fieldPresentations: [AddCreditCard.SubmitForm.ViewModel.FieldPresentation] =
+                failedData.fieldValidity.map {type , valid in
+            return  AddCreditCard.SubmitForm.ViewModel.FieldPresentation(FieldType: type,
+                                                                         textColor: valid ? UIColor.fieldTextValid() : UIColor.fieldTextInvalid(), underlineColor: valid ? UIColor.fieldUnderline() : UIColor.fieldUnderlineInvalid())
+            }
+//            AddCreditCard.SubmitForm.ViewModel.failResponse(fieldPresentations: fieldPresentations, errorMessage: failedData.serverErrorMessage)
+        }
     }
     
     func stateChanged(response: AddCreditCard.StateChange.Response){
@@ -78,7 +89,6 @@ fileprivate extension CreditCardType{
         if let database = database{
         localData = database
         }
-        // let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
         switch self {
         case .MasterCard:
             return URL(string:  localData.getString("addCreditImagesmastercard"))!
