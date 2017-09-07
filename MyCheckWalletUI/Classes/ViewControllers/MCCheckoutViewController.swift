@@ -304,17 +304,16 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     }
   }
   @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
-//    
-//    guard let controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self) else{
-//      printIfDebug("cannot display VC since user is not logged in")
-//      
-//      return
-//    }
-//    
-//    self.present(controller, animated: true, completion: nil)
-//    controller.delegate = self
-    self.showToast(message: LocalData.manager.getString("thirdPartyPaymentMethodsmasterpassaddPaymentMethodSuccess"))
-
+    
+    guard let controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self) else{
+      printIfDebug("cannot display VC since user is not logged in")
+      
+      return
+    }
+    
+    self.present(controller, animated: true, completion: nil)
+    controller.delegate = self
+    
   }
   
 //  override internal func setFieldInvalid(_ field: UITextField , invalid: Bool){

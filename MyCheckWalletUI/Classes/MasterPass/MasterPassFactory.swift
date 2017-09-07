@@ -150,6 +150,8 @@ extension MasterPassFactory : AddMasterPassViewControllerDelegate{
         
         switch reason {
         case .cancelled:
+            controller.dismiss(animated: true, completion: nil)
+
             break;
         case .failed(let error):
             masterPassFailed(controller: controller, error: error)
