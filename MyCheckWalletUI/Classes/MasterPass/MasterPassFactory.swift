@@ -7,117 +7,191 @@
 //
 
 import UIKit
+import MyCheckCore
+
+
 
 open class MasterPassFactory : PaymentMethodFactory{
     
     //was the factory ever initiated.
     static var initiated = false
-
-  override var type :PaymentMethodType { get { return PaymentMethodType.masterPass }}
-  
-  open static func initiate(){
-    if !initiated {
-      let factory = MasterPassFactory()
-      Wallet.shared.factories.append(factory)
-      initiated = true
-      
-      
-    }
-  }
-
-  override func getAddMethodViewControllere(  ){
-   
-    if let delegate = self.delegate{
-      delegate.showLoadingIndicator(self, show: true)
-
+    static var masterPassURL: String?
+    override var type : PaymentMethodType { get { return PaymentMethodType.masterPass }}
     
-        Wallet.shared.getMasterPassCredentials(masterPassURL: "TO-DO", success: {token , merchant in
-        
-            delegate.showLoadingIndicator(self, show: false)
-            let controller = AddMasterPassViewController(delegate: self)
-            delegate.displayViewController(controller)
-        }, fail: {error in
-            if let delegate = self.delegate{
-            delegate.error(self, error: error)
-            delegate.showLoadingIndicator(self, show: false)
+    open static func initiate(){
+        if !initiated {
+            let factory = MasterPassFactory()
+            Wallet.shared.factories.append(factory)
+            Networking.shared.configure(success: {JSON in
+                guard let walletJSON = JSON["wallet"] as? [String: Any],
+                    let walletUIJSON = walletJSON["walletUI"] as? [String: Any],
+                    let masterpassJSON = walletUIJSON["masterpass"] as? [String: Any],
+                    let urlStr = masterpassJSON["url"] as? String else{
+                        return
+                }
+                masterPassURL = urlStr
+                initiated = true
+                
+                
+            }, fail: nil)
             
+        }
+    }
+    
+    override func getAddMethodViewControllere(  ){
+        
+        guard let delegate = self.delegate ,
+            let url = MasterPassFactory.masterPassURL else{
+                return
+        }
+        
+        showUserConsentMessage { allow in 
+           
+            if !allow{
+                return
             }
             
+            delegate.showLoadingIndicator(self, show: true)
+            
+            Wallet.shared.getMasterPassCredentials(masterPassURL: url, success: {payload in
+                
+                delegate.showLoadingIndicator(self, show: false)
+                let controller = AddMasterPassViewController(url: MasterPassFactory.masterPassURL!, payload: payload, delegate: self)
+                delegate.displayViewController(controller)
+           
+            
+            }, fail: {error in
+                if let delegate = self.delegate{
+                    delegate.error(self, error: error)
+                    delegate.showLoadingIndicator(self, show: false)
+                    
+                }
+                
             })
-      
-      }
-    }
-  
-  override func getAddMethodButton() -> PaymentMethodButtonRapper{
-    let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-    
-    let butRap = PaymentMethodButtonRapper(forType: .masterPass)
-    butRap.button.setBackgroundImage(UIImage(named: "masterpass_paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
-    butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpass")), for: .normal , options: [.scaleFactor(2.0)])
 
-    //but.setImage(UIImage(named: "paypal_but", in: bundle, compatibleWith: nil), for: UIControlState())
-    butRap.button.addTarget(self, action: #selector(MasterPassFactory.addMethodButPressed(_:)), for: .touchUpInside)
-    //    but.setBackgroundImage(UIImage(named: "amex_small" , inBundle: bundle, compatibleWithTraitCollection: nil), forState: .Highlighted)
-    return butRap
-  }
-    
-    
-
-  @objc fileprivate func addMethodButPressed(_ sender: UIButton){
-    if Wallet.shared.hasPaymentMethodOfType(.masterPass){
-      
-      
-      if let delegate = self.delegate{
-        let errorWithMessage = NSError(domain: "error", code: 3 , userInfo: [NSLocalizedDescriptionKey :LocalData.manager.getString("managePaymentMethodspaypalErrorMessage", fallback:  "Only 1 PayPal account can be added to the wallet.")])
-        delegate.error(self, error: errorWithMessage)
-      }
-      return
+        }
+        
+        
+        
     }
     
-    getAddMethodViewControllere()
-  }
-  
-  
-  override func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
-    var butRap = super.getSmallAddMethodButton()
+    override func getAddMethodButton() -> PaymentMethodButtonRapper{
+        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+        
+        let butRap = PaymentMethodButtonRapper(forType: .masterPass)
+        butRap.button.setBackgroundImage(UIImage(named: "masterpass_paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
+        butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpass")), for: .normal , options: [.scaleFactor(2.0)])
+        
+        //but.setImage(UIImage(named: "paypal_but", in: bundle, compatibleWith: nil), for: UIControlState())
+        butRap.button.addTarget(self, action: #selector(MasterPassFactory.addMethodButPressed(_:)), for: .touchUpInside)
+        //    but.setBackgroundImage(UIImage(named: "amex_small" , inBundle: bundle, compatibleWithTraitCollection: nil), forState: .Highlighted)
+        return butRap
+    }
     
-    butRap.type = .masterPass
-    
-    //  let i = LocalData.manager.getString("walletImgMasterpassCheckout")
-    
-    //  let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-    butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpassCheckout") ), for: .normal , options: [.scaleFactor(3.0)])
     
     
-    butRap.button.addTarget(self, action: #selector(MasterPassFactory.addMethodButPressed(_:)), for: .touchUpInside)
+    @objc fileprivate func addMethodButPressed(_ sender: UIButton){
+       
+        
+        getAddMethodViewControllere()
+    }
     
-    return butRap
-  }
+    
+    override func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
+        var butRap = super.getSmallAddMethodButton()
+        
+        butRap.type = .masterPass
+        
+        //  let i = LocalData.manager.getString("walletImgMasterpassCheckout")
+        
+        //  let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+        butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpassCheckout") ), for: .normal , options: [.scaleFactor(3.0)])
+        
+        
+        butRap.button.addTarget(self, action: #selector(MasterPassFactory.addMethodButPressed(_:)), for: .touchUpInside)
+        
+        return butRap
+    }
 }
 
+
+fileprivate extension MasterPassFactory{
+     func showUserConsentMessage(complition: @escaping (Bool)-> Void){
+        
+        let texts = LocalData.manager.getConsentAlertTexts()
+        let alert = UIAlertController(title: nil, message: texts.message, preferredStyle: .alert);
+        
+        let yesBut = UIAlertAction(title: texts.positiveBut, style: .default, handler:
+        {(alert: UIAlertAction!) in
+            complition(true)
+            
+        })
+        
+        let noBut = UIAlertAction(title: texts.negativeBut, style: .destructive, handler:
+        {(alert: UIAlertAction!) in
+            complition(false)
+            
+        })
+        alert.addAction(noBut)
+        
+        alert.addAction(yesBut)
+        self.delegate?.displayViewController(alert)
+    }
+
+
+}
 
 extension MasterPassFactory : AddMasterPassViewControllerDelegate{
-
-    func addMasterPassReturned(payload: String){
+    
+    
+    
+    internal func addMasterPassViewControllerComplete(controller: UIViewController , reason:AddMasterPassViewControllerCompletitionReason){
+        
+        
+        switch reason {
+        case .cancelled:
+            break;
+        case .failed(let error):
+            masterPassFailed(controller: controller, error: error)
+            
+        case .success(let payload):
+            masterpassSuccess(controller: controller  , payload: payload)
+        }
+        
+    }
+    
+    
+    private func masterpassSuccess(controller: UIViewController  ,payload: String){
         if let delegate = self.delegate{
+            delegate.dismissViewController(controller)
+            delegate.showLoadingIndicator(self, show: true)
             let singleUse = delegate.shouldBeSingleUse(self)
-        Wallet.shared.addMasterPass(payload: payload, singleUse: singleUse, success: {method in
-            if let delegate = self.delegate ,  let method = method{
-                Wallet.shared.addedAPaymentMethod()
-                delegate.addedPaymentMethod(self, method: method)
-            }
-        }, fail: {error in
-            if let delegate = self.delegate{
-                delegate.error(self, error: error)
-            }
-        })
+            Wallet.shared.addMasterPass(payload: payload, singleUse: singleUse, success: {method in
+                if let delegate = self.delegate ,  let method = method{
+                    Wallet.shared.addedAPaymentMethod()
+                    delegate.addedPaymentMethod(self, method: method , message: LocalData.manager.getAddedMasterPassMessage())
+                    delegate.showLoadingIndicator(self, show: false)
+
+                }
+            }, fail: {error in
+                if let delegate = self.delegate{
+                    delegate.error(self, error: error)
+                }
+            })
         }
     }
-    func masterPassFailed(error: NSError){
+    
+    
+    private func masterPassFailed(controller: UIViewController, error: NSError){
         if let delegate = self.delegate{
             delegate.error(self, error: error)
         }
+        controller.dismiss(animated: true, completion: nil)
     }
-}
+    
+   }
 
-  
+
+
+
+

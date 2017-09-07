@@ -5,7 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'MyCheckWalletUI_Example' do
     pod 'MyCheckWalletUI/Core', :path => '../'
 #   pod 'MyCheckWalletUI/PayPal', :path => '../'
-#   pod 'MyCheckWalletUI/MasterPass', :path => '../'
+   pod 'MyCheckWalletUI/MasterPass', :path => '../'
    pod 'MyCheckWalletUI/ApplePay', :path => '../'
 
    pod 'MyCheckWalletUI/VisaCheckout', :path => '../'
@@ -17,7 +17,7 @@ pod 'MyCheckCore', :path => '../../MyCheck-Core'
 
     pod 'MyCheckWalletUI/Core', :path => '../'
 #    pod 'MyCheckWalletUI/PayPal', :path => '../'
-#    pod 'MyCheckWalletUI/MasterPass', :path => '../'
+    pod 'MyCheckWalletUI/MasterPass', :path => '../'
     pod 'MyCheckWalletUI/ApplePay', :path => '../'
     pod 'MyCheckWalletUI/VisaCheckout', :path => '../'
 

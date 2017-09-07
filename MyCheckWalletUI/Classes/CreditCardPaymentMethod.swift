@@ -98,6 +98,28 @@ public struct CreditCardPaymentMethod{
   }
 
 extension CreditCardPaymentMethod: PaymentMethodInterface{
+    public func generateJSON() -> [String : Any] {
+       
+        
+        guard let JSON = self.JSON else{
+       
+            let JSON: [String: Any] = ["id": ID,
+                                   "token": token,
+                                   "is_default":_isDefault,
+                                   "is_capped": 0,
+                                   "is_single_use":_isSingleUse,
+                                   "issuerShort": issuerShort,
+                                   "issuer_full":issuerFull,
+                                   "source": _type.getSource()
+                                   ]
+        
+        return JSON
+        }
+        
+        return JSON as! [String : Any]
+        
+    }
+
  
 
  
@@ -158,7 +180,7 @@ extension CreditCardPaymentMethod: PaymentMethodInterface{
     
     _type = PaymentMethodType.init(source: source)
     
-    if _type != .creditCard{
+    if _type != .creditCard && _type != .masterPass{
       return nil
     }
     

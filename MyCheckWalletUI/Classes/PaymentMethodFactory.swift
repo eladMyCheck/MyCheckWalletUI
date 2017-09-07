@@ -11,13 +11,19 @@ import MyCheckCore
 
 internal protocol PaymentMethodFactoryDelegate{
     func error(_ controller: PaymentMethodFactory , error:NSError)
-    func addedPaymentMethod(_ controller: PaymentMethodFactory ,method:PaymentMethodInterface)
+    func addedPaymentMethod(_ controller: PaymentMethodFactory ,method:PaymentMethodInterface , message:String?)
     func displayViewController(_ controller: UIViewController )
     
     func dismissViewController(_ controller: UIViewController )
     func showLoadingIndicator(_ controller: PaymentMethodFactory ,show: Bool)
     //askes the delegate if to add the payment method for single use or not
     func shouldBeSingleUse(_ controller: PaymentMethodFactory) -> Bool
+}
+extension PaymentMethodFactoryDelegate {
+    func addedPaymentMethod(_ controller: PaymentMethodFactory ,method:PaymentMethodInterface ){
+        addedPaymentMethod(controller, method: method, message:nil)
+    }
+
 }
 
 open class PaymentMethodFactory: NSObject {

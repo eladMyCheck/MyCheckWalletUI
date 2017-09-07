@@ -252,8 +252,12 @@ open class Wallet{
                                 isSingleUse: Bool ,
                                 success: @escaping (( PaymentMethodInterface ) -> Void) ,
                                 fail: ((NSError) -> Void)? ){
-        var params : [String: Any] = [  "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "postalCode" : postalCode , "cvc" : cvc , "cardType" : type.rawValue , "is_single_use" : String(describing: NSNumber(value: isSingleUse))]
+        var params : [String: Any] = [  "rawNumber" : rawNumber , "expireMonth" : expireMonth , "expireYear" : expireYear , "cvc" : cvc , "cardType" : type.rawValue , "is_single_use" : String(describing: NSNumber(value: isSingleUse))]
         
+        if let postalCode = postalCode{
+            params["postalCode"] = postalCode
+
+        }
         
         if let env = Networking.shared.environment?.rawValue{
             params["env"] = env

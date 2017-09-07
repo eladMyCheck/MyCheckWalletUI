@@ -8,6 +8,11 @@
 import MyCheckCore
 
 import UIKit
+
+struct MasterPassInitPayload{
+    let token: String
+    let merchantCheckoutID: String
+}
 extension URIs{
     static let getMasterPassCredentials = "/wallet/api/v1/external-payment/masterpass/token"
     static let addMasterPass = "/wallet/api/v1/wallet/paymentMethod"
@@ -15,18 +20,23 @@ extension URIs{
 extension Wallet {
     
     
-    func getMasterPassCredentials( masterPassURL: String , success: @escaping ((_ token: String ,_ merchantId: String) -> Void) , fail: ((NSError) -> Void)? ){
+    func getMasterPassCredentials( masterPassURL: String , success: @escaping ((_ payload: MasterPassInitPayload) -> Void) , fail: ((NSError) -> Void)? ){
      
         
         let params = [  "originURL": masterPassURL]
         
         
-        if let domain = Networking.shared.domain {
+        guard  let domain = Networking.shared.domain else{
+            if let fail = fail{
+                fail(ErrorCodes.notConifgured.getError())
+            }
+        return
+        }
             let urlStr = domain + URIs.getMasterPassCredentials
             
             self.request(urlStr, method: .get, parameters: params , success: { JSON in
                 if let newToken = JSON["token"] as? String , let merchantId = JSON["merchantCheckoutID"] as? String{
-                    success(newToken , merchantId)
+                    success(MasterPassInitPayload(token: newToken, merchantCheckoutID: merchantId))
                 }else{
                     if let fail = fail{
                         fail(ErrorCodes.badJSON.getError())
@@ -34,11 +44,8 @@ extension Wallet {
                 }
                 
                 }, fail: fail)
-        }else{
-            if let fail = fail{
-                fail(ErrorCodes.notConifgured.getError())
-            }
-        }
+       
+        
         
     }
     

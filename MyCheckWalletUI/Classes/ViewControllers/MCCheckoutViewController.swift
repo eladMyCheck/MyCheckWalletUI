@@ -304,16 +304,17 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     }
   }
   @IBAction func managePaymentMethodsButtonPressed(_ sender: UIButton) {
-    
-    guard let controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self) else{
-      printIfDebug("cannot display VC since user is not logged in")
-      
-      return
-    }
-    
-    self.present(controller, animated: true, completion: nil)
-    controller.delegate = self
-    
+//    
+//    guard let controller =   MCPaymentMethodsViewController.createPaymentMethodsViewController(self) else{
+//      printIfDebug("cannot display VC since user is not logged in")
+//      
+//      return
+//    }
+//    
+//    self.present(controller, animated: true, completion: nil)
+//    controller.delegate = self
+    self.showToast(message: LocalData.manager.getString("thirdPartyPaymentMethodsmasterpassaddPaymentMethodSuccess"))
+
   }
   
 //  override internal func setFieldInvalid(_ field: UITextField , invalid: Bool){
@@ -576,7 +577,19 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     }, completion: { finished in
       
     })
-  }}
+  }
+
+    override func showActivityIndicator(_ show: Bool) {
+       
+        
+        super.showActivityIndicator(show)
+ activityView.center = CGPoint(x: self.view.center.x, y: self.view.center.y )
+        activityView.activityIndicatorViewStyle = .whiteLarge
+        
+    }
+    
+
+}
 
 extension MCCheckoutViewController : MCPaymentMethodsViewControllerDelegate{
   
@@ -622,9 +635,12 @@ extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
     self.present(alert, animated: true, completion: nil)
   }
   
-  func addedPaymentMethod(_ controller: PaymentMethodFactory ,method:PaymentMethodInterface){
+  func addedPaymentMethod(_ controller: PaymentMethodFactory ,method:PaymentMethodInterface  , message:String?){
     
     refreshPaymentMethods(defaultMethod:  method)
+    if let message = message{
+    self.showToast(message: message)
+    }
   }
   func displayViewController(_ controller: UIViewController ){
     self.present(controller, animated: true, completion: nil)
@@ -634,7 +650,7 @@ extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
     controller.dismiss(animated: true, completion: nil)
   }
   func showLoadingIndicator(_ controller: PaymentMethodFactory, show: Bool) {
-    //self.showActivityIndicator( show)
+    self.showActivityIndicator( show)
     self.view.isUserInteractionEnabled = !show
     
   }

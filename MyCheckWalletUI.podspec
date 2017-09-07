@@ -63,14 +63,14 @@ end
 #paypal.platform = :ios, '9.0'
 
 #end
-#s.subspec 'MasterPass' do |masterpass|
-#masterpass.ios.deployment_target = '9.0'
-#masterpass.platform = :ios, '9.0'
+s.subspec 'MasterPass' do |masterpass|
+masterpass.ios.deployment_target = '9.0'
+masterpass.platform = :ios, '9.0'
 
-#masterpass.source_files = 'MyCheckWalletUI/Classes/MasterPass/**/*'
-#masterpass.dependency 'MyCheckWalletUI/Core'
+masterpass.source_files = 'MyCheckWalletUI/Classes/MasterPass/**/*'
+masterpass.dependency 'MyCheckWalletUI/Core'
 
-#end
+end
 
 s.subspec 'ApplePay' do |applepay|
 applepay.dependency 'MyCheckWalletUI/Core'

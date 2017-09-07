@@ -45,6 +45,18 @@
       }
     },
     {
+      "name": "MasterPass",
+      "platforms": {
+        "ios": "9.0"
+      },
+      "source_files": "MyCheckWalletUI/Classes/MasterPass/**/*",
+      "dependencies": {
+        "MyCheckWalletUI/Core": [
+
+        ]
+      }
+    },
+    {
       "name": "ApplePay",
       "dependencies": {
         "MyCheckWalletUI/Core": [

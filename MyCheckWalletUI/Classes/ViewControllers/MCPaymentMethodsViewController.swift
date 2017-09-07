@@ -323,14 +323,20 @@ extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
         self.present(alert, animated: true, completion: nil)
     }
     
-    func addedPaymentMethod(_ controller: PaymentMethodFactory ,method:PaymentMethodInterface){
+    func addedPaymentMethod(_ controller: PaymentMethodFactory ,method:PaymentMethodInterface , message:String?){
         
         if let creditCardListVC = creditCardListVC{
             creditCardListVC.reloadMethods()
             self.showEnterCreditCard(false , animated: true)
 
         }
+        
+        if let message = message{
+            self.showToast(message: message)
+        }
     }
+    
+    
     func displayViewController(_ controller: UIViewController ){
         self.present(controller, animated: true, completion: nil)
     }

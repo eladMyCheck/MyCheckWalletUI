@@ -103,6 +103,28 @@
       
     }
     
+    
+    public func generateJSON() -> [String : Any] {
+        
+        
+        
+            let JSON: [String: Any] = ["id": ID,
+                                       "is_default":isDefault,
+                                       "is_capped": 0,
+                                       "is_single_use":isSingleUse,
+                                       "issuerShort": name,
+                                       "issuer_full":name,
+                                       "source": PaymentMethodType.applePay.getSource()
+            ]
+            
+            return JSON
+        
+        
+        
+    }
+
+    
+    
     private func sendNewApplePayPendingToken(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate, success: @escaping (String) -> Void, fail: @escaping (NSError) -> Void) {
     
       //creating the apple pay VC
