@@ -160,6 +160,18 @@ VisaCheckoutFactory.initiate(apiKey: VISA_CHECKOUT_API_KEY )
 ```
 Please make sure the api key has the corresponding environment to the one the MyCheck Wallet was configured with. 
 
+## MasterPass
+Start by installing the MasterPass model. Add this line to your Podfile:
+
+```
+pod "MyCheckWalletUI/MasterPass"
+```
+once this is done you will need to also add a line of code initializing the MasterPass model. 
+```
+MasterPassFactory.initiate()
+```
+
+
 ## Authors
 
 Elad Schiller, eladsc@mycheckapp.co.il
