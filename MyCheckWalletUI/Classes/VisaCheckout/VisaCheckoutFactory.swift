@@ -38,7 +38,7 @@ open class VisaCheckoutFactory : PaymentMethodFactory{
                 Wallet.shared.addVisaCheckout(payload: JSON, success: { method in
                     Wallet.shared.applePayController.changeApplePayDefault(to: false)
                     if let delegate = self.delegate{
-                        delegate.addedPaymentMethod(self, method: method)
+                        delegate.addedPaymentMethod(self, method: method , message: LocalData.manager.getAddedVisaCheckoutMessage())
                     }
                 }, fail: {error in
                 
