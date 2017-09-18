@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal protocol KeyValueStorageProtocol{
+public protocol KeyValueStorageProtocol{
     
     func getString(_ key: String , fallback: String?) -> String
     
@@ -20,7 +20,7 @@ internal protocol KeyValueStorageProtocol{
     
 }
 
-extension KeyValueStorageProtocol{
+public extension KeyValueStorageProtocol{
     func getString(_ key: String , fallback: String? = nil) -> String{
         return getString(key, fallback: fallback)
     }
@@ -28,9 +28,9 @@ extension KeyValueStorageProtocol{
   
 
 }
-internal class LocalData : KeyValueStorageProtocol{
+public class LocalData : KeyValueStorageProtocol{
 
-    static let manager = LocalData()
+   public static let manager = LocalData()
     
    lazy var strings : [String : String ] = {
     return [:] 
@@ -43,7 +43,7 @@ internal class LocalData : KeyValueStorageProtocol{
     
     
     //adds all the strings to strings parameter where the key is the same key with a prefix of all its parent's keys
-    func addStrings(_ prefix: String? , dictionary: NSDictionary){
+  public  func addStrings(_ prefix: String? , dictionary: NSDictionary){
         let prefixFinal = prefix == nil ? "" : prefix!
         for (key , value) in dictionary{
             
@@ -64,7 +64,7 @@ internal class LocalData : KeyValueStorageProtocol{
         }
         
     }
-    func getString(_ key: String , fallback: String? = nil) -> String{
+    public func getString(_ key: String , fallback: String? = nil) -> String{
         if let string = strings[key]  {
         return string
         }
@@ -74,7 +74,7 @@ internal class LocalData : KeyValueStorageProtocol{
         return ""
     }
     
-    func getColor(_ key: String , fallback: UIColor) -> UIColor{
+    public func getColor(_ key: String , fallback: UIColor) -> UIColor{
    let hex = getString(key)
         if hex.characters.count > 2 {
     let color = UIColor.hex(hex)
@@ -84,7 +84,7 @@ internal class LocalData : KeyValueStorageProtocol{
    
     }
     
-    func getDouble(_ key: String , fallback: Double) -> Double{
+    public func getDouble(_ key: String , fallback: Double) -> Double{
         let str = getString(key)
         if str.characters.count > 0 {
           return Double(str)!
@@ -93,7 +93,7 @@ internal class LocalData : KeyValueStorageProtocol{
         
     }
     
-    func getArray(_ key: String ) -> Array<String> {
+    public func getArray(_ key: String ) -> Array<String> {
         if let arr = arrays[key] {
             return arr
         }else{

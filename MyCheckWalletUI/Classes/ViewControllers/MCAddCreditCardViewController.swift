@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MyCheckCore
+
 ///A protocol that will allow the owner to dismiss the ViewController
 internal protocol MCAddCreditCardViewControllerDelegate : class{
     func recivedError(_ controller: MCAddCreditCardViewController , error:NSError)

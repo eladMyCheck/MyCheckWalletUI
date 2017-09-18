@@ -11,7 +11,7 @@
 //
 
 import UIKit
-
+import MyCheckCore
 internal protocol AddCreditCardViewControllerDelegate : class{
     
     func recivedError(_ controller: AddCreditCardViewController , error:NSError)

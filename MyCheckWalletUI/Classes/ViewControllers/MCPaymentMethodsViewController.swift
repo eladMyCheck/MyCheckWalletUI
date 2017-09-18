@@ -20,7 +20,7 @@ public protocol MCPaymentMethodsViewControllerDelegate : class{
 
 ///A view controller that provides the user with the ability to add a payment method, set a default payment method and delete payment methods. The view controller is meant to be displayed modely.
 open class MCPaymentMethodsViewController: MCViewController {
-  @IBOutlet weak var activityInidicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityInidicator: UIActivityIndicatorView!
     fileprivate var creditCardVC: MCAddCreditCardViewController?
     fileprivate var creditCardListVC: MCCreditCardsViewController?
     
@@ -68,9 +68,9 @@ open class MCPaymentMethodsViewController: MCViewController {
     ///    - returns: An instance of MCPaymentMethodsViewController that is ready for display or nil if the user is not logged in.
     
     open static func createPaymentMethodsViewController(_ delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController?{
-      if !Session.shared.isLoggedIn(){
-      return nil
-      }
+        if !Session.shared.isLoggedIn(){
+            return nil
+        }
         let storyboard = MCViewController.getStoryboard(  Bundle(for: self.classForCoder()))
         let controller = storyboard.instantiateViewController(withIdentifier: "MCPaymentMethodsViewController") as! MCPaymentMethodsViewController
         
@@ -84,8 +84,8 @@ open class MCPaymentMethodsViewController: MCViewController {
     
     open override func viewDidLoad(){
         super.viewDidLoad()
-      activityInidicator.stopAnimating();
-      //setting up UI and updating it if the user logges in... just incase
+        activityInidicator.stopAnimating();
+        //setting up UI and updating it if the user logges in... just incase
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
         setupUI()
@@ -111,11 +111,11 @@ open class MCPaymentMethodsViewController: MCViewController {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         Wallet.shared.factoryDelegate = self
-doNotStoreCheckbox.isSelected = false
+        doNotStoreCheckbox.isSelected = false
     }
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        
     }
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "creditCardSubViewController" {
@@ -128,7 +128,7 @@ doNotStoreCheckbox.isSelected = false
     }
     //MARK: - actions
     
-   
+    
     @IBAction func doNotStorePressed(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
     }
@@ -137,9 +137,9 @@ doNotStoreCheckbox.isSelected = false
     func showEnterCreditCard(_ show: Bool , animated: Bool){
         // creditCardVC!.resetView()
         if show{
-          _ = creditCardVC!.becomeFirstResponder()
+            _ = creditCardVC!.becomeFirstResponder()
         }else{
-             _ = creditCardVC!.resignFirstResponder()
+            _ = creditCardVC!.resignFirstResponder()
             
         }
         creditCardInCenterConstraint.priority = show ? 999 : 1
@@ -162,27 +162,6 @@ doNotStoreCheckbox.isSelected = false
         self.showEnterCreditCard(true, animated: true)
     }
     
-    fileprivate func assignImages(){
-        let cardsImages = LocalData.manager.getArray("acceptedCardsPM")
-        let wrapper = UIView()
-        wrapper.translatesAutoresizingMaskIntoConstraints = false
-        acceptedCards.addSubview(wrapper)
-        
-        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
-        let verticalConstraint2 = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
-        let width = cardsImages.count*48
-        let widthConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: CGFloat(width))
-            acceptedCards.addConstraints([horizontalConstraint, verticalConstraint, verticalConstraint2, widthConstraint])
-        
-        for card in cardsImages {
-            let index = cardsImages.index(of: card)
-            let iv = UIImageView(frame: CGRect(x: 48*index!+5, y: 0, width: 38, height: Int( acceptedCards.frame.size.height)))
-            iv.contentMode = .scaleAspectFit
-            iv.kf.setImage(with: URL(string: card))
-            wrapper.addSubview(iv)
-        }
-    }
     
     internal func setupUI(){
         titleLabel.text = LocalData.manager.getString("managePaymentMethodsheader" , fallback: titleLabel.text)
@@ -196,86 +175,10 @@ doNotStoreCheckbox.isSelected = false
         footerLabel.textColor = LocalData.manager.getColor("managePaymentMethodsColorsseporatorText" , fallback: footerLabel.textColor)
         walletHeaderLabel.textColor = LocalData.manager.getColor("managePaymentMethodsColorsseporatorText" , fallback: walletHeaderLabel.textColor)
         pciLabel.textColor = LocalData.manager.getColor("managePaymentMethodsColorspciNotice" , fallback: pciLabel.textColor)
-
-    }
-    
-    
-    fileprivate func setWalletButtons(){
-        switch Wallet.shared.factories.count {
-        case 1:
-            let factory = Wallet.shared.factories[0]
-            let  butRap = factory.getAddMethodButton()
-            self.walletsSuperview.addSubview(butRap.button)
-            butRap.button.translatesAutoresizingMaskIntoConstraints = false
-            
-            let horizontalConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-            walletsSuperview.addConstraint(horizontalConstraint)
-            
-            let verticalConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 16)
-            walletsSuperview.addConstraint(verticalConstraint)
-            
-            if let image = butRap.button.backgroundImage(for: .normal) , image.size.width != 0{
-                let ratio = image.size.height / image.size.width
-                
-                let aspectRationConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: butRap.button, attribute: NSLayoutAttribute.width, multiplier: ratio, constant: 0)
-                walletsSuperview.addConstraint(aspectRationConstraint)
-            }
-            let widthConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.width, multiplier: 0.415625, constant: 0)
-            walletsSuperview.addConstraint(widthConstraint)
-        case 2:
-            var buttons : [UIButton] = []
-            for factory in Wallet.shared.factories{
-                
-                let  butRap = factory.getAddMethodButton()
-                buttons.append( butRap.button)
-                self.walletsSuperview.addSubview(butRap.button)
-
-                //vertical constaint
-                let verticalConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 16)
-                walletsSuperview.addConstraint(verticalConstraint)
-                butRap.button.translatesAutoresizingMaskIntoConstraints = false
-                
-                //button aspect ration should have the images ration
-                if let image = butRap.button.backgroundImage(for: .normal) , image.size.width != 0{
-                    let ratio = image.size.height / image.size.width
-                    
-                    let aspectRationConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: butRap.button, attribute: NSLayoutAttribute.width, multiplier: ratio, constant: 0)
-                    walletsSuperview.addConstraint(aspectRationConstraint)
-                }
-                
-                //the width will hold its prepotion for all device sizes
-                let widthConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.width, multiplier: 0.415625, constant: 0)
-                walletsSuperview.addConstraint(widthConstraint)
-
-
-            }
-           
-            let  but1 = buttons[0]
-            let  but2 = buttons[1]
-            let margin = 20//0.0845410628 * walletsSuperview.frame.size.width;
-            
-            let constraint1Str = "H:|-(\(margin))-[but1]"
-            let constraint2Str = "H:[but2]-(\(margin))-|"
-
-        walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint1Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but1":but1]))
-            
-            walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint2Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but2":but2]))
-
-            
-          
-          
-            
-        default:
-            break;
-        }
-        walletsSuperview.layoutIfNeeded()
-
-        walletsSeporator.isHidden = Wallet.shared.factories.count == 0
-       
+        
     }
     
 }
-
 
 extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate, MCCreditCardsViewControllerrDelegate{
     
@@ -315,9 +218,9 @@ extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
         
         let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert);
         let defaultAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "alert ok but"), style: .default, handler:
-            {(alert: UIAlertAction!) in
-                
-                
+        {(alert: UIAlertAction!) in
+            
+            
         })
         alert.addAction(defaultAction)
         self.present(alert, animated: true, completion: nil)
@@ -328,7 +231,7 @@ extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
         if let creditCardListVC = creditCardListVC{
             creditCardListVC.reloadMethods()
             self.showEnterCreditCard(false , animated: true)
-
+            
         }
         
         if let message = message{
@@ -344,13 +247,154 @@ extension MCPaymentMethodsViewController : PaymentMethodFactoryDelegate{
     func dismissViewController(_ controller: UIViewController ){
         controller.dismiss(animated: true, completion: nil)
     }
-  func showLoadingIndicator(_ controller: PaymentMethodFactory, show: Bool) {
-    show ? activityInidicator.startAnimating() : activityInidicator.stopAnimating()
-    self.view.isUserInteractionEnabled = !show
-
-  }
+    func showLoadingIndicator(_ controller: PaymentMethodFactory, show: Bool) {
+        show ? activityInidicator.startAnimating() : activityInidicator.stopAnimating()
+        self.view.isUserInteractionEnabled = !show
+        
+    }
     
 }
+
+fileprivate extension MCPaymentMethodsViewController{
+    
+    
+    fileprivate func assignImages(){
+        let cardsImages = LocalData.manager.getArray("acceptedCardsPM")
+        let wrapper = UIView()
+        wrapper.translatesAutoresizingMaskIntoConstraints = false
+        acceptedCards.addSubview(wrapper)
+        
+        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
+        let verticalConstraint2 = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+        let width = cardsImages.count*48
+        let widthConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: CGFloat(width))
+        acceptedCards.addConstraints([horizontalConstraint, verticalConstraint, verticalConstraint2, widthConstraint])
+        
+        for card in cardsImages {
+            let index = cardsImages.index(of: card)
+            let iv = UIImageView(frame: CGRect(x: 48*index!+5, y: 0, width: 38, height: Int( acceptedCards.frame.size.height)))
+            iv.contentMode = .scaleAspectFit
+            iv.kf.setImage(with: URL(string: card))
+            wrapper.addSubview(iv)
+        }
+    }
+    
+    
+    
+    fileprivate func setWalletButtons(){
+        switch Wallet.shared.factories.count {
+        case 1:
+            let factory = Wallet.shared.factories[0]
+            let  butRap = factory.getAddMethodButton()
+            self.walletsSuperview.addSubview(butRap.button)
+            butRap.button.translatesAutoresizingMaskIntoConstraints = false
+            
+            let horizontalConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+            walletsSuperview.addConstraint(horizontalConstraint)
+            
+            let verticalConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 16)
+            walletsSuperview.addConstraint(verticalConstraint)
+            
+            if let image = butRap.button.backgroundImage(for: .normal) , image.size.width != 0{
+                let ratio = image.size.height / image.size.width
+                
+                let aspectRationConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: butRap.button, attribute: NSLayoutAttribute.width, multiplier: ratio, constant: 0)
+                walletsSuperview.addConstraint(aspectRationConstraint)
+            }
+            let widthConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.width, multiplier: 0.415625, constant: 0)
+            walletsSuperview.addConstraint(widthConstraint)
+        case 2...4:
+            var buttons : [UIButton] = []
+            for (index,factory) in Wallet.shared.factories.enumerated(){
+                
+                let  butRap = factory.getAddMethodButton()
+                buttons.append( butRap.button)
+                self.walletsSuperview.addSubview(butRap.button)
+                
+                addVerticalConstraintsToWalletButton(buttonRapper: butRap , bellow: index > 1 ? buttons[index - 2] : nil)
+                
+                addAspectRationConstraintsToWalletButton(buttonRapper: butRap)
+                addWidthConstraintsToWalletButton(buttonRapper: butRap)
+            }
+            
+            let  but1 = buttons[0]
+            let  but2 = buttons[1]
+            let margin = 20//0.0845410628 * walletsSuperview.frame.size.width;
+            
+            let constraint1Str = "H:|-(\(margin))-[but1]"
+            let constraint2Str = "H:[but2]-(\(margin))-|"
+            
+            walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint1Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but1":but1]))
+            
+            walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint2Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but2":but2]))
+            
+            if buttons.count == 3 {
+                let  but3 = buttons[2]
+                walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(\(margin))-[but1]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but1":but3]))
+                
+                
+            }
+            
+            if buttons.count == 4 {
+                let  but2 = buttons[2]
+                let  but3 = buttons[3]
+                walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint1Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but1":but2]))
+                
+                walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint2Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but2":but3]))
+
+            }
+            
+            
+            
+        default:
+            break;
+        }
+        walletsSuperview.layoutIfNeeded()
+        
+        walletsSeporator.isHidden = Wallet.shared.factories.count == 0
+        
+    }
+    
+    func addAspectRationConstraintsToWalletButton(buttonRapper: PaymentMethodButtonRapper){
+        //button aspect ration should have the images ration
+        if let image = buttonRapper.button.backgroundImage(for: .normal) , image.size.width != 0{
+            let ratio = image.size.height / image.size.width
+            
+            let aspectRationConstraint = NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: buttonRapper.button, attribute: NSLayoutAttribute.width, multiplier: ratio, constant: 0)
+            walletsSuperview.addConstraint(aspectRationConstraint)
+        }
+    }
+    
+    func addWidthConstraintsToWalletButton(buttonRapper: PaymentMethodButtonRapper){
+        //the width will hold its prepotion for all device sizes
+        let widthConstraint = NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.width, multiplier: 0.415625, constant: 0)
+        walletsSuperview.addConstraint(widthConstraint)
+        
+    }
+    func addVerticalConstraintsToWalletButton(buttonRapper: PaymentMethodButtonRapper , bellow: UIView? = nil){
+        
+        let getVerticalConstraint: () -> NSLayoutConstraint = {
+            if let bellow = bellow{
+           return NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: bellow, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 16)
+            }else{
+         return   NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.walletsSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 16)
+            }
+        }
+            
+            
+        
+        walletsSuperview.addConstraint(getVerticalConstraint())
+        
+        
+        buttonRapper.button.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        
+    }
+    
+}
+
 //extension MCPaymentMethodsViewController : BTViewControllerPresentingDelegate{
 //    public func paymentDriver(driver: AnyObject, requestsDismissalOfViewController viewController: UIViewController) {
 //        viewController.dismissViewControllerAnimated(true, completion: nil)

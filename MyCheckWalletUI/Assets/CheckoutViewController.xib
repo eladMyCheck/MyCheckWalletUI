@@ -45,6 +45,7 @@
                 <outlet property="paymentSelectorView" destination="pTi-ub-50G" id="Trh-iV-gnM"/>
                 <outlet property="pciLabel" destination="4Cy-p3-4hS" id="14P-R8-B2p"/>
                 <outlet property="pickerDownArrow" destination="RH6-Eu-QMK" id="Ydj-9G-57M"/>
+                <outlet property="secondLineWalletButs" destination="6pO-zJ-8eH" id="LrF-ng-FXj"/>
                 <outlet property="typeImage" destination="bEb-a8-zXO" id="TlB-lv-NLk"/>
                 <outlet property="view" destination="hcW-t3-chb" id="EzT-ff-jko"/>
                 <outlet property="walletsHeight" destination="dTH-VS-OcA" id="hTY-zm-VyY"/>
@@ -339,11 +340,31 @@
                                         <constraint firstItem="Zlt-yj-6eN" firstAttribute="width" secondItem="MB6-Zb-Ajw" secondAttribute="width" id="TOf-Sq-sdD"/>
                                     </constraints>
                                 </stackView>
+                                <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="6pO-zJ-8eH">
+                                    <rect key="frame" x="6" y="64.5" width="363" height="55"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1W-sf-mSk">
+                                            <rect key="frame" x="0.0" y="0.0" width="174.5" height="55"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ff-yB-20p">
+                                            <rect key="frame" x="188.5" y="0.0" width="174.5" height="55"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="k1W-sf-mSk" firstAttribute="width" secondItem="3ff-yB-20p" secondAttribute="width" id="5Ee-SP-AEF"/>
+                                    </constraints>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="OIn-IS-AAt" firstAttribute="leading" secondItem="fy5-4p-QyT" secondAttribute="leading" constant="6" id="BeW-oE-KeJ"/>
                                 <constraint firstAttribute="trailing" secondItem="OIn-IS-AAt" secondAttribute="trailing" constant="6" id="LB6-88-9dx"/>
+                                <constraint firstItem="6pO-zJ-8eH" firstAttribute="centerX" secondItem="OIn-IS-AAt" secondAttribute="centerX" id="R8i-be-Bqp"/>
+                                <constraint firstItem="6pO-zJ-8eH" firstAttribute="top" secondItem="OIn-IS-AAt" secondAttribute="bottom" id="VMf-DF-jyf"/>
+                                <constraint firstItem="6pO-zJ-8eH" firstAttribute="width" secondItem="OIn-IS-AAt" secondAttribute="width" id="Zry-zf-npK"/>
+                                <constraint firstItem="6pO-zJ-8eH" firstAttribute="height" secondItem="OIn-IS-AAt" secondAttribute="height" id="tuS-Cj-ZPi"/>
                                 <constraint firstItem="OIn-IS-AAt" firstAttribute="top" secondItem="fy5-4p-QyT" secondAttribute="top" constant="9.5" id="vph-BQ-lEp"/>
                             </constraints>
                         </view>

@@ -65,8 +65,11 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
   
   @IBOutlet weak fileprivate var deleteBut: UIButton!
   
+    @IBOutlet weak var secondLineWalletButs: UIStackView!
   @IBOutlet weak fileprivate var firstLineWalletButs: UIStackView!
-  @IBOutlet weak fileprivate var pciLabel: UILabel!
+    let walletStackHeight: CGFloat = 65.0
+    let walletSuperviewBaseHeight: CGFloat = 30.0
+@IBOutlet weak fileprivate var pciLabel: UILabel!
   
   fileprivate var walletButtons : [PaymentMethodButtonRapper] = []
   internal var borderForField : [UITextField : UIView] = [:]
@@ -316,97 +319,97 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
   }
   
-//  override internal func setFieldInvalid(_ field: UITextField , invalid: Bool){
-//    let badColor = LocalData.manager.getColor("checkoutPageColorserrorInput", fallback: UIColor.red)
-//    let goodColor = LocalData.manager.getColor("checkoutPageColorsfieldBorder", fallback: creditCardNumberField.textColor!)
-//    
-//    let border = borderForField[field]
-//    border?.layer.borderColor = invalid ? badColor.cgColor :goodColor.cgColor
-//    field.textColor = invalid ? badColor : UIColor(r: 255, g: 255, b: 255, a: 1)
-//  }
-//  
-//  internal func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//    switch textField {
-//    case creditCardNumberField:
-//      UIView.animate(withDuration: 0.4, animations: {
-//        self.moveAcceptedCreditCardsViewToCreditCardField(false, animated: true)
-//      })
-//      break
-//    case paymentMethodSelectorTextField:
-//      break
-//    default:
-//      return true
-//    }
-//    
-//    return true
-//  }
-//  
-//  @IBAction override func checkboxPressed(_ sender: UIButton) {
-//    self.checkbox.isSelected = !self.checkbox.isSelected
-//  }
-//  
-//  @IBAction func cancelButPressed(_ sender: AnyObject) {
-//    super.cancelPressed(sender)
-//    self.resetFields()
-//    self.view.endEditing(true)
-//    UIView.animate(withDuration: 0.4, animations: {
-//      self.moveAcceptedCreditCardsViewToCreditCardField(true , animated: true)
-//    })
-//  }
-//  @IBAction func applyButPressed(_ sender: AnyObject) {
-//    let validator = updateAndCheckValid()
-//    if validator.numberIsCompleteAndValid{
-//      self.view.endEditing(true)
-//      
-//      
-//      
-//      let dateStr = formatedString(dateField)
-//      let split = dateStr.characters.split(separator: "/").map(String.init)
-//      self.showActivityIndicator( true)
-//      self.applyButton.isEnabled = false
-//      self.cancelButton.isEnabled = false
-//      
-//      self.creditCardNumberField.isUserInteractionEnabled = false
-//      self.dateField.isUserInteractionEnabled = false
-//      self.cvvField.isUserInteractionEnabled = false
-//      self.zipField.isUserInteractionEnabled = false
-//      Wallet.shared.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: validator.cardType, isSingleUse: self.checkbox.isSelected, success: {  method in
-//        self.resetFields()
-//        // self.selectedMethod = method
-//        
-//        if method.isSingleUse == true{
-//          
-//          
-//          self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
-//          
-//        }
-//        self.newPaymenteMethodAdded()
-//        
-//        self.creditCardNumberField.isUserInteractionEnabled = true
-//        self.dateField.isUserInteractionEnabled = true
-//        self.cvvField.isUserInteractionEnabled = true
-//        self.zipField.isUserInteractionEnabled = true
-//        self.applyButton.isEnabled = true
-//        self.cancelButton.isEnabled = true
-//        self.showActivityIndicator(false)
-//      }, fail: { error in
-//        self.applyButton.isEnabled = true
-//        self.cancelButton.isEnabled = true
-//        self.creditCardNumberField.isUserInteractionEnabled = true
-//        self.dateField.isUserInteractionEnabled = true
-//        self.cvvField.isUserInteractionEnabled = true
-//        self.zipField.isUserInteractionEnabled = true
-//        self.showActivityIndicator(false)
-//        //   self.errorLabel.text = error.localizedDescription
-//        self.showError(errorStr: error.localizedDescription)
-//        if let delegate = self.delegate{
-//          delegate.recivedError(self, error:error)
-//        }
-//      })
-//    }
-//    
-//  }
-//  
+  override internal func setFieldInvalid(_ field: UITextField , invalid: Bool){
+    let badColor = LocalData.manager.getColor("checkoutPageColorserrorInput", fallback: UIColor.red)
+    let goodColor = LocalData.manager.getColor("checkoutPageColorsfieldBorder", fallback: creditCardNumberField.textColor!)
+    
+    let border = borderForField[field]
+    border?.layer.borderColor = invalid ? badColor.cgColor :goodColor.cgColor
+    field.textColor = invalid ? badColor : UIColor(r: 255, g: 255, b: 255, a: 1)
+  }
+  
+  internal func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    switch textField {
+    case creditCardNumberField:
+      UIView.animate(withDuration: 0.4, animations: {
+        self.moveAcceptedCreditCardsViewToCreditCardField(false, animated: true)
+      })
+      break
+    case paymentMethodSelectorTextField:
+      break
+    default:
+      return true
+    }
+    
+    return true
+  }
+  
+  @IBAction override func checkboxPressed(_ sender: UIButton) {
+    self.checkbox.isSelected = !self.checkbox.isSelected
+  }
+  
+  @IBAction func cancelButPressed(_ sender: AnyObject) {
+    super.cancelPressed(sender)
+    self.resetFields()
+    self.view.endEditing(true)
+    UIView.animate(withDuration: 0.4, animations: {
+      self.moveAcceptedCreditCardsViewToCreditCardField(true , animated: true)
+    })
+  }
+  @IBAction func applyButPressed(_ sender: AnyObject) {
+    let validator = updateAndCheckValid()
+    if validator.CreditDetailsValid{
+      self.view.endEditing(true)
+      
+      
+      
+      let dateStr = formatedString(dateField)
+      let split = dateStr.characters.split(separator: "/").map(String.init)
+      self.showActivityIndicator( true)
+      self.applyButton.isEnabled = false
+      self.cancelButton.isEnabled = false
+      
+      self.creditCardNumberField.isUserInteractionEnabled = false
+      self.dateField.isUserInteractionEnabled = false
+      self.cvvField.isUserInteractionEnabled = false
+      self.zipField.isUserInteractionEnabled = false
+      Wallet.shared.addCreditCard(formatedString(creditCardNumberField), expireMonth: split[0], expireYear: split[1], postalCode: formatedString(zipField), cvc: formatedString(cvvField), type: validator.cardType, isSingleUse: self.checkbox.isSelected, success: {  method in
+        self.resetFields()
+        // self.selectedMethod = method
+        
+        if method.isSingleUse == true{
+          
+          
+          self.moveAcceptedCreditCardsViewToCreditCardField(true, animated: false)
+          
+        }
+        self.newPaymenteMethodAdded()
+        
+        self.creditCardNumberField.isUserInteractionEnabled = true
+        self.dateField.isUserInteractionEnabled = true
+        self.cvvField.isUserInteractionEnabled = true
+        self.zipField.isUserInteractionEnabled = true
+        self.applyButton.isEnabled = true
+        self.cancelButton.isEnabled = true
+        self.showActivityIndicator(false)
+      }, fail: { error in
+        self.applyButton.isEnabled = true
+        self.cancelButton.isEnabled = true
+        self.creditCardNumberField.isUserInteractionEnabled = true
+        self.dateField.isUserInteractionEnabled = true
+        self.cvvField.isUserInteractionEnabled = true
+        self.zipField.isUserInteractionEnabled = true
+        self.showActivityIndicator(false)
+        //   self.errorLabel.text = error.localizedDescription
+        self.showError(errorStr: error.localizedDescription)
+        if let delegate = self.delegate{
+          delegate.recivedError(self, error:error)
+        }
+      })
+    }
+    
+  }
+  
 //  override func showActivityIndicator(_ show: Bool) {
 //    if activityView == nil{
 //      activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
@@ -439,7 +442,10 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     var delta = move ? baseHeight : baseHeight + 111.0
     if Wallet.shared.factories.count > 0 { // if we have factories we need to allow more room for the wallet buttons
-      delta += 110
+      delta += Float(walletStackHeight)
+    }
+    if Wallet.shared.factories.count > 2 { // if we have factories we need to allow more room for the wallet buttons
+        delta += Float(walletStackHeight)
     }
     self.colapsableContainer.alpha = move ? 0 : 1
     if let del = checkoutDelegate{
@@ -511,7 +517,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     if (walletButtons.count == 0 && Session.shared.isLoggedIn()) {
       switch Wallet.shared.factories.count {
       case 0:
-        walletsHeight.constant = 30
+        walletsHeight.constant = walletSuperviewBaseHeight
         walletsSuperview.isHidden = true
         // case 1:
         //   //adding button to center of container
@@ -523,61 +529,29 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         
       case 1,2:
         
-        for factory in Wallet.shared.factories{
-          
-          let  butRap = factory.getSmallAddMethodButton()
-          butRap.button.translatesAutoresizingMaskIntoConstraints = true
-          
-          
-          //I am assuming their are 2 views in the stack view (one left most and one right most)they add padding to insure the size is correct and the items are centered.
-          self.firstLineWalletButs.insertArrangedSubview(butRap.button, at: self.firstLineWalletButs.arrangedSubviews.count - 1)
-          
-          walletButtons.append(butRap)
-          
-          butRap.button.isEnabled = true
-          butRap.button.isUserInteractionEnabled = true
-          print( butRap.button.bounds , "    " , butRap.button.frame)
-          
-        }
+        add(buttonRappers: Wallet.shared.factories.map{ $0.getSmallAddMethodButton()}, toLine: 1)
+        
+        walletsHeight.constant = walletSuperviewBaseHeight + walletStackHeight
+
         
         
-        
-        
-        
+      case 3,4:
+        walletsHeight.constant = walletSuperviewBaseHeight + walletStackHeight * 2
+
+        add(buttonRappers: Wallet.shared.factories.prefix(through:1).map{ $0.getSmallAddMethodButton()}, toLine: 1)
+        add(buttonRappers: Wallet.shared.factories.suffix(from:2).map{ $0.getSmallAddMethodButton()}, toLine: 2)
+
       default:break// multiple wallets
 //        for factory in Wallet.shared.factories{
 //          //TO-DO implement adding multiple wallets
 //        }
       }
+        
     }
     
   }
-  fileprivate func showError(errorStr: String){
-    self.errorLabel.text = errorStr
-    if errorStr.characters.count == 0 {
-      return;
-    }
-    self.errorLabel.alpha = 0.0
-    //animating the error view in ... showing the error for a few seconds and removing again
     
-    UIView.animate(withDuration: 0.3, animations:  {
-      self.errorLabel.alpha = 1.0
-      
-      
-      delay(0.3 + LocalData.manager.getDouble("ValueserrorTime", fallback: 7.0)){
-        UIView.animate(withDuration: 0.3, animations: {
-          self.errorLabel.alpha = 0.0
-          
-        } , completion: { finished in
-          self.errorLabel.text  = ""
-          
-        })
-      }
-    }, completion: { finished in
-      
-    })
-  }
-
+  
     override func showActivityIndicator(_ show: Bool) {
        
         
@@ -656,6 +630,94 @@ extension MCCheckoutViewController : PaymentMethodFactoryDelegate{
 }
 
 
+fileprivate extension MCCheckoutViewController{
+
+    
+      func add( buttonRappers: [PaymentMethodButtonRapper] , toLine line: Int){
+        
+        var buttons = buttonRappers.map{$0.button}
+        if line > 2{
+            return
+        }
+        buttonRappers.forEach{ walletButtons.append($0) }
+        if line == 2 && buttons.count == 1{// in this case we need to add a placeholder button to make the location be correct
+  
+            buttons.append( createStubButton())
+
+        }
+        guard  let stack = line == 1 ? self.firstLineWalletButs : self.secondLineWalletButs else{
+            return
+        }
+        for button in buttons{
+            
+            button.translatesAutoresizingMaskIntoConstraints = true
+            
+            
+            //I am assuming their are 2 views in the stack view (one left most and one right most)they add padding to insure the size is correct and the items are centered.
+            stack.insertArrangedSubview(button, at: stack.arrangedSubviews.count - 1)
+            
+            
+            button.isEnabled = true
+            button.isUserInteractionEnabled = true
+        }
+        
+    }
+    
+    
+    func createStubButton() -> UIButton{
+        let button = UIButton(frame: CGRect())
+        button.backgroundColor = UIColor.clear
+        button.setTitle("", for: .normal)
+        button.isUserInteractionEnabled = false
+        
+        button.addConstraint(NSLayoutConstraint(
+            item: button,
+            attribute: .width,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1.0,
+            constant: 133))
+        button.addConstraint(NSLayoutConstraint(
+            item: button,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1.0,
+            constant: 41))
+        
+        return button
+    }
+    
+    
+     func showError(errorStr: String){
+        self.errorLabel.text = errorStr
+        if errorStr.characters.count == 0 {
+            return;
+        }
+        self.errorLabel.alpha = 0.0
+        //animating the error view in ... showing the error for a few seconds and removing again
+        
+        UIView.animate(withDuration: 0.3, animations:  {
+            self.errorLabel.alpha = 1.0
+            
+            
+            delay(0.3 + LocalData.manager.getDouble("ValueserrorTime", fallback: 7.0)){
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.errorLabel.alpha = 0.0
+                    
+                } , completion: { finished in
+                    self.errorLabel.text  = ""
+                    
+                })
+            }
+        }, completion: { finished in
+            
+        })
+    }
+
+}
 
 
 

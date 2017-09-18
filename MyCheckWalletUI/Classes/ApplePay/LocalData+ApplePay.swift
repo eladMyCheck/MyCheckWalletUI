@@ -7,11 +7,13 @@
 //
 
 import Foundation
+
 private let applePayDefaultKey = "MCApplePayDefaultKey"
 private let initialRunKey = "MCInitialRunKey"
 
 //ApplePay related functions
 extension LocalData{
+    
     static func wasApplePayDefault() -> Bool{
       //checking if this is the first time. if so setting to yes
       let notFirst = UserDefaults.standard.bool(forKey: initialRunKey)
