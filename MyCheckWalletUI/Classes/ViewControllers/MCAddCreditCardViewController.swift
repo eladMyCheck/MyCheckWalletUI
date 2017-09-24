@@ -41,6 +41,7 @@ open class MCAddCreditCardViewController: MCViewController {
     internal var underlineForField : [UITextField : UIView]?
     internal var activityView : UIActivityIndicatorView!
     
+    @IBOutlet weak var doNotStoreSuperview: UIView!
     weak  var delegate : MCAddCreditCardViewControllerDelegate?
     //MARK: - life cycle functions
     
@@ -197,11 +198,14 @@ open class MCAddCreditCardViewController: MCViewController {
         cancelBut.setTitleColor(LocalData.manager.getColor("addCreditColorscancelButtonText", fallback: UIColor.white), for: UIControlState())
         
         
-        for (key , value) in underlineForField!{
+        for (key , _) in underlineForField!{
             key.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: key.textColor!)
             key.placeholderColor(LocalData.manager.getColor("addCreditColorshintTextColor" , fallback: UIColor.lightGray))
             //value.backgroundColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: value.backgroundColor!)
         }
+        
+        doNotStoreSuperview.isHidden = !LocalData.manager.doNotStoreEnabled()
+        
     }
    
     

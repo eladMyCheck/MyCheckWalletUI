@@ -34,6 +34,7 @@
                 <outlet property="dateFieldBorderView" destination="kLK-VW-lfS" id="fbb-GT-29k"/>
                 <outlet property="dateUnderline" destination="tJI-vV-AMV" id="9dk-Li-X9B"/>
                 <outlet property="deleteBut" destination="QAm-kq-Ygm" id="IwA-pR-mHe"/>
+                <outlet property="doNotStoreSuperview" destination="MyX-cx-iSx" id="yBv-Tx-qmH"/>
                 <outlet property="dropdownHeader" destination="kb4-tj-hY9" id="8xL-91-UgF"/>
                 <outlet property="errorLabel" destination="xeh-NB-TXJ" id="Lao-X5-Z2m"/>
                 <outlet property="firstLineWalletButs" destination="OIn-IS-AAt" id="PI2-WY-Mg6"/>
@@ -386,24 +387,39 @@
                         <constraint firstAttribute="trailing" secondItem="fy5-4p-QyT" secondAttribute="trailing" id="yWS-pj-4og"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do not store this card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3r-7Z-Iff">
-                    <rect key="frame" x="46" y="358.5" width="140" height="17"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdm-SI-4xu">
-                    <rect key="frame" x="11" y="353" width="33" height="28"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyX-cx-iSx">
+                    <rect key="frame" x="17" y="353" width="240" height="28"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdm-SI-4xu">
+                            <rect key="frame" x="0.0" y="0.0" width="33" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="33" id="8Sv-my-4lS"/>
+                                <constraint firstAttribute="height" constant="28" id="sEX-No-Qqd"/>
+                            </constraints>
+                            <state key="normal" image="checkoutCheckbox"/>
+                            <state key="selected" image="checkoutCheckbox_v"/>
+                            <connections>
+                                <action selector="checkboxPressed:" destination="-1" eventType="touchUpInside" id="OYQ-B6-bdE"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do not store this card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3r-7Z-Iff">
+                            <rect key="frame" x="35" y="5" width="140" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="33" id="8Sv-my-4lS"/>
-                        <constraint firstAttribute="height" constant="28" id="sEX-No-Qqd"/>
+                        <constraint firstItem="L3r-7Z-Iff" firstAttribute="centerY" secondItem="Vdm-SI-4xu" secondAttribute="centerY" id="AtP-f6-jqt"/>
+                        <constraint firstAttribute="trailing" secondItem="L3r-7Z-Iff" secondAttribute="trailing" constant="65" id="Owd-l0-OVR"/>
+                        <constraint firstItem="Vdm-SI-4xu" firstAttribute="leading" secondItem="MyX-cx-iSx" secondAttribute="leading" id="Qh3-dl-v4q"/>
+                        <constraint firstItem="Vdm-SI-4xu" firstAttribute="height" secondItem="MyX-cx-iSx" secondAttribute="height" id="V90-ke-JJQ"/>
+                        <constraint firstItem="Vdm-SI-4xu" firstAttribute="leading" secondItem="MyX-cx-iSx" secondAttribute="leading" id="Vix-Ul-nA2"/>
+                        <constraint firstItem="L3r-7Z-Iff" firstAttribute="leading" secondItem="Vdm-SI-4xu" secondAttribute="trailing" constant="2" id="rlX-Kk-2oa"/>
+                        <constraint firstItem="Vdm-SI-4xu" firstAttribute="top" secondItem="MyX-cx-iSx" secondAttribute="top" id="ug8-wf-6db"/>
                     </constraints>
-                    <state key="normal" image="checkoutCheckbox"/>
-                    <state key="selected" image="checkoutCheckbox_v"/>
-                    <connections>
-                        <action selector="checkboxPressed:" destination="-1" eventType="touchUpInside" id="OYQ-B6-bdE"/>
-                    </connections>
-                </button>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb4-tj-hY9">
                     <rect key="frame" x="12" y="50" width="69.5" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -478,6 +494,7 @@
                 <constraint firstItem="bEb-a8-zXO" firstAttribute="top" secondItem="hcW-t3-chb" secondAttribute="top" constant="83" id="23L-G7-zd4"/>
                 <constraint firstItem="pTi-ub-50G" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="top" id="2dD-KD-BVM"/>
                 <constraint firstItem="bEb-a8-zXO" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" constant="26" id="4da-Mz-CyE"/>
+                <constraint firstItem="MyX-cx-iSx" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" constant="17" id="5fk-ny-gNr"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="trailing" secondItem="YDa-E9-pMW" secondAttribute="trailing" id="6xA-wB-SrD"/>
                 <constraint firstAttribute="trailing" secondItem="BNs-hB-C9a" secondAttribute="trailing" id="9LT-37-wjp"/>
                 <constraint firstItem="fwe-gf-87l" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leadingMargin" constant="-24" id="9cg-Iw-T98"/>
@@ -485,6 +502,7 @@
                 <constraint firstItem="YDa-E9-pMW" firstAttribute="centerY" secondItem="bEb-a8-zXO" secondAttribute="centerY" constant="1" id="BnW-eh-iZg"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="leading" secondItem="bEb-a8-zXO" secondAttribute="leading" constant="-9" id="CPL-Aq-mw7"/>
                 <constraint firstItem="YDa-E9-pMW" firstAttribute="leading" secondItem="bEb-a8-zXO" secondAttribute="trailing" constant="7" id="DUc-ye-9Rq"/>
+                <constraint firstItem="MyX-cx-iSx" firstAttribute="top" secondItem="BNs-hB-C9a" secondAttribute="bottom" constant="-18" id="EkQ-Au-Ek6"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="bottom" secondItem="YDa-E9-pMW" secondAttribute="bottom" constant="11" id="FTB-vX-XSv"/>
                 <constraint firstItem="xeh-NB-TXJ" firstAttribute="top" secondItem="fwe-gf-87l" secondAttribute="bottom" id="KNW-QR-It3"/>
                 <constraint firstItem="e97-nh-J5G" firstAttribute="trailing" secondItem="YDa-E9-pMW" secondAttribute="trailing" id="Mdu-75-SuS"/>
@@ -493,15 +511,12 @@
                 <constraint firstItem="E0F-KO-oYg" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" id="Pr7-YP-Nq5"/>
                 <constraint firstItem="e97-nh-J5G" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="bottom" constant="10" id="QZI-bv-Xy6"/>
                 <constraint firstAttribute="trailingMargin" secondItem="fwe-gf-87l" secondAttribute="trailing" constant="-20" id="Rdc-1C-xxq"/>
-                <constraint firstItem="Vdm-SI-4xu" firstAttribute="top" secondItem="BNs-hB-C9a" secondAttribute="bottom" constant="-18" id="SZr-Fd-s0m"/>
                 <constraint firstItem="pTi-ub-50G" firstAttribute="leading" secondItem="YDa-E9-pMW" secondAttribute="leading" id="TQP-3K-e8b"/>
                 <constraint firstItem="BNs-hB-C9a" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" id="UEk-3c-JS9"/>
                 <constraint firstAttribute="trailing" secondItem="YDa-E9-pMW" secondAttribute="trailing" constant="18" id="V9u-vE-PhJ"/>
                 <constraint firstItem="yxp-yO-zIk" firstAttribute="top" secondItem="hcW-t3-chb" secondAttribute="top" id="Vo6-8r-DRb"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="top" constant="-11" id="W6v-Sm-QyO"/>
                 <constraint firstItem="fwe-gf-87l" firstAttribute="top" secondItem="e97-nh-J5G" secondAttribute="bottom" id="W8Y-oh-h6N"/>
-                <constraint firstItem="L3r-7Z-Iff" firstAttribute="leading" secondItem="Vdm-SI-4xu" secondAttribute="trailing" constant="2" id="WNq-V2-e93"/>
-                <constraint firstItem="Vdm-SI-4xu" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" constant="11" id="a8S-Ke-dmQ"/>
                 <constraint firstItem="kb4-tj-hY9" firstAttribute="centerY" secondItem="N0u-Ng-8ai" secondAttribute="centerY" id="fZV-o9-b91"/>
                 <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="fwe-gf-87l" secondAttribute="bottom" priority="999" constant="33" id="g22-4c-w4J"/>
                 <constraint firstItem="e97-nh-J5G" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" constant="17" id="giQ-53-HWs"/>
@@ -510,7 +525,6 @@
                 <constraint firstItem="yxp-yO-zIk" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" id="lB6-zW-mI4"/>
                 <constraint firstItem="kLK-VW-lfS" firstAttribute="leading" secondItem="cVa-fN-iC0" secondAttribute="leading" id="qTF-Qt-hWI"/>
                 <constraint firstItem="pTi-ub-50G" firstAttribute="trailing" secondItem="YDa-E9-pMW" secondAttribute="trailing" id="qWq-Ry-CaD"/>
-                <constraint firstItem="L3r-7Z-Iff" firstAttribute="centerY" secondItem="Vdm-SI-4xu" secondAttribute="centerY" id="tEZ-20-2jJ"/>
                 <constraint firstItem="E0F-KO-oYg" firstAttribute="top" secondItem="BNs-hB-C9a" secondAttribute="bottom" constant="10" id="wUM-fT-cQY"/>
                 <constraint firstAttribute="trailingMargin" secondItem="N0u-Ng-8ai" secondAttribute="trailing" constant="4" id="waF-Zx-71z"/>
                 <constraint firstItem="Ixc-Dk-xlz" firstAttribute="trailing" secondItem="cVa-fN-iC0" secondAttribute="trailing" id="xRa-Bw-sK2"/>

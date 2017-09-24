@@ -16,6 +16,8 @@ public protocol KeyValueStorageProtocol{
     
     func getDouble(_ key: String , fallback: Double) -> Double
     
+    func getBool(_ key: String , fallback: Bool) -> Bool
+
     func getArray(_ key: String ) -> Array<String>
     
 }
@@ -48,7 +50,9 @@ public class LocalData : KeyValueStorageProtocol{
         for (key , value) in dictionary{
             
             let keyFinal = "\(prefixFinal)\(key)"
-
+            if key as! String == "doNotStoreEnabled"{
+            print("lalala")
+            }
             if let str = value as? String{
             strings[keyFinal] = str
             }else if let dic = value as? NSDictionary{
@@ -101,7 +105,19 @@ public class LocalData : KeyValueStorageProtocol{
         }
     }
     
-   
+    public func getBool(_ key: String , fallback: Bool = false) -> Bool{
+        let str = getString(key)
+        let lowercase = str.lowercased()
+        if lowercase == "true"{
+        return true
+        }else if lowercase == "false"{
+        return false
+        }
+        if str.characters.count > 0 {
+            return Bool(str)!
+        }
+        return fallback
+    }
     
 }
 
@@ -114,6 +130,10 @@ extension LocalData{
     
     public func getPaymentMethodDefaultMethodButtonImageURL() -> URL?{
         return URL(string:getString("managePaymentMethodsimagesdefaultButton"))
+    }
+    
+    public func doNotStoreEnabled() -> Bool{
+        return getBool("settingsdoNotStoreEnabled", fallback: true)
     }
 }
 

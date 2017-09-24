@@ -189,7 +189,7 @@
                                     <constraint firstAttribute="height" constant="88" id="z7Q-hL-2ni"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4N-JW-PIy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4N-JW-PIy" userLabel="do not store super">
                                 <rect key="frame" x="0.0" y="623" width="414" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do not store this card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chZ-3o-c4k">
@@ -275,6 +275,7 @@
                         <outlet property="creditCardsVCCenterXConstraint" destination="b3K-Xd-AKb" id="i2m-O5-swc"/>
                         <outlet property="doNotStoreCheckbox" destination="TB5-CE-9KN" id="uuN-mW-qmy"/>
                         <outlet property="doNotStoreLabel" destination="chZ-3o-c4k" id="azv-UC-s79"/>
+                        <outlet property="doNotStoreSuperview" destination="N4N-JW-PIy" id="tul-K6-XmO"/>
                         <outlet property="footerLabel" destination="JQv-0Z-gjB" id="Bq0-sq-NUA"/>
                         <outlet property="outputForTesting" destination="Cya-ZT-oTQ" id="HGy-nL-8xn"/>
                         <outlet property="pciLabel" destination="8k3-mm-veH" id="Jqr-94-DDO"/>
@@ -435,7 +436,7 @@
                                     <navigationItem id="ncN-r9-ayd"/>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQG-cr-JRl">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQG-cr-JRl" userLabel="do not store super">
                                 <rect key="frame" x="18" y="219" width="176" height="42"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do not store this card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dr-Jr-Bol">
@@ -521,6 +522,7 @@
                         <outlet property="cvvUnderline" destination="BeD-SX-Sgl" id="OCi-U0-OCz"/>
                         <outlet property="dateField" destination="HNb-VI-wZf" id="ccP-LB-Wl3"/>
                         <outlet property="dateUnderline" destination="cTP-fh-zvs" id="p3l-it-PUo"/>
+                        <outlet property="doNotStoreSuperview" destination="iQG-cr-JRl" id="sgU-tl-T9y"/>
                         <outlet property="errorHeight" destination="pHe-x9-FXv" id="BWZ-PE-MAU"/>
                         <outlet property="errorLabel" destination="vj5-EE-P4N" id="q9B-ky-DWe"/>
                         <outlet property="navBar" destination="AFw-93-ga5" id="npu-mQ-BXJ"/>
