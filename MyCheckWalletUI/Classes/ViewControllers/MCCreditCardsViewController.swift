@@ -209,10 +209,10 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     
     @objc fileprivate func setupUI(){
         
-        navBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsheaderBackground", fallback: navBar.backgroundColor!)
-        editButton.setTitleColor( LocalData.manager.getColor("managePaymentMethodsColorseditButtonText", fallback: editButton.titleColor(for: UIControlState())!)
+        navBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navBar.backgroundColor!)
+        editButton.setTitleColor( LocalData.manager.getColor("managePaymentMethodscolorseditButtonText", fallback: editButton.titleColor(for: UIControlState())!)
             , for: UIControlState())
-        backBut.tintColor = LocalData.manager.getColor("managePaymentMethodsColorsbackButton", fallback: navBar.backgroundColor!)
+        backBut.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsbackButton", fallback: navBar.backgroundColor!)
     }
     fileprivate func updateButtonTxt(){
         printIfDebug("edit mode \(editMode)")

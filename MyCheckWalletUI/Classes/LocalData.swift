@@ -100,5 +100,20 @@ public class LocalData : KeyValueStorageProtocol{
             return []
         }
     }
+    
+   
+    
+}
+
+//specific value calls
+extension LocalData{
+
+    public func getPaymentMethodRemoveButtonImageURL() -> URL?{
+        return URL(string:getString("managePaymentMethodsimagesremoveButton"))
+    }
+    
+    public func getPaymentMethodDefaultMethodButtonImageURL() -> URL?{
+        return URL(string:getString("managePaymentMethodsimagesdefaultButton"))
+    }
 }
 

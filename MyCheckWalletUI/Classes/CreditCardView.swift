@@ -18,7 +18,7 @@ internal protocol CreditCardViewDelegate : class{
 internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     
     var paymentMethod : PaymentMethodInterface?
-    @IBOutlet weak var checboxButton : UIButton?
+    @IBOutlet weak var checkboxButton : UIButton?
     var editMode = false
     var delegate : CreditCardViewDelegate?
     
@@ -33,7 +33,6 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     init(frame: CGRect, method: PaymentMethodInterface){
         super.init(frame: frame)
         
-        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
         
         self.isUserInteractionEnabled = true
         self.paymentMethod = method
@@ -74,10 +73,16 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         
         
         if ((self.paymentMethod!.isDefault) == true) {
-            self.checboxButton?.setImage(UIImage(named: "v", in: bundle, compatibleWith: nil)!, for: UIControlState())
-            self.checboxButton?.isHidden = false
+            
+            if let url = LocalData.manager.getPaymentMethodDefaultMethodButtonImageURL(){
+            self.checkboxButton?.kf.setImage(with: url, for: .normal)
+            }
+           
+                
+//                .setImage(UIImage(named: "v", in: bundle, compatibleWith: nil)!, for: UIControlState())
+            self.checkboxButton?.isHidden = false
         }else{
-            self.checboxButton?.isHidden = true
+            self.checkboxButton?.isHidden = true
         }
     }
     
@@ -168,16 +173,19 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     func toggleEditMode(){
         self.editMode = !self.editMode
         if self.editMode == true {
-            let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-            self.checboxButton?.setImage(UIImage(named: "delete", in: bundle, compatibleWith: nil)!, for: UIControlState())
-            self.checboxButton?.isHidden = false
+            
+            if let url = LocalData.manager.getPaymentMethodRemoveButtonImageURL(){
+                self.checkboxButton?.kf.setImage(with: url, for: .normal)
+            }
+            self.checkboxButton?.isHidden = false
         }else{
             if self.paymentMethod!.isDefault == true {
-                let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-                self.checboxButton?.setImage(UIImage(named: "v", in: bundle, compatibleWith: nil)!, for: UIControlState())
-                self.checboxButton?.isHidden = false
+                if let url = LocalData.manager.getPaymentMethodDefaultMethodButtonImageURL(){
+                    self.checkboxButton?.kf.setImage(with: url, for: .normal)
+                }
+                self.checkboxButton?.isHidden = false
             }else{
-                self.checboxButton?.isHidden = true
+                self.checkboxButton?.isHidden = true
             }
         }
     }

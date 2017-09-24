@@ -38,7 +38,7 @@ class ApplePayView: CreditCardView {
   //their is no edit mode so the overide has an empty implementation
   override func toggleEditMode(){
     self.editMode = !self.editMode
-    self.checboxButton?.isHidden = self.editMode
+    self.checkboxButton?.isHidden = self.editMode
 
   }
   

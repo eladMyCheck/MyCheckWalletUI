@@ -168,13 +168,13 @@ open class MCPaymentMethodsViewController: MCViewController {
         self.footerLabel.text = LocalData.manager.getString("managePaymentMethodscardAcceptedWallet" , fallback: self.footerLabel.text)
         doNotStoreLabel.text = LocalData.manager.getString("managePaymentMethodsnotStoreCard" , fallback:doNotStoreLabel.text)
         //setting up colors
-        view.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsbackground", fallback: UIColor.white)
+        view.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsbackground", fallback: UIColor.white)
         for seporator in seporators{
-            seporator.backgroundColor = LocalData.manager.getColor("managePaymentMethodsColorsseporator", fallback: seporator.backgroundColor!)
+            seporator.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsseporator", fallback: seporator.backgroundColor!)
         }
-        footerLabel.textColor = LocalData.manager.getColor("managePaymentMethodsColorsseporatorText" , fallback: footerLabel.textColor)
-        walletHeaderLabel.textColor = LocalData.manager.getColor("managePaymentMethodsColorsseporatorText" , fallback: walletHeaderLabel.textColor)
-        pciLabel.textColor = LocalData.manager.getColor("managePaymentMethodsColorspciNotice" , fallback: pciLabel.textColor)
+        footerLabel.textColor = LocalData.manager.getColor("managePaymentMethodscolorsseporatorText" , fallback: footerLabel.textColor)
+        walletHeaderLabel.textColor = LocalData.manager.getColor("managePaymentMethodscolorsseporatorText" , fallback: walletHeaderLabel.textColor)
+        pciLabel.textColor = LocalData.manager.getColor("managePaymentMethodscolorspciNotice" , fallback: pciLabel.textColor)
         
     }
     
