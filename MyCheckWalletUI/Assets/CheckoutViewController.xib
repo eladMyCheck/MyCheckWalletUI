@@ -58,6 +58,22 @@
                 <outletCollection property="textFieldsBorderViews" destination="fEU-Sf-TUO" collectionClass="NSMutableArray" id="7sq-rA-PxU"/>
                 <outletCollection property="textFieldsBorderViews" destination="Ixc-Dk-xlz" collectionClass="NSMutableArray" id="Rei-nT-Xep"/>
                 <outletCollection property="textFieldsBorderViews" destination="cVa-fN-iC0" collectionClass="NSMutableArray" id="DOn-1D-ggJ"/>
+                <outletCollection property="ragularFields" destination="YDa-E9-pMW" collectionClass="NSMutableArray" id="iga-lW-8j0"/>
+                <outletCollection property="ragularFields" destination="OMD-Q3-h8X" collectionClass="NSMutableArray" id="wKE-9C-2Ek"/>
+                <outletCollection property="ragularFields" destination="Wkn-fX-QTt" collectionClass="NSMutableArray" id="fyp-EA-UC3"/>
+                <outletCollection property="ragularFields" destination="Wqs-Pv-v4G" collectionClass="NSMutableArray" id="QZA-0w-wiu"/>
+                <outletCollection property="buttons" destination="N0u-Ng-8ai" collectionClass="NSMutableArray" id="WDL-Wc-XNi"/>
+                <outletCollection property="ragularLabels" destination="kb4-tj-hY9" collectionClass="NSMutableArray" id="PAB-IX-v1L"/>
+                <outletCollection property="headerLabels" destination="zZg-Fe-gBI" collectionClass="NSMutableArray" id="2Yb-wH-EiL"/>
+                <outletCollection property="buttons" destination="LU0-WJ-369" collectionClass="NSMutableArray" id="rFN-ah-hZz"/>
+                <outletCollection property="buttons" destination="gcD-LR-2wa" collectionClass="NSMutableArray" id="U9a-Yj-o6K"/>
+                <outletCollection property="ragularLabels" destination="xeh-NB-TXJ" collectionClass="NSMutableArray" id="B29-1J-vHl"/>
+                <outletCollection property="ragularLabels" destination="L3r-7Z-Iff" collectionClass="NSMutableArray" id="jAe-1S-LDH"/>
+                <outletCollection property="ragularLabels" destination="4Cy-p3-4hS" collectionClass="NSMutableArray" id="Zpw-H7-dKl"/>
+                <outletCollection property="buttons" destination="QAm-kq-Ygm" collectionClass="NSMutableArray" id="Nr2-sP-BF6"/>
+                <outletCollection property="headerLabels" destination="EPT-U7-LZa" collectionClass="NSMutableArray" id="Dmr-5G-Aqc"/>
+                <outletCollection property="headerLabels" destination="wA0-gS-QqR" collectionClass="NSMutableArray" id="osz-cv-o5n"/>
+                <outletCollection property="ragularFields" destination="0oB-XW-gXs" collectionClass="NSMutableArray" id="m7U-hR-ySA"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

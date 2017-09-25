@@ -288,6 +288,11 @@
                         <outletCollection property="seporators" destination="5HA-5h-MbZ" collectionClass="NSMutableArray" id="PwC-oD-Ofv"/>
                         <outletCollection property="seporators" destination="v1q-x0-ogk" collectionClass="NSMutableArray" id="6at-xB-1dG"/>
                         <outletCollection property="seporators" destination="sxO-6J-ion" collectionClass="NSMutableArray" id="sPS-2s-yEb"/>
+                        <outletCollection property="ragularLabels" destination="chZ-3o-c4k" collectionClass="NSMutableArray" id="8Fk-dB-qE8"/>
+                        <outletCollection property="headerLabels" destination="Cks-AO-TSS" collectionClass="NSMutableArray" id="ohh-fb-0N1"/>
+                        <outletCollection property="ragularLabels" destination="8k3-mm-veH" collectionClass="NSMutableArray" id="AeV-5R-DF8"/>
+                        <outletCollection property="headerLabels" destination="zRI-Cd-gfs" collectionClass="NSMutableArray" id="6Tx-R2-V3K"/>
+                        <outletCollection property="headerLabels" destination="JQv-0Z-gjB" collectionClass="NSMutableArray" id="6xZ-Tk-yQD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dze-Yw-Dmn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -437,11 +442,11 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQG-cr-JRl" userLabel="do not store super">
-                                <rect key="frame" x="18" y="219" width="176" height="42"/>
+                                <rect key="frame" x="18" y="219" width="200.33333333333334" height="42"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do not store this card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dr-Jr-Bol">
-                                        <rect key="frame" x="36" y="13" width="140" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <rect key="frame" x="36" y="11.666666666666657" width="164.33333333333334" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -529,6 +534,14 @@
                         <outlet property="typeImage" destination="A7V-OB-5BU" id="pz0-Sp-fzm"/>
                         <outlet property="zipField" destination="PFL-fa-3RB" id="bbw-zX-PeP"/>
                         <outlet property="zipUnderline" destination="5UK-IR-MZx" id="fKe-Rx-hSA"/>
+                        <outletCollection property="ragularFields" destination="JuV-uX-eLO" collectionClass="NSMutableArray" id="Lus-ij-gto"/>
+                        <outletCollection property="ragularFields" destination="HNb-VI-wZf" collectionClass="NSMutableArray" id="mAc-e1-tmm"/>
+                        <outletCollection property="ragularFields" destination="bol-cB-Pbe" collectionClass="NSMutableArray" id="ya7-ep-0Yv"/>
+                        <outletCollection property="ragularFields" destination="PFL-fa-3RB" collectionClass="NSMutableArray" id="UvS-FZ-X7E"/>
+                        <outletCollection property="ragularLabels" destination="vj5-EE-P4N" collectionClass="NSMutableArray" id="MP8-ce-ex9"/>
+                        <outletCollection property="ragularLabels" destination="0Dr-Jr-Bol" collectionClass="NSMutableArray" id="yXV-gV-nOU"/>
+                        <outletCollection property="buttons" destination="pVn-G1-NBu" collectionClass="NSMutableArray" id="S6n-DL-9rg"/>
+                        <outletCollection property="buttons" destination="Xfi-ZR-1ZM" collectionClass="NSMutableArray" id="SvD-Tf-s2U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XV-ac-uSO" userLabel="First Responder" sceneMemberID="firstResponder"/>

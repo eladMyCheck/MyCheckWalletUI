@@ -34,8 +34,30 @@ public enum LocaleChangeResult{
 
 ///MyCheckWallet is a singleton that will give you access to all of the MyCheck functionality. It has all the calls needed to manage a user's payment methods.
 open class Wallet{
+    
+    /// Advanced settings that change UI elements look across all screens.
+    public struct UI {
+        /// The font that will be used on most texts: labels, text fields etc
+        public var regularFont : UIFont = UIFont.systemFont(ofSize: 10)
+        /// Will resize the all elements using the ragular font by adding this delta to the point size of the font.
+        public var ragularFontSizeDelta: CGFloat = 0
+        
+        /// The font that will be used on headers
+        public var headersFont : UIFont = UIFont.boldSystemFont(ofSize:10)
+        /// Will resize the all elements using the header font by adding this delta to the point size of the font.
+        public var headerFontSizeDelta: CGFloat = 0
+        
+        /// The font that will be used on buttons
+        public var buttonsFont : UIFont = UIFont.boldSystemFont(ofSize:10)
+        /// Will resize the all elements using the button font by adding this delta to the point size of the font.
+        public   var buttonFontSizeDelta: CGFloat = 0
+    }
+    
     internal static let refreshPaymentMethodsNotification = "com.mycheck.refreshPaymentMethodsNotification"
     internal static let loggedInNotification = "com.mycheck.loggedInNotification"
+    
+    /// Advanced settings that change UI elements look across all screens.
+    public var ui: Wallet.UI = Wallet.UI()
     
     //used for the add credit card API call.
     internal var PCIDomain: String?

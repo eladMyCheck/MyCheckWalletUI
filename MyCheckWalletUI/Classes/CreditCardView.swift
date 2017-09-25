@@ -47,7 +47,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             creditCardNumberlabel.layer.cornerRadius = 4
             creditCardNumberlabel.clipsToBounds = true
             creditCardNumberlabel.textColor = UIColor.white
-            creditCardNumberlabel.font =  UIFont(name: creditCardNumberlabel.font.fontName, size: creditCardNumberlabel.font.pointSize)
+            creditCardNumberlabel.font = UIFont.ragularFont(withSize: creditCardNumberlabel.font.pointSize)
             creditCardNumberlabel.text = method.extaDescription
             
         }
@@ -58,8 +58,9 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             expirationDateLabel.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4)
             expirationDateLabel.layer.cornerRadius = 4
             expirationDateLabel.clipsToBounds = true
-            expirationDateLabel.font =  UIFont(name: expirationDateLabel.font.fontName, size: expirationDateLabel.font.pointSize )
-            
+        
+            expirationDateLabel.font = UIFont.ragularFont(withSize: expirationDateLabel.font.pointSize)
+
             expirationDateLabel.text = method.extraSecondaryDescription
             
             

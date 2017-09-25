@@ -20,6 +20,7 @@ public protocol MCPaymentMethodsViewControllerDelegate : class{
 
 ///A view controller that provides the user with the ability to add a payment method, set a default payment method and delete payment methods. The view controller is meant to be displayed modely.
 open class MCPaymentMethodsViewController: MCViewController {
+    
     @IBOutlet weak var doNotStoreSuperview: UIView!
     @IBOutlet weak var activityInidicator: UIActivityIndicatorView!
     fileprivate var creditCardVC: MCAddCreditCardViewController?
