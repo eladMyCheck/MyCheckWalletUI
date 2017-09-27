@@ -33,7 +33,7 @@ public enum LocaleChangeResult{
 }
 
 ///MyCheckWallet is a singleton that will give you access to all of the MyCheck functionality. It has all the calls needed to manage a user's payment methods.
-open class Wallet{
+open class Wallet : NSObject{
     
     /// Advanced settings that change UI elements look across all screens.
     public struct UI {
@@ -90,7 +90,8 @@ open class Wallet{
     
     //Used for session managment and calling server.
     internal var network: RequestProtocol = Networking.shared;
-    init() {
+    override init() {
+        super.init()
         self.configureWallet(success: nil, fail: nil)
     }
     
