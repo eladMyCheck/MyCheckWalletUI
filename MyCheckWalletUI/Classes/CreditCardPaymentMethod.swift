@@ -39,7 +39,7 @@ public enum CreditCardType : String{
 
 
 ///Represents a payment method the user has.
-public struct CreditCardPaymentMethod{
+public struct CreditCardPaymentMethod: PaymentMethodInterface{
   
   /// The Id of the payment method.
   fileprivate let _Id : String
@@ -95,10 +95,9 @@ public struct CreditCardPaymentMethod{
   
   
   
-  }
-
-extension CreditCardPaymentMethod: PaymentMethodInterface{
-    public func generateJSON() -> [String : Any] {
+ 
+    
+    public func generateJSON() -> [String: Any]{
        
         
         guard let JSON = self.JSON else{

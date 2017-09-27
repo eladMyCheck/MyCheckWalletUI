@@ -39,4 +39,10 @@ class KeyValueStorageProtocolMockAndSpy: KeyValueStorageProtocol{
         return returnValue as! Array<String>
         
     }
+    
+    func getBool(_ key: String , fallback: Bool) -> Bool{
+    self.key = key
+        return returnValue as! Bool
+
+    }
 }
