@@ -122,18 +122,30 @@ public class LocalData : KeyValueStorageProtocol{
 }
 
 //specific value calls
-extension LocalData{
+internal extension LocalData{
 
-    public func getPaymentMethodRemoveButtonImageURL() -> URL?{
+     func getPaymentMethodRemoveButtonImageURL() -> URL?{
         return URL(string:getString("managePaymentMethodsimagesremoveButton"))
     }
     
-    public func getPaymentMethodDefaultMethodButtonImageURL() -> URL?{
+     func getPaymentMethodDefaultMethodButtonImageURL() -> URL?{
         return URL(string:getString("managePaymentMethodsimagesdefaultButton"))
     }
     
-    public func doNotStoreEnabled() -> Bool{
+     func doNotStoreEnabled() -> Bool{
         return getBool("settingsdoNotStoreEnabled", fallback: true)
     }
+    
+    func paymentMethodSelectorTextFieldColor() -> UIColor{
+    return getColor("checkoutPageColorscardNameDropDown", fallback: UIColor.white)
+    }
+    
+    func addCreditCardUnderlineColor() -> UIColor{
+    return getColor("addCreditColorsundeline", fallback: UIColor.darkText)
+    }
+    func addCreditCardInCheckoutVCHint() -> UIColor{
+    return getColor("checkoutPageColorshintTextColor", fallback: UIColor.lightText)
+    }
+    
 }
 

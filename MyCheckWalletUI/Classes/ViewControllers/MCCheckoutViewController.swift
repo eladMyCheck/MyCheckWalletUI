@@ -27,6 +27,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
   ///The delegate that will be updated with MCCheckoutViewController height changes
   open var checkoutDelegate : CheckoutDelegate?
   
+    @IBOutlet weak var cardsToWalletsSeporatorLabel: UILabel!
   //Outlets
   @IBOutlet weak fileprivate  var paymentSelectorView: UIView!
   
@@ -183,10 +184,10 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
   
   func configureUI(){
     
-    creditCardNumberField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardNumPlaceHoldar" ,fallback: "1234 1234 1234 1234"), attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
-    dateField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardDatePlaceHoldar" ,fallback: dateField.placeholder), attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
-    cvvField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder), attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
-    zipField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder), attributes:[NSForegroundColorAttributeName: UIColor(r: 255, g: 255, b: 255, a: 0.33)])
+    creditCardNumberField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardNumPlaceHoldar" ,fallback: "1234 1234 1234 1234"), attributes:[NSForegroundColorAttributeName: LocalData.manager.addCreditCardInCheckoutVCHint()])
+    dateField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardDatePlaceHoldar" ,fallback: dateField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])
+    cvvField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])
+    zipField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])
     for view in textFieldsBorderViews {
       view.layer.borderColor = UIColor(r: 124, g: 114, b: 112, a: 1).cgColor
       view.layer.borderWidth = 1.0
@@ -198,7 +199,9 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
       if paymentMethods.count > 0 {
         creditCardNumberField.isHidden = true
         self.paymentSelectorView.isHidden = false
+        
         self.paymentMethodSelectorTextField.text = self.selectedMethod!.description
+        self.paymentMethodSelectorTextField.textColor = LocalData.manager.paymentMethodSelectorTextFieldColor()
         
         self.paymentMethods.first!.setupMethodImage(for: self.typeImage)
         showDeleteBut(show: self.paymentMethods.first!.isSingleUse)
@@ -499,6 +502,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     pickerDownArrow.image = pickerDownArrow.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
     pickerDownArrow.tintColor = LocalData.manager.getColor("checkoutPageColorspickerArrowColor", fallback: UIColor.clear)
     footerLabel.textColor = LocalData.manager.getColor("checkoutPageColorscardAccepted", fallback: footerLabel.textColor!)
+    cardsToWalletsSeporatorLabel.textColor = LocalData.manager.getColor("checkoutPageColorscardAccepted", fallback: footerLabel.textColor!)
     view.backgroundColor = LocalData.manager.getColor("checkoutPageColorsbackground", fallback: UIColor.clear)
     for (_ , view) in borderForField {
       view.layer.borderColor = LocalData.manager.getColor("checkoutPageColorsfieldBorder", fallback: view.backgroundColor!).cgColor

@@ -22,7 +22,7 @@ internal extension UIColor{
     }
     
     static func fieldUnderline() -> UIColor {
-    return UIColor(r: 126, g: 166, b: 171, a: 1)
+    return LocalData.manager.addCreditCardUnderlineColor()
     }
     
    static func fieldUnderlineInvalid() -> UIColor {

@@ -198,9 +198,11 @@ open class MCAddCreditCardViewController: MCViewController {
         cancelBut.setTitleColor(LocalData.manager.getColor("addCreditColorscancelButtonText", fallback: UIColor.white), for: UIControlState())
         
         
-        for (key , _) in underlineForField!{
-            key.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: key.textColor!)
-            key.placeholderColor(LocalData.manager.getColor("addCreditColorshintTextColor" , fallback: UIColor.lightGray))
+        for (field , underline) in underlineForField!{
+            field.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: field.textColor!)
+            field.placeholderColor(LocalData.manager.getColor("addCreditColorshintTextColor" , fallback: UIColor.lightGray))
+            
+            underline.backgroundColor = UIColor.fieldUnderline()
             //value.backgroundColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: value.backgroundColor!)
         }
         
