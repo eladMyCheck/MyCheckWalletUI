@@ -36,8 +36,9 @@ open class MCAddCreditCardViewController: MCViewController {
     @IBOutlet internal var cvvUnderline: UIView!
     @IBOutlet internal var zipUnderline: UIView!
     @IBOutlet internal weak var errorLabel: UILabel!
-    @IBOutlet weak var navBar: UINavigationBar!
     
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var navbar: UIView!
     internal var underlineForField : [UITextField : UIView]?
     internal var activityView : UIActivityIndicatorView!
     
@@ -70,6 +71,10 @@ open class MCAddCreditCardViewController: MCViewController {
     }
     
     
+//    @IBAction func backPressed(_ sender: Any) {
+//        self.delegate?.backPressed()
+//
+//    }
     
     
     //MARK: - actions
@@ -184,10 +189,14 @@ open class MCAddCreditCardViewController: MCViewController {
         
         cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.title(for: UIControlState())) , for: UIControlState())
         cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.title(for: UIControlState())) , for: .highlighted)
+//        if let backBut = backButton{
+//        backBut.kf.setImage(with: LocalData.manager.getBackButtonImageURL(), for: .normal , options:[.scaleFactor(3.0)])
+//        }
         
         //setting colors
-        navBar.barTintColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navBar.backgroundColor!)
-        
+        if let navbar = navbar{
+          navbar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navbar.backgroundColor!)
+        }
         errorLabel.textColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
         applyButton.backgroundColor = LocalData.manager.getColor("addCreditColorsapplyBackgroundColor", fallback: UIColor.white)
         applyButton.layer.cornerRadius = 8

@@ -19,6 +19,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     var addCardWidth = 185.0 as CGFloat
     var secondMargin = 5 as CGFloat
     @IBOutlet weak var navBar: UIView!
+    @IBOutlet weak var AroundNavBar: UIView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var scrollView: MCScrollView!
     @IBOutlet weak var backBut: UIButton!
@@ -210,9 +211,10 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     @objc fileprivate func setupUI(){
         
         navBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navBar.backgroundColor!)
+        AroundNavBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navBar.backgroundColor!)
         editButton.setTitleColor( LocalData.manager.getColor("managePaymentMethodscolorseditButtonText", fallback: editButton.titleColor(for: UIControlState())!)
             , for: UIControlState())
-        backBut.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsbackButton", fallback: navBar.backgroundColor!)
+        backBut.kf.setImage(with: LocalData.manager.getBackButtonImageURL(), for: .normal , options:[.scaleFactor(3.0)])
     }
     fileprivate func updateButtonTxt(){
         printIfDebug("edit mode \(editMode)")

@@ -137,15 +137,22 @@ internal extension LocalData{
     }
     
     func paymentMethodSelectorTextFieldColor() -> UIColor{
-    return getColor("checkoutPageColorscardNameDropDown", fallback: UIColor.white)
+    return getColor("checkoutPagecolorscardNameDropDown", fallback: UIColor.white)
     }
     
     func addCreditCardUnderlineColor() -> UIColor{
     return getColor("addCreditColorsundeline", fallback: UIColor.darkText)
     }
     func addCreditCardInCheckoutVCHint() -> UIColor{
-    return getColor("checkoutPageColorshintTextColor", fallback: UIColor.lightText)
+    return getColor("checkoutPagecolorshintTextColor", fallback: UIColor.lightText)
     }
     
+    func getCheckoutPageDropdownImageURL() -> URL?{
+        return URL(string:getString("checkoutPageimagesdropDownArrow"))
+    }
+    
+    func getBackButtonImageURL() -> URL?{
+        return URL(string:getString("managePaymentMethodsimagesheaderBackButton"))
+    }
 }
 
