@@ -42,6 +42,7 @@ open class MCAddCreditCardViewController: MCViewController {
     internal var underlineForField : [UITextField : UIView]?
     internal var activityView : UIActivityIndicatorView!
     
+    @IBOutlet var barItem: UINavigationItem!
     @IBOutlet weak var doNotStoreSuperview: UIView!
     weak  var delegate : MCAddCreditCardViewControllerDelegate?
     //MARK: - life cycle functions
@@ -180,6 +181,8 @@ open class MCAddCreditCardViewController: MCViewController {
     
     //MARK: - private functions
     internal func setupUI(){
+        
+    self.barItem.title =  LocalData.manager.getString("managePaymentMethodsheader" , fallback:"")
         self.creditCardNumberField.placeholder = LocalData.manager.getString("addCreditcardNumPlaceHoldar")
         self.cvvField.placeholder = LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)
         self.dateField.placeholder = LocalData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)
@@ -517,3 +520,9 @@ fileprivate extension CreditCardType{
 
 }
 
+
+extension MCAddCreditCardViewController: navigationItemHasViewController{
+    func getNavigationItem() -> UINavigationItem{
+    return barItem
+    }
+}

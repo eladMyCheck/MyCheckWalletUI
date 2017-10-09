@@ -133,6 +133,7 @@ open class AddCreditCardViewController: UIViewController
     // MARK private methods
     //MARK: - private functions
     internal func setupUI(){
+        
         self.creditCardNumberField.placeholder = LocalData.manager.getString("addCreditcardNumPlaceHoldar")
         self.cvvField.placeholder = LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)
         self.dateField.placeholder = LocalData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)

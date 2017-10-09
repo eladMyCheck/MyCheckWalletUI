@@ -9,6 +9,12 @@
 import UIKit
 import MyCheckCore
 
+//The contained views have navigation items and this is how we get them in order to exchange the items in the navigation bar
+internal protocol navigationItemHasViewController{
+func getNavigationItem() -> UINavigationItem
+}
+
+
 ///The protocol updates on important changes in MCPaymentMethodsViewController
 public protocol MCPaymentMethodsViewControllerDelegate : class{
     
@@ -40,15 +46,14 @@ open class MCPaymentMethodsViewController: MCViewController {
     @IBOutlet var seporators: [UIView]!
     @IBOutlet fileprivate weak var creditCardListContainer: UIView!
     @IBOutlet fileprivate weak var addCreditCardContainer: UIView!
-    @IBOutlet fileprivate weak var outputForTesting: UILabel!
     
     @IBOutlet fileprivate weak var creditCardInCenterConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate weak var creditCardsVCCenterXConstraint: NSLayoutConstraint!
     @IBOutlet weak var walletsSeporator: UIView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     @IBOutlet weak var weAcceptSuperview: UIView!
     @IBOutlet weak var acceptedCards: UIView!
-    @IBOutlet weak internal var titleLabel: UILabel!
     @IBOutlet weak internal var footerLabel: UILabel!
     @IBAction func addCreditCardPressed(_ sender: AnyObject) {
         showEnterCreditCard(true , animated: true)
@@ -92,6 +97,8 @@ open class MCPaymentMethodsViewController: MCViewController {
         nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
         setupUI()
         
+        navigationBar.delegate = self
+        
         //recieving events from all intergrated sdks
         showEnterCreditCard(false , animated: false)
         
@@ -126,6 +133,8 @@ open class MCPaymentMethodsViewController: MCViewController {
         }else if segue.identifier == "creditCardsViewController"{
             creditCardListVC = segue.destination as? MCCreditCardsViewController
             creditCardListVC!.paymentMethods = self.paymentMethods
+
+
         }
     }
     //MARK: - actions
@@ -140,9 +149,16 @@ open class MCPaymentMethodsViewController: MCViewController {
         // creditCardVC!.resetView()
         if show{
             _ = creditCardVC!.becomeFirstResponder()
+            
+                self.navigationBar.popItem(animated: false)
+
+            
+            self.navigationBar.pushItem((creditCardVC?.getNavigationItem())!, animated: false)
         }else{
             _ = creditCardVC!.resignFirstResponder()
-            
+           self.navigationBar.popItem(animated: false)
+            self.navigationBar.pushItem((creditCardListVC?.getNavigationItem())!, animated: false)
+
         }
         creditCardInCenterConstraint.priority = show ? 999 : 1
         creditCardsVCCenterXConstraint.priority = show ? 1 : 999
@@ -159,14 +175,14 @@ open class MCPaymentMethodsViewController: MCViewController {
     
     func addCreditCardPressedNotificationReceived(_ notification: Notification){
         if creditCardListVC?.editMode == true {
-            creditCardListVC?.editPressed((creditCardListVC?.editButton)!)
+//            creditCardListVC?.editPressed((creditCardListVC?.editButton)!)
         }
         self.showEnterCreditCard(true, animated: true)
     }
     
     
     internal func setupUI(){
-        titleLabel.text = LocalData.manager.getString("managePaymentMethodsheader" , fallback: titleLabel.text)
+        
         self.footerLabel.text = LocalData.manager.getString("managePaymentMethodscardAcceptedWallet" , fallback: self.footerLabel.text)
         doNotStoreLabel.text = LocalData.manager.getString("managePaymentMethodsnotStoreCard" , fallback:doNotStoreLabel.text)
         //setting up colors
@@ -179,15 +195,23 @@ open class MCPaymentMethodsViewController: MCViewController {
         pciLabel.textColor = LocalData.manager.getColor("managePaymentMethodscolorspciNotice" , fallback: pciLabel.textColor)
         
         doNotStoreSuperview.isHidden = !LocalData.manager.doNotStoreEnabled()
-
+self.navigationBar.barTintColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground" , fallback: UIColor.clear)
+        
+        self.navigationBar.tintColor = LocalData.manager.getColor("managePaymentMethodscolorseditButtonText" , fallback: UIColor.white)
+        self.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName : LocalData.manager.getColor("managePaymentMethodscolorsheaderText" , fallback: UIColor.white),
+            NSFontAttributeName: UIFont.headerFont(withSize: 18)
+        ]
+    
     }
+    
+    
     
 }
 
 extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate, MCCreditCardsViewControllerrDelegate{
     
     func recivedError(_ controller: MCAddCreditCardViewController , error:NSError){
-        outputForTesting.text = error.localizedDescription
     }
     func addedNewPaymentMethod(_ controller: MCAddCreditCardViewController ,token:String){
         Wallet.shared.getPaymentMethods(success: { (methods) in
@@ -195,7 +219,6 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
             self.creditCardListVC!.paymentMethods = methods
             self.creditCardListVC!.setCreditCardsUI(true)
             self.showEnterCreditCard(false , animated: true)
-            self.outputForTesting.text = "credit card added"
         }) { (error) in
             
         }
@@ -409,4 +432,9 @@ fileprivate extension MCPaymentMethodsViewController{
 //    
 //}
 
+extension MCPaymentMethodsViewController: UINavigationBarDelegate{
+    public func position(for bar: UIBarPositioning) -> UIBarPosition{
+    return .topAttached
+    }
+ }
 

@@ -13,14 +13,13 @@ internal protocol MCCreditCardsViewControllerrDelegate {
 }
 
 internal class MCCreditCardsViewController: MCViewController , UIGestureRecognizerDelegate, CreditCardViewDelegate{
+    @IBOutlet var barItem: UINavigationItem!
     let margin = 5.0 as CGFloat
     var cardViewWidth = 210 as CGFloat
     var startMargin = 106 as CGFloat
     var addCardWidth = 185.0 as CGFloat
     var secondMargin = 5 as CGFloat
-    @IBOutlet weak var navBar: UIView!
-    @IBOutlet weak var AroundNavBar: UIView!
-    @IBOutlet weak var editButton: UIButton!
+    
     @IBOutlet weak var scrollView: MCScrollView!
     @IBOutlet weak var backBut: UIButton!
     var activityView : UIActivityIndicatorView!
@@ -40,7 +39,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         startMargin = (UIScreen.main.bounds.width - addCardWidth ) / 2.0  as CGFloat
         
         secondMargin = margin + 33.0
-       
+        
         self.scrollView.delegate = self;
         delay(0.1){
             self.setCreditCardsUI(false)
@@ -49,6 +48,8 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         setupUI()
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(MCCreditCardsViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
+        
+        barItem.rightBarButtonItem = getRightBarButton(editMode: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,9 +67,9 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         if  self.paymentMethods != nil{
             creditCardCount = self.paymentMethods.count
             self.scrollView.isScrollEnabled = creditCardCount > 0
-
+            
         }else{
-        self.scrollView.isScrollEnabled = false
+            self.scrollView.isScrollEnabled = false
         }
         
         let addCreditCardView = AddCreditCardView(frame: CGRect(x: startMargin, y: 0.5 * (scrollView.frame.size.height-cardHeight), width: addCardWidth , height: cardHeight) )
@@ -98,11 +99,11 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
                 }(){//if we succeed in creating the card we will now set it up
                 
                 //updating the width to be more acurate (calculated directly from xib file)
-          
-                    creditCards.add(card)
-                    card.delegate = self
-                    self.scrollView.addSubview(card)
-                    
+                
+                creditCards.add(card)
+                card.delegate = self
+                self.scrollView.addSubview(card)
+                
                 
                 
             }
@@ -113,16 +114,16 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         
         
         if creditCardCount == 0 {
-            self.editButton.setTitle("", for: UIControlState())
-            self.editButton.isEnabled = false
+            //            self.editButton.setTitle("", for: UIControlState())
+            //            self.editButton.isEnabled = false
         }else{
             
             updateButtonTxt()
-            self.editButton.isEnabled = true
+            //self.editButton.isEnabled = true
         }
         
         self.scrollView.contentSize = CGSize(width:addCardWidth +  CGFloat(creditCardCount)*(cardViewWidth + margin ) + startMargin * 2
-+ secondMargin - margin , height:0.0)
+            + secondMargin - margin , height:0.0)
         
         UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
             if creditCardCount > 0{
@@ -177,11 +178,11 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         })
     }
     
-  internal func setPaymentAsDefault(method: PaymentMethodInterface){
-    if method.type != .applePay{
-        Wallet.shared.applePayController.changeApplePayDefault(to: false)
-    }
-      reloadMethods()
+    internal func setPaymentAsDefault(method: PaymentMethodInterface){
+        if method.type != .applePay{
+            Wallet.shared.applePayController.changeApplePayDefault(to: false)
+        }
+        reloadMethods()
         
     }
     internal func reloadMethods(){
@@ -210,24 +211,31 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     
     @objc fileprivate func setupUI(){
         
-        navBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navBar.backgroundColor!)
-        AroundNavBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navBar.backgroundColor!)
-        editButton.setTitleColor( LocalData.manager.getColor("managePaymentMethodscolorseditButtonText", fallback: editButton.titleColor(for: UIControlState())!)
-            , for: UIControlState())
-        backBut.kf.setImage(with: LocalData.manager.getBackButtonImageURL(), for: .normal , options:[.scaleFactor(3.0)])
+        //        navBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navBar.backgroundColor!)
+        //        AroundNavBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navBar.backgroundColor!)
+        //        editButton.setTitleColor( LocalData.manager.getColor("managePaymentMethodscolorseditButtonText", fallback: editButton.titleColor(for: UIControlState())!)
+        //            , for: UIControlState())
+        //        backBut.kf.setImage(with: LocalData.manager.getBackButtonImageURL(), for: .normal , options:[.scaleFactor(3.0)])
+        barItem.title = LocalData.manager.getString("managePaymentMethodsheader")
+        if let url = LocalData.manager.getBackButtonImageURL(){
+            self.barItem.backBarButtonItem?.setImageAsync(url: url)
+        }
+        self.barItem.backBarButtonItem?.target = self
+        self.barItem.backBarButtonItem?.action = #selector(MCCreditCardsViewController.backPressed)
     }
     fileprivate func updateButtonTxt(){
         printIfDebug("edit mode \(editMode)")
-        self.editMode ? self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done"), for: UIControlState()) : self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit"), for: UIControlState())
+        //        self.editMode ? self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done"), for: UIControlState()) : self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit"), for: UIControlState())
+        self.barItem.rightBarButtonItem = getRightBarButton(editMode: editMode)
     }
     
-     func  getXOffset(index: Int) -> CGFloat{
+    func  getXOffset(index: Int) -> CGFloat{
         if index == 0 {
             return 0.0
         }
         let doubleIndex = CGFloat(index)
-      let toReturn = (doubleIndex - 0.5) * (cardViewWidth + margin ) + ( self.addCardWidth  + secondMargin  ) / 2
-return toReturn
+        let toReturn = (doubleIndex - 0.5) * (cardViewWidth + margin ) + ( self.addCardWidth  + secondMargin  ) / 2
+        return toReturn
     }
 }
 
@@ -240,7 +248,7 @@ extension MCCreditCardsViewController : UIScrollViewDelegate {
         printIfDebug("x location: \(targetContentOffset.pointee.x )")
         
         let kMaxIndex = CGFloat( creditCards.count )
-
+        
         let targetX = scrollView.contentOffset.x + velocity.x * 20.0 as CGFloat
         var targetIndex = round(targetX / (cardViewWidth + 0)) as CGFloat
         
@@ -270,5 +278,23 @@ extension MCCreditCardsViewController : UIScrollViewDelegate {
         }
         targetContentOffset.pointee.x = getXOffset(index: Int( targetIndex))
         currantIndex = Int( targetIndex)
+    }
+}
+
+extension MCCreditCardsViewController: navigationItemHasViewController{
+    func getNavigationItem() -> UINavigationItem{
+        return barItem
+    }
+}
+
+fileprivate extension MCCreditCardsViewController{
+    
+    func getRightBarButton(editMode: Bool) -> UIBarButtonItem{
+        
+        let title =       editMode ? LocalData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done") : LocalData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit")
+        
+        
+        let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(MCCreditCardsViewController.editPressed))
+        return button
     }
 }
