@@ -211,10 +211,7 @@ open class Wallet : NSObject{
             
             self.configureLocale(walletJSON: walletUIJSON ,success: success, fail: fail)
             
-            if let success = success{
-            success()
-            }
-            
+                       
             
         }, fail: nil)
         

@@ -107,6 +107,7 @@ open class MCAddCreditCardViewController: MCViewController {
                     self.dateField.isUserInteractionEnabled = true
                     self.cvvField.isUserInteractionEnabled = true
                     self.zipField.isUserInteractionEnabled = true
+                    self.resetView()
                 }
             }, fail: { error in
                 self.showActivityIndicator(false)

@@ -114,6 +114,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         
         
         if creditCardCount == 0 {
+            barItem.rightBarButtonItem = nil 
             //            self.editButton.setTitle("", for: UIControlState())
             //            self.editButton.isEnabled = false
         }else{
@@ -222,6 +223,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         }
         self.barItem.backBarButtonItem?.target = self
         self.barItem.backBarButtonItem?.action = #selector(MCCreditCardsViewController.backPressed)
+        updateButtonTxt()
     }
     fileprivate func updateButtonTxt(){
         printIfDebug("edit mode \(editMode)")
