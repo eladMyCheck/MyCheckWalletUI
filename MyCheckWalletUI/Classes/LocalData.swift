@@ -50,9 +50,7 @@ public class LocalData : KeyValueStorageProtocol{
         for (key , value) in dictionary{
             
             let keyFinal = "\(prefixFinal)\(key)"
-            if key as! String == "doNotStoreEnabled"{
-            print("lalala")
-            }
+            
             if let str = value as? String{
             strings[keyFinal] = str
             }else if let dic = value as? NSDictionary{
@@ -133,7 +131,8 @@ internal extension LocalData{
     }
     
      func doNotStoreEnabled() -> Bool{
-        return getBool("settingsdoNotStoreEnabled", fallback: true)
+        return true
+        //return getBool("settingsdoNotStoreEnabled", fallback: true)
     }
     
     func paymentMethodSelectorTextFieldColor() -> UIColor{
