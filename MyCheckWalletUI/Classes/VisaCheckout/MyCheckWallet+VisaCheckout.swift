@@ -15,7 +15,7 @@ extension URIs{
 
 extension Wallet {
 
-    func addVisaCheckout(payload: [String: Any], success: @escaping ((PaymentMethodInterface) -> Void) , fail: ((NSError) -> Void)? ){
+    func addVisaCheckout(payload: [String: Any], singleUse: Bool , success: @escaping ((PaymentMethodInterface) -> Void) , fail: ((NSError) -> Void)? ){
 
         guard let payloadString = JSONToString(JSON: payload) else {
             if let fail = fail {
@@ -25,7 +25,7 @@ extension Wallet {
         }
         
         
-        let params: [String: Any] = [ "source": "visacheckout" , "visa_payload": payloadString]
+        let params: [String: Any] = [ "source": "visacheckout" , "visa_payload": payloadString  , "is_single_use":  String(describing: NSNumber(value: singleUse))]
         
         if let domain = Networking.shared.domain {
             let urlStr = domain + URIs.addVisaCheckout

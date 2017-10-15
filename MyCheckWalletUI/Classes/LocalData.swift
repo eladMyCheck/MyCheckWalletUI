@@ -131,8 +131,7 @@ internal extension LocalData{
     }
     
      func doNotStoreEnabled() -> Bool{
-        return true
-        //return getBool("settingsdoNotStoreEnabled", fallback: true)
+        return getBool("settingsdoNotStoreEnabled", fallback: true)
     }
     
     func paymentMethodSelectorTextFieldColor() -> UIColor{

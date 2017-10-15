@@ -311,6 +311,8 @@ fileprivate extension MCPaymentMethodsViewController{
     
     fileprivate func setWalletButtons(){
         switch Wallet.shared.factories.count {
+        case 0:
+            self.doNotStoreCheckbox.superview?.isHidden = true
         case 1:
             let factory = Wallet.shared.factories[0]
             let  butRap = factory.getAddMethodButton()
@@ -379,8 +381,8 @@ fileprivate extension MCPaymentMethodsViewController{
         }
         walletsSuperview.layoutIfNeeded()
         
-        walletsSeporator.isHidden = Wallet.shared.factories.count == 0
-        
+            walletsSeporator.isHidden = Wallet.shared.factories.count == 0
+
     }
     
     func addAspectRationConstraintsToWalletButton(buttonRapper: PaymentMethodButtonRapper){

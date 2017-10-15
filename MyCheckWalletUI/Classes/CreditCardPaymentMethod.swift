@@ -279,19 +279,19 @@ extension CreditCardType{
   func imageURLForDropdown( ) -> URL?{
     switch self {
     case .MasterCard:
-      return URL(string:  LocalData.manager.getString("cardsDropDownmastercard"))!
+      return URL(string:  LocalData.manager.getString("cardsDropDownmastercard"))
     case .Visa:
-      return URL(string:  LocalData.manager.getString("cardsDropDownvisa"))!
+      return URL(string:  LocalData.manager.getString("cardsDropDownvisa"))
     case .Diners:
-      return URL(string:  LocalData.manager.getString("cardsDropDowndinersclub"))!
+      return URL(string:  LocalData.manager.getString("cardsDropDowndinersclub"))
     case .Discover:
-      return URL(string:  LocalData.manager.getString("cardsDropDowndiscover"))!
+      return URL(string:  LocalData.manager.getString("cardsDropDowndiscover"))
     case .Amex:
-      return URL(string:  LocalData.manager.getString("cardsDropDownamex"))!
+      return URL(string:  LocalData.manager.getString("cardsDropDownamex"))
     case .JCB:
-      return URL(string:  LocalData.manager.getString("cardsDropDownJCB"))!
+      return URL(string:  LocalData.manager.getString("cardsDropDownJCB"))
     case .Maestro:
-      return URL(string:  LocalData.manager.getString("cardsDropDownmaestro"))!
+      return URL(string:  LocalData.manager.getString("cardsDropDownmaestro"))
       
     default:
       return nil

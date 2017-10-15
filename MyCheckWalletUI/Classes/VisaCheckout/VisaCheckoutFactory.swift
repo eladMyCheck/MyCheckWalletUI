@@ -32,10 +32,13 @@ open class VisaCheckoutFactory : PaymentMethodFactory{
     
     
     override func getAddMethodViewControllere(  ){
+         if let delegate = self.delegate{
         VisaCheckoutSDK.checkout(total: 0.0, currency:  Currency(string: LocalData.manager.getString("currencyCode")), completion: {
             result in
             if let JSON = result.payload{//if this object exsists it means the visa checkout succeeded
-                Wallet.shared.addVisaCheckout(payload: JSON, success: { method in
+                let singleUse = delegate.shouldBeSingleUse(self)
+
+                Wallet.shared.addVisaCheckout(payload: JSON, singleUse: singleUse, success: { method in
                     Wallet.shared.applePayController.changeApplePayDefault(to: false)
                     if let delegate = self.delegate{
                         delegate.addedPaymentMethod(self, method: method , message: LocalData.manager.getAddedVisaCheckoutMessage())
@@ -45,7 +48,7 @@ open class VisaCheckoutFactory : PaymentMethodFactory{
                 })
             }
         })
-       
+        }
     }
     
     
