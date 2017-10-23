@@ -114,7 +114,8 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             
         }, fail: nil)
         
-        nc.addObserver(self, selector: #selector(MCCheckoutViewController.receivedPaymentMethodsUpdateNotification), name: NSNotification.Name(rawValue: Session.Const.loggedInNotification), object: nil)
+        nc.addObserver(self, selector: #selector(MCCheckoutViewController.receivedPaymentMethodsUpdateNotification
+            ), name: NSNotification.Name(rawValue: Session.Const.loggedInNotification), object: nil)
         nc.addObserver(self, selector:#selector(MCCheckoutViewController.assignImages), name:NSNotification.Name(rawValue: "acceptedCardsCheckoutSet"), object: nil)
         
         

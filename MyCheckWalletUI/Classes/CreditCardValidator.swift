@@ -57,7 +57,7 @@ private enum CardType: String {
         case .Diners:
             return "^3(?:0[0-5]|[68][0-9])[0-9]{4,}$"
         case .Discover:
-            return "^6(?:011|5[0-9]{2})[0-9]{3,}$"
+            return "^6(?:011|5[0-9]{2}|4[4-9]{1}|660)[0-9]{3,}$"
         case .JCB:
             return "^(?:2131|1800|35[0-9]{3})[0-9]{3,}$"
         case .UnionPay:
