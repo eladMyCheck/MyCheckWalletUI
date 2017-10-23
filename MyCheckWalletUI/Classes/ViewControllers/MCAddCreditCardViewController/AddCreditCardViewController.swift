@@ -123,7 +123,7 @@ open class AddCreditCardViewController: UIViewController
         //setting up UI and updating it if the user logges in... just incase
         setupUI()
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(AddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
+        nc.addObserver(self, selector: #selector(AddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Session.Const.loggedInNotification), object: nil)
         
     }
     

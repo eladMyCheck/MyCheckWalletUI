@@ -58,7 +58,7 @@ open class MCAddCreditCardViewController: MCViewController {
         //setting up UI and updating it if the user logges in... just incase
         setupUI()
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
+        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Session.Const.loggedInNotification), object: nil)
         
     }
     internal static func instantiate(_ delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController{
