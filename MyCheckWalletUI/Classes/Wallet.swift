@@ -54,7 +54,6 @@ open class Wallet : NSObject{
     }
     
     internal static let refreshPaymentMethodsNotification = "com.mycheck.refreshPaymentMethodsNotification"
-    internal static let loggedInNotification = "com.mycheck.loggedInNotification"
     
     /// Advanced settings that change UI elements look across all screens.
     public var ui: Wallet.UI = Wallet.UI()
@@ -93,6 +92,9 @@ open class Wallet : NSObject{
     override init() {
         super.init()
         self.configureWallet(success: nil, fail: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(Wallet.loggedOut), name: NSNotification.Name(rawValue: Session.Const.loggedOutNotification), object: nil)
+
     }
     
     
@@ -493,6 +495,13 @@ fileprivate extension Wallet{
                 success()
             }
         }, fail: fail)
+    }
+    
+    @objc func loggedOut(notification: NSNotification){
+        
+        methods = nil
+        self.braintreeToken = nil
+        
     }
 }
 

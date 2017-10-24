@@ -35,7 +35,7 @@ internal enum AddMasterPassViewControllerCompletitionReason{
             let errorCode =  errorCode ?? ErrorCodes.masterPassFailed.getError().code
                 let errorMessage = errorMessage ?? ErrorCodes.masterPassFailed.getError().localizedDescription
             
-            let error = NSError(domain: Const.serverErrorDomain, code: errorCode, userInfo: [NSLocalizedDescriptionKey : errorMessage])
+            let error = NSError(domain: Session.Const.serverErrorDomain, code: errorCode, userInfo: [NSLocalizedDescriptionKey : errorMessage])
             
             self = .failed(error)
             

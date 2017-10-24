@@ -94,7 +94,9 @@ open class MCPaymentMethodsViewController: MCViewController {
         activityInidicator.stopAnimating();
         //setting up UI and updating it if the user logges in... just incase
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Wallet.loggedInNotification), object: nil)
+        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Session.Const.loggedInNotification), object: nil)
+        nc.addObserver(self, selector: #selector(MCPaymentMethodsViewController.receivedLogoutNotification), name: NSNotification.Name(rawValue: Session.Const.loggedOutNotification), object: nil)
+
         setupUI()
         
         navigationBar.delegate = self
@@ -180,6 +182,12 @@ open class MCPaymentMethodsViewController: MCViewController {
         self.showEnterCreditCard(true, animated: true)
     }
     
+    @objc fileprivate func receivedLogoutNotification(notification: NSNotification){
+        self.paymentMethods = nil
+        
+        self.creditCardListVC!.paymentMethods = nil
+        self.creditCardListVC!.setCreditCardsUI(false)
+    }
     
     internal func setupUI(){
         
@@ -214,14 +222,8 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
     func recivedError(_ controller: MCAddCreditCardViewController , error:NSError){
     }
     func addedNewPaymentMethod(_ controller: MCAddCreditCardViewController ,token:String){
-        Wallet.shared.getPaymentMethods(success: { (methods) in
-            self.paymentMethods = methods
-            self.creditCardListVC!.paymentMethods = methods
-            self.creditCardListVC!.setCreditCardsUI(true)
-            self.showEnterCreditCard(false , animated: true)
-        }) { (error) in
-            
-        }
+        refreshPaymentMethods()
+        
         
     }
     func canceled(){
@@ -308,7 +310,17 @@ fileprivate extension MCPaymentMethodsViewController{
     }
     
     
-    
+    func refreshPaymentMethods(){
+        
+        Wallet.shared.getPaymentMethods(success: { (methods) in
+            self.paymentMethods = methods
+            self.creditCardListVC!.paymentMethods = methods
+            self.creditCardListVC!.setCreditCardsUI(true)
+            self.showEnterCreditCard(false , animated: true)
+        }) { (error) in
+            
+        }
+    }
     fileprivate func setWalletButtons(){
         switch Wallet.shared.factories.count {
         case 0:
