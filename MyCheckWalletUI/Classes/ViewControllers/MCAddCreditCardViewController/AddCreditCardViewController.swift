@@ -33,7 +33,7 @@ protocol AddCreditCardDisplayLogic: class
     
 }
 
-open class AddCreditCardViewController: UIViewController
+open class AddCreditCardViewController: MCViewController
 {
     
     
@@ -50,7 +50,8 @@ open class AddCreditCardViewController: UIViewController
     @IBOutlet internal var cvvField: UITextField!
     @IBOutlet internal var zipField: UITextField!
     @IBOutlet weak var cancelBut: UIButton!
-    
+  @IBOutlet weak var navbar: UIView!
+
     @IBOutlet internal var creditCardUnderline: UIView!
     @IBOutlet internal var dateUnderline: UIView!
     @IBOutlet internal var cvvUnderline: UIView!
@@ -133,7 +134,10 @@ open class AddCreditCardViewController: UIViewController
     // MARK private methods
     //MARK: - private functions
     internal func setupUI(){
-        
+      if let navbar = navbar{
+        navbar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navbar.backgroundColor!)
+      }
+
         self.creditCardNumberField.placeholder = LocalData.manager.getString("addCreditcardNumPlaceHoldar")
         self.cvvField.placeholder = LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)
         self.dateField.placeholder = LocalData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)

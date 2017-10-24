@@ -272,7 +272,7 @@
         <!--Add Credit Card View Controller-->
         <scene sceneID="znE-SN-uuU">
             <objects>
-                <viewController storyboardIdentifier="MCAddCreditCardViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cvx-uJ-KCz" customClass="MCAddCreditCardViewController" customModule="MyCheckWalletUI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MCAddCreditCardViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cvx-uJ-KCz" customClass="AddCreditCardViewController" customModule="MyCheckWalletUI" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e82-31-pJG"/>
                         <viewControllerLayoutGuide type="bottom" id="jpt-ip-7sN"/>
