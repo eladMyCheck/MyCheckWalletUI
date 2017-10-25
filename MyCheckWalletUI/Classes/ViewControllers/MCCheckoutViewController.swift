@@ -334,10 +334,11 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     override internal func setFieldInvalid(_ field: UITextField , invalid: Bool){
         let badColor = LocalData.manager.getColor("checkoutPagecolorserrorInput", fallback: UIColor.red)
         let goodColor = LocalData.manager.getColor("checkoutPagecolorsfieldBorder", fallback: creditCardNumberField.textColor!)
-        
+        let fieldColor = LocalData.manager.getColor("checkoutPagecolorstextField", fallback: creditCardNumberField.textColor!)
+
         let border = borderForField[field]
         border?.layer.borderColor = invalid ? badColor.cgColor :goodColor.cgColor
-        field.textColor = invalid ? badColor : UIColor(r: 255, g: 255, b: 255, a: 1)
+        field.textColor = invalid ? badColor : fieldColor
     }
     
     internal func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -526,6 +527,13 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         dateField.textColor = fieldColor
         cvvField.textColor = fieldColor
         zipField.textColor = fieldColor
+        
+        let fieldPlaceholderColor = LocalData.manager.getColor("checkoutPagecolorshintTextColor", fallback:UIColor.gray)
+        creditCardNumberField.placeholderColor(fieldPlaceholderColor)
+        dateField.placeholderColor(fieldPlaceholderColor)
+        cvvField.placeholderColor(fieldPlaceholderColor)
+        zipField.placeholderColor(fieldPlaceholderColor)
+
         errorLabel.textColor = LocalData.manager.getColor("checkoutPagecolorserrorInput", fallback: creditCardNumberField.textColor!)
         
         //setting up wallets UI

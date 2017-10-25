@@ -82,8 +82,9 @@ public class LocalData : KeyValueStorageProtocol{
     let color = UIColor.hex(hex)
             return color
         }
-        return fallback
-   
+       return fallback
+
+        
     }
     
     public func getDouble(_ key: String , fallback: Double) -> Double{

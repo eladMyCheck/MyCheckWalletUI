@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Helvetica.ttc">
+            <string>Helvetica-Bold</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
         <array key="ProximaNovaSoftRegular.otf">
             <string>ProximaNovaSoft-Regular</string>
         </array>
@@ -137,11 +144,11 @@
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234 1234 1234 1234" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YDa-E9-pMW">
                     <rect key="frame" x="62" y="80" width="295" height="27"/>
-                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="27" id="NVE-5c-b1D"/>
                     </constraints>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="0.17120682570000001" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                     <connections>
@@ -156,14 +163,14 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-gf-87l">
-                    <rect key="frame" x="-16" y="118" width="403" height="110"/>
+                    <rect key="frame" x="-8" y="118" width="387" height="110"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLK-VW-lfS">
-                            <rect key="frame" x="33" y="6" width="109.5" height="45"/>
+                            <rect key="frame" x="25" y="6" width="109.5" height="45"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mm/yy" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OMD-Q3-h8X">
-                            <rect key="frame" x="46" y="20" width="82.5" height="17"/>
+                            <rect key="frame" x="38" y="20" width="82.5" height="17"/>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="0hi-DO-t13"/>
@@ -176,18 +183,18 @@
                             </connections>
                         </textField>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJI-vV-AMV">
-                            <rect key="frame" x="33" y="50" width="108.5" height="1"/>
+                            <rect key="frame" x="25" y="50" width="108.5" height="1"/>
                             <color key="backgroundColor" red="0.56024283170700073" green="0.52232778072357178" blue="0.51410335302352905" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="3oU-x9-vp8"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEU-Sf-TUO">
-                            <rect key="frame" x="147.5" y="6" width="111" height="45"/>
+                            <rect key="frame" x="139.5" y="6" width="111" height="45"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqs-Pv-v4G">
-                            <rect key="frame" x="161.5" y="20" width="82" height="17"/>
+                            <rect key="frame" x="153.5" y="20" width="82" height="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -196,18 +203,18 @@
                             </connections>
                         </textField>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hJ-Y4-PDh">
-                            <rect key="frame" x="148.5" y="50" width="108" height="1"/>
+                            <rect key="frame" x="140.5" y="50" width="108" height="1"/>
                             <color key="backgroundColor" red="0.56024283170700073" green="0.52232778072357178" blue="0.51410335302352905" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="17B-Pb-r7E"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixc-Dk-xlz">
-                            <rect key="frame" x="262.5" y="6" width="110.5" height="45"/>
+                            <rect key="frame" x="254.5" y="6" width="110.5" height="45"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ZIP/Postal" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkn-fX-QTt">
-                            <rect key="frame" x="277.5" y="20" width="82.5" height="17"/>
+                            <rect key="frame" x="269.5" y="20" width="82.5" height="17"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -216,14 +223,14 @@
                             </connections>
                         </textField>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-CU-fHu">
-                            <rect key="frame" x="264.5" y="50" width="108.5" height="1"/>
+                            <rect key="frame" x="256.5" y="50" width="108.5" height="1"/>
                             <color key="backgroundColor" red="0.56024283170700073" green="0.52232778072357178" blue="0.51410335302352905" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="NPa-08-Ulq"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LU0-WJ-369">
-                            <rect key="frame" x="33" y="67" width="166" height="38"/>
+                            <rect key="frame" x="25" y="67" width="166" height="38"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="38" id="Ion-3g-jqj"/>
                             </constraints>
@@ -235,7 +242,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcD-LR-2wa">
-                            <rect key="frame" x="207" y="67" width="166" height="38"/>
+                            <rect key="frame" x="199" y="67" width="166" height="38"/>
                             <color key="backgroundColor" red="0.56256645917892456" green="0.7077515721321106" blue="0.7270699143409729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="38" id="uuC-Xs-xjw"/>
@@ -248,7 +255,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJg-Ps-OdY">
-                            <rect key="frame" x="24" y="105" width="359" height="0.0"/>
+                            <rect key="frame" x="24" y="105" width="343" height="0.0"/>
                             <fontDescription key="fontDescription" name="ProximaNovaSoft-Regular" family="Proxima Nova Soft" pointSize="12"/>
                             <color key="textColor" red="0.8432660698890686" green="0.17265203595161438" blue="0.168416827917099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -300,7 +307,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0u-Ng-8ai">
-                    <rect key="frame" x="224" y="46" width="139" height="25"/>
+                    <rect key="frame" x="216" y="46" width="139" height="25"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
                     <state key="normal" title="Manage Payment Methods">
                         <color key="titleColor" red="0.56256645917892456" green="0.7077515721321106" blue="0.7270699143409729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -442,7 +449,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb4-tj-hY9">
-                    <rect key="frame" x="12" y="50" width="69.5" height="16"/>
+                    <rect key="frame" x="20" y="50" width="69.5" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
