@@ -34,5 +34,7 @@ extension LocalData{
     }
 
   /// Returns wether or not this is the first time the app is running. used for initial setup.
-
+    func getApplePayIsDarkButtonOnCheckout() -> Bool{
+        return getBool("applePaydarkBackgroundEnabled", fallback: false)
+    }
 }

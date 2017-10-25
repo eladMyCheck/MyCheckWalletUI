@@ -129,8 +129,9 @@ open class ApplePayFactory : PaymentMethodFactory{
         butRap.button.setBackgroundImage(nil, for: .normal)
         let superFrame = butRap.button.frame
         
+        let isDark = LocalData.manager.getApplePayIsDarkButtonOnCheckout()
         //creating the apple pay button and adding it into the super button
-        let appleBut = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .white)
+        let appleBut = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: isDark ? .black : .white)
         appleBut.frame = CGRect(x: 0, y: 0, width: superFrame.size.width - 20, height: superFrame.size.height - 20)
         
         butRap.button.addSubview(appleBut)
