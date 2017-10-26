@@ -482,7 +482,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     }
     @objc internal override func setupUI(){
         doNotStoreSuperview.isHidden = !LocalData.manager.doNotStoreEnabled()
-        
+        cardsToWalletsSeporatorLabel.text = LocalData.manager.getSelectCreditCardToWalletsSeporatorText(fallback: cardsToWalletsSeporatorLabel.text)
         deleteBut.setTitleColor(LocalData.manager.getColor("checkoutPagecolorsdeleteButton" , fallback: deleteBut.titleColor(for: .normal)!), for: .normal )
         header.text = LocalData.manager.getString("checkoutPagecheckoutSubHeader" , fallback: header.text)
         dropdownHeader.text = LocalData.manager.getString("checkoutPagecardDropDownHeader" , fallback:dropdownHeader.text)
