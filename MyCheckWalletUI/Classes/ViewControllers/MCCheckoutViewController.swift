@@ -471,10 +471,10 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         self.dateField.text = ""
         self.cvvField.text = ""
         self.zipField.text = ""
-        //    self.setFieldInvalid(self.creditCardNumberField, invalid: false)
-        //    self.setFieldInvalid(self.dateField, invalid: false)
-        //    self.setFieldInvalid(self.cvvField, invalid: false)
-        //    self.setFieldInvalid(self.zipField, invalid: false)
+            self.setFieldInvalid(self.creditCardNumberField, invalid: false)
+            self.setFieldInvalid(self.dateField, invalid: false)
+            self.setFieldInvalid(self.cvvField, invalid: false)
+            self.setFieldInvalid(self.zipField, invalid: false)
     }
     fileprivate func showDeleteBut(show: Bool){
         deleteBut.isHidden = !show // button should be displayed only for single use methods
