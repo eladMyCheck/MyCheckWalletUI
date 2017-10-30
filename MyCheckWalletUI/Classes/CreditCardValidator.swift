@@ -41,7 +41,7 @@ fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-private enum CardType: String {
+internal enum CardType: String {
     case Unknown, Amex, Visa, MasterCard, Diners, Discover, JCB, Elo, Hipercard,Maestro, UnionPay
     
     static let allCards = [Amex, Visa, MasterCard, Diners, Discover, JCB, Elo, Hipercard,Maestro, UnionPay]
@@ -49,21 +49,21 @@ private enum CardType: String {
     var regex : String {
         switch self {
         case .Amex:
-            return "^3[47][0-9]{5,}$"
+            return "^3[47][0-9]{2}[0-9]{0,}$"
         case .Visa:
-            return "^4[0-9]{6,}([0-9]{3})?$"
+            return "^4[0-9]{3}[0-9]{0,}$"
         case .MasterCard:
             return "^(5[1-5]|222[1-9]|22[3-9]|2[3-6]|27[01]|2720)[0-9]{0,}$"
         case .Diners:
-            return "^3(?:0[0-5]|[68][0-9])[0-9]{4,}$"
+            return "^3(?:0[0-5]|[68][0-9])[0-9][0-9]{0,}$"
         case .Discover:
-            return "^(6(?:011|5[0-9]{2}|4[4-9]{1}|660)[0-9]{3,})|309[5-6]{1}[0-9]{0,}$"
+            return "^(6011|65|64[4-9]|660|622|3095|3096)[0-9]{0,}$"
         case .JCB:
-            return "^(?:2131|1800|35[0-9]{3})[0-9]{3,}$"
+            return "^(?:2131|1800|35[0-9]{2}[0-9]{0,})$"
         case .UnionPay:
-            return "^(62|88)[0-9]{5,}$"
+            return "^62[0-5][0-9][0-9]{0,}"
         case .Maestro:
-            return "^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390|6799)\\d+$"
+            return "^(5018|5020|5038|5612|5893|6304|6759|6761|6762|6763|0604|6390|6799)[0-9]{0,}$"
         case .Hipercard:
             return "^(606282|3841)[0-9]{5,}$"
         case .Elo:

@@ -27,7 +27,7 @@ public enum CreditCardType : String{
   ///Maestro
   case Maestro = "maestro"
   ///Invalid type or simply unrecognised by any of our regular expressions
-  case Unknown = ""
+  case Unknown = "unknown"
   
     }
   

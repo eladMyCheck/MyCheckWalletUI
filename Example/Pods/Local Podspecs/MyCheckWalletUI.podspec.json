@@ -1,6 +1,6 @@
 {
   "name": "MyCheckWalletUI",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "summary": "An SDK that supplies UI for payment method managment.",
   "description": "README.md",
   "homepage": "https://mycheckapp.com",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://bitbucket.org/erez_spatz/mycheckwalletui-ios.git",
-    "tag": "1.0.3"
+    "tag": "1.0.6"
   },
   "platforms": {
     "ios": "9.0"
