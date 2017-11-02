@@ -23,7 +23,7 @@ public enum CreditCardType : String{
   ///JBC
   case JCB = "jcb"
   ///Diners Club
-  case Diners = "dinersclub"
+  case Diners = "diners"
   ///Maestro
   case Maestro = "maestro"
   ///Invalid type or simply unrecognised by any of our regular expressions
