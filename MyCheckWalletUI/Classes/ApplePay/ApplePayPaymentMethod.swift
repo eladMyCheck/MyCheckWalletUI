@@ -114,7 +114,8 @@
                                        "is_single_use":isSingleUse,
                                        "issuerShort": name,
                                        "issuer_full":name,
-                                       "source": PaymentMethodType.applePay.getSource()
+                                       "source": PaymentMethodType.applePay.getSource(),
+                                       "name": name
             ]
             
             return JSON
