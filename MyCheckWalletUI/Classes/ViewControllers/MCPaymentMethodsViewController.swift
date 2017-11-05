@@ -192,6 +192,10 @@ open class MCPaymentMethodsViewController: MCViewController {
     internal func setupUI(){
         
         self.footerLabel.text = LocalData.manager.getString("managePaymentMethodscardAcceptedWallet" , fallback: self.footerLabel.text)
+      self.walletHeaderLabel.text = LocalData.manager.getString("managePaymentMethodsothePaymentMethodsHeader" , fallback:  self.walletHeaderLabel.text)
+      self.pciLabel.text = LocalData.manager.getString("addCreditpciNotice2" , fallback:  self.pciLabel.text)
+
+      
         doNotStoreLabel.text = LocalData.manager.getString("managePaymentMethodsnotStoreCard" , fallback:doNotStoreLabel.text)
         //setting up colors
         view.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsbackground", fallback: UIColor.white)

@@ -583,8 +583,12 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         activityView.activityIndicatorViewStyle = .whiteLarge
         
     }
-    
-    
+   /// Refreshes the view controller. This should be done after a locale change, or any other change that might change the data or UI of the view comntroller. Any changes to the data from within this fragment should not need a call to refresh.
+  public  func refresh(){
+    setupUI()
+    refreshPaymentMethods();
+  }
+  
 }
 
 extension MCCheckoutViewController : MCPaymentMethodsViewControllerDelegate{
