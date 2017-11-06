@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.5.1)
   - Kingfisher (3.13.1)
-  - MyCheckCore (1.0.2):
+  - MyCheckCore (1.0.3):
     - Alamofire (~> 4.0)
   - MyCheckWalletUI/ApplePay (1.0.6):
     - Kingfisher (~> 3.0)
@@ -39,7 +39,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Kingfisher: ed9707a409cc47fddafbcd12a43a9757e3600af5
-  MyCheckCore: 364097518ec913920818a8fe212e1f9d178cdc4b
+  MyCheckCore: e3eb8d22406597aeb0a4469e5abba1b5ff0e2d68
   MyCheckWalletUI: de1733e719ce0d364321a0e85d527945bde84385
   Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
