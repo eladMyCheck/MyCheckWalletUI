@@ -144,7 +144,7 @@
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234 1234 1234 1234" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YDa-E9-pMW">
                     <rect key="frame" x="62" y="80" width="295" height="27"/>
-                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="27" id="NVE-5c-b1D"/>
                     </constraints>
@@ -307,7 +307,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0u-Ng-8ai">
-                    <rect key="frame" x="216" y="46" width="139" height="25"/>
+                    <rect key="frame" x="218" y="46" width="139" height="25"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="11"/>
                     <state key="normal" title="Manage Payment Methods">
                         <color key="titleColor" red="0.56256645917892456" green="0.7077515721321106" blue="0.7270699143409729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -449,7 +449,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb4-tj-hY9">
-                    <rect key="frame" x="20" y="50" width="69.5" height="16"/>
+                    <rect key="frame" x="17" y="50" width="69.5" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -519,6 +519,7 @@
             </subviews>
             <color key="backgroundColor" red="0.3544546365737915" green="0.31953409314155579" blue="0.31019940972328186" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="kb4-tj-hY9" firstAttribute="leading" secondItem="cVa-fN-iC0" secondAttribute="leading" id="0KI-YV-kXa"/>
                 <constraint firstItem="bEb-a8-zXO" firstAttribute="top" secondItem="hcW-t3-chb" secondAttribute="top" constant="83" id="23L-G7-zd4"/>
                 <constraint firstItem="pTi-ub-50G" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="top" id="2dD-KD-BVM"/>
                 <constraint firstItem="bEb-a8-zXO" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" constant="26" id="4da-Mz-CyE"/>
@@ -545,16 +546,15 @@
                 <constraint firstItem="yxp-yO-zIk" firstAttribute="top" secondItem="hcW-t3-chb" secondAttribute="top" id="Vo6-8r-DRb"/>
                 <constraint firstItem="cVa-fN-iC0" firstAttribute="top" secondItem="YDa-E9-pMW" secondAttribute="top" constant="-11" id="W6v-Sm-QyO"/>
                 <constraint firstItem="fwe-gf-87l" firstAttribute="top" secondItem="e97-nh-J5G" secondAttribute="bottom" id="W8Y-oh-h6N"/>
+                <constraint firstItem="cVa-fN-iC0" firstAttribute="trailing" secondItem="N0u-Ng-8ai" secondAttribute="trailing" id="aPw-p2-rl8"/>
                 <constraint firstItem="kb4-tj-hY9" firstAttribute="centerY" secondItem="N0u-Ng-8ai" secondAttribute="centerY" id="fZV-o9-b91"/>
                 <constraint firstItem="BNs-hB-C9a" firstAttribute="top" secondItem="fwe-gf-87l" secondAttribute="bottom" priority="999" constant="33" id="g22-4c-w4J"/>
                 <constraint firstItem="e97-nh-J5G" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" constant="17" id="giQ-53-HWs"/>
-                <constraint firstItem="kb4-tj-hY9" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leadingMargin" constant="4" id="ico-Jo-aov"/>
                 <constraint firstAttribute="trailing" secondItem="E0F-KO-oYg" secondAttribute="trailing" id="jQz-yi-LDc"/>
                 <constraint firstItem="yxp-yO-zIk" firstAttribute="leading" secondItem="hcW-t3-chb" secondAttribute="leading" id="lB6-zW-mI4"/>
                 <constraint firstItem="kLK-VW-lfS" firstAttribute="leading" secondItem="cVa-fN-iC0" secondAttribute="leading" id="qTF-Qt-hWI"/>
                 <constraint firstItem="pTi-ub-50G" firstAttribute="trailing" secondItem="YDa-E9-pMW" secondAttribute="trailing" id="qWq-Ry-CaD"/>
                 <constraint firstItem="E0F-KO-oYg" firstAttribute="top" secondItem="BNs-hB-C9a" secondAttribute="bottom" constant="10" id="wUM-fT-cQY"/>
-                <constraint firstAttribute="trailingMargin" secondItem="N0u-Ng-8ai" secondAttribute="trailing" constant="4" id="waF-Zx-71z"/>
                 <constraint firstItem="Ixc-Dk-xlz" firstAttribute="trailing" secondItem="cVa-fN-iC0" secondAttribute="trailing" id="xRa-Bw-sK2"/>
                 <constraint firstItem="pTi-ub-50G" firstAttribute="bottom" secondItem="YDa-E9-pMW" secondAttribute="bottom" id="z6d-xl-bdG"/>
                 <constraint firstItem="kb4-tj-hY9" firstAttribute="top" secondItem="yxp-yO-zIk" secondAttribute="bottom" constant="12" id="zqD-4l-SMf"/>
