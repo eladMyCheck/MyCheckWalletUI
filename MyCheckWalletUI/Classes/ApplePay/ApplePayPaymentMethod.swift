@@ -114,6 +114,7 @@
                                        "is_single_use":isSingleUse,
                                        "issuerShort": name,
                                        "issuer_full":name,
+                                       "token":"TOKEN_PLACEHOLDER",
                                        "source": PaymentMethodType.applePay.getSource(),
                                        "name": name
             ]
