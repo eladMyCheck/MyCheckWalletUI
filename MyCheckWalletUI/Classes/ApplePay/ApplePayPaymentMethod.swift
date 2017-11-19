@@ -138,7 +138,8 @@
         return
       }
       var callbackCalled = false
-
+        var APToken: String? = nil
+        
       //resonding to the delegate
       let del = AuthorizationViewControllerDelegateResponder(
         didAuthorize:{payment,controller,completion in
@@ -149,9 +150,10 @@
             return
           }
             let token = payment.token.paymentData.base64EncodedString()
+            APToken = token
           Wallet.shared.addApplePay(applePayToken: token, cardType: cardName, isPending: true, success: {token in
-            success(token)
             completion(.success)
+            
             callbackCalled = true
 
           }, fail: {error in
@@ -165,6 +167,16 @@
         
         didFinish:{ controller in
           displayDelegate.dismiss(viewController: controller)
+           
+            guard let token = APToken else {
+                
+                fail(ErrorCodes.applePayFailed.getError())
+                return
+            }
+                success(token)
+
+                
+            
           if callbackCalled == false{
           fail(ErrorCodes.actionCanceledByUser.getError(message: "User Canceled Apple Pay Payment"))
           }
