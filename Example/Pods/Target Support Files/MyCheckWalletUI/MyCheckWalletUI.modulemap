@@ -1,6 +1,0 @@
-framework module MyCheckWalletUI {
-  umbrella header "MyCheckWalletUI-umbrella.h"
-
-  export *
-  module * { export * }
-}
