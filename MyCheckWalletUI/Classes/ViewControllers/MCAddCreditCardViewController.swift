@@ -19,10 +19,10 @@ internal protocol MCAddCreditCardViewControllerDelegate : class{
 open class MCAddCreditCardViewController: MCViewController {
     @IBOutlet weak var errorHeight: NSLayoutConstraint!
     
- internal weak var containerHeight: NSLayoutConstraint?
+    internal weak var containerHeight: NSLayoutConstraint?
     @IBOutlet weak var checkboxLabel: UILabel!
     @IBOutlet weak var checkbox: UIButton!
-
+    
     @IBOutlet internal weak var applyButton: UIButton!
     @IBOutlet internal var typeImage: UIImageView!
     @IBOutlet internal var creditCardNumberField: UITextField!
@@ -56,7 +56,9 @@ open class MCAddCreditCardViewController: MCViewController {
         addNextButtonOnKeyboard(cvvField, action: #selector(nextPressed(_: )))
         
         //setting up UI and updating it if the user logges in... just incase
-        setupUI()
+        Wallet.shared.configureWallet(success: {
+            self.setupUI()
+        }, fail: nil)
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Session.Const.loggedInNotification), object: nil)
         
@@ -72,10 +74,10 @@ open class MCAddCreditCardViewController: MCViewController {
     }
     
     
-//    @IBAction func backPressed(_ sender: Any) {
-//        self.delegate?.backPressed()
-//
-//    }
+    //    @IBAction func backPressed(_ sender: Any) {
+    //        self.delegate?.backPressed()
+    //
+    //    }
     
     
     //MARK: - actions
@@ -160,7 +162,7 @@ open class MCAddCreditCardViewController: MCViewController {
         self.resignFirstResponder()
     }
     //MARK: - overides
-  @discardableResult
+    @discardableResult
     override open func resignFirstResponder() -> Bool {
         super.resignFirstResponder()
         creditCardNumberField.resignFirstResponder()
@@ -183,7 +185,7 @@ open class MCAddCreditCardViewController: MCViewController {
     //MARK: - private functions
     internal func setupUI(){
         
-    self.barItem.title =  LocalData.manager.getString("managePaymentMethodsheader" , fallback:"")
+        self.barItem.title =  LocalData.manager.getString("managePaymentMethodsheader" , fallback:"")
         self.creditCardNumberField.placeholder = LocalData.manager.getString("addCreditcardNumPlaceHoldar")
         self.cvvField.placeholder = LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)
         self.dateField.placeholder = LocalData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)
@@ -193,13 +195,13 @@ open class MCAddCreditCardViewController: MCViewController {
         
         cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.title(for: UIControlState())) , for: UIControlState())
         cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.title(for: UIControlState())) , for: .highlighted)
-//        if let backBut = backButton{
-//        backBut.kf.setImage(with: LocalData.manager.getBackButtonImageURL(), for: .normal , options:[.scaleFactor(3.0)])
-//        }
+        //        if let backBut = backButton{
+        //        backBut.kf.setImage(with: LocalData.manager.getBackButtonImageURL(), for: .normal , options:[.scaleFactor(3.0)])
+        //        }
         
         //setting colors
         if let navbar = navbar{
-          navbar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navbar.backgroundColor!)
+            navbar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navbar.backgroundColor!)
         }
         errorLabel.textColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
         applyButton.backgroundColor = LocalData.manager.getColor("addCreditColorsapplyBackgroundColor", fallback: UIColor.white)
@@ -222,9 +224,9 @@ open class MCAddCreditCardViewController: MCViewController {
         doNotStoreSuperview.isHidden = !LocalData.manager.doNotStoreEnabled()
         
     }
-   
     
-   
+    
+    
     
     
     //sets the UI to show the field has an invalid value or not
@@ -235,7 +237,7 @@ open class MCAddCreditCardViewController: MCViewController {
     }
     
     func updateAndCheckValid() -> CreditCardValidator{
-let validator = CreditCardValidator(cardNumber: creditCardNumberField.text, DOB: dateField.text, CVV: cvvField.text, ZIP: zipField.text)
+        let validator = CreditCardValidator(cardNumber: creditCardNumberField.text, DOB: dateField.text, CVV: cvvField.text, ZIP: zipField.text)
         setFieldInvalid(creditCardNumberField , invalid: !validator.numberIsCompleteAndValid)
         setFieldInvalid(dateField , invalid: !validator.DOBIsValid)
         setFieldInvalid(cvvField , invalid: !validator.CVVIsValid)
@@ -272,7 +274,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         switch textField {
             
         case creditCardNumberField:
-           
+            
             if string == ""  && txtAfterUpdate.hasSuffix(" "){// if backspace and white spaces is last remove it
                 textField.text = txtAfterUpdate.substring(to: txtAfterUpdate.length-1)
                 return false
@@ -292,7 +294,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             }
             textField.text = validator.formattedCardNumber
             return false
-          
+            
         case dateField:
             if txtAfterUpdate == "00" {
                 return false
@@ -420,12 +422,12 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 self.errorHeight.constant = 0
                 self.view.layoutIfNeeded()
                 if let containerHeight =  self.containerHeight{
-                containerHeight.constant = 250.0
+                    containerHeight.constant = 250.0
                 }
                 if let parent = self.parent {
-                parent.view.layoutIfNeeded()
+                    parent.view.layoutIfNeeded()
                 }
-
+                
             })
             return;
         }
@@ -435,9 +437,9 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         UIView.animate(withDuration: 0.3, animations:  {
             self.errorHeight.constant = 25.0
             if let containerHeight =  self.containerHeight{
-             containerHeight.constant = 275.0
+                containerHeight.constant = 275.0
             }
-             self.errorLabel.alpha = 1.0
+            self.errorLabel.alpha = 1.0
             self.parent?.view.layoutIfNeeded()
             
             self.view.layoutIfNeeded()
@@ -446,21 +448,21 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 UIView.animate(withDuration: 0.3, animations: {
                     self.errorHeight.constant = 0
                     if let containerHeight =  self.containerHeight{
-                    containerHeight.constant = 250.0
+                        containerHeight.constant = 250.0
                     }
-                     self.errorLabel.alpha = 0.0
+                    self.errorLabel.alpha = 0.0
                     self.view.layoutIfNeeded()
                     if let parent = self.parent {
-
-                    parent.view.layoutIfNeeded()
+                        
+                        parent.view.layoutIfNeeded()
                     }
                 } , completion: { finished in
                     self.errorLabel.text  = ""
-
+                    
                 })
             }
         }, completion: { finished in
-        
+            
         })
     }
     
@@ -475,55 +477,55 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         }
         activityView.isHidden = !show
     }
-  //sets the image to the correct credit card type
-  internal func setImageForType(type: CreditCardType){
-    guard let url = type.smallImageURL() else{
-      let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-
-      if self.isMember(of: MCCheckoutViewController.self) {
-        typeImage.image = UIImage(named: "no_type_card_1" , in: bundle, compatibleWith: nil)
-      }else{
-        typeImage.image = UIImage(named: "no_type_card" , in: bundle, compatibleWith: nil)
-      }
-      return
+    //sets the image to the correct credit card type
+    internal func setImageForType(type: CreditCardType){
+        guard let url = type.smallImageURL() else{
+            let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+            
+            if self.isMember(of: MCCheckoutViewController.self) {
+                typeImage.image = UIImage(named: "no_type_card_1" , in: bundle, compatibleWith: nil)
+            }else{
+                typeImage.image = UIImage(named: "no_type_card" , in: bundle, compatibleWith: nil)
+            }
+            return
+        }
+        
+        
+        typeImage.kf.setImage(with: url)
+        
     }
-    
-
-    typeImage.kf.setImage(with: url)
-
-  }
 }
 
 fileprivate extension CreditCardType{
-  fileprivate func smallImageURL() -> URL?{
-    // let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-    switch self {
-    case .MasterCard:
-      return URL(string:  LocalData.manager.getString("addCreditImagesmastercard"))!
-    case .Visa:
-      return URL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
-    case .Diners:
-      return URL(string:  LocalData.manager.getString("addCreditImagesdinersclub"))!
-    case .Discover:
-      return URL(string:  LocalData.manager.getString("addCreditImagesdiscover"))!
-    case .Amex:
-      return URL(string:  LocalData.manager.getString("addCreditImagesamex"))!
-    case .JCB:
-      return URL(string:  LocalData.manager.getString("addCreditImagesJCB"))!
-    case .Maestro:
-      return URL(string:  LocalData.manager.getString("addCreditImagesmaestro"))!
-      
-    default:
-      
-      return nil
+    fileprivate func smallImageURL() -> URL?{
+        // let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+        switch self {
+        case .MasterCard:
+            return URL(string:  LocalData.manager.getString("addCreditImagesmastercard"))!
+        case .Visa:
+            return URL(string:  LocalData.manager.getString("addCreditImagesvisa"))!
+        case .Diners:
+            return URL(string:  LocalData.manager.getString("addCreditImagesdinersclub"))!
+        case .Discover:
+            return URL(string:  LocalData.manager.getString("addCreditImagesdiscover"))!
+        case .Amex:
+            return URL(string:  LocalData.manager.getString("addCreditImagesamex"))!
+        case .JCB:
+            return URL(string:  LocalData.manager.getString("addCreditImagesJCB"))!
+        case .Maestro:
+            return URL(string:  LocalData.manager.getString("addCreditImagesmaestro"))!
+            
+        default:
+            
+            return nil
+        }
     }
-  }
-
+    
 }
 
 
 extension MCAddCreditCardViewController: navigationItemHasViewController{
     func getNavigationItem() -> UINavigationItem{
-    return barItem
+        return barItem
     }
 }

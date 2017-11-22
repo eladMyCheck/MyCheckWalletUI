@@ -52,7 +52,10 @@ fileprivate extension AddCreditCardView{
     imageView.frame = imgFrame
     self.addSubview(imageView)
     imageView.contentMode = .scaleAspectFit
-    imageView.tintColor = LocalData.manager.getAddCreditCardTintColor()
+    Wallet.shared.configureWallet(success: {
+        imageView.tintColor = LocalData.manager.getAddCreditCardTintColor()
+
+    }, fail: nil)
 
   }
   
@@ -63,8 +66,12 @@ fileprivate extension AddCreditCardView{
     label.font = UIFont.ragularFont(withSize: label.font.pointSize)
     label.textAlignment = .center
     
-    label.text = LocalData.manager.getAddCreditCardText()
-    label.textColor = LocalData.manager.getAddCreditCardTextColor()
+
+    
+    Wallet.shared.configureWallet(success: {
+        label.text = LocalData.manager.getAddCreditCardText()
+        label.textColor = LocalData.manager.getAddCreditCardTextColor()
+    }, fail: nil)
     self .addSubview(label)
   }
 }

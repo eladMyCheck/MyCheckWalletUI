@@ -97,7 +97,11 @@ open class MCPaymentMethodsViewController: MCViewController {
         nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Session.Const.loggedInNotification), object: nil)
         nc.addObserver(self, selector: #selector(MCPaymentMethodsViewController.receivedLogoutNotification), name: NSNotification.Name(rawValue: Session.Const.loggedOutNotification), object: nil)
 
-        setupUI()
+        Wallet.shared.configureWallet(success: {
+    self.setupUI()
+    let str =  LocalData.manager.getString("managePaymentMethodsothePaymentMethodsHeader" , fallback:  self.walletHeaderLabel.text)
+print(str)
+}, fail: nil)
         
         navigationBar.delegate = self
         

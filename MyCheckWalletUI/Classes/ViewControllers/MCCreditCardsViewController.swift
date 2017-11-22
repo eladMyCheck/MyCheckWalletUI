@@ -45,7 +45,10 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             self.setCreditCardsUI(false)
         }
         //setting up UI and updating it if the user logges in... just incase
-        setupUI()
+        Wallet.shared.configureWallet(success: {
+               self.setupUI()
+        }, fail: nil)
+     
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(MCCreditCardsViewController.setupUI), name: NSNotification.Name(rawValue: Session.Const.loggedInNotification), object: nil)
         
@@ -211,12 +214,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     }
     
     @objc fileprivate func setupUI(){
-        
-        //        navBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navBar.backgroundColor!)
-        //        AroundNavBar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navBar.backgroundColor!)
-        //        editButton.setTitleColor( LocalData.manager.getColor("managePaymentMethodscolorseditButtonText", fallback: editButton.titleColor(for: UIControlState())!)
-        //            , for: UIControlState())
-        //        backBut.kf.setImage(with: LocalData.manager.getBackButtonImageURL(), for: .normal , options:[.scaleFactor(3.0)])
+      
         barItem.title = LocalData.manager.getString("managePaymentMethodsheader")
         if let url = LocalData.manager.getBackButtonImageURL(){
             self.barItem.backBarButtonItem?.setImageAsync(url: url)
@@ -227,7 +225,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     }
     fileprivate func updateButtonTxt(){
         printIfDebug("edit mode \(editMode)")
-        //        self.editMode ? self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done"), for: UIControlState()) : self.editButton.setTitle(LocalData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit"), for: UIControlState())
+  
         self.barItem.rightBarButtonItem = getRightBarButton(editMode: editMode)
     }
     
