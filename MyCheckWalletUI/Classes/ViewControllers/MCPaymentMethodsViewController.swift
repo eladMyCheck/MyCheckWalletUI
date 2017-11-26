@@ -120,7 +120,7 @@ print(str)
         self.assignImages()
         
         setWalletButtons()
-        
+        refreshPaymentMethods()
     }
     
     open override func viewDidAppear(_ animated: Bool) {
