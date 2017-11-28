@@ -120,7 +120,7 @@ print(str)
         self.assignImages()
         
         setWalletButtons()
-        refreshPaymentMethods()
+        refreshPaymentMethods(animated:  false)
     }
     
     open override func viewDidAppear(_ animated: Bool) {
@@ -230,7 +230,7 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
     func recivedError(_ controller: MCAddCreditCardViewController , error:NSError){
     }
     func addedNewPaymentMethod(_ controller: MCAddCreditCardViewController ,token:String){
-        refreshPaymentMethods()
+        refreshPaymentMethods(animated: true)
         
         
     }
@@ -318,13 +318,13 @@ fileprivate extension MCPaymentMethodsViewController{
     }
     
     
-    func refreshPaymentMethods(){
+    func refreshPaymentMethods(animated: Bool){
         
         Wallet.shared.getPaymentMethods(success: { (methods) in
             self.paymentMethods = methods
             self.creditCardListVC!.paymentMethods = methods
-            self.creditCardListVC!.setCreditCardsUI(true)
-            self.showEnterCreditCard(false , animated: true)
+            self.creditCardListVC!.setCreditCardsUI(animated)
+            self.showEnterCreditCard(false , animated: animated)
         }) { (error) in
             
         }
