@@ -31,7 +31,7 @@ extension Wallet{
                             continue
                         }
                         
-                        if  let method = CreditCardPaymentMethod(JSON: dic){
+                        if  let method = CreditCardPaymentMethod(JSON: dic), type == .creditCard{
                             returnArray.append(method)
                             continue
                         }
