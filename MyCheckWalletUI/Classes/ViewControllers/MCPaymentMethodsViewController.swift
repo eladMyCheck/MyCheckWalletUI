@@ -212,7 +212,7 @@ print(str)
         
         doNotStoreSuperview.isHidden = !LocalData.manager.doNotStoreEnabled()
 self.navigationBar.barTintColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground" , fallback: UIColor.clear)
-        
+        self.navigationBar.isTranslucent = false
         self.navigationBar.tintColor = LocalData.manager.getColor("managePaymentMethodscolorseditButtonText" , fallback: UIColor.white)
         self.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName : LocalData.manager.getColor("managePaymentMethodscolorsheaderText" , fallback: UIColor.white),
