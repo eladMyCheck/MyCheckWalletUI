@@ -1,20 +1,20 @@
 PODS:
-  - Alamofire (4.5.1)
+  - Alamofire (4.6.0)
   - Kingfisher (3.13.1)
   - MyCheckCore (1.0.4):
     - Alamofire (~> 4.0)
-  - MyCheckWalletUI/ApplePay (1.0.13):
+  - MyCheckWalletUI/ApplePay (1.0.14):
     - Kingfisher (~> 3.0)
     - MyCheckCore (~> 1.0.1)
     - MyCheckWalletUI/Core
-  - MyCheckWalletUI/Core (1.0.13):
+  - MyCheckWalletUI/Core (1.0.14):
     - Kingfisher (~> 3.0)
     - MyCheckCore (~> 1.0.1)
-  - MyCheckWalletUI/MasterPass (1.0.13):
+  - MyCheckWalletUI/MasterPass (1.0.14):
     - Kingfisher (~> 3.0)
     - MyCheckCore (~> 1.0.1)
     - MyCheckWalletUI/Core
-  - MyCheckWalletUI/VisaCheckout (1.0.13):
+  - MyCheckWalletUI/VisaCheckout (1.0.14):
     - Kingfisher (~> 3.0)
     - MyCheckCore (~> 1.0.1)
     - MyCheckWalletUI/Core
@@ -37,10 +37,10 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Kingfisher: ed9707a409cc47fddafbcd12a43a9757e3600af5
   MyCheckCore: 7d3fa35834e326d8e5b6cdcdfb624e5f4bb411fa
-  MyCheckWalletUI: 3ec934404c917282eacd3ed7755882db75a69495
+  MyCheckWalletUI: c157c10b35b1073ed0b6f78b8ee4adabba3414dc
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 
