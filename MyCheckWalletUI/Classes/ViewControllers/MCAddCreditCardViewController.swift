@@ -136,6 +136,7 @@ open class MCAddCreditCardViewController: MCViewController {
         if let delegate = self.delegate{
             delegate.canceled()
         }
+        self.resetView()
     }
     func nextPressed(_ sender: UIBarButtonItem){
         if creditCardNumberField.isFirstResponder{
