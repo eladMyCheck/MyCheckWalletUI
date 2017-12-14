@@ -11,7 +11,6 @@
 //
 
 import UIKit
-import MyCheckWalletUI
 protocol AddCreditCardBusinessLogic
 {
     func changeTextInField(request: AddCreditCard.TextChanged.Request)

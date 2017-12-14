@@ -230,7 +230,10 @@ extension MCPaymentMethodsViewController : MCAddCreditCardViewControllerDelegate
     func recivedError(_ controller: MCAddCreditCardViewController , error:NSError){
     }
     func addedNewPaymentMethod(_ controller: MCAddCreditCardViewController ,token:String){
-        refreshPaymentMethods(animated: true)
+        refreshPaymentMethods(animated: true, completion: {success in
+            
+            self.showEnterCreditCard(false, animated: false)
+        })
         
         
     }
@@ -318,15 +321,19 @@ fileprivate extension MCPaymentMethodsViewController{
     }
     
     
-    func refreshPaymentMethods(animated: Bool){
+    func refreshPaymentMethods(animated: Bool, completion:(( Bool) -> Void)? = nil){
         
         Wallet.shared.getPaymentMethods(success: { (methods) in
             self.paymentMethods = methods
             self.creditCardListVC!.paymentMethods = methods
             self.creditCardListVC!.setCreditCardsUI(animated)
-            self.showEnterCreditCard(false , animated: animated)
+            if let completion = completion{
+                completion(true)
+            }
         }) { (error) in
-            
+            if let completion = completion{
+                completion(false)
+            }
         }
     }
     fileprivate func setWalletButtons(){
