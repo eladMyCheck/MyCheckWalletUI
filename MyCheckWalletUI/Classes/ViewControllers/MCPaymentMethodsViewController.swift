@@ -143,6 +143,10 @@ print(str)
 
         }
     }
+    
+    override open var preferredStatusBarStyle: UIStatusBarStyle  {
+    return LocalData.manager.getPaymentMethodsStatusBarColor()
+    }
     //MARK: - actions
     
     

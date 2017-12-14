@@ -107,9 +107,9 @@ public class LocalData : KeyValueStorageProtocol{
     public func getBool(_ key: String , fallback: Bool = false) -> Bool{
         let str = getString(key)
         let lowercase = str.lowercased()
-        if lowercase == "true"{
+        if lowercase == "true" || lowercase == "1"{
         return true
-        }else if lowercase == "false"{
+        }else if lowercase == "false" || lowercase == "0"{
         return false
         }
         if str.characters.count > 0 {
