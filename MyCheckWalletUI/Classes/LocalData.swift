@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol KeyValueStorageProtocol{
+public protocol KeyValueStorageProtocolOutput{
     
     func getString(_ key: String , fallback: String?) -> String
     
@@ -22,7 +22,18 @@ public protocol KeyValueStorageProtocol{
     
 }
 
-public extension KeyValueStorageProtocol{
+
+public protocol KeyValueStorageProtocolInput{
+    func addStrings(_ prefix: String? , dictionary: NSDictionary)
+   
+    
+}
+
+public protocol KeyValueStorageProtocol: KeyValueStorageProtocolInput, KeyValueStorageProtocolOutput{
+    
+}
+
+public extension KeyValueStorageProtocolOutput{
     func getString(_ key: String , fallback: String? = nil) -> String{
         return getString(key, fallback: fallback)
     }

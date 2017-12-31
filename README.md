@@ -36,15 +36,19 @@ In order to manage the users session (login, logout etc.) you will need to use t
 Start by adding
 ```
 import MyCheckCore
-```
 
+import MyCheckWalletUI
+```
 
 to the top of the class where you want to use MyCheck.
 
-In your app delegate's `application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)` function call the configure function of the Session singleton:
+In your app delegate's `application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)` function call the configure function of the Session singleton as well as the Wallets:
 
 ```
 Session.shared.configure(YOUR_PUBLISHABLE_KEY, environment: .sandbox)
+
+Wallet.shared.configureWallet()
+
 ```
 This will setup the SDK to work with the desired environment.
 

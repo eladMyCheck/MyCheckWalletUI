@@ -186,7 +186,7 @@ open class Wallet : NSObject{
     
     
     //Sets up the SDK to work on the desired environment with the prefrences specified for the publishable key passed.
-    internal func configureWallet(success: (() -> Void)? , fail:((_ error: NSError) -> Void)?){
+    public func configureWallet(success: (() -> Void)? = nil , fail:((_ error: NSError) -> Void)? = nil){
         
         Networking.shared.configure(success: {JSON in
             
