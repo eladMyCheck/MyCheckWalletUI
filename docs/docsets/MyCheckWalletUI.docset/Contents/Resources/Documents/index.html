@@ -13,7 +13,7 @@
     <a title="MyCheckWalletUI  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">MyCheckWalletUI Docs</a> (56% documented)</p>
+        <p><a href="index.html">MyCheckWalletUI Docs</a> (55% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -38,21 +38,19 @@
               <li class="nav-group-task">
                 <a href="Classes/Wallet.html">Wallet</a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Enums.html">Enums</a>
-            <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/CreditCardType.html">CreditCardType</a>
+                <a href="Classes/Wallet/UI.html">– UI</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Extensions.html">Extensions</a>
+            <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Extensions.html#/s:C15VisaCheckoutSDK14CheckoutResult">CheckoutResult</a>
+                <a href="Enums/CreditCardType.html">CreditCardType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums.html#/s:O15MyCheckWalletUI18LocaleChangeResult">LocaleChangeResult</a>
               </li>
             </ul>
           </li>
@@ -68,7 +66,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Structs.html">Structs</a>
+            <a href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Structs/CreditCardPaymentMethod.html">CreditCardPaymentMethod</a>
@@ -81,17 +79,17 @@
         <section>
           <section class="section">
             
-            <a href='#mycheckwalletui' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='mycheckwalletui'>MyCheckWalletUI</h1>
+            <h1 id='mycheckwalletui' class='heading'>MyCheckWalletUI</h1>
 
 <p>An SDK that supplies UI for payment method managment.</p>
-<a href='#example' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example'>Example</h2>
+<h2 id='example' class='heading'>Example</h2>
 
 <p>To run the example project, clone the repo, and run <code>pod install</code> from the Example directory first. The example demonstrates displaying a Checkout view controller , displaying a payment manager view controller and getting the token when ready to pay.</p>
-<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+<h2 id='requirements' class='heading'>Requirements</h2>
 
 <p>iOS 9 or above.
 Swift 3.0</p>
-<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+<h2 id='installation' class='heading'>Installation</h2>
 
 <p>MyCheckWalletUI is available through <a href="http://cocoapods.org">CocoaPods</a>. You will first need to ask a MyCheck team member to give you read privileges to the MyCheck Repository. Once you have gotten the privileges, install
 it by simply adding the following lines to the top of your Podfile:</p>
@@ -107,20 +105,24 @@ source 'https://github.com/CocoaPods/Specs.git'
 <pre class="highlight plaintext"><code>pod "MyCheckWalletUI"
 </code></pre>
 
-<p>Now you can run &#39;pod install&rsquo;</p>
-<a href='#use' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='use'>Use</h2>
+<p>Now you can run &lsquo;pod install&rsquo;</p>
+<h2 id='use' class='heading'>Use</h2>
 
 <p>In order to manage the users session (login, logout etc.) you will need to use the session singleton.</p>
 
-<p>Start by adding
-<code>
-import MyCheckCore
-</code></p>
+<p>Start by adding</p>
+<pre class="highlight plaintext"><code>import MyCheckCore
+
+import MyCheckWalletUI
+</code></pre>
 
 <p>to the top of the class where you want to use MyCheck.</p>
 
-<p>In your app delegate&rsquo;s <code>application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)</code> function call the configure function of the Session singleton:</p>
+<p>In your app delegate&rsquo;s <code>application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)</code> function call the configure function of the Session singleton as well as the Wallets:</p>
 <pre class="highlight plaintext"><code>Session.shared.configure(YOUR_PUBLISHABLE_KEY, environment: .sandbox)
+
+Wallet.shared.configureWallet()
+
 </code></pre>
 
 <p>This will setup the SDK to work with the desired environment.</p>
@@ -131,13 +133,12 @@ import MyCheckCore
 
 </code></pre>
 
-<p>Once you are logged in add
-<code>
-import MyCheckWalletUI
-</code></p>
-<a href='#wallet' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='wallet'>Wallet</h3>
+<p>Once you are logged in add</p>
+<pre class="highlight plaintext"><code>import MyCheckWalletUI
+</code></pre>
+<h3 id='wallet' class='heading'>Wallet</h3>
 
-<p>The Wallet singleton can be used in order to obtain a payment method if the <code>MCCheckoutViewController</code>  is not used for checkout. If this is the case the default payment method can be used.</p>
+<p>The Wallet singleton can be used in order to obtain a payment method if the <code><a href="Classes/MCCheckoutViewController.html">MCCheckoutViewController</a></code>  is not used for checkout. If this is the case the default payment method can be used.</p>
 <pre class="highlight plaintext"><code>Wallet.shared.getDefaultPaymentMehthod(success: {method in
 
 }, fail: {
@@ -145,21 +146,21 @@ error in
 
 })
 </code></pre>
-<a href='#mccheckoutviewcontroller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='mccheckoutviewcontroller'>MCCheckoutViewController</h3>
+<h3 id='mccheckoutviewcontroller' class='heading'>MCCheckoutViewController</h3>
 
-<p>This view controller is meant to be embedded inside your view controller. It allows the user the basic functions needed from a wallet:
-1. Add a payment method
-2. Select a payment method
-The view controller should be added into a container view. It can be done in two ways.</p>
+<p>This view controller is meant to be embedded inside your view controller. It allows the user the basic functions needed from a wallet:</p>
 
 <ol>
-<li>Interface builder: change the view controller that the container is connect to (by segue) to <code>MCCheckoutViewController</code>.</li>
-<li>In code: call MCCheckoutViewController.init() in order to create the instance.</li>
+<li>Add a payment method</li>
+<li><p>Select a payment method
+The view controller should be added into a container view. It can be done in two ways.</p></li>
+<li><p>Interface builder: change the view controller that the container is connect to (by segue) to <code><a href="Classes/MCCheckoutViewController.html">MCCheckoutViewController</a></code>.</p></li>
+<li><p>In code: call MCCheckoutViewController.init() in order to create the instance.</p></li>
 </ol>
 
 <p>Once an instance is created you should set <code>checkoutDelegate</code> and implement  <code>checkoutViewShouldResizeHeight</code> in order to respond to height changes. You should resize the container view to have the height returned by the delegate method.
 When you want to use a payment method use the view controllers variable <code>selectedMethod</code> in order to get the method the user selected (or nil if nonexistent)</p>
-<a href='#mcpaymentmethodsviewcontroller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='mcpaymentmethodsviewcontroller'>MCPaymentMethodsViewController</h3>
+<h3 id='mcpaymentmethodsviewcontroller' class='heading'>MCPaymentMethodsViewController</h3>
 
 <p>This class is a full screen view controller that allows the user to fully manage his/her payment methods:</p>
 
@@ -184,18 +185,18 @@ controller.dismissViewControllerAnimated(true, completion: nil)
 }
 
 </code></pre>
-<a href='#paypal' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='paypal'>PayPal</h2>
+<h2 id='paypal' class='heading'>PayPal</h2>
 
 <p>There are additional steps to take in order for PayPal to work.
 Start by installing the PayPal model. This will add the Braintree PayPal SDK as well as extra source files from the MyCheck Wallet UI SDK. Add this line to your Podfile:</p>
 <pre class="highlight plaintext"><code>pod "MyCheckWalletUI/PayPal"
 </code></pre>
 
-<p>once this is done you will need to also add a line of code initializing the PayPal model. 
-<code>
-PaypalFactory.initiate(YOUR_PACKAGE_NAME)
-</code>
-The last line of code necessary is to allow the MyCheck Wallet UI SDK to respond to  app switching. This is necessary because the PayPal SDK opens an external app/ browser. </p>
+<p>once this is done you will need to also add a line of code initializing the PayPal model. </p>
+<pre class="highlight plaintext"><code>PaypalFactory.initiate(YOUR_PACKAGE_NAME)
+</code></pre>
+
+<p>The last line of code necessary is to allow the MyCheck Wallet UI SDK to respond to  app switching. This is necessary because the PayPal SDK opens an external app/ browser. </p>
 <pre class="highlight plaintext"><code>func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -&gt; Bool {
 
 return MyCheckWallet.shared.handleOpenURL(url, sourceApplication: sourceApplication)
@@ -204,7 +205,7 @@ return MyCheckWallet.shared.handleOpenURL(url, sourceApplication: sourceApplicat
 </code></pre>
 
 <p>Lastly, to fully support PayPal and the app switching it uses please edit your info.plist  as described in the <q>Register a URL type</q> section of the <a href="https://developers.braintreepayments.com/guides/paypal/client-side/ios/v4">PayPal Braintree SDK guide found here</a>.</p>
-<a href='#apple-pay' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='apple-pay'>Apple Pay</h2>
+<h2 id='apple-pay' class='heading'>Apple Pay</h2>
 
 <p>Their are a few extra steps to take in order for Apple Pay to work.
 Start by configuring your environment to support Apple Pay by following <a href="https://developer.apple.com/library/content/ApplePay_Guide/Configuration.html#//apple_ref/doc/uid/TP40014764-CH2-SW1">these instructions</a>.  Send a p12 with the the certificate and private key you have created  and the merchant Id to a member of the MyCheck team. 
@@ -212,44 +213,43 @@ now install the Apple Pay model of the MyCheckWalletUI SDK by adding this line t
 <pre class="highlight plaintext"><code>pod "MyCheckWalletUI/ApplePay"
 </code></pre>
 
-<p>After running <code>pod install</code>  you will need to also add a line of code initializing the Apple Pay model with the merchant identifier you have created in the apple developers site in the last step . 
-<code>
-ApplePayFactory.initiate(merchantIdentifier: YOUR_MERCHANT_ID)
-</code>
-The line of code above should be added in the  <code>application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)</code> function of your application delegate after calling configure. Thats it for now. You will need to make a few more changes to add Apple Pay support to the Dine SDK, this is discussed in the Dine SDK README file and getting started guide.</p>
-<a href='#visa-checkout' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='visa-checkout'>Visa Checkout</h2>
+<p>After running <code>pod install</code>  you will need to also add a line of code initializing the Apple Pay model with the merchant identifier you have created in the apple developers site in the last step . </p>
+<pre class="highlight plaintext"><code>ApplePayFactory.initiate(merchantIdentifier: YOUR_MERCHANT_ID)
+</code></pre>
+
+<p>The line of code above should be added in the  <code>application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)</code> function of your application delegate after calling configure. Thats it for now. You will need to make a few more changes to add Apple Pay support to the Dine SDK, this is discussed in the Dine SDK README file and getting started guide.</p>
+<h2 id='visa-checkout' class='heading'>Visa Checkout</h2>
 
 <p>Start by installing the Visa Checkout model. This will add the Visa Checkout SDK as well as extra source files from the MyCheck Wallet UI SDK. Add this line to your Podfile:</p>
 <pre class="highlight plaintext"><code>pod "MyCheckWalletUI/VisaCheckout"
 </code></pre>
 
-<p>once this is done you will need to also add a line of code initializing the Visa Checkout model. 
-<code>
-VisaCheckoutFactory.initiate(apiKey: VISA_CHECKOUT_API_KEY )
-</code>
-Please make sure the api key has the corresponding environment to the one the MyCheck Wallet was configured with. </p>
-<a href='#masterpass' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='masterpass'>MasterPass</h2>
+<p>once this is done you will need to also add a line of code initializing the Visa Checkout model. </p>
+<pre class="highlight plaintext"><code>VisaCheckoutFactory.initiate(apiKey: VISA_CHECKOUT_API_KEY )
+</code></pre>
+
+<p>Please make sure the api key has the corresponding environment to the one the MyCheck Wallet was configured with. </p>
+<h2 id='masterpass' class='heading'>MasterPass</h2>
 
 <p>Start by installing the MasterPass model. Add this line to your Podfile:</p>
 <pre class="highlight plaintext"><code>pod "MyCheckWalletUI/MasterPass"
 </code></pre>
 
-<p>once this is done you will need to also add a line of code initializing the MasterPass model. 
-<code>
-MasterPassFactory.initiate()
-</code></p>
-<a href='#authors' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='authors'>Authors</h2>
+<p>once this is done you will need to also add a line of code initializing the MasterPass model. </p>
+<pre class="highlight plaintext"><code>MasterPassFactory.initiate()
+</code></pre>
+<h2 id='authors' class='heading'>Authors</h2>
 
 <p>Elad Schiller, <a href="mailto:eladsc@mycheckapp.co.il">eladsc@mycheckapp.co.il</a></p>
-<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+<h2 id='license' class='heading'>License</h2>
 
 <p>Please read the LICENSE file available in the project</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://mycheckapp.com" target="_blank" rel="external">elad schiller</a>. All rights reserved. (Last updated: 2017-09-07)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://mycheckapp.com" target="_blank" rel="external">elad schiller</a>. All rights reserved. (Last updated: 2017-12-31)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
