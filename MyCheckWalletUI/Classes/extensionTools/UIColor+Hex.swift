@@ -8,7 +8,9 @@
 
 import Foundation
 extension UIColor{
-
+    static func fromString( hex:String) -> UIColor {
+        return UIColor.hex(hex)
+    }
     static func hex(_ hex:String) -> UIColor {
         let tmp = hex as NSString
         var cString:String = tmp.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines as CharacterSet).uppercased()
