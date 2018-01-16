@@ -666,6 +666,7 @@ fileprivate extension MCCheckoutViewController{
         if line > 2{
             return
         }
+        
         buttonRappers.forEach{ walletButtons.append($0) }
         if line == 2 && buttons.count == 1{// in this case we need to add a placeholder button to make the location be correct
             
