@@ -152,7 +152,8 @@
             let token = payment.token.paymentData.base64EncodedString()
             APToken = token
           Wallet.shared.addApplePay(applePayToken: token, cardType: cardName, isPending: true, success: {token in
-            completion(.success)
+           completion(.success)
+            success(token)
             
             callbackCalled = true
 
