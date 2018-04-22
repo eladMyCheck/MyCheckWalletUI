@@ -76,15 +76,10 @@ open class MasterPassFactory : PaymentMethodFactory{
     }
     
     override func getAddMethodButton() -> PaymentMethodButtonRapper{
-        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
         
         let butRap = PaymentMethodButtonRapper(forType: .masterPass)
-        butRap.button.setBackgroundImage(UIImage(named: "masterpass_paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
-        butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpass")), for: .normal , options: [.scaleFactor(2.0)])
-        
-        //but.setImage(UIImage(named: "paypal_but", in: bundle, compatibleWith: nil), for: UIControlState())
+        butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpass")), for: .normal , options: [.scaleFactor(1.6)])
         butRap.button.addTarget(self, action: #selector(MasterPassFactory.addMethodButPressed(_:)), for: .touchUpInside)
-        //    but.setBackgroundImage(UIImage(named: "amex_small" , inBundle: bundle, compatibleWithTraitCollection: nil), forState: .Highlighted)
         return butRap
     }
     

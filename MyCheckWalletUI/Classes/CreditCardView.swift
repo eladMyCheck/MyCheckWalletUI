@@ -19,13 +19,11 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     
     var paymentMethod : PaymentMethodInterface?
     @IBOutlet weak var checkboxButton : UIButton?
-    var editMode = false
     var delegate : CreditCardViewDelegate?
     
     
     @IBOutlet weak var tempCardIcon: UIImageView!
     @IBOutlet weak var creditCardNumberlabel: UILabel?
-    @IBOutlet weak var numberToTrailing: NSLayoutConstraint!
     @IBOutlet weak var expirationDateLabel: UILabel?
     @IBOutlet weak  var backgroundButton: UIButton?
     
@@ -43,7 +41,6 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         tempCardIcon.isHidden = !method.isSingleUse
         //credit card number label
         if let creditCardNumberlabel = creditCardNumberlabel {
-            creditCardNumberlabel.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4)
             creditCardNumberlabel.layer.cornerRadius = 4
             creditCardNumberlabel.clipsToBounds = true
             creditCardNumberlabel.textColor = UIColor.white
@@ -55,7 +52,6 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         
         if let expirationDateLabel = expirationDateLabel{
             expirationDateLabel.textColor = UIColor.white
-            expirationDateLabel.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4)
             expirationDateLabel.layer.cornerRadius = 4
             expirationDateLabel.clipsToBounds = true
         
@@ -66,9 +62,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             
         }
         
-        
-        
-        backgroundButton?.setImage(method.getBackgroundImage(), for: .normal)
+        backgroundButton?.setBackgroundImage(method.getBackgroundImage(), for: .normal)
         
         //default card checkbox
         
@@ -78,8 +72,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             if let url = LocalData.manager.getPaymentMethodDefaultMethodButtonImageURL(){
             self.checkboxButton?.kf.setImage(with: url, for: .normal)
             }
-           
-                
+            
 //                .setImage(UIImage(named: "v", in: bundle, compatibleWith: nil)!, for: UIControlState())
             self.checkboxButton?.isHidden = false
         }else{
@@ -104,41 +97,36 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         addSubview(view)
     }
     
-    
-    @IBAction func checkboxPressed(_ sender: UIButton!) {
-        if editMode == true {
-            Wallet.shared.deletePaymentMethod(self.paymentMethod!, success: {
-                printIfDebug("payment method deleted")
-                if let del = self.delegate{
-                    del.deletedPaymentMethod(self.paymentMethod!)
-                }
-            }, fail: { (error) in
-                printIfDebug("did not delete payment")
-            })
-        }
+    @IBAction func deletePressed(_ sender: UIButton!) {
+        Wallet.shared.deletePaymentMethod(self.paymentMethod!, success: {
+            printIfDebug("payment method deleted")
+            if let del = self.delegate{
+                del.deletedPaymentMethod(self.paymentMethod!)
+            }
+        }, fail: { (error) in
+            printIfDebug("did not delete payment")
+        })
     }
     
     @IBAction func creditCardPressed(_ sender: UIButton!){
-        if editMode == false {
-            if (self.paymentMethod?.isSingleUse)! {
-                return
-            }
-            if self.paymentMethod?.isDefault == false {
-                self.delegate?.showActivityIndicator(true)
-                Wallet.shared.setPaymentMethodAsDefault(self.paymentMethod!, success: {
-                    self.delegate?.showActivityIndicator(false)
+        if (self.paymentMethod?.isSingleUse)! {
+            return
+        }
+        if self.paymentMethod?.isDefault == false {
+            self.delegate?.showActivityIndicator(true)
+            Wallet.shared.setPaymentMethodAsDefault(self.paymentMethod!, success: {
+                self.delegate?.showActivityIndicator(false)
+                
+                printIfDebug("payment set as default")
+                if let del = self.delegate{
+                    del.setPaymentAsDefault(method: self.paymentMethod!)
                     
-                    printIfDebug("payment set as default")
-                    if let del = self.delegate{
-                        del.setPaymentAsDefault(method: self.paymentMethod!)
-                        
-                    }
-                }, fail: { (error) in
-                    self.delegate?.showActivityIndicator(false)
-                    
-                    printIfDebug("did not set payment as default")
-                })
-            }
+                }
+            }, fail: { (error) in
+                self.delegate?.showActivityIndicator(false)
+                
+                printIfDebug("did not set payment as default")
+            })
         }
     }
     
@@ -171,25 +159,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     
    
     
-    func toggleEditMode(){
-        self.editMode = !self.editMode
-        if self.editMode == true {
-            
-            if let url = LocalData.manager.getPaymentMethodRemoveButtonImageURL(){
-                self.checkboxButton?.kf.setImage(with: url, for: .normal)
-            }
-            self.checkboxButton?.isHidden = false
-        }else{
-            if self.paymentMethod!.isDefault == true {
-                if let url = LocalData.manager.getPaymentMethodDefaultMethodButtonImageURL(){
-                    self.checkboxButton?.kf.setImage(with: url, for: .normal)
-                }
-                self.checkboxButton?.isHidden = false
-            }else{
-                self.checkboxButton?.isHidden = true
-            }
-        }
-    }
+
 }
 
 

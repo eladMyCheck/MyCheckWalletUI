@@ -29,7 +29,6 @@ open class MCAddCreditCardViewController: MCViewController {
     @IBOutlet internal var dateField: UITextField!
     @IBOutlet internal var cvvField: UITextField!
     @IBOutlet internal var zipField: UITextField!
-    @IBOutlet weak var cancelBut: UIButton!
     
     @IBOutlet internal var creditCardUnderline: UIView!
     @IBOutlet internal var dateUnderline: UIView!
@@ -61,6 +60,7 @@ open class MCAddCreditCardViewController: MCViewController {
         }, fail: nil)
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.setupUI), name: NSNotification.Name(rawValue: Session.Const.loggedInNotification), object: nil)
+        nc.addObserver(self, selector: #selector(MCAddCreditCardViewController.ApplyPressed(_:)), name: NSNotification.Name(rawValue: "add_card_button_pressed"), object: nil)
         
     }
     internal static func instantiate(_ delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController{
@@ -85,6 +85,7 @@ open class MCAddCreditCardViewController: MCViewController {
         
         sender.isSelected = !sender.isSelected
     }
+    
     @IBAction func ApplyPressed(_ sender: AnyObject) {
         let validator = updateAndCheckValid()
         if validator.CreditDetailsValid{
@@ -92,8 +93,7 @@ open class MCAddCreditCardViewController: MCViewController {
             
             let dateStr = formatedString(dateField)
             let split = dateStr.characters.split(separator: "/").map(String.init)
-            applyButton.isEnabled = false
-            cancelBut.isEnabled = false
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "add_card_switch_mode"), object: nil, userInfo: ["mode": false])
             self.creditCardNumberField.isUserInteractionEnabled = false
             self.dateField.isUserInteractionEnabled = false
             self.cvvField.isUserInteractionEnabled = false
@@ -103,8 +103,7 @@ open class MCAddCreditCardViewController: MCViewController {
                 if let delegate = self.delegate{
                     
                     delegate.addedNewPaymentMethod(self, token:"")
-                    self.applyButton.isEnabled = true
-                    self.cancelBut.isEnabled = true
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "add_card_switch_mode"), object: nil, userInfo: ["mode": true])
                     self.creditCardNumberField.isUserInteractionEnabled = true
                     self.dateField.isUserInteractionEnabled = true
                     self.cvvField.isUserInteractionEnabled = true
@@ -116,8 +115,7 @@ open class MCAddCreditCardViewController: MCViewController {
                 if let delegate = self.delegate{
                     self.showError(errorStr: error.localizedDescription)
                     delegate.recivedError(self, error:error)
-                    self.applyButton.isEnabled = true
-                    self.cancelBut.isEnabled = true
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "add_card_switch_mode"), object: nil, userInfo: ["mode": true])
                     self.creditCardNumberField.isUserInteractionEnabled = true
                     self.dateField.isUserInteractionEnabled = true
                     self.cvvField.isUserInteractionEnabled = true
@@ -186,33 +184,21 @@ open class MCAddCreditCardViewController: MCViewController {
     //MARK: - private functions
     internal func setupUI(){
         
-        self.barItem.title =  LocalData.manager.getString("managePaymentMethodsheader" , fallback:"")
+//        self.barItem.title =  LocalData.manager.getString("managePaymentMethodsheader" , fallback:"")
+        self.barItem.title =  ""
         self.creditCardNumberField.placeholder = LocalData.manager.getString("addCreditcardNumPlaceHoldar")
         self.cvvField.placeholder = LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)
         self.dateField.placeholder = LocalData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)
         self.zipField.placeholder = LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder)
-        applyButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.title(for: UIControlState())) , for: UIControlState())
-        applyButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.applyButton.title(for: UIControlState())) , for: .highlighted)
-        
-        cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.title(for: UIControlState())) , for: UIControlState())
-        cancelBut.setTitle( LocalData.manager.getString("addCreditcancelAddingCardButton" , fallback: self.cancelBut.title(for: UIControlState())) , for: .highlighted)
-        //        if let backBut = backButton{
-        //        backBut.kf.setImage(with: LocalData.manager.getBackButtonImageURL(), for: .normal , options:[.scaleFactor(3.0)])
-        //        }
+        if let backBut = backButton{
+            backBut.kf.setImage(with: LocalData.manager.getBackButtonImageURL(), for: .normal , options:[.scaleFactor(3.0)])
+        }
         
         //setting colors
         if let navbar = navbar{
             navbar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navbar.backgroundColor!)
         }
         errorLabel.textColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
-        applyButton.backgroundColor = LocalData.manager.getColor("addCreditColorsapplyBackgroundColor", fallback: UIColor.white)
-        applyButton.layer.cornerRadius = 8
-        applyButton.setTitleColor(LocalData.manager.getColor("addCreditColorsapplyButtonText", fallback: UIColor.white), for: UIControlState())
-        cancelBut.layer.cornerRadius = 8
-        
-        cancelBut.backgroundColor = LocalData.manager.getColor("addCreditColorscancelColor", fallback: UIColor.white)
-        cancelBut.setTitleColor(LocalData.manager.getColor("addCreditColorscancelButtonText", fallback: UIColor.white), for: UIControlState())
-        
         
         for (field , underline) in underlineForField!{
             field.textColor = LocalData.manager.getColor("addCreditColorsfieldText", fallback: field.textColor!)
@@ -524,9 +510,20 @@ fileprivate extension CreditCardType{
     
 }
 
+fileprivate extension MCAddCreditCardViewController{
+    
+    func getRightBarButton() -> UIBarButtonItem{
+        
+        let title = LocalData.manager.getString("managePaymentMethodsdineCloseButton" , fallback: "X")
+        let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(MCAddCreditCardViewController.cancelPressed))
+        return button
+    }
+}
+
 
 extension MCAddCreditCardViewController: navigationItemHasViewController{
     func getNavigationItem() -> UINavigationItem{
+        barItem.rightBarButtonItem = getRightBarButton()
         return barItem
     }
 }

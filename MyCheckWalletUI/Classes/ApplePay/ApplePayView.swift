@@ -35,26 +35,15 @@ class ApplePayView: CreditCardView {
     }
   }
   
-  //their is no edit mode so the overide has an empty implementation
-  override func toggleEditMode(){
-    self.editMode = !self.editMode
-    self.checkboxButton?.isHidden = self.editMode
-
-  }
-  
   @IBAction override func creditCardPressed(_ sender: UIButton!){
-    if editMode == false {
-      
-      if let paymentMethod = self.paymentMethod , paymentMethod.isDefault == false {
+    if let paymentMethod = self.paymentMethod , paymentMethod.isDefault == false {
         
         Wallet.shared.applePayController.changeApplePayDefault(to: true)
         printIfDebug("payment set as default")
         if let del = self.delegate{
-          del.setPaymentAsDefault(method: paymentMethod)
-          
+            del.setPaymentAsDefault(method: paymentMethod)
+            
         }
-      }
-      
     }
     
   }

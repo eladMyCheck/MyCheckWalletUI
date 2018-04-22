@@ -17,7 +17,6 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     let margin = 5.0 as CGFloat
     var cardViewWidth = 210 as CGFloat
     var startMargin = 106 as CGFloat
-    var addCardWidth = 185.0 as CGFloat
     var secondMargin = 5 as CGFloat
     
     @IBOutlet weak var scrollView: MCScrollView!
@@ -26,7 +25,6 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     var paymentMethods: Array<PaymentMethodInterface>!
     var delegate : MCCreditCardsViewControllerrDelegate?
     var creditCards : NSMutableArray = []
-    var editMode : Bool = false
     var indexToScrollTo : Int = 0
     var currantIndex : Int = 0
     //MARK: - lifecycle functions
@@ -34,11 +32,10 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         super.viewDidLoad()
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
-        cardViewWidth =  696.0 / 1242 * screenWidth
-        addCardWidth = 610.0 / 1242 * screenWidth
-        startMargin = (UIScreen.main.bounds.width - addCardWidth ) / 2.0  as CGFloat
+        cardViewWidth =  270.0 / 375 * screenWidth
+        startMargin = (screenWidth - cardViewWidth + 5) / 2.0  as CGFloat
         
-        secondMargin = margin + 33.0
+        secondMargin = margin + 5.0
         
         self.scrollView.delegate = self;
         delay(0.1){
@@ -52,7 +49,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(MCCreditCardsViewController.setupUI), name: NSNotification.Name(rawValue: Session.Const.loggedInNotification), object: nil)
         
-        barItem.rightBarButtonItem = getRightBarButton(editMode: false)
+        barItem.rightBarButtonItem = getRightBarButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +62,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         for subview in subviews{
             subview.removeFromSuperview()
         }
-        let cardHeight = 0.56034482758 * cardViewWidth
+        let cardHeight = 0.603846153 * cardViewWidth
         var creditCardCount = 0
         if  self.paymentMethods != nil{
             creditCardCount = self.paymentMethods.count
@@ -75,14 +72,19 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             self.scrollView.isScrollEnabled = false
         }
         
-        let addCreditCardView = AddCreditCardView(frame: CGRect(x: startMargin, y: 0.5 * (scrollView.frame.size.height-cardHeight), width: addCardWidth , height: cardHeight) )
-        self.scrollView.addSubview(addCreditCardView)
-        
+        if creditCardCount == 0 {
+            let addCreditCardView = AddCreditCardView(frame: CGRect(x:startMargin , y: 0.5 * (scrollView.frame.size.height-cardHeight), width: cardViewWidth , height: cardHeight) )
+            self.scrollView.addSubview(addCreditCardView)
+        }
         
         creditCards.removeAllObjects()
         for i in (0..<creditCardCount) {
             let method = self.paymentMethods[i]
-            let frame = CGRect(x:(margin + cardViewWidth)*CGFloat(i)+startMargin + addCardWidth + secondMargin  , y: 0.5 * (scrollView.frame.size.height-cardHeight), width: cardViewWidth , height: cardHeight)
+            var frame = CGRect(x:startMargin + ((cardViewWidth + secondMargin) * CGFloat(i)) , y: 0.5 * (scrollView.frame.size.height-cardHeight), width: cardViewWidth , height: cardHeight)
+            
+            if i == 0{
+                frame.origin.x = startMargin
+            }
             
             //trying to create a card object, set it up and add it to the scroll view
             if  let card : CreditCardView = {
@@ -106,34 +108,20 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
                 creditCards.add(card)
                 card.delegate = self
                 self.scrollView.addSubview(card)
-                
-                
-                
             }
-            
-            
         }
-        
-        
         
         if creditCardCount == 0 {
-            barItem.rightBarButtonItem = nil 
-            //            self.editButton.setTitle("", for: UIControlState())
-            //            self.editButton.isEnabled = false
+            barItem.rightBarButtonItem = nil
         }else{
-            
             updateButtonTxt()
-            //self.editButton.isEnabled = true
         }
         
-        self.scrollView.contentSize = CGSize(width:addCardWidth +  CGFloat(creditCardCount)*(cardViewWidth + margin ) + startMargin * 2
-            + secondMargin - margin , height:0.0)
+        self.scrollView.contentSize = CGSize(width:self.scrollView.frame.width * CGFloat(creditCardCount) , height:0.0)
         
         UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
             if creditCardCount > 0{
-                if self.indexToScrollTo == 0{
-                    self.indexToScrollTo =  1
-                }
+                
                 self.scrollView.contentOffset = CGPoint(x: self.getXOffset(index: Int( self.indexToScrollTo)), y: 0)
                 self.currantIndex = self.indexToScrollTo
                 // self.indexToScrollTo = 0
@@ -150,14 +138,9 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     }
     
     
-    @IBAction internal func editPressed(_ sender: UIButton) {
-        self.editMode = !self.editMode
-        updateButtonTxt()
-        
-        for cc in creditCards as! [CreditCardView]{
-            cc.toggleEditMode()
-        }
-        
+    @IBAction internal func addPressed(_ sender: UIButton) {
+        //call addCard
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "AddCreditCardPressed"), object: nil)
     }
     
     internal  func deletedPaymentMethod(_ method: PaymentMethodInterface) {
@@ -172,11 +155,6 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         }
         Wallet.shared.getPaymentMethods(success: { (array) in
             self.paymentMethods = array
-            for cc in self.creditCards as! [CreditCardView]{
-                cc.toggleEditMode()
-            }
-            self.editMode = !self.editMode
-            self.updateButtonTxt()
             self.setCreditCardsUI(true)
         }, fail: { error in
         })
@@ -189,6 +167,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         reloadMethods()
         
     }
+    
     internal func reloadMethods(){
         showActivityIndicator(true)
         Wallet.shared.getPaymentMethods(success: { (array) in
@@ -221,21 +200,21 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         }
         self.barItem.backBarButtonItem?.target = self
         self.barItem.backBarButtonItem?.action = #selector(MCCreditCardsViewController.backPressed)
-        updateButtonTxt()
     }
+    
     fileprivate func updateButtonTxt(){
-        printIfDebug("edit mode \(editMode)")
-  
-        self.barItem.rightBarButtonItem = getRightBarButton(editMode: editMode)
+//        printIfDebug("edit mode \(editMode)")
+
+        self.barItem.rightBarButtonItem = getRightBarButton()
     }
     
     func  getXOffset(index: Int) -> CGFloat{
         if index == 0 {
             return 0.0
         }
-        let doubleIndex = CGFloat(index)
-        let toReturn = (doubleIndex - 0.5) * (cardViewWidth + margin ) + ( self.addCardWidth  + secondMargin  ) / 2
-        return toReturn
+        
+        let card : CreditCardView = creditCards.object(at: index) as! CreditCardView
+        return card.frame.origin.x - startMargin
     }
 }
 
@@ -289,12 +268,11 @@ extension MCCreditCardsViewController: navigationItemHasViewController{
 
 fileprivate extension MCCreditCardsViewController{
     
-    func getRightBarButton(editMode: Bool) -> UIBarButtonItem{
+    func getRightBarButton() -> UIBarButtonItem{
         
-        let title =       editMode ? LocalData.manager.getString("managePaymentMethodsdineEditButton" , fallback: "Done") : LocalData.manager.getString("managePaymentMethodseditPMButton" , fallback: "Edit")
+        let title = LocalData.manager.getString("managePaymentMethodsdineAddButton" , fallback: "ADD")
         
-        
-        let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(MCCreditCardsViewController.editPressed))
+        let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(MCCreditCardsViewController.addPressed))
         return button
     }
 }

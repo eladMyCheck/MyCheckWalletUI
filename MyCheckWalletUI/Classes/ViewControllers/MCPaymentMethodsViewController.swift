@@ -42,6 +42,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     @IBOutlet weak var doNotStoreLabel: UILabel!
     
     @IBOutlet weak var walletHeaderLabel: UILabel!
+    @IBOutlet weak var factoryHolderStackView: UIStackView!
     @IBOutlet weak var pciLabel: UILabel!
     @IBOutlet var seporators: [UIView]!
     @IBOutlet fileprivate weak var creditCardListContainer: UIView!
@@ -52,7 +53,11 @@ open class MCPaymentMethodsViewController: MCViewController {
     @IBOutlet weak var walletsSeporator: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
+    @IBOutlet weak var addCardButton: UIButton!
+    @IBOutlet weak var addCardBottomConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var weAcceptSuperview: UIView!
+    @IBOutlet weak var weAcceptSeperator: UIView!
     @IBOutlet weak var acceptedCards: UIView!
     @IBOutlet weak internal var footerLabel: UILabel!
     @IBAction func addCreditCardPressed(_ sender: AnyObject) {
@@ -91,6 +96,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     
     open override func viewDidLoad(){
         super.viewDidLoad()
+        
         activityInidicator.stopAnimating();
         //setting up UI and updating it if the user logges in... just incase
         let nc = NotificationCenter.default
@@ -117,6 +123,7 @@ print(str)
         }
         
         NotificationCenter.default.addObserver(self, selector:#selector(MCPaymentMethodsViewController.addCreditCardPressedNotificationReceived(_:)), name:NSNotification.Name(rawValue: "AddCreditCardPressed"), object: nil)
+        
         self.assignImages()
         
         setWalletButtons()
@@ -128,10 +135,30 @@ print(str)
         Wallet.shared.factoryDelegate = self
         doNotStoreCheckbox.isSelected = false
     }
+    
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
     }
+    
+    func keyboardWillShow(notification:NSNotification){
+        print("keyboard show")
+        var userInfo = notification.userInfo!
+        let keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        var kbHeight = keyboardFrame.size.height
+        if #available(iOS 11.0, *) {
+            let height = self.view.safeAreaInsets.bottom
+            kbHeight -= height
+        }
+        
+        addCardBottomConstraint.constant = kbHeight + 16.0
+    }
+    
+    func keyboardWillHide(notification:NSNotification){
+        print("keyboard hide")
+        addCardBottomConstraint.constant = 16.0
+    }
+    
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "creditCardSubViewController" {
             creditCardVC = segue.destination as? MCAddCreditCardViewController
@@ -139,13 +166,26 @@ print(str)
         }else if segue.identifier == "creditCardsViewController"{
             creditCardListVC = segue.destination as? MCCreditCardsViewController
             creditCardListVC!.paymentMethods = self.paymentMethods
-
-
         }
     }
     
+    func switchAddCardButton(on : Bool){
+        addCardButton.isHidden = !on
+        addCardButton.isEnabled = on
+    }
+    
+    func switchAddCardButtonObserver(_ notification: NSNotification) {
+        if let mode = notification.userInfo?["mode"] as? Bool {
+            switchAddCardButton(on: mode)
+        }
+    }
+    
+    @IBAction func addCardPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name:  Notification.Name("add_card_button_pressed") , object: nil)
+    }
+    
     override open var preferredStatusBarStyle: UIStatusBarStyle  {
-    return LocalData.manager.getPaymentMethodsStatusBarColor()
+        return LocalData.manager.getPaymentMethodsStatusBarColor()
     }
     //MARK: - actions
     
@@ -157,14 +197,23 @@ print(str)
     
     func showEnterCreditCard(_ show: Bool , animated: Bool){
         // creditCardVC!.resetView()
+        switchAddCardButton(on: show)
         if show{
+            NotificationCenter.default.addObserver(self, selector: #selector(self.switchAddCardButtonObserver(_:)), name: NSNotification.Name(rawValue: "add_card_switch_mode"), object: nil)
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+            //
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+            
+            weAcceptSeperator.backgroundColor = self.view.backgroundColor
+            
             _ = creditCardVC!.becomeFirstResponder()
             
                 self.navigationBar.popItem(animated: false)
-
             
             self.navigationBar.pushItem((creditCardVC?.getNavigationItem())!, animated: false)
         }else{
+            weAcceptSeperator.backgroundColor = self.addCreditCardContainer.backgroundColor
             _ = creditCardVC!.resignFirstResponder()
            self.navigationBar.popItem(animated: false)
             self.navigationBar.pushItem((creditCardListVC?.getNavigationItem())!, animated: false)
@@ -177,16 +226,12 @@ print(str)
             self.walletsSuperview.alpha = show ? 0.0 : 1.0
             self.doNotStoreCheckbox.superview?.alpha = show ? 0.0 : 1.0
             self.weAcceptSuperview.alpha = show ? 0.0 : 1.0
-            self.walletsSeporator.alpha = show ? 0.0 : 1.0
             self.creditCardListVC!.scrollView.alpha = show ? 0 : 1
             
         })
     }
     
     func addCreditCardPressedNotificationReceived(_ notification: Notification){
-        if creditCardListVC?.editMode == true {
-//            creditCardListVC?.editPressed((creditCardListVC?.editButton)!)
-        }
         self.showEnterCreditCard(true, animated: true)
     }
     
@@ -199,17 +244,20 @@ print(str)
     
     internal func setupUI(){
         
+        switchAddCardButton(on: false)
+        addCardButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.addCardButton.title(for: UIControlState())) , for: UIControlState())
+        addCardButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.addCardButton.title(for: UIControlState())) , for: .highlighted)
+        addCardButton.backgroundColor = LocalData.manager.getColor("addCreditColorsapplyBackgroundColor", fallback: UIColor.white)
+        addCardButton.layer.cornerRadius = 25
+        addCardButton.setTitleColor(LocalData.manager.getColor("addCreditColorsapplyButtonText", fallback: UIColor.white), for: UIControlState())
+        
         self.footerLabel.text = LocalData.manager.getString("managePaymentMethodscardAcceptedWallet" , fallback: self.footerLabel.text)
       self.walletHeaderLabel.text = LocalData.manager.getString("managePaymentMethodsothePaymentMethodsHeader" , fallback:  self.walletHeaderLabel.text)
       self.pciLabel.text = LocalData.manager.getString("addCreditpciNotice2" , fallback:  self.pciLabel.text)
 
       
         doNotStoreLabel.text = LocalData.manager.getString("managePaymentMethodsnotStoreCard" , fallback:doNotStoreLabel.text)
-        //setting up colors
         view.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsbackground", fallback: UIColor.white)
-        for seporator in seporators{
-            seporator.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsseporator", fallback: seporator.backgroundColor!)
-        }
         footerLabel.textColor = LocalData.manager.getColor("managePaymentMethodscolorsseporatorText" , fallback: footerLabel.textColor)
         walletHeaderLabel.textColor = LocalData.manager.getColor("managePaymentMethodscolorsseporatorText" , fallback: walletHeaderLabel.textColor)
         pciLabel.textColor = LocalData.manager.getColor("managePaymentMethodscolorspciNotice" , fallback: pciLabel.textColor)
@@ -340,80 +388,64 @@ fileprivate extension MCPaymentMethodsViewController{
             }
         }
     }
+    
     fileprivate func setWalletButtons(){
         switch Wallet.shared.factories.count {
         case 0:
             self.doNotStoreCheckbox.superview?.isHidden = true
-        case 1:
-            let factory = Wallet.shared.factories[0]
-            let  butRap = factory.getAddMethodButton()
-            self.walletsSuperview.addSubview(butRap.button)
-            butRap.button.translatesAutoresizingMaskIntoConstraints = false
+            handleNoFactories()
+        case 1...4:
+            //Stack View
+            factoryHolderStackView.axis = .vertical
+            factoryHolderStackView.distribution = .fillEqually
+            factoryHolderStackView.alignment = .fill
+            factoryHolderStackView.spacing = 0
             
-            let horizontalConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-            walletsSuperview.addConstraint(horizontalConstraint)
+            var firstRaw : [UIButton] = []
+            var secondRaw : [UIButton] = []
             
-            let verticalConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 16)
-            walletsSuperview.addConstraint(verticalConstraint)
-            
-            if let image = butRap.button.backgroundImage(for: .normal) , image.size.width != 0{
-                let ratio = image.size.height / image.size.width
-                
-                let aspectRationConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: butRap.button, attribute: NSLayoutAttribute.width, multiplier: ratio, constant: 0)
-                walletsSuperview.addConstraint(aspectRationConstraint)
-            }
-            let widthConstraint = NSLayoutConstraint(item: butRap.button, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.width, multiplier: 0.415625, constant: 0)
-            walletsSuperview.addConstraint(widthConstraint)
-        case 2...4:
-            var buttons : [UIButton] = []
             for (index,factory) in Wallet.shared.factories.enumerated(){
+                let butRap = factory.getAddMethodButton()
                 
-                let  butRap = factory.getAddMethodButton()
-                buttons.append( butRap.button)
-                self.walletsSuperview.addSubview(butRap.button)
-                
-                addVerticalConstraintsToWalletButton(buttonRapper: butRap , bellow: index > 1 ? buttons[index - 2] : nil)
-                
-                addAspectRationConstraintsToWalletButton(buttonRapper: butRap)
-                addWidthConstraintsToWalletButton(buttonRapper: butRap)
+                if index <= 1{
+                    firstRaw.append(butRap.button)
+                }else if index > 1{
+                    secondRaw.append(butRap.button)
+                }
             }
             
-            let  but1 = buttons[0]
-            let  but2 = buttons[1]
-            let margin = 20//0.0845410628 * walletsSuperview.frame.size.width;
+            let firstRowStackView = UIStackView(arrangedSubviews: firstRaw)
+            firstRowStackView.axis = .horizontal
+            firstRowStackView.translatesAutoresizingMaskIntoConstraints = false
+            firstRowStackView.distribution = .fillEqually
+            firstRowStackView.alignment = .fill
+            firstRowStackView.spacing = 0
             
-            let constraint1Str = "H:|-(\(margin))-[but1]"
-            let constraint2Str = "H:[but2]-(\(margin))-|"
+            factoryHolderStackView.addArrangedSubview(firstRowStackView)
             
-            walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint1Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but1":but1]))
-            
-            walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint2Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but2":but2]))
-            
-            if buttons.count == 3 {
-                let  but3 = buttons[2]
-                walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(\(margin))-[but1]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but1":but3]))
+            if secondRaw.count > 0 {
+                firstRowStackView.axis = .vertical
                 
+                let secondRowStackView = UIStackView(arrangedSubviews: secondRaw)
+                secondRowStackView.axis = .horizontal
+                secondRowStackView.translatesAutoresizingMaskIntoConstraints = false
+                secondRowStackView.distribution = .fillEqually
+                secondRowStackView.alignment = .fill
+                secondRowStackView.spacing = 0
                 
+                factoryHolderStackView.addArrangedSubview(secondRowStackView)
             }
-            
-            if buttons.count == 4 {
-                let  but2 = buttons[2]
-                let  but3 = buttons[3]
-                walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint1Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but1":but2]))
-                
-                walletsSuperview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraint2Str, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["but2":but3]))
-
-            }
-            
-            
             
         default:
             break;
         }
-        walletsSuperview.layoutIfNeeded()
         
-            walletsSeporator.isHidden = Wallet.shared.factories.count == 0
-
+        walletsSuperview.layoutIfNeeded()
+    }
+    
+    func handleNoFactories(){
+        weAcceptSeperator.backgroundColor = self.view.backgroundColor
+        walletsSuperview.isHidden = true
     }
     
     func addAspectRationConstraintsToWalletButton(buttonRapper: PaymentMethodButtonRapper){

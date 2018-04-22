@@ -48,11 +48,7 @@ open class PaymentMethodFactory: NSObject {
     //this button is meant for use in the checkout view controller
     internal func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
         let butRap = PaymentMethodButtonRapper(forType: .non)
-        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-        
-        let image = UIImage(named: "checkout_wallet_but_bg" , in: bundle, compatibleWith: nil)
         butRap.button.frame = CGRect(x: 0, y: 0, width: 133.0, height: 41.0)
-        butRap.button.setBackgroundImage(image, for: UIControlState())
         butRap.button.addConstraint(NSLayoutConstraint(
             item: butRap.button,
             attribute: .width,

@@ -21,7 +21,7 @@ internal extension LocalData{
   }
   
   internal func getAddCreditCardTextColor() -> UIColor{
-    return getColor("managePaymentMethodscolorsaddCardText" , fallback: UIColor.gray)
+    return getColor("managePaymentMethodscolorsaddCardText" , fallback: UIColor.black)
   }
   
   internal func getAddCreditCardImageURL() -> URL?{
