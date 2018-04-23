@@ -513,8 +513,16 @@ fileprivate extension MCAddCreditCardViewController{
     
     func getRightBarButton() -> UIBarButtonItem{
         
-        let title = LocalData.manager.getString("managePaymentMethodsdineCloseButton" , fallback: "X")
+        let title = LocalData.manager.getString("managePaymentMethodsdineCloseButton" , fallback: "x")
         let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(MCAddCreditCardViewController.cancelPressed))
+        
+        //if there is no text from localData or the text from localData is "X", set the button image to be X icon.
+        if title == "x"{
+            let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+            if let image = UIImage(named: "close_icon" , in: bundle, compatibleWith: nil){
+                button.image = image
+            }
+        }
         return button
     }
 }
