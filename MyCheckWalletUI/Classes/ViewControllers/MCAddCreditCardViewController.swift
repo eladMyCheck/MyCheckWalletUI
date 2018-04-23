@@ -184,7 +184,6 @@ open class MCAddCreditCardViewController: MCViewController {
     //MARK: - private functions
     internal func setupUI(){
         
-//        self.barItem.title =  LocalData.manager.getString("managePaymentMethodsheader" , fallback:"")
         self.barItem.title =  ""
         self.creditCardNumberField.placeholder = LocalData.manager.getString("addCreditcardNumPlaceHoldar")
         self.cvvField.placeholder = LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)

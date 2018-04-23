@@ -40,7 +40,7 @@
                     <state key="normal" image="v"/>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ZoK-DA-Nuw">
-                    <rect key="frame" x="32" y="93.5" width="150" height="16"/>
+                    <rect key="frame" x="32" y="103.5" width="150" height="16"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxxx-1234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="h4E-Jw-a9L">
                             <rect key="frame" x="0.0" y="0.0" width="63" height="16"/>
@@ -82,7 +82,7 @@
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="oCZ-Bh-U1N" firstAttribute="trailing" secondItem="0pp-rZ-CDM" secondAttribute="trailing" id="1XX-WE-xyE"/>
-                <constraint firstItem="ZoK-DA-Nuw" firstAttribute="top" secondItem="RoC-wV-WxO" secondAttribute="centerY" constant="10" id="1ZO-bC-RYS"/>
+                <constraint firstItem="ZoK-DA-Nuw" firstAttribute="top" secondItem="RoC-wV-WxO" secondAttribute="centerY" constant="20" id="1ZO-bC-RYS"/>
                 <constraint firstAttribute="trailing" secondItem="oCZ-Bh-U1N" secondAttribute="trailing" constant="10" id="4A8-gA-nCo"/>
                 <constraint firstItem="oCZ-Bh-U1N" firstAttribute="leading" secondItem="RoC-wV-WxO" secondAttribute="leading" id="63U-rT-r0b"/>
                 <constraint firstAttribute="bottom" secondItem="oCZ-Bh-U1N" secondAttribute="bottom" id="HJ6-nc-MLf"/>

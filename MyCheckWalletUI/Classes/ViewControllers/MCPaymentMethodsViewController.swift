@@ -170,11 +170,15 @@ print(str)
     }
     
     func switchAddCardButton(on : Bool){
+        if addCardButton.layer.cornerRadius != addCardButton.frame.height / 2 {
+            addCardButton.layer.cornerRadius = addCardButton.frame.height / 2
+        }
         addCardButton.isHidden = !on
         addCardButton.isEnabled = on
     }
     
     func switchAddCardButtonObserver(_ notification: NSNotification) {
+        
         if let mode = notification.userInfo?["mode"] as? Bool {
             switchAddCardButton(on: mode)
         }
@@ -243,12 +247,10 @@ print(str)
     }
     
     internal func setupUI(){
-        
-        switchAddCardButton(on: false)
         addCardButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.addCardButton.title(for: UIControlState())) , for: UIControlState())
         addCardButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.addCardButton.title(for: UIControlState())) , for: .highlighted)
         addCardButton.backgroundColor = LocalData.manager.getColor("addCreditColorsapplyBackgroundColor", fallback: UIColor.white)
-        addCardButton.layer.cornerRadius = 25
+        
         addCardButton.setTitleColor(LocalData.manager.getColor("addCreditColorsapplyButtonText", fallback: UIColor.white), for: UIControlState())
         
         self.footerLabel.text = LocalData.manager.getString("managePaymentMethodscardAcceptedWallet" , fallback: self.footerLabel.text)
@@ -415,7 +417,7 @@ fileprivate extension MCPaymentMethodsViewController{
             }
             
             let firstRowStackView = UIStackView(arrangedSubviews: firstRaw)
-            firstRowStackView.axis = .horizontal
+            firstRowStackView.axis = .vertical
             firstRowStackView.translatesAutoresizingMaskIntoConstraints = false
             firstRowStackView.distribution = .fillEqually
             firstRowStackView.alignment = .fill
@@ -424,7 +426,7 @@ fileprivate extension MCPaymentMethodsViewController{
             factoryHolderStackView.addArrangedSubview(firstRowStackView)
             
             if secondRaw.count > 0 {
-                firstRowStackView.axis = .vertical
+                firstRowStackView.axis = .horizontal
                 
                 let secondRowStackView = UIStackView(arrangedSubviews: secondRaw)
                 secondRowStackView.axis = .horizontal
