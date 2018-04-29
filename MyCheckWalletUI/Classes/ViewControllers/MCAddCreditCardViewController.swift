@@ -185,7 +185,7 @@ open class MCAddCreditCardViewController: MCViewController {
     internal func setupUI(){
         
         self.barItem.title =  ""
-        self.creditCardNumberField.placeholder = LocalData.manager.getString("addCreditcardNumPlaceHoldar")
+        self.creditCardNumberField.placeholder = LocalData.manager.getString("addCreditcardNumPlaceHoldar" , fallback: self.creditCardNumberField.placeholder)
         self.cvvField.placeholder = LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)
         self.dateField.placeholder = LocalData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)
         self.zipField.placeholder = LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder)
@@ -197,6 +197,7 @@ open class MCAddCreditCardViewController: MCViewController {
         if let navbar = navbar{
             navbar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navbar.backgroundColor!)
         }
+        
         errorLabel.textColor = LocalData.manager.getColor("addCreditColorsinputError", fallback: errorLabel.textColor!)
         
         for (field , underline) in underlineForField!{
@@ -531,6 +532,7 @@ fileprivate extension MCAddCreditCardViewController{
 extension MCAddCreditCardViewController: navigationItemHasViewController{
     func getNavigationItem() -> UINavigationItem{
         barItem.rightBarButtonItem = getRightBarButton()
+        
         return barItem
     }
 }

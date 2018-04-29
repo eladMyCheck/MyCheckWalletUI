@@ -50,6 +50,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     
     @IBOutlet fileprivate weak var creditCardInCenterConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate weak var creditCardsVCCenterXConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var walletsSeporator: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
@@ -146,10 +147,6 @@ print(str)
         var userInfo = notification.userInfo!
         let keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         var kbHeight = keyboardFrame.size.height
-        if #available(iOS 11.0, *) {
-            let height = self.view.safeAreaInsets.bottom
-            kbHeight -= height
-        }
         
         addCardBottomConstraint.constant = kbHeight + 16.0
     }
@@ -203,6 +200,7 @@ print(str)
         // creditCardVC!.resetView()
         switchAddCardButton(on: show)
         if show{
+            
             NotificationCenter.default.addObserver(self, selector: #selector(self.switchAddCardButtonObserver(_:)), name: NSNotification.Name(rawValue: "add_card_switch_mode"), object: nil)
             
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -216,11 +214,19 @@ print(str)
                 self.navigationBar.popItem(animated: false)
             
             self.navigationBar.pushItem((creditCardVC?.getNavigationItem())!, animated: false)
+            
+            self.navigationBar.barStyle = .black
+            self.navigationBar.barTintColor = .white
+            self.navigationBar.tintColor = .black
         }else{
             weAcceptSeperator.backgroundColor = self.addCreditCardContainer.backgroundColor
             _ = creditCardVC!.resignFirstResponder()
            self.navigationBar.popItem(animated: false)
             self.navigationBar.pushItem((creditCardListVC?.getNavigationItem())!, animated: false)
+            
+            self.navigationBar.barStyle = .default
+            self.navigationBar.barTintColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground" , fallback: UIColor.clear)
+            self.navigationBar.tintColor = .white
 
         }
         creditCardInCenterConstraint.priority = show ? 999 : 1
@@ -265,7 +271,7 @@ print(str)
         pciLabel.textColor = LocalData.manager.getColor("managePaymentMethodscolorspciNotice" , fallback: pciLabel.textColor)
         
         doNotStoreSuperview.isHidden = !LocalData.manager.doNotStoreEnabled()
-self.navigationBar.barTintColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground" , fallback: UIColor.clear)
+        self.navigationBar.barTintColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground" , fallback: UIColor.clear)
         self.navigationBar.isTranslucent = false
         self.navigationBar.tintColor = LocalData.manager.getColor("managePaymentMethodscolorseditButtonText" , fallback: UIColor.white)
         self.navigationBar.titleTextAttributes = [
@@ -354,8 +360,15 @@ fileprivate extension MCPaymentMethodsViewController{
     
     fileprivate func assignImages(){
         let cardsImages = LocalData.manager.getArray("acceptedCardsPM")
-        let wrapper = UIView()
+//        let wrapper = UIView()
+//        wrapper.translatesAutoresizingMaskIntoConstraints = false
+        
+        let wrapper = UIStackView()
         wrapper.translatesAutoresizingMaskIntoConstraints = false
+        wrapper.axis = .horizontal
+        wrapper.alignment = .center
+        wrapper.distribution = .fillEqually
+        wrapper.spacing = 23
         acceptedCards.addSubview(wrapper)
         
         let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
@@ -366,11 +379,13 @@ fileprivate extension MCPaymentMethodsViewController{
         acceptedCards.addConstraints([horizontalConstraint, verticalConstraint, verticalConstraint2, widthConstraint])
         
         for card in cardsImages {
-            let index = cardsImages.index(of: card)
-            let iv = UIImageView(frame: CGRect(x: 48*index!+5, y: 0, width: 38, height: Int( acceptedCards.frame.size.height)))
+//            let index = cardsImages.index(of: card)
+//            let iv = UIImageView(frame: CGRect(x: 48 * index! + 16, y: 0, width: 38, height: Int( acceptedCards.frame.size.height)))
+            let iv = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: Int( acceptedCards.frame.size.height)))
             iv.contentMode = .scaleAspectFit
             iv.kf.setImage(with: URL(string: card))
-            wrapper.addSubview(iv)
+//            wrapper.addSubview(iv)
+            wrapper.addArrangedSubview(iv)
         }
     }
     

@@ -186,7 +186,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     func configureUI(){
         
-        creditCardNumberField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardNumPlaceHoldar" ,fallback: "1234 1234 1234 1234"), attributes:[NSForegroundColorAttributeName: LocalData.manager.addCreditCardInCheckoutVCHint()])
+        creditCardNumberField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardNumPlaceHoldar" ,fallback: "Card Number"), attributes:[NSForegroundColorAttributeName: LocalData.manager.addCreditCardInCheckoutVCHint()])
         dateField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardDatePlaceHoldar" ,fallback: dateField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])
         cvvField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])
         zipField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])

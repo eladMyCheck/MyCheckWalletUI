@@ -226,7 +226,7 @@ extension MCCreditCardsViewController : UIScrollViewDelegate {
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>){
         printIfDebug("x location: \(targetContentOffset.pointee.x )")
         
-        let kMaxIndex = CGFloat( creditCards.count )
+        let kMaxIndex = CGFloat( creditCards.count - 1)
         
         let targetX = scrollView.contentOffset.x + velocity.x * 20.0 as CGFloat
         var targetIndex = round(targetX / (cardViewWidth + 0)) as CGFloat
