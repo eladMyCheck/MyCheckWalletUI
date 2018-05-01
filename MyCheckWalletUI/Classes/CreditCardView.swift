@@ -18,14 +18,14 @@ internal protocol CreditCardViewDelegate : class{
 internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     
     var paymentMethod : PaymentMethodInterface?
-    @IBOutlet weak var checkboxButton : UIButton?
+    @IBOutlet weak var checkboxButton : UIButton!
     var delegate : CreditCardViewDelegate?
-    
     
     @IBOutlet weak var tempCardIcon: UIImageView!
     @IBOutlet weak var creditCardNumberlabel: UILabel?
     @IBOutlet weak var expirationDateLabel: UILabel?
     @IBOutlet weak  var backgroundButton: UIButton?
+    @IBOutlet weak var removeButton: UIButton!
     
     
     init(frame: CGRect, method: PaymentMethodInterface){
@@ -69,11 +69,16 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         
         if ((self.paymentMethod!.isDefault) == true) {
             
-            if let url = LocalData.manager.getPaymentMethodDefaultMethodButtonImageURL(){
-            self.checkboxButton?.kf.setImage(with: url, for: .normal)
+            self.checkboxButton.layer.cornerRadius = self.checkboxButton.frame.height / 2
+            self.checkboxButton.layer.masksToBounds = true
+            
+            let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
+            if let tintimage = UIImage(named: "checkmark", in: bundle, compatibleWith: nil){
+                self.checkboxButton.setImage(tintimage.withRenderingMode(.alwaysTemplate), for: UIControlState())
+                self.checkboxButton.tintColor = LocalData.manager.getColor("managePaymentMethodscolorscheckmark" , fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
+                self.checkboxButton.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorscheckmarkBackground" , fallback: .black)
             }
             
-//                .setImage(UIImage(named: "v", in: bundle, compatibleWith: nil)!, for: UIControlState())
             self.checkboxButton?.isHidden = false
         }else{
             self.checkboxButton?.isHidden = true

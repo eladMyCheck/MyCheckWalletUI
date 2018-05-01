@@ -15,7 +15,8 @@ internal protocol MCCreditCardsViewControllerrDelegate {
 internal class MCCreditCardsViewController: MCViewController , UIGestureRecognizerDelegate, CreditCardViewDelegate{
     @IBOutlet var barItem: UINavigationItem!
     let margin = 5.0 as CGFloat
-    var cardViewWidth = 210 as CGFloat
+    var cardViewWidth = 276 as CGFloat
+    var cardViewHeight = 171 as CGFloat
     var startMargin = 106 as CGFloat
     var secondMargin = 5 as CGFloat
     
@@ -30,10 +31,20 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     //MARK: - lifecycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        cardViewWidth =  270.0 / 375 * screenWidth
-        startMargin = (screenWidth - cardViewWidth + 5) / 2.0  as CGFloat
+        
+        var screenSize = UIScreen.main.bounds
+        
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            if let topPadding = window?.safeAreaInsets.top , topPadding > 0{
+                screenSize.size.height = 667.0
+            }
+        }
+        
+        cardViewWidth =  276.0 / 375.0 * screenSize.width
+        cardViewHeight = 171.0 / 667.0 * screenSize.height
+        
+        startMargin = (screenSize.width - cardViewWidth + 5) / 2.0  as CGFloat
         
         secondMargin = margin + 5.0
         
@@ -62,7 +73,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         for subview in subviews{
             subview.removeFromSuperview()
         }
-        let cardHeight = 0.603846153 * cardViewWidth
+        
         var creditCardCount = 0
         if  self.paymentMethods != nil{
             creditCardCount = self.paymentMethods.count
@@ -72,15 +83,17 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             self.scrollView.isScrollEnabled = false
         }
         
+        let cardY = (33.0 / 250.0) * self.scrollView.frame.height
+        
         if creditCardCount == 0 {
-            let addCreditCardView = AddCreditCardView(frame: CGRect(x:startMargin , y: 0.5 * (scrollView.frame.size.height-cardHeight), width: cardViewWidth , height: cardHeight) )
+            let addCreditCardView = AddCreditCardView(frame: CGRect(x:startMargin, y: cardY + ((14.0 / 250.0) * self.scrollView.frame.height), width: cardViewWidth - ((16.0 / 375.0) * self.scrollView.frame.width), height: cardViewHeight - ((14.0 / 250.0) * self.scrollView.frame.height)) )
             self.scrollView.addSubview(addCreditCardView)
         }
         
         creditCards.removeAllObjects()
         for i in (0..<creditCardCount) {
             let method = self.paymentMethods[i]
-            var frame = CGRect(x:startMargin + ((cardViewWidth + secondMargin) * CGFloat(i)) , y: 0.5 * (scrollView.frame.size.height-cardHeight), width: cardViewWidth , height: cardHeight)
+            var frame = CGRect(x:startMargin + ((cardViewWidth + secondMargin) * CGFloat(i)) , y: cardY, width: cardViewWidth , height: cardViewHeight)
             
             if i == 0{
                 frame.origin.x = startMargin
@@ -108,6 +121,14 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
                 creditCards.add(card)
                 card.delegate = self
                 self.scrollView.addSubview(card)
+                
+                
+                //Handle if the first card somehow is not marked as the Default card.
+                if(i == 0 && !self.paymentMethods[i].isDefault){
+                    //Set the first card as the Default card.
+                    card.delegate?.setPaymentAsDefault(method: self.paymentMethods[i])
+                    return
+                }
             }
         }
         
@@ -144,7 +165,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     }
     
     internal  func deletedPaymentMethod(_ method: PaymentMethodInterface) {
-        for i in (0..<self.paymentMethods.count) {
+        for i in (0..<self.paymentMethods.count - 1) {
             if method.ID == self.paymentMethods[i].ID {
                 if i > 0 {
                     self.indexToScrollTo = i
@@ -155,6 +176,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         }
         Wallet.shared.getPaymentMethods(success: { (array) in
             self.paymentMethods = array
+            
             self.setCreditCardsUI(true)
         }, fail: { error in
         })
@@ -165,7 +187,6 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             Wallet.shared.applePayController.changeApplePayDefault(to: false)
         }
         reloadMethods()
-        
     }
     
     internal func reloadMethods(){
@@ -195,9 +216,11 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     @objc fileprivate func setupUI(){
       
         barItem.title = LocalData.manager.getString("managePaymentMethodsheader")
+        
         if let url = LocalData.manager.getBackButtonImageURL(){
             self.barItem.backBarButtonItem?.setImageAsync(url: url)
         }
+        
         self.barItem.backBarButtonItem?.target = self
         self.barItem.backBarButtonItem?.action = #selector(MCCreditCardsViewController.backPressed)
     }
@@ -270,9 +293,10 @@ fileprivate extension MCCreditCardsViewController{
     
     func getRightBarButton() -> UIBarButtonItem{
         
-        let title = LocalData.manager.getString("managePaymentMethodsdineAddButton" , fallback: "ADD")
+        let title = LocalData.manager.getString("managePaymentMethodsaddCardButton" , fallback: "ADD")
         
         let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(MCCreditCardsViewController.addPressed))
+        button.setTitleTextAttributes([NSFontAttributeName: UIFont.headerFont(withSize: 12)], for: .normal)
         return button
     }
 }

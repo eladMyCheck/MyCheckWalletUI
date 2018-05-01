@@ -44,7 +44,7 @@ fileprivate extension AddCreditCardView{
         
         let card = UIView(frame: cardFrame)
         card.layer.cornerRadius = (8.81 * cardFrame.width) / 100
-        card.backgroundColor = UIColor.white
+        card.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorscardBackground", fallback:UIColor.white)
         card.layer.shadowOffset = CGSize(width: 0, height: 6)
         card.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.1).cgColor
         card.layer.shadowOpacity = 1
@@ -59,7 +59,7 @@ fileprivate extension AddCreditCardView{
         let circle = UIButton(frame: CGRect(x: 0, y: 0, width: ((22.988 * cardFrame.width) / 100), height: ((22.988 * cardFrame.width) / 100)))
         circle.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: ((8.333 * circle.frame.width) / 100), right: 0)
         circle.isUserInteractionEnabled = false
-        circle.backgroundColor = LocalData.manager.getColor("addCreditColorsCircleColor", fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
+        circle.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorscircleColor", fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
         circle.layer.shadowOffset = CGSize(width: 0, height: 2)
         circle.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.14).cgColor
         circle.layer.shadowOpacity = 1
@@ -68,15 +68,16 @@ fileprivate extension AddCreditCardView{
         circle.setTitle("+", for: .normal)
         circle.titleLabel?.textAlignment = .center
         circle.titleLabel?.font = circle.titleLabel?.font.withSize(circle.frame.height / 1.5)
-        circle.setTitleColor(LocalData.manager.getColor("addCreditColorsPlusColor", fallback:UIColor.black), for: .normal)
+        circle.setTitleColor(LocalData.manager.getColor("managePaymentMethodscolorsplusColor", fallback: .black), for: .normal)
         circle.center = cardCenter
         
         card.addSubview(circle)
         
         //Label build
-        let label = UILabel(frame: CGRect(x: 0, y: circle.frame.origin.y + circle.frame.height, width: self.frame.width, height: (cardFrame.height - (circle.frame.origin.y + circle.frame.height))))
+        let label = UILabel(frame: CGRect(x: 0, y: circle.frame.origin.y + circle.frame.height - 6, width: self.frame.width, height: (cardFrame.height - (circle.frame.origin.y + circle.frame.height))))
         label.center.x = cardCenter.x
-        label.font = UIFont.ragularFont(withSize: label.font.pointSize - 3.5)
+        label.topAnchor.constraint(equalTo: circle.bottomAnchor, constant: 14)
+        label.font = UIFont.ragularFont(withSize: 14)
         label.textAlignment = .center
         
         Wallet.shared.configureWallet(success: {

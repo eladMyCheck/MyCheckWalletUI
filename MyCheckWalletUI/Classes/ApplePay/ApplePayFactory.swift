@@ -80,22 +80,30 @@ open class ApplePayFactory : PaymentMethodFactory{
         appleBut.translatesAutoresizingMaskIntoConstraints = false
         
         butRap.button.addSubview(appleBut)
-
-        appleBut.leadingAnchor.constraint(greaterThanOrEqualTo: butRap.button.leadingAnchor, constant: 10).isActive = true
-
+        
         appleBut.centerXAnchor.constraint(equalTo: butRap.button.centerXAnchor).isActive = true
         appleBut.centerYAnchor.constraint(equalTo: butRap.button.centerYAnchor).isActive = true
       
         //aspect ratio
-               let aspectRatioConstraint = NSLayoutConstraint(item: appleBut,
+        let aspectRatioConstraint = NSLayoutConstraint(item: appleBut,
                                                        attribute: .height,
                                                        relatedBy: .equal,
                                                        toItem: appleBut,
                                                        attribute: .width,
-                                                       multiplier: (109.0 / 502.0),
+                                                       multiplier: (34.0 / 149.0),
                                                        constant: 0)
         
         appleBut.addConstraint(aspectRatioConstraint)
+        
+        let heightConstraint = NSLayoutConstraint(item: appleBut,
+                                                  attribute: .height,
+                                                  relatedBy: .equal,
+                                                  toItem: butRap.button,
+                                                  attribute: .height,
+                                                  multiplier: 0.65,
+                                                  constant: 0)
+        
+        butRap.button.addConstraint(heightConstraint)
         
         //adding target
         butRap.button.addTarget(self, action: #selector(ApplePayFactory.addMethodButPressed(_:)), for: .touchUpInside)

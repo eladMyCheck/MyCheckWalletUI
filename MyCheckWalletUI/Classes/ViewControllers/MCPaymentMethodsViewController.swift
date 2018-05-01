@@ -44,7 +44,6 @@ open class MCPaymentMethodsViewController: MCViewController {
     @IBOutlet weak var walletHeaderLabel: UILabel!
     @IBOutlet weak var factoryHolderStackView: UIStackView!
     @IBOutlet weak var pciLabel: UILabel!
-    @IBOutlet var seporators: [UIView]!
     @IBOutlet fileprivate weak var creditCardListContainer: UIView!
     @IBOutlet fileprivate weak var addCreditCardContainer: UIView!
     
@@ -59,7 +58,6 @@ open class MCPaymentMethodsViewController: MCViewController {
     
     @IBOutlet weak var weAcceptSuperview: UIView!
     @IBOutlet weak var weAcceptSeperator: UIView!
-    @IBOutlet weak var acceptedCards: UIView!
     @IBOutlet weak internal var footerLabel: UILabel!
     @IBAction func addCreditCardPressed(_ sender: AnyObject) {
         showEnterCreditCard(true , animated: true)
@@ -207,8 +205,6 @@ print(str)
             //
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
             
-            weAcceptSeperator.backgroundColor = self.view.backgroundColor
-            
             _ = creditCardVC!.becomeFirstResponder()
             
                 self.navigationBar.popItem(animated: false)
@@ -219,23 +215,25 @@ print(str)
             self.navigationBar.barTintColor = .white
             self.navigationBar.tintColor = .black
         }else{
-            weAcceptSeperator.backgroundColor = self.addCreditCardContainer.backgroundColor
+//            weAcceptSeperator.backgroundColor = self.addCreditCardContainer.backgroundColor
             _ = creditCardVC!.resignFirstResponder()
            self.navigationBar.popItem(animated: false)
             self.navigationBar.pushItem((creditCardListVC?.getNavigationItem())!, animated: false)
             
             self.navigationBar.barStyle = .default
             self.navigationBar.barTintColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground" , fallback: UIColor.clear)
-            self.navigationBar.tintColor = .white
-
+            self.navigationBar.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsbackButton" , fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
         }
+        
         creditCardInCenterConstraint.priority = show ? 999 : 1
         creditCardsVCCenterXConstraint.priority = show ? 1 : 999
         UIView.animate(withDuration: animated ? 0.4 : 0.0, animations: {
             self.view.layoutIfNeeded()
+            
             self.walletsSuperview.alpha = show ? 0.0 : 1.0
             self.doNotStoreCheckbox.superview?.alpha = show ? 0.0 : 1.0
             self.weAcceptSuperview.alpha = show ? 0.0 : 1.0
+            self.weAcceptSeperator.alpha = show ? 0.0 : 1.0
             self.creditCardListVC!.scrollView.alpha = show ? 0 : 1
             
         })
@@ -253,35 +251,43 @@ print(str)
     }
     
     internal func setupUI(){
-        addCardButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.addCardButton.title(for: UIControlState())) , for: UIControlState())
-        addCardButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.addCardButton.title(for: UIControlState())) , for: .highlighted)
-        addCardButton.backgroundColor = LocalData.manager.getColor("addCreditColorsapplyBackgroundColor", fallback: UIColor.white)
         
-        addCardButton.setTitleColor(LocalData.manager.getColor("addCreditColorsapplyButtonText", fallback: UIColor.white), for: UIControlState())
+        creditCardListContainer.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorscardsListBackground", fallback: creditCardListContainer.backgroundColor!)
+        
+        weAcceptSeperator.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsseporator", fallback: creditCardListContainer.backgroundColor!)
+        
+        addCreditCardContainer.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsbackground", fallback: .white)
+        
+        addCardButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.addCardButton.titleLabel?.text ?? "") , for: UIControlState())
+        addCardButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.addCardButton.titleLabel?.text ?? "") , for: .highlighted)
+        addCardButton.backgroundColor = LocalData.manager.getColor("addCreditColorsapplyBackgroundColor", fallback: .black)
+        
+        addCardButton.setTitleColor(LocalData.manager.getColor("addCreditColorsapplyButtonText", fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1)), for: UIControlState())
         
         self.footerLabel.text = LocalData.manager.getString("managePaymentMethodscardAcceptedWallet" , fallback: self.footerLabel.text)
-      self.walletHeaderLabel.text = LocalData.manager.getString("managePaymentMethodsothePaymentMethodsHeader" , fallback:  self.walletHeaderLabel.text)
-      self.pciLabel.text = LocalData.manager.getString("addCreditpciNotice2" , fallback:  self.pciLabel.text)
-
-      
+        self.footerLabel.font = UIFont.ragularFont(withSize: 14)
+        self.walletHeaderLabel.text = LocalData.manager.getString("managePaymentMethodsothePaymentMethodsHeader" , fallback:  self.walletHeaderLabel.text)
+        self.walletHeaderLabel.font = UIFont.ragularFont(withSize: 14)
+        self.pciLabel.text = LocalData.manager.getString("addCreditpciNotice2" , fallback:  self.pciLabel.text)
+        self.pciLabel.font = UIFont.ragularFont(withSize: 14)
         doNotStoreLabel.text = LocalData.manager.getString("managePaymentMethodsnotStoreCard" , fallback:doNotStoreLabel.text)
+        doNotStoreLabel.font = UIFont.ragularFont(withSize: 13)
+        
         view.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsbackground", fallback: UIColor.white)
         footerLabel.textColor = LocalData.manager.getColor("managePaymentMethodscolorsseporatorText" , fallback: footerLabel.textColor)
         walletHeaderLabel.textColor = LocalData.manager.getColor("managePaymentMethodscolorsseporatorText" , fallback: walletHeaderLabel.textColor)
         pciLabel.textColor = LocalData.manager.getColor("managePaymentMethodscolorspciNotice" , fallback: pciLabel.textColor)
         
         doNotStoreSuperview.isHidden = !LocalData.manager.doNotStoreEnabled()
-        self.navigationBar.barTintColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground" , fallback: UIColor.clear)
+        self.navigationBar.barTintColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground" , fallback: .black)
         self.navigationBar.isTranslucent = false
-        self.navigationBar.tintColor = LocalData.manager.getColor("managePaymentMethodscolorseditButtonText" , fallback: UIColor.white)
+        self.navigationBar.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsbackButton" , fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
         self.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName : LocalData.manager.getColor("managePaymentMethodscolorsheaderText" , fallback: UIColor.white),
-            NSFontAttributeName: UIFont.headerFont(withSize: 18)
+            NSForegroundColorAttributeName : LocalData.manager.getColor("managePaymentMethodscolorsheaderText" , fallback: .white),
+            NSFontAttributeName: UIFont.headerFont(withSize: 14)
         ]
     
     }
-    
-    
     
 }
 
@@ -360,32 +366,36 @@ fileprivate extension MCPaymentMethodsViewController{
     
     fileprivate func assignImages(){
         let cardsImages = LocalData.manager.getArray("acceptedCardsPM")
-//        let wrapper = UIView()
-//        wrapper.translatesAutoresizingMaskIntoConstraints = false
         
-        let wrapper = UIStackView()
+        let wrapper = UIView()
         wrapper.translatesAutoresizingMaskIntoConstraints = false
-        wrapper.axis = .horizontal
-        wrapper.alignment = .center
-        wrapper.distribution = .fillEqually
-        wrapper.spacing = 23
-        acceptedCards.addSubview(wrapper)
+        weAcceptSuperview.addSubview(wrapper)
         
-        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
-        let verticalConstraint2 = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: acceptedCards, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
-        let width = cardsImages.count*48
+        var screenSize = UIScreen.main.bounds
+        
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            if let topPadding = window?.safeAreaInsets.top , topPadding > 0{
+                screenSize.size.height = 667.0
+            }
+        }
+        
+        let smallCardWidth = 37 / 375 * screenSize.width
+        let smallCardHeight = 23 / 667 * screenSize.height
+        let smallCardsMargin = smallCardHeight + smallCardWidth
+        
+        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: weAcceptSuperview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 16)
+        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: weAcceptSuperview, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 8)
+        let heightConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 26)
+        let width = CGFloat(cardsImages.count) * smallCardsMargin
         let widthConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: CGFloat(width))
-        acceptedCards.addConstraints([horizontalConstraint, verticalConstraint, verticalConstraint2, widthConstraint])
+        weAcceptSuperview.addConstraints([horizontalConstraint, verticalConstraint, heightConstraint, widthConstraint])
         
         for card in cardsImages {
-//            let index = cardsImages.index(of: card)
-//            let iv = UIImageView(frame: CGRect(x: 48 * index! + 16, y: 0, width: 38, height: Int( acceptedCards.frame.size.height)))
-            let iv = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: Int( acceptedCards.frame.size.height)))
-            iv.contentMode = .scaleAspectFit
+            let index = cardsImages.index(of: card)
+            let iv = UIImageView(frame: CGRect(x:smallCardsMargin * CGFloat(index!), y: 0, width: smallCardWidth, height: smallCardHeight))
             iv.kf.setImage(with: URL(string: card))
-//            wrapper.addSubview(iv)
-            wrapper.addArrangedSubview(iv)
+            wrapper.addSubview(iv)
         }
     }
     
@@ -416,7 +426,7 @@ fileprivate extension MCPaymentMethodsViewController{
             factoryHolderStackView.axis = .vertical
             factoryHolderStackView.distribution = .fillEqually
             factoryHolderStackView.alignment = .fill
-            factoryHolderStackView.spacing = 0
+            factoryHolderStackView.spacing = 4
             
             var firstRaw : [UIButton] = []
             var secondRaw : [UIButton] = []
@@ -426,17 +436,20 @@ fileprivate extension MCPaymentMethodsViewController{
                 
                 if index <= 1{
                     firstRaw.append(butRap.button)
+                    
                 }else if index > 1{
                     secondRaw.append(butRap.button)
                 }
             }
+            
+            
             
             let firstRowStackView = UIStackView(arrangedSubviews: firstRaw)
             firstRowStackView.axis = .vertical
             firstRowStackView.translatesAutoresizingMaskIntoConstraints = false
             firstRowStackView.distribution = .fillEqually
             firstRowStackView.alignment = .fill
-            firstRowStackView.spacing = 0
+            firstRowStackView.spacing = 4
             
             factoryHolderStackView.addArrangedSubview(firstRowStackView)
             
@@ -448,7 +461,7 @@ fileprivate extension MCPaymentMethodsViewController{
                 secondRowStackView.translatesAutoresizingMaskIntoConstraints = false
                 secondRowStackView.distribution = .fillEqually
                 secondRowStackView.alignment = .fill
-                secondRowStackView.spacing = 0
+                secondRowStackView.spacing = 4
                 
                 factoryHolderStackView.addArrangedSubview(secondRowStackView)
             }
