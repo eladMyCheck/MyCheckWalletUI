@@ -10,7 +10,7 @@ import UIKit
 import MyCheckCore
 
 internal protocol CreditCardViewDelegate : class{
-    func deletedPaymentMethod(_ method : PaymentMethodInterface)
+    func deletedPaymentMethod(_ method : PaymentMethodInterface , _ array : [PaymentMethodInterface])
     func setPaymentAsDefault(method: PaymentMethodInterface)
     func showActivityIndicator(_ show: Bool)
 }
@@ -75,8 +75,8 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
             if let tintimage = UIImage(named: "checkmark", in: bundle, compatibleWith: nil){
                 self.checkboxButton.setImage(tintimage.withRenderingMode(.alwaysTemplate), for: UIControlState())
-                self.checkboxButton.tintColor = LocalData.manager.getColor("managePaymentMethodscolorscheckmark" , fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
-                self.checkboxButton.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorscheckmarkBackground" , fallback: .black)
+                self.checkboxButton.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsdefaultVcolor" , fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
+                self.checkboxButton.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsdefaultCircleBackground" , fallback: .black)
             }
             
             self.checkboxButton?.isHidden = false
@@ -103,10 +103,11 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
     }
     
     @IBAction func deletePressed(_ sender: UIButton!) {
-        Wallet.shared.deletePaymentMethod(self.paymentMethod!, success: {
+        
+        Wallet.shared.deletePaymentMethod(self.paymentMethod!, success: { array in
             printIfDebug("payment method deleted")
             if let del = self.delegate{
-                del.deletedPaymentMethod(self.paymentMethod!)
+                del.deletedPaymentMethod(self.paymentMethod! , array)
             }
         }, fail: { (error) in
             printIfDebug("did not delete payment")

@@ -164,7 +164,7 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
         NotificationCenter.default.post(name: Notification.Name(rawValue: "AddCreditCardPressed"), object: nil)
     }
     
-    internal  func deletedPaymentMethod(_ method: PaymentMethodInterface) {
+    internal  func deletedPaymentMethod(_ method: PaymentMethodInterface, _ array: [PaymentMethodInterface]) {
         for i in (0..<self.paymentMethods.count - 1) {
             if method.ID == self.paymentMethods[i].ID {
                 if i > 0 {
@@ -174,12 +174,9 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
                 }
             }
         }
-        Wallet.shared.getPaymentMethods(success: { (array) in
-            self.paymentMethods = array
-            
-            self.setCreditCardsUI(true)
-        }, fail: { error in
-        })
+        
+        self.paymentMethods = array
+        self.setCreditCardsUI(true)
     }
     
     internal func setPaymentAsDefault(method: PaymentMethodInterface){

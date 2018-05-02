@@ -309,8 +309,14 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     @IBAction func deletePressed(_ sender: UIButton) {
         if let method = self.selectedMethod{
-            Wallet.shared.deletePaymentMethod(method, success: {
-                self.refreshPaymentMethods()
+            Wallet.shared.deletePaymentMethod(method, success: { (methods) in
+                self.paymentMethods = methods
+                if methods.count == 0 {
+                    self.selectedMethod = nil
+                }else {
+                    self.selectedMethod = methods.first
+                }
+                self.configureUI()
             }, fail: { (error) in
                 printIfDebug("did not delete payment")
                 self.showError(errorStr: error.localizedDescription)

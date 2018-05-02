@@ -53,17 +53,9 @@ open class VisaCheckoutFactory : PaymentMethodFactory{
     
     
     override func getAddMethodButton() -> PaymentMethodButtonRapper{
-        let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-        
-        
         let butRap = PaymentMethodButtonRapper(forType: .visaCheckout)
         
-        
-        
         butRap.button.translatesAutoresizingMaskIntoConstraints = false
-        
-        butRap.button.setBackgroundImage(UIImage(named: "paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
-        
      
         //creating the apple pay button and adding it into the super button
         let innerBut = UIButton(type: .custom)

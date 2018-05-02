@@ -18,7 +18,7 @@ internal struct URIs{
     static let paymentMethods = "/wallet/api/v1/wallet"
     static let addCreditCard = "/PaymentManager/api/v1/paymentMethods/addCreditcard"
     static let setMethodAsDefault = "/wallet/api/v1/wallet/default"
-    static let deletePaymentMethod = "/wallet/api/v1/wallet/deletePaymentMethod"
+    static let deletePaymentMethod = "/wallet/api/v1/wallet/payment_method"
 }
 
 
@@ -394,23 +394,42 @@ open class Wallet : NSObject{
     ///   - parameter success: A block that is called if the user is logged in succesfully
     ///   - parameter fail: Called when the function fails for any reason
     
-    internal func deletePaymentMethod( _ method: PaymentMethodInterface , success: @escaping (() -> Void) , fail: ((NSError) -> Void)? ) {
-        let params = [  "ID": method.ID]
-        let urlStr = Networking.shared.domain! + URIs.deletePaymentMethod
-        
-        self.request(urlStr, method: .post , parameters:  params , success: { JSON in
-            success()
+    internal func deletePaymentMethod( _ method: PaymentMethodInterface , success: @escaping (( [PaymentMethodInterface] ) -> Void) , fail: ((NSError) -> Void)? ) {
+        self.callDeleteMethods(method, success: {
+            methods in
+            var mutableMethods = methods
             
+            //Apple pay logic is handled localy.
+            if  let applePayMethod = Wallet.shared.applePayController.getApplePayPaymentMethod(){
+                
+                //if we dont have any other method we will set apple pay as default
+                if mutableMethods.count == 0 {
+                    Wallet.shared.applePayController.changeApplePayDefault(to: true)
+                }
+                if applePayMethod.isDefault{
+                    //making all other methods to not be default
+                    mutableMethods = mutableMethods.map({method in
+                        var value = method
+                        value.isDefault = false
+                        return value
+                    })
+                    mutableMethods.insert(applePayMethod, at: 0)
+                }else{
+                    mutableMethods.append(applePayMethod)
+                }
+                
+            }
+            
+            
+            self.methods = mutableMethods
+            success(mutableMethods)
         }, fail: fail)
-        
-        
     }
     
     
     //should be called by the various factorys when a method is set as defauult in order to update apple pay
     internal func addedAPaymentMethod(){
         Wallet.shared.applePayController.changeApplePayDefault(to: false)
-        
         
     }
     

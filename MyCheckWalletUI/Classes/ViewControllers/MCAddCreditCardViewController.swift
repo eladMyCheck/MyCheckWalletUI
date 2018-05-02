@@ -336,14 +336,21 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             
         case cvvField:
             
-            let maxLength =  4
+            var maxLength =  3
+            
+            if let cardNumber = creditCardNumberField.text , cardNumber.count > 0{
+                let validator =  CreditCardValidator(cardNumber: cardNumber)
+                
+                if validator.cardType == .Amex{
+                    maxLength = 4
+                }
+            }
             
             if textField.text?.characters.count == maxLength && string != ""{ // if we are just moving to next field
                 
                 return false
             }
             
-            4
             if txtAfterUpdate.length > maxLength{
                 
                 return false
