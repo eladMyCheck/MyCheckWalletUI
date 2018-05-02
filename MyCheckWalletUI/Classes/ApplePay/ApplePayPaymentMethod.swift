@@ -208,10 +208,11 @@
         }
         paymentSummaryItems = paymentDetails.getOrderedBillEntryArray().map { value in PKPaymentSummaryItem(label: value.name, amount: NSDecimalNumber(value: value.amount.rawValue))
         }
+        
+        let totalSum = paymentDetails.getOrderedBillEntryArray().map({$0.amount.rawValue}).reduce(0, +)
+        
         //the last item should have the localized name.
-        if let totalItem = paymentSummaryItems.last{
-            totalItem.label = LocalData.manager.getString("applePayApplePayPayTxt", fallback: totalItem.label)
-        }
+        paymentSummaryItems.append(PKPaymentSummaryItem(label: LocalData.manager.getString("applePayApplePayPayTxt", fallback: "Total"), amount: NSDecimalNumber(value: totalSum)))
     }
     
   }
