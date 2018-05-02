@@ -277,6 +277,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             
             if validator.numberIsCompleteAndValid{//if done move to next field
                 textField.text = validator.formattedCardNumber
+                dateField.becomeFirstResponder()
                 return false
             }
             textField.text = validator.formattedCardNumber
@@ -309,6 +310,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             
             if valid {
                 textField.text = txtAfterUpdate as String
+                cvvField.becomeFirstResponder()
                 return false
             }
             if txtAfterUpdate.length >= 8 { // and its not valid...
@@ -341,12 +343,14 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 return false
             }
             
-            
+            4
             if txtAfterUpdate.length > maxLength{
+                
                 return false
             }
             if txtAfterUpdate.length == maxLength{
                 textField.text = txtAfterUpdate as String
+                zipField.becomeFirstResponder()
                 return false
             }
             return true
