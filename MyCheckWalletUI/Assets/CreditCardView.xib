@@ -34,6 +34,9 @@
                         <action selector="creditCardPressed:" destination="-1" eventType="touchUpInside" id="7Vl-5d-ySL"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="singleUseBanner" translatesAutoresizingMaskIntoConstraints="NO" id="0pp-rZ-CDM">
+                    <rect key="frame" x="183" y="14" width="77" height="58"/>
+                </imageView>
                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGB-v1-jtx" userLabel="cehckbox">
                     <rect key="frame" x="236" y="0.0" width="40" height="40"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -41,7 +44,23 @@
                         <constraint firstAttribute="width" secondItem="yGB-v1-jtx" secondAttribute="height" multiplier="1:1" id="yIm-oU-fSC"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="12" minY="14" maxX="10" maxY="11"/>
-                    <state key="normal" image="checkmark"/>
+                    <state key="normal" image="checkmark">
+                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                            <size key="value" width="0.0" height="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="100"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ZoK-DA-Nuw">
                     <rect key="frame" x="32" y="105.5" width="150" height="16"/>
@@ -60,9 +79,6 @@
                         </label>
                     </subviews>
                 </stackView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="singleUseBanner" translatesAutoresizingMaskIntoConstraints="NO" id="0pp-rZ-CDM">
-                    <rect key="frame" x="183" y="14" width="77" height="58"/>
-                </imageView>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdo-cx-H1k" userLabel="delete button">
                     <rect key="frame" x="225" y="138" width="22" height="22"/>
                     <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

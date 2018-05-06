@@ -69,8 +69,12 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         
         if ((self.paymentMethod!.isDefault) == true) {
             
-            self.checkboxButton.layer.cornerRadius = self.checkboxButton.frame.height / 2
-            self.checkboxButton.layer.masksToBounds = true
+            self.checkboxButton.layer.cornerRadius = self.checkboxButton.frame.height / 1.8
+            self.checkboxButton.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.23).cgColor
+            self.checkboxButton.layer.shadowRadius = 6.0
+            self.checkboxButton.layer.shadowOpacity = 1.0
+            self.checkboxButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+            self.checkboxButton.layer.masksToBounds = false
             
             let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
             if let tintimage = UIImage(named: "checkmark", in: bundle, compatibleWith: nil){
