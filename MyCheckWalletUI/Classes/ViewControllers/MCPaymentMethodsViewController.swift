@@ -422,11 +422,15 @@ fileprivate extension MCPaymentMethodsViewController{
             self.doNotStoreCheckbox.superview?.isHidden = true
             handleNoFactories()
         case 1...4:
+            
+            let verticalSpacing = (20 / 667) * self.view.frame.height
+            let horizontalSpacing = (20 / 667) * self.view.frame.height
+            
             //Stack View
-            factoryHolderStackView.axis = .vertical
+            factoryHolderStackView.axis = .horizontal
+            factoryHolderStackView.spacing = horizontalSpacing
             factoryHolderStackView.distribution = .fillEqually
-            factoryHolderStackView.alignment = .fill
-            factoryHolderStackView.spacing = 4
+            factoryHolderStackView.alignment = .center
             
             var firstRaw : [UIButton] = []
             var secondRaw : [UIButton] = []
@@ -434,37 +438,91 @@ fileprivate extension MCPaymentMethodsViewController{
             for (index,factory) in Wallet.shared.factories.enumerated(){
                 let butRap = factory.getAddMethodButton()
                 
+                let button = butRap.button
+                
                 if index <= 1{
-                    firstRaw.append(butRap.button)
-                    
+                    firstRaw.append(button)
                 }else if index > 1{
-                    secondRaw.append(butRap.button)
+                    secondRaw.append(button)
+                }
+            }
+            
+            let firstRowStackView = UIStackView(arrangedSubviews: firstRaw)
+            if(firstRaw.count > 1){
+                firstRowStackView.axis = .vertical
+            }else{
+                firstRowStackView.axis = .horizontal
+            }
+            
+            firstRowStackView.distribution = .fillEqually
+            firstRowStackView.alignment = .center
+            firstRowStackView.spacing = verticalSpacing
+            
+            factoryHolderStackView.addArrangedSubview(firstRowStackView)
+            
+            for btn in firstRaw{
+                let height = NSLayoutConstraint(item: btn,
+                                                attribute: .height,
+                                                relatedBy: .equal,
+                                                toItem: self.view,
+                                                attribute: .height,
+                                                multiplier: (35 / 667),
+                                                constant: 0)
+                
+                let ratio = NSLayoutConstraint(item: btn,
+                                               attribute: .height,
+                                               relatedBy: .equal,
+                                               toItem: btn,
+                                               attribute: .width,
+                                               multiplier: (35 / 150.0),
+                                               constant: 0)
+                btn.addConstraint(ratio)
+                self.view.addConstraint(height)
+            }
+            
+            if secondRaw.count > 0 {
+                factoryHolderStackView.axis = .vertical
+                factoryHolderStackView.spacing = verticalSpacing
+                factoryHolderStackView.distribution = .fillEqually
+                factoryHolderStackView.alignment = .center
+                
+                firstRowStackView.axis = .horizontal
+                firstRowStackView.spacing = horizontalSpacing
+                
+                let secondRowStackView = UIStackView(arrangedSubviews: secondRaw)
+                if(secondRaw.count > 1){
+                    secondRowStackView.axis = .vertical
+                }else{
+                    secondRowStackView.axis = .horizontal
+                }
+                secondRowStackView.distribution = .fillEqually
+                secondRowStackView.alignment = .center
+                secondRowStackView.spacing = horizontalSpacing
+                
+                factoryHolderStackView.addArrangedSubview(secondRowStackView)
+                
+                for btn in secondRaw{
+                    let height = NSLayoutConstraint(item: btn,
+                                                    attribute: .height,
+                                                    relatedBy: .equal,
+                                                    toItem: self.view,
+                                                    attribute: .height,
+                                                    multiplier: (35 / 667),
+                                                    constant: 0)
+                    
+                    let ratio = NSLayoutConstraint(item: btn,
+                                                   attribute: .height,
+                                                   relatedBy: .equal,
+                                                   toItem: btn,
+                                                   attribute: .width,
+                                                   multiplier: (35 / 150.0),
+                                                   constant: 0)
+                    btn.addConstraint(ratio)
+                    self.view.addConstraint(height)
                 }
             }
             
             
-            
-            let firstRowStackView = UIStackView(arrangedSubviews: firstRaw)
-            firstRowStackView.axis = .vertical
-            firstRowStackView.translatesAutoresizingMaskIntoConstraints = false
-            firstRowStackView.distribution = .fillEqually
-            firstRowStackView.alignment = .fill
-            firstRowStackView.spacing = 4
-            
-            factoryHolderStackView.addArrangedSubview(firstRowStackView)
-            
-            if secondRaw.count > 0 {
-                firstRowStackView.axis = .horizontal
-                
-                let secondRowStackView = UIStackView(arrangedSubviews: secondRaw)
-                secondRowStackView.axis = .horizontal
-                secondRowStackView.translatesAutoresizingMaskIntoConstraints = false
-                secondRowStackView.distribution = .fillEqually
-                secondRowStackView.alignment = .fill
-                secondRowStackView.spacing = 4
-                
-                factoryHolderStackView.addArrangedSubview(secondRowStackView)
-            }
             
         default:
             break;

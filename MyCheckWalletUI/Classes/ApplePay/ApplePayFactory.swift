@@ -100,7 +100,7 @@ open class ApplePayFactory : PaymentMethodFactory{
                                                   relatedBy: .equal,
                                                   toItem: butRap.button,
                                                   attribute: .height,
-                                                  multiplier: 0.65,
+                                                  multiplier: 1,
                                                   constant: 0)
         
         butRap.button.addConstraint(heightConstraint)

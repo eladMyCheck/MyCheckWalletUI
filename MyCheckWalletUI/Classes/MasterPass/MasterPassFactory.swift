@@ -78,12 +78,10 @@ open class MasterPassFactory : PaymentMethodFactory{
     override func getAddMethodButton() -> PaymentMethodButtonRapper{
         
         let butRap = PaymentMethodButtonRapper(forType: .masterPass)
-        butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpass")), for: .normal , options: [.scaleFactor(1.5)])
+        butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpass")), for: .normal , options: [.scaleFactor(1.4)])
         butRap.button.addTarget(self, action: #selector(MasterPassFactory.addMethodButPressed(_:)), for: .touchUpInside)
         return butRap
     }
-    
-    
     
     @objc fileprivate func addMethodButPressed(_ sender: UIButton){
        
