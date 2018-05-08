@@ -59,7 +59,6 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
 
             expirationDateLabel.text = method.extraSecondaryDescription
             
-            
         }
         
         backgroundButton?.setBackgroundImage(method.getBackgroundImage(), for: .normal)
@@ -69,7 +68,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         
         if ((self.paymentMethod!.isDefault) == true) {
             
-            self.checkboxButton.layer.cornerRadius = self.checkboxButton.frame.height / 1.8
+            self.checkboxButton.layer.cornerRadius = ((40 / 260) * frame.width) / 2
             self.checkboxButton.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.23).cgColor
             self.checkboxButton.layer.shadowRadius = 6.0
             self.checkboxButton.layer.shadowOpacity = 1.0
@@ -79,13 +78,15 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
             if let tintimage = UIImage(named: "checkmark", in: bundle, compatibleWith: nil){
                 self.checkboxButton.setImage(tintimage.withRenderingMode(.alwaysTemplate), for: UIControlState())
-                self.checkboxButton.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsdefaultVcolor" , fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
-                self.checkboxButton.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsdefaultCircleBackground" , fallback: .black)
+                self.checkboxButton.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsdefaultVcolor" , fallback: self.checkboxButton.tintColor)
+
             }
             
-            self.checkboxButton?.isHidden = false
+            self.checkboxButton.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsdefaultCircleBackground" , fallback: self.checkboxButton.backgroundColor!)
+            
+            self.checkboxButton.isHidden = false
         }else{
-            self.checkboxButton?.isHidden = true
+            self.checkboxButton.isHidden = true
         }
     }
     
@@ -99,7 +100,6 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         
         // use bounds not frame or it'll be offset
         view.frame = bounds
-        
         // Make the view stretch with containing view
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         // Adding custom subview on top of our view (over any custom drawing > see note below)

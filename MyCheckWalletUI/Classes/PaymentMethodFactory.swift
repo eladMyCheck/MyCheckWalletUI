@@ -72,10 +72,10 @@ open class PaymentMethodFactory: NSObject {
     internal func configureAfterLogin(){
         
     }
+    
     internal func getCreditCardView(_ frame: CGRect, method: PaymentMethodInterface) -> CreditCardView?{
         return CreditCardView(frame: frame, method: method)
     }
-    
     
     //for returning urls in the app delegate
     open  func handleOpenURL(_ url: URL, sourceApplication: String?) -> Bool{

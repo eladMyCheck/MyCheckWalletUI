@@ -58,39 +58,27 @@ open class VisaCheckoutFactory : PaymentMethodFactory{
         butRap.button.translatesAutoresizingMaskIntoConstraints = false
 
         //creating the apple pay button and adding it into the super button
-        let innerBut = UIButton(type: .custom)
-        innerBut.kf.setImage(with: URL(string:LocalData.manager.getString("walletImgViseCheckout")), for: .normal)
+        let innerBut = UIImageView()
+        innerBut.kf.setImage(with: URL(string:LocalData.manager.getString("walletImgViseCheckout")))
         innerBut.translatesAutoresizingMaskIntoConstraints = false
-
+        innerBut.contentMode = .scaleAspectFit
         butRap.button.addSubview(innerBut)
-
+        
         innerBut.centerXAnchor.constraint(equalTo: butRap.button.centerXAnchor).isActive = true
         innerBut.centerYAnchor.constraint(equalTo: butRap.button.centerYAnchor).isActive = true
-        //aspect ratio
-        let aspectRatioConstraint = NSLayoutConstraint(item: innerBut,
-                                                       attribute: .height,
-                                                       relatedBy: .equal,
-                                                       toItem: innerBut,
-                                                       attribute: .width,
-                                                       multiplier: (109.0 / 502.0),
-                                                       constant: 0)
-
-        innerBut.addConstraint(aspectRatioConstraint)
         
         let heightConstraint = NSLayoutConstraint(item: innerBut,
                                                   attribute: .height,
                                                   relatedBy: .equal,
                                                   toItem: butRap.button,
                                                   attribute: .height,
-                                                  multiplier: 1,
+                                                  multiplier: 1.03,
                                                   constant: 0)
         
         butRap.button.addConstraint(heightConstraint)
 
         //adding target
         butRap.button.addTarget(self, action: #selector(VisaCheckoutFactory.getAddMethodViewControllere), for: .touchUpInside)
-        innerBut.addTarget(self, action: #selector(VisaCheckoutFactory.getAddMethodViewControllere), for: .touchUpInside)
-
 
         return butRap
     }

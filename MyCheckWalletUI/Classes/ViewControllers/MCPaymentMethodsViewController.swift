@@ -424,11 +424,11 @@ fileprivate extension MCPaymentMethodsViewController{
         case 1...4:
             
             let verticalSpacing = (20 / 667) * self.view.frame.height
-            let horizontalSpacing = (20 / 667) * self.view.frame.height
+            let horizontalSpacing = (40 / 667) * self.view.frame.height
             
             //Stack View
             factoryHolderStackView.axis = .horizontal
-            factoryHolderStackView.spacing = horizontalSpacing
+            factoryHolderStackView.spacing = verticalSpacing
             factoryHolderStackView.distribution = .fillEqually
             factoryHolderStackView.alignment = .center
             
@@ -450,13 +450,14 @@ fileprivate extension MCPaymentMethodsViewController{
             let firstRowStackView = UIStackView(arrangedSubviews: firstRaw)
             if(firstRaw.count > 1){
                 firstRowStackView.axis = .vertical
+                firstRowStackView.spacing = horizontalSpacing
             }else{
                 firstRowStackView.axis = .horizontal
+                firstRowStackView.spacing = verticalSpacing
             }
             
             firstRowStackView.distribution = .fillEqually
             firstRowStackView.alignment = .center
-            firstRowStackView.spacing = verticalSpacing
             
             factoryHolderStackView.addArrangedSubview(firstRowStackView)
             
@@ -464,37 +465,30 @@ fileprivate extension MCPaymentMethodsViewController{
                 let height = NSLayoutConstraint(item: btn,
                                                 attribute: .height,
                                                 relatedBy: .equal,
-                                                toItem: self.view,
+                                                toItem: self.factoryHolderStackView,
                                                 attribute: .height,
-                                                multiplier: (35 / 667),
+                                                multiplier: 0.35,
                                                 constant: 0)
-                
-                let ratio = NSLayoutConstraint(item: btn,
-                                               attribute: .height,
-                                               relatedBy: .equal,
-                                               toItem: btn,
+                let width = NSLayoutConstraint(item: btn,
                                                attribute: .width,
-                                               multiplier: (35 / 150.0),
+                                               relatedBy: .equal,
+                                               toItem: self.factoryHolderStackView,
+                                               attribute: .width,
+                                               multiplier: 0.35,
                                                constant: 0)
-                btn.addConstraint(ratio)
-                self.view.addConstraint(height)
+                
+                self.view.addConstraints([height,width])
             }
             
             if secondRaw.count > 0 {
                 factoryHolderStackView.axis = .vertical
-                factoryHolderStackView.spacing = verticalSpacing
                 factoryHolderStackView.distribution = .fillEqually
                 factoryHolderStackView.alignment = .center
                 
                 firstRowStackView.axis = .horizontal
-                firstRowStackView.spacing = horizontalSpacing
                 
                 let secondRowStackView = UIStackView(arrangedSubviews: secondRaw)
-                if(secondRaw.count > 1){
-                    secondRowStackView.axis = .vertical
-                }else{
-                    secondRowStackView.axis = .horizontal
-                }
+                secondRowStackView.axis = .horizontal
                 secondRowStackView.distribution = .fillEqually
                 secondRowStackView.alignment = .center
                 secondRowStackView.spacing = horizontalSpacing
@@ -505,20 +499,19 @@ fileprivate extension MCPaymentMethodsViewController{
                     let height = NSLayoutConstraint(item: btn,
                                                     attribute: .height,
                                                     relatedBy: .equal,
-                                                    toItem: self.view,
+                                                    toItem: self.factoryHolderStackView,
                                                     attribute: .height,
-                                                    multiplier: (35 / 667),
+                                                    multiplier: 0.35,
+                                                    constant: 0)
+                    let width = NSLayoutConstraint(item: btn,
+                                                    attribute: .width,
+                                                    relatedBy: .equal,
+                                                    toItem: self.factoryHolderStackView,
+                                                    attribute: .width,
+                                                    multiplier: 0.35,
                                                     constant: 0)
                     
-                    let ratio = NSLayoutConstraint(item: btn,
-                                                   attribute: .height,
-                                                   relatedBy: .equal,
-                                                   toItem: btn,
-                                                   attribute: .width,
-                                                   multiplier: (35 / 150.0),
-                                                   constant: 0)
-                    btn.addConstraint(ratio)
-                    self.view.addConstraint(height)
+                    self.view.addConstraints([height,width])
                 }
             }
             

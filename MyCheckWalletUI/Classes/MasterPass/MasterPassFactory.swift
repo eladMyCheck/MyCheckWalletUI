@@ -9,8 +9,6 @@
 import UIKit
 import MyCheckCore
 
-
-
 open class MasterPassFactory : PaymentMethodFactory{
     
     //was the factory ever initiated.
@@ -78,7 +76,25 @@ open class MasterPassFactory : PaymentMethodFactory{
     override func getAddMethodButton() -> PaymentMethodButtonRapper{
         
         let butRap = PaymentMethodButtonRapper(forType: .masterPass)
-        butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgMasterpass")), for: .normal , options: [.scaleFactor(1.4)])
+        butRap.button.translatesAutoresizingMaskIntoConstraints = false
+        let innerBut = UIImageView()
+        innerBut.kf.setImage(with: URL(string:LocalData.manager.getString("walletImgMasterpass")))
+        innerBut.translatesAutoresizingMaskIntoConstraints = false
+        innerBut.contentMode = .scaleAspectFit
+        butRap.button.addSubview(innerBut)
+        
+        innerBut.centerXAnchor.constraint(equalTo: butRap.button.centerXAnchor).isActive = true
+        innerBut.centerYAnchor.constraint(equalTo: butRap.button.centerYAnchor).isActive = true
+        
+        let heightConstraint = NSLayoutConstraint(item: innerBut,
+                                                  attribute: .height,
+                                                  relatedBy: .equal,
+                                                  toItem: butRap.button,
+                                                  attribute: .height,
+                                                  multiplier: 0.92,
+                                                  constant: 0)
+        
+        butRap.button.addConstraint(heightConstraint)
         butRap.button.addTarget(self, action: #selector(MasterPassFactory.addMethodButPressed(_:)), for: .touchUpInside)
         return butRap
     }
@@ -88,7 +104,6 @@ open class MasterPassFactory : PaymentMethodFactory{
         
         getAddMethodViewControllere()
     }
-    
     
     override func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
         var butRap = super.getSmallAddMethodButton()
@@ -171,6 +186,7 @@ extension MasterPassFactory : AddMasterPassViewControllerDelegate{
             }, fail: {error in
                 if let delegate = self.delegate{
                     delegate.error(self, error: error)
+                    delegate.showLoadingIndicator(self, show: false)
                 }
             })
         }
