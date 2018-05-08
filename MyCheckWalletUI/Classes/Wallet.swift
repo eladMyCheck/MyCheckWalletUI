@@ -38,19 +38,35 @@ open class Wallet : NSObject{
     /// Advanced settings that change UI elements look across all screens.
     public struct UI {
         /// The font that will be used on most texts: labels, text fields etc
-        public var regularFont : UIFont = UIFont(name: "OpenSans-Regular", size: 10) ?? UIFont.systemFont(ofSize: 10)
+        public var regularFont : UIFont
         /// Will resize the all elements using the ragular font by adding this delta to the point size of the font.
         public var ragularFontSizeDelta: CGFloat = 0
         
         /// The font that will be used on headers
-        public var headersFont : UIFont = UIFont(name: "OpenSans-Bold", size: 10) ?? UIFont.boldSystemFont(ofSize:10)
+        public var headersFont : UIFont
         /// Will resize the all elements using the header font by adding this delta to the point size of the font.
         public var headerFontSizeDelta: CGFloat = 0
         
         /// The font that will be used on buttons
-        public var buttonsFont : UIFont = UIFont(name: "OpenSans-Regular", size: 10) ?? UIFont.boldSystemFont(ofSize:10)
+        public var buttonsFont : UIFont
         /// Will resize the all elements using the button font by adding this delta to the point size of the font.
-        public   var buttonFontSizeDelta: CGFloat = 0
+        public var buttonFontSizeDelta: CGFloat = 0
+        
+        init(regFont : UIFont = UIFont.systemFont(ofSize: 10) , boldFont : UIFont = UIFont.boldSystemFont(ofSize:10)) {
+            regularFont = regFont
+            buttonsFont = regFont
+            headersFont = boldFont
+        }
+        
+    }
+    
+    /// Set a custome font
+    ///
+    ///   - parameter regularFont: the new regular font for general text and buttons.
+    ///   - parameter boldFont: the new bold font for headers.
+    public func setCustomeFonts(regularFont: UIFont , boldFont: UIFont) {
+        let customUI = UI(regFont: regularFont, boldFont: boldFont)
+        self.ui = customUI
     }
     
     internal static let refreshPaymentMethodsNotification = "com.mycheck.refreshPaymentMethodsNotification"

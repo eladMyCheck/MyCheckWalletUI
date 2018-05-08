@@ -12,7 +12,7 @@ import Foundation
 extension UIFont{
 
    static func ragularFont(withSize:CGFloat) -> UIFont{
-    let defaultFont = Wallet.shared.ui.regularFont
+        let defaultFont = Wallet.shared.ui.regularFont
         let size = withSize + Wallet.shared.ui.ragularFontSizeDelta
         return UIFont(name: defaultFont.fontName, size: size) ??
         UIFont.systemFont(ofSize: size)
