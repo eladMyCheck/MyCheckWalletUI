@@ -43,10 +43,8 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="yGB-v1-jtx" secondAttribute="height" multiplier="1:1" id="yIm-oU-fSC"/>
                     </constraints>
+                    <color key="tintColor" red="0.99215686270000003" green="0.73725490199999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <inset key="imageEdgeInsets" minX="12" minY="14" maxX="10" maxY="11"/>
-                    <state key="normal" image="checkmark">
-                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                             <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -120,7 +118,6 @@
         </view>
     </objects>
     <resources>
-        <image name="checkmark" width="51" height="42"/>
         <image name="singleUseBanner" width="77" height="58"/>
         <image name="trash" width="33" height="33"/>
         <image name="visa_background" width="203" height="130"/>
