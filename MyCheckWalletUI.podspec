@@ -52,17 +52,17 @@ core.resource_bundles = {
 }
 end
 
-#s.subspec 'PayPal' do |paypal|
-#paypal.dependency 'MyCheckWalletUI/Core'
+s.subspec 'PayPal' do |paypal|
+paypal.dependency 'MyCheckWalletUI/Core'
 
-#paypal.dependency 'Braintree/PayPal'
-#paypal.dependency 'Braintree/DataCollector'
+paypal.dependency 'Braintree/PayPal'
+paypal.dependency 'Braintree/DataCollector'
 
-#paypal.source_files = 'MyCheckWalletUI/Classes/paypal/**/*'
-#paypal.ios.deployment_target = '9.0'
-#paypal.platform = :ios, '9.0'
+paypal.source_files = 'MyCheckWalletUI/Classes/paypal/**/*'
+paypal.ios.deployment_target = '9.0'
+paypal.platform = :ios, '9.0'
 
-#end
+end
 s.subspec 'MasterPass' do |masterpass|
 masterpass.ios.deployment_target = '9.0'
 masterpass.platform = :ios, '9.0'

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MyCheckCore
 
 class PayPalView: CreditCardView {
     var emailLabel : UILabel? {
@@ -20,19 +21,13 @@ class PayPalView: CreditCardView {
         // Drawing code
     }
     */
-   override init(frame: CGRect, method: PaymentMethod){
+   override init(frame: CGRect, method: PaymentMethodInterface){
    super.init(frame: frame, method: method)
     self.expirationDateLabel?.removeFromSuperview()
     emailLabel?.textColor = LocalData.manager.getColor("managePaymentMethodsColorspaypalCardText", fallback: (emailLabel?.textColor)!)
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
     let image = UIImage(named: "paypal_background" , in: bundle, compatibleWith: nil)
-    backgroundButton!.setImage(image, for: UIControlState())
-    if let numberToTrailing = self.numberToTrailing{
-       numberToTrailing.priority = 999
-       
-      
-
-    }
+    backgroundButton!.setBackgroundImage(image, for: UIControlState())
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

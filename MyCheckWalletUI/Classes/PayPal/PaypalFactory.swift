@@ -8,13 +8,15 @@
 
 import UIKit
 import Braintree
+import MyCheckCore
+
 open class PaypalFactory : PaymentMethodFactory{
     //was the factory ever initiated.
     static var initiated = false
 
-  override var type :PaymentMethodType { get { return PaymentMethodType.payPal }}
+    override var type : PaymentMethodType { get { return PaymentMethodType.payPal }}
   
-  open static func initiate(_ scheme: String){
+    open static func initiate(_ scheme: String){
     if !initiated {
       let factory = PaypalFactory()
       Wallet.shared.factories.append(factory)
@@ -24,6 +26,7 @@ open class PaypalFactory : PaymentMethodFactory{
       
     }
   }
+    
   override func configureAfterLogin(){
     //getting the token
     Wallet.shared.getBraintreeToken( {
@@ -47,6 +50,7 @@ open class PaypalFactory : PaymentMethodFactory{
         let request = BTPayPalRequest()
         let driver = BTPayPalDriver(apiClient: braintreeClient)
         driver.viewControllerPresentingDelegate = self
+        
         driver.requestBillingAgreement(request, completion: {nonce , error in
           
           if let error = error{
@@ -56,12 +60,13 @@ open class PaypalFactory : PaymentMethodFactory{
               return;
             }
           }
+            
           if let nonce = nonce , let delegate = self.delegate{
           Wallet.shared.addPayPal(nonce.nonce, singleUse: singleUse, success: { method in
               
-                delegate.showLoadingIndicator(self, show: false)
+            delegate.showLoadingIndicator(self, show: false)
                 
-                delegate.addedPaymentMethod(self, method: method)
+            delegate.addedPaymentMethod(self, method: method!)
             Wallet.shared.addedAPaymentMethod()
 
               }, fail: { error in
@@ -90,14 +95,32 @@ open class PaypalFactory : PaymentMethodFactory{
   
   
   override func getAddMethodButton() -> PaymentMethodButtonRapper{
-    let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
     
     let butRap = PaymentMethodButtonRapper(forType: .payPal)
-    butRap.button.setBackgroundImage(UIImage(named: "paymen_method_bg" , in: bundle, compatibleWith: nil), for: UIControlState())
-    butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgPaypal")), for: .normal , options: [.scaleFactor(2.0)])
-    //but.setImage(UIImage(named: "paypal_but", in: bundle, compatibleWith: nil), for: UIControlState())
+    butRap.button.translatesAutoresizingMaskIntoConstraints = false
+    
+    let innerBut = UIImageView()
+    innerBut.kf.setImage(with: URL(string:LocalData.manager.getString("walletImgPaypal")))
+    innerBut.translatesAutoresizingMaskIntoConstraints = false
+    innerBut.contentMode = .scaleAspectFit
+    butRap.button.addSubview(innerBut)
+    
+    innerBut.centerXAnchor.constraint(equalTo: butRap.button.centerXAnchor).isActive = true
+    innerBut.centerYAnchor.constraint(equalTo: butRap.button.centerYAnchor).isActive = true
+    
+    let heightConstraint = NSLayoutConstraint(item: innerBut,
+                                              attribute: .height,
+                                              relatedBy: .equal,
+                                              toItem: butRap.button,
+                                              attribute: .height,
+                                              multiplier: 1,
+                                              constant: 0)
+    
+    butRap.button.addConstraint(heightConstraint)
+    
+    //adding target
     butRap.button.addTarget(self, action: #selector(PaypalFactory.addMethodButPressed(_:)), for: .touchUpInside)
-    //    but.setBackgroundImage(UIImage(named: "amex_small" , inBundle: bundle, compatibleWithTraitCollection: nil), forState: .Highlighted)
+    
     return butRap
   }
     
@@ -105,6 +128,7 @@ open class PaypalFactory : PaymentMethodFactory{
   override func getCreditCardView(_ frame: CGRect, method: PaymentMethodInterface) -> CreditCardView?{
     return PayPalView(frame: frame, method: method)
   }
+    
   @objc fileprivate func addMethodButPressed(_ sender: UIButton){
     if Wallet.shared.hasPaymentMethodOfType(.payPal){
       
@@ -121,16 +145,11 @@ open class PaypalFactory : PaymentMethodFactory{
   
   
   override func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
+    
     var butRap = super.getSmallAddMethodButton()
     butRap.type = .payPal
-    
-    
-    let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
-    butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgPaypalCheckout") ), for: .normal ,  options: [.scaleFactor(3.0)])
-    
-    
+    butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgPaypalCheckout") ), for: .normal ,  options: [.scaleFactor(2.0)])
     butRap.button.addTarget(self, action: #selector(PaypalFactory.addMethodButPressed(_:)), for: .touchUpInside)
-    
     return butRap
   }
   //for returning urls in the app delegate

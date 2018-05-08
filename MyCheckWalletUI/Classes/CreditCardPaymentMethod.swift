@@ -179,7 +179,7 @@ public struct CreditCardPaymentMethod: PaymentMethodInterface{
     
     _type = PaymentMethodType.init(source: source)
     
-    if _type != .creditCard && _type != .masterPass{
+    if _type != .creditCard && _type != .masterPass && _type != .payPal{
       return nil
     }
     

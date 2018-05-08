@@ -76,6 +76,16 @@ error in
 
 })
 ```
+###Wallet.UI
+The Wallet singleton has a default UI settings ( default fonts ) , You can set your own fonts in order the SDK to use them.
+1.Your fonts has to be in your app budle.
+2.The fonts has to be in the Info.plist file.
+3.Use `setCustomeFont`  method. 
+
+```
+Wallet.shared.setCustomeFonts(regularFont: UIFont , boldFont: UIFont)
+
+```
 
 ###MCCheckoutViewController
 This view controller is meant to be embedded inside your view controller. It allows the user the basic functions needed from a wallet:

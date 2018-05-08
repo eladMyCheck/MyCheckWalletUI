@@ -83,27 +83,27 @@ open class ApplePayFactory : PaymentMethodFactory{
         
         appleBut.centerXAnchor.constraint(equalTo: butRap.button.centerXAnchor).isActive = true
         appleBut.centerYAnchor.constraint(equalTo: butRap.button.centerYAnchor).isActive = true
-      
-        //aspect ratio
-        let aspectRatioConstraint = NSLayoutConstraint(item: appleBut,
-                                                       attribute: .height,
-                                                       relatedBy: .equal,
-                                                       toItem: appleBut,
-                                                       attribute: .width,
-                                                       multiplier: (34.0 / 149.0),
-                                                       constant: 0)
-        
-        appleBut.addConstraint(aspectRatioConstraint)
         
         let heightConstraint = NSLayoutConstraint(item: appleBut,
                                                   attribute: .height,
                                                   relatedBy: .equal,
                                                   toItem: butRap.button,
                                                   attribute: .height,
-                                                  multiplier: 1,
+                                                  multiplier: 1.1,
                                                   constant: 0)
         
         butRap.button.addConstraint(heightConstraint)
+        
+        //aspect ratio
+        let aspectRatioConstraint = NSLayoutConstraint(item: appleBut,
+                                                       attribute: .width,
+                                                       relatedBy: .equal,
+                                                       toItem: appleBut,
+                                                       attribute: .height,
+                                                       multiplier: 169.0 / 43.0,
+                                                       constant: 0)
+        
+        appleBut.addConstraint(aspectRatioConstraint)
         
         //adding target
         butRap.button.addTarget(self, action: #selector(ApplePayFactory.addMethodButPressed(_:)), for: .touchUpInside)
