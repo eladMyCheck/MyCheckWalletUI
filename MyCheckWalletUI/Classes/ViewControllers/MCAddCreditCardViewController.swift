@@ -527,7 +527,7 @@ fileprivate extension MCAddCreditCardViewController{
         
         let title = LocalData.manager.getString("addCreditcloseAddingCardButton" , fallback: "x")
         let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(MCAddCreditCardViewController.cancelPressed))
-        button.imageInsets = UIEdgeInsetsMake(-18, 0, 0, 0)
+//        button.imageInsets = UIEdgeInsetsMake(-18, 0, 0, 0)
         
         //if there is no text from localData or the text from localData is "X", set the button image to be X icon.
         if title == "x"{

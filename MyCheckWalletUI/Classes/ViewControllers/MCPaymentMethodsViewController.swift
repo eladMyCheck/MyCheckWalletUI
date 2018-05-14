@@ -427,7 +427,7 @@ fileprivate extension MCPaymentMethodsViewController{
             let horizontalSpacing = (40 / 667) * self.view.frame.height
             
             //Stack View
-            factoryHolderStackView.axis = .horizontal
+            factoryHolderStackView.axis = .vertical
             factoryHolderStackView.spacing = verticalSpacing
             factoryHolderStackView.distribution = .fillEqually
             factoryHolderStackView.alignment = .center
@@ -481,7 +481,6 @@ fileprivate extension MCPaymentMethodsViewController{
             }
             
             if secondRaw.count > 0 {
-                factoryHolderStackView.axis = .vertical
                 factoryHolderStackView.distribution = .fillEqually
                 factoryHolderStackView.alignment = .center
                 
