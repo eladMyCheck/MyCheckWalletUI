@@ -60,8 +60,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ZoK-DA-Nuw">
-                    <rect key="frame" x="32" y="105.5" width="150" height="16"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="ZoK-DA-Nuw">
+                    <rect key="frame" x="24" y="105.5" width="118" height="16"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxxx-1234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="h4E-Jw-a9L">
                             <rect key="frame" x="0.0" y="0.0" width="63" height="16"/>
@@ -69,8 +69,8 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxxx-1234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FY-jx-eme">
-                            <rect key="frame" x="87" y="0.0" width="63" height="16"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04/20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FY-jx-eme">
+                            <rect key="frame" x="81" y="0.0" width="37" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -103,7 +103,7 @@
                 <constraint firstItem="oCZ-Bh-U1N" firstAttribute="leading" secondItem="RoC-wV-WxO" secondAttribute="leading" id="63U-rT-r0b"/>
                 <constraint firstAttribute="bottom" secondItem="oCZ-Bh-U1N" secondAttribute="bottom" id="HJ6-nc-MLf"/>
                 <constraint firstItem="kdo-cx-H1k" firstAttribute="width" secondItem="oCZ-Bh-U1N" secondAttribute="width" multiplier="22:260" id="Xnw-HH-zIC"/>
-                <constraint firstItem="ZoK-DA-Nuw" firstAttribute="leading" secondItem="RoC-wV-WxO" secondAttribute="leading" constant="32" id="YSt-qW-jAu"/>
+                <constraint firstItem="ZoK-DA-Nuw" firstAttribute="leading" secondItem="RoC-wV-WxO" secondAttribute="leading" constant="24" id="YSt-qW-jAu"/>
                 <constraint firstItem="oCZ-Bh-U1N" firstAttribute="top" secondItem="RoC-wV-WxO" secondAttribute="top" constant="14" id="dJf-sG-MNo"/>
                 <constraint firstItem="yGB-v1-jtx" firstAttribute="centerX" secondItem="oCZ-Bh-U1N" secondAttribute="trailing" constant="-4" id="dQE-qk-jiZ"/>
                 <constraint firstItem="0pp-rZ-CDM" firstAttribute="top" secondItem="oCZ-Bh-U1N" secondAttribute="top" id="eJ7-77-OFZ"/>
@@ -120,6 +120,6 @@
     <resources>
         <image name="singleUseBanner" width="77" height="58"/>
         <image name="trash" width="33" height="33"/>
-        <image name="visa_background" width="203" height="130"/>
+        <image name="visa_background" width="260" height="157"/>
     </resources>
 </document>
