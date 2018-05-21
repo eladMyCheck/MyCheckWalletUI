@@ -44,7 +44,7 @@ class AddCreditCardInteractor: AddCreditCardBusinessLogic, AddCreditCardDataStor
             case .number:
                 return  !validator.numberIsToLong
             case .date:
-                let valid =  validator.validDOBStringFromInput(enteredTxt: updatedForm.date.characters.count > model.date.characters.count)
+                let valid =  validator.validDOBStringFromInput(enteredTxt: updatedForm.date.count > model.date.count)
                 
                 switch valid {
                 case .notValid:
@@ -62,7 +62,7 @@ class AddCreditCardInteractor: AddCreditCardBusinessLogic, AddCreditCardDataStor
         
         if prefixOfValidValue{
             if request.type == .date{//may need to update the string with the slash
-                let valid =  validator.validDOBStringFromInput(enteredTxt: updatedForm.date.characters.count > model.date.characters.count)
+                let valid =  validator.validDOBStringFromInput(enteredTxt: updatedForm.date.count > model.date.count)
                 if case let .valid(formatted) = valid {
                     updatedForm = model.FormDataWithUpdatedFields(fields: [(request.type ,formatted)])
                     updatedTxt = formatted

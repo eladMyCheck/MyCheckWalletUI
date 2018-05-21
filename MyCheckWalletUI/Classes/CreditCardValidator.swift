@@ -124,7 +124,7 @@ internal struct CreditCardValidator {
             }
             let ZIPNoSpaces = ZIP.replacingOccurrences(of: " ", with: "")
             let alphaNumeric = ZIPNoSpaces.range(of: "^[a-zA-Z0-9]+$", options: .regularExpression) != nil
-            return 3...8 ~= ZIPNoSpaces.characters.count && alphaNumeric
+            return 3...8 ~= ZIPNoSpaces.count && alphaNumeric
 
         }
     }
@@ -136,11 +136,11 @@ internal struct CreditCardValidator {
             }
            
             let ZIPNoSpaces = ZIP.replacingOccurrences(of: " ", with: "")
-            if ZIPNoSpaces.characters.count == 0 {
+            if ZIPNoSpaces.count == 0 {
                 return true
             }
             let alphaNumeric = ZIPNoSpaces.range(of: "^[a-zA-Z0-9]+$", options: .regularExpression) != nil
-            return 0...8 ~= ZIPNoSpaces.characters.count && alphaNumeric
+            return 0...8 ~= ZIPNoSpaces.count && alphaNumeric
             
         }
     }
@@ -160,10 +160,10 @@ internal struct CreditCardValidator {
     guard var dob = self.DOB  else {
       return .notValid
     }
-        if dob.characters.count > 0 && Int(dob.replacingOccurrences(of: "/", with: "")) == nil{
+        if dob.count > 0 && Int(dob.replacingOccurrences(of: "/", with: "")) == nil{
             return .notValid
         }
-    switch dob.characters.count {
+    switch dob.count {
     case 0:
       return .valid(formatted: dob)
     case 1:
@@ -179,7 +179,7 @@ internal struct CreditCardValidator {
     return .valid(formatted: dob)
 
     case 3...7:
-        if !enteredTxt && dob.characters.count == 3 {
+        if !enteredTxt && dob.count == 3 {
             dob = dob.substring(to: dob.index(dob.endIndex, offsetBy: -2))
 
         }
@@ -197,7 +197,7 @@ internal struct CreditCardValidator {
             if  Int(CVV) == nil{
                 return false
             }
-            return 3...4 ~= CVV.characters.count
+            return 3...4 ~= CVV.count
         }
     }
     var CVVIsPrefixOfValid : Bool {
@@ -205,10 +205,10 @@ internal struct CreditCardValidator {
             guard let CVV = CVV else {
                 return false
             }
-            if CVV.characters.count > 0 && Int(CVV) == nil{
+            if CVV.count > 0 && Int(CVV) == nil{
                 return false
             }
-            return 0...4 ~= CVV.characters.count
+            return 0...4 ~= CVV.count
         }
     }
     var CreditDetailsValid : Bool {
@@ -220,7 +220,7 @@ internal struct CreditCardValidator {
         get{
             if let cardNumber = cardNumber{
                 let cardNumberWithoutFormating =  cardNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression) as String
-                return cardNumberWithoutFormating.characters.count >= maxLengthForType(cardType)
+                return cardNumberWithoutFormating.count >= maxLengthForType(cardType)
             }
             return false
         }
@@ -230,7 +230,7 @@ internal struct CreditCardValidator {
     get{
       if let cardNumber = cardNumber{
         let cardNumberWithoutFormating =  cardNumber.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression) as String
-        return cardNumberWithoutFormating.characters.count > maxLengthForType(cardType)
+        return cardNumberWithoutFormating.count > maxLengthForType(cardType)
       }
       return false
     }
@@ -258,8 +258,8 @@ internal struct CreditCardValidator {
         // format number e.g. 1111 1111 1111 1111
         var formatted4 = ""
             var formatedNumTmp = ""
-        for character in cardNumberWithoutFormating.characters {
-            if formatted4.characters.count == 4 {
+        for character in cardNumberWithoutFormating {
+            if formatted4.count == 4 {
                 formatedNumTmp += formatted4 + " "
                 formatted4 = ""
             }
@@ -270,7 +270,7 @@ internal struct CreditCardValidator {
         formattedCardNumber = formatedNumTmp // the rest
         
         numberHasvalidFormat = luhnCheck(cardNumberWithoutFormating) && cardType != .Unknown
-        numberHasvalidLength =  cardLengthValid(_cardType, length: cardNumberWithoutFormating.characters.count)
+        numberHasvalidLength =  cardLengthValid(_cardType, length: cardNumberWithoutFormating.count)
             
         }
         if let DOB = DOB {
@@ -281,10 +281,10 @@ internal struct CreditCardValidator {
     
     //The asumption is that input has only 1-9 and / in it
     private func isValidDate(_ inputDate: String) -> Bool {
-        if inputDate.characters.count != 5 && inputDate.characters.count != 7{
+        if inputDate.count != 5 && inputDate.count != 7{
             return false
         }
-        let split = inputDate.characters.split(separator: "/").map(String.init)
+        let split = inputDate.split(separator: "/").map(String.init)
         
         if split.count < 2{
             return false
@@ -358,7 +358,7 @@ return 14...19 ~= length
     }
     fileprivate  func luhnCheck(_ number: String) -> Bool {
         var sum = 0
-        let digitStrings = number.characters.reversed().map { String($0) }
+        let digitStrings = number.reversed().map { String($0) }
         
         for tuple in digitStrings.enumerated() {
             guard let digit = Int(tuple.element) else { return false }

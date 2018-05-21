@@ -383,7 +383,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             
             
             let dateStr = formatedString(dateField)
-            let split = dateStr.characters.split(separator: "/").map(String.init)
+            let split = dateStr.split(separator: "/").map(String.init)
             self.showActivityIndicator( true)
             self.applyButton.isEnabled = false
             self.cancelButton.isEnabled = false
@@ -727,7 +727,7 @@ fileprivate extension MCCheckoutViewController{
     
     func showError(errorStr: String){
         self.errorLabel.text = errorStr
-        if errorStr.characters.count == 0 {
+        if errorStr.count == 0 {
             return;
         }
         self.errorLabel.alpha = 0.0

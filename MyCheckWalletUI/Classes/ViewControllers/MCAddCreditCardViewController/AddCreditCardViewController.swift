@@ -304,7 +304,7 @@ extension AddCreditCardViewController{
     
     fileprivate func showError(errorStr: String){
         self.errorLabel.text = errorStr
-        if errorStr.characters.count == 0 {
+        if errorStr.count == 0 {
             UIView.animate(withDuration: 0.3, animations: {
                 self.errorHeight.constant = 0
                 self.view.layoutIfNeeded()

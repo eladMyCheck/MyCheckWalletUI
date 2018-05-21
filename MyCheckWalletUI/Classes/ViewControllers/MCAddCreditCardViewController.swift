@@ -92,7 +92,7 @@ open class MCAddCreditCardViewController: MCViewController {
             self.showActivityIndicator(true)
             
             let dateStr = formatedString(dateField)
-            let split = dateStr.characters.split(separator: "/").map(String.init)
+            let split = dateStr.split(separator: "/").map(String.init)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "add_card_switch_mode"), object: nil, userInfo: ["mode": false])
             self.creditCardNumberField.isUserInteractionEnabled = false
             self.dateField.isUserInteractionEnabled = false
@@ -189,6 +189,7 @@ open class MCAddCreditCardViewController: MCViewController {
         self.cvvField.placeholder = LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder)
         self.dateField.placeholder = LocalData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)
         self.zipField.placeholder = LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder)
+        
         if let backBut = backButton{
             backBut.kf.setImage(with: LocalData.manager.getBackButtonImageURL(), for: .normal , options:[.scaleFactor(3.0)])
         }
@@ -296,11 +297,11 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
             
             let valid = CreditCardValidator(DOB:txtAfterUpdate as String).DOBIsValid
             let month = txtAfterUpdate.components(separatedBy: "/")[0] as String
-            if month.characters.count > 2 {
+            if month.count > 2 {
                 return false
             }
             
-            if month.characters.count > 0 {
+            if month.count > 0 {
                 let firstChar = month[month.startIndex]
                 
                 if firstChar != "1" && firstChar != "0"{
@@ -346,7 +347,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
                 }
             }
             
-            if textField.text?.characters.count == maxLength && string != ""{ // if we are just moving to next field
+            if textField.text?.count == maxLength && string != ""{ // if we are just moving to next field
                 
                 return false
             }
@@ -398,8 +399,8 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         case creditCardNumberField:
             return (creditCardNumberField.text?.replacingOccurrences(of: " ", with: ""))!
         case dateField:
-            if dateField.text?.characters.count == 5 {
-                let split = dateField.text?.characters.split(separator: "/").map(String.init)
+            if dateField.text?.count == 5 {
+                let split = dateField.text?.split(separator: "/").map(String.init)
                 let year = "20" + split![1]
                 return split![0] + "/" + year
             }
@@ -415,7 +416,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
     
     fileprivate func showError(errorStr: String){
         self.errorLabel.text = errorStr
-        if errorStr.characters.count == 0 {
+        if errorStr.count == 0 {
             UIView.animate(withDuration: 0.3, animations: {
                 self.errorHeight.constant = 0
                 self.view.layoutIfNeeded()

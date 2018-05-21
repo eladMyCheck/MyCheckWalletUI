@@ -89,7 +89,7 @@ public class LocalData : KeyValueStorageProtocol{
     
     public func getColor(_ key: String , fallback: UIColor) -> UIColor{
    let hex = getString(key)
-        if hex.characters.count > 2 {
+        if hex.count > 2 {
     let color = UIColor.hex(hex)
             return color
         }
@@ -100,7 +100,7 @@ public class LocalData : KeyValueStorageProtocol{
     
     public func getDouble(_ key: String , fallback: Double) -> Double{
         let str = getString(key)
-        if str.characters.count > 0 {
+        if str.count > 0 {
           return Double(str)!
         }
         return fallback
@@ -123,7 +123,7 @@ public class LocalData : KeyValueStorageProtocol{
         }else if lowercase == "false" || lowercase == "0"{
         return false
         }
-        if str.characters.count > 0 {
+        if str.count > 0 {
             return Bool(str)!
         }
         return fallback

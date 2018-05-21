@@ -222,8 +222,8 @@ public struct CreditCardPaymentMethod: PaymentMethodInterface{
     }
     
     
-    if year.characters.count > 2 {
-      year = year.substring(from: year.characters.index(year.startIndex, offsetBy: 2))
+    if year.count > 2 {
+      year = year.substring(from: year.index(year.startIndex, offsetBy: 2))
     }
     return String(format: "%@/%@", month, year)
     

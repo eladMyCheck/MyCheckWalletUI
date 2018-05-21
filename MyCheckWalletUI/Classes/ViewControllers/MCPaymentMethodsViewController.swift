@@ -144,7 +144,7 @@ print(str)
         print("keyboard show")
         var userInfo = notification.userInfo!
         let keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        var kbHeight = keyboardFrame.size.height
+        let kbHeight = keyboardFrame.size.height
         
         addCardBottomConstraint.constant = kbHeight + 16.0
     }
@@ -284,7 +284,7 @@ print(str)
         self.navigationBar.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsbackButton" , fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
         self.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName : LocalData.manager.getColor("managePaymentMethodscolorsheaderText" , fallback: .white),
-            NSFontAttributeName: UIFont.headerFont(withSize: 14)
+            NSFontAttributeName: UIFont.headerFont(withSize: 14) 
         ]
     
     }

@@ -169,7 +169,7 @@
             didFinish:{ controller in
                 displayDelegate.dismiss(viewController: controller)
                 
-                guard let token = APToken else {
+                guard APToken != nil else {
                     
                     fail(ErrorCodes.applePayFailed.getError())
                     return

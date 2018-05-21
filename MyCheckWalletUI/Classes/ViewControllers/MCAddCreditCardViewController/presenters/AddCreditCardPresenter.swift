@@ -42,7 +42,7 @@ class AddCreditCardPresenter: AddCreditCardPresentationLogic
             viewController?.formSubmitionResponse(viewModel: AddCreditCard.SubmitForm.ViewModel.success)
         case .failedToAddCard(let failedData):
             
-            let fieldPresentations: [AddCreditCard.SubmitForm.ViewModel.FieldPresentation] =
+            let _: [AddCreditCard.SubmitForm.ViewModel.FieldPresentation] =
                 failedData.fieldValidity.map {type , valid in
             return  AddCreditCard.SubmitForm.ViewModel.FieldPresentation(FieldType: type,
                                                                          textColor: valid ? UIColor.fieldTextValid() : UIColor.fieldTextInvalid(), underlineColor: valid ? UIColor.fieldUnderline() : UIColor.fieldUnderlineInvalid())
@@ -69,7 +69,7 @@ class AddCreditCardPresenter: AddCreditCardPresentationLogic
         //formatting the text of the number
         var numberTxt = response.text
         for i in stride(from: 12 , to: 0, by: -4) {
-            if numberTxt.characters.count <= i{
+            if numberTxt.count <= i{
                 continue
             }
             numberTxt.insert(" ", at: numberTxt.index(numberTxt.startIndex , offsetBy: i))
