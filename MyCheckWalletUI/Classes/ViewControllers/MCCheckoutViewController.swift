@@ -170,7 +170,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         field.inputAccessoryView = doneToolbar
     }
     
-    func donePressed(_ sender: UIBarButtonItem){
+    @objc func donePressed(_ sender: UIBarButtonItem){
         selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRow(inComponent: 0)]
         self.paymentMethodSelectorTextField.text = self.selectedMethod!.description
         if let selectedMethod = selectedMethod {
@@ -186,10 +186,10 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     func configureUI(){
         
-        creditCardNumberField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardNumPlaceHoldar" ,fallback: "Card Number"), attributes:[NSForegroundColorAttributeName: LocalData.manager.addCreditCardInCheckoutVCHint()])
-        dateField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardDatePlaceHoldar" ,fallback: dateField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])
-        cvvField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])
-        zipField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])
+        creditCardNumberField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardNumPlaceHoldar" ,fallback: "Card Number"), attributes:[NSAttributedStringKey.foregroundColor: LocalData.manager.addCreditCardInCheckoutVCHint()])
+        dateField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardDatePlaceHoldar" ,fallback: dateField.placeholder), attributes:[NSAttributedStringKey.foregroundColor:  LocalData.manager.addCreditCardInCheckoutVCHint()])
+        cvvField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder), attributes:[NSAttributedStringKey.foregroundColor:  LocalData.manager.addCreditCardInCheckoutVCHint()])
+        zipField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder), attributes:[NSAttributedStringKey.foregroundColor:  LocalData.manager.addCreditCardInCheckoutVCHint()])
         for view in textFieldsBorderViews {
             view.layer.borderColor = UIColor(r: 124, g: 114, b: 112, a: 1).cgColor
             view.layer.borderWidth = 1.0
@@ -456,8 +456,8 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     func moveAcceptedCreditCardsViewToCreditCardField(_ move : Bool , animated: Bool){
         let animationLength = animated ? 0.2 : 0
         let baseHeight = 296.0 as Float
-        self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
-        self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
+        self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(move ? 999 : 1))
+        self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(move ? 1 : 999))
         
         var delta = move ? baseHeight : baseHeight + 111.0
         if Wallet.shared.factories.count > 0 { // if we have factories we need to allow more room for the wallet buttons

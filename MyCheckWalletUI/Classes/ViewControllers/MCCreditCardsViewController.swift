@@ -293,7 +293,7 @@ fileprivate extension MCCreditCardsViewController{
         let title = LocalData.manager.getString("managePaymentMethodsaddCardButton" , fallback: "ADD")
         
         let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(MCCreditCardsViewController.addPressed))
-        button.setTitleTextAttributes([NSFontAttributeName: UIFont.headerFont(withSize: 12)], for: UIControlState())
+        button.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.headerFont(withSize: 12)], for: UIControlState())
         return button
     }
 }

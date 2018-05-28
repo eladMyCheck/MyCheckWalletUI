@@ -140,7 +140,7 @@ print(str)
         
     }
     
-    func keyboardWillShow(notification:NSNotification){
+    @objc func keyboardWillShow(notification:NSNotification){
         print("keyboard show")
         var userInfo = notification.userInfo!
         let keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
@@ -149,7 +149,7 @@ print(str)
         addCardBottomConstraint.constant = kbHeight + 16.0
     }
     
-    func keyboardWillHide(notification:NSNotification){
+    @objc func keyboardWillHide(notification:NSNotification){
         print("keyboard hide")
         addCardBottomConstraint.constant = 16.0
     }
@@ -172,7 +172,7 @@ print(str)
         addCardButton.isEnabled = on
     }
     
-    func switchAddCardButtonObserver(_ notification: NSNotification) {
+    @objc func switchAddCardButtonObserver(_ notification: NSNotification) {
         
         if let mode = notification.userInfo?["mode"] as? Bool {
             switchAddCardButton(on: mode)
@@ -225,8 +225,8 @@ print(str)
             self.navigationBar.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsbackButton" , fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
         }
         
-        creditCardInCenterConstraint.priority = show ? 999 : 1
-        creditCardsVCCenterXConstraint.priority = show ? 1 : 999
+        creditCardInCenterConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(show ? 999 : 1))
+        creditCardsVCCenterXConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(show ? 1 : 999))
         UIView.animate(withDuration: animated ? 0.4 : 0.0, animations: {
             self.view.layoutIfNeeded()
             
@@ -239,7 +239,7 @@ print(str)
         })
     }
     
-    func addCreditCardPressedNotificationReceived(_ notification: Notification){
+    @objc func addCreditCardPressedNotificationReceived(_ notification: Notification){
         self.showEnterCreditCard(true, animated: true)
     }
     
@@ -283,8 +283,8 @@ print(str)
         self.navigationBar.isTranslucent = false
         self.navigationBar.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsbackButton" , fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
         self.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName : LocalData.manager.getColor("managePaymentMethodscolorsheaderText" , fallback: .white),
-            NSFontAttributeName: UIFont.headerFont(withSize: 14) 
+            NSAttributedStringKey.foregroundColor : LocalData.manager.getColor("managePaymentMethodscolorsheaderText" , fallback: .white),
+            NSAttributedStringKey.font: UIFont.headerFont(withSize: 14)
         ]
     
     }

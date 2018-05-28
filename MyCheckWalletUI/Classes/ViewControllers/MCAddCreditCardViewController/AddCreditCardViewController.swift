@@ -133,7 +133,7 @@ open class AddCreditCardViewController: MCViewController
     
     // MARK private methods
     //MARK: - private functions
-    internal func setupUI(){
+    @objc internal func setupUI(){
       if let navbar = navbar{
         navbar.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsheaderBackground", fallback: navbar.backgroundColor!)
       }

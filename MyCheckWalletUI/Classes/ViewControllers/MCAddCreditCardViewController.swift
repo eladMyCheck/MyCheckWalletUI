@@ -136,7 +136,7 @@ open class MCAddCreditCardViewController: MCViewController {
         }
         self.resetView()
     }
-    func nextPressed(_ sender: UIBarButtonItem){
+    @objc func nextPressed(_ sender: UIBarButtonItem){
         if creditCardNumberField.isFirstResponder{
             dateField.becomeFirstResponder()
         } else if dateField.isFirstResponder{
@@ -182,7 +182,7 @@ open class MCAddCreditCardViewController: MCViewController {
     }
     
     //MARK: - private functions
-    internal func setupUI(){
+    @objc internal func setupUI(){
         
         self.barItem.title =  ""
         self.creditCardNumberField.placeholder = LocalData.manager.getString("addCreditcardNumPlaceHoldar" , fallback: self.creditCardNumberField.placeholder)
@@ -465,7 +465,7 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         })
     }
     
-    func showActivityIndicator(_ show: Bool) {
+    @objc func showActivityIndicator(_ show: Bool) {
         if activityView == nil {
             activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
             

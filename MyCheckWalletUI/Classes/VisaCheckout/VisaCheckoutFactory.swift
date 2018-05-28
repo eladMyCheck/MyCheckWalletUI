@@ -31,7 +31,7 @@ open class VisaCheckoutFactory : PaymentMethodFactory{
     }
     
     
-    override func getAddMethodViewControllere(  ){
+    @objc override func getAddMethodViewControllere(  ){
          if let delegate = self.delegate{
         VisaCheckoutSDK.checkout(total: 0.0, currency:  Currency(string: LocalData.manager.getString("currencyCode")), completion: {
             result in
