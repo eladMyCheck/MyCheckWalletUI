@@ -37,7 +37,7 @@ open class ApplePayFactory : PaymentMethodFactory{
                     let creditCards =  creditCardsStrings.map{
                         PKPaymentNetwork(string: $0)
                         }
-                        .flatMap{ $0 }
+                        .compactMap{ $0 }
                     
                     let credentials = ApplePayCredentials(merchantIdentifier: merchantIdentifier,
                                                           currencyCode: LocalData.manager.getString("currencyCode"),

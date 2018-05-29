@@ -153,7 +153,7 @@ public struct CreditCardPaymentMethod: PaymentMethodInterface{
     }
     
     if let number = JSON["exp_year4"] as? NSNumber{
-      let yearInt = Int(number)
+        let yearInt = Int(truncating: number)
       expireYear = String(yearInt)
     }
     if let str =  JSON["last_4_digits"] as? String {
@@ -223,7 +223,7 @@ public struct CreditCardPaymentMethod: PaymentMethodInterface{
     
     
     if year.count > 2 {
-      year = year.substring(from: year.index(year.startIndex, offsetBy: 2))
+      year = String(year[year.index(year.startIndex, offsetBy: 2)...])
     }
     return String(format: "%@/%@", month, year)
     

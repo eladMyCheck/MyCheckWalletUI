@@ -16,7 +16,7 @@ extension UIColor{
         var cString:String = tmp.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines as CharacterSet).uppercased()
         
         if (cString.hasPrefix("#")) {
-            cString = cString.substring(from: cString.index(cString.startIndex, offsetBy: 1))
+            cString = String(cString[cString.index(cString.startIndex, offsetBy: 1)...])
         }
         
         if ((cString.count) != 6) {

@@ -180,7 +180,7 @@ internal struct CreditCardValidator {
 
     case 3...7:
         if !enteredTxt && dob.count == 3 {
-            dob = dob.substring(to: dob.index(dob.endIndex, offsetBy: -2))
+            dob = String(dob[...dob.index(dob.endIndex, offsetBy: -2)])
 
         }
         return .valid(formatted: dob)

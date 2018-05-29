@@ -90,8 +90,8 @@ class AddCreditCardInteractor: AddCreditCardBusinessLogic, AddCreditCardDataStor
         
         if validator.CreditDetailsValid{
             
-            let month =  model.date.substring(to: model.date.index(model.date.startIndex, offsetBy: 2))
-            let year =  model.date.substring(from: model.date.index(model.date.startIndex, offsetBy: 3))
+            let month =  String(model.date[...model.date.index(model.date.startIndex, offsetBy: 2)])
+            let year =  String(model.date[model.date.index(model.date.startIndex, offsetBy: 3)...])
             
             presenter?.stateChanged(response: AddCreditCard.StateChange.Response(state: .callingServer))
             
