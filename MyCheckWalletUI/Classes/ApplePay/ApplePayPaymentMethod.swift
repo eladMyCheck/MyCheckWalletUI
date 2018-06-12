@@ -80,7 +80,7 @@
     
     
     
-    func generatePaymentToken(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate?, success: @escaping (String) -> Void, fail: @escaping (NSError) -> Void) {
+    func generatePaymentParams(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate?, success: @escaping ([String:Any]) -> Void, fail: @escaping (NSError) -> Void) {
         guard let displayDelegate = displayDelegate else {
             fail( ErrorCodes.missingDisplayViewControllerDelegate.getError())
             return
@@ -92,8 +92,9 @@
             
         }else{
             Wallet.shared.hasPendingApplePayToken(success: { hasApplePayToken , token in
+               
                 if let token = token , hasApplePayToken {
-                    success(token)
+                    success(["ccToken": token])
                     return
                 }else{//no apple pay token
                     self.sendNewApplePayPendingToken(for: details, displayDelegate: displayDelegate, success: success, fail: fail)
@@ -127,7 +128,7 @@
     
     
     
-    private func sendNewApplePayPendingToken(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate, success: @escaping (String) -> Void, fail: @escaping (NSError) -> Void) {
+    private func sendNewApplePayPendingToken(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate, success: @escaping ([String:Any]) -> Void, fail: @escaping (NSError) -> Void) {
         
         //creating the apple pay VC
         let request = PKPaymentRequest(applePayCredentials: applePayCredentials, paymentDetails: details)
@@ -152,7 +153,7 @@
                 let token = payment.token.paymentData.base64EncodedString()
                 APToken = token
                 Wallet.shared.addApplePay(applePayToken: token, cardType: cardName, isPending: true, success: {token in
-                    success(token)
+                    success(["ccToken":token])
                     completion(.success)
                     
                     callbackCalled = true
