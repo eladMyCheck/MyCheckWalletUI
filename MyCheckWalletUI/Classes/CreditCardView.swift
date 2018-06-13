@@ -13,6 +13,7 @@ internal protocol CreditCardViewDelegate : class{
     func deletedPaymentMethod(_ method : PaymentMethodInterface , _ array : [PaymentMethodInterface])
     func setPaymentAsDefault(method: PaymentMethodInterface)
     func showActivityIndicator(_ show: Bool)
+    func showAlertWithError(error : NSError)
 }
 
 internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
@@ -115,6 +116,9 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             }
         }, fail: { (error) in
             printIfDebug("did not delete payment")
+            if let del = self.delegate{
+                del.showAlertWithError(error: error)
+            }
         })
     }
     

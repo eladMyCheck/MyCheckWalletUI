@@ -13,6 +13,7 @@ internal protocol MCCreditCardsViewControllerrDelegate {
 }
 
 internal class MCCreditCardsViewController: MCViewController , UIGestureRecognizerDelegate, CreditCardViewDelegate{
+    
     @IBOutlet var barItem: UINavigationItem!
     let margin = 5.0 as CGFloat
     var cardViewWidth = 276 as CGFloat
@@ -208,6 +209,15 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
             
         }
         activityView.isHidden = !show
+    }
+    
+    func showAlertWithError(error: NSError) {
+        if error.code == 2028{
+            //cant delete card if there is open table.
+            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     @objc fileprivate func setupUI(){
