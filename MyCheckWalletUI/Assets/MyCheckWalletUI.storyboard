@@ -8,7 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -274,6 +273,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mm/yy" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HNb-VI-wZf">
                                 <rect key="frame" x="18" y="116" width="102" height="17"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="Y11-2G-VS7"/>
                                     <constraint firstAttribute="height" constant="17" id="yxo-QV-O34"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -291,7 +291,10 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bol-cB-Pbe">
-                                <rect key="frame" x="150.5" y="116" width="75.5" height="17"/>
+                                <rect key="frame" x="147" y="116" width="81" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="O7j-3K-4MG"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -300,14 +303,17 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeD-SX-Sgl">
-                                <rect key="frame" x="135.5" y="138" width="105.5" height="1"/>
+                                <rect key="frame" x="132" y="138" width="111" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="zVn-Pn-xXk"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ZIP/postal" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PFL-fa-3RB">
-                                <rect key="frame" x="255.5" y="116" width="101.5" height="17"/>
+                                <rect key="frame" x="255" y="116" width="102" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="qGA-wj-owo"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -316,7 +322,7 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UK-IR-MZx">
-                                <rect key="frame" x="255.5" y="138" width="101.5" height="1"/>
+                                <rect key="frame" x="255" y="138" width="102" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Q4E-B9-cCB"/>
@@ -369,7 +375,6 @@
                         <constraints>
                             <constraint firstItem="HNb-VI-wZf" firstAttribute="leading" secondItem="W6f-IO-CN5" secondAttribute="leading" id="0b7-4T-dd7"/>
                             <constraint firstItem="W6f-IO-CN5" firstAttribute="top" secondItem="JuV-uX-eLO" secondAttribute="bottom" constant="5" id="2Kj-w3-lK8"/>
-                            <constraint firstItem="HNb-VI-wZf" firstAttribute="width" secondItem="PFL-fa-3RB" secondAttribute="width" id="2eM-wE-1pg"/>
                             <constraint firstItem="PFL-fa-3RB" firstAttribute="leading" secondItem="5UK-IR-MZx" secondAttribute="leading" id="3Bx-Sn-UhK"/>
                             <constraint firstItem="iQG-cr-JRl" firstAttribute="top" secondItem="vj5-EE-P4N" secondAttribute="bottom" constant="8" id="3rA-F7-inV"/>
                             <constraint firstItem="JuV-uX-eLO" firstAttribute="centerY" secondItem="A7V-OB-5BU" secondAttribute="centerY" constant="1.5" id="ALj-fC-x0m"/>
@@ -381,7 +386,6 @@
                             <constraint firstItem="cTP-fh-zvs" firstAttribute="trailing" secondItem="HNb-VI-wZf" secondAttribute="trailing" id="O0M-cF-XbC"/>
                             <constraint firstItem="vj5-EE-P4N" firstAttribute="top" secondItem="cTP-fh-zvs" secondAttribute="bottom" constant="40.5" id="TJu-rP-ygg"/>
                             <constraint firstItem="iQG-cr-JRl" firstAttribute="leading" secondItem="g4E-0M-jxx" secondAttribute="leading" constant="18" id="UK1-Wf-TWi"/>
-                            <constraint firstItem="PFL-fa-3RB" firstAttribute="width" secondItem="W6f-IO-CN5" secondAttribute="width" multiplier="0.3" id="Ug9-r4-kua"/>
                             <constraint firstItem="A7V-OB-5BU" firstAttribute="leading" secondItem="g4E-0M-jxx" secondAttribute="leading" constant="20" id="Uh8-ec-w1E"/>
                             <constraint firstItem="5UK-IR-MZx" firstAttribute="trailing" secondItem="PFL-fa-3RB" secondAttribute="trailing" id="WYE-0G-g0q"/>
                             <constraint firstItem="vj5-EE-P4N" firstAttribute="leading" secondItem="g4E-0M-jxx" secondAttribute="leading" constant="16" id="XE7-9p-vDa"/>
@@ -389,7 +393,6 @@
                             <constraint firstItem="BeD-SX-Sgl" firstAttribute="top" secondItem="bol-cB-Pbe" secondAttribute="bottom" constant="5" id="bW6-08-Vn2"/>
                             <constraint firstItem="cTP-fh-zvs" firstAttribute="top" secondItem="HNb-VI-wZf" secondAttribute="bottom" constant="5" id="gQC-tm-2lC"/>
                             <constraint firstItem="W6f-IO-CN5" firstAttribute="leading" secondItem="g4E-0M-jxx" secondAttribute="leading" constant="18" id="ieT-U3-pKp"/>
-                            <constraint firstItem="bol-cB-Pbe" firstAttribute="width" secondItem="JuV-uX-eLO" secondAttribute="width" multiplier="0.25" id="jeT-1h-Qbo"/>
                             <constraint firstItem="HNb-VI-wZf" firstAttribute="height" secondItem="PFL-fa-3RB" secondAttribute="height" id="jkq-bl-2aF"/>
                             <constraint firstItem="PFL-fa-3RB" firstAttribute="centerY" secondItem="bol-cB-Pbe" secondAttribute="centerY" id="jqN-Qg-lM1"/>
                             <constraint firstItem="W6f-IO-CN5" firstAttribute="trailing" secondItem="JuV-uX-eLO" secondAttribute="trailing" id="jsa-6J-m5M"/>
