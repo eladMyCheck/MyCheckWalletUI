@@ -113,8 +113,7 @@ open class MCAddCreditCardViewController: MCViewController {
             }, fail: { error in
                 self.showActivityIndicator(false)
                 if let delegate = self.delegate{
-                    let errorString = LocalData.manager.getString("addCrediterror" , fallback: error.localizedDescription)
-                    self.showError(errorStr: errorString)
+                    self.showError(errorStr: error.localizedDescription)
                     delegate.recivedError(self, error:error)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "add_card_switch_mode"), object: nil, userInfo: ["mode": true])
                     self.creditCardNumberField.isUserInteractionEnabled = true
