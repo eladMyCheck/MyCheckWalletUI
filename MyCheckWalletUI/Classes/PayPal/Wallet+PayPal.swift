@@ -46,6 +46,7 @@ extension Wallet {
                 fail(ErrorCodes.notConifgured.getError())
             }
         }
+        
     }
     
     func addPayPal(_ nonce: String, singleUse: Bool,  success: @escaping ((PaymentMethodInterface?) -> Void) , fail: ((NSError) -> Void)? ){
@@ -58,7 +59,7 @@ extension Wallet {
             
             Networking.shared.request(urlStr, method: .post, parameters: params , success: { JSON in
                 let pm =  JSON["pm"] as! NSDictionary
-                let method = PayPalPaymentMethod(JSON: pm)
+                let method = CreditCardPaymentMethod(JSON: pm)
                 success(method)
             }, fail: fail)
         }else{

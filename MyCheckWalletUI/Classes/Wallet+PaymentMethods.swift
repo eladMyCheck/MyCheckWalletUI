@@ -27,11 +27,7 @@ extension Wallet{
                     if let source = dic["source"] as? String {
                         let type = PaymentMethodType(source: source)
                         if let factory = Wallet.shared.getFactory(type) , let method = factory.getPaymentMethod(JSON: dic){
-                            if method.type == .payPal, let payPalMethod = PayPalPaymentMethod(JSON: dic){
-                                returnArray.append(payPalMethod)
-                            }else{
-                                returnArray.append(method)
-                            }
+                            returnArray.append(method)
                             continue
                         }
                         

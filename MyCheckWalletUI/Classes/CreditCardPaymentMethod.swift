@@ -39,7 +39,7 @@ public enum CreditCardType : String{
 
 
 ///Represents a payment method the user has.
-public class CreditCardPaymentMethod: PaymentMethodInterface{
+public struct CreditCardPaymentMethod: PaymentMethodInterface{
   
   /// The Id of the payment method.
   fileprivate let _Id : String
@@ -135,7 +135,7 @@ public class CreditCardPaymentMethod: PaymentMethodInterface{
   ///    - parameter JSON: A JSON that comes from the wallet endpoint
   ///    - returns: A payment method object or nil if the JSON is invalid or missing non optional parameters.
   
-    public required init?(JSON: NSDictionary){
+    public init?(JSON: NSDictionary){
     
     guard let source = JSON["source"] as? String else{
       return nil
@@ -185,16 +185,10 @@ public class CreditCardPaymentMethod: PaymentMethodInterface{
     
     
   }
-    
-    public func getToken() -> String{
-        return token
-    }
   
  
-    public func generatePaymentParams(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate?, success: @escaping ([String:Any]) -> Void,  fail: @escaping (NSError) -> Void) {
-        var params = ["ccToken":token]
-        
-        success(params)
+  public func generatePaymentToken(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate?, success: @escaping (String) -> Void,  fail: @escaping (NSError) -> Void) {
+    success(token)
 
   }
     ///A readable description of the Credit Card e.g. XXXX - 1234
