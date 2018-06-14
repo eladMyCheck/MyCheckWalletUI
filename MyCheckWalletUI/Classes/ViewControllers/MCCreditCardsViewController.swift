@@ -214,7 +214,9 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     func showAlertWithError(error: NSError) {
         if error.code == 2028{
             //cant delete card if there is open table.
-            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            var message = "managePaymentMethodserrorDeleteCardOpenOrder"
+            message = LocalData.manager.getString(message , fallback: error.localizedDescription)
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
             present(alert, animated: true, completion: nil)
         }
