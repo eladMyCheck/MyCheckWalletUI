@@ -48,7 +48,10 @@ extension Wallet {
     }
     
     func hasPendingApplePayToken(success: @escaping ((Bool , String?) -> Void) , fail: ((NSError) -> Void)? ){
-        let params: [String: Any] = [ : ]
+        
+        let showGiftcard : Bool = LocalData.manager.getBool("managePaymentMethodsshowGiftcard")
+        
+        let params: [String: Any] = [ "with_giftcards" : showGiftcard ]
         
         let urlStr = Networking.shared.domain! + URIs.paymentMethods
         
