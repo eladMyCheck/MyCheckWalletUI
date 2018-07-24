@@ -11,16 +11,22 @@ import MyCheckCore
 
 extension Wallet{
     
-    func callPaymentMethods( success: @escaping (( [PaymentMethodInterface] ) -> Void) , fail: ((NSError) -> Void)? ) {
+    func callPaymentMethods(with giftCard: Bool, success: @escaping (( [PaymentMethodInterface] ) -> Void) , fail: ((NSError) -> Void)? ) {
         
-        let showGiftcard : Bool = LocalData.manager.getBool("managePaymentMethodsshowGiftcard")
-        
-        let params: [String: Any] = [ "with_giftcards" : showGiftcard]
+        let params: [String: Any] = [ "with_giftcards" : giftCard ? "1" : "0"]
         
         let urlStr = Networking.shared.domain! + URIs.paymentMethods
         
         self.request(urlStr , method: .get, parameters: params , success: { JSON in
             var returnArray : [PaymentMethodInterface] = []
+            
+            if let giftCardsJSON = JSON["giftcards"] as? [NSDictionary]{
+                for dic in giftCardsJSON {
+                    if let GC = GiftCardPaymentMethod(JSON: dic){
+                        returnArray.append(GC)
+                    }
+                }
+            }
             
             if  let methodsJSON = JSON["PaymentMethods"] as? NSArray{
                 
@@ -30,11 +36,7 @@ extension Wallet{
                     if let source = dic["source"] as? String {
                         let type = PaymentMethodType(source: source)
                         if let factory = Wallet.shared.getFactory(type) , let method = factory.getPaymentMethod(JSON: dic){
-                            if method.type == .payPal, let payPalMethod = PayPalPaymentMethod(JSON: dic){
-                                returnArray.append(payPalMethod)
-                            }else{
-                                returnArray.append(method)
-                            }
+                            returnArray.append(method)
                             continue
                         }
                         

@@ -255,12 +255,10 @@ open class Wallet : NSObject{
     ///
     ///   - parameter success: A block that is called if the user is logged in succesfully
     ///   - parameter fail: Called when the function fails for any reason
-    public func getPaymentMethods( success: @escaping (( [PaymentMethodInterface] ) -> Void) , fail: ((NSError) -> Void)? ) {
-        self.callPaymentMethods( success: {
+    public func getPaymentMethods(with giftCard: Bool = false, success: @escaping (( [PaymentMethodInterface] ) -> Void) , fail: ((NSError) -> Void)? ) {
+        self.callPaymentMethods(with:giftCard, success: {
             methods in
             var mutableMethods = methods
-            
-            
             
             //Apple pay logic is handled localy.
             if  let applePayMethod = Wallet.shared.applePayController.getApplePayPaymentMethod(){

@@ -26,6 +26,8 @@ public enum CreditCardType : String{
   case Diners = "diners"
   ///Maestro
   case Maestro = "maestro"
+  ///GiftCard
+  case GiftCard = "giftcard"
   ///Invalid type or simply unrecognised by any of our regular expressions
   case Unknown = "unknown"
   
@@ -44,7 +46,7 @@ public class CreditCardPaymentMethod: PaymentMethodInterface{
   /// The Id of the payment method.
   fileprivate let _Id : String
   /// The token that must be used in order to chard the payment method.
-  fileprivate var token : String
+  fileprivate var token : String = ""
   
   // A string with a user readable description of the payment method, e.g. XXXX-1234
   fileprivate  var  name : String? = nil
@@ -60,17 +62,17 @@ public class CreditCardPaymentMethod: PaymentMethodInterface{
   fileprivate var lastFourDigits : String? = nil
   
   /// True if the payment method is the default payment method
-  fileprivate var _isDefault : Bool
+  fileprivate var _isDefault : Bool = false
   
   /// True if the payment method will be valid for a single use only
-  fileprivate let _isSingleUse: Bool
+  fileprivate var _isSingleUse: Bool = false
   
   ///A short form string of the issuer name
-  fileprivate let issuerShort: String
-  fileprivate  let issuerFull : String
+  fileprivate var issuerShort: String = ""
+  fileprivate  var issuerFull : String = ""
   
   ///The issuer name
-  internal let issuer: CreditCardType
+  internal var issuer: CreditCardType = .Unknown
   
   ///The issuer name
   fileprivate let _type: PaymentMethodType
@@ -144,7 +146,9 @@ public class CreditCardPaymentMethod: PaymentMethodInterface{
     var number = JSON["id"] as! NSNumber
     _Id = number.stringValue
     
-    token = JSON["token"] as! String
+    if let str = JSON["token"] as? String{
+        token = str
+    }
     
     if let str = JSON["exp_month"] as? String{
       expireMonth = str
@@ -164,22 +168,28 @@ public class CreditCardPaymentMethod: PaymentMethodInterface{
     }else{
       _isDefault = false;
     }
-    number  = JSON["is_single_use"] as! NSNumber
-    _isSingleUse = number.boolValue
-    issuerShort = JSON["issuer_short"] as! String
-    let  issuerStr = JSON["issuer_full"] as! String
-    issuerFull = issuerStr
-    let tmpType = CreditCardType(rawValue: issuerStr)
-    if let tmpType = tmpType{
-      issuer = tmpType
-    }else{
-      issuer = .Unknown
+    if let num = JSON["is_single_use"] as? NSNumber{
+        _isSingleUse = num.boolValue
     }
+    if let str = JSON["issuer_short"] as? String{
+        issuerShort = str
+    }
+        
+    if let str = JSON["issuer_full"] as? String{
+        issuerFull = str
+        let tmpType = CreditCardType(rawValue: str)
+        if let tmpType = tmpType{
+            issuer = tmpType
+        }else{
+            issuer = .Unknown
+        }
+    }
+    
     name = JSON["name"] as? String
     
     _type = PaymentMethodType.init(source: source)
     
-    if _type != .creditCard && _type != .masterPass && _type != .payPal &&  _type != .visaCheckout{
+    if _type != .creditCard && _type != .masterPass && _type != .payPal &&  _type != .visaCheckout &&  _type != .giftCard{
       return nil
     }
     
