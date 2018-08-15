@@ -36,22 +36,22 @@ s.requires_arc = 'true'
 # s.frameworks = 'UIKit', 'MapKit'
 s.dependency 'MyCheckCore', '~> 1.0.6'
 s.dependency 'Kingfisher', '~> 3.0'
-s.dependency 'Braintree/PayPal'
-s.dependency 'Braintree/DataCollector'
 
 
 
-s.default_subspec = 'Core'
+s.default_subspec = 'Core','PayPal'
 
 s.subspec 'Core' do |core|
 # the core. with no 3rd party wallets
-core.source_files = 'MyCheckWalletUI/Classes/*' , 'MyCheckWalletUI/Classes/ViewControllers/**/*' ,'MyCheckWalletUI/Classes/extensionTools/*' ,'MyCheckWalletUI/Classes/interfaces/*' ,'MyCheckWalletUI/Classes/extensions/*','MyCheckWalletUI/Classes/paypal/**/*'
+core.source_files = 'MyCheckWalletUI/Classes/*' , 'MyCheckWalletUI/Classes/ViewControllers/**/*' ,'MyCheckWalletUI/Classes/extensionTools/*' ,'MyCheckWalletUI/Classes/interfaces/*' ,'MyCheckWalletUI/Classes/extensions/*'
 
 
 
 core.resource_bundles = {
 'MyCheckWalletUI' => ['MyCheckWalletUI/Assets/*']
 }
+
+#s.dependency 'MyCheckWalletUI/PayPal'
 end
 
 s.subspec 'MasterPass' do |masterpass|
