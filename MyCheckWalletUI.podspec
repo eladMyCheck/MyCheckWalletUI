@@ -39,13 +39,11 @@ s.dependency 'Kingfisher', '~> 3.0'
 
 
 
-s.default_subspecs = 'Core','PayPal'
+s.default_subspec = 'Core'
 
 s.subspec 'Core' do |core|
 # the core. with no 3rd party wallets
 core.source_files = 'MyCheckWalletUI/Classes/*' , 'MyCheckWalletUI/Classes/ViewControllers/**/*' ,'MyCheckWalletUI/Classes/extensionTools/*' ,'MyCheckWalletUI/Classes/interfaces/*' ,'MyCheckWalletUI/Classes/extensions/*'
-
-
 
 core.resource_bundles = {
 'MyCheckWalletUI' => ['MyCheckWalletUI/Assets/*']

@@ -81,13 +81,11 @@ open class PaymentMethodFactory: NSObject {
     open  func handleOpenURL(_ url: URL, sourceApplication: String?) -> Bool{
         return false
     }
+    
+    
     //creats a new copy of the payment method but as the desired subclass
     internal func getPaymentMethod(JSON: NSDictionary) -> PaymentMethodInterface?{
-        if type == .payPal {
-            return PayPalPaymentMethod(JSON: JSON)
-        }else{
-            return CreditCardPaymentMethod(JSON: JSON)
-        }
+        return CreditCardPaymentMethod(JSON: JSON)
         
     }
 }

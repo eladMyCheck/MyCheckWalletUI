@@ -27,6 +27,11 @@ open class PaypalFactory : PaymentMethodFactory{
     }
   }
     
+    //creats a new copy of the payment method but as the desired subclass
+    override func getPaymentMethod(JSON: NSDictionary) -> PaymentMethodInterface?{
+        return PayPalPaymentMethod(JSON: JSON)
+    }
+    
   override func configureAfterLogin(){
     //getting the token
     Wallet.shared.getBraintreeToken( {
@@ -193,6 +198,6 @@ extension PaypalFactory : BTViewControllerPresentingDelegate{
         }
     }
 
-
+    
   
 }
