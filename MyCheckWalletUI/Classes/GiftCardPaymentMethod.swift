@@ -18,6 +18,8 @@ public class GiftCardPaymentMethod: CreditCardPaymentMethod {
     
     fileprivate  var  expireDay : String?
     
+    fileprivate var originalJSON : NSDictionary?
+    
     public required init?(JSON: NSDictionary) {
         
         let json = NSMutableDictionary(dictionary: JSON)
@@ -57,6 +59,12 @@ public class GiftCardPaymentMethod: CreditCardPaymentMethod {
                 return nil
             }
             self.balance = number
+            
+            let ORIGINALJSON = NSMutableDictionary(dictionary: JSON)
+            ORIGINALJSON["balance"] = Double(round(1000*number.doubleValue)/1000)
+            
+            self.originalJSON = ORIGINALJSON
+            
         }else{
             print("Debug - GiftCard missing Necessary Property/Necessary Property value is not correct")
             return nil
@@ -85,6 +93,16 @@ public class GiftCardPaymentMethod: CreditCardPaymentMethod {
         success(params)
     }
     
+    public override func generateJSON() -> [String: Any]{
+        
+        
+        guard let JSON = self.originalJSON else{
+            return [:]
+        }
+        
+        return JSON as! [String : Any]
+        
+    }
     
     
 }
