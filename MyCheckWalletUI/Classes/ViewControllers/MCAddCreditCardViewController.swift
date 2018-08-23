@@ -191,6 +191,13 @@ open class MCAddCreditCardViewController: MCViewController {
         self.dateField.placeholder = LocalData.manager.getString("addCreditcardDatePlaceHoldar" , fallback: self.dateField.placeholder)
         self.zipField.placeholder = LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder)
         
+        if !LocalData.manager.zip() {
+            //if zip is false = hide postalcode(zip) field
+            self.zipField.isHidden = true
+            self.zipUnderline.isHidden = true
+            self.zipField.text = "00000"
+        }
+        
         if let backBut = backButton{
             backBut.kf.setImage(with: LocalData.manager.getBackButtonImageURL(), for: .normal , options:[.scaleFactor(3.0)])
         }

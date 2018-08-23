@@ -146,6 +146,10 @@ internal extension LocalData{
         return getBool("settingsdoNotStoreEnabled", fallback: true)
     }
     
+    func zip() -> Bool{
+        return getBool("settingszip", fallback: true)
+    }
+    
     func paymentMethodSelectorTextFieldColor() -> UIColor{
     return getColor("checkoutPagecolorscardNameDropDown", fallback: UIColor.white)
     }
