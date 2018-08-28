@@ -39,7 +39,7 @@ open class PaypalFactory : PaymentMethodFactory{
       printIfDebug(token);
       } , fail:nil)
   }
-  override func getAddMethodViewControllere(  ){
+override func getAddMethodViewControllere(){
    
     if let delegate = self.delegate{
       delegate.showLoadingIndicator(self, show: true)
@@ -48,17 +48,15 @@ open class PaypalFactory : PaymentMethodFactory{
     
     Wallet.shared.getBraintreeToken({token in
       
-      
-      
       if let braintreeClient = BTAPIClient(authorization: token){
-        
+
         let request = BTPayPalRequest()
         let driver = BTPayPalDriver(apiClient: braintreeClient)
         driver.viewControllerPresentingDelegate = self
-        
-        driver.requestBillingAgreement(request, completion: {nonce , error in
-          
-          if let error = error{
+
+        driver.requestBillingAgreement(request, completion: {_ , error in
+
+            if let error = error{
             if let delegate = self.delegate{
               delegate.error( self, error: error as NSError)
               delegate.showLoadingIndicator(self, show: false)
@@ -66,37 +64,50 @@ open class PaypalFactory : PaymentMethodFactory{
             }
           }
             
-          if let nonce = nonce , let delegate = self.delegate{
-          Wallet.shared.addPayPal(nonce.nonce, singleUse: singleUse, success: { method in
-              
-            delegate.showLoadingIndicator(self, show: false)
-                
-            delegate.addedPaymentMethod(self, method: method!)
-            Wallet.shared.addedAPaymentMethod()
-
-              }, fail: { error in
-                  delegate.error(self, error: error)
-                  delegate.showLoadingIndicator(self, show: false)
-                  
-                
-            })
-          }else{                              if let delegate = self.delegate{
-            
-            delegate.showLoadingIndicator(self, show: false)
+            if let btApiClient = BTAPIClient(authorization: token){
+                let dataCollector = BTDataCollector(apiClient: btApiClient)
+                dataCollector.collectFraudData({data in
+                    if let delegate = self.delegate,let deviceData = self.convertToDictionary(text: data) as? [String:String]{
+                            
+                        Wallet.shared.addPayPal(deviceData, singleUse: singleUse, success: { method in
+                                
+                            delegate.showLoadingIndicator(self, show: false)
+                                
+                            delegate.addedPaymentMethod(self, method: method!)
+                            Wallet.shared.addedAPaymentMethod()
+                                
+                        }, fail: { error in
+                            delegate.error(self, error: error)
+                            delegate.showLoadingIndicator(self, show: false)
+                        })
+                    }else{
+                        if let delegate = self.delegate{
+                            delegate.showLoadingIndicator(self, show: false)
+                        }
+                    }
+                })
             }
-            }
-            })
+        })
       }
-      }, fail: {error in
-        if let delegate = self.delegate{
-          delegate.error(self, error: error)
-          delegate.showLoadingIndicator(self, show: false)
-          
-        }
-        
-    })
+    }, fail: {error in
+            if let delegate = self.delegate{
+                delegate.error(self, error: error)
+                delegate.showLoadingIndicator(self, show: false)
+            }
+        })
     }
-  }
+}
+    
+    func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
+    }
   
   
   override func getAddMethodButton() -> PaymentMethodButtonRapper{

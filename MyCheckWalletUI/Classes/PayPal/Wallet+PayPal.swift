@@ -48,10 +48,10 @@ extension Wallet {
         }
     }
     
-    func addPayPal(_ nonce: String, singleUse: Bool,  success: @escaping ((PaymentMethodInterface?) -> Void) , fail: ((NSError) -> Void)? ){
+    func addPayPal(_ deviceData: [String:String], singleUse: Bool,  success: @escaping ((PaymentMethodInterface?) -> Void) , fail: ((NSError) -> Void)? ){
         
-        let params = [ "source":"paypal" , "nonce":nonce , "is_single_use":  String(describing: NSNumber(value: singleUse))]
-        
+        var params : [String : Any] = [ "source":"paypal" , "is_single_use":  String(describing: NSNumber(value: singleUse))]
+        params.append(other: ["device-data" : deviceData])
         
         if let domain = Networking.shared.domain {
             let urlStr = domain + URIs.addPayPal
