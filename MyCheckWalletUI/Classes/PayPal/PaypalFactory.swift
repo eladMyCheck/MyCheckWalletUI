@@ -54,7 +54,7 @@ override func getAddMethodViewControllere(){
         let driver = BTPayPalDriver(apiClient: braintreeClient)
         driver.viewControllerPresentingDelegate = self
 
-        driver.requestBillingAgreement(request, completion: {_ , error in
+        driver.requestBillingAgreement(request, completion: {nonce , error in
 
             if let error = error{
             if let delegate = self.delegate{
@@ -67,9 +67,9 @@ override func getAddMethodViewControllere(){
             if let btApiClient = BTAPIClient(authorization: token){
                 let dataCollector = BTDataCollector(apiClient: btApiClient)
                 dataCollector.collectFraudData({data in
-                    if let delegate = self.delegate,let deviceData = self.convertToDictionary(text: data) as? [String:String]{
+                    if let nonce = nonce?.nonce, let delegate = self.delegate,let deviceData = self.convertToDictionary(text: data) as? [String:String]{
                             
-                        Wallet.shared.addPayPal(deviceData, singleUse: singleUse, success: { method in
+                        Wallet.shared.addPayPal(nonce,deviceData, singleUse: singleUse, success: { method in
                                 
                             delegate.showLoadingIndicator(self, show: false)
                                 
