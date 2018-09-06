@@ -13,7 +13,7 @@ import MyCheckCore
 public class PayPalPaymentMethod: CreditCardPaymentMethod {
     
     fileprivate static let REFRESH_DEVICE_DATA_INTERVAL : TimeInterval = 13 * 60 // 12 minutes
-    fileprivate var deviceData : [String:String]?
+    fileprivate var deviceData : String?
     
     public required init?(JSON: NSDictionary) {
         super.init(JSON: JSON)
@@ -33,17 +33,6 @@ public class PayPalPaymentMethod: CreditCardPaymentMethod {
         
         success(params)
     }
-    
-    func convertToDictionary(text: String) -> [String: Any]? {
-        if let data = text.data(using: .utf8) {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        return nil
-    }
 
     func refreshDeviceData() {
 
@@ -52,9 +41,7 @@ public class PayPalPaymentMethod: CreditCardPaymentMethod {
       if let btApiClient = BTAPIClient(authorization: token){
         let dataCollector = BTDataCollector(apiClient: btApiClient)
         dataCollector.collectFraudData({data in
-            if let deviceData = self.convertToDictionary(text: data) as? [String:String]{
-                self.deviceData = deviceData
-            }
+            self.deviceData = data
         })
       }
       }, fail: nil)

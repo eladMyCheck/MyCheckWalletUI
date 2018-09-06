@@ -67,8 +67,10 @@ override func getAddMethodViewControllere(){
             if let btApiClient = BTAPIClient(authorization: token){
                 let dataCollector = BTDataCollector(apiClient: btApiClient)
                 dataCollector.collectFraudData({data in
-                    if let nonce = nonce?.nonce, let delegate = self.delegate,let deviceData = self.convertToDictionary(text: data) as? [String:String]{
-                            
+                    if let nonce = nonce?.nonce, let delegate = self.delegate{
+                        
+                        let deviceData = data
+                        
                         Wallet.shared.addPayPal(nonce,deviceData, singleUse: singleUse, success: { method in
                                 
                             delegate.showLoadingIndicator(self, show: false)
@@ -97,18 +99,6 @@ override func getAddMethodViewControllere(){
         })
     }
 }
-    
-    func convertToDictionary(text: String) -> [String: Any]? {
-        if let data = text.data(using: .utf8) {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        return nil
-    }
-  
   
   override func getAddMethodButton() -> PaymentMethodButtonRapper{
     
