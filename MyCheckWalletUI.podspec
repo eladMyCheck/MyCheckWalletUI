@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MyCheckWalletUI'
-  s.version          = '1.2.1'
+  s.version          = '1.2.2'
   s.summary          = 'An SDK that supplies UI for payment method managment.'
 
 # This description is used to generate tags and improve search results.
@@ -34,7 +34,7 @@ s.requires_arc = 'true'
 
 # s.public_header_files = 'Pod/Classes/**/*.h'
 # s.frameworks = 'UIKit', 'MapKit'
-s.dependency 'MyCheckCore', '~> 1.0.7'
+s.dependency 'MyCheckCore'
 s.dependency 'Kingfisher', '~> 3.0'
 
 
