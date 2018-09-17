@@ -54,7 +54,7 @@ public class GiftCardPaymentMethod: CreditCardPaymentMethod {
         self.expireDay = String(calendar.component(.day, from: date))
         
         if let number = JSON["balance"] as? NSNumber{
-            if number.intValue <= 0{
+            if number.doubleValue <= 0.0{
                 print("Debug - GiftCard filter - balance below is 0")
                 return nil
             }
