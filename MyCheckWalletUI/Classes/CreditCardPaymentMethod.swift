@@ -143,7 +143,7 @@ public class CreditCardPaymentMethod: PaymentMethodInterface{
       return nil
     }
     self.JSON = JSON
-    var number = JSON["id"] as! NSNumber
+        let number = JSON["id"] as! NSNumber
     _Id = number.stringValue
     
     if let str = JSON["token"] as? String{
@@ -202,7 +202,7 @@ public class CreditCardPaymentMethod: PaymentMethodInterface{
   
  
     public func generatePaymentParams(for details: PaymentDetailsProtocol?, displayDelegate: DisplayViewControllerDelegate?, success: @escaping ([String:Any]) -> Void,  fail: @escaping (NSError) -> Void) {
-        var params = ["ccToken":token]
+        let params = ["ccToken":token]
         
         success(params)
 

@@ -78,7 +78,7 @@ open class MCPaymentMethodsViewController: MCViewController {
     ///   - parameter delegate: The delegate will be called when the View controller should be dismissed.
     ///    - returns: An instance of MCPaymentMethodsViewController that is ready for display or nil if the user is not logged in.
     
-    open static func createPaymentMethodsViewController(_ delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController?{
+    public static func createPaymentMethodsViewController(_ delegate: MCPaymentMethodsViewControllerDelegate?) -> MCPaymentMethodsViewController?{
         if !Session.shared.isLoggedIn(){
             return nil
         }
@@ -436,7 +436,7 @@ fileprivate extension MCPaymentMethodsViewController{
             var secondRaw : [UIButton] = []
             
             for (index,factory) in Wallet.shared.factories.enumerated(){
-                let butRap = factory.getAddMethodButton()
+                let butRap = factory.getAddMethodButton(presenter: self)
                 
                 let button = butRap.button
                 

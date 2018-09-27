@@ -40,13 +40,13 @@ open class PaymentMethodFactory: NSObject {
         }
     }
     
-    internal func getAddMethodButton() -> PaymentMethodButtonRapper{
+    internal func getAddMethodButton(presenter : UIViewController) -> PaymentMethodButtonRapper{
         let but = PaymentMethodButtonRapper(forType: .non)
         return but
     }
     
     //this button is meant for use in the checkout view controller
-    internal func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
+    internal func getSmallAddMethodButton(presenter : UIViewController) -> PaymentMethodButtonRapper{
         let butRap = PaymentMethodButtonRapper(forType: .non)
         butRap.button.frame = CGRect(x: 0, y: 0, width: 133.0, height: 41.0)
         butRap.button.addConstraint(NSLayoutConstraint(

@@ -14,7 +14,7 @@ extension CheckoutResult{
     public var payload: [String: Any]?  {
         get{
             if let callId = callId , let encryptedKey = encryptedKey, let encryptedPaymentData = encryptedPaymentData,
-                statusCode == .success{
+                statusCode == .statusSuccess{
             return ["encKey": encryptedKey,
                     "encPaymentData": encryptedPaymentData,
                 "callid": callId]

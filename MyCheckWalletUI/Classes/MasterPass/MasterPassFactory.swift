@@ -16,7 +16,7 @@ open class MasterPassFactory : PaymentMethodFactory{
     static var masterPassURL: String?
     override var type : PaymentMethodType { get { return PaymentMethodType.masterPass }}
     
-    open static func initiate(){
+    public static func initiate(){
         if !initiated {
             let factory = MasterPassFactory()
             Wallet.shared.factories.append(factory)
@@ -73,7 +73,7 @@ open class MasterPassFactory : PaymentMethodFactory{
         
     }
     
-    override func getAddMethodButton() -> PaymentMethodButtonRapper{
+    override func getAddMethodButton(presenter: UIViewController) -> PaymentMethodButtonRapper {
         
         let butRap = PaymentMethodButtonRapper(forType: .masterPass)
         butRap.button.translatesAutoresizingMaskIntoConstraints = false
@@ -105,8 +105,8 @@ open class MasterPassFactory : PaymentMethodFactory{
         getAddMethodViewControllere()
     }
     
-    override func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
-        var butRap = super.getSmallAddMethodButton()
+    override func getSmallAddMethodButton(presenter: UIViewController) -> PaymentMethodButtonRapper{
+        var butRap = super.getSmallAddMethodButton(presenter: presenter)
         
         butRap.type = .masterPass
         

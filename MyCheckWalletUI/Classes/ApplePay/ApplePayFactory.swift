@@ -25,7 +25,7 @@ open class ApplePayFactory : PaymentMethodFactory{
 
     }
     
-    open static func initiate(merchantIdentifier: String){
+    public static func initiate(merchantIdentifier: String){
         if !initiated {
             //if the user can't make payments we will not add it to the wallet
             if ApplePayFactory.deviceSupportsApplePay() {
@@ -65,7 +65,7 @@ open class ApplePayFactory : PaymentMethodFactory{
     }
     
     
-    override func getAddMethodButton() -> PaymentMethodButtonRapper{
+    override func getAddMethodButton(presenter : UIViewController) -> PaymentMethodButtonRapper{
         
         
         //setting the big background button
@@ -127,9 +127,9 @@ open class ApplePayFactory : PaymentMethodFactory{
     }
     
     
-    override func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
+    override func getSmallAddMethodButton(presenter : UIViewController) -> PaymentMethodButtonRapper{
         
-        let  butRap = super.getSmallAddMethodButton()
+        let  butRap = super.getSmallAddMethodButton(presenter : presenter)
         butRap.button.setBackgroundImage(nil, for: .normal)
         let superFrame = butRap.button.frame
         

@@ -101,7 +101,7 @@ open class Wallet : NSObject{
     
     
     ///This property points to the singlton object. It should be used for calling all the functions in the class.
-    open static let shared = Wallet()
+    public static let shared = Wallet()
     
     //Used for session managment and calling server.
     internal var network: RequestProtocol = Networking.shared;

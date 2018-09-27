@@ -16,7 +16,7 @@ open class PaypalFactory : PaymentMethodFactory{
 
     override var type : PaymentMethodType { get { return PaymentMethodType.payPal }}
   
-    open static func initiate(_ scheme: String){
+    public static func initiate(_ scheme: String){
     if !initiated {
       let factory = PaypalFactory()
       Wallet.shared.factories.append(factory)
@@ -100,7 +100,7 @@ override func getAddMethodViewControllere(){
     }
 }
   
-  override func getAddMethodButton() -> PaymentMethodButtonRapper{
+    override func getAddMethodButton(presenter: UIViewController) -> PaymentMethodButtonRapper {
     
     let butRap = PaymentMethodButtonRapper(forType: .payPal)
     butRap.button.translatesAutoresizingMaskIntoConstraints = false
@@ -150,9 +150,9 @@ override func getAddMethodViewControllere(){
   }
   
   
-  override func getSmallAddMethodButton() -> PaymentMethodButtonRapper{
+    override func getSmallAddMethodButton(presenter: UIViewController) -> PaymentMethodButtonRapper {
     
-    var butRap = super.getSmallAddMethodButton()
+    var butRap = super.getSmallAddMethodButton(presenter: presenter)
     butRap.type = .payPal
     butRap.button.kf.setImage(with: URL( string: LocalData.manager.getString("walletImgPaypalCheckout") ), for: .normal ,  options: [.scaleFactor(2.0)])
     butRap.button.addTarget(self, action: #selector(PaypalFactory.addMethodButPressed(_:)), for: .touchUpInside)

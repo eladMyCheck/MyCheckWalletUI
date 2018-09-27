@@ -72,6 +72,8 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     let walletSuperviewBaseHeight: CGFloat = 30.0
     @IBOutlet weak fileprivate var pciLabel: UILabel!
     
+    fileprivate var didMovedToManager = false
+    
     fileprivate var walletButtons : [PaymentMethodButtonRapper] = []
     internal var borderForField : [UITextField : UIView] = [:]
     
@@ -111,7 +113,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         Wallet.shared.configureWallet(success: {
             self.setupUI()
             self.refreshPaymentMethods()
-            
+
         }, fail: nil)
         
         nc.addObserver(self, selector: #selector(MCCheckoutViewController.receivedPaymentMethodsUpdateNotification
@@ -126,11 +128,28 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         self.resetFields()
         Wallet.shared.factoryDelegate = self
         checkbox.isSelected = false
+        
+        if self.didMovedToManager {
+            self.didMovedToManager = false
+            
+            Wallet.shared.configureWallet(success: {
+                self.refreshWalletButtons()
+                
+            }, fail: nil)
+        }
+        
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        if self.didMovedToManager{
+            for button in self.walletButtons{
+                button.button.removeFromSuperview()
+            }
+        
+            self.walletButtons.removeAll()
+        }
     }
     
     //MARK: - private methods
@@ -331,7 +350,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             
             return
         }
-        
+        didMovedToManager = true
         self.present(controller, animated: true, completion: nil)
         controller.delegate = self
         
@@ -542,6 +561,10 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
 
         errorLabel.textColor = LocalData.manager.getColor("checkoutPagecolorserrorInput", fallback: creditCardNumberField.textColor!)
         
+        refreshWalletButtons()
+    }
+    
+    func refreshWalletButtons(){
         //setting up wallets UI
         if (walletButtons.count == 0 && Session.shared.isLoggedIn()) {
             switch Wallet.shared.factories.count {
@@ -558,7 +581,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
                 
             case 1,2:
                 
-                add(buttonRappers: Wallet.shared.factories.map{ $0.getSmallAddMethodButton()}, toLine: 1)
+                add(buttonRappers: Wallet.shared.factories.map{ $0.getSmallAddMethodButton(presenter: self)}, toLine: 1)
                 
                 walletsHeight.constant = walletSuperviewBaseHeight + walletStackHeight
                 
@@ -567,8 +590,8 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             case 3,4:
                 walletsHeight.constant = walletSuperviewBaseHeight + walletStackHeight * 2
                 
-                add(buttonRappers: Wallet.shared.factories.prefix(through:1).map{ $0.getSmallAddMethodButton()}, toLine: 1)
-                add(buttonRappers: Wallet.shared.factories.suffix(from:2).map{ $0.getSmallAddMethodButton()}, toLine: 2)
+                add(buttonRappers: Wallet.shared.factories.prefix(through:1).map{ $0.getSmallAddMethodButton(presenter: self)}, toLine: 1)
+                add(buttonRappers: Wallet.shared.factories.suffix(from:2).map{ $0.getSmallAddMethodButton(presenter: self)}, toLine: 2)
                 
             default:break// multiple wallets
                 //        for factory in Wallet.shared.factories{
@@ -577,7 +600,6 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             }
             
         }
-        
     }
     
     
