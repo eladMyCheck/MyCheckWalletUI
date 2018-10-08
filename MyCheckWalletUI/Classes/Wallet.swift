@@ -509,7 +509,11 @@ fileprivate extension Wallet{
         
         if  self.localeBeingConfigured == nil  ||
             (locales.getLocaleURL(locale: self.localeBeingConfigured!) == nil){
-            self.localeBeingConfigured = locales.defaultLocaleURLTuple.0
+            if let langDefault = walletJSON["langDefault"] as? String {
+                self.localeBeingConfigured = NSLocale(localeIdentifier: langDefault)
+            } else {
+                self.localeBeingConfigured = NSLocale(localeIdentifier: "en_US")
+            }
         }
         
         if self.localeBeingConfigured == self.setLocale{
