@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -52,7 +50,7 @@
                                 <rect key="frame" x="0.0" y="314" width="375" height="204"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or add card with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRI-Cd-gfs">
-                                        <rect key="frame" x="134.5" y="29.5" width="105" height="16.5"/>
+                                        <rect key="frame" x="135" y="29.5" width="105" height="16.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -129,7 +127,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are secure with PCI-DSS level 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8k3-mm-veH">
-                                        <rect key="frame" x="84.5" y="102.5" width="207" height="15.5"/>
+                                        <rect key="frame" x="84" y="102.5" width="207" height="15.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -336,8 +334,8 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="sdfd sdf sdf sdf sd sdf sdf sf sdfsdf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vj5-EE-P4N">
-                                <rect key="frame" x="16" y="179.5" width="343" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdfd sdf sdf sdf sd sdf sdf sf sdfsdf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vj5-EE-P4N">
+                                <rect key="frame" x="16" y="8" width="343" height="0.0"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="pHe-x9-FXv"/>
@@ -349,13 +347,13 @@
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iQG-cr-JRl" userLabel="do not store super">
                                 <rect key="frame" x="18" y="187.5" width="171.5" height="42"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Do not store this card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dr-Jr-Bol">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do not store this card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dr-Jr-Bol">
                                         <rect key="frame" x="36" y="13" width="135.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPw-0E-T3d">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPw-0E-T3d">
                                         <rect key="frame" x="0.0" y="0.0" width="36" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="x1N-Xa-wbq"/>
@@ -382,7 +380,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="W6f-IO-CN5" firstAttribute="top" secondItem="JuV-uX-eLO" secondAttribute="bottom" constant="5" id="2Kj-w3-lK8"/>
-                            <constraint firstItem="iQG-cr-JRl" firstAttribute="top" secondItem="vj5-EE-P4N" secondAttribute="bottom" constant="8" id="3rA-F7-inV"/>
                             <constraint firstItem="JuV-uX-eLO" firstAttribute="centerY" secondItem="A7V-OB-5BU" secondAttribute="centerY" constant="1.5" id="ALj-fC-x0m"/>
                             <constraint firstAttribute="trailing" secondItem="SlY-V1-sFk" secondAttribute="trailing" constant="18" id="B6h-d9-RlM"/>
                             <constraint firstItem="JuV-uX-eLO" firstAttribute="leading" secondItem="A7V-OB-5BU" secondAttribute="trailing" constant="14" id="DJ1-sL-oAa"/>
@@ -398,6 +395,7 @@
                             <constraint firstItem="SlY-V1-sFk" firstAttribute="top" secondItem="62y-5x-cff" secondAttribute="bottom" constant="5" id="lGy-4p-8rA"/>
                             <constraint firstItem="g4E-0M-jxx" firstAttribute="trailing" secondItem="vj5-EE-P4N" secondAttribute="trailing" constant="16" id="o8Y-F9-3C9"/>
                             <constraint firstItem="g4E-0M-jxx" firstAttribute="trailing" secondItem="JuV-uX-eLO" secondAttribute="trailing" constant="18" id="qjN-ZD-hIM"/>
+                            <constraint firstItem="vj5-EE-P4N" firstAttribute="top" secondItem="g4E-0M-jxx" secondAttribute="top" constant="8" id="sX1-93-MfN"/>
                             <constraint firstItem="SlY-V1-sFk" firstAttribute="leading" secondItem="AyY-II-kjf" secondAttribute="leading" constant="18" id="zuG-g5-fvw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g4E-0M-jxx"/>
@@ -471,8 +469,8 @@
     </scenes>
     <resources>
         <image name="back" width="7" height="12"/>
-        <image name="checkbox" width="16" height="16"/>
-        <image name="checkbox_v" width="16" height="16"/>
+        <image name="checkbox" width="16" height="16.5"/>
+        <image name="checkbox_v" width="16" height="16.5"/>
         <image name="no_type_card" width="21" height="15"/>
     </resources>
 </document>
