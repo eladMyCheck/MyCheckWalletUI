@@ -335,7 +335,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdfd sdf sdf sdf sd sdf sdf sf sdfsdf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vj5-EE-P4N">
-                                <rect key="frame" x="16" y="8" width="343" height="0.0"/>
+                                <rect key="frame" x="16" y="242" width="343" height="0.0"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="pHe-x9-FXv"/>
@@ -379,6 +379,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="g4E-0M-jxx" firstAttribute="bottom" secondItem="vj5-EE-P4N" secondAttribute="bottom" constant="8" id="1Fh-zz-41u"/>
                             <constraint firstItem="W6f-IO-CN5" firstAttribute="top" secondItem="JuV-uX-eLO" secondAttribute="bottom" constant="5" id="2Kj-w3-lK8"/>
                             <constraint firstItem="JuV-uX-eLO" firstAttribute="centerY" secondItem="A7V-OB-5BU" secondAttribute="centerY" constant="1.5" id="ALj-fC-x0m"/>
                             <constraint firstAttribute="trailing" secondItem="SlY-V1-sFk" secondAttribute="trailing" constant="18" id="B6h-d9-RlM"/>
@@ -395,7 +396,6 @@
                             <constraint firstItem="SlY-V1-sFk" firstAttribute="top" secondItem="62y-5x-cff" secondAttribute="bottom" constant="5" id="lGy-4p-8rA"/>
                             <constraint firstItem="g4E-0M-jxx" firstAttribute="trailing" secondItem="vj5-EE-P4N" secondAttribute="trailing" constant="16" id="o8Y-F9-3C9"/>
                             <constraint firstItem="g4E-0M-jxx" firstAttribute="trailing" secondItem="JuV-uX-eLO" secondAttribute="trailing" constant="18" id="qjN-ZD-hIM"/>
-                            <constraint firstItem="vj5-EE-P4N" firstAttribute="top" secondItem="g4E-0M-jxx" secondAttribute="top" constant="8" id="sX1-93-MfN"/>
                             <constraint firstItem="SlY-V1-sFk" firstAttribute="leading" secondItem="AyY-II-kjf" secondAttribute="leading" constant="18" id="zuG-g5-fvw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g4E-0M-jxx"/>
