@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MyCheckWalletUI'
-  s.version          = '1.2.2'
+  s.version          = '1.2.3'
   s.summary          = 'An SDK that supplies UI for payment method managment.'
 
 # This description is used to generate tags and improve search results.
@@ -74,9 +74,8 @@ end
 s.subspec 'VisaCheckout' do |visacheckout|
 visacheckout.dependency 'MyCheckWalletUI/Core'
 
-visacheckout.dependency 'VisaCheckoutSDK','~> 6'
+visacheckout.dependency 'VisaCheckoutSDK'
 
-visacheckout.source_files = 'MyCheckWalletUI/Classes/VisaCheckout/*'
 visacheckout.ios.deployment_target = '9.0'
 visacheckout.platform = :ios, '9.0'
 end
@@ -94,3 +93,5 @@ paypal.platform = :ios, '9.0'
 end
 
 end
+
+
