@@ -75,7 +75,7 @@ s.subspec 'VisaCheckout' do |visacheckout|
 visacheckout.dependency 'MyCheckWalletUI/Core'
 
 visacheckout.dependency 'VisaCheckoutSDK'
-
+visacheckout.source_files = 'MyCheckWalletUI/Classes/VisaCheckout/*'
 visacheckout.ios.deployment_target = '9.0'
 visacheckout.platform = :ios, '9.0'
 end
