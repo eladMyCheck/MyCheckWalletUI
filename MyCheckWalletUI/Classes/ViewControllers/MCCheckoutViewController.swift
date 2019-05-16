@@ -160,11 +160,11 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         wrapper.translatesAutoresizingMaskIntoConstraints = false
         acceptedCardSuperview.addSubview(wrapper)
         
-        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: acceptedCardSuperview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: acceptedCardSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 32)
-        let heightConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 26)
+        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: acceptedCardSuperview, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: acceptedCardSuperview, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 32)
+        let heightConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 26)
         let width = cardsImages.count*48
-        let widthConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: CGFloat(width))
+        let widthConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(width))
         acceptedCardSuperview.addConstraints([horizontalConstraint, verticalConstraint, heightConstraint, widthConstraint])
         
         for card in cardsImages {
@@ -179,8 +179,8 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         doneToolbar.barStyle = UIBarStyle.blackTranslucent
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Select", style: UIBarButtonItemStyle.done, target: self, action: action)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Select", style: UIBarButtonItem.Style.done, target: self, action: action)
         
         let items = [flexSpace , done]
         doneToolbar.items = items
@@ -189,7 +189,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         field.inputAccessoryView = doneToolbar
     }
     
-    func donePressed(_ sender: UIBarButtonItem){
+    @objc func donePressed(_ sender: UIBarButtonItem){
         selectedMethod = self.paymentMethods[self.paymentMethodSelector.selectedRow(inComponent: 0)]
         self.paymentMethodSelectorTextField.text = self.selectedMethod!.description
         if let selectedMethod = selectedMethod {
@@ -205,10 +205,10 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     
     func configureUI(){
         
-        creditCardNumberField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardNumPlaceHoldar" ,fallback: "Card Number"), attributes:[NSForegroundColorAttributeName: LocalData.manager.addCreditCardInCheckoutVCHint()])
-        dateField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardDatePlaceHoldar" ,fallback: dateField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])
-        cvvField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])
-        zipField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder), attributes:[NSForegroundColorAttributeName:  LocalData.manager.addCreditCardInCheckoutVCHint()])
+        creditCardNumberField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardNumPlaceHoldar" ,fallback: "Card Number"), attributes:[NSAttributedString.Key.foregroundColor: LocalData.manager.addCreditCardInCheckoutVCHint()])
+        dateField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcardDatePlaceHoldar" ,fallback: dateField.placeholder), attributes:[NSAttributedString.Key.foregroundColor:  LocalData.manager.addCreditCardInCheckoutVCHint()])
+        cvvField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditcvvPlaceholder" , fallback: self.cvvField.placeholder), attributes:[NSAttributedString.Key.foregroundColor:  LocalData.manager.addCreditCardInCheckoutVCHint()])
+        zipField.attributedPlaceholder = NSAttributedString(string:LocalData.manager.getString("addCreditzipPlaceHolder" , fallback: self.zipField.placeholder), attributes:[NSAttributedString.Key.foregroundColor:  LocalData.manager.addCreditCardInCheckoutVCHint()])
         for view in textFieldsBorderViews {
             view.layer.borderColor = UIColor(r: 124, g: 114, b: 112, a: 1).cgColor
             view.layer.borderWidth = 1.0
@@ -475,8 +475,8 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
     func moveAcceptedCreditCardsViewToCreditCardField(_ move : Bool , animated: Bool){
         let animationLength = animated ? 0.2 : 0
         let baseHeight = 296.0 as Float
-        self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = move ? 999 : 1
-        self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = move ? 1 : 999
+        self.acceptedCreditCardsViewTopToCreditCardFieldConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(move ? 999 : 1))
+        self.acceptedCreditCardsViewTopToCollapsableViewConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(move ? 1 : 999))
         
         var delta = move ? baseHeight : baseHeight + 111.0
         if Wallet.shared.factories.count > 0 { // if we have factories we need to allow more room for the wallet buttons
@@ -511,8 +511,8 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         deleteBut.setTitleColor(LocalData.manager.getColor("checkoutPagecolorsdeleteButton" , fallback: deleteBut.titleColor(for: .normal)!), for: .normal )
         header.text = LocalData.manager.getString("checkoutPagecheckoutSubHeader" , fallback: header.text)
         dropdownHeader.text = LocalData.manager.getString("checkoutPagecardDropDownHeader" , fallback:dropdownHeader.text)
-        managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.title(for: UIControlState())) , for: UIControlState())
-        managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.title(for: UIControlState())) , for: .highlighted)
+        managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.title(for: UIControl.State())) , for: UIControl.State())
+        managePaymentMethodsButton.setTitle( LocalData.manager.getString("checkoutPagemanagePMButton" , fallback:managePaymentMethodsButton.title(for: UIControl.State())) , for: .highlighted)
         
         checkBoxLabel.text = LocalData.manager.getString("checkoutPagenotStoreCard" , fallback:checkBoxLabel.text)
         footerLabel.text = LocalData.manager.getString("checkoutPagecardAccepted" , fallback:footerLabel.text)
@@ -522,13 +522,13 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         header.textColor = LocalData.manager.getColor("checkoutPagecolorsheaderTextColor", fallback: header.textColor!)
         headerLineBG.backgroundColor = LocalData.manager.getColor("checkoutPagecolorsheaderBackground", fallback: headerLineBG.backgroundColor!)
         
-        applyButton.setTitleColor(LocalData.manager.getColor("checkoutPagecolorsapplyButtonText", fallback: applyButton.titleColor(for: UIControlState())!), for: UIControlState())
-        applyButton.setTitleColor(LocalData.manager.getColor("checkoutPagecolorsapplyButtonText", fallback: applyButton.titleColor(for: UIControlState())!), for: .highlighted)
+        applyButton.setTitleColor(LocalData.manager.getColor("checkoutPagecolorsapplyButtonText", fallback: applyButton.titleColor(for: UIControl.State())!), for: UIControl.State())
+        applyButton.setTitleColor(LocalData.manager.getColor("checkoutPagecolorsapplyButtonText", fallback: applyButton.titleColor(for: UIControl.State())!), for: .highlighted)
         applyButton.backgroundColor = LocalData.manager.getColor("checkoutPagecolorsapplyBut", fallback: applyButton.backgroundColor!)
         applyButton.layer.borderWidth = 1
         applyButton.layer.borderColor = LocalData.manager.getColor("checkoutPagecolorsapplyButBorder", fallback:  UIColor.clear).cgColor
-        cancelButton.setTitleColor(LocalData.manager.getColor("checkoutPagecolorscancelButtonText", fallback: cancelButton.titleColor(for: UIControlState())!), for: UIControlState())
-        cancelButton.setTitleColor(LocalData.manager.getColor("checkoutPagecolorscancelButtonText", fallback: cancelButton.titleColor(for: UIControlState())!), for: .highlighted)
+        cancelButton.setTitleColor(LocalData.manager.getColor("checkoutPagecolorscancelButtonText", fallback: cancelButton.titleColor(for: UIControl.State())!), for: UIControl.State())
+        cancelButton.setTitleColor(LocalData.manager.getColor("checkoutPagecolorscancelButtonText", fallback: cancelButton.titleColor(for: UIControl.State())!), for: .highlighted)
         cancelButton.backgroundColor = LocalData.manager.getColor("checkoutPagecolorscancelBut", fallback: UIColor.clear)
         cancelButton.layer.borderWidth = 1
         cancelButton.layer.borderColor = LocalData.manager.getColor("checkoutPagecolorsapplyButBorder", fallback:  UIColor.clear).cgColor
@@ -544,7 +544,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
             view.layer.borderWidth = 1
         }
         checkBoxLabel.textColor = LocalData.manager.getColor("checkoutPagecolorsnotStoreCard", fallback: checkBoxLabel.textColor!)
-        managePaymentMethodsButton.setTitleColor( LocalData.manager.getColor("checkoutPagecolorsmanagePMButton", fallback: managePaymentMethodsButton.titleColor(for: UIControlState())!), for: UIControlState())
+        managePaymentMethodsButton.setTitleColor( LocalData.manager.getColor("checkoutPagecolorsmanagePMButton", fallback: managePaymentMethodsButton.titleColor(for: UIControl.State())!), for: UIControl.State())
         managePaymentMethodsButton.setTitleColor( LocalData.manager.getColor("checkoutPagecolorsmanagePMButton", fallback: managePaymentMethodsButton.titleColor(for: .highlighted)!), for: .highlighted)
         dropdownHeader.textColor =  LocalData.manager.getColor("checkoutPagecolorscardDropDownHeader", fallback: dropdownHeader.textColor!)
         let fieldColor = LocalData.manager.getColor("checkoutPagecolorstextField", fallback: creditCardNumberField.textColor!)
@@ -608,7 +608,7 @@ open class MCCheckoutViewController: MCAddCreditCardViewController {
         
         super.showActivityIndicator(show)
         activityView.center = CGPoint(x: self.view.center.x, y: self.view.center.y )
-        activityView.activityIndicatorViewStyle = .whiteLarge
+        activityView.style = .whiteLarge
         
     }
    /// Refreshes the view controller. This should be done after a locale change, or any other change that might change the data or UI of the view comntroller. Any changes to the data from within this fragment should not need a call to refresh.

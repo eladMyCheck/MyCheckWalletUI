@@ -200,11 +200,11 @@ internal class MCCreditCardsViewController: MCViewController , UIGestureRecogniz
     }
     internal func showActivityIndicator(_ show: Bool) {
         if activityView == nil{
-            activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+            activityView = UIActivityIndicatorView.init(style: .whiteLarge)
             
             activityView.center=CGPoint(x: self.view.center.x, y: self.view.center.y + 30)
             self.view.addSubview(activityView)
-            self.view.bringSubview(toFront: activityView)
+            self.view.bringSubviewToFront(activityView)
             activityView.startAnimating()
             
         }
@@ -305,7 +305,7 @@ fileprivate extension MCCreditCardsViewController{
         let title = LocalData.manager.getString("managePaymentMethodsadd" , fallback: "Add")
         
         let button = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(MCCreditCardsViewController.addPressed))
-        button.setTitleTextAttributes([NSFontAttributeName: UIFont.headerFont(withSize: 12)], for: UIControlState())
+        button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.headerFont(withSize: 12)], for: UIControl.State())
         return button
     }
 }

@@ -140,16 +140,16 @@ print(str)
         
     }
     
-    func keyboardWillShow(notification:NSNotification){
+    @objc func keyboardWillShow(notification:NSNotification){
         print("keyboard show")
         var userInfo = notification.userInfo!
-        let keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let kbHeight = keyboardFrame.size.height
         
         addCardBottomConstraint.constant = kbHeight + 16.0
     }
     
-    func keyboardWillHide(notification:NSNotification){
+    @objc func keyboardWillHide(notification:NSNotification){
         print("keyboard hide")
         addCardBottomConstraint.constant = 16.0
     }
@@ -172,7 +172,7 @@ print(str)
         addCardButton.isEnabled = on
     }
     
-    func switchAddCardButtonObserver(_ notification: NSNotification) {
+    @objc func switchAddCardButtonObserver(_ notification: NSNotification) {
         
         if let mode = notification.userInfo?["mode"] as? Bool {
             switchAddCardButton(on: mode)
@@ -201,9 +201,9 @@ print(str)
             
             NotificationCenter.default.addObserver(self, selector: #selector(self.switchAddCardButtonObserver(_:)), name: NSNotification.Name(rawValue: "add_card_switch_mode"), object: nil)
             
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
             //
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
             
             _ = creditCardVC!.becomeFirstResponder()
             
@@ -225,8 +225,8 @@ print(str)
             self.navigationBar.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsbackButton" , fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
         }
         
-        creditCardInCenterConstraint.priority = show ? 999 : 1
-        creditCardsVCCenterXConstraint.priority = show ? 1 : 999
+        creditCardInCenterConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(show ? 999 : 1))
+        creditCardsVCCenterXConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(show ? 1 : 999))
         UIView.animate(withDuration: animated ? 0.4 : 0.0, animations: {
             self.view.layoutIfNeeded()
             
@@ -239,7 +239,7 @@ print(str)
         })
     }
     
-    func addCreditCardPressedNotificationReceived(_ notification: Notification){
+    @objc func addCreditCardPressedNotificationReceived(_ notification: Notification){
         self.showEnterCreditCard(true, animated: true)
     }
     
@@ -258,11 +258,11 @@ print(str)
         
         addCreditCardContainer.backgroundColor = LocalData.manager.getColor("managePaymentMethodscolorsbackground", fallback: .white)
         
-        addCardButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.addCardButton.titleLabel?.text ?? "") , for: UIControlState())
+        addCardButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.addCardButton.titleLabel?.text ?? "") , for: UIControl.State())
         addCardButton.setTitle( LocalData.manager.getString("addCreditapplyAddingCardButton" , fallback: self.addCardButton.titleLabel?.text ?? "") , for: .highlighted)
         addCardButton.backgroundColor = LocalData.manager.getColor("addCreditColorsapplyBackgroundColor", fallback: .black)
         
-        addCardButton.setTitleColor(LocalData.manager.getColor("addCreditColorsapplyButtonText", fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1)), for: UIControlState())
+        addCardButton.setTitleColor(LocalData.manager.getColor("addCreditColorsapplyButtonText", fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1)), for: UIControl.State())
         
         self.footerLabel.text = LocalData.manager.getString("managePaymentMethodscardAcceptedWallet" , fallback: self.footerLabel.text)
         self.footerLabel.font = UIFont.ragularFont(withSize: 14)
@@ -283,8 +283,8 @@ print(str)
         self.navigationBar.isTranslucent = false
         self.navigationBar.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsbackButton" , fallback: UIColor(red:0.99, green:0.74, blue:0.18, alpha:1))
         self.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName : LocalData.manager.getColor("managePaymentMethodscolorsheaderText" , fallback: .white),
-            NSFontAttributeName: UIFont.headerFont(withSize: 14) 
+            NSAttributedString.Key.foregroundColor : LocalData.manager.getColor("managePaymentMethodscolorsheaderText" , fallback: .white),
+            NSAttributedString.Key.font: UIFont.headerFont(withSize: 14)
         ]
     
     }
@@ -384,11 +384,11 @@ fileprivate extension MCPaymentMethodsViewController{
         let smallCardHeight = 23 / 667 * screenSize.height
         let smallCardsMargin = smallCardHeight + smallCardWidth
         
-        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: weAcceptSuperview, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 16)
-        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: weAcceptSuperview, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 8)
-        let heightConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 26)
+        let horizontalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: weAcceptSuperview, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 16)
+        let verticalConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: weAcceptSuperview, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 8)
+        let heightConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 26)
         let width = CGFloat(cardsImages.count) * smallCardsMargin
-        let widthConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: CGFloat(width))
+        let widthConstraint = NSLayoutConstraint(item: wrapper, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(width))
         weAcceptSuperview.addConstraints([horizontalConstraint, verticalConstraint, heightConstraint, widthConstraint])
         
         for card in cardsImages {
@@ -533,14 +533,14 @@ fileprivate extension MCPaymentMethodsViewController{
         if let image = buttonRapper.button.backgroundImage(for: .normal) , image.size.width != 0{
             let ratio = image.size.height / image.size.width
             
-            let aspectRationConstraint = NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: buttonRapper.button, attribute: NSLayoutAttribute.width, multiplier: ratio, constant: 0)
+            let aspectRationConstraint = NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: buttonRapper.button, attribute: NSLayoutConstraint.Attribute.width, multiplier: ratio, constant: 0)
             walletsSuperview.addConstraint(aspectRationConstraint)
         }
     }
     
     func addWidthConstraintsToWalletButton(buttonRapper: PaymentMethodButtonRapper){
         //the width will hold its prepotion for all device sizes
-        let widthConstraint = NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: walletsSuperview, attribute: NSLayoutAttribute.width, multiplier: 0.415625, constant: 0)
+        let widthConstraint = NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: walletsSuperview, attribute: NSLayoutConstraint.Attribute.width, multiplier: 0.415625, constant: 0)
         walletsSuperview.addConstraint(widthConstraint)
         
     }
@@ -548,9 +548,9 @@ fileprivate extension MCPaymentMethodsViewController{
         
         let getVerticalConstraint: () -> NSLayoutConstraint = {
             if let bellow = bellow{
-           return NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: bellow, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 16)
+                return NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: bellow, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 16)
             }else{
-         return   NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.walletsSuperview, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 16)
+                return   NSLayoutConstraint(item: buttonRapper.button, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.walletsSuperview, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 16)
             }
         }
             

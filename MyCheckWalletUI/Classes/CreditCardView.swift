@@ -78,7 +78,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
             
             let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
             if let tintimage = UIImage(named: "checkmark", in: bundle, compatibleWith: nil){
-                self.checkboxButton.setImage(tintimage.withRenderingMode(.alwaysTemplate), for: UIControlState())
+                self.checkboxButton.setImage(tintimage.withRenderingMode(.alwaysTemplate), for: UIControl.State())
                 self.checkboxButton.tintColor = LocalData.manager.getColor("managePaymentMethodscolorsdefaultVcolor" , fallback: self.checkboxButton.tintColor)
 
             }
@@ -102,7 +102,7 @@ internal class CreditCardView: UIView, UIGestureRecognizerDelegate {
         // use bounds not frame or it'll be offset
         view.frame = bounds
         // Make the view stretch with containing view
-        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         // Adding custom subview on top of our view (over any custom drawing > see note below)
         addSubview(view)
     }

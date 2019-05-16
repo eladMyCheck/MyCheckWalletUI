@@ -27,7 +27,7 @@ class PayPalView: CreditCardView {
     emailLabel?.textColor = LocalData.manager.getColor("managePaymentMethodsColorspaypalCardText", fallback: (emailLabel?.textColor)!)
     let bundle =  MCViewController.getBundle( Bundle(for: MCAddCreditCardViewController.classForCoder()))
     let image = UIImage(named: "paypal_background" , in: bundle, compatibleWith: nil)
-    backgroundButton!.setBackgroundImage(image, for: UIControlState())
+    backgroundButton!.setBackgroundImage(image, for: UIControl.State())
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

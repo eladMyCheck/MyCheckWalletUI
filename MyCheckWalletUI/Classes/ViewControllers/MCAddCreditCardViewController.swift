@@ -137,7 +137,7 @@ open class MCAddCreditCardViewController: MCViewController {
         }
         self.resetView()
     }
-    func nextPressed(_ sender: UIBarButtonItem){
+    @objc func nextPressed(_ sender: UIBarButtonItem){
         if creditCardNumberField.isFirstResponder{
             dateField.becomeFirstResponder()
         } else if dateField.isFirstResponder{
@@ -182,8 +182,8 @@ open class MCAddCreditCardViewController: MCViewController {
         return true
     }
     
-    //MARK: - private functions
-    internal func setupUI(){
+    //MARK: - private function@objc s
+    @objc internal func setupUI(){
         
         self.barItem.title =  ""
         self.creditCardNumberField.placeholder = LocalData.manager.getString("addCreditcardNumPlaceHoldar" , fallback: self.creditCardNumberField.placeholder)
@@ -388,8 +388,8 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
         doneToolbar.barStyle = UIBarStyle.blackTranslucent
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.done, target: self, action: action)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Next", style: UIBarButtonItem.Style.done, target: self, action: action)
         
         let items = [flexSpace , done]
         
@@ -473,9 +473,9 @@ extension MCAddCreditCardViewController : UITextFieldDelegate{
         })
     }
     
-    func showActivityIndicator(_ show: Bool) {
+    @objc func showActivityIndicator(_ show: Bool) {
         if activityView == nil {
-            activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
+            activityView = UIActivityIndicatorView.init(style: .gray)
             
             activityView.center=CGPoint(x: self.view.center.x, y: self.view.center.y + 104)
             activityView.startAnimating()

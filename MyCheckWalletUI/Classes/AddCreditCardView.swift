@@ -26,7 +26,7 @@ class AddCreditCardView: UIView , UIGestureRecognizerDelegate{
     super.init(coder: aDecoder)
   }
   
-  func buttonPressed(_ recognizer : UITapGestureRecognizer) {
+    @objc func buttonPressed(_ recognizer : UITapGestureRecognizer) {
     NotificationCenter.default.post(name: Notification.Name(rawValue: "AddCreditCardPressed"), object: nil)
     
   }
