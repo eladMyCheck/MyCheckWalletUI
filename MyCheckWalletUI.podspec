@@ -35,7 +35,7 @@ s.requires_arc = 'true'
 # s.public_header_files = 'Pod/Classes/**/*.h'
 # s.frameworks = 'UIKit', 'MapKit'
 s.dependency 'MyCheckCore'
-s.dependency 'Kingfisher', '~> 3.0'
+s.dependency 'Kingfisher'
 
 
 
