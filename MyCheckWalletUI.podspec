@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.name             = 'MyCheckWalletUI'
   s.version          = '1.2.6'
   s.summary          = 'An SDK that supplies UI for payment method managment.'
+  s.swift_version = '4.2'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
